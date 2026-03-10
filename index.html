@@ -134,7 +134,7 @@ body{
   background-size:22px 22px;
 }
 
-.hero-main{
+/* .hero-main{
   display:grid;
   grid-template-columns:1fr 480px;
   flex:1;
@@ -149,8 +149,30 @@ body{
 .hero-left{
   padding:70px 40px 50px 0;
   display:flex;flex-direction:column;gap:28px;justify-content:center;
+} */
+
+  .hero-main{
+  display:grid;
+  grid-template-columns:1fr 480px;
+  flex:1;
+  position:relative;z-index:5;
+  padding-top:90px;
+  width:100%;
+  align-items:center;
+  padding-left:30px;
+  padding-right:60px;
+  gap:0;
+  justify-items:center;
+  max-width:1400px;
+  margin:0 auto;
 }
 
+.hero-left{
+  padding:70px 0 50px 0;
+  display:flex;flex-direction:column;gap:28px;justify-content:center;
+  text-align:left;
+}
+  
 .label-pill{
   display:inline-flex;align-items:center;gap:10px;
   background:rgba(200,66,10,0.15);
