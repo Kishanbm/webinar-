@@ -4019,7 +4019,9 @@
     const targets = { d: 'cd-d', h: 'cd-h', m: 'cd-m', s: 'cd-s' };
     const prev = { d: '', h: '', m: '', s: '' };
     // Set target to 20 days + 4 hours + 5 minutes from now so it's always counting live
-    const end = Date.now() + (20 * 24 * 3600 + 4 * 3600 + 5 * 60) * 1000;
+    // const end = Date.now() + (20 * 24 * 3600 + 4 * 3600 + 5 * 60) * 1000;
+    // Set target to March 19, 2026 3:30 PM CT
+    const end = new Date('2026-03-19T15:30:00-05:00').getTime();
 
     function tick() {
       const now = Date.now();
