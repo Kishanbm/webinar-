@@ -9,7 +9,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --teal-900:#0a1828;
+  --teal-900:#0D2E4E;
   --orange:#c8420a;
   --orange-bright:#e04d10;
   --orange-glow:rgba(200,66,10,0.35);
@@ -45,59 +45,54 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 /* TOP STRIP — dark navy with photo bg */
 .reg-top{
   position:relative;
-  background:#0a1828;
-  padding:120px 24px 60px;
+  background:#0D2E4E;
+  padding:100px 24px 48px;
   display:flex;flex-direction:column;
   align-items:center;text-align:center;
   overflow:hidden;
 }
-.reg-top::before{
-  content:'';
-  position:absolute;inset:0;
-  background:url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-  opacity:0.1;pointer-events:none;
-}
-.reg-top::after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(10,24,40,0.3) 0%, rgba(10,24,40,0.7) 100%);
-  pointer-events:none;
-}
+.reg-top::before{display:none;}
+.reg-top::after{display:none;}
 .reg-top-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;}
 
 /* BOTTOM AREA */
 .reg-bottom{
-  background:linear-gradient(180deg,#f0f4f8 0%,#ffffff 100%);
-  padding:60px 24px 80px;
+  background:#fff;
+  padding:52px 24px 72px;
   display:flex;flex-direction:column;
   align-items:center;
 }
+.reg-bottom-heading{
+  text-align:center;
+  margin-bottom:36px;
+}
 .reg-divider-stripe{display:none;}
 .reg-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(34,197,94,0.12);
-  border:1px solid rgba(34,197,94,0.4);
-  color:#16a34a;
-  font-size:13px;font-weight:700;letter-spacing:0.5px;
-  padding:7px 20px;border-radius:24px;
-  margin-bottom:20px;
+  display:inline-flex;align-items:center;gap:10px;
+  background:none;
+  border:none;
+  color:#fff;
+  font-family:'DM Sans',sans-serif;
+  font-size:clamp(28px,3.5vw,48px);font-weight:800;letter-spacing:-0.5px;
+  padding:0;border-radius:0;
+  margin-bottom:0;
 }
-.reg-badge svg{stroke:#16a34a;fill:none;flex-shrink:0;}
+.reg-badge svg{display:none;}
 .reg-title{
   font-family:'DM Sans',sans-serif;
-  font-size:clamp(30px,4vw,52px);
-  font-weight:800;color:#fff;
-  line-height:1.15;margin-bottom:8px;
+  font-size:clamp(26px,3vw,42px);
+  font-weight:800;color:#111;
+  line-height:1.15;margin-bottom:6px;
 }
 .reg-class-name{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;font-weight:600;
-  color:var(--orange);
+  color:#111;
 }
 .reg-sub{
-  font-size:16px;
-  color:rgba(255,255,255,0.5);
-  margin-bottom:52px;
+  font-size:15px;
+  color:#111;
+  margin-bottom:32px;
 }
 /* Two-col layout */
 .reg-cards{
@@ -105,22 +100,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
   max-width:1000px;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:28px;
-  align-items:start;
+  grid-template-rows:auto auto;
+  gap:24px;
+  align-items:stretch;
 }
 
-/* ---- LEFT: Enhanced Event Details Card ---- */
+/* LEFT card spans both rows */
 .reg-card{
   background:#ffffff;
-  border-radius:20px;
-  box-shadow:0 4px 6px rgba(0,0,0,0.04), 0 12px 48px rgba(0,0,0,0.1);
+  border-radius:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.08);
   overflow:hidden;
   display:flex;flex-direction:column;
   border:1px solid #e4eaf2;
+  grid-row:1/3;
 }
 /* Dark navy top band */
 .reg-card-header{
-  background:linear-gradient(135deg,var(--teal-900) 0%,#0f2d4a 100%);
+  background:linear-gradient(135deg,var(--teal-900) 0%,#1a4a72 100%);
   padding:22px 26px;
   display:flex;align-items:center;gap:12px;
   font-size:11px;font-weight:700;
@@ -168,30 +165,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 }
 .reg-card-note strong{color:var(--orange);font-weight:700;}
 
-/* ---- RIGHT: Access Details card ---- */
-.reg-access-panel{
-  background:#ffffff;
-  border-radius:20px;
-  border:1px solid #e4eaf2;
-  box-shadow:0 4px 6px rgba(0,0,0,0.04), 0 12px 48px rgba(0,0,0,0.1);
-  overflow:hidden;
-  display:flex;flex-direction:column;gap:0;
-  padding:0;
-}
+/* RIGHT wrapper dissolves, each block becomes its own card */
+.reg-access-panel{display:contents;}
 .reg-access-block{
-  display:flex;flex-direction:column;gap:14px;
-  padding:26px 28px;
+  background:#ffffff;
+  border-radius:16px;
+  border:1px solid #e4eaf2;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06),0 8px 32px rgba(0,0,0,0.08);
+  display:flex;flex-direction:column;
+  gap:12px;
+  padding:22px;
 }
-.reg-access-block+.reg-access-block{
-  border-top:1px solid #f0f4f8;
-}
-.reg-access-label{
+.reg-access-label,.reg-access-section-label{
   display:flex;align-items:center;gap:8px;
   font-size:10.5px;font-weight:700;
   text-transform:uppercase;letter-spacing:1.5px;
   color:var(--orange);margin-bottom:2px;
 }
-.reg-access-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(200,66,10,0.25),transparent);}
+.reg-access-label::after,.reg-access-section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(200,66,10,0.25),transparent);}
+.reg-access-label svg,.reg-access-section-label svg{stroke:var(--orange);fill:none;flex-shrink:0;}
 .reg-zoom-btn{
   display:inline-flex;align-items:center;gap:10px;
   background:linear-gradient(135deg,#0078D4,#005bb5);
@@ -246,10 +238,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 @media(max-width:900px){
   .reg-top{padding:100px 20px 48px;}
   .reg-bottom{padding:40px 20px 60px;}
-  .reg-cards{gap:28px;}
-}
-@media(max-width:720px){
-  .reg-cards{grid-template-columns:1fr;}
+  .reg-cards{grid-template-columns:1fr;gap:20px;}
+  .reg-card{grid-row:auto;}
 }
 @media(max-width:480px){
   .reg-top{padding:88px 16px 40px;}
@@ -721,8 +711,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 .sec-label-ty-gold::before,.sec-label-ty-gold::after{content:'';flex:0 0 28px;height:1px;background:var(--gold);}
 
 /* speakers */
-.speakers-section{background:linear-gradient(180deg,#071524 0%,#0a1828 100%);border-top:2px solid rgba(200,66,10,0.3);position:relative;overflow:hidden;padding:56px 0 52px;}
-.speakers-section::before{content:'';position:absolute;inset:0;z-index:0;background:url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;opacity:0.08;pointer-events:none;}
+.speakers-section{background:var(--teal-900);position:relative;overflow:hidden;padding:72px 0 68px;}
+.speakers-section::before{content:'';position:absolute;inset:0;z-index:0;background:url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;opacity:0.06;pointer-events:none;}
 .speakers-section>.container{position:relative;z-index:1}
 .speakers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:680px;margin:36px auto 0;align-items:center;}
 .speaker-card{position:relative;overflow:hidden;border-radius:10px;transition:transform 0.3s;}
@@ -856,13 +846,15 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
       Congrats! You're Registered
     </div>
-    <h1 class="reg-title">Directional Day <span class="reg-class-name">Trading Class</span></h1>
-    <p class="reg-sub">Your seat has been reserved — we'll see you live on March 19th.</p>
   </div>
 </div>
 
 <!-- CARDS AREA — light bg -->
 <div class="reg-bottom">
+    <div class="reg-bottom-heading">
+      <h1 class="reg-title">Directional Day <span class="reg-class-name">Trading Class</span></h1>
+      <p class="reg-sub">Your seat has been reserved — we'll see you live on March 19th.</p>
+    </div>
     <div class="reg-cards">
 
       <!-- LEFT: Event Details -->
@@ -909,7 +901,7 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
 
         <!-- Zoom -->
         <div class="reg-access-block">
-          <div class="reg-access-label">
+          <div class="reg-access-section-label">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
             Webinar Access Link
           </div>
@@ -933,11 +925,9 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
           </p>
         </div>
 
-        <hr class="reg-divider">
-
         <!-- Calendar -->
         <div class="reg-access-block">
-          <div class="reg-access-label">
+          <div class="reg-access-section-label">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             Add to Your Calendar
           </div>
