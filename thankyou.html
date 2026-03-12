@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Registered! — Navigation Trading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal-900:#0a1828;
+  --orange:#c8420a;
+  --orange-bright:#e04d10;
+  --orange-glow:rgba(200,66,10,0.35);
+  --gold:#d4a040;
+  --cream:#f0f6ff;
+  --warm-white:#f5f9ff;
+  --text-dark:#111;
+  --text-mid:#4a4a4a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--text-dark);overflow-x:hidden;}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#111}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:4px}
+
+#progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));z-index:1000;width:0%;transition:width 0.1s linear;}
+
+/* NAVBAR — identical to index */
+.navbar{position:fixed;top:3px;left:0;right:0;z-index:900;padding:18px 60px;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s,box-shadow 0.4s,padding 0.3s;}
+.navbar.scrolled{background:rgba(13,46,78,0.97);backdrop-filter:blur(20px);padding:12px 60px;box-shadow:0 2px 40px rgba(0,0,0,0.4);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:5px;text-transform:uppercase;text-decoration:none;}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--orange);color:#fff;padding:10px 22px;font-size:13px;font-weight:600;letter-spacing:0.5px;border:none;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;}
+.nav-cta::after{content:'→';font-size:14px;}
+.nav-cta:hover{background:var(--orange-bright);transform:translateY(-1px);box-shadow:0 6px 20px var(--orange-glow)}
+
+/* HERO — identical structure to main page hero */
+.ty-hero{
+  min-height:100vh;background:#0D2E4E;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  padding:120px 60px 80px;
+}
+.ty-hero-bg-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.45;}
+.ty-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(13,46,78,0.82) 0%,rgba(13,46,78,0.65) 50%,rgba(13,46,78,0.80) 100%);pointer-events:none;}
+.ty-hero-glow{position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(30,100,200,0.22) 0%,transparent 65%);top:-200px;right:-100px;pointer-events:none;z-index:2;}
+.ty-hero-inner{position:relative;z-index:3;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;}
+.ty-hero-left{text-align:left;}
+.ty-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,66,10,0.15);border:1px solid rgba(200,66,10,0.3);color:var(--orange);font-size:13px;font-weight:600;padding:8px 20px;border-radius:24px;margin-bottom:24px;}
+.ty-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.5vw,58px);font-weight:700;line-height:1.1;color:#fff;margin-bottom:16px;}
+.ty-title em{font-style:italic;color:var(--orange);}
+.ty-sub{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:20px;max-width:480px;}
+.ty-note{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.75;margin-top:16px;}
+/* right — event box (matches main page form card) */
+.ty-hero-right{}
+.event-box{
+  background:#fff;border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,0.4);
+  display:flex;flex-direction:column;
+}
+.event-box-banner{
+  background:#2d3748;
+  padding:14px 22px 22px;
+  text-align:center;position:relative;
+}
+.event-box-banner::after{
+  content:'';position:absolute;
+  bottom:-14px;left:50%;transform:translateX(-50%);
+  width:0;height:0;
+  border-left:16px solid transparent;
+  border-right:16px solid transparent;
+  border-top:15px solid #2d3748;z-index:2;
+}
+.event-box-confirmed{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.35);
+  color:#4ade80;font-size:11px;font-weight:700;letter-spacing:0.5px;
+  padding:4px 12px;border-radius:20px;margin-bottom:10px;
+}
+.event-box-confirmed svg{width:11px;height:11px;}
+.event-box-banner-text{
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;font-weight:700;color:#fff;line-height:1.3;
+}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px;}
+.event-box-body{padding:18px 22px 12px;display:flex;flex-direction:column;gap:0;}
+.event-row{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 0;border-bottom:1px solid #eef0f3;
+}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{
+  width:32px;height:32px;border-radius:7px;flex-shrink:0;
+  background:#f5f7fa;border:1px solid #e5e8ec;
+  display:flex;align-items:center;justify-content:center;
+}
+.event-row-icon svg{width:15px;height:15px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:1px;}
+.event-row-label{font-size:9.5px;color:#9ca3af;font-weight:600;letter-spacing:0.7px;text-transform:uppercase;}
+.event-row-val{font-size:13.5px;color:#111;font-weight:600;}
+.event-box-note{
+  padding:14px 24px 18px;
+  background:#f8f9fb;border-top:1px solid #eef0f3;
+  font-size:12px;color:#888;line-height:1.6;text-align:center;
+}
+.event-box-note span{color:var(--orange);font-weight:600;}
+
+/* LIGHT SECTION — like burned/get/persona sections */
+.ty-section{padding:80px 0;}
+.ty-section.light{background:#f0eeea;position:relative;overflow:hidden;}
+.ty-section.light::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(rgba(0,0,0,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.055) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.ty-section.light>.container{position:relative;z-index:1;}
+.ty-section.lighter{background:#fff;}
+.ty-section.cream{background:var(--cream);}
+.ty-section.dark{background:var(--teal-900);position:relative;overflow:hidden;}
+.ty-section.dark::before{content:'';position:absolute;inset:0;z-index:0;background:url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;opacity:0.07;pointer-events:none;}
+.ty-section.dark>.container{position:relative;z-index:1;}
+.container{max-width:860px;margin:0 auto;padding:0 60px;}
+
+/* sec-label — light version */
+.sec-label-light{color:var(--orange);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.sec-label-light::before,.sec-label-light::after{content:'';flex:0 0 28px;height:1px;background:var(--orange);}
+
+/* sec-label — dark version */
+.sec-label-dark{color:var(--gold);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.sec-label-dark::before,.sec-label-dark::after{content:'';flex:0 0 28px;height:1px;background:var(--gold);}
+
+.sec-title-light{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:var(--teal-900);margin-bottom:18px;}
+.sec-title-light em{font-style:italic;color:var(--orange);}
+.sec-title-dark{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:#fff;margin-bottom:18px;}
+.sec-title-dark em{font-style:italic;color:var(--orange);}
+
+.sec-body-light{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:20px;}
+.sec-body-dark{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:20px;}
+
+/* cards */
+.card-light{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:12px;padding:32px;box-shadow:0 2px 14px rgba(0,0,0,0.05);}
+.card-dark{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:32px;}
+
+/* CALENDAR */
+.cal-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;}
+.cal-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;}
+.cal-btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange-bright));color:#fff;}
+.cal-btn-secondary-light{background:transparent;border:1.5px solid rgba(0,0,0,0.15);color:var(--text-dark);}
+.cal-btn:hover{transform:translateY(-2px);}
+
+/* ZOOM */
+.zoom-join-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange),var(--orange-bright));color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:700;margin-bottom:22px;transition:transform 0.2s,box-shadow 0.2s;}
+.zoom-join-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--orange-glow);}
+.zoom-meta-light{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--text-mid);}
+.zoom-meta-light span{color:var(--text-dark);font-weight:600;}
+.zoom-note-light{font-size:12px;color:var(--text-mid);margin-top:14px;}
+.zoom-meta-dark{display:flex;flex-direction:column;gap:6px;font-size:14px;color:rgba(255,255,255,0.4);}
+.zoom-meta-dark span{color:rgba(255,255,255,0.85);font-weight:600;}
+
+/* CHECKLIST — light */
+.checklist-light{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.checklist-light li{
+  display:flex;align-items:center;gap:18px;
+  padding:16px 24px;
+  background:#fff;
+  border:1.5px solid rgba(200,66,10,0.2);
+  border-radius:8px;
+  font-size:15px;color:var(--teal-900);line-height:1.5;
+}
+/* CHECKLIST — dark */
+.checklist-dark{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+.checklist-dark li{display:flex;align-items:flex-start;gap:14px;font-size:14.5px;color:rgba(255,255,255,0.7);line-height:1.6;}
+.check-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.check-icon svg{width:10px;height:10px;}
+
+/* TIPS — light */
+.tips-light{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.tips-light li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--text-mid);line-height:1.6;}
+.tips-light li::before{content:'•';color:var(--orange);font-size:20px;line-height:1.1;flex-shrink:0;}
+
+/* INSTRUCTOR */
+.instructor-name-light{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--teal-900);margin-bottom:4px;}
+.instructor-role-light{font-size:13px;color:var(--text-mid);margin-bottom:20px;}
+.instructor-bio-light{font-size:14.5px;color:var(--text-mid);line-height:1.8;margin-bottom:22px;}
+
+/* SUPPORT */
+.support-card{background:linear-gradient(135deg,rgba(200,66,10,0.06),rgba(200,66,10,0.02));border:1px solid rgba(200,66,10,0.2);border-radius:12px;padding:40px;text-align:center;}
+.support-card p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-top:10px;}
+
+/* FOOTER — identical to index */
+footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);padding:48px 60px 32px;position:relative;overflow:hidden;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.07);gap:40px;flex-wrap:wrap;}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:#fff;letter-spacing:5px;text-transform:uppercase;}
+.footer-orange{color:var(--orange)}
+.footer-tagline{color:rgba(255,255,255,0.35);font-size:13px;margin-top:8px}
+.footer-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.footer-links a{color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--orange);}
+.footer-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding-top:24px;}
+.footer-copy{color:rgba(255,255,255,0.25);font-size:11.5px;line-height:1.75;}
+
+@media(max-width:768px){
+  .navbar{padding:14px 20px;}.navbar.scrolled{padding:10px 20px;}.nav-links{display:none;}
+  footer{padding:40px 24px 28px;}.container{padding:0 24px;}
+  .event-box{padding:20px 24px;}.cal-btns{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">Navigation <span>Trading</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="window.location.href='index.html'">Back to Home</button>
+</nav>
+
+<!-- HERO — identical to main page hero -->
+<div class="ty-hero">
+  <img class="ty-hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
+  <div class="ty-hero-overlay"></div>
+  <div class="ty-hero-glow"></div>
+  <div class="ty-hero-inner">
+    <!-- LEFT -->
+    <div class="ty-hero-left">
+      <div class="ty-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You're Registered!</div>
+      <h1 class="ty-title">Directional Day<br><em>Trading Class</em></h1>
+      <p class="ty-sub">Your seat for the live training has been successfully reserved.</p>
+      <p class="ty-note">A confirmation email with the webinar link has been sent to you.<br>Please join the session 5–10 minutes early so we can start on time.</p>
+    </div>
+    <!-- RIGHT — event box styled like main page form card -->
+    <div class="ty-hero-right">
+      <div class="event-box">
+        <div class="event-box-banner">
+<div class="event-box-banner-text">You're in the <span>Live Class</span></div>
+          <div class="event-box-banner-sub">Directional Day Trading Class · March 19th</div>
+        </div>
+        <div class="event-box-body">
+          <div class="event-row">
+            <div class="event-row-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div class="event-row-text">
+              <div class="event-row-label">Date</div>
+              <div class="event-row-val">March 19th, 2026</div>
+            </div>
+          </div>
+          <div class="event-row">
+            <div class="event-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="event-row-text">
+              <div class="event-row-label">Time</div>
+              <div class="event-row-val">7:00 PM Eastern Time</div>
+            </div>
+          </div>
+          <div class="event-row">
+            <div class="event-row-icon"><svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
+            <div class="event-row-text">
+              <div class="event-row-label">Format</div>
+              <div class="event-row-val">Live Online Webinar</div>
+            </div>
+          </div>
+          <div class="event-row">
+            <div class="event-row-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="event-row-text">
+              <div class="event-row-label">Cost</div>
+              <div class="event-row-val">100% Free · No Credit Card</div>
+            </div>
+          </div>
+        </div>
+        <div class="event-box-note">Check your email for the <span>confirmation</span> and <span>webinar link</span>.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR — light (like burned/join section) -->
+<div class="ty-section light">
+  <div class="container">
+    <div class="sec-label-light">Add to Your Calendar</div>
+    <h2 class="sec-title-light" style="text-align:center;">Don't Miss the Class</h2>
+    <div class="card-light">
+      <p class="sec-body-light" style="margin-bottom:0;">To make sure you don't miss the class, add it to your calendar now. This will automatically include the webinar link and reminder notifications.</p>
+      <div class="cal-btns">
+        <a class="cal-btn cal-btn-primary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Directional+Day+Trading+Class&dates=20260319T230000Z/20260320T003000Z&details=Join:+https://us06web.zoom.us/j/84515347195?pwd=PSipBDbQzfnNbG71jRea3KSkar4sAE.1&location=Online+Webinar" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Add to Google Calendar
+        </a>
+        <a class="cal-btn cal-btn-secondary-light" href="https://outlook.live.com/calendar/0/deeplink/compose?subject=Directional+Day+Trading+Class&startdt=2026-03-19T23:00:00Z&enddt=2026-03-20T00:30:00Z&body=Join:+https://us06web.zoom.us/j/84515347195" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Add to Outlook / Microsoft Calendar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ZOOM LINK — dark (like learn section) -->
+<div class="ty-section dark">
+  <div class="container">
+    <div class="sec-label-dark">Webinar Access Link</div>
+    <h2 class="sec-title-dark" style="text-align:center;">Your <em>Zoom Link</em></h2>
+    <div class="card-dark">
+      <a class="zoom-join-btn" href="https://us06web.zoom.us/j/84515347195?pwd=PSipBDbQzfnNbG71jRea3KSkar4sAE.1" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+        Join Zoom Webinar
+      </a>
+      <div class="zoom-meta-dark">
+        <div>Meeting ID: <span>845 1534 7195</span></div>
+        <div>Passcode: <span>615280</span></div>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:14px;">You will also receive this link by email.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT YOU'LL LEARN — light (like get section) -->
+<div class="ty-section lighter">
+  <div class="container">
+    <div class="sec-label-light">What You'll Learn</div>
+    <h2 class="sec-title-light" style="text-align:center;">In This <em>90-Minute Live Class</em></h2>
+    <ul class="checklist-light">
+      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Two structured directional day trading strategies</li>
+      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>How to identify the most tradable stocks — and which to avoid</li>
+      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Why the first 60–90 minutes of the market open matter most</li>
+      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>The disciplined mindset required for consistent trading</li>
+      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>How to trade using simple calls and puts — no complex spreads required</li>
+      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Real chart examples of both strategies in action</li>
+    </ul>
+  </div>
+</div>
+
+<!-- INSTRUCTOR — dark (like speakers section) -->
+<div class="ty-section dark">
+  <div class="container">
+    <div class="sec-label-dark">Meet Your Instructor</div>
+    <h2 class="sec-title-dark" style="text-align:center;">Your Guide to <em>Directional Day Trading</em></h2>
+    <div class="card-dark">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:4px;">Navigation Trader</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:20px;">Founder of Navigation Trading · Trading experience since 1999</div>
+      <p style="font-size:14.5px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:22px;">After years of experimenting with indicators, alert services, and different systems, the focus shifted toward building a structured trading framework based on directional bias and defined risk. Inside this class you'll learn the same structured approach used inside the Navigation Trading community.</p>
+      <ul class="checklist-dark">
+        <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Experienced multiple market cycles</li>
+        <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Taught thousands of traders through live sessions</li>
+        <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Focused on SPY, QQQ, and high-liquidity directional trades</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS & REMINDER — light (like persona/reviews section) -->
+<div class="ty-section cream">
+  <div class="container">
+    <div class="sec-label-light">Before the Webinar</div>
+    <h2 class="sec-title-light">Quick Tips to Get the Most from the Class</h2>
+    <ul class="tips-light">
+      <li>Join the session 5–10 minutes early</li>
+      <li>Watch from a device where you can clearly see charts</li>
+      <li>Have a notebook ready for key concepts</li>
+    </ul>
+    <p class="sec-body-light" style="margin-top:20px;margin-bottom:0;">This will be a fast-paced but practical session.</p>
+  </div>
+</div>
+
+<!-- SUPPORT — light -->
+<div class="ty-section lighter">
+  <div class="container">
+    <div class="support-card">
+      <div class="sec-label-light" style="justify-content:center;">Questions Before the Webinar?</div>
+      <p>If you need help accessing the class or have any questions, contact our support team.<br>We look forward to seeing you in the training.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER — identical to index.html -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Navigation <span class="footer-orange">Trading</span></div>
+      <div class="footer-tagline">Directional Day Trading Education</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Risk Disclosure</a>
+      <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Privacy Policy</a>
+      <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" style="line-height:1.75;font-size:11.5px;color:rgba(255,255,255,0.3)">
+      The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities involve risk and are not suitable for all investors. Consider all relevant risk factors, including their personal financial situation, before trading. Past results of any individual or trading system published by Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods, techniques, or indicators presented in these products and services will be profitable or that they will not result in losses – trading and/or investing in the stock and options market is risky due to the leverage involved and may not be suitable for all investors.<br>
+      Options are not suitable for all investors as the special risks inherent to options trading may expose investors to potentially rapid and substantial losses. Please read Characteristics and Risks of Standardized Options before investing in options.
+    </div>
+    <div class="footer-copy">&copy; Navigation Financial, LLC</div>
+  </div>
+</footer>
+
+<script>
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const pct = (window.scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+  bar.style.width = pct + '%';
+});
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+</body>
+</html>
