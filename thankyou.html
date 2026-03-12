@@ -44,16 +44,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
   min-height:100vh;background:#0D2E4E;
   position:relative;overflow:hidden;
   display:flex;align-items:center;
-  padding:120px 60px 80px;
+  padding:120px 160px 80px 60px;
 }
 .ty-hero-bg-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.45;}
 .ty-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(13,46,78,0.82) 0%,rgba(13,46,78,0.65) 50%,rgba(13,46,78,0.80) 100%);pointer-events:none;}
 .ty-hero-glow{position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(30,100,200,0.22) 0%,transparent 65%);top:-200px;right:-100px;pointer-events:none;z-index:2;}
-.ty-hero-inner{position:relative;z-index:3;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;}
+.ty-hero-inner{position:relative;z-index:3;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 330px;gap:40px;align-items:center;}
 .ty-hero-left{text-align:left;}
 .ty-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,66,10,0.15);border:1px solid rgba(200,66,10,0.3);color:var(--orange);font-size:13px;font-weight:600;padding:8px 20px;border-radius:24px;margin-bottom:24px;}
-.ty-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4.5vw,58px);font-weight:700;line-height:1.1;color:#fff;margin-bottom:16px;}
-.ty-title em{font-style:italic;color:var(--orange);}
+.ty-title{font-family:'DM Sans',sans-serif;font-size:clamp(38px,4.5vw,58px);font-weight:700;line-height:1.1;color:#fff;margin-bottom:16px;}
+.ty-title em{font-style:normal;color:var(--orange);}
 .ty-sub{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:20px;max-width:480px;}
 .ty-note{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.75;margin-top:16px;}
 /* right — event box (matches main page form card) */
@@ -132,10 +132,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 .sec-label-dark{color:var(--gold);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px;}
 .sec-label-dark::before,.sec-label-dark::after{content:'';flex:0 0 28px;height:1px;background:var(--gold);}
 
-.sec-title-light{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:var(--teal-900);margin-bottom:18px;}
-.sec-title-light em{font-style:italic;color:var(--orange);}
-.sec-title-dark{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:#fff;margin-bottom:18px;}
-.sec-title-dark em{font-style:italic;color:var(--orange);}
+.sec-title-light{font-family:'DM Sans',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:var(--teal-900);margin-bottom:18px;}
+.sec-title-light em{font-style:normal;color:var(--orange);}
+.sec-title-dark{font-family:'DM Sans',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:#fff;margin-bottom:18px;}
+.sec-title-dark em{font-style:normal;color:var(--orange);}
 
 .sec-body-light{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:20px;}
 .sec-body-dark{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:20px;}
@@ -201,11 +201,32 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
 .footer-links a:hover{color:var(--orange);}
 .footer-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding-top:24px;}
 .footer-copy{color:rgba(255,255,255,0.25);font-size:11.5px;line-height:1.75;}
+.social-icon{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.social-icon:hover{background:rgba(200,66,10,0.3);}
+.footer-link{color:rgba(255,255,255,0.45);font-size:13px;text-decoration:none;transition:color 0.2s;}
+.footer-link:hover{color:var(--orange);}
 
-@media(max-width:768px){
+@media(max-width:900px){
   .navbar{padding:14px 20px;}.navbar.scrolled{padding:10px 20px;}.nav-links{display:none;}
-  footer{padding:40px 24px 28px;}.container{padding:0 24px;}
-  .event-box{padding:20px 24px;}.cal-btns{flex-direction:column;}
+  .ty-hero{padding:100px 24px 60px;}
+  .ty-hero-inner{grid-template-columns:1fr;gap:32px;}
+  .ty-hero-left{text-align:center;}
+  .ty-badge{margin-bottom:16px;}
+  .ty-sub{max-width:100%;}
+  .ty-title{font-size:clamp(32px,7vw,48px);}
+  .container{padding:0 24px;}
+  .ty-section{padding:56px 0;}
+  .cal-btns{flex-direction:column;}
+  .footer-top{flex-direction:column;gap:20px;padding-bottom:24px;}
+  .footer-links{gap:16px;}
+  footer{padding:40px 24px 28px;}
+}
+@media(max-width:480px){
+  .ty-hero{padding:88px 16px 48px;}
+  .ty-title{font-size:clamp(28px,8vw,40px);}
+  .container{padding:0 16px;}
+  .checklist-light li{padding:12px 16px;font-size:14px;}
+  .card-light,.card-dark{padding:20px 16px;}
 }
 </style>
 </head>
@@ -341,7 +362,7 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
     <div class="sec-label-dark">Meet Your Instructor</div>
     <h2 class="sec-title-dark" style="text-align:center;">Your Guide to <em>Directional Day Trading</em></h2>
     <div class="card-dark">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:4px;">Navigation Trader</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:4px;">Navigation Trader</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:20px;">Founder of Navigation Trading · Trading experience since 1999</div>
       <p style="font-size:14.5px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:22px;">After years of experimenting with indicators, alert services, and different systems, the focus shifted toward building a structured trading framework based on directional bias and defined risk. Inside this class you'll learn the same structured approach used inside the Navigation Trading community.</p>
       <ul class="checklist-dark">
@@ -384,10 +405,30 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
       <div class="footer-brand">Navigation <span class="footer-orange">Trading</span></div>
       <div class="footer-tagline">Directional Day Trading Education</div>
     </div>
-    <div class="footer-links">
-      <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Risk Disclosure</a>
-      <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Privacy Policy</a>
-      <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Terms</a>
+    <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact</div>
+        <a href="mailto:support@navigationtrading.com" style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Follow</div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://x.com/navigationtrade" target="_blank" class="social-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.instagram.com/navigationtrading" target="_blank" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.6)" stroke="none"/></svg></a>
+          <a href="https://www.youtube.com/@navigationtrading" target="_blank" class="social-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a1828"/></svg></a>
+          <a href="https://discord.gg/navigationtrading" target="_blank" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128c.126-.094.252-.192.372-.292a.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.1.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg></a>
+          <a href="https://www.linkedin.com/company/navigationtrading" target="_blank" class="social-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Legal</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk Disclosure</a>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Privacy Policy</a>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
