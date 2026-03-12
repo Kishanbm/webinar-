@@ -86,6 +86,7 @@ body{
   letter-spacing:0.5px;border:none;border-radius:6px;
   cursor:pointer;font-family:'DM Sans',sans-serif;
   display:inline-flex;align-items:center;gap:8px;
+  white-space:nowrap;
   transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
   position:relative;overflow:hidden;
 }
@@ -96,7 +97,7 @@ body{
 
 /* ── HERO ── */
 .hero{
-  min-height:100vh;
+  min-height:auto;
   background:var(--brand-blue);
   position:relative;overflow:hidden;
   display:flex;flex-direction:column;
@@ -165,13 +166,15 @@ body{
 
 .hero-main{
   display:grid;
-  grid-template-columns:1fr 330px;
+  grid-template-columns:minmax(0,1fr) 420px;
   grid-template-rows:auto 1fr;
   position:relative;z-index:5;
-  padding:90px 160px 50px 60px;
+  padding:80px 48px 40px 48px;
   width:100%;
+  max-width:1180px;
+  margin:0 auto;
   align-items:start;
-  gap:0 40px;
+  gap:0 60px;
 }
 
 .hero-pill-row{
@@ -260,13 +263,13 @@ body{
   position:relative;
   overflow:hidden;
   box-shadow:0 24px 60px rgba(0,0,0,0.35);
-  margin:0 60px 0 0;
+  margin:0 30px 0 0;
   align-self:center;
   width:100%;
 }
 .form-header-bar{
   background:#2d3748;
-  padding:18px 24px 24px;
+  padding:30px 24px 28px;
   text-align:center;
   position:relative;
 }
@@ -392,16 +395,16 @@ body{
 .cd-sep{color:rgba(255,255,255,0.4);font-size:20px;margin-bottom:16px}
 
 /* ── SECTIONS SHARED ── */
-.section{padding:90px 0}
-.container{max-width:1100px;margin:0 auto;padding:0 60px}
+.section{padding:60px 0}
+.container{max-width:1180px;margin:0 auto;padding:0 48px}
 
 .sec-label{
-  display:inline-flex;align-items:center;gap:10px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
   color:var(--orange);font-size:11px;font-weight:600;
   letter-spacing:3px;text-transform:uppercase;
   margin-bottom:16px;
 }
-.sec-label::before{
+.sec-label::before,.sec-label::after{
   content:'';width:30px;height:2px;background:var(--orange);
 }
 
@@ -452,34 +455,34 @@ body{
 
 /* ── STATS ── */
 .stats-bar{
-  background:var(--teal-900);padding:50px 0;
+  background:var(--teal-900);padding:24px 0;
 }
 .stats-grid{
   display:grid;grid-template-columns:repeat(4,1fr);
-  divide-style:solid;
+  max-width:560px;margin:0 auto;
 }
 .stat-item{
-  text-align:center;padding:0 30px;
+  text-align:center;padding:0 14px;
   border-right:1px solid rgba(255,255,255,0.08);
 }
 .stat-item:last-child{border-right:none}
 .stat-num{
   font-family:'DM Sans',sans-serif;
-  font-size:52px;font-weight:700;
+  font-size:28px;font-weight:700;
   background:linear-gradient(135deg,#fff,var(--gold));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   line-height:1;
 }
 .stat-label{
   color:rgba(255,255,255,0.45);
-  font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:8px;
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin-top:5px;
 }
 
 /* ── BURNED BEFORE SECTION ── */
 .burned-section{
-  background:#f7f4f0;
+  background:#ffffff;
   position:relative;overflow:hidden;
-  padding:70px 0;
+  padding:56px 0;
 }
 .burned-section::before{
   display:none;
@@ -491,7 +494,7 @@ body{
   pointer-events:none;
 }
 .burned-section>.container{position:relative;z-index:1}
-.burned-header-label{color:var(--orange);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.burned-header-label{color:var(--orange);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
 .burned-header-label::before,.burned-header-label::after{content:'';flex:0 0 32px;height:1px;background:var(--orange);}
 .burned-headline{
   font-family:'DM Sans',sans-serif;
@@ -502,7 +505,7 @@ body{
 }
 .burned-headline em{font-style:normal;color:var(--orange);}
 .burned-list-wrap{
-  max-width:680px;
+  max-width:780px;
   margin:0 auto;
   display:flex;
   flex-direction:column;
@@ -601,7 +604,7 @@ body{
 }
 .learn-promo-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--orange-glow)}
 .learn-promo-sub{
-  color:rgba(255,255,255,0.45);font-size:14px;line-height:1.7;
+  color:rgba(255,255,255,0.65);font-size:16px;line-height:1.7;
   margin-top:20px;
 }
 .learn-promo-tags{
@@ -679,7 +682,7 @@ body{
   color:var(--orange);margin-bottom:8px;
 }
 .learn-feature-text{
-  font-size:15px;color:rgba(255,255,255,0.65);line-height:1.65;
+  font-size:16px;color:#fff;line-height:1.65;
 }
 
 /* Bullet list */
@@ -754,10 +757,10 @@ body{
 .get-accord-row:last-child{border-bottom:none}
 .get-accord-left{display:flex;flex-direction:column;gap:3px}
 .get-accord-title{
-  font-size:15px;font-weight:500;color:var(--text-dark);
+  font-size:16px;font-weight:500;color:var(--text-dark);
 }
 .get-accord-sub{
-  font-size:12px;color:var(--text-light);
+  font-size:14px;color:var(--text-light);
 }
 .get-accord-plus{
   width:28px;height:28px;border-radius:50%;
@@ -791,18 +794,18 @@ body{
 }
 .get-card-stat{
   display:flex;align-items:center;gap:8px;
-  font-size:12px;color:rgba(255,255,255,0.7);
+  font-size:13px;color:rgba(255,255,255,0.7);
 }
 .get-card-stat svg{flex-shrink:0;color:var(--orange)}
 .get-card-divider-label{
-  font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
   color:rgba(255,255,255,0.3);margin-bottom:10px;
 }
 .get-card-checklist{list-style:none;display:flex;flex-direction:column;gap:0;margin-bottom:20px}
 .get-card-checklist li{
   display:flex;align-items:center;gap:12px;
   padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.07);
-  font-size:13px;color:rgba(255,255,255,0.8);
+  font-size:14px;color:rgba(255,255,255,0.8);
 }
 .get-card-checklist li:last-child{border-bottom:none}
 .get-card-check{
@@ -826,7 +829,7 @@ body{
 /* ── PERSONA CARDS ── */
 .persona-section{
   background:#fff;
-  padding:80px 0;
+  padding:56px 0;
   border-top:1px solid rgba(0,0,0,0.07);
   border-bottom:1px solid rgba(0,0,0,0.07);
 }
@@ -869,7 +872,7 @@ body{
 /* ── MID CTA SECTION ── */
 .mid-cta-section{
   background:var(--teal-900);
-  padding:80px 0;
+  padding:56px 0;
   text-align:center;
   position:relative;overflow:hidden;
 }
@@ -927,7 +930,7 @@ body{
 /* ── REVIEWS ── */
 .reviews-section{
   background:var(--cream);
-  padding:100px 0 80px;
+  padding:60px 0 56px;
   position:relative;overflow:hidden;
 }
 .reviews-section::before{
@@ -1026,7 +1029,7 @@ body{
 /* ── WHO IS THIS FOR ── */
 .fit-section{
   background:#f5f4f0;
-  padding:100px 0 80px;
+  padding:60px 0 56px;
   position:relative;overflow:hidden;
 }
 .fit-section::before{
@@ -1150,7 +1153,7 @@ body{
 /* ── FINAL CTA ── */
 .final-cta-section{
   background:#f5f4f0;
-  padding:100px 0;
+  padding:60px 0;
   position:relative;overflow:hidden;
 }
 .final-cta-section::before{
@@ -1209,7 +1212,7 @@ body{
 
 /* ── FAQ ── */
 .faq-section{
-  background:#f5f4f0;
+  background:#ffffff;
   padding:48px 0 44px;
   position:relative;overflow:hidden;
 }
@@ -1229,7 +1232,7 @@ body{
 .faq-q{
   width:100%;display:flex;align-items:center;justify-content:space-between;
   padding:13px 0;background:none;border:none;cursor:pointer;
-  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;
+  font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;
   color:var(--text-dark);text-align:left;gap:16px;
   transition:color 0.2s;
 }
@@ -1250,7 +1253,7 @@ body{
 }
 .faq-item.open .faq-a{max-height:300px}
 .faq-a-inner{
-  font-size:14px;color:var(--text-mid);line-height:1.8;
+  font-size:16px;color:var(--text-mid);line-height:1.8;
   padding-bottom:20px;
 }
 
@@ -1322,7 +1325,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
     gap:24px 0;
   }
   .hero-pill-row{padding-bottom:16px;}
-  .hero-left{text-align:center;gap:14px;}
+  .hero-left{text-align:center;gap:14px;padding-left:0;}
   .hero-title{font-size:clamp(28px,7vw,44px);}
   .meta-chips{justify-content:center;flex-wrap:wrap;}
   .hero-form-wrap{display:flex;grid-column:1/-1;}
@@ -1334,8 +1337,12 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
   .join-grid{grid-template-columns:1fr}
   .join-visual{min-height:200px}
   .learn-layout{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .stat-item{padding:20px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .stats-grid{grid-template-columns:repeat(2,1fr);max-width:340px;}
+  .stat-item{padding:14px 10px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .stat-item:nth-child(odd){border-right:1px solid rgba(255,255,255,0.08)}
+  .stat-item:nth-last-child(-n+2){border-bottom:none}
+  .stat-num{font-size:22px}
+  .stat-label{font-size:9px;letter-spacing:1px}
   .strat-grid{grid-template-columns:1fr}
   .get-grid{grid-template-columns:1fr}
   .get-accord-rows{gap:8px;}
@@ -1372,7 +1379,8 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
   .persona-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .nav-logo{font-size:17px;letter-spacing:3px;}
-  .nav-cta{font-size:12px;padding:8px 14px;}
+  .nav-cta{font-size:11px;padding:7px 12px;gap:5px;}
+  .nav-cta::after{display:none;}
   .hero-form-body{padding:16px 16px 0;}
   .form-input{font-size:14px;}
 }
@@ -1519,7 +1527,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <!-- ── IS THIS YOU / BURNED BEFORE ── -->
 <section class="burned-section section">
   <div class="container" style="text-align:center">
-    <div class="burned-header-label" style="text-align:left;justify-content:flex-start">Is This You?</div>
+    <div class="burned-header-label">Is This You?</div>
     <h2 class="burned-headline reveal">If you have been burned before…</h2>
     <div class="burned-list-wrap reveal">
 
@@ -1572,7 +1580,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <!-- ── WHAT YOU'LL LEARN ── -->
 <section class="learn-section section">
   <div class="container" style="text-align:center">
-    <div class="sec-label" style="display:flex">What You'll Learn</div>
+    <div class="sec-label">What You'll Learn</div>
     <h2 class="sec-title reveal">In This 90-Minute Class,<br>You'll <strong>Discover:</strong></h2>
     <p class="body-para reveal reveal-delay-1" style="max-width:560px;margin:18px auto 0">Learn how to day trade with options for consistent profits!</p>
   </div>
@@ -1673,7 +1681,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <!-- ── WHAT YOU GET ── -->
 <section class="get-section section">
   <div class="container">
-    <div class="sec-label" style="justify-content:center">Registration Includes</div>
+    <div class="sec-label">Registration Includes</div>
     <h2 class="sec-title reveal" style="text-align:center">What You Get When You <strong style="background:linear-gradient(135deg,var(--orange),var(--orange-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Register</strong></h2>
 
     <div class="get-grid">
@@ -1785,7 +1793,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <!-- ── PERSONA CARDS ── -->
 <section class="persona-section section">
   <div class="container">
-    <div class="sec-label" style="justify-content:center">Is this for you?</div>
+    <div class="sec-label">Is this for you?</div>
     <h2 class="sec-title reveal" style="text-align:center">This Class Is For You If…</h2>
 
     <div class="persona-grid">
@@ -1848,7 +1856,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <!-- ── REVIEWS / SOCIAL PROOF ── -->
 <section class="reviews-section section">
   <div class="container">
-    <div class="sec-label" style="justify-content:center">Webinar Reviews</div>
+    <div class="sec-label">Webinar Reviews</div>
     <h2 class="sec-title reveal" style="text-align:center;color:var(--teal-900)">What Traders Say About This Training</h2>
     <p class="reviews-intro reveal">Thousands of traders have attended Navigation Trading webinars and walked away with a clear, actionable framework for reading the market — not more noise.</p>
 
@@ -1983,7 +1991,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <!-- ── SPEAKERS ── -->
 <section class="speakers-section section">
   <div class="container">
-    <div class="sec-label" style="justify-content:center;color:var(--gold)">Meet Your Instructor</div>
+    <div class="sec-label" style="color:var(--gold)">Meet Your Instructor</div>
     <h2 class="sec-title light reveal" style="text-align:center">Your Guide to Directional<br><strong style="color:var(--orange)">Day Trading</strong></h2>
     <div class="speakers-grid">
 
@@ -2018,7 +2026,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <section class="faq-section section">
   <div class="container">
     <div class="faq-inner">
-      <div class="sec-label" style="justify-content:center">FAQ Question</div>
+      <div class="sec-label">FAQ Question</div>
       <h2 class="sec-title reveal" style="text-align:center">Frequently Asked Questions</h2>
       <p class="body-para reveal" style="text-align:center;max-width:520px;margin:10px auto 0;font-size:14px">Everything you need to know before reserving your free spot in the live class.</p>
 
@@ -2073,7 +2081,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <!--
 <section class="mid-cta-section section">
   <div class="container">
-    <div class="sec-label" style="justify-content:center;margin-bottom:20px">Limited Spots Available</div>
+    <div class="sec-label" style="margin-bottom:20px">Limited Spots Available</div>
     <h2 class="mid-cta-heading reveal">Join Thousands of Traders Who<br>Have Already Made the Shift</h2>
     <p class="mid-cta-sub reveal">Don't trade another day without a clear directional framework. Reserve your free seat now before spots fill up.</p>
     <div class="reveal">
@@ -2093,7 +2101,7 @@ footer>.footer-top,footer>.footer-bottom{position:relative;z-index:1}
 <section class="final-cta-section">
   <div class="container">
     <div class="final-cta-inner">
-      <div class="sec-label" style="justify-content:center;color:var(--orange);margin-bottom:16px">Limited Spots Available</div>
+      <div class="sec-label" style="color:var(--orange);margin-bottom:16px">Limited Spots Available</div>
       <h2 class="final-cta-heading reveal">Ready to Trade with Direction<br>Instead of Guessing?</h2>
       <p class="final-cta-sub reveal">Join hundreds of traders who've already taken control of their setups. Reserve your seat in the next live class — free to attend.</p>
 

@@ -35,82 +35,635 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
 .nav-links a{color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:#fff}
-.nav-cta{background:var(--orange);color:#fff;padding:10px 22px;font-size:13px;font-weight:600;letter-spacing:0.5px;border:none;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;}
+.nav-cta{background:var(--orange);color:#fff;padding:10px 22px;font-size:13px;font-weight:600;letter-spacing:0.5px;border:none;border-radius:6px;cursor:pointer;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;}
 .nav-cta::after{content:'→';font-size:14px;}
 .nav-cta:hover{background:var(--orange-bright);transform:translateY(-1px);box-shadow:0 6px 20px var(--orange-glow)}
 
-/* HERO — identical structure to main page hero */
-.ty-hero{
-  min-height:100vh;background:#0D2E4E;
-  position:relative;overflow:hidden;
-  display:flex;align-items:center;
-  padding:120px 160px 80px 60px;
-}
-.ty-hero-bg-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.45;}
-.ty-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(13,46,78,0.82) 0%,rgba(13,46,78,0.65) 50%,rgba(13,46,78,0.80) 100%);pointer-events:none;}
-.ty-hero-glow{position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(30,100,200,0.22) 0%,transparent 65%);top:-200px;right:-100px;pointer-events:none;z-index:2;}
-.ty-hero-inner{position:relative;z-index:3;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 330px;gap:40px;align-items:center;}
-.ty-hero-left{text-align:left;}
-.ty-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,66,10,0.15);border:1px solid rgba(200,66,10,0.3);color:var(--orange);font-size:13px;font-weight:600;padding:8px 20px;border-radius:24px;margin-bottom:24px;}
-.ty-title{font-family:'DM Sans',sans-serif;font-size:clamp(38px,4.5vw,58px);font-weight:700;line-height:1.1;color:#fff;margin-bottom:16px;}
-.ty-title em{font-style:normal;color:var(--orange);}
-.ty-sub{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:20px;max-width:480px;}
-.ty-note{font-size:13px;color:rgba(255,255,255,0.35);line-height:1.75;margin-top:16px;}
-/* right — event box (matches main page form card) */
-.ty-hero-right{}
-.event-box{
-  background:#fff;border-radius:8px;
+/* =============================================
+   REGISTRATION — split top strip + cards area
+   ============================================= */
+/* TOP STRIP — dark navy with photo bg */
+.reg-top{
+  position:relative;
+  background:#0a1828;
+  padding:120px 24px 60px;
+  display:flex;flex-direction:column;
+  align-items:center;text-align:center;
   overflow:hidden;
-  box-shadow:0 24px 60px rgba(0,0,0,0.4);
+}
+.reg-top::before{
+  content:'';
+  position:absolute;inset:0;
+  background:url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+  opacity:0.1;pointer-events:none;
+}
+.reg-top::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,24,40,0.3) 0%, rgba(10,24,40,0.7) 100%);
+  pointer-events:none;
+}
+.reg-top-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;}
+
+/* BOTTOM AREA */
+.reg-bottom{
+  background:linear-gradient(180deg,#f0f4f8 0%,#ffffff 100%);
+  padding:60px 24px 80px;
+  display:flex;flex-direction:column;
+  align-items:center;
+}
+.reg-divider-stripe{display:none;}
+.reg-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(34,197,94,0.12);
+  border:1px solid rgba(34,197,94,0.4);
+  color:#16a34a;
+  font-size:13px;font-weight:700;letter-spacing:0.5px;
+  padding:7px 20px;border-radius:24px;
+  margin-bottom:20px;
+}
+.reg-badge svg{stroke:#16a34a;fill:none;flex-shrink:0;}
+.reg-title{
+  font-family:'DM Sans',sans-serif;
+  font-size:clamp(30px,4vw,52px);
+  font-weight:800;color:#fff;
+  line-height:1.15;margin-bottom:8px;
+}
+.reg-class-name{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-weight:600;
+  color:var(--orange);
+}
+.reg-sub{
+  font-size:16px;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:52px;
+}
+/* Two-col layout */
+.reg-cards{
+  width:100%;
+  max-width:1000px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:start;
+}
+
+/* ---- LEFT: Enhanced Event Details Card ---- */
+.reg-card{
+  background:#ffffff;
+  border-radius:20px;
+  box-shadow:0 4px 6px rgba(0,0,0,0.04), 0 12px 48px rgba(0,0,0,0.1);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  border:1px solid #e4eaf2;
+}
+/* Dark navy top band */
+.reg-card-header{
+  background:linear-gradient(135deg,var(--teal-900) 0%,#0f2d4a 100%);
+  padding:22px 26px;
+  display:flex;align-items:center;gap:12px;
+  font-size:11px;font-weight:700;
+  color:rgba(255,255,255,0.55);
+  letter-spacing:1.4px;text-transform:uppercase;
+  position:relative;overflow:hidden;
+}
+.reg-card-header::before{
+  content:'';position:absolute;right:-20px;top:-20px;
+  width:100px;height:100px;border-radius:50%;
+  background:rgba(200,66,10,0.18);
+}
+.reg-card-header::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--orange),transparent);
+}
+.reg-card-header svg{stroke:var(--orange);fill:none;flex-shrink:0;width:18px;height:18px;}
+.reg-card-header span{color:#fff;font-size:12px;letter-spacing:1.5px;}
+.reg-card-body{padding:6px 0;display:flex;flex-direction:column;flex:1;}
+.reg-detail-row{
+  display:flex;align-items:center;gap:16px;
+  padding:15px 26px;
+  border-bottom:1px solid #f0f4f8;
+  transition:background 0.15s;
+}
+.reg-detail-row:last-child{border-bottom:none;}
+.reg-detail-row:hover{background:#fafcff;}
+.reg-detail-icon{
+  width:40px;height:40px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,#fff3ee,#ffe4d4);
+  border:1px solid rgba(200,66,10,0.18);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(200,66,10,0.12);
+}
+.reg-detail-icon svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2.2;}
+.reg-detail-label{font-size:9.5px;color:#b0b8c4;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:3px;}
+.reg-detail-val{font-size:15px;color:#0d2236;font-weight:700;line-height:1.3;}
+.reg-card-note{
+  padding:14px 26px 18px;
+  background:linear-gradient(135deg,#fff8f5,#fef2ec);
+  border-top:1px solid #fde4d4;
+  font-size:12.5px;color:#9aa4b2;
+  line-height:1.6;text-align:center;margin-top:auto;
+}
+.reg-card-note strong{color:var(--orange);font-weight:700;}
+
+/* ---- RIGHT: Access Details card ---- */
+.reg-access-panel{
+  background:#ffffff;
+  border-radius:20px;
+  border:1px solid #e4eaf2;
+  box-shadow:0 4px 6px rgba(0,0,0,0.04), 0 12px 48px rgba(0,0,0,0.1);
+  overflow:hidden;
+  display:flex;flex-direction:column;gap:0;
+  padding:0;
+}
+.reg-access-block{
+  display:flex;flex-direction:column;gap:14px;
+  padding:26px 28px;
+}
+.reg-access-block+.reg-access-block{
+  border-top:1px solid #f0f4f8;
+}
+.reg-access-label{
+  display:flex;align-items:center;gap:8px;
+  font-size:10.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--orange);margin-bottom:2px;
+}
+.reg-access-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(200,66,10,0.25),transparent);}
+.reg-zoom-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#0078D4,#005bb5);
+  color:#fff;text-decoration:none;
+  padding:15px 24px;border-radius:12px;
+  font-size:15px;font-weight:700;
+  transition:transform 0.18s,box-shadow 0.18s;
+  width:100%;justify-content:center;box-sizing:border-box;
+  box-shadow:0 4px 20px rgba(0,120,212,0.35);
+  letter-spacing:0.3px;
+}
+.reg-zoom-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,120,212,0.5);}
+.reg-zoom-btn svg{stroke:#fff;fill:none;}
+.reg-meeting-info{
+  display:flex;gap:0;
+  background:#f8fafc;
+  border:1px solid #e4eaf2;
+  border-radius:12px;
+  overflow:hidden;
+}
+.reg-meeting-chip{
+  flex:1;padding:13px 18px;text-align:center;
+  border-right:1px solid #e4eaf2;
+}
+.reg-meeting-chip:last-child{border-right:none;}
+.reg-meeting-chip-label{font-size:9px;color:#b0b8c4;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+.reg-meeting-chip-val{font-size:15px;color:#0d2236;font-weight:800;letter-spacing:0.5px;}
+.reg-email-note{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;color:#b0b8c4;
+}
+.reg-email-note svg{stroke:#c0c8d4;fill:none;flex-shrink:0;}
+.reg-divider{display:none;}
+.reg-cal-sub{font-size:13.5px;color:#64748b;line-height:1.6;margin-bottom:2px;}
+.reg-cal-btns{display:flex;flex-direction:column;gap:10px;}
+.reg-cal-google,.reg-cal-outlook{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 20px;border-radius:11px;
+  font-size:14px;font-weight:600;
+  font-family:'DM Sans',sans-serif;
+  text-decoration:none;
+  transition:transform 0.18s,box-shadow 0.18s;
+  width:100%;justify-content:center;
+  box-sizing:border-box;color:#fff;
+}
+.reg-cal-google svg,.reg-cal-outlook svg{stroke:currentColor;fill:none;}
+.reg-cal-google{background:linear-gradient(135deg,#1A73E8,#1257c0);box-shadow:0 3px 14px rgba(26,115,232,0.3);}
+.reg-cal-google:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,115,232,0.45);}
+.reg-cal-outlook{background:linear-gradient(135deg,#0078D4,#005bb5);box-shadow:0 3px 14px rgba(0,120,212,0.3);}
+.reg-cal-outlook:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,120,212,0.45);}
+
+@media(max-width:900px){
+  .reg-top{padding:100px 20px 48px;}
+  .reg-bottom{padding:40px 20px 60px;}
+  .reg-cards{gap:28px;}
+}
+@media(max-width:720px){
+  .reg-cards{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .reg-top{padding:88px 16px 40px;}
+  .reg-bottom{padding:32px 16px 52px;}
+  .reg-title{font-size:clamp(24px,7vw,36px);}
+}
+/* =============================================
+   DESIGN 1 — Glass dark card with orange header
+   ============================================= */
+/*
+.event-box{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.13);
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,0.5);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   display:flex;flex-direction:column;
 }
 .event-box-banner{
-  background:#2d3748;
-  padding:14px 22px 22px;
-  text-align:center;position:relative;
+  background:linear-gradient(135deg,var(--orange) 0%,#b83a0a 100%);
+  padding:20px 24px 24px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.event-box-banner::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 40%,rgba(255,255,255,0.15) 0%,transparent 65%);
 }
 .event-box-banner::after{
   content:'';position:absolute;
-  bottom:-14px;left:50%;transform:translateX(-50%);
+  bottom:-13px;left:50%;transform:translateX(-50%);
   width:0;height:0;
-  border-left:16px solid transparent;
-  border-right:16px solid transparent;
-  border-top:15px solid #2d3748;z-index:2;
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:14px solid #b83a0a;z-index:2;
 }
 .event-box-confirmed{
-  display:inline-flex;align-items:center;gap:7px;
-  background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.35);
-  color:#4ade80;font-size:11px;font-weight:700;letter-spacing:0.5px;
-  padding:4px 12px;border-radius:20px;margin-bottom:10px;
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);
+  color:#fff;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;margin-bottom:10px;position:relative;z-index:1;
 }
-.event-box-confirmed svg{width:11px;height:11px;}
+.event-box-confirmed svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:3;}
 .event-box-banner-text{
   font-family:'DM Sans',sans-serif;
-  font-size:16px;font-weight:700;color:#fff;line-height:1.3;
+  font-size:17px;font-weight:800;color:#fff;line-height:1.3;
+  position:relative;z-index:1;
 }
-.event-box-banner-text span{color:var(--orange);}
-.event-box-banner-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px;}
-.event-box-body{padding:18px 22px 12px;display:flex;flex-direction:column;gap:0;}
+.event-box-banner-text span{color:rgba(255,255,255,0.85);font-style:italic;}
+.event-box-banner-sub{font-size:11.5px;color:rgba(255,255,255,0.6);margin-top:5px;position:relative;z-index:1;}
+.event-box-body{padding:22px 24px 14px;display:flex;flex-direction:column;gap:0;}
 .event-row{
-  display:flex;align-items:center;gap:12px;
-  padding:10px 0;border-bottom:1px solid #eef0f3;
+  display:flex;align-items:center;gap:14px;
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);
 }
 .event-row:last-child{border-bottom:none;}
 .event-row-icon{
-  width:32px;height:32px;border-radius:7px;flex-shrink:0;
-  background:#f5f7fa;border:1px solid #e5e8ec;
+  width:36px;height:36px;border-radius:9px;flex-shrink:0;
+  background:rgba(200,66,10,0.15);border:1px solid rgba(200,66,10,0.28);
+  display:flex;align-items:center;justify-content:center;
+}
+.event-row-icon svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:2px;}
+.event-row-label{font-size:9px;color:rgba(255,255,255,0.3);font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.event-row-val{font-size:14px;color:#fff;font-weight:600;}
+.event-box-note{
+  padding:14px 24px 18px;
+  background:rgba(0,0,0,0.15);border-top:1px solid rgba(255,255,255,0.07);
+  font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6;text-align:center;
+}
+.event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 2 — Solid dark navy card with left orange accent line
+   ============================================= */
+/*
+.event-box{
+  background:#0e2842;
+  border:1px solid rgba(255,255,255,0.1);
+  border-left:4px solid var(--orange);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,0.55);
+  display:flex;flex-direction:column;
+}
+.event-box-banner{
+  background:linear-gradient(135deg,#0d2236 0%,#1a3a56 100%);
+  padding:22px 26px 18px;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.event-box-banner::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(200,66,10,0.12);
+}
+.event-box-banner::after{display:none;}
+.event-box-confirmed{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.3);
+  color:#4ade80;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;
+  padding:4px 10px;border-radius:6px;margin-bottom:12px;
+}
+.event-box-confirmed svg{width:10px;height:10px;stroke:#4ade80;fill:none;stroke-width:3;}
+.event-box-banner-text{
+  font-family:'DM Sans',sans-serif;
+  font-size:20px;font-weight:800;color:#fff;line-height:1.25;
+}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{
+  font-size:12px;color:rgba(255,255,255,0.35);margin-top:6px;
+  display:flex;align-items:center;gap:6px;
+}
+.event-box-banner-sub::before{content:'';width:18px;height:1px;background:var(--orange);opacity:0.6;}
+.event-box-body{padding:18px 26px 10px;display:flex;flex-direction:column;gap:0;}
+.event-row{
+  display:flex;align-items:center;gap:14px;
+  padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{
+  width:34px;height:34px;border-radius:8px;flex-shrink:0;
+  background:rgba(200,66,10,0.12);border:1px solid rgba(200,66,10,0.22);
   display:flex;align-items:center;justify-content:center;
 }
 .event-row-icon svg{width:15px;height:15px;stroke:var(--orange);fill:none;stroke-width:2;}
-.event-row-text{display:flex;flex-direction:column;gap:1px;}
-.event-row-label{font-size:9.5px;color:#9ca3af;font-weight:600;letter-spacing:0.7px;text-transform:uppercase;}
-.event-row-val{font-size:13.5px;color:#111;font-weight:600;}
+.event-row-text{display:flex;flex-direction:column;gap:2px;}
+.event-row-label{font-size:9px;color:rgba(255,255,255,0.28);font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.event-row-val{font-size:14px;color:#fff;font-weight:600;}
 .event-box-note{
-  padding:14px 24px 18px;
-  background:#f8f9fb;border-top:1px solid #eef0f3;
-  font-size:12px;color:#888;line-height:1.6;text-align:center;
+  padding:14px 26px 18px;
+  background:rgba(0,0,0,0.2);border-top:1px solid rgba(255,255,255,0.06);
+  font-size:12px;color:rgba(255,255,255,0.3);line-height:1.6;text-align:center;
 }
 .event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 3 — Clean white card, minimal & modern
+   ============================================= */
+.event-box{
+  background:#fff;
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.45);
+  display:flex;flex-direction:column;
+}
+.event-box-banner{
+  background:var(--teal-900);
+  padding:20px 26px;
+  position:relative;overflow:hidden;
+}
+.event-box-banner::before{
+  content:'';position:absolute;right:-20px;top:-20px;
+  width:100px;height:100px;border-radius:50%;
+  background:rgba(200,66,10,0.18);
+}
+.event-box-banner::after{display:none;}
+.event-box-banner-icon{display:none;}
+.event-box-banner-content{display:flex;flex-direction:column;}
+.event-box-confirmed{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.7);font-size:9.5px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  padding:3px 10px;border-radius:4px;margin-bottom:10px;
+  width:fit-content;
+}
+.event-box-confirmed svg{width:9px;height:9px;stroke:rgba(255,255,255,0.7);fill:none;stroke-width:3;}
+.event-box-banner-text{
+  font-family:'DM Sans',sans-serif;
+  font-size:19px;font-weight:800;color:#fff;line-height:1.25;
+}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{font-size:11.5px;color:rgba(255,255,255,0.4);margin-top:5px;}
+.event-box-body{padding:6px 0 0;display:flex;flex-direction:column;gap:0;}
+.event-row{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 26px;border-bottom:1px solid #f0f2f5;
+}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:#fff5f0;border:1px solid #ffe0d4;
+  display:flex;align-items:center;justify-content:center;
+}
+.event-row-icon svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:2px;}
+.event-row-label{font-size:9px;color:#aab0bb;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.event-row-val{font-size:14px;color:#0d2236;font-weight:700;}
+.event-box-note{
+  padding:14px 26px 18px;
+  background:#fafbfc;border-top:1px solid #edf0f3;
+  font-size:12px;color:#aab0bb;line-height:1.6;text-align:center;
+}
+.event-box-note span{color:var(--orange);font-weight:600;}
+
+/* =============================================
+   DESIGN 4 — Ticket-style with dashed rows & orange circle icons
+   ============================================= */
+/*
+.event-box{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,0.45);display:flex;flex-direction:column;}
+.event-box-banner{background:linear-gradient(120deg,var(--orange) 0%,#c0440e 100%);padding:22px 26px 28px;position:relative;overflow:hidden;}
+.event-box-banner::before{content:'';position:absolute;bottom:-1px;left:0;right:0;height:22px;background:repeating-radial-gradient(circle at 11px 22px,#fff 10px,transparent 10px) top left/22px 22px;}
+.event-box-banner::after{display:none;}
+.event-box-confirmed{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.2);color:#fff;font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:12px;}
+.event-box-confirmed svg{width:9px;height:9px;stroke:#fff;fill:none;stroke-width:3;}
+.event-box-banner-text{font-family:'DM Sans',sans-serif;font-size:21px;font-weight:900;color:#fff;line-height:1.2;}
+.event-box-banner-text span{color:rgba(255,255,255,0.8);}
+.event-box-banner-sub{font-size:11px;color:rgba(255,255,255,0.55);margin-top:6px;}
+.event-box-body{padding:20px 26px 8px;display:flex;flex-direction:column;gap:0;}
+.event-row{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px dashed #e2e8f0;}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{width:36px;height:36px;border-radius:50%;flex-shrink:0;background:var(--orange);display:flex;align-items:center;justify-content:center;}
+.event-row-icon svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:2px;}
+.event-row-label{font-size:9px;color:#b0b8c4;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.event-row-val{font-size:14px;color:#0d2236;font-weight:700;}
+.event-box-note{margin:4px 26px 18px;padding:12px 16px;background:#fff8f5;border:1px dashed rgba(200,66,10,0.28);border-radius:8px;font-size:11.5px;color:#999;line-height:1.6;text-align:center;}
+.event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 5 — Two-tone: icon sidebar + content rows
+   ============================================= */
+/*
+.event-box{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,0.45);display:flex;flex-direction:column;}
+.event-box-banner{background:var(--teal-900);padding:20px 24px;display:flex;align-items:flex-start;gap:14px;position:relative;overflow:hidden;border-bottom:3px solid var(--orange);}
+.event-box-banner::before{content:'';position:absolute;right:-10px;top:-10px;width:90px;height:90px;border-radius:50%;background:rgba(200,66,10,0.15);}
+.event-box-banner::after{display:none;}
+.event-box-banner-icon{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(200,66,10,0.45);margin-top:2px;}
+.event-box-banner-icon svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2.5;}
+.event-box-banner-content{display:flex;flex-direction:column;gap:3px;}
+.event-box-confirmed{display:inline-flex;align-items:center;gap:5px;background:rgba(74,222,128,0.14);border:1px solid rgba(74,222,128,0.3);color:#4ade80;font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:4px;width:fit-content;margin-bottom:6px;}
+.event-box-confirmed svg{width:8px;height:8px;stroke:#4ade80;fill:none;stroke-width:3;}
+.event-box-banner-text{font-family:'DM Sans',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.25;}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:3px;}
+.event-box-body{display:flex;flex-direction:column;gap:0;}
+.event-row{display:flex;align-items:stretch;border-bottom:1px solid #f0f3f6;}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{width:50px;flex-shrink:0;background:#f8f9fb;border-right:1px solid #f0f3f6;display:flex;align-items:center;justify-content:center;}
+.event-row-icon svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:2px;padding:13px 18px;}
+.event-row-label{font-size:9px;color:#c0c8d4;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.event-row-val{font-size:14px;color:#0d2236;font-weight:700;}
+.event-box-note{padding:12px 24px 16px;background:#fafbfc;border-top:1px solid #f0f3f6;font-size:11.5px;color:#b8bec8;line-height:1.6;text-align:center;}
+.event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 6 — Glowing dark card, centered layout
+   ============================================= */
+/*
+.event-box{background:linear-gradient(160deg,#0f2d4a 0%,#0a1e30 100%);border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px rgba(200,66,10,0.2),0 30px 70px rgba(0,0,0,0.6);display:flex;flex-direction:column;}
+.event-box-banner{padding:28px 26px 22px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.07);position:relative;}
+.event-box-banner::before{content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(200,66,10,0.25) 0%,transparent 70%);pointer-events:none;}
+.event-box-banner::after{display:none;}
+.event-box-banner-icon{display:none;}
+.event-box-banner-content{display:contents;}
+.event-box-confirmed{display:inline-flex;align-items:center;gap:6px;background:rgba(200,66,10,0.15);border:1px solid rgba(200,66,10,0.35);color:var(--orange);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+.event-box-confirmed svg{width:10px;height:10px;stroke:var(--orange);fill:none;stroke-width:3;}
+.event-box-banner-text{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:900;color:#fff;line-height:1.2;}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{font-size:12px;color:rgba(255,255,255,0.3);margin-top:8px;letter-spacing:0.3px;}
+.event-box-body{padding:8px 0;display:flex;flex-direction:column;gap:0;}
+.event-row{display:flex;align-items:center;gap:16px;padding:14px 26px;border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.2s;}
+.event-row:last-child{border-bottom:none;}
+.event-row:hover{background:rgba(255,255,255,0.03);}
+.event-row-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;background:rgba(200,66,10,0.15);border:1px solid rgba(200,66,10,0.25);display:flex;align-items:center;justify-content:center;}
+.event-row-icon svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:3px;}
+.event-row-label{font-size:9px;color:rgba(255,255,255,0.25);font-weight:700;letter-spacing:1.2px;text-transform:uppercase;}
+.event-row-val{font-size:15px;color:#fff;font-weight:700;}
+.event-box-note{padding:14px 26px 20px;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:rgba(255,255,255,0.25);line-height:1.7;text-align:center;}
+.event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 7 — White glass card with dark backdrop
+   ============================================= */
+/*
+.ty-hero-right{position:relative;}
+.event-box{position:relative;z-index:1;background:rgba(5,18,32,0.65);border:1px solid rgba(255,255,255,0.14);border-radius:16px;overflow:hidden;box-shadow:none;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column;}
+.event-box-banner{padding:24px 26px 20px;border-bottom:1px solid rgba(255,255,255,0.08);position:relative;background:rgba(0,0,0,0.15);}
+.event-box-banner::before{display:none;}
+.event-box-banner::after{display:none;}
+.event-box-banner-icon{display:none;}
+.event-box-banner-content{display:contents;}
+.event-box-confirmed{display:inline-flex;align-items:center;gap:6px;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.25);color:#4ade80;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
+.event-box-confirmed svg{width:9px;height:9px;stroke:#4ade80;fill:none;stroke-width:3;}
+.event-box-banner-text{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;color:#fff;line-height:1.25;}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{font-size:11.5px;color:rgba(255,255,255,0.35);margin-top:6px;}
+.event-box-body{padding:8px 0;display:flex;flex-direction:column;gap:0;}
+.event-row{display:flex;align-items:center;gap:16px;padding:13px 26px;border-bottom:1px solid rgba(255,255,255,0.07);transition:background 0.25s;}
+.event-row:hover{background:rgba(255,255,255,0.05);}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{width:36px;height:36px;border-radius:10px;flex-shrink:0;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;}
+.event-row-icon svg{width:15px;height:15px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:2px;}
+.event-row-label{font-size:9px;color:rgba(255,255,255,0.3);font-weight:700;letter-spacing:1.2px;text-transform:uppercase;}
+.event-row-val{font-size:15px;color:#fff;font-weight:600;}
+.event-box-note{padding:14px 26px 18px;background:rgba(0,0,0,0.12);border-top:1px solid rgba(255,255,255,0.07);font-size:12px;color:rgba(255,255,255,0.3);line-height:1.7;text-align:center;}
+.event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 8 — Bold orange top border, clean dark card
+   ============================================= */
+/*
+.ty-hero-right{position:relative;}
+.event-box{background:#0b1f33;border:1px solid rgba(255,255,255,0.08);border-top:3px solid var(--orange);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;}
+.event-box-banner{padding:22px 26px 18px;border-bottom:1px solid rgba(255,255,255,0.07);position:relative;}
+.event-box-banner::before,.event-box-banner::after,.event-box-banner-icon{display:none;}
+.event-box-banner-content{display:contents;}
+.event-box-confirmed{display:inline-flex;align-items:center;gap:6px;background:rgba(200,66,10,0.12);border:1px solid rgba(200,66,10,0.3);color:var(--orange);font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:6px;margin-bottom:12px;}
+.event-box-confirmed svg{width:9px;height:9px;stroke:var(--orange);fill:none;stroke-width:3;}
+.event-box-banner-text{font-family:'DM Sans',sans-serif;font-size:21px;font-weight:800;color:#fff;line-height:1.25;}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{font-size:11.5px;color:rgba(255,255,255,0.3);margin-top:6px;}
+.event-box-body{padding:6px 0;display:flex;flex-direction:column;gap:0;}
+.event-row{display:flex;align-items:center;gap:16px;padding:13px 26px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{width:34px;height:34px;border-radius:8px;flex-shrink:0;background:rgba(200,66,10,0.1);border:1px solid rgba(200,66,10,0.2);display:flex;align-items:center;justify-content:center;}
+.event-row-icon svg{width:15px;height:15px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:2px;}
+.event-row-label{font-size:9px;color:rgba(255,255,255,0.25);font-weight:700;letter-spacing:1.2px;text-transform:uppercase;}
+.event-row-val{font-size:14px;color:#fff;font-weight:600;}
+.event-box-note{padding:13px 26px 17px;background:rgba(0,0,0,0.2);border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:rgba(255,255,255,0.28);line-height:1.7;text-align:center;}
+.event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 9 — 2×2 grid layout, white card
+   ============================================= */
+/*
+.ty-hero-right{position:relative;}
+.event-box{background:#fff;border-radius:16px;overflow:hidden;}
+.event-box-banner{background:linear-gradient(135deg,var(--teal-900) 0%,#1a3a5c 100%);padding:24px 28px 20px;text-align:center;position:relative;overflow:hidden;}
+.event-box-banner::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--orange),transparent);}
+.event-box-banner::after,.event-box-banner-icon{display:none;}
+.event-box-banner-content{display:contents;}
+.event-box-confirmed{display:inline-flex;align-items:center;gap:6px;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);color:#4ade80;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:12px;position:relative;z-index:1;}
+.event-box-confirmed svg{width:9px;height:9px;stroke:#4ade80;fill:none;stroke-width:3;}
+.event-box-banner-text{font-family:'DM Sans',sans-serif;font-size:19px;font-weight:800;color:#fff;line-height:1.25;position:relative;z-index:1;}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:5px;position:relative;z-index:1;}
+.event-box-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.event-row{display:flex;flex-direction:column;gap:8px;padding:20px 22px;border-right:1px solid #eef1f5;border-bottom:1px solid #eef1f5;}
+.event-row:nth-child(2n){border-right:none;}
+.event-row:nth-last-child(-n+2){border-bottom:none;}
+.event-row-icon{width:34px;height:34px;border-radius:8px;background:#fff5f0;border:1px solid #ffddd0;display:flex;align-items:center;justify-content:center;}
+.event-row-icon svg{width:14px;height:14px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;flex-direction:column;gap:2px;}
+.event-row-label{font-size:9px;color:#b0b8c4;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.event-row-val{font-size:13.5px;color:#0d2236;font-weight:700;line-height:1.3;}
+.event-box-note{padding:13px 24px 16px;background:#fafbfc;border-top:1px solid #eef1f5;font-size:11.5px;color:#aab0bb;line-height:1.6;text-align:center;}
+.event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 10 — Big check hero + horizontal pill rows
+   ============================================= */
+/*
+.ty-hero-right{position:relative;}
+.event-box{background:transparent;border:none;border-radius:0;display:flex;flex-direction:column;gap:16px;}
+.event-box-banner{background:linear-gradient(135deg,var(--orange) 0%,#b83a0a 100%);border-radius:16px;padding:28px 28px 24px;text-align:center;position:relative;overflow:hidden;border:none;}
+.event-box-banner::before{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.1);}
+.event-box-banner::after{content:'';position:absolute;bottom:-20px;left:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.06);}
+.event-box-banner-icon{display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.35);margin:0 auto 14px;position:relative;z-index:1;}
+.event-box-banner-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2.5;}
+.event-box-banner-content{position:relative;z-index:1;}
+.event-box-confirmed{display:none;}
+.event-box-banner-text{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:900;color:#fff;line-height:1.2;}
+.event-box-banner-text span{color:rgba(255,255,255,0.75);}
+.event-box-banner-sub{font-size:12px;color:rgba(255,255,255,0.55);margin-top:8px;}
+.event-box-body{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:6px 0;backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:0;}
+.event-row{display:flex;align-items:center;gap:14px;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{width:32px;height:32px;border-radius:8px;flex-shrink:0;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;}
+.event-row-icon svg{width:14px;height:14px;stroke:var(--orange);fill:none;stroke-width:2;}
+.event-row-text{display:flex;align-items:center;justify-content:space-between;flex:1;gap:8px;}
+.event-row-label{font-size:10px;color:rgba(255,255,255,0.35);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;}
+.event-row-val{font-size:13px;color:#fff;font-weight:600;text-align:right;}
+.event-box-note{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;font-size:11.5px;color:rgba(255,255,255,0.35);line-height:1.6;text-align:center;backdrop-filter:blur(10px);}
+.event-box-note span{color:var(--orange);font-weight:600;}
+*/
+
+/* =============================================
+   DESIGN 11 — Stacked badge card, full white, big typography
+   ============================================= */
+/*
+.ty-hero-right{position:relative;}
+.event-box{background:#fff;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;}
+.event-box-banner{background:var(--teal-900);padding:0;border:none;position:relative;overflow:hidden;}
+.event-box-banner::before,.event-box-banner::after{display:none;}
+.event-box-banner-icon{display:none;}
+.event-box-banner-content{display:flex;flex-direction:column;align-items:center;padding:28px 24px 24px;position:relative;z-index:1;}
+.event-box-banner-content::before{content:'';display:block;width:56px;height:56px;border-radius:50%;border:3px solid var(--orange);background:rgba(200,66,10,0.12);margin-bottom:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8420a' stroke-width='2.5'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:26px;}
+.event-box-confirmed{display:none;}
+.event-box-banner-text{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;line-height:1.25;text-align:center;}
+.event-box-banner-text span{color:var(--orange);}
+.event-box-banner-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;text-align:center;}
+.event-box-body{padding:0;display:flex;flex-direction:column;}
+.event-row{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #f0f3f6;gap:12px;}
+.event-row:last-child{border-bottom:none;}
+.event-row-icon{display:none;}
+.event-row-text{display:flex;align-items:center;justify-content:space-between;width:100%;gap:10px;}
+.event-row-label{font-size:11px;color:#94a3b8;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.event-row-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+.event-row-val{font-size:14px;color:#0d2236;font-weight:700;text-align:right;}
+.event-box-note{padding:14px 24px 18px;background:linear-gradient(135deg,#fff8f5,#fef3ee);border-top:2px solid #fde8de;font-size:12px;color:#94a3b8;line-height:1.6;text-align:center;}
+.event-box-note span{color:var(--orange);font-weight:700;}
+*/
 
 /* LIGHT SECTION — like burned/get/persona sections */
 .ty-section{padding:80px 0;}
@@ -125,11 +678,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 .container{max-width:860px;margin:0 auto;padding:0 60px;}
 
 /* sec-label — light version */
-.sec-label-light{color:var(--orange);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.sec-label-light{color:var(--orange);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
 .sec-label-light::before,.sec-label-light::after{content:'';flex:0 0 28px;height:1px;background:var(--orange);}
 
 /* sec-label — dark version */
-.sec-label-dark{color:var(--gold);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.sec-label-dark{color:var(--gold);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
 .sec-label-dark::before,.sec-label-dark::after{content:'';flex:0 0 28px;height:1px;background:var(--gold);}
 
 .sec-title-light{font-family:'DM Sans',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:var(--teal-900);margin-bottom:18px;}
@@ -137,8 +690,52 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 .sec-title-dark{font-family:'DM Sans',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:#fff;margin-bottom:18px;}
 .sec-title-dark em{font-style:normal;color:var(--orange);}
 
-.sec-body-light{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:20px;}
+.sec-body-light{font-size:16px;color:var(--text-mid);line-height:1.8;margin-bottom:20px;}
 .sec-body-dark{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:20px;}
+
+.sec-title{font-family:'DM Sans',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;color:var(--teal-900);margin-bottom:18px;}
+.body-para{font-size:15px;color:var(--text-mid);line-height:1.8;}
+.sec-label{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--orange);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.sec-label::before,.sec-label::after{content:'';width:30px;height:2px;background:var(--orange);}
+
+/* ── FAQ ── */
+.faq-section{background:#ffffff;padding:48px 0 44px;position:relative;overflow:hidden;}
+.faq-section>.container{position:relative;z-index:1}
+.faq-inner{max-width:700px;margin:0 auto}
+.faq-list{margin-top:24px;display:flex;flex-direction:column}
+.faq-item{border-bottom:1px solid rgba(0,0,0,0.1)}
+.faq-item:first-child{border-top:1px solid rgba(0,0,0,0.1)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:13px 0;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;color:var(--text-dark);text-align:left;gap:16px;transition:color 0.2s;}
+.faq-q:hover{color:var(--orange)}
+.faq-chevron{flex-shrink:0;width:20px;height:20px;border:1.5px solid rgba(0,0,0,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.3s,background 0.2s,border-color 0.2s;}
+.faq-chevron svg{width:10px;height:10px;stroke:var(--text-dark);fill:none;stroke-width:2.5;transition:stroke 0.2s}
+.faq-item.open .faq-chevron{transform:rotate(180deg);background:var(--orange);border-color:var(--orange)}
+.faq-item.open .faq-chevron svg{stroke:#fff}
+.faq-item.open .faq-q{color:var(--orange)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.3s;}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{font-size:16px;color:var(--text-mid);line-height:1.8;padding-bottom:20px;}
+
+/* sec-label gold for ty speakers */
+.sec-label-ty-gold{color:var(--gold);letter-spacing:0.12em;font-size:11px;font-weight:700;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
+.sec-label-ty-gold::before,.sec-label-ty-gold::after{content:'';flex:0 0 28px;height:1px;background:var(--gold);}
+
+/* speakers */
+.speakers-section{background:linear-gradient(180deg,#071524 0%,#0a1828 100%);border-top:2px solid rgba(200,66,10,0.3);position:relative;overflow:hidden;padding:56px 0 52px;}
+.speakers-section::before{content:'';position:absolute;inset:0;z-index:0;background:url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;opacity:0.08;pointer-events:none;}
+.speakers-section>.container{position:relative;z-index:1}
+.speakers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:680px;margin:36px auto 0;align-items:center;}
+.speaker-card{position:relative;overflow:hidden;border-radius:10px;transition:transform 0.3s;}
+.speaker-card:hover{transform:translateY(-6px)}
+.speaker-img-wrap{height:220px;overflow:hidden;position:relative;}
+.speaker-img-inner{width:100%;height:100%;display:block;position:relative;overflow:hidden;}
+.speaker-img-betsy{background:#1a2a2a}
+.speaker-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.speaker-info{background:#fff;border:1px solid rgba(0,0,0,0.07);border-top:none;padding:24px 22px;}
+.speaker-name{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:700;color:var(--teal-900);}
+.speaker-role{font-size:13px;color:var(--text-light);margin-top:5px;line-height:1.5}
+.speaker-tag{display:inline-block;margin-top:12px;background:rgba(200,66,10,0.09);color:var(--orange);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;}
+.sec-title.light{color:#fff;}
 
 /* cards */
 .card-light{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:12px;padding:32px;box-shadow:0 2px 14px rgba(0,0,0,0.05);}
@@ -146,14 +743,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--warm-white);color:var(--t
 
 /* CALENDAR */
 .cal-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;}
-.cal-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;}
-.cal-btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange-bright));color:#fff;}
-.cal-btn-secondary-light{background:transparent;border:1.5px solid rgba(0,0,0,0.15);color:var(--text-dark);}
+.cal-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:8px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;text-decoration:none;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;}
+.cal-btn-primary{background:#1A73E8;color:#fff;}
+.cal-btn-primary:hover{background:#1558b0;transform:translateY(-2px);}
+.cal-btn-secondary-light{background:#0078D4;color:#fff;border:none;}
+.cal-btn-secondary-light:hover{background:#005fa3;transform:translateY(-2px);}
 .cal-btn:hover{transform:translateY(-2px);}
 
 /* ZOOM */
-.zoom-join-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange),var(--orange-bright));color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-size:14px;font-weight:700;margin-bottom:22px;transition:transform 0.2s,box-shadow 0.2s;}
-.zoom-join-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--orange-glow);}
+.zoom-join-btn{display:inline-flex;align-items:center;gap:10px;background:#0078D4;color:#fff;text-decoration:none;padding:13px 24px;border-radius:8px;font-size:15px;font-weight:600;margin-bottom:0;transition:transform 0.2s,box-shadow 0.2s;}
+.zoom-join-btn:hover{background:#005fa3;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,120,212,0.35);}
 .zoom-meta-light{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--text-mid);}
 .zoom-meta-light span{color:var(--text-dark);font-weight:600;}
 .zoom-note-light{font-size:12px;color:var(--text-mid);margin-top:14px;}
@@ -208,6 +807,10 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
 
 @media(max-width:900px){
   .navbar{padding:14px 20px;}.navbar.scrolled{padding:10px 20px;}.nav-links{display:none;}
+  .nav-logo{font-size:16px;letter-spacing:3px;}
+  .speakers-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto;}
+  .cal-btn{font-size:13px;padding:11px 16px;width:100%;justify-content:center;}
+  .zoom-join-btn{font-size:13px;padding:11px 16px;width:100%;justify-content:center;}
   .ty-hero{padding:100px 24px 60px;}
   .ty-hero-inner{grid-template-columns:1fr;gap:32px;}
   .ty-hero-left{text-align:center;}
@@ -227,6 +830,8 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
   .container{padding:0 16px;}
   .checklist-light li{padding:12px 16px;font-size:14px;}
   .card-light,.card-dark{padding:20px 16px;}
+  .nav-cta{font-size:11px;padding:7px 12px;gap:5px;}
+  .nav-cta::after{display:none;}
 }
 </style>
 </head>
@@ -244,159 +849,182 @@ footer{background:var(--teal-900);border-top:1px solid rgba(255,255,255,0.06);pa
   <button class="nav-cta" onclick="window.location.href='index.html'">Back to Home</button>
 </nav>
 
-<!-- HERO — identical to main page hero -->
-<div class="ty-hero">
-  <img class="ty-hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
-  <div class="ty-hero-overlay"></div>
-  <div class="ty-hero-glow"></div>
-  <div class="ty-hero-inner">
-    <!-- LEFT -->
-    <div class="ty-hero-left">
-      <div class="ty-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> You're Registered!</div>
-      <h1 class="ty-title">Directional Day<br><em>Trading Class</em></h1>
-      <p class="ty-sub">Your seat for the live training has been successfully reserved.</p>
-      <p class="ty-note">A confirmation email with the webinar link has been sent to you.<br>Please join the session 5–10 minutes early so we can start on time.</p>
+<!-- REGISTRATION — top strip -->
+<div class="reg-top">
+  <div class="reg-top-inner">
+    <div class="reg-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Congrats! You're Registered
     </div>
-    <!-- RIGHT — event box styled like main page form card -->
-    <div class="ty-hero-right">
-      <div class="event-box">
-        <div class="event-box-banner">
-<div class="event-box-banner-text">You're in the <span>Live Class</span></div>
-          <div class="event-box-banner-sub">Directional Day Trading Class · March 19th</div>
+    <h1 class="reg-title">Directional Day <span class="reg-class-name">Trading Class</span></h1>
+    <p class="reg-sub">Your seat has been reserved — we'll see you live on March 19th.</p>
+  </div>
+</div>
+
+<!-- CARDS AREA — light bg -->
+<div class="reg-bottom">
+    <div class="reg-cards">
+
+      <!-- LEFT: Event Details -->
+      <div class="reg-card">
+        <div class="reg-card-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Event Details</span>
         </div>
-        <div class="event-box-body">
-          <div class="event-row">
-            <div class="event-row-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <div class="event-row-text">
-              <div class="event-row-label">Date</div>
-              <div class="event-row-val">March 19th, 2026</div>
+        <div class="reg-card-body">
+          <div class="reg-detail-row">
+            <div class="reg-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div>
+              <div class="reg-detail-label">Date</div>
+              <div class="reg-detail-val">March 19th, 2026</div>
             </div>
           </div>
-          <div class="event-row">
-            <div class="event-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-            <div class="event-row-text">
-              <div class="event-row-label">Time</div>
-              <div class="event-row-val">7:00 PM Eastern Time</div>
+          <div class="reg-detail-row">
+            <div class="reg-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div>
+              <div class="reg-detail-label">Time</div>
+              <div class="reg-detail-val">7:00 PM Eastern Time</div>
             </div>
           </div>
-          <div class="event-row">
-            <div class="event-row-icon"><svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
-            <div class="event-row-text">
-              <div class="event-row-label">Format</div>
-              <div class="event-row-val">Live Online Webinar</div>
+          <div class="reg-detail-row">
+            <div class="reg-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
+            <div>
+              <div class="reg-detail-label">Format</div>
+              <div class="reg-detail-val">Live Online Webinar</div>
             </div>
           </div>
-          <div class="event-row">
-            <div class="event-row-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="event-row-text">
-              <div class="event-row-label">Cost</div>
-              <div class="event-row-val">100% Free · No Credit Card</div>
+          <div class="reg-detail-row">
+            <div class="reg-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <div class="reg-detail-label">Cost</div>
+              <div class="reg-detail-val">100% Free · No Credit Card</div>
             </div>
           </div>
         </div>
-        <div class="event-box-note">Check your email for the <span>confirmation</span> and <span>webinar link</span>.</div>
+        <div class="reg-card-note">Check your email for the <strong>confirmation</strong> and <strong>webinar link</strong>.</div>
+      </div>
+
+      <!-- RIGHT: Access Details — flat panel, no card -->
+      <div class="reg-access-panel">
+
+        <!-- Zoom -->
+        <div class="reg-access-block">
+          <div class="reg-access-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            Webinar Access Link
+          </div>
+          <a class="reg-zoom-btn" href="https://us06web.zoom.us/j/84515347195?pwd=PSipBDbQzfnNbG71jRea3KSkar4sAE.1" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            Join Zoom Webinar
+          </a>
+          <div class="reg-meeting-info">
+            <div class="reg-meeting-chip">
+              <div class="reg-meeting-chip-label">Meeting ID</div>
+              <div class="reg-meeting-chip-val">845 1534 7195</div>
+            </div>
+            <div class="reg-meeting-chip">
+              <div class="reg-meeting-chip-label">Passcode</div>
+              <div class="reg-meeting-chip-val">615280</div>
+            </div>
+          </div>
+          <p class="reg-email-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            You will also receive this link by email.
+          </p>
+        </div>
+
+        <hr class="reg-divider">
+
+        <!-- Calendar -->
+        <div class="reg-access-block">
+          <div class="reg-access-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Add to Your Calendar
+          </div>
+          <p class="reg-cal-sub">Save your spot — the webinar link and reminder will be added automatically.</p>
+          <div class="reg-cal-btns">
+            <a class="reg-cal-google" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Directional+Day+Trading+Class&dates=20260319T230000Z/20260320T003000Z&details=Join:+https://us06web.zoom.us/j/84515347195?pwd=PSipBDbQzfnNbG71jRea3KSkar4sAE.1&location=Online+Webinar" target="_blank">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Add to Google Calendar
+            </a>
+            <a class="reg-cal-outlook" href="https://outlook.live.com/calendar/0/deeplink/compose?subject=Directional+Day+Trading+Class&startdt=2026-03-19T23:00:00Z&enddt=2026-03-20T00:30:00Z&body=Join:+https://us06web.zoom.us/j/84515347195" target="_blank">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Add to Outlook Calendar
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+</div>
+
+
+<!-- INSTRUCTOR — copied from index.html speakers section -->
+<section class="speakers-section section">
+  <div class="container">
+    <div class="sec-label-ty-gold">Meet Your Instructor</div>
+    <h2 class="sec-title light" style="text-align:center;color:#fff">Your Guide to Directional<br><strong style="color:var(--orange)">Day Trading</strong></h2>
+    <div class="speakers-grid">
+      <div class="speaker-card">
+        <div class="speaker-img-wrap">
+          <div class="speaker-img-inner speaker-img-betsy"></div>
+          <div class="speaker-bar"></div>
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Navigation Trader</div>
+          <div class="speaker-role">Founder, Navigation Trading · 15+ Years Active Trading Experience</div>
+          <div class="speaker-tag">Lead Instructor</div>
+        </div>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-info" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:32px 28px">
+          <p style="font-size:15px;line-height:1.85;color:rgba(255,255,255,0.7);margin-bottom:20px">"I spent years trying every indicator, every alert service, every system — until I stopped looking for shortcuts and built a real framework around directional bias and defined risk. That's exactly what I teach in this class."</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.8)"><span style="width:20px;height:20px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Traded through multiple market cycles</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.8)"><span style="width:20px;height:20px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Taught thousands of retail traders live</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.8)"><span style="width:20px;height:20px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Specialises in SPY, QQQ, high-cap directional trades</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CALENDAR — light (like burned/join section) -->
-<div class="ty-section light">
+
+
+<!-- FAQ — copied from index.html -->
+<section class="faq-section section">
   <div class="container">
-    <div class="sec-label-light">Add to Your Calendar</div>
-    <h2 class="sec-title-light" style="text-align:center;">Don't Miss the Class</h2>
-    <div class="card-light">
-      <p class="sec-body-light" style="margin-bottom:0;">To make sure you don't miss the class, add it to your calendar now. This will automatically include the webinar link and reminder notifications.</p>
-      <div class="cal-btns">
-        <a class="cal-btn cal-btn-primary" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Directional+Day+Trading+Class&dates=20260319T230000Z/20260320T003000Z&details=Join:+https://us06web.zoom.us/j/84515347195?pwd=PSipBDbQzfnNbG71jRea3KSkar4sAE.1&location=Online+Webinar" target="_blank">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Add to Google Calendar
-        </a>
-        <a class="cal-btn cal-btn-secondary-light" href="https://outlook.live.com/calendar/0/deeplink/compose?subject=Directional+Day+Trading+Class&startdt=2026-03-19T23:00:00Z&enddt=2026-03-20T00:30:00Z&body=Join:+https://us06web.zoom.us/j/84515347195" target="_blank">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Add to Outlook / Microsoft Calendar
-        </a>
+    <div class="faq-inner">
+      <div class="sec-label">FAQ Question</div>
+      <h2 class="sec-title" style="text-align:center">Frequently Asked Questions</h2>
+      <p class="body-para" style="text-align:center;max-width:520px;margin:10px auto 0;font-size:14px">Everything you need to know before reserving your free spot in the live class.</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Will I learn how to pick winning stocks?<span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner">This class focuses on directional bias and defined-risk options setups — not stock-picking. You'll learn how to read market flow and trade high-probability setups using calls and puts on major tickers like SPY, QQQ, TSLA, and NVDA.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is a trading class, and who is it for?<span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner">This is a live, interactive webinar designed for retail traders — beginners through intermediate — who want a clear, repeatable framework for day trading. No experience with complex strategies is needed. If you can buy a call or put, you're ready.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What will I learn in a trading class?<span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner">You'll learn how to establish directional bias before the market opens, identify high-probability entry setups, manage risk with defined max-loss positions, and build a repeatable daily routine that doesn't require staring at screens all day.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is this class really free?<span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes — 100% free to attend live. There's no catch, no upsell required to access the core content. Live attendees do receive an exclusive discount on our advanced program, but there's no obligation.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What if I can't attend live?<span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a"><div class="faq-a-inner">A replay will be available for registered attendees. However, live attendees get the most value — including real-time Q&A with the instructor and an exclusive live-only discount on the full program.</div></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- ZOOM LINK — dark (like learn section) -->
-<div class="ty-section dark">
-  <div class="container">
-    <div class="sec-label-dark">Webinar Access Link</div>
-    <h2 class="sec-title-dark" style="text-align:center;">Your <em>Zoom Link</em></h2>
-    <div class="card-dark">
-      <a class="zoom-join-btn" href="https://us06web.zoom.us/j/84515347195?pwd=PSipBDbQzfnNbG71jRea3KSkar4sAE.1" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.869v6.262a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
-        Join Zoom Webinar
-      </a>
-      <div class="zoom-meta-dark">
-        <div>Meeting ID: <span>845 1534 7195</span></div>
-        <div>Passcode: <span>615280</span></div>
-      </div>
-      <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:14px;">You will also receive this link by email.</p>
-    </div>
-  </div>
-</div>
-
-<!-- WHAT YOU'LL LEARN — light (like get section) -->
-<div class="ty-section lighter">
-  <div class="container">
-    <div class="sec-label-light">What You'll Learn</div>
-    <h2 class="sec-title-light" style="text-align:center;">In This <em>90-Minute Live Class</em></h2>
-    <ul class="checklist-light">
-      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Two structured directional day trading strategies</li>
-      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>How to identify the most tradable stocks — and which to avoid</li>
-      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Why the first 60–90 minutes of the market open matter most</li>
-      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>The disciplined mindset required for consistent trading</li>
-      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>How to trade using simple calls and puts — no complex spreads required</li>
-      <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Real chart examples of both strategies in action</li>
-    </ul>
-  </div>
-</div>
-
-<!-- INSTRUCTOR — dark (like speakers section) -->
-<div class="ty-section dark">
-  <div class="container">
-    <div class="sec-label-dark">Meet Your Instructor</div>
-    <h2 class="sec-title-dark" style="text-align:center;">Your Guide to <em>Directional Day Trading</em></h2>
-    <div class="card-dark">
-      <div style="font-family:'DM Sans',sans-serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:4px;">Navigation Trader</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:20px;">Founder of Navigation Trading · Trading experience since 1999</div>
-      <p style="font-size:14.5px;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:22px;">After years of experimenting with indicators, alert services, and different systems, the focus shifted toward building a structured trading framework based on directional bias and defined risk. Inside this class you'll learn the same structured approach used inside the Navigation Trading community.</p>
-      <ul class="checklist-dark">
-        <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Experienced multiple market cycles</li>
-        <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Taught thousands of traders through live sessions</li>
-        <li><div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Focused on SPY, QQQ, and high-liquidity directional trades</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- TIPS & REMINDER — light (like persona/reviews section) -->
-<div class="ty-section cream">
-  <div class="container">
-    <div class="sec-label-light">Before the Webinar</div>
-    <h2 class="sec-title-light">Quick Tips to Get the Most from the Class</h2>
-    <ul class="tips-light">
-      <li>Join the session 5–10 minutes early</li>
-      <li>Watch from a device where you can clearly see charts</li>
-      <li>Have a notebook ready for key concepts</li>
-    </ul>
-    <p class="sec-body-light" style="margin-top:20px;margin-bottom:0;">This will be a fast-paced but practical session.</p>
-  </div>
-</div>
-
-<!-- SUPPORT — light -->
-<div class="ty-section lighter">
-  <div class="container">
-    <div class="support-card">
-      <div class="sec-label-light" style="justify-content:center;">Questions Before the Webinar?</div>
-      <p>If you need help accessing the class or have any questions, contact our support team.<br>We look forward to seeing you in the training.</p>
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- FOOTER — identical to index.html -->
 <footer>
@@ -449,6 +1077,12 @@ window.addEventListener('scroll', () => {
 const nav = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  });
 });
 </script>
 </body>
