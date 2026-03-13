@@ -103,7 +103,6 @@
       font-weight: 700;
       color: #fff;
       letter-spacing: 5px;
-      text-transform: uppercase;
       text-decoration: none;
     }
 
@@ -1857,7 +1856,6 @@
       font-weight: 700;
       color: var(--text-mid);
       letter-spacing: 0.8px;
-      text-transform: uppercase;
     }
 
     .review-company-badge svg {
@@ -2509,7 +2507,6 @@
       font-weight: 700;
       color: #fff;
       letter-spacing: 5px;
-      text-transform: uppercase;
     }
 
     .footer-tagline {
@@ -2907,7 +2904,7 @@
 
   <!-- ── NAVBAR ── -->
   <nav class="navbar" id="navbar">
-    <a href="#" class="nav-logo"><img src="logo.png" alt="Navigation Trading"
+    <a href="#" class="nav-logo"><img src="logo.png" alt="NavigationTrading"
         style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;"></a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
@@ -3043,8 +3040,8 @@
           <div class="stat-label">Registrations</div>
         </div>
         <div class="stat-item reveal reveal-delay-1">
-          <div class="stat-num" data-count="4">0</div>
-          <div class="stat-label">Expert Panellists</div>
+          <div class="stat-num" data-count="15">0</div>
+          <div class="stat-label">Years Experience</div>
         </div>
         <div class="stat-item reveal reveal-delay-2">
           <div class="stat-num" data-count="90">0</div>
@@ -3157,7 +3154,8 @@
         <div class="learn-left reveal">
           <div class="learn-promo-card">
             <span class="learn-promo-badge">What You'll Learn</span>
-            <h3 class="learn-promo-title">Directional Day <span style="color:var(--orange)">Trading Class</span> Two BRAND NEW Trading Strategies</h3>
+            <h3 class="learn-promo-title">Directional Day <span style="color:var(--orange)">Trading Class</span> Two
+              BRAND NEW Trading Strategies</h3>
             <button class="learn-promo-btn" onclick="window.location.href='thankyou.html'">Enroll now for FREE
               <span>→</span></button>
             <p class="learn-promo-sub">Master proven setups used by professional traders — no indicators overload, no
@@ -3548,7 +3546,7 @@
           </div>
           <div class="persona-title">The Inconsistent Trader</div>
           <p class="persona-desc">You've had winning days but can't stay consistent. You need a framework for risk
-            management, position sizing, and cutting losers fast.</p>
+            management, position sizing, and cutting losers.</p>
         </div>
 
       </div>
@@ -3579,7 +3577,7 @@
       <div class="sec-label">Webinar Reviews</div>
       <h2 class="sec-title reveal" style="text-align:center;color:#000000">What Traders Say About This Training
       </h2>
-      <p class="reviews-intro reveal">Thousands of traders have attended Navigation Trading webinars and walked away
+      <p class="reviews-intro reveal">Thousands of traders have attended NavigationTrading webinars and walked away
         with a clear, actionable framework for reading the market — not more noise.</p>
 
       <div class="reviews-carousel-wrap">
@@ -3596,7 +3594,7 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                   </svg>
-                  Navigation Trading
+                  NavigationTrading
                 </div>
               </div>
               <span class="review-quote-icon">"</span>
@@ -3627,7 +3625,7 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                   </svg>
-                  Navigation Trading
+                  NavigationTrading
                 </div>
               </div>
               <span class="review-quote-icon">"</span>
@@ -3658,7 +3656,7 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                   </svg>
-                  Navigation Trading
+                  NavigationTrading
                 </div>
               </div>
               <span class="review-quote-icon">"</span>
@@ -3689,7 +3687,7 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                   </svg>
-                  Navigation Trading
+                  NavigationTrading
                 </div>
               </div>
               <span class="review-quote-icon">"</span>
@@ -3744,8 +3742,8 @@
             <div class="speaker-bar"></div>
           </div>
           <div class="speaker-info">
-            <div class="speaker-name">Navigation Trader</div>
-            <div class="speaker-role">Founder, Navigation Trading · 15+ Years Active Trading Experience</div>
+            <div class="speaker-name">NavigationTrader</div>
+            <div class="speaker-role">Founder, NavigationTrading · 15+ Years Active Trading Experience</div>
             <div class="speaker-tag">Lead Instructor</div>
           </div>
         </div>
@@ -3919,7 +3917,8 @@
   <footer>
     <div class="footer-top">
       <div>
-        <div class="footer-brand"><img src="logo.png" alt="Navigation Trading" style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;">
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"
+            style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;">
         </div>
         <div class="footer-tagline">Directional Day Trading Education</div>
       </div>
@@ -4153,8 +4152,8 @@
           const dur = 1600, step = 16;
           const t = setInterval(() => {
             start += target / (dur / step);
-            if (start >= target) { clearInterval(t); e.target.textContent = target + (target === 500 ? '+' : ''); }
-            else e.target.textContent = Math.floor(start) + (target === 500 ? '+' : '');
+            if (start >= target) { clearInterval(t); e.target.textContent = target + (target === 500 || target === 15 ? '+' : ''); }
+            else e.target.textContent = Math.floor(start) + (target === 500 || target === 15 ? '+' : '');
           }, step);
         }
       });
