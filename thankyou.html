@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're Registered! — Navigation Trading</title>
+  <title>You're Registered! — NavigationTrading</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
@@ -92,7 +92,6 @@
       font-weight: 700;
       color: #fff;
       letter-spacing: 5px;
-      text-transform: uppercase;
       text-decoration: none;
     }
 
@@ -164,11 +163,22 @@
     }
 
     .reg-top::before {
-      display: none;
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') right 92% / cover no-repeat;
+      opacity: 0.55;
+      z-index: 0;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1) 80px, black 250px);
+      mask-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1) 80px, black 250px);
     }
 
     .reg-top::after {
-      display: none;
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(13, 46, 78, 0.5) 100%);
+      z-index: 0;
     }
 
     .reg-top-inner {
@@ -1801,7 +1811,6 @@
       font-weight: 700;
       color: #fff;
       letter-spacing: 5px;
-      text-transform: uppercase;
     }
 
     .footer-orange {
@@ -2004,7 +2013,7 @@
   <div id="progress-bar"></div>
 
   <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-logo"><img src="logo.png" alt="Navigation Trading"
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="NavigationTrading"
         style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;"></a>
     <ul class="nav-links">
       <li><a href="index.html#features">Features</a></li>
@@ -2065,7 +2074,7 @@
               </svg></div>
             <div>
               <div class="reg-detail-label">Time</div>
-              <div class="reg-detail-val">7:00 PM Eastern Time</div>
+              <div class="reg-detail-val">3:30 PM Central Time</div>
             </div>
           </div>
           <div class="reg-detail-row">
@@ -2145,7 +2154,7 @@
           <p class="reg-cal-sub">Save your spot — the webinar link and reminder will be added automatically.</p>
           <div class="reg-cal-btns">
             <a class="reg-cal-google"
-              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Directional+Day+Trading+Class&dates=20260319T230000Z/20260320T003000Z&details=Join:+https://us06web.zoom.us/j/84515347195?pwd=PSipBDbQzfnNbG71jRea3KSkar4sAE.1&location=Online+Webinar"
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Directional+Day+Trading+Class&dates=20260319T203000Z/20260319T220000Z&details=Join:+https://us06web.zoom.us/j/84515347195?pwd=PSipBDbQzfnNbG71jRea3KSkar4sAE.1&location=Online+Webinar"
               target="_blank">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -2156,7 +2165,7 @@
               Add to Google Calendar
             </a>
             <a class="reg-cal-outlook"
-              href="https://outlook.live.com/calendar/0/deeplink/compose?subject=Directional+Day+Trading+Class&startdt=2026-03-19T23:00:00Z&enddt=2026-03-20T00:30:00Z&body=Join:+https://us06web.zoom.us/j/84515347195"
+              href="https://outlook.live.com/calendar/0/deeplink/compose?subject=Directional+Day+Trading+Class&startdt=2026-03-19T20:30:00Z&enddt=2026-03-19T22:00:00Z&body=Join:+https://us06web.zoom.us/j/84515347195"
               target="_blank">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -2188,8 +2197,8 @@
             <div class="speaker-bar"></div>
           </div>
           <div class="speaker-info">
-            <div class="speaker-name">Navigation Trader</div>
-            <div class="speaker-role">Founder, Navigation Trading · 15+ Years Active Trading Experience</div>
+            <div class="speaker-name">NavigationTrader</div>
+            <div class="speaker-role">Founder, NavigationTrading · 15+ Years Active Trading Experience</div>
             <div class="speaker-tag">Lead Instructor</div>
           </div>
         </div>
@@ -2296,7 +2305,7 @@
   <footer>
     <div class="footer-top">
       <div>
-        <div class="footer-brand"><img src="logo.png" alt="Navigation Trading" style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;">
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading" style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;">
         </div>
         <div class="footer-tagline">Directional Day Trading Education</div>
       </div>
