@@ -3020,12 +3020,11 @@
 
       <!-- RIGHT COLUMN: Form -->
       <div class="hero-form-col" id="booking-form">
-        <!-- EXACT Form from register.html -->
         <style>
           @import url(https://fonts.bunny.net/css?family=sans-serif:400|IBM+Plex+Sans:400);
         </style>
         <style>
-          #_form_124_ {
+          #_form_126_ {
             font-size: 14px;
             line-height: 1.6;
             font-family: arial, helvetica, sans-serif;
@@ -3049,7 +3048,7 @@
             visibility: visible
           }
 
-          #_form_124_ input[type="text"] {
+          #_form_126_ input[type="text"] {
             padding: 10px;
             height: auto;
             border: #ccc 1px solid;
@@ -3061,7 +3060,7 @@
             background: #fff;
           }
 
-          #_form_124_ ._submit {
+          #_form_126_ ._submit {
             cursor: pointer;
             font-family: arial, sans-serif;
             font-size: 14px;
@@ -3075,65 +3074,68 @@
             width: auto;
           }
 
-          #_form_124_ ._form-label {
+          #_form_126_ ._form-label {
             font-weight: bold;
             margin-bottom: 5px;
             display: block;
           }
 
-          #_form_124_ ._form-branding {
-            color: #333;
-            font-size: 10px;
-            clear: both;
-            text-align: left;
-            margin-top: 25px;
-            font-weight: 400;
-          }
-
-          #_form_124_ ._form-branding ._logo {
-            display: block;
-            width: 130px;
-            height: 14px;
-            margin-top: 5px;
-            background-image: url("https://d226aj4ao1t61q.cloudfront.net/jftq2c8s_aclogo_dk.png");
-            background-size: 130px auto;
-            background-repeat: no-repeat;
-            opacity: 1;
-          }
-
-          #_form_124_ ._form_element {
+          #_form_126_ ._form_element {
             margin-bottom: 10px;
           }
+          
+          #_form_126_ ._submit.processing {
+            position: relative;
+            color: transparent !important;
+          }
+          #_form_126_ ._submit.processing::before {
+            content: "";
+            width: 1em;
+            height: 1em;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            border: double 3px transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(#d9490c, #d9490c), conic-gradient(#d9490c, #ffffff);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            animation: 1200ms ease 0s infinite normal none running _spin;
+          }
+          @keyframes _spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+          }
         </style>
-
-        <form method="POST" action="https://navigationtrading.activehosted.com/proc.php" id="_form_124_"
-          class="_form _form_124 _inline-form _dark" novalidate data-styles-version="5">
-          <input type="hidden" name="u" value="124" />
-          <input type="hidden" name="f" value="124" />
+        <form method="POST" action="https://navigationtrading.activehosted.com/proc.php" id="_form_126_" class="_form _form_126 _inline-form _dark" novalidate data-styles-version="5">
+          <input type="hidden" name="u" value="126" />
+          <input type="hidden" name="f" value="126" />
           <input type="hidden" name="s" />
           <input type="hidden" name="c" value="0" />
           <input type="hidden" name="m" value="0" />
           <input type="hidden" name="act" value="sub" />
           <input type="hidden" name="v" value="2" />
-          <input type="hidden" name="or" value="7e79cc2d-755b-47c4-8e8f-4ea9ffe7a328" />
+          <input type="hidden" name="or" value="57792a9c-25a5-4810-9ec8-f91e6e1e61ae" />
           <div class="_form-content">
-            <div class="_form_element">
+            <div class="_form_element _x07089279 _full_width ">
               <label for="fullname" class="_form-label">Full Name</label>
-              <input type="text" id="fullname" name="fullname" placeholder="Type your name" />
+              <div class="_field-wrapper">
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" />
+              </div>
             </div>
-            <div class="_form_element">
-              <label for="email" class="_form-label">Email<span style="color:red">*</span></label>
-              <input type="text" id="email" name="email" placeholder="Type your email" required />
+            <div class="_form_element _x78742557 _full_width ">
+              <label for="email" class="_form-label">Email<span class="field-required">*</span></label>
+              <div class="_field-wrapper">
+                <input type="text" id="email" name="email" placeholder="Email..." required />
+              </div>
             </div>
-            <div class="_button-wrapper">
-              <button id="_form_124_submit" class="_submit" type="submit">Enroll now for Free</button>
+            <div class="_button-wrapper _full_width">
+              <button id="_form_126_submit" class="_submit" type="submit">Enroll now for Free</button>
             </div>
+            <div class="_clear-element"></div>
           </div>
           <div class="_form-thank-you" style="display:none;"></div>
-          <div class="_form-branding">
-            <div class="_marketing-by">Marketing by</div>
-            <a href="https://www.activecampaign.com" class="_logo"></a>
-          </div>
         </form>
       </div><!-- end hero-form-col -->
 
@@ -4326,8 +4328,6 @@
   <!-- ActiveCampaign Full Embed Logic -->
   <script>
     window.cfields = [];
-    
-    // Override ActiveCampaign thank-you function
     window._show_thank_you = function (id, message, trackcmp_url, email) {
       setTimeout(function () {
         window.location.href = 'thank-you-dtt.html';
@@ -4335,39 +4335,52 @@
     };
 
     window._show_error = function (id, message, html) {
-      var form = document.getElementById('_form_' + id + '_'), 
-          err = document.createElement('div'), 
-          button = form.querySelector('button[type="submit"]'), 
-          old_error = form.querySelector('._form_error');
+      var form = document.getElementById('_form_' + id + '_'),
+        err = document.createElement('div'),
+        button = form.querySelector('button[type="submit"]'),
+        old_error = form.querySelector('._form_error');
       if (old_error) old_error.parentNode.removeChild(old_error);
-      err.innerHTML = message; 
+      err.innerHTML = message;
       err.className = '_error-inner _form_error _no_arrow';
-      var wrapper = document.createElement('div'); 
-      wrapper.className = '_form-inner _show_be_error'; 
+      var wrapper = document.createElement('div');
+      wrapper.className = '_form-inner _show_be_error';
       wrapper.appendChild(err);
       button.parentNode.insertBefore(wrapper, button);
       var submitButton = form.querySelector('[id^="_form"][id$="_submit"]');
-      submitButton.disabled = false; 
+      submitButton.disabled = false;
       submitButton.classList.remove('processing');
+      if (html) {
+        var div = document.createElement('div');
+        div.className = '_error-html';
+        div.innerHTML = html;
+        err.appendChild(div);
+      }
     };
 
     window._load_script = function (url, callback, isSubmit) {
-      var head = document.querySelector('head'), 
-          script = document.createElement('script'), 
-          r = false;
-      script.charset = 'utf-8'; 
+      var head = document.querySelector('head'),
+        script = document.createElement('script'),
+        r = false;
+      var submitButton = document.querySelector('#_form_126_submit');
+      script.charset = 'utf-8';
       script.src = url;
       if (callback) {
         script.onload = script.onreadystatechange = function () {
-          if (!r && (!this.readyState || this.readyState == 'complete')) { 
-            r = true; 
-            callback(); 
+          if (!r && (!this.readyState || this.readyState == 'complete')) {
+            r = true;
+            callback();
           }
         };
       }
       script.onerror = function () {
-        if (isSubmit) { 
-          window.location.href = 'thank-you-dtt.html'; 
+        if (isSubmit) {
+          if (script.src.length > 10000) {
+            _show_error("126", "Sorry, your submission failed. Please shorten your responses and try again.");
+          } else {
+            _show_error("126", "Sorry, your submission failed. Please try again.");
+          }
+          submitButton.disabled = false;
+          submitButton.classList.remove('processing');
         }
       };
       head.appendChild(script);
@@ -4379,23 +4392,48 @@
         else element['on' + event] = func;
       };
 
-      var form_to_submit = document.getElementById('_form_124_');
-      
-      addEvent(form_to_submit, 'submit', function (e) {
-        e.preventDefault();
-        var submitButton = document.getElementById('_form_124_submit');
-        submitButton.disabled = true; 
-        submitButton.classList.add('processing');
-        
-        var serialized = "";
-        var els = form_to_submit.elements;
-        for (var i = 0; i < els.length; i++) {
-          if (els[i].name) {
-            serialized += els[i].name + "=" + encodeURIComponent(els[i].value) + "&";
+      var _form_serialize = function (form) {
+        if (!form || form.nodeName !== "FORM") { return }
+        var i, j, q = [];
+        for (i = 0; i < form.elements.length; i++) {
+          if (form.elements[i].name === "") { continue }
+          switch (form.elements[i].nodeName) {
+            case "INPUT":
+              switch (form.elements[i].type) {
+                case "text": case "hidden": case "password": case "button": case "reset": case "submit":
+                  q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                  break;
+                case "checkbox": case "radio":
+                  if (form.elements[i].checked) { q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)) }
+                  break;
+              }
+              break;
+            case "TEXTAREA":
+              q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+              break;
+            case "SELECT":
+              switch (form.elements[i].type) {
+                case "select-one":
+                  q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                  break;
+              }
+              break;
           }
         }
-        
-        _load_script('https://navigationtrading.activehosted.com/proc.php?' + serialized + 'jsonp=true', null, true);
+        return q.join("&")
+      };
+
+      var form_to_submit = document.getElementById('_form_126_');
+      if (!form_to_submit) return;
+
+      addEvent(form_to_submit, 'submit', function (e) {
+        e.preventDefault();
+        var submitButton = document.getElementById('_form_126_submit');
+        submitButton.disabled = true;
+        submitButton.classList.add('processing');
+
+        var serialized = _form_serialize(form_to_submit);
+        _load_script('https://navigationtrading.activehosted.com/proc.php?' + serialized + '&jsonp=true', null, true);
       });
     })();
   </script>
