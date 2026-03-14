@@ -3020,7 +3020,7 @@
       </div>
 
       <!-- RIGHT COLUMN: Form -->
-      <div class="hero-form-col">
+      <div class="hero-form-col" id="booking-form">
         <!-- EXACT Form from register.html -->
         <style>@import url(https://fonts.bunny.net/css?family=sans-serif:400|IBM+Plex+Sans:400);</style>
         <style>
@@ -4237,12 +4237,9 @@
     var submitted = false;
 
     // Override ActiveCampaign thank-you to redirect to our custom page
-    window._show_thank_you = function(id, message, trackcmp_url, email) {
-      window.location.href = 'thankyou.html';
-    };
-
     function scrollToForm() {
       const formWrap = document.getElementById('booking-form');
+      if (!formWrap) return;
       const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = formWrap.getBoundingClientRect().top;
