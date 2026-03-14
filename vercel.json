@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/day-trading",
+      "permanent": true
+    }
+  ]
+}
