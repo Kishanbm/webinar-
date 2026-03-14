@@ -1442,7 +1442,7 @@
       background: var(--teal-900);
       position: relative;
       overflow: hidden;
-      padding: 72px 0 68px;
+      padding: 56px 0 52px;
     }
 
     .speakers-section::before {
@@ -1484,7 +1484,7 @@
     }
 
     .speaker-img-wrap {
-      height: 220px;
+      height: 300px;
       overflow: hidden;
       position: relative;
     }
@@ -1495,6 +1495,14 @@
       display: block;
       position: relative;
       overflow: hidden;
+    }
+
+    .speaker-img-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
     }
 
     .speaker-img-betsy {
@@ -2193,7 +2201,9 @@
       <div class="speakers-grid">
         <div class="speaker-card">
           <div class="speaker-img-wrap">
-            <div class="speaker-img-inner speaker-img-betsy"></div>
+            <div class="speaker-img-inner speaker-img-betsy">
+              <img src="auther.jpeg" alt="NavigationTrader">
+            </div>
             <div class="speaker-bar"></div>
           </div>
           <div class="speaker-info">
@@ -2205,7 +2215,7 @@
         <div class="speaker-card">
           <div class="speaker-info"
             style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:32px 28px;height:100%;display:flex;flex-direction:column;justify-content:center">
-            <p style="font-size:15px;line-height:1.85;color:rgba(255,255,255,0.7);margin-bottom:20px">"I spent years
+            <p style="font-size:16px;line-height:1.85;color:rgba(255,255,255,0.7);margin-bottom:20px">"I spent years
               trying every indicator, every alert service, every system — until I stopped looking for shortcuts and
               built a real framework around directional bias and defined risk. That's exactly what I teach in this
               class."</p>
