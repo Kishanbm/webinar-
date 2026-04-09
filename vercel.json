@@ -19,6 +19,10 @@
     {
       "source": "/paid-membership",
       "destination": "/transformer-option-spreads-content/paid-membership"
+    },
+    {
+      "source": "/tos-thank-you",
+      "destination": "/transformer-option-spreads-content/tos-thankyou"
     }
   ]
 }
