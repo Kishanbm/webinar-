@@ -249,7 +249,7 @@ body {
 .timeline-item.active h3 { color: #fff; }
 .timeline-item h3 { 
   font-size: 20px; font-weight: 800; color: rgba(255,255,255,.7); margin-bottom: 8px; 
-  transition: color .3s; display: flex; align-items: center; gap: 14px;
+  transition: color .3s; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
 }
 .timeline-item.active h3 { color: #fff; }
 .timeline-item p { font-size: 15px; color: rgba(255,255,255,.4); line-height: 1.7; transition: color .3s; }
@@ -891,7 +891,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   gap: 40px; flex-wrap: wrap;
 }
 .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 5px; }
-.footer-tagline { color: rgba(255,255,255,.35); font-size: 13px; margin-top: 12px; }
+.footer-tagline { color: rgba(255,255,255,.35); font-size: 13px; margin-top: 180px; }
 .footer-links { display: flex; gap: 40px; align-items: center; }
 .footer-links a { color: rgba(255,255,255,.45); font-size: 13px; text-decoration: none; transition: color .2s; }
 .footer-links a:hover { color: var(--gold); }
@@ -2138,7 +2138,7 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 /* ── Timeline real-time ET tracking ── */
-(function updateTimeline() {
+function updateTimeline() {
   const items = document.querySelectorAll('.timeline-item[data-start]');
   if (!items.length) return;
 
@@ -2157,7 +2157,6 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     if (badge) badge.remove();
 
     if (isWeekend || nowMin < 510) {
-      // Before / weekend — show first as upcoming
       if (start === 510) {
         item.classList.add('active');
         insertBadge(item, 'NEXT SESSION', 'upcoming');
@@ -2172,29 +2171,48 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
   });
 
-  // After market hours — all items past, no badge
   if (!activeSet && nowMin > 1320) {
     items.forEach(item => item.classList.add('past'));
   }
 
-  // Update filled progress line
   const timelineWrap = document.querySelector('.timeline-wrap');
   const filledLine = timelineWrap && timelineWrap.querySelector('.timeline-line-filled');
   if (filledLine) {
     let maxY = 0;
-    items.forEach(item => {
-      if (item.classList.contains('past')) {
-        maxY = item.offsetTop + item.offsetHeight;
-      } else if (item.classList.contains('active')) {
+    const nodeList = Array.from(items);
+    for (let i = 0; i < nodeList.length; i++) {
+        const item = nodeList[i];
         const dot = item.querySelector('.timeline-dot');
-        if (dot) maxY = item.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
-      }
-    });
+        const start = +item.dataset.start;
+        const end = +item.dataset.end;
+        
+        if (item.classList.contains('past')) {
+            maxY = item.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+        } else if (item.classList.contains('active')) {
+            const startY = item.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+            let endY = startY;
+            
+            // If there's a next item, progress towards its dot
+            const nextItem = nodeList[i+1];
+            if (nextItem) {
+                const nextDot = nextItem.querySelector('.timeline-dot');
+                endY = nextItem.offsetTop + nextDot.offsetTop + nextDot.offsetHeight / 2;
+            } else {
+                // Else progress towards the bottom of the current item
+                endY = item.offsetTop + item.offsetHeight;
+            }
+            
+            const progress = Math.max(0, Math.min(1, (nowMin - start) / (end - start)));
+            maxY = startY + (endY - startY) * progress;
+            break; // Stop once we've calculated up to the active item
+        }
+    }
     filledLine.style.height = (maxY > 0 ? maxY : 0) + 'px';
   }
 
   setTimeout(updateTimeline, 60000);
-})();
+}
+updateTimeline();
 
 function insertBadge(item, label, type) {
   const b = document.createElement('span');
