@@ -6,5 +6,19 @@
       "destination": "/day-trading",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/transformer-option-spreads",
+      "destination": "/Transformer%20Option%20Spreads/transformer-option-spreads.html"
+    },
+    {
+      "source": "/free-membership",
+      "destination": "/Transformer%20Option%20Spreads/free-membership.html"
+    },
+    {
+      "source": "/paid-membership",
+      "destination": "/Transformer%20Option%20Spreads/paid-membership.html"
+    }
   ]
 }

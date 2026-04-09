@@ -1,0 +1,4472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PM36KHB');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7EFVS3VNV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-W7EFVS3VNV');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transformer Option Spreads — Free Live Webinar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --teal-900: #0D2E4E;
+      --teal-800: #0d2040;
+      --teal-700: #102a52;
+      --teal-600: #163565;
+      --teal-500: #1e4d8c;
+      --orange: #c8420a;
+      --orange-bright: #e04d10;
+      --orange-glow: rgba(200, 66, 10, 0.35);
+      --gold: #d4a040;
+      --cream: #f0f6ff;
+      --warm-white: #f5f9ff;
+      --text-dark: #111;
+      --text-mid: #4a4a4a;
+      --text-light: #787878;
+      --green: #62BC46;
+      --brand-blue: #0D2E4E;
+      --brand-green: #62BC46;
+      --brand-grey: #E7E7E7;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #111
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--orange);
+      border-radius: 4px
+    }
+
+    /* ── PROGRESS BAR ── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+      z-index: 1000;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      padding: 18px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(13, 46, 78, 0.97);
+      backdrop-filter: blur(20px);
+      padding: 12px 60px;
+      box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 5px;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--orange)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-cta::after {
+      content: '→';
+      font-size: 14px;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--orange-glow)
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: auto;
+      background: var(--brand-blue);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Full-hero stock chart background image */
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.45;
+    }
+
+    /* Dark teal tint over image so text stays readable */
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(135deg,
+          rgba(13, 46, 78, 0.82) 0%,
+          rgba(13, 46, 78, 0.65) 50%,
+          rgba(13, 46, 78, 0.80) 100%);
+      pointer-events: none;
+    }
+
+    /* Radial glow */
+    .hero-glow {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30, 100, 200, 0.22) 0%, transparent 65%);
+      top: -200px;
+      right: -100px;
+      pointer-events: none;
+      z-index: 2;
+      animation: pulseglow 6s ease-in-out infinite;
+    }
+
+    @keyframes pulseglow {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: 0.7
+      }
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 90, 180, 0.35) 0%, transparent 65%);
+      bottom: -100px;
+      left: -50px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Dot grid */
+    .dot-grid {
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* .hero-main{
+  display:grid;
+  grid-template-columns:1fr 480px;
+  flex:1;
+  position:relative;z-index:5;
+  padding-top:90px;
+  width:100%;
+  align-items:center;
+  padding-left:60px;
+  padding-right:0;
+}
+
+.hero-left{
+  padding:70px 40px 50px 0;
+  display:flex;flex-direction:column;gap:28px;justify-content:center;
+} */
+
+    .hero-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      grid-template-rows: auto 1fr;
+      position: relative;
+      z-index: 5;
+      padding: 140px 48px 40px 48px;
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      align-items: start;
+      gap: 0 60px;
+    }
+
+    .hero-pill-row {
+      grid-column: 1/-1;
+      display: flex;
+      justify-content: center;
+      padding-bottom: 28px;
+    }
+
+    .hero-top-row {
+      display: contents;
+    }
+
+    .hero-bottom-row {
+      display: none;
+    }
+
+    .hero-left {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      text-align: left;
+      overflow: visible;
+    }
+
+    .hero-form-col {
+      align-self: center;
+    }
+
+    .label-pill {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      padding: 8px 22px;
+      width: fit-content;
+      animation: fadein 0.8s ease both;
+    }
+
+    .label-pill-badge {
+      display: none;
+    }
+
+    .label-pill-text {
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(26px, 3.2vw, 46px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      animation: slidein 0.9s ease 0.1s both;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, #fff 30%, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 480px;
+      animation: slidein 0.9s ease 0.2s both;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: slidein 0.9s ease 0.3s both;
+    }
+
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50px;
+      padding: 9px 18px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .meta-chip:hover {
+      background: #222
+    }
+
+    .meta-chip svg {
+      color: #fff;
+      flex-shrink: 0
+    }
+
+    /* ── FORM PANEL ── */
+    .hero-form-wrap {
+      background: #fff;
+      border-radius: 8px;
+      padding: 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      animation: fadein 1s ease 0.5s both;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      margin: 0 30px 0 0;
+      align-self: center;
+      width: 100%;
+    }
+
+    .form-header-bar {
+      background: #2d3748;
+      padding: 30px 24px 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    .form-header-bar::after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 16px solid transparent;
+      border-right: 16px solid transparent;
+      border-top: 15px solid #2d3748;
+      z-index: 2;
+    }
+
+    .hero-form-wrap::before {
+      display: none
+    }
+
+    .form-header {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .form-header span {
+      color: var(--brand-green)
+    }
+
+    .form-body {
+      padding: 24px 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .form-field label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--text-mid);
+    }
+
+    .form-field input,
+    .form-field select {
+      background: #fff;
+      border: 1.5px solid #d0d0d0;
+      color: var(--text-dark);
+      padding: 10px 12px;
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      border-radius: 6px;
+    }
+
+    .form-field input::placeholder {
+      color: #aaa
+    }
+
+    .form-field select option {
+      background: #fff;
+      color: var(--text-dark)
+    }
+
+    .form-field input:focus,
+    .form-field select:focus {
+      border-color: #000;
+      box-shadow: 0 0 0 1px #000;
+    }
+
+    .btn-register {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 0 0 0 20px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      border-radius: 6px;
+      width: 100%;
+      height: 48px;
+      overflow: hidden;
+    }
+
+    .btn-register .btn-arrow {
+      background: rgba(0, 0, 0, 0.2);
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .btn-register:hover {
+      background: var(--orange-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px var(--orange-glow)
+    }
+
+    .form-seats {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      line-height: 1.8;
+      padding: 12px 24px 0;
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      z-index: 5;
+      animation: slidein 0.9s ease 0.4s both;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      padding: 16px 20px 16px;
+      width: fit-content;
+      min-width: 360px;
+      overflow: visible;
+    }
+
+    .cd-badge {
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      background: var(--brand-green);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 0 8px 0 8px;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(98, 188, 70, 0.4)
+      }
+
+      50% {
+        box-shadow: 0 0 0 8px rgba(98, 188, 70, 0)
+      }
+    }
+
+    .cd-top-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .cd-label {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cd-units {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .cd-unit {
+      text-align: center
+    }
+
+    .cd-flip {
+      font-family: 'DM Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: 46px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      border-radius: 6px;
+    }
+
+    .cd-flip.tick {
+      animation: flip 0.3s ease
+    }
+
+    @keyframes flip {
+      0% {
+        transform: rotateX(0)
+      }
+
+      50% {
+        transform: rotateX(-90deg);
+        background: rgba(98, 188, 70, 0.2)
+      }
+
+      100% {
+        transform: rotateX(0)
+      }
+    }
+
+    .cd-name {
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .cd-sep {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 20px;
+      margin-bottom: 16px
+    }
+
+    /* ── SECTIONS SHARED ── */
+    .section {
+      padding: 60px 0
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 48px
+    }
+
+    .sec-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .sec-label::before,
+    .sec-label::after {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .sec-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--teal-900);
+    }
+
+    .sec-title em,
+    .join-text h2 em,
+    .learn-promo-title em,
+    .final-cta-heading em,
+    .speaker-name em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .sec-title.light {
+      color: #fff
+    }
+
+    /* ── JOIN SECTION ── */
+    .join-section {
+      background: var(--cream);
+      overflow: hidden;
+      position: relative
+    }
+
+    .join-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 66, 10, 0.06) 0%, transparent 65%);
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .join-visual {
+      position: relative;
+      min-height: 380px;
+      background: linear-gradient(135deg, #0a1828 0%, #102a52 100%);
+      overflow: hidden;
+    }
+
+    .join-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(200, 66, 10, 0.25) 0%, transparent 60%);
+    }
+
+    .join-visual canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 2
+    }
+
+    .join-text {
+      display: flex;
+      flex-direction: column;
+      gap: 20px
+    }
+
+    .join-text h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(30px, 3.2vw, 46px);
+      font-weight: 700;
+      color: var(--teal-900);
+      line-height: 1.15;
+    }
+
+    .join-text h2 strong {
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .lead-para {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-dark);
+      line-height: 1.75;
+      border-left: 3px solid var(--orange);
+      padding-left: 18px;
+    }
+
+    .body-para {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.8
+    }
+
+    /* ── STATS ── */
+    .stats-bar {
+      background: var(--teal-900);
+      padding: 24px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0 14px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-item:last-child {
+      border-right: none
+    }
+
+    .stat-num {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    /* ── BURNED BEFORE SECTION ── */
+    .burned-section {
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+      padding: 56px 0;
+    }
+
+    .burned-section::before {
+      display: none;
+    }
+
+    .burned-section::after {
+      content: '';
+      position: absolute;
+      top: -140px;
+      right: -140px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 66, 10, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .burned-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .burned-header-label {
+      color: var(--orange);
+      letter-spacing: 0.12em;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px
+    }
+
+    .burned-header-label::before,
+    .burned-header-label::after {
+      content: '';
+      flex: 0 0 32px;
+      height: 1px;
+      background: var(--orange);
+    }
+
+    .burned-headline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 700;
+      color: #1a1a1a;
+      font-style: normal;
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+
+    .burned-headline em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .burned-list-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .burned-list-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 24px;
+      background: #fff;
+      border: 1.5px solid rgba(0, 0, 0, 0.07);
+      border-radius: 8px;
+    }
+
+    .burned-list-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .burned-list-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .burned-list-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15.5px;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+
+    /* ── WHAT YOU'LL LEARN SECTION ── */
+    .learn-section {
+      background: var(--teal-900);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .learn-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.07;
+      pointer-events: none;
+    }
+
+    .learn-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .learn-section .sec-title {
+      color: #fff
+    }
+
+    .learn-section .sec-title strong {
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .learn-section .body-para {
+      color: rgba(255, 255, 255, 0.55)
+    }
+
+    .learn-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+      margin-top: 56px;
+    }
+
+    /* Left promo card */
+    .learn-left {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .learn-promo-card {
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .learn-promo-card::before {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 66, 10, 0.25) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .learn-promo-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .learn-promo-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 22px;
+    }
+
+    .learn-promo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      color: #fff;
+      border: none;
+      padding: 9px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .learn-promo-btn span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      font-size: 14px;
+    }
+
+    .learn-promo-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--orange-glow)
+    }
+
+    .learn-promo-sub {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    .learn-promo-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    /* Ticker */
+    .learn-ticker-wrap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      padding: 16px 0 24px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, transparent 100%);
+      border-radius: 0 0 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .learn-ticker {
+      overflow: hidden;
+      width: 100%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+
+    .learn-ticker-track {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+      animation: ticker-scroll-left 55s linear infinite;
+    }
+
+    .learn-ticker-track.reverse {
+      animation: ticker-scroll-right 55s linear infinite;
+    }
+
+    .learn-ticker-track:hover,
+    .learn-ticker-track.reverse:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker-scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes ticker-scroll-right {
+      0% {
+        transform: translateX(-50%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .learn-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 0 16px;
+      height: 36px;
+      border-radius: 24px;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .learn-tag svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Right feature cards */
+    .learn-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px
+    }
+
+    .learn-feature {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: background 0.3s, border-color 0.3s, transform 0.25s;
+    }
+
+    .learn-feature:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(200, 66, 10, 0.3);
+      transform: translateX(4px);
+    }
+
+    .learn-feature-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      background: rgba(200, 66, 10, 0.12);
+      border: 1px solid rgba(200, 66, 10, 0.3);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .learn-feature-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+
+    .learn-feature-text {
+      font-size: 16px;
+      color: #fff;
+      line-height: 1.65;
+    }
+
+    /* Bullet list */
+    .learn-bullets {
+      text-align: center;
+    }
+
+    .learn-list {
+      list-style: none;
+      display: inline-block;
+      text-align: left;
+      padding: 0;
+    }
+
+    .learn-list li {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 15px;
+      line-height: 2.2;
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .learn-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+
+    .learn-list li::after {
+      content: '✓';
+      position: absolute;
+      left: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 10px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .learn-list li strong {
+      color: #fff
+    }
+
+    .learn-extra {
+      color: var(--orange);
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .learn-note {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 13px;
+      margin-top: 12px;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    @media(max-width:900px) {
+      .learn-layout {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ── WHAT YOU GET ── */
+    .get-section {
+      background: #E7E7E7;
+      padding: 60px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .get-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .get-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .get-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+      align-items: start;
+    }
+
+    /* Left — accordion rows */
+    .get-accord {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .get-accord-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.09);
+      border-radius: 8px;
+      cursor: default;
+    }
+
+    .get-accord-row:last-child {
+      border-bottom: none
+    }
+
+    .get-accord-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px
+    }
+
+    .get-accord-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .get-accord-sub {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .get-accord-plus {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0, 0, 0, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--text-light);
+      line-height: 1;
+      flex-shrink: 0;
+      font-weight: 300;
+    }
+
+    /* Right — dark enroll card */
+    .get-card {
+      background: var(--teal-900);
+      padding: 24px 28px 24px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .get-card-guarantee {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 5px 12px;
+      margin-bottom: 14px;
+    }
+
+    .get-card-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(22px, 2.2vw, 28px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .get-card-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .get-card-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .get-card-stat svg {
+      flex-shrink: 0;
+      color: var(--orange)
+    }
+
+    .get-card-divider-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      margin-bottom: 10px;
+    }
+
+    .get-card-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 20px
+    }
+
+    .get-card-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .get-card-checklist li:last-child {
+      border-bottom: none
+    }
+
+    .get-card-check {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .get-card-check svg {
+      width: 9px;
+      height: 9px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 3
+    }
+
+    .get-card-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+
+    .get-card-btn:hover {
+      background: var(--orange-bright)
+    }
+
+    .get-card-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2
+    }
+
+    @media(max-width:800px) {
+      .get-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ── PERSONA CARDS ── */
+    .persona-section {
+      background: #fff;
+      padding: 56px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    }
+
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .persona-card {
+      background: var(--cream);
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-radius: 12px;
+      padding: 36px 24px 32px;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .persona-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    .persona-card:hover {
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.09);
+      transform: translateY(-4px)
+    }
+
+    .persona-card:hover::after {
+      transform: scaleX(1)
+    }
+
+    .persona-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(200, 66, 10, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .persona-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round
+    }
+
+    .persona-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--teal-900);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .persona-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.75
+    }
+
+    @media(max-width:900px) {
+      .persona-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:500px) {
+      .persona-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ── MID CTA SECTION ── */
+    .mid-cta-section {
+      background: var(--teal-900);
+      padding: 56px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mid-cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.09;
+      pointer-events: none;
+    }
+
+    .mid-cta-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(ellipse at center, rgba(200, 66, 10, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .mid-cta-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .mid-cta-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 700;
+      color: var(--warm-white);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .mid-cta-sub {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .mid-cta-note {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .mid-cta-note svg {
+      flex-shrink: 0
+    }
+
+    .btn-main {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      color: #fff;
+      border: none;
+      padding: 18px 52px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    }
+
+    .btn-main::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+      transform: translateX(-150%);
+      transition: transform 0.5s;
+    }
+
+    .btn-main:hover::after {
+      transform: translateX(150%)
+    }
+
+    .btn-main:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px var(--orange-glow)
+    }
+
+    .btn-main-sub {
+      display: block;
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-section {
+      background: var(--cream);
+      padding: 60px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reviews-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('f980afd5-604e-48fc-878e-c5d139bc8f2d.png') center bottom/100% auto no-repeat;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    .reviews-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .reviews-intro {
+      font-size: 15px;
+      color: var(--text-mid);
+      max-width: 580px;
+      margin: 0 auto 56px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* Carousel */
+    .reviews-carousel-wrap {
+      overflow: hidden;
+      position: relative
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+      padding-bottom: 8px;
+    }
+
+    .review-card {
+      flex: 0 0 calc(33.333% - 16px);
+      min-width: 300px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      position: relative;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .review-card:hover {
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.13);
+      transform: translateY(-5px);
+    }
+
+    /* Header */
+    .review-card-header {
+      padding: 24px 24px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .review-quote-icon {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      line-height: 1;
+      color: var(--orange);
+      opacity: 0.65;
+    }
+
+    .review-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .rv-av-1 {
+      background: linear-gradient(135deg, var(--teal-600), var(--teal-500))
+    }
+
+    .rv-av-2 {
+      background: linear-gradient(135deg, var(--orange), #e04d10)
+    }
+
+    .rv-av-3 {
+      background: linear-gradient(135deg, #2a7a6a, var(--teal-500))
+    }
+
+    .rv-av-4 {
+      background: linear-gradient(135deg, var(--gold), #b8860b)
+    }
+
+    .review-header-info {
+      flex: 1;
+      min-width: 0
+    }
+
+    .review-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 2px
+    }
+
+    .review-role {
+      font-size: 12px;
+      color: var(--text-light)
+    }
+
+    .review-company-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 6px;
+      background: var(--cream);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 4px 9px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-mid);
+      letter-spacing: 0.8px;
+    }
+
+    .review-company-badge svg {
+      width: 12px;
+      height: 12px;
+      color: var(--orange)
+    }
+
+    /* Stars */
+    .review-stars-row {
+      padding: 14px 24px 0;
+      display: flex;
+      gap: 2px
+    }
+
+    .review-stars-row span {
+      color: var(--gold);
+      font-size: 14px
+    }
+
+    /* Before/After */
+    .review-before {
+      padding: 14px 24px 18px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+    }
+
+    .review-after {
+      padding: 14px 24px 22px;
+      background: var(--teal-900)
+    }
+
+    .rv-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .review-before .rv-label {
+      color: var(--text-light)
+    }
+
+    .review-after .rv-label {
+      color: rgba(255, 255, 255, 0.35)
+    }
+
+    .review-before p {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-mid);
+      font-style: italic
+    }
+
+    .review-after p {
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.82);
+      font-style: italic
+    }
+
+    /* Carousel nav */
+    .reviews-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .reviews-nav-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.15);
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      color: var(--text-dark);
+    }
+
+    .reviews-nav-btn:hover {
+      border-color: var(--orange);
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 4px 14px var(--orange-glow);
+    }
+
+    .reviews-nav-btn svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5
+    }
+
+    .reviews-dots {
+      display: flex;
+      gap: 8px
+    }
+
+    .reviews-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.18);
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+      padding: 0;
+    }
+
+    .reviews-dot.active {
+      background: var(--orange);
+      transform: scale(1.3)
+    }
+
+    /* ── WHO IS THIS FOR ── */
+    .fit-section {
+      background: #f5f4f0;
+      padding: 60px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fit-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .fit-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .fit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .fit-box {
+      background: #fff;
+      padding: 40px 40px 36px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .fit-box-yes {
+      border-top: 3px solid var(--orange)
+    }
+
+    .fit-box-no {
+      border-top: 3px solid #1a1a1a
+    }
+
+    .fit-box-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fit-box-yes .fit-box-label {
+      color: var(--orange)
+    }
+
+    .fit-box-no .fit-box-label {
+      color: #1a1a1a
+    }
+
+    .fit-box-label svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0
+    }
+
+    .fit-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0
+    }
+
+    .fit-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-dark);
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .fit-list li:last-child {
+      border-bottom: none
+    }
+
+    .fit-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .fit-box-yes .fit-icon {
+      background: var(--orange);
+      color: #fff
+    }
+
+    .fit-box-no .fit-icon {
+      background: #1a1a1a;
+      color: #fff
+    }
+
+    .fit-tagline {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    /* ── SPEAKERS ── */
+    .speakers-section {
+      background: var(--teal-900);
+      position: relative;
+      overflow: hidden;
+      padding: 56px 0 52px;
+    }
+
+    .speakers-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .speakers-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .speakers-section .sec-title {
+      color: #fff
+    }
+
+    .speakers-section .sec-title strong {
+      color: var(--orange)
+    }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 32px;
+      max-width: 860px;
+      margin: 36px auto 0;
+      align-items: stretch;
+    }
+
+    .speaker-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .speaker-card:hover {
+      transform: translateY(-6px)
+    }
+
+    .speaker-img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .speaker-img-inner {
+      width: 100%;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .speaker-img-inner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .speaker-card:hover .speaker-img-inner img {
+      transform: scale(1.04)
+    }
+
+    .speaker-img-betsy {
+      background: #1a2a2a
+    }
+
+    .speaker-img-klaus {
+      background: #1a2a2a
+    }
+
+    .speaker-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+    }
+
+    .speaker-info {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-top: none;
+      padding: 24px 22px;
+    }
+
+    .speaker-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--teal-900);
+    }
+
+    .speaker-role {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 5px;
+      line-height: 1.5
+    }
+
+    .speaker-tag {
+      display: inline-block;
+      margin-top: 12px;
+      background: rgba(200, 66, 10, 0.09);
+      color: var(--orange);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta-section {
+      background: #f5f4f0;
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .final-cta-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .final-cta-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .final-cta-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .final-cta-sub {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .final-cta-form {
+      background: var(--teal-900);
+      padding: 40px 40px 32px;
+      text-align: left;
+    }
+
+    .final-cta-form .form-field {
+      margin-bottom: 16px
+    }
+
+    .final-cta-form .form-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .final-cta-form .form-input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.07);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .final-cta-form .form-input:focus {
+      border-color: var(--orange)
+    }
+
+    .final-cta-form .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.25)
+    }
+
+    .final-cta-submit {
+      width: 100%;
+      padding: 16px;
+      margin-top: 8px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .final-cta-submit:hover {
+      background: var(--orange-bright);
+      transform: translateY(-1px)
+    }
+
+    .final-cta-disclaimer {
+      margin-top: 16px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.3);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      background: #ffffff;
+      padding: 48px 0 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      /* background:
+    linear-gradient(rgba(0,0,0,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,0.05) 1px,transparent 1px);
+  background-size:60px 60px; */
+      pointer-events: none;
+    }
+
+    .faq-section>.container {
+      position: relative;
+      z-index: 1
+    }
+
+    .faq-inner {
+      max-width: 700px;
+      margin: 0 auto
+    }
+
+    .faq-list {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid rgba(0, 0, 0, 0.1)
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-align: left;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+
+    .faq-q:hover {
+      color: var(--orange)
+    }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid rgba(0, 0, 0, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background 0.2s, border-color 0.2s;
+    }
+
+    .faq-chevron svg {
+      width: 10px;
+      height: 10px;
+      stroke: var(--text-dark);
+      fill: none;
+      stroke-width: 2.5;
+      transition: stroke 0.2s
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      background: var(--orange);
+      border-color: var(--orange)
+    }
+
+    .faq-item.open .faq-chevron svg {
+      stroke: #fff
+    }
+
+    .faq-item.open .faq-q {
+      color: var(--orange)
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px
+    }
+
+    .faq-a-inner {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      padding-bottom: 20px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--teal-900);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 50px 60px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    footer>.footer-top,
+    footer>.footer-bottom {
+      position: relative;
+      z-index: 1
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 5px;
+    }
+
+    .footer-tagline {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 13px;
+      margin-top: 100px
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      align-items: center
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange)
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 12px
+    }
+
+    .footer-orange {
+      color: var(--orange)
+    }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .social-icon:hover {
+      background: rgba(200, 66, 10, 0.3);
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--orange);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadein {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes slidein {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+
+      /* navbar */
+      .navbar {
+        padding: 16px 24px
+      }
+
+      .navbar.scrolled {
+        padding: 12px 24px
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      /* hero */
+      .hero-main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 130px 24px 40px;
+        gap: 24px 0;
+      }
+
+      .hero-pill-row {
+        padding-bottom: 16px;
+      }
+
+      .hero-left {
+        text-align: center;
+        gap: 14px;
+        padding-left: 0;
+      }
+
+      .hero-title {
+        font-size: clamp(28px, 7vw, 44px);
+      }
+
+      .meta-chips {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-form-wrap {
+        display: flex;
+        grid-column: 1/-1;
+      }
+
+      .countdown-strip {
+        min-width: 0;
+        width: 100%;
+        gap: 12px;
+      }
+
+      .cd-nums {
+        gap: 6px;
+        justify-content: center;
+      }
+
+      .cd-num {
+        min-width: 44px;
+        font-size: 22px;
+      }
+
+      /* layout helpers */
+      .container {
+        padding: 0 24px
+      }
+
+      .join-grid {
+        grid-template-columns: 1fr
+      }
+
+      .join-visual {
+        min-height: 200px
+      }
+
+      .learn-layout {
+        grid-template-columns: 1fr
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 340px;
+      }
+
+      .stat-item {
+        padding: 14px 10px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08)
+      }
+
+      .stat-item:nth-child(odd) {
+        border-right: 1px solid rgba(255, 255, 255, 0.08)
+      }
+
+      .stat-item:nth-last-child(-n+2) {
+        border-bottom: none
+      }
+
+      .stat-num {
+        font-size: 22px
+      }
+
+      .stat-label {
+        font-size: 9px;
+        letter-spacing: 1px
+      }
+
+      .strat-grid {
+        grid-template-columns: 1fr
+      }
+
+      .get-grid {
+        grid-template-columns: 1fr
+      }
+
+      .get-accord-rows {
+        gap: 8px;
+      }
+
+      .persona-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .speakers-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        margin: 0 auto
+      }
+
+      .review-card {
+        flex: 0 0 calc(100% - 0px);
+        min-width: unset
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .fit-grid {
+        grid-template-columns: 1fr
+      }
+
+      .reg-inner {
+        flex-direction: column;
+        text-align: center
+      }
+
+      /* footer */
+      footer {
+        padding: 40px 24px 28px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 24px;
+      }
+
+      .footer-links {
+        gap: 16px;
+      }
+    }
+
+    @media(max-width:600px) {
+      .hero-main {
+        padding: 120px 20px 36px;
+      }
+
+      .hero-title {
+        font-size: clamp(26px, 8vw, 38px);
+      }
+
+      .meta-chip {
+        font-size: 12px;
+        padding: 7px 14px;
+      }
+
+      .learn-promo-card {
+        padding: 24px 20px 130px;
+      }
+
+      .learn-feature {
+        gap: 14px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .persona-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .burned-list-item {
+        padding: 14px 16px;
+      }
+
+      .get-accord-row {
+        padding: 16px;
+      }
+
+      .faq-q {
+        font-size: 14px;
+        padding: 16px 18px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr
+      }
+
+      .reg-box {
+        padding: 32px 20px;
+      }
+    }
+
+    @media(max-width:480px) {
+      .hero-main {
+        padding: 110px 16px 32px;
+      }
+
+      .label-pill {
+        font-size: 11px;
+        padding: 6px 16px;
+      }
+
+      .cd-num {
+        min-width: 38px;
+        font-size: 18px;
+        padding: 10px 6px;
+      }
+
+      .cd-label {
+        font-size: 8px;
+      }
+
+      .persona-grid {
+        grid-template-columns: 1fr
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr
+      }
+
+      .nav-logo {
+        font-size: 17px;
+        letter-spacing: 3px;
+      }
+
+      .nav-cta {
+        font-size: 11px;
+        padding: 7px 12px;
+        gap: 5px;
+      }
+
+      .nav-cta::after {
+        display: none;
+      }
+
+      .hero-form-body {
+        padding: 16px 16px 0;
+      }
+
+      .form-input {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM36KHB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div id="progress-bar"></div>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo"><img src="logo.png" alt="NavigationTrading"
+        style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;"></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">Author</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <button class="nav-cta" onclick="scrollToForm()">Register for free</button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="dot-grid" style="top:40px;right:380px;width:160px;height:120px;z-index:3"></div>
+    <div class="dot-grid" style="bottom:80px;left:40px;width:100px;height:80px;opacity:0.5;z-index:3"></div>
+
+    <div class="hero-main">
+
+      <!-- Centered pill spanning full width -->
+      <div class="hero-pill-row">
+        <div class="label-pill">
+          <span class="label-pill-text">FREE LIVE WEBINAR</span>
+        </div>
+      </div>
+
+      <!-- LEFT COLUMN -->
+      <div class="hero-left">
+        <h1 class="hero-title">
+          Turn Any Option Spread Into a<br>
+          <em>Risk-Free Position</em><br>
+          Using One Simple<br>
+          <em>Adjustment</em>
+        </h1>
+        <p class="hero-desc">Learn the Transformer strategy used to convert vertical spreads, iron condors, butterflies, and calendars into positions with zero downside and unlimited upside potential — using options on SPX and high-liquidity indices.</p>
+
+        <!-- Countdown -->
+        <div class="countdown-strip">
+          <span class="cd-badge">Limited time offer</span>
+          <div class="cd-top-row">
+            <span class="cd-label">Webinar starts in</span>
+          </div>
+          <div class="cd-units">
+            <div class="cd-unit">
+              <div class="cd-flip" id="cd-d">20</div>
+              <div class="cd-name">Days</div>
+            </div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit">
+              <div class="cd-flip" id="cd-h">04</div>
+              <div class="cd-name">Hours</div>
+            </div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit">
+              <div class="cd-flip" id="cd-m">05</div>
+              <div class="cd-name">Minutes</div>
+            </div>
+            <span class="cd-sep">:</span>
+            <div class="cd-unit">
+              <div class="cd-flip" id="cd-s">20</div>
+              <div class="cd-name">Seconds</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meta chips -->
+        <div class="hero-meta">
+          <div class="meta-chip">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            April 30
+          </div>
+          <div class="meta-chip">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            [TIME] CT
+          </div>
+          <div class="meta-chip">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+            Live Online Web Class (75 Minutes)
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Form -->
+      <div class="hero-form-col" id="booking-form">
+        <style>
+          @import url(https://fonts.bunny.net/css?family=sans-serif:400|IBM+Plex+Sans:400);
+        </style>
+        <style>
+          #_form_126_ {
+            font-size: 14px;
+            line-height: 1.6;
+            font-family: arial, helvetica, sans-serif;
+            margin: 0;
+            box-shadow: 0px 1px 13px 0px rgba(0, 0, 0, 0.3);
+            background: #fff;
+            padding: 20px;
+            border-radius: 0px;
+            color: #000;
+            text-align: left;
+            max-width: 500px;
+          }
+
+          ._form_hide {
+            display: none;
+            visibility: hidden
+          }
+
+          ._form_show {
+            display: block;
+            visibility: visible
+          }
+
+          #_form_126_ input[type="text"] {
+            padding: 10px;
+            height: auto;
+            border: #ccc 1px solid;
+            border-radius: 0px;
+            color: #000 !important;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 10px;
+            background: #fff;
+          }
+
+          #_form_126_ ._submit {
+            cursor: pointer;
+            font-family: arial, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            background: #d9490c !important;
+            border: 0 !important;
+            border-radius: 4px !important;
+            color: #ffffff !important;
+            padding: 10px 20px !important;
+            display: inline-block;
+            width: auto;
+          }
+
+          #_form_126_ ._form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+          }
+
+          #_form_126_ ._form_element {
+            margin-bottom: 10px;
+          }
+          
+          #_form_126_ ._submit.processing {
+            position: relative;
+            color: transparent !important;
+          }
+          #_form_126_ ._submit.processing::before {
+            content: "";
+            width: 1em;
+            height: 1em;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            border: double 3px transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(#d9490c, #d9490c), conic-gradient(#d9490c, #ffffff);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            animation: 1200ms ease 0s infinite normal none running _spin;
+          }
+          @keyframes _spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+          }
+        </style>
+        <form method="POST" action="https://navigationtrading.activehosted.com/proc.php" id="_form_126_" class="_form _form_126 _inline-form _dark" novalidate data-styles-version="5">
+          <input type="hidden" name="u" value="126" />
+          <input type="hidden" name="f" value="126" />
+          <input type="hidden" name="s" />
+          <input type="hidden" name="c" value="0" />
+          <input type="hidden" name="m" value="0" />
+          <input type="hidden" name="act" value="sub" />
+          <input type="hidden" name="v" value="2" />
+          <input type="hidden" name="or" value="57792a9c-25a5-4810-9ec8-f91e6e1e61ae" />
+          <input type="hidden" name="field[5]" id="utm_source" value="" />
+          <input type="hidden" name="field[6]" id="utm_medium" value="" />
+          <input type="hidden" name="field[7]" id="utm_campaign" value="" />
+          <input type="hidden" name="field[8]" id="utm_content" value="" />
+          <div class="_form-content">
+            <div class="_form_element _x07089279 _full_width ">
+              <label for="fullname" class="_form-label">Full Name</label>
+              <div class="_field-wrapper">
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" />
+              </div>
+            </div>
+            <div class="_form_element _x78742557 _full_width ">
+              <label for="email" class="_form-label">Email<span class="field-required">*</span></label>
+              <div class="_field-wrapper">
+                <input type="text" id="email" name="email" placeholder="Email..." required />
+              </div>
+            </div>
+            <div class="_button-wrapper _full_width">
+              <button id="_form_126_submit" class="_submit" type="submit">Enroll now for Free</button>
+            </div>
+            <div class="_clear-element"></div>
+          </div>
+          <div class="_form-thank-you" style="display:none;"></div>
+        </form>
+      </div><!-- end hero-form-col -->
+
+    </div>
+
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-num" data-count="500">0</div>
+          <div class="stat-label">Registrations</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-num" data-count="25">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-num" data-count="75">0</div>
+          <div class="stat-label">Minutes of Insights</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-num">100<span style="font-size:28px">%</span></div>
+          <div class="stat-label">Free to Attend</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── IS THIS YOU / BURNED BEFORE ── -->
+  <section class="burned-section section">
+    <div class="container" style="text-align:center">
+      <div class="burned-header-label">Is This You?</div>
+      <h2 class="burned-headline reveal">If you have been burned before…</h2>
+      <div class="burned-list-wrap reveal">
+
+        <div class="burned-list-item">
+          <div class="burned-list-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                fill="#e63b2e" />
+              <line x1="12" y1="9" x2="12" y2="13" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="#fff" />
+            </svg>
+          </div>
+          <p class="burned-list-text">Selling premium and watching one bad move wipe out months of gains.</p>
+        </div>
+
+        <div class="burned-list-item">
+          <div class="burned-list-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                fill="#e63b2e" />
+              <line x1="12" y1="9" x2="12" y2="13" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="#fff" />
+            </svg>
+          </div>
+          <p class="burned-list-text">Managing spreads that looked great on entry but turned into margin nightmares.</p>
+        </div>
+
+        <div class="burned-list-item">
+          <div class="burned-list-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                fill="#e63b2e" />
+              <line x1="12" y1="9" x2="12" y2="13" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="#fff" />
+            </svg>
+          </div>
+          <p class="burned-list-text">Closing trades early for small profits because you're afraid of giving it all back.</p>
+        </div>
+
+        <div class="burned-list-item">
+          <div class="burned-list-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                fill="#e63b2e" />
+              <line x1="12" y1="9" x2="12" y2="13" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="#fff" />
+            </svg>
+          </div>
+          <p class="burned-list-text">Staring at risk graphs wondering if there's a way to remove the downside without killing the upside.</p>
+        </div>
+
+        <div class="burned-list-item">
+          <div class="burned-list-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                fill="#e63b2e" />
+              <line x1="12" y1="9" x2="12" y2="13" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="#fff" />
+            </svg>
+          </div>
+          <p class="burned-list-text">Following “income” strategies that work until they don’t — and one loss erases twenty wins.</p>
+        </div>
+
+        <div class="burned-list-item">
+          <div class="burned-list-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                fill="#e63b2e" />
+              <line x1="12" y1="9" x2="12" y2="13" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1" fill="#fff" />
+            </svg>
+          </div>
+          <p class="burned-list-text">Thinking you need a bigger account to trade safely when all you need is a better adjustment strategy.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT YOU'LL LEARN ── -->
+  <section id="features" class="learn-section section">
+    <div class="container" style="text-align:center">
+      <div class="sec-label">What You'll Learn</div>
+      <h2 class="sec-title reveal">In This 75-Minute Class,<br>You'll <strong>Discover:</strong></h2>
+      <p class="body-para reveal reveal-delay-1" style="max-width:560px;margin:18px auto 0">Learn how to transform any option spread into a risk-free position with unlimited upside!</p>
+    </div>
+
+    <div class="container">
+      <div class="learn-layout">
+        <!-- Left — promo card -->
+        <div class="learn-left reveal">
+          <div class="learn-promo-card">
+            <span class="learn-promo-badge">What You'll Learn</span>
+            <h3 class="learn-promo-title">Transformer Option <span style="color:var(--orange)">Spreads Class</span> — The Complete Transformer Strategy</h3>
+            <button class="learn-promo-btn" onclick="scrollToForm()">Enroll now for FREE
+              <span>→</span></button>
+            <p class="learn-promo-sub">Master the one adjustment technique that turns any option spread — verticals, condors, butterflies, calendars — into a risk-free position with room to profit. No guesswork, no complex math, just a proven framework.</p>
+            <div class="learn-ticker-wrap">
+              <!-- Row 1 — scrolls left -->
+              <div class="learn-ticker">
+                <div class="learn-ticker-track">
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                      <polyline points="17 6 23 6 23 12" />
+                    </svg> Risk-Free Spreads</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <polyline points="17 1 21 5 17 9" />
+                      <path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4" />
+                      <path d="M21 13v2a4 4 0 01-4 4H3" />
+                    </svg> Zero Downside</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg> Options on SPX</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <line x1="12" y1="1" x2="12" y2="23" />
+                      <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                    </svg> Buying Power Recycling</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <rect x="2" y="7" width="20" height="14" rx="2" />
+                      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+                    </svg> Replay Access</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg> Entry Timing</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2" />
+                      <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2" />
+                      <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2" />
+                    </svg> Statistics-Based</span>
+                  <!-- duplicate -->
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                      <polyline points="17 6 23 6 23 12" />
+                    </svg> Risk-Free Spreads</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <polyline points="17 1 21 5 17 9" />
+                      <path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4" />
+                      <path d="M21 13v2a4 4 0 01-4 4H3" />
+                    </svg> Zero Downside</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg> Options on SPX</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <line x1="12" y1="1" x2="12" y2="23" />
+                      <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                    </svg> Buying Power Recycling</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <rect x="2" y="7" width="20" height="14" rx="2" />
+                      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+                    </svg> Replay Access</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg> Entry Timing</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2" />
+                      <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2" />
+                      <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2" />
+                    </svg> Statistics-Based</span>
+                </div>
+              </div>
+              <!-- Row 2 — scrolls right -->
+              <div class="learn-ticker">
+                <div class="learn-ticker-track reverse">
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2" />
+                      <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2" />
+                      <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2" />
+                    </svg> Statistics-Based</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg> Entry Timing</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <rect x="2" y="7" width="20" height="14" rx="2" />
+                      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+                    </svg> Replay Access</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <line x1="12" y1="1" x2="12" y2="23" />
+                      <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                    </svg> Buying Power Recycling</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg> Options on SPX</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <polyline points="17 1 21 5 17 9" />
+                      <path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4" />
+                      <path d="M21 13v2a4 4 0 01-4 4H3" />
+                    </svg> Zero Downside</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                      <polyline points="17 6 23 6 23 12" />
+                    </svg> Risk-Free Spreads</span>
+                  <!-- duplicate -->
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="2" />
+                      <line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="2" />
+                      <line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="2" />
+                    </svg> Statistics-Based</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg> Entry Timing</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <rect x="2" y="7" width="20" height="14" rx="2" />
+                      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+                    </svg> Replay Access</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <line x1="12" y1="1" x2="12" y2="23" />
+                      <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                    </svg> Buying Power Recycling</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg> Options on SPX</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <polyline points="17 1 21 5 17 9" />
+                      <path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4" />
+                      <path d="M21 13v2a4 4 0 01-4 4H3" />
+                    </svg> Zero Downside</span>
+                  <span class="learn-tag"><svg viewBox="0 0 24 24">
+                      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                      <polyline points="17 6 23 6 23 12" />
+                    </svg> Risk-Free Spreads</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right — feature cards -->
+        <div class="learn-right">
+          <div class="learn-feature reveal">
+            <div class="learn-feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+                <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" />
+              </svg>
+            </div>
+            <div>
+              <!-- <div class="learn-feature-label">PROMPT LIBRARY</div> -->
+              <p class="learn-feature-text">The exact 4-step Transformer process to remove risk from any option spread</p>
+            </div>
+          </div>
+          <div class="learn-feature reveal reveal-delay-1">
+            <div class="learn-feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+                <path d="M9 16l2 2 4-4" />
+              </svg>
+            </div>
+            <div>
+              <!-- <div class="learn-feature-label">ADVANCED METHODS</div> -->
+              <p class="learn-feature-text">Real before-and-after trade examples showing verticals, condors, and butterflies transformed into risk-free positions</p>
+            </div>
+          </div>
+          <div class="learn-feature reveal reveal-delay-2">
+            <div class="learn-feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div>
+              <!-- <div class="learn-feature-label">STRATEGIC OUTPUT</div> -->
+              <p class="learn-feature-text">How to “recycle” buying power — freeing up capital to compound your positions without adding new money</p>
+            </div>
+          </div>
+          <div class="learn-feature reveal reveal-delay-3">
+            <div class="learn-feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+            <div>
+              <p class="learn-feature-text">Why understanding spread equivalencies (Iron Fly = Put Fly = Call Fly) gives you a liquidity and execution edge</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── WHAT YOU GET ── -->
+  <section class="get-section section">
+    <div class="container">
+      <div class="sec-label">Registration Includes</div>
+      <h2 class="sec-title reveal" style="text-align:center;color:#000000">What You Get When You <strong
+          style="background:linear-gradient(135deg,var(--orange),var(--orange-bright));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Register</strong>
+      </h2>
+
+      <div class="get-grid">
+
+        <!-- Left — accordion rows -->
+        <div class="get-accord reveal">
+          <div class="get-accord-row">
+            <div class="get-accord-left">
+              <div class="get-accord-title">Live 75-Minute Training</div>
+              <div class="get-accord-sub">Live session · April 30</div>
+            </div>
+            <div class="get-accord-plus">+</div>
+          </div>
+          <div class="get-accord-row">
+            <div class="get-accord-left">
+              <div class="get-accord-title">The complete Transformer adjustment walkthrough</div>
+              <div class="get-accord-sub">Step-by-step process for converting any spread to risk-free</div>
+            </div>
+            <div class="get-accord-plus">+</div>
+          </div>
+          <div class="get-accord-row">
+            <div class="get-accord-left">
+              <div class="get-accord-title">Before-and-after trade examples</div>
+              <div class="get-accord-sub">Real SPX trades showing Verticals, Condors, Butterflies &amp; Calendars transformed</div>
+            </div>
+            <div class="get-accord-plus">+</div>
+          </div>
+          <div class="get-accord-row">
+            <div class="get-accord-left">
+              <div class="get-accord-title">Spread equivalency education</div>
+              <div class="get-accord-sub">Understanding why Iron Fly = Put Fly = Call Fly changes your execution game</div>
+            </div>
+            <div class="get-accord-plus">+</div>
+          </div>
+          <div class="get-accord-row">
+            <div class="get-accord-left">
+              <div class="get-accord-title">Live Q&amp;A session</div>
+              <div class="get-accord-sub">Ask questions directly during the class</div>
+            </div>
+            <div class="get-accord-plus">+</div>
+          </div>
+          <div class="get-accord-row">
+            <div class="get-accord-left">
+              <div class="get-accord-title">Replay access</div>
+              <div class="get-accord-sub">Watch on-demand if you can’t attend live</div>
+            </div>
+            <div class="get-accord-plus">+</div>
+          </div>
+          <div class="get-accord-row">
+            <div class="get-accord-left">
+              <div class="get-accord-title">Transformer Quick-Reference Kit</div>
+              <div class="get-accord-sub">Cheat sheets covering the 4-step process, spread equivalencies, and buying power recycling</div>
+            </div>
+            <div class="get-accord-plus">+</div>
+          </div>
+        </div>
+
+        <!-- Right — dark enroll card -->
+        <div class="get-card reveal">
+          <div class="get-card-guarantee">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            100% Free
+          </div>
+          <div class="get-card-title">Reserve Your<br>Free Spot Today</div>
+          <div class="get-card-stats">
+            <div class="get-card-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              75 Minutes
+            </div>
+            <div class="get-card-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              Live &amp; Online
+            </div>
+            <div class="get-card-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              April 30, 2026
+            </div>
+            <div class="get-card-stat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              Replay Included
+            </div>
+          </div>
+          <div class="get-card-divider-label">A quick overview of what's included</div>
+          <ul class="get-card-checklist">
+            <li>
+              <span class="get-card-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>
+              Transformer 4-Step Process Guide
+            </li>
+            <li>
+              <span class="get-card-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>
+              Spread Equivalency Cheat Sheet
+            </li>
+            <li>
+              <span class="get-card-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>
+              Buying Power Recycling Framework
+            </li>
+            <li>
+              <span class="get-card-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>
+              Before/After Trade Example Screenshots
+            </li>
+            <li>
+              <span class="get-card-check"><svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg></span>
+              Risk-Free Adjustment Checklist
+            </li>
+          </ul>
+          <button class="get-card-btn" onclick="scrollToForm()">
+            Reserve My Free Spot
+            <svg viewBox="0 0 24 24">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PERSONA CARDS ── -->
+  <section class="persona-section section">
+    <div class="container">
+      <div class="sec-label">Is this for you?</div>
+      <h2 class="sec-title reveal" style="text-align:center;color:#000000">This Class Is For You If…</h2>
+
+      <div class="persona-grid">
+
+        <!-- Card 1 -->
+        <div class="persona-card reveal">
+          <div class="persona-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="14" rx="2" />
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+              <line x1="12" y1="12" x2="12" y2="16" />
+              <line x1="10" y1="14" x2="14" y2="14" />
+            </svg>
+          </div>
+          <div class="persona-title">The Spread Seller</div>
+          <p class="persona-desc">You sell premium consistently but one bad move can erase weeks of income. You want a way to lock in profits and remove the downside before expiration.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="persona-card reveal">
+          <div class="persona-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div class="persona-title">The Adjustment Seeker</div>
+          <p class="persona-desc">You've tried rolling, hedging, and hoping — but nothing gives you a clean, repeatable method to fix a trade. You want a defined process, not guesswork.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="persona-card reveal">
+          <div class="persona-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
+          </div>
+          <div class="persona-title">The Small Account Trader</div>
+          <p class="persona-desc">Your buying power is limited and every dollar tied up in margin matters. You need a strategy that frees up capital so you can stay in more trades at once.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="persona-card reveal">
+          <div class="persona-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="6" />
+              <circle cx="12" cy="12" r="2" />
+            </svg>
+          </div>
+          <div class="persona-title">The Experienced Trader</div>
+          <p class="persona-desc">You know your Greeks, you understand spreads, but you haven't found a systematic way to convert winning positions into risk-free runners. This is that missing piece.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MID CTA ── -->
+  <section class="mid-cta-section section">
+    <div class="container">
+      <h2 class="mid-cta-heading reveal">Ready to Learn the Transformer Strategy for Free?</h2>
+      <p class="mid-cta-sub reveal">This live class is happening soon. Spots are limited to keep Q&amp;A personal.</p>
+      <div class="reveal">
+        <button class="btn-main" onclick="scrollToForm()">SAVE MY FREE SPOT</button>
+      </div>
+      <p class="mid-cta-note reveal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+        Replay available if you can't attend live. Live attendees get an exclusive discount.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── REVIEWS / SOCIAL PROOF ── -->
+  <section class="reviews-section section">
+    <div class="container">
+      <div class="sec-label">Webinar Reviews</div>
+      <h2 class="sec-title reveal" style="text-align:center;color:#000000">What Traders Say About This Training
+      </h2>
+      <p class="reviews-intro reveal">Thousands of traders have attended NavigationTrading webinars and walked away
+        with a clear, actionable framework for managing risk — not more noise.</p>
+
+      <div class="reviews-carousel-wrap">
+        <div class="reviews-track" id="reviewsTrack">
+
+          <!-- Card 1 -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="review-avatar rv-av-1">AM</div>
+              <div class="review-header-info">
+                <div class="review-name">Annette M</div>
+                <div class="review-role">Written January 7, 2025 · 2 years after purchase</div>
+                <div class="review-company-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                  </svg>
+                  NavigationTrading
+                </div>
+              </div>
+              <span class="review-quote-icon">"</span>
+            </div>
+            <div class="review-stars-row">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="review-before">
+              <div class="rv-label">Review</div>
+              <p>"I can't recommend Navigation Trading highly enough! I've been using their services for about two years
+                and have learned an incredible amount along the way. They offer a wide range of option trading
+                strategies, and even after all this time, I'm still learning new things."</p>
+            </div>
+            <div class="review-after">
+              <div class="rv-label">Verdict</div>
+              <p>"Steve's explanations are clear, simple, and delivered in plain English, making even complex concepts
+                easy to grasp. If you're serious about mastering options trading and becoming a skilled, independent
+                trader, look no further!"</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="review-avatar rv-av-2">BW</div>
+              <div class="review-header-info">
+                <div class="review-name">Benjamin Wilkinson</div>
+                <div class="review-role">Written January 3, 2025 · 10 months after purchase</div>
+                <div class="review-company-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                  </svg>
+                  NavigationTrading
+                </div>
+              </div>
+              <span class="review-quote-icon">"</span>
+            </div>
+            <div class="review-stars-row">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="review-before">
+              <div class="rv-label">Review</div>
+              <p>"These guys are amazing instructors! Breaking it all down helps so much with slower learners like
+                myself. They are generous with their time, have a great community, and focus on the longevity of traders
+                rather than quick unsustainable profits."</p>
+            </div>
+            <div class="review-after">
+              <div class="rv-label">Verdict</div>
+              <p>"The transparency I've seen here is unmatched anywhere else. Also, viewing their trading in real time
+                helps greatly with all the niche aspects of trading."</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="review-avatar rv-av-3">US</div>
+              <div class="review-header-info">
+                <div class="review-name">userbafe3154746</div>
+                <div class="review-role">Written January 4, 2025 · 6 years after purchase</div>
+                <div class="review-company-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                  </svg>
+                  NavigationTrading
+                </div>
+              </div>
+              <span class="review-quote-icon">"</span>
+            </div>
+            <div class="review-stars-row">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="review-before">
+              <div class="rv-label">Review</div>
+              <p>"I have found Steve's style and humbleness to be so different from other so called 'furus'. He has a
+                unique style of teaching while being an excellent trader himself. I have learned a lot from his methods,
+                especially the belief in system and following it vs randomly jumping from one to another."</p>
+            </div>
+            <div class="review-after">
+              <div class="rv-label">Verdict</div>
+              <p>"I have also found my tribe of like-minded traders in NT community."</p>
+            </div>
+          </div>
+
+        </div><!-- /reviews-track -->
+      </div><!-- /reviews-carousel-wrap -->
+
+      <!-- Navigation -->
+      <div class="reviews-nav">
+        <button class="reviews-nav-btn" id="reviewsPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <div class="reviews-dots" id="reviewsDots"></div>
+        <button class="reviews-nav-btn" id="reviewsNext" aria-label="Next">
+          <svg viewBox="0 0 24 24">
+            <polyline points="9 6 15 12 9 18" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SPEAKERS ── -->
+  <section id="about" class="speakers-section section">
+    <div class="container">
+      <div class="sec-label" style="color:var(--gold)">Meet Your Instructor</div>
+      <h2 class="sec-title light reveal" style="text-align:center">Your Guide to<br><strong
+          style="color:var(--orange)">Transformer Option Spreads</strong></h2>
+      <div class="speakers-grid">
+
+        <div class="speaker-card reveal">
+          <div class="speaker-img-wrap">
+            <div class="speaker-img-inner speaker-img-betsy">
+              <img src="auther.jpeg" alt="NavigationTrader">
+            </div>
+            <div class="speaker-bar"></div>
+          </div>
+          <div class="speaker-info">
+            <div class="speaker-name">NavigationTrading</div>
+            <div class="speaker-role">NavigationTrading · 25+ Years Active Trading Experience</div>
+            <div class="speaker-tag">Founder & CEO</div>
+          </div>
+        </div>
+
+        <div class="speaker-card reveal reveal-delay-1">
+          <div class="speaker-info"
+            style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:32px 28px;height:100%;display:flex;flex-direction:column;justify-content:center">
+            <p style="font-size:16px;line-height:1.85;color:rgba(255,255,255,0.7);margin-bottom:20px">"I got tired of watching traders blow up accounts because they didn't have a real adjustment plan. The Transformer strategy isn't theory — it's what I use every single day to remove risk and stay in winning trades longer. That's exactly what I'll teach you in this class."</p>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+              <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.8)"><span
+                  style="width:20px;height:20px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg
+                    width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></span>Traded through multiple market cycles</li>
+              <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.8)"><span
+                  style="width:20px;height:20px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg
+                    width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></span>Taught thousands of retail traders live</li>
+              <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.8)"><span
+                  style="width:20px;height:20px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg
+                    width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></span>Specializes in SPX, RUT option spreads and Transformer adjustments</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section id="faq" class="faq-section section">
+    <div class="container">
+      <div class="faq-inner">
+        <div class="sec-label">FAQ Question</div>
+        <h2 class="sec-title reveal" style="text-align:center;color:#000000">Frequently Asked Questions</h2>
+        <p class="body-para reveal" style="text-align:center;max-width:520px;margin:10px auto 0;font-size:14px">
+          Everything you need to know before reserving your free spot in the live class.</p>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-q">
+              Do I need to understand options to attend?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">You should have a basic understanding of option spreads (verticals, butterflies, condors). This class is best suited for intermediate to advanced traders who already trade spreads but want a better adjustment and risk management strategy.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">
+              What is a Transformer spread?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">It's a method for converting an existing option spread into a brand-new position with zero risk and upside potential. You enter a spread, wait for a small profit, then “transform” it into a new structure that can't lose money.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">
+              What platforms or brokers do I need?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">Any broker that supports multi-leg option orders will work. The examples in the class use ThinkorSwim (Schwab), but the strategy applies to any platform that lets you trade verticals, butterflies, and condors.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">
+              Is this class really free?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">Yes, 100% free. We’ll share details about our Pro Membership at the end, but the entire training is free with no obligation.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">
+              What if I can’t attend live?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">Register anyway and we’ll send you the replay link by the next morning. However, live attendees get access to an exclusive discount on our Pro Membership that won’t be available on the replay.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── POST-REVIEWS CTA ── -->
+  <!--
+<section class="mid-cta-section section">
+  <div class="container">
+    <div class="sec-label" style="margin-bottom:20px">Limited Spots Available</div>
+    <h2 class="mid-cta-heading reveal">Join Thousands of Traders Who<br>Have Already Made the Shift</h2>
+    <p class="mid-cta-sub reveal">Don't trade another day without a clear directional framework. Reserve your free seat now before spots fill up.</p>
+    <div class="reveal">
+      <button class="btn-main" onclick="scrollToForm()">CLAIM MY FREE SEAT &rarr;</button>
+      <span class="btn-main-sub">Wednesday, March 19 &nbsp;·&nbsp; 7:00 PM ET &nbsp;·&nbsp; Free &amp; Live</span>
+    </div>
+    <p class="mid-cta-note reveal">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Replay available if you can't attend live. Live attendees get an exclusive discount.
+    </p>
+  </div>
+</section>
+-->
+
+  <!-- ── FINAL CTA ── -->
+  <!--
+<section class="final-cta-section">
+  <div class="container">
+    <div class="final-cta-inner">
+      <div class="sec-label" style="color:var(--orange);margin-bottom:16px">Limited Spots Available</div>
+      <h2 class="final-cta-heading reveal">Ready to Trade with Direction<br>Instead of Guessing?</h2>
+      <p class="final-cta-sub reveal">Join hundreds of traders who've already taken control of their setups. Reserve your seat in the next live class — free to attend.</p>
+
+      <div class="final-cta-form reveal">
+        <div class="form-field">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="Your first name">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="your@email.com">
+        </div>
+        <button class="final-cta-submit">
+          Save My Spot &rarr;
+        </button>
+      </div>
+
+      <p class="final-cta-disclaimer">By registering you agree to receive class reminders and trading education emails. Unsubscribe anytime. We never share your information.</p>
+    </div>
+  </div>
+</section>
+-->
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"
+            style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;">
+        </div>
+        <div class="footer-tagline">Transformer Option Spreads Education</div>
+      </div>
+      <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+        <div>
+          <div
+            style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">
+            Contact</div>
+          <a href="mailto:support@navigationtrading.com"
+            style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
+        </div>
+        <div>
+          <div
+            style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">
+            Follow</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon"><svg width="14"
+                height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg></a>
+            <a href="https://x.com/navtrading1?s=21" target="_blank" class="social-icon"><svg width="13" height="13"
+                viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg></a>
+            <a href="https://www.instagram.com/navigationtrading" target="_blank" class="social-icon"><svg width="14"
+                height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.6)" stroke="none" />
+              </svg></a>
+            <a href="https://www.youtube.com/@navigationtrading" target="_blank" class="social-icon"><svg width="15"
+                height="15" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a1828" />
+              </svg></a>
+            <a href="https://www.linkedin.com/company/navigationtrading" target="_blank" class="social-icon"><svg
+                width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                <circle cx="4" cy="4" r="2" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <div
+            style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">
+            Legal</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk
+              Disclosure</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Privacy
+              Policy</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="text-align:center;padding:20px 0">
+      <div style="font-size:16px;font-weight:600;color:var(--orange);margin-bottom:10px">Transformer Option Spreads Education</div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" style="line-height:1.75;font-size:11.5px;color:rgba(255,255,255,0.3)">
+        The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities
+        involve risk and are not suitable for all investors. Consider all relevant risk factors, including their
+        personal financial situation, before trading. Past results of any individual or trading system published by
+        Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods,
+        techniques, or indicators presented in these products and services will be profitable or that they will not
+        result in losses – trading and/or investing in the stock and options market is risky due to the leverage
+        involved and may not be appropriate for all investors.
+      </div>
+      <div class="footer-copy">&copy; Navigation Financial, LLC</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── PROGRESS BAR ──
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+      bar.style.width = pct + '%';
+    });
+
+    // ── NAVBAR SCROLL ──
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── COUNTDOWN ──
+    function pad(n) { return String(n).padStart(2, '0') }
+    const targets = { d: 'cd-d', h: 'cd-h', m: 'cd-m', s: 'cd-s' };
+    const prev = { d: '', h: '', m: '', s: '' };
+    // Set target to 20 days + 4 hours + 5 minutes from now so it's always counting live
+    // const end = Date.now() + (20 * 24 * 3600 + 4 * 3600 + 5 * 60) * 1000;
+    // Set target to April 30, 2026
+    const end = new Date('2026-04-30T12:00:00-05:00').getTime();
+
+    function tick() {
+      const now = Date.now();
+      const diff = Math.max(0, end - now);
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const vals = { d: pad(d), h: pad(h), m: pad(m), s: pad(s) };
+      Object.entries(vals).forEach(([k, v]) => {
+        const el = document.getElementById(targets[k]);
+        el.textContent = v;
+        if (v !== prev[k]) {
+          el.classList.remove('tick');
+          void el.offsetWidth;
+          el.classList.add('tick');
+        }
+        prev[k] = v;
+      });
+    }
+    tick(); setInterval(tick, 1000);
+
+
+    // ── GLOBE CANVAS ──
+    const gc = document.getElementById('globe-canvas');
+    if (gc) {
+      const gctx = gc.getContext('2d');
+      function resizeGlobe() {
+        gc.width = gc.parentElement.offsetWidth;
+        gc.height = gc.parentElement.offsetHeight;
+      }
+      resizeGlobe(); window.addEventListener('resize', resizeGlobe);
+
+      const nodes = Array.from({ length: 18 }, () => ({
+        lat: (Math.random() - 0.5) * Math.PI,
+        lng: Math.random() * Math.PI * 2,
+        r: Math.random() * 3 + 2,
+      }));
+
+      let rot = 0;
+      function drawGlobe() {
+        const w = gc.width, h = gc.height, cx = w / 2, cy = h / 2;
+        const R = Math.min(w, h) * 0.42;
+        gctx.clearRect(0, 0, w, h);
+
+        // Glow
+        const grd = gctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+        grd.addColorStop(0, 'rgba(200,66,10,0.15)');
+        grd.addColorStop(1, 'rgba(200,66,10,0)');
+        gctx.beginPath(); gctx.arc(cx, cy, R, 0, Math.PI * 2);
+        gctx.fillStyle = grd; gctx.fill();
+
+        // Latitude lines
+        for (let lat = -60; lat <= 60; lat += 30) {
+          const latR = lat * Math.PI / 180;
+          const y = cy + R * Math.sin(latR);
+          const rx = R * Math.cos(latR);
+          gctx.beginPath();
+          gctx.ellipse(cx, y, rx, rx * 0.25, 0, 0, Math.PI * 2);
+          gctx.strokeStyle = 'rgba(255,255,255,0.07)';
+          gctx.lineWidth = 1; gctx.stroke();
+        }
+
+        // Longitude lines
+        for (let i = 0; i < 6; i++) {
+          const angle = (i / 6) * Math.PI + rot;
+          gctx.beginPath();
+          gctx.ellipse(cx, cy, R * Math.abs(Math.cos(angle)), R, 0, 0, Math.PI * 2);
+          gctx.strokeStyle = 'rgba(255,255,255,0.06)';
+          gctx.lineWidth = 1; gctx.stroke();
+        }
+
+        // Outer ring
+        gctx.beginPath(); gctx.arc(cx, cy, R, 0, Math.PI * 2);
+        gctx.strokeStyle = 'rgba(255,255,255,0.12)'; gctx.lineWidth = 1.5; gctx.stroke();
+
+        // Project nodes
+        const projected = nodes.map(n => {
+          const lng2 = n.lng + rot;
+          const x = cx + R * Math.cos(n.lat) * Math.sin(lng2);
+          const y = cy - R * Math.sin(n.lat);
+          const z = Math.cos(n.lat) * Math.cos(lng2);
+          return { x, y, z, r: n.r };
+        }).filter(n => n.z > 0);
+
+        // Connections
+        for (let i = 0; i < projected.length; i++) {
+          for (let j = i + 1; j < projected.length; j++) {
+            const d = Math.hypot(projected[i].x - projected[j].x, projected[i].y - projected[j].y);
+            if (d < R * 0.8) {
+              gctx.beginPath();
+              gctx.moveTo(projected[i].x, projected[i].y);
+              gctx.lineTo(projected[j].x, projected[j].y);
+              gctx.strokeStyle = `rgba(200,66,10,${0.3 * (1 - d / (R * 0.8))})`;
+              gctx.lineWidth = 1; gctx.stroke();
+            }
+          }
+        }
+
+        // Nodes
+        projected.forEach(n => {
+          gctx.beginPath(); gctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          gctx.fillStyle = 'rgba(200,66,10,0.9)'; gctx.fill();
+          gctx.beginPath(); gctx.arc(n.x, n.y, n.r + 3, 0, Math.PI * 2);
+          gctx.strokeStyle = 'rgba(200,66,10,0.3)'; gctx.lineWidth = 1; gctx.stroke();
+        });
+
+        rot += 0.005;
+        requestAnimationFrame(drawGlobe);
+      }
+      drawGlobe();
+    }
+
+    // ── SCROLL REVEAL ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // ── COUNT-UP STATS ──
+    const statNums = document.querySelectorAll('.stat-num[data-count]');
+    const statIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.done) {
+          e.target.dataset.done = '1';
+          const target = +e.target.dataset.count;
+          let start = 0;
+          const dur = 1600, step = 16;
+          const t = setInterval(() => {
+            start += target / (dur / step);
+            if (start >= target) { clearInterval(t); e.target.textContent = target + (target === 500 || target === 25 ? '+' : ''); }
+            else e.target.textContent = Math.floor(start) + (target === 500 || target === 25 ? '+' : '');
+          }, step);
+        }
+      });
+    }, { threshold: 0.5 });
+    statNums.forEach(el => statIO.observe(el));
+
+    /* ── REVIEWS CAROUSEL ── */
+    (function () {
+      const track = document.getElementById('reviewsTrack');
+      const dotsWrap = document.getElementById('reviewsDots');
+      const prevBtn = document.getElementById('reviewsPrev');
+      const nextBtn = document.getElementById('reviewsNext');
+      if (!track) return;
+
+      const cards = track.querySelectorAll('.review-card');
+      const total = cards.length;
+      // 3 visible on desktop, 1 on mobile
+      function visibleCount() { return window.innerWidth < 700 ? 1 : 3; }
+      let current = 0;
+
+      // Hide nav when all cards fit on screen
+      const nav = prevBtn.closest('.reviews-nav');
+      function updateNavVisibility() {
+        nav.style.display = total <= visibleCount() ? 'none' : '';
+      }
+      updateNavVisibility();
+      window.addEventListener('resize', updateNavVisibility);
+
+      // Build dots
+      for (let i = 0; i < total; i++) {
+        const d = document.createElement('button');
+        d.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+      }
+
+      function updateDots() {
+        dotsWrap.querySelectorAll('.reviews-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      function goTo(idx) {
+        const vc = visibleCount();
+        const maxIdx = Math.max(0, total - vc);
+        current = Math.min(Math.max(idx, 0), maxIdx);
+        // Calculate card width + gap
+        const cardEl = cards[0];
+        const gap = 24;
+        const cardW = cardEl.getBoundingClientRect().width;
+        track.style.transform = `translateX(-${current * (cardW + gap)}px)`;
+        updateDots();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+      window.addEventListener('resize', () => goTo(current));
+    })();
+
+    // ── FAQ ACCORDION ──
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    var submitted = false;
+
+    // Override ActiveCampaign thank-you to redirect to our custom page
+    function scrollToForm() {
+      const formWrap = document.getElementById('booking-form');
+      if (!formWrap) return;
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = formWrap.getBoundingClientRect().top;
+      const offsetPosition = elementRect - bodyRect - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+
+    window._show_thank_you = function (id, message, trackcmp_url, email) {
+      // Fire GA4 lead event with UTM source
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          utm_source: sessionStorage.getItem('utm_source') || '(direct)',
+          utm_medium: sessionStorage.getItem('utm_medium') || '(none)',
+          utm_campaign: sessionStorage.getItem('utm_campaign') || '(none)'
+        });
+      }
+      // Allow AC to finish its internal tracking, then redirect
+      setTimeout(function () {
+        window.location.href = 'thank-you-dtt.html';
+      }, 500);
+    };
+  </script>
+
+  <!--
+  <script>
+    window.cfields = [];
+    window._show_thank_you = function (id, message, trackcmp_url, email) {
+      setTimeout(function () {
+        window.location.href = 'thank-you-dtt.html';
+      }, 500);
+    };
+
+    window._show_error = function (id, message, html) {
+      var form = document.getElementById('_form_' + id + '_'),
+        err = document.createElement('div'),
+        button = form.querySelector('button[type="submit"]'),
+        old_error = form.querySelector('._form_error');
+      if (old_error) old_error.parentNode.removeChild(old_error);
+      err.innerHTML = message;
+      err.className = '_error-inner _form_error _no_arrow';
+      var wrapper = document.createElement('div');
+      wrapper.className = '_form-inner _show_be_error';
+      wrapper.appendChild(err);
+      button.parentNode.insertBefore(wrapper, button);
+      var submitButton = form.querySelector('[id^="_form"][id$="_submit"]');
+      submitButton.disabled = false;
+      submitButton.classList.remove('processing');
+      if (html) {
+        var div = document.createElement('div');
+        div.className = '_error-html';
+        div.innerHTML = html;
+        err.appendChild(div);
+      }
+    };
+
+    window._load_script = function (url, callback, isSubmit) {
+      var head = document.querySelector('head'),
+        script = document.createElement('script'),
+        r = false;
+      var submitButton = document.querySelector('#_form_126_submit');
+      script.charset = 'utf-8';
+      script.src = url;
+      if (callback) {
+        script.onload = script.onreadystatechange = function () {
+          if (!r && (!this.readyState || this.readyState == 'complete')) {
+            r = true;
+            callback();
+          }
+        };
+      }
+      script.onerror = function () {
+        if (isSubmit) {
+          if (script.src.length > 10000) {
+            _show_error("126", "Sorry, your submission failed. Please shorten your responses and try again.");
+          } else {
+            _show_error("126", "Sorry, your submission failed. Please try again.");
+          }
+          submitButton.disabled = false;
+          submitButton.classList.remove('processing');
+        }
+      };
+      head.appendChild(script);
+    };
+
+    (function () {
+      var addEvent = function (element, event, func) {
+        if (element.addEventListener) element.addEventListener(event, func);
+        else element['on' + event] = func;
+      };
+
+      var _form_serialize = function (form) {
+        if (!form || form.nodeName !== "FORM") { return }
+        var i, j, q = [];
+        for (i = 0; i < form.elements.length; i++) {
+          if (form.elements[i].name === "") { continue }
+          switch (form.elements[i].nodeName) {
+            case "INPUT":
+              switch (form.elements[i].type) {
+                case "text": case "hidden": case "password": case "button": case "reset": case "submit":
+                  q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                  break;
+                case "checkbox": case "radio":
+                  if (form.elements[i].checked) { q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value)) }
+                  break;
+              }
+              break;
+            case "TEXTAREA":
+              q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+              break;
+            case "SELECT":
+              switch (form.elements[i].type) {
+                case "select-one":
+                  q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].value));
+                  break;
+              }
+              break;
+          }
+        }
+        return q.join("&")
+      };
+
+      // Capture UTM parameters from URL and populate hidden fields
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        utmFields.forEach(function(key) {
+          var val = params.get(key);
+          if (val) {
+            sessionStorage.setItem(key, val);
+          }
+          var el = document.getElementById(key);
+          if (el) {
+            el.value = sessionStorage.getItem(key) || '';
+          }
+        });
+      })();
+
+      var form_to_submit = document.getElementById('_form_126_');
+      if (!form_to_submit) return;
+
+      addEvent(form_to_submit, 'submit', function (e) {
+        e.preventDefault();
+        var submitButton = document.getElementById('_form_126_submit');
+        submitButton.disabled = true;
+        submitButton.classList.add('processing');
+
+        var serialized = _form_serialize(form_to_submit);
+        _load_script('https://navigationtrading.activehosted.com/proc.php?' + serialized + '&jsonp=true', null, true);
+      });
+    })();
+  </script>
+  -->
+</body>
+
+</html>

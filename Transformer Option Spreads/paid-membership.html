@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Membership — NavigationTrading | The Complete Trading System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════
+   PRO TOKENS (Slightly Darker & Gold Weighted)
+   ══════════════════════════════════════ */
+:root {
+  --navy:      #050C16; /* Deep Midnight */
+  --navy-mid:  #081221;
+  --navy-deep: #03080F;
+  --navy-light:#0C1B30;
+  --blue:      #1e4d8c;
+  --blue-mid:  #163565;
+  --orange:    #c8420a;
+  --orange-lit:#e04d10;
+  --orange-glow: rgba(200,66,10,.32);
+  --gold:      #d4a040;
+  --gold-glow: rgba(212,160,64,.3);
+  --cream:     #f8fbff;
+  --white:     #ffffff;
+  --text-on-dark: rgba(255,255,255,.78);
+  --border-dark:  rgba(255,255,255,.06);
+}
+
+/* ══════════════════════════════════════
+   RESET & BASE
+   ══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #fff;
+  color: #111;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--navy-deep); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+/* ══════════════════════════════════════
+   COMPONENTS
+   ══════════════════════════════════════ */
+#progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--orange));
+  z-index: 2000; width: 0%; transition: width .1s linear;
+}
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+.eyebrow {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 2.5px; color: var(--gold);
+  margin-bottom: 14px;
+}
+.eyebrow.white { color: rgba(255,255,255,.6); }
+.section-head { text-align: center; margin-bottom: 64px; }
+.section-head .eyebrow { display: block; text-align: center; }
+.section-head h2 {
+  font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; letter-spacing: -.02em;
+  line-height: 1.1;
+}
+.section-head p {
+  margin-top: 18px; font-size: 16px; line-height: 1.7;
+  color: rgba(0,0,0,.6); max-width: 680px; margin-left: auto; margin-right: auto;
+}
+.section-head.light h2 { color: #fff; }
+.section-head.light p { color: rgba(255,255,255,.6); }
+
+/* Sticky Bar */
+.sticky-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+  background: linear-gradient(90deg, var(--navy-deep), var(--navy-mid));
+  border-top: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(16px);
+  transform: translateY(100%);
+  transition: transform .4s cubic-bezier(.22,.68,0,1.2);
+}
+.sticky-bar.visible { transform: translateY(0); }
+.sticky-inner {
+  max-width: 1180px; margin: 0 auto; padding: 14px 48px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.sticky-text { color: rgba(255,255,255,.85); font-size: 14px; font-weight: 500; }
+.sticky-text strong { color: #fff; }
+.btn-sticky {
+  background: var(--gold); color: #fff;
+  padding: 11px 28px; border-radius: 6px;
+  font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap;
+  transition: background .2s, box-shadow .2s;
+}
+.btn-sticky:hover { background: #e5b252; box-shadow: 0 6px 20px rgba(212,160,64,.3); }
+
+/* Buttons */
+.btn-nav-pro {
+  background: var(--gold); color: #fff;
+  padding: 10px 24px; border-radius: 6px; font-size: 13px;
+  font-weight: 700; text-decoration: none; letter-spacing: .4px;
+  transition: all .2s; display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-nav-pro:hover { background: #e5b252; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,160,64,.3); }
+
+/* ══════════════════════════════════════
+   NAVBAR
+   ══════════════════════════════════════ */
+.nav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 60px;
+  transition: all .35s ease;
+}
+.nav.scrolled {
+  background: rgba(5,12,22,.97);
+  backdrop-filter: blur(20px);
+  padding: 13px 60px;
+  box-shadow: 0 2px 40px rgba(0,0,0,.5);
+}
+.nav-logo { height: 34px; width: auto; filter: brightness(1.1); }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-link {
+  color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500;
+  text-decoration: none; transition: color .2s;
+}
+.nav-link:hover { color: #fff; }
+
+/* ══════════════════════════════════════
+   SECTION 1 — HERO
+   ══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  background-image: url("WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg");
+  background-size: cover; background-position: center;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: 
+    linear-gradient(135deg, rgba(5,12,22,.98) 0%, rgba(5,12,22,.88) 55%, rgba(5,12,22,.96) 100%);
+}
+.hero-glow {
+  position: absolute; z-index: 2; width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,160,64,.12) 0%, transparent 70%);
+  top: -200px; right: -150px;
+}
+.hero-inner {
+  position: relative; z-index: 5;
+  max-width: 1180px; margin: 0 auto; padding: 110px 48px 80px;
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(212,160,64,.1); border: 1px solid rgba(212,160,64,.25);
+  border-radius: 50px; padding: 8px 20px; margin-bottom: 24px;
+}
+.badge-star { color: var(--gold); font-size: 14px; }
+.hero-badge span { color: var(--gold); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; }
+
+.hero-headline {
+  font-size: clamp(38px, 4.5vw, 68px);
+  font-weight: 800; color: #fff; line-height: 1.05; letter-spacing: -.03em;
+  margin-bottom: 24px;
+}
+.hero-headline span {
+  background: linear-gradient(120deg, #fff 30%, var(--gold) 90%);
+  -webkit-background-clip: text; 
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: 18px; color: var(--text-on-dark); line-height: 1.7;
+  max-width: 560px; margin-bottom: 40px;
+}
+
+.hero-cta-box { display: flex; flex-direction: column; gap: 16px; }
+.btn-hero {
+  background: var(--gold); color: #fff;
+  padding: 20px 48px; border-radius: 10px; font-size: 18px; font-weight: 800;
+  text-decoration: none; text-align: center;
+  transition: all .3s cubic-bezier(.175,.885,.32,1.275);
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.btn-hero:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 25px 50px rgba(212,160,64,.25); }
+.hero-trust-bar {
+  text-align: center; font-size: 13px; color: rgba(255,255,255,.45);
+  font-weight: 500; letter-spacing: .5px;
+}
+
+/* ══════════════════════════════════════
+   SECTION 2 — THE PROMISE
+   ══════════════════════════════════════ */
+.promise { padding: 100px 0; background: #fff; position: relative; overflow: hidden; }
+.promise-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.promise-left .big-statement {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 3.5vw, 52px); font-weight: 600;
+  color: var(--navy); line-height: 1.15; letter-spacing: -.02em;
+}
+.promise-left .big-statement em { font-style: italic; color: var(--gold); }
+.promise-right p { font-size: 17px; line-height: 1.8; color: #444; margin-bottom: 24px; }
+.promise-right strong { color: var(--navy); font-weight: 700; }
+
+/* ══════════════════════════════════════
+   SECTION 3 — TIMELINE (Daily Schedule)
+   ══════════════════════════════════════ */
+.timeline-section { background: #06101e; padding: 120px 0; }
+.timeline-section .section-head h2 { color: #fff; }
+.timeline-section .section-head p { color: rgba(255,255,255,.55); }
+.timeline-wrap {
+  position: relative; max-width: 900px; margin: 60px auto 0;
+  padding-left: 100px;
+}
+.timeline-line {
+  position: absolute; left: 131px; top: 0; bottom: 0;
+  width: 2px; background: rgba(255,255,255,.08);
+}
+.timeline-line-filled {
+  position: absolute; left: 131px; top: 0; width: 2px; height: 0;
+  background: linear-gradient(to bottom, var(--gold), rgba(212,160,64,.4));
+  z-index: 1; transition: height 1.2s ease; pointer-events: none;
+}
+.timeline-item { position: relative; margin-bottom: 60px; padding-left: 60px; }
+.timeline-time {
+  position: absolute; left: -100px; top: 0;
+  font-size: 14px; font-weight: 800; color: var(--gold);
+  width: 80px; text-align: right;
+}
+.timeline-dot {
+  position: absolute; left: 26px; top: 3px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #06101e; border: 3px solid var(--gold);
+  z-index: 2; box-shadow: 0 0 10px var(--gold-glow);
+  transition: background .4s, box-shadow .4s;
+}
+.timeline-item.active .timeline-dot {
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(212,160,64,.2), 0 0 16px var(--gold-glow);
+}
+.timeline-item.active h3 { color: #fff; }
+.timeline-item h3 { font-size: 20px; font-weight: 800; color: rgba(255,255,255,.7); margin-bottom: 8px; transition: color .3s; }
+.timeline-item.active h3 { color: #fff; }
+.timeline-item p { font-size: 15px; color: rgba(255,255,255,.4); line-height: 1.7; transition: color .3s; }
+.timeline-item.active p { color: rgba(255,255,255,.65); }
+.timeline-status-badge {
+  display: inline-block; margin-top: 10px; font-size: 10px; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 50px;
+  color: var(--gold); background: rgba(212,160,64,.12); border: 1px solid rgba(212,160,64,.25);
+}
+.badge-live {
+  color: #fff; background: rgba(220,50,50,.85); border-color: rgba(220,50,50,.5);
+  animation: livePulse 1.6s ease-in-out infinite;
+}
+.badge-upcoming { color: var(--gold); background: rgba(212,160,64,.12); border-color: rgba(212,160,64,.3); }
+.badge-done { color: rgba(255,255,255,.5); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
+@keyframes livePulse { 0%,100%{ box-shadow:0 0 0 0 rgba(220,50,50,.4); } 50%{ box-shadow:0 0 0 6px rgba(220,50,50,0); } }
+.timeline-item.past .timeline-dot { background: rgba(212,160,64,.5); border-color: rgba(212,160,64,.5); }
+.timeline-item.past h3 { color: rgba(255,255,255,.35); }
+.timeline-item.past p { color: rgba(255,255,255,.2); }
+
+/* ══════════════════════════════════════
+   SECTION 5 — STRATEGY LIBRARY (REDESIGNED)
+   ══════════════════════════════════════ */
+.library { padding: 140px 0; background: var(--navy-deep); position: relative; overflow: hidden; }
+.library::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 10%, rgba(212,160,64,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.lib-cat-group { margin-bottom: 100px; }
+.lib-cat-group:last-child { margin-bottom: 0; }
+
+.cat-header {
+  display: flex; align-items: flex-end; gap: 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding-bottom: 24px; margin-bottom: 48px;
+}
+.cat-info h3 { color: #fff; font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+.cat-info p { color: var(--gold); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+
+.strategy-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.strategy-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px; padding: 32px;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex; flex-direction: column; height: 100%;
+}
+.strategy-card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(212,160,64,0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+.strategy-card h4 {
+  color: #fff; font-size: 18px; font-weight: 800;
+  margin-bottom: 16px; line-height: 1.3;
+}
+.strategy-card p {
+  color: rgba(255,255,255,0.5); font-size: 14px;
+  line-height: 1.6; margin-bottom: 20px;
+}
+.strategy-card .tag {
+  display: inline-block; padding: 4px 12px; border-radius: 4px;
+  background: rgba(212,160,64,0.1); color: var(--gold);
+  font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px; margin-top: auto; align-self: flex-start;
+}
+
+@media (max-width: 1100px) {
+  .strategy-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .strategy-grid { grid-template-columns: 1fr; }
+  .cat-header { flex-direction: column; align-items: flex-start; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 8 — COMPARISON TABLE
+   ══════════════════════════════════════ */
+.comparison { padding: 120px 0; background: var(--cream); }
+.comp-table-wrap {
+  margin-top: 60px; overflow-x: auto;
+  border-radius: 24px; border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 30px 80px rgba(0,0,0,.08);
+}
+table { width: 100%; border-collapse: collapse; min-width: 620px; background: #fff; border-radius: 24px; overflow: hidden; }
+/* Header rows */
+th { padding: 20px 28px; text-align: center; border-bottom: 1px solid rgba(0,0,0,.07); }
+th:first-child { text-align: left; }
+th.col-feature { background: #f4f5f8; font-size: 11px; font-weight: 800; color: #aaa; text-transform: uppercase; letter-spacing: 1.5px; }
+th.col-dt { background: #f4f5f8; }
+.col-dt-label { font-size: 14px; font-weight: 800; color: var(--navy); display: block; }
+.col-dt-price { font-size: 11px; color: #999; font-weight: 600; display: block; margin-top: 2px; }
+/* Pro col header */
+th.pro-col {
+  background: linear-gradient(160deg, rgba(212,160,64,.12) 0%, rgba(212,160,64,.04) 100%) !important;
+  border-left: 1.5px solid rgba(212,160,64,.22);
+  border-right: 1.5px solid rgba(212,160,64,.22);
+  vertical-align: top;
+}
+.pro-col-label { font-size: 14px; font-weight: 800; color: var(--navy); display: block; margin-bottom: 2px; }
+.pro-col-price { font-size: 11px; color: var(--gold); font-weight: 700; display: block; }
+/* Data rows */
+td { padding: 18px 28px; text-align: center; border-bottom: 1px solid rgba(0,0,0,.05); font-size: 14px; color: #555; transition: background .15s; }
+td:first-child { text-align: left; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: rgba(0,0,0,.012); }
+tr:hover td { background: rgba(0,0,0,.025); }
+tr:hover td.pro-col { background: rgba(212,160,64,.12); }
+/* Feature column */
+.feat-name { font-size: 14px; font-weight: 700; color: var(--navy); display: block; }
+.feat-sub  { font-size: 12px; color: #aaa; display: block; margin-top: 2px; font-weight: 400; }
+/* Pro data column */
+td.pro-col {
+  background: rgba(212,160,64,.05);
+  border-left: 1.5px solid rgba(212,160,64,.2);
+  border-right: 1.5px solid rgba(212,160,64,.2);
+  font-weight: 700;
+}
+tr:nth-child(even) td.pro-col { background: rgba(212,160,64,.08); }
+tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
+/* Pro badge */
+.pro-badge {
+  background: var(--gold); color: #fff; font-size: 10px; padding: 5px 12px;
+  border-radius: 50px; display: inline-block; margin-bottom: 10px;
+  text-transform: uppercase; letter-spacing: 1px; font-weight: 800;
+  box-shadow: 0 4px 14px rgba(212,160,64,.4);
+}
+/* Check marks */
+.check { color: #22c55e; font-weight: 900; font-size: 18px; }
+.check-pro { color: var(--gold); font-weight: 900; font-size: 18px; }
+.dash { color: rgba(0,0,0,.15); font-size: 22px; font-weight: 300; }
+/* Value Callout Box */
+.value-callout {
+  background: linear-gradient(135deg, rgba(212,160,64,.06) 0%, rgba(255,255,255,.9) 100%);
+  border: 2px solid var(--gold);
+  border-radius: 20px; padding: 44px 48px; margin-top: 48px; text-align: center;
+  box-shadow: 0 8px 40px rgba(212,160,64,.15);
+}
+.value-callout p { font-size: 16px; color: var(--navy); line-height: 1.85; font-weight: 500; max-width: 780px; margin: 0 auto; }
+/* Section 6 — Tools (image as full section bg) */
+.tools-section { padding: 120px 0; background: #fff; }
+/* Left/right split */
+.tools-split { display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; margin-top: 64px; }
+.tool-feature-row { display: flex; align-items: flex-start; gap: 20px; padding: 28px 0; border-bottom: 1px solid rgba(0,0,0,.06); }
+.tool-feature-row:last-child { border-bottom: none; }
+.tool-feat-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--navy); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tool-feat-icon svg { width: 22px; height: 22px; }
+.tool-feat-title { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.tool-feat-desc { font-size: 14px; color: #666; line-height: 1.75; margin-bottom: 14px; }
+.tool-feat-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+.tool-feat-pill { font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 50px; background: rgba(5,12,22,.06); color: var(--navy); border: 1px solid rgba(5,12,22,.1); }
+/* Right stat panel */
+.tools-stats-panel { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 100px; }
+.tools-stat-card {
+  background: linear-gradient(145deg, #fffbf2 0%, #fff9ed 100%);
+  border: 1px solid rgba(212,160,64,.3);
+  border-radius: 18px; padding: 24px 22px;
+  box-shadow: 0 4px 20px rgba(212,160,64,.12);
+  position: relative; overflow: hidden;
+}
+.tools-stat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--orange));
+}
+.tools-stat-num { font-family: 'Cormorant Garamond',serif; font-size: 42px; font-weight: 700; color: var(--gold); line-height: 1; display: block; }
+.tools-stat-label { font-size: 10px; color: #b8922a; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; display: block; font-weight: 700; }
+.tools-stat-sub { font-size: 12.5px; color: #7a6535; margin-top: 9px; line-height: 1.6; display: block; border-top: 1px solid rgba(212,160,64,.18); padding-top: 9px; }
+@media (max-width: 1080px) { .tools-split { grid-template-columns: 1fr; } .tools-stats-panel { flex-direction: row; flex-wrap: wrap; position: static; } .tools-stat-card { flex: 1; min-width: 160px; } }
+
+/* ══════════════════════════════════════
+   UTILITIES & ANIMATIONS
+   ══════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(30px); transition: all .8s cubic-bezier(.22,.61,.36,1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-stats { justify-content: center; }
+  .timeline-wrap { padding-left: 40px; }
+  .timeline-line { left: 70px; }
+  .timeline-line-filled { left: 70px; }
+  .timeline-time { display: none; }
+  .lib-grid { grid-template-columns: 1fr; }
+  .promise-layout { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 9 — RESULTS (ORBITAL DESIGN)
+   ══════════════════════════════════════ */
+.results-pro { background: var(--navy-deep); padding: 120px 0; position: relative; overflow: hidden; }
+
+.orbital-scene-pro {
+  position: relative;
+  width: 100%; max-width: 1100px;
+  height: 560px;
+  margin: 64px auto 0;
+}
+.oc-svg-pro {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 2;
+  overflow: visible;
+}
+.oc-line-pro {
+  fill: none;
+  stroke: rgba(212,160,64,.3);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 6;
+  stroke-linecap: round;
+}
+.oc-dot-svg-pro {
+  fill: var(--gold);
+  filter: drop-shadow(0 0 5px rgba(212,160,64,.8));
+}
+.oc-center-pro {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3; display: flex; align-items: center; justify-content: center;
+}
+.oc-logo-pro {
+  position: relative; z-index: 2;
+  width: 22px; height: auto;
+  transform: scale(13);
+  filter: brightness(1.1) drop-shadow(0 0 16px rgba(212,160,64,.5)) sepia(1) saturate(10) hue-rotate(5deg);
+}
+.oi-item-pro { position: absolute; width: 260px; z-index: 4; }
+.oi-item-1 { top: 15px; left: 130px; text-align: left; }
+.oi-item-2 { top: 205px; left: 10px; text-align: left; }
+.oi-item-3 { top: 395px; left: 130px; text-align: left; }
+.oi-item-4 { top: 15px; right: 130px; text-align: left; }
+.oi-item-5 { top: 205px; right: 10px; text-align: left; }
+.oi-item-6 { top: 395px; right: 130px; text-align: left; }
+
+.oi-verb-pro {
+  display: block; font-size: 11px; font-weight: 800; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+}
+.oi-item-pro h4 { font-size: 18px; color: #fff; margin-bottom: 8px; font-weight: 800; line-height: 1.25; }
+.oi-item-pro p { font-size: 13.5px; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+@media (max-width: 960px) {
+  .orbital-scene-pro { height: auto; display: flex; flex-direction: column; align-items: center; }
+  .oc-svg-pro { display: none; }
+  .oc-center-pro { position: relative; transform: none; left: auto; top: auto; margin-bottom: 40px; }
+  .oi-item-pro { position: static; width: 100%; text-align: left !important; margin-bottom: 30px; padding: 0 20px; }
+}
+
+/* Instructor Section */
+.instructor { padding: 120px 0; background: #fff; }
+.instructor-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.instructor-img-box { position: relative; }
+.instructor-img { width: 100%; border-radius: 20px; box-shadow: 0 40px 80px rgba(0,0,0,0.1); }
+.cred-box { margin-top: 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.cred-item { background: var(--cream); padding: 20px; border-radius: 12px; text-align: center; }
+.cred-num { font-size: 24px; font-weight: 800; color: var(--gold); display: block; }
+.cred-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-top: 4px; }
+
+/* RE-ADDED MISSING STYLES FOR NEW SECTIONS */
+.info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; }
+.info-card {
+  background: #fff; padding: 40px; border-radius: 20px;
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 4px 24px rgba(13,46,78,.05);
+  transition: all .3s ease;
+}
+.info-card:hover {
+  border-color: rgba(212,160,64,.3);
+  box-shadow: 0 16px 48px rgba(0,0,0,.09);
+  transform: translateY(-4px);
+}
+.info-card-icon {
+  width: 48px; height: 48px; border-radius: 13px;
+  background: rgba(212,160,64,.1); border: 1px solid rgba(212,160,64,.25);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.info-card-icon svg { width: 22px; height: 22px; color: var(--gold); }
+.info-card h3 { color: var(--navy); margin-bottom: 12px; font-weight: 800; font-size: 18px; }
+.info-card p { font-size: 15px; color: #555; line-height: 1.78; }
+
+/* ── WHO FOR: dark glass cards ── */
+.for-not-for { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+.fnf-box { padding: 40px; border-radius: 24px; }
+.fnf-box.pro {
+  background: rgba(212,160,64,.04);
+  border: 1px solid rgba(212,160,64,.18);
+}
+.fnf-box.not {
+  background: rgba(200,66,10,.03);
+  border: 1px solid rgba(200,66,10,.15);
+}
+.fnf-box h3 { color: #fff !important; font-size: 20px; font-weight: 800; }
+.fnf-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 18px; }
+.fnf-item { position: relative; padding-left: 32px; }
+.fnf-item strong { color: rgba(255,255,255,.9); display: block; margin-bottom: 4px; font-size: 15px; }
+.fnf-item span { color: rgba(255,255,255,.45); font-size: 14px; line-height: 1.7; display: block; }
+.fnf-item::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 900; font-size: 16px; }
+.fnf-box.not .fnf-item::before { content: '×'; color: var(--orange); font-size: 18px; }
+
+/* ══════════════════════════════════════
+   LIBRARY ACCORDION
+   ══════════════════════════════════════ */
+.lib-cat-group { margin-bottom: 20px; }
+.lib-cat-group:last-child { margin-bottom: 0; }
+.lib-cat-toggle {
+  width: 100%; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 18px; cursor: pointer; display: flex; align-items: center; gap: 18px;
+  padding: 22px 28px; text-align: left;
+  transition: background .3s, border-color .3s;
+}
+.lib-cat-toggle:hover { background: rgba(255,255,255,.055); border-color: rgba(212,160,64,.2); }
+.lib-cat-toggle.open { background: rgba(212,160,64,.05); border-color: rgba(212,160,64,.28); }
+.lib-cat-toggle-icon { font-size: 24px; flex-shrink: 0; }
+.lib-cat-toggle-info { flex: 1; }
+.lib-cat-toggle-info h3 { color: #fff; font-size: 20px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; }
+.lib-cat-toggle-info p { color: var(--gold); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+.lib-cat-count { font-size: 12px; color: rgba(255,255,255,.28); font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+.lib-cat-chevron { flex-shrink: 0; color: rgba(255,255,255,.35); transition: transform .38s ease, color .3s; }
+.lib-cat-toggle.open .lib-cat-chevron { transform: rotate(180deg); color: var(--gold); }
+.lib-cat-body { max-height: 0; overflow: hidden; transition: max-height .55s cubic-bezier(0,1,0.5,1); }
+.lib-cat-toggle.open ~ .lib-cat-body { max-height: 2400px; transition: max-height .85s ease-in-out; }
+.lib-cat-body-inner { padding: 28px 0 12px; }
+
+/* ══════════════════════════════════════
+   SECTION 6 — TOOLS (WHITE PREMIUM)
+   ══════════════════════════════════════ */
+.tools-section { padding: 120px 0; background: #fff; }
+.tools-premium-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 56px; }
+.tool-card-premium {
+  background: #fff; border: 1px solid rgba(0,0,0,.07);
+  border-radius: 22px; overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.05);
+  transition: all .3s cubic-bezier(.22,.61,.36,1);
+}
+.tool-card-premium:hover {
+  border-color: rgba(212,160,64,.35);
+  box-shadow: 0 20px 56px rgba(0,0,0,.1);
+  transform: translateY(-7px);
+}
+.tool-card-header {
+  background: linear-gradient(135deg, #050e1e 0%, #0d2040 100%);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.tool-card-header::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), rgba(212,160,64,.2));
+}
+.tool-icon-wrap {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: rgba(212,160,64,.15); border: 1px solid rgba(212,160,64,.3);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+}
+.tool-icon-wrap svg { width: 24px; height: 24px; color: var(--gold); stroke-width: 1.75; fill: none; }
+.tool-card-header h3 { color: #fff; font-size: 17px; font-weight: 800; line-height: 1.35; }
+.tool-card-body { padding: 28px; }
+.tool-card-body p { color: #555; font-size: 14.5px; line-height: 1.78; margin-bottom: 20px; }
+.tool-feature-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.tool-feature-pill {
+  font-size: 11px; font-weight: 700; letter-spacing: .5px; padding: 5px 12px;
+  border-radius: 50px; background: rgba(212,160,64,.08);
+  border: 1px solid rgba(212,160,64,.2); color: var(--gold);
+}
+@media (max-width: 900px) { .tools-premium-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════
+   SECTION 10 — INSTRUCTOR SPEAKER CARD
+   ══════════════════════════════════════ */
+.instructor-section { padding: 120px 0; background: #06101e; }
+.instructor-section .section-head h2 { color: #fff; }
+.instructor-section .section-head p { color: rgba(255,255,255,.55); }
+.instructor-layout-pro { display: grid; grid-template-columns: 380px 1fr; gap: 60px; align-items: start; }
+.instructor-img-card {
+  border-radius: 24px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.07);
+}
+.instructor-img-wrap-pro { position: relative; }
+.instructor-img-wrap-pro img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: top; }
+.instructor-gold-bar {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--gold));
+}
+.instructor-card-footer { padding: 26px 28px; background: rgba(255,255,255,.02); }
+.instructor-card-name { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 3px; }
+.instructor-card-role { font-size: 12px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 22px; }
+.instructor-stats-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+.i-stat {
+  padding: 14px 12px; border-radius: 12px; text-align: center;
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+}
+.i-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--gold); display: block; line-height: 1; margin-bottom: 3px; }
+.i-stat-label { font-size: 10px; color: rgba(255,255,255,.38); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.instructor-bio-card-pro {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 24px; padding: 48px;
+}
+.instructor-bio-lead { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: rgba(255,255,255,.85); line-height: 1.55; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.instructor-bio-body p { color: rgba(255,255,255,.6); font-size: 15px; line-height: 1.85; margin-bottom: 18px; }
+.instructor-bio-body p:last-child { margin-bottom: 0; }
+.instructor-creds-list { margin-top: 36px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,.07); display: flex; flex-direction: column; gap: 16px; }
+.instructor-cred-row { display: flex; align-items: flex-start; gap: 14px; }
+.instructor-cred-badge {
+  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(212,160,64,.12); border: 1px solid rgba(212,160,64,.28);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--gold); font-weight: 900; margin-top: 1px;
+}
+.instructor-cred-row h4 { font-size: 14.5px; color: #fff; font-weight: 700; margin-bottom: 2px; }
+.instructor-cred-row p { font-size: 13px; color: rgba(255,255,255,.42); margin: 0; line-height: 1.65; }
+@media (max-width: 960px) {
+  .instructor-layout-pro { grid-template-columns: 1fr; }
+  .instructor-img-wrap-pro img { aspect-ratio: 4/3; }
+  .instructor-bio-card-pro { padding: 32px; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 11 — SOCIAL PROOF
+   ══════════════════════════════════════ */
+.reviews-section { padding: 120px 0; background: var(--cream); }
+.reviews-intro { text-align: center; font-size: 15px; color: var(--navy); margin-bottom: 48px; }
+
+/* Carousel */
+.reviews-carousel-wrap { overflow: hidden; position: relative; }
+.reviews-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform; padding-bottom: 8px; }
+
+.review-card {
+  flex: 0 0 calc(33.333% - 16px);
+  min-width: 320px;
+  background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  overflow: hidden; position: relative; transition: box-shadow 0.3s, transform 0.3s;
+  border-radius: 20px;
+}
+.review-card:hover { box-shadow: 0 14px 44px rgba(0, 0, 0, 0.13); transform: translateY(-5px); }
+
+.review-card-header { padding: 24px 24px 18px; display: flex; align-items: center; gap: 14px; position: relative; border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
+.review-quote-icon { position: absolute; top: 18px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 38px; line-height: 1; color: var(--gold); opacity: 0.65; }
+.review-avatar { width: 54px; height: 54px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 700; color: #fff; font-size: 16px; }
+
+.rv-av-1 { background: linear-gradient(135deg, var(--navy), #0a2040); }
+.rv-av-2 { background: linear-gradient(135deg, var(--gold), #b38630); }
+.rv-av-3 { background: linear-gradient(135deg, #2a7a6a, var(--navy)); }
+
+.review-header-info { flex: 1; min-width: 0; }
+.review-name { font-size: 14px; font-weight: 700; color: #111; margin-bottom: 2px; }
+.review-role { font-size: 12px; color: #888; }
+
+.review-company-badge {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 6px;
+  background: var(--cream); border: 1px solid rgba(0, 0, 0, 0.1); padding: 4px 9px;
+  font-size: 10px; font-weight: 700; color: #555; letter-spacing: 0.8px;
+}
+.review-company-badge svg { width: 12px; height: 12px; color: var(--gold); }
+
+.review-stars-row { padding: 14px 24px 0; display: flex; gap: 2px; }
+.review-stars-row span { color: var(--gold); font-size: 14px; }
+
+.review-before { padding: 14px 24px 18px; border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
+.review-after { padding: 14px 24px 22px; background: var(--navy-deep); }
+.rv-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 7px; }
+.review-before .rv-label { color: #888; }
+.review-after .rv-label { color: rgba(255, 255, 255, 0.35); }
+.review-before p { font-size: 13.5px; line-height: 1.65; color: #555; font-style: italic; margin: 0; }
+.review-after p { font-size: 13.5px; line-height: 1.65; color: rgba(255, 255, 255, 0.82); font-style: italic; margin: 0; }
+
+.reviews-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 40px; }
+.reviews-nav-btn {
+  width: 42px; height: 42px; border-radius: 50%; border: 2px solid rgba(0, 0, 0, 0.15);
+  background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; color: #111;
+}
+.reviews-nav-btn:hover { border-color: var(--gold); background: var(--gold); color: #fff; }
+.reviews-nav-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+.reviews-dots { display: flex; gap: 8px; }
+.reviews-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0, 0, 0, 0.18); border: none; cursor: pointer; transition: all 0.25s; padding: 0; }
+.reviews-dot.active { background: var(--gold); transform: scale(1.3); }
+
+@media (max-width: 1024px) { .review-card { flex: 0 0 calc(50% - 12px); } }
+@media (max-width: 768px) { .review-card { flex: 0 0 100%; min-width: 0; } }
+
+/* ══════════════════════════════════════
+   SECTION 12 — FAQ (DARK)
+   ══════════════════════════════════════ */
+.faq { background: #04080f; padding: 120px 0; }
+.faq-layout { display: grid; grid-template-columns: 360px 1fr; gap: 80px; align-items: start; }
+.faq-left { position: sticky; top: 100px; }
+.faq-left h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -.02em; margin-top: 10px; margin-bottom: 16px; }
+.faq-left p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.75; margin-bottom: 32px; }
+.faq-contact { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+.faq-contact-icon { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; background: rgba(212,160,64,.14); border: 1px solid rgba(212,160,64,.25); display: flex; align-items: center; justify-content: center; }
+.faq-contact-icon svg { width: 16px; height: 16px; color: var(--gold); }
+.faq-contact-text strong { display: block; font-size: 13px; color: #fff; font-weight: 700; }
+.faq-contact-text span { font-size: 12px; color: rgba(255,255,255,.4); }
+
+.faq-right { display: flex; flex-direction: column; gap: 8px; }
+.faq-item { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; overflow: hidden; transition: border-color .25s, background .25s; }
+.faq-item.open { background: rgba(255,255,255,.05); border-color: rgba(212,160,64,.32); }
+.faq-q { padding: 22px 28px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 16px; font-weight: 700; color: #fff; user-select: none; }
+.faq-q:hover { color: rgba(255,255,255,.8); }
+.faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(212,160,64,.1); border: 1px solid rgba(212,160,64,.22); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; color: var(--gold); transition: transform .3s, background .3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(212,160,64,.22); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-a-inner { padding: 0 28px 24px; font-size: 14.5px; color: rgba(255,255,255,.55); line-height: 1.75; }
+
+@media (max-width: 1024px) {
+  .faq-layout { grid-template-columns: 1fr; gap: 48px; }
+  .faq-left { position: static; }
+}
+
+/* ══════════════════════════════════════
+   SECTION 13 — FINAL CTA (MESH GRADIENT)
+   ══════════════════════════════════════ */
+.final-cta {
+  position: relative; padding: 160px 0;
+  text-align: center; overflow: hidden;
+  background:
+    radial-gradient(ellipse at 10% 80%, rgba(200,66,10,.22) 0%, transparent 42%),
+    radial-gradient(ellipse at 90% 8%, rgba(22,53,140,.28) 0%, transparent 38%),
+    radial-gradient(ellipse at 50% 45%, rgba(212,160,64,.1) 0%, transparent 55%),
+    #071020;
+}
+.final-cta::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 2;
+  background: linear-gradient(90deg, transparent, rgba(212,160,64,.45) 30%, rgba(200,66,10,.4) 65%, transparent);
+}
+.final-cta-blob-a {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(200,66,10,.08) 0%, transparent 65%);
+  top: -200px; left: -150px; animation: blobPulse 9s ease-in-out infinite;
+}
+.final-cta-blob-b {
+  position: absolute; width: 500px; height: 500px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(22,53,140,.14) 0%, transparent 65%);
+  bottom: -150px; right: -100px; animation: blobPulse 12s ease-in-out 3s infinite reverse;
+}
+@keyframes blobPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08) translateY(-20px); } }
+.final-cta-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+.final-cta h2 {
+  font-size: clamp(32px, 4vw, 52px); font-weight: 900;
+  color: #fff; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 24px;
+}
+.final-cta p { font-size: 18px; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 48px; }
+.btn-final {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gold); color: #fff;
+  padding: 22px 56px; border-radius: 12px; text-decoration: none;
+  font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+  transition: all .3s cubic-bezier(.175,.885,.32,1.275);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.btn-final:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 25px 50px rgba(212,160,64,0.3); background: #e5b252; }
+.final-note { margin-top: 28px; font-size: 14px; color: rgba(255,255,255,.45); font-weight: 500; }
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+footer {
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 80px 60px 100px;
+  position: relative; overflow: hidden;
+}
+footer::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+  opacity: 0.05; pointer-events: none;
+}
+footer > .footer-top,
+footer > .footer-bottom { position: relative; z-index: 1; }
+.footer-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.07);
+  gap: 40px; flex-wrap: wrap;
+}
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 5px; }
+.footer-tagline { color: rgba(255,255,255,.35); font-size: 13px; margin-top: 12px; }
+.footer-links { display: flex; gap: 40px; align-items: center; }
+.footer-links a { color: rgba(255,255,255,.45); font-size: 13px; text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 24px; flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { color: rgba(255,255,255,.2); font-size: 12px; }
+.social-icon {
+  width: 32px; height: 32px; border-radius: 6px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center; transition: background .2s;
+}
+.social-icon:hover { background: rgba(212,160,64,.3); }
+.footer-link { color: rgba(255,255,255,.45); font-size: 13px; text-decoration: none; transition: color .2s; }
+.footer-link:hover { color: var(--gold); }
+
+@media (max-width: 768px) {
+  footer { padding: 60px 24px 100px; }
+  .footer-top { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- STICKY CTA BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-inner">
+    <div class="sticky-text">
+      <strong>Pro Membership</strong> — 17+ Strategies, Daily Live Streams, Full Trade Alerts
+    </div>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <span style="color:#fff; font-weight:800; font-size:18px;">$179/mo</span>
+      <a href="#" class="btn-sticky">Get Pro Access</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="navbar">
+  <a href="/" style="display:inline-block; line-height:0;"><img src="logo.png" alt="NavigationTrading" class="nav-logo" style="height:40px; transform:scale(5); transform-origin:left center;"></a>
+  <div class="nav-right">
+    <a href="#strategies" class="nav-link">Strategies</a>
+    <a href="#tools" class="nav-link">Tools</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="#" class="btn-nav-pro">Join Pro — $179</a>
+  </div>
+</nav>
+
+<!-- SECTION 1 — HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="badge-star">★</span>
+        <span>Most Popular</span>
+      </div>
+      <h1 class="hero-headline">
+        One Membership.<br>
+        Every Strategy.<br>
+        <span>Nothing Held Back.</span>
+      </h1>
+      <p class="hero-sub">
+        Get instant access to 17+ proven options strategies, daily live trading streams, real-time trade alerts for every strategy we teach, and custom chart indicators built by our team — all in one Pro membership. This is everything NavigationTrading has built, in one place.
+      </p>
+      <div class="hero-cta-box">
+        <a href="#" class="btn-hero">
+          Get Pro Access — $179/month
+        </a>
+        <div class="hero-trust-bar">
+          200+ Active Members  |  ★★★★★ 4.8 Rating  |  Most Popular Plan
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — THE PROMISE -->
+<section class="promise">
+  <div class="container">
+    <div class="promise-layout">
+      <div class="promise-left reveal">
+        <span class="eyebrow">Why Pro Exists</span>
+        <h2 class="big-statement">Stop Trading With <em>Half the Playbook</em></h2>
+      </div>
+      <div class="promise-right reveal">
+        <p>Here's what most traders get wrong. They learn one strategy — maybe two — and try to force it in every market condition. Bullish market? Same strategy. Sideways chop? Same strategy. Volatile selloff? Same strategy. And then they wonder why their results are inconsistent.</p>
+        <p>The market doesn't stay the same. Your strategies shouldn't either.</p>
+        <p><strong>NavigationTrading Pro</strong> gives you 17+ strategies covering every market condition — day trading, 0 DTE plays, income spreads, and trend trades. When the market shifts, you don't panic. You switch strategies.</p>
+        <p>That's not just more education. That's a complete trading system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <div class="container">
+    <div class="section-head light reveal">
+      <span class="eyebrow">A DAY IN THE LIFE OF A PRO MEMBER</span>
+      <h2>Your Full Trading Day — Covered from Open to Close</h2>
+      <p>Pro isn't a course you finish. It's a daily workflow that runs alongside your trading.</p>
+    </div>
+
+    <div class="timeline-wrap reveal">
+      <div class="timeline-line"></div>
+      <div class="timeline-line-filled"></div>
+      
+      <div class="timeline-item" data-start="510" data-end="554">
+        <div class="timeline-time">8:30 AM</div>
+        <div class="timeline-dot"></div>
+        <h3>Pre-Market Prep</h3>
+        <p>Check your custom watchlists and chart indicators. Review overnight market action. See what setups are forming before the bell rings. You start the day prepared, not scrambling.</p>
+      </div>
+
+      <div class="timeline-item" data-start="555" data-end="569">
+        <div class="timeline-time">9:15 AM</div>
+        <div class="timeline-dot"></div>
+        <h3>Morning Live Stream Begins</h3>
+        <p>Join the live trading room. Steve and the team break down the market open, walk through their game plan for the day, and start identifying real-time setups across day trades, 0 DTE plays, and spread entries.</p>
+      </div>
+
+      <div class="timeline-item" data-start="570" data-end="599">
+        <div class="timeline-time">9:30 AM</div>
+        <div class="timeline-dot"></div>
+        <h3>Market Open: Live Trade Calls</h3>
+        <p>Trades are called out as they happen. You see the entry, the reasoning, the risk management — all in real time. Not a recap an hour later. Not a screenshot after the fact. Live, as it happens.</p>
+      </div>
+
+      <div class="timeline-item" data-start="600" data-end="719">
+        <div class="timeline-time">10:00 AM – 12:00 PM</div>
+        <div class="timeline-dot"></div>
+        <h3>Trade Alerts Fire Throughout the Morning</h3>
+        <p>Real-time alerts for every strategy — day trades, 0 DTE iron condors, spread entries, trend trades. Each alert includes the setup, entry, and management plan. You decide which ones match your account and risk tolerance.</p>
+      </div>
+
+      <div class="timeline-item" data-start="720" data-end="899">
+        <div class="timeline-time">12:00 PM</div>
+        <div class="timeline-dot"></div>
+        <h3>Midday Review</h3>
+        <p>Check in on open positions. Review morning trades. Adjust or close positions based on how the market has moved. The community is active in Discord, discussing what's working and what's not.</p>
+      </div>
+
+      <div class="timeline-item" data-start="900" data-end="959">
+        <div class="timeline-time">3:00 PM</div>
+        <div class="timeline-dot"></div>
+        <h3>Power Hour Live Stream</h3>
+        <p>The second live session of the day. Late-day setups, MOC (Market on Close) plays, and end-of-day position management. Some of the best opportunities show up in the last hour — Pro members are there for them.</p>
+      </div>
+
+      <div class="timeline-item" data-start="960" data-end="1320">
+        <div class="timeline-time">4:00 PM</div>
+        <div class="timeline-dot"></div>
+        <h3>After Hours: Recaps & Community</h3>
+        <p>Trade recaps posted. Discord lights up with discussion — what worked, what didn't, what's setting up for tomorrow. This is where the learning compounds.</p>
+      </div>
+      <div style="text-align:center; margin-top:100px;" class="reveal">
+        <a href="#" class="btn-hero" style="padding:16px 40px; font-size:16px;">Experience a Full Trading Day — Get Pro Access</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — THE LIVE EXPERIENCE -->
+<section style="padding: 120px 0; background: var(--cream);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">TRADE ALONGSIDE PROFESSIONALS</span>
+      <h2>A Live Trading Room — Not a Recorded Course</h2>
+      <p>The difference between watching someone trade and trading alongside someone is everything.</p>
+    </div>
+    <div class="info-grid reveal">
+      <div class="info-card">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Twice-Daily Live Streams</h3>
+        <p>Every market day, you get two live sessions — morning open and Power Hour. These aren't webinars. They're live trading rooms where real trades are executed in real time. You see the decision-making process as it happens, not after the fact.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <h3>Live Trade Calls Across Every Strategy</h3>
+        <p>This is where Pro pulls ahead. Every strategy we teach — day trades, 0 DTE, spreads, trend trades, income plays — gets called out live when the setup appears. You see the full range of how our team trades, every single day.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <h3>Real-Time Trade Alerts</h3>
+        <p>Can't watch the stream every minute? Trade alerts fire throughout the day for every active strategy. Each alert includes the specific setup, entry point, and management plan. Act on the ones that fit your style and account size.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Live Chat Rooms</h3>
+        <p>Ask questions during the stream. Discuss setups with other Pro members. Get real-time feedback from the community. This isn't a one-way broadcast — it's a conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 — STRATEGY LIBRARY -->
+<section class="library" id="strategies">
+  <div class="container">
+    <div class="section-head light reveal">
+      <span class="eyebrow">YOUR COMPLETE STRATEGY ARSENAL</span>
+      <h2>17+ Strategies. One Membership.</h2>
+      <p>Each strategy is a full course with video lessons, trade examples, and actionable rules. They're organized by style so you can learn progressively — start with what matches your trading today and expand from there.</p>
+    </div>
+
+    <!-- Category: Day Trading -->
+    <div class="lib-cat-group reveal">
+      <button class="lib-cat-toggle open" onclick="toggleLibCat(this)">
+        <div class="lib-cat-toggle-info">
+          <h3>Day Trading Strategies</h3>
+          <p>The First 90 Minutes and Beyond</p>
+        </div>
+        <span class="lib-cat-count">5 Courses</span>
+        <svg class="lib-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lib-cat-body" style="max-height:2400px; transition:max-height .85s ease-in-out;">
+      <div class="lib-cat-body-inner">
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <h4>Mighty Ninety and Runner Strategies</h4>
+          <p>The bread-and-butter day trading setups. Learn to identify high-probability entries in the first 90 minutes of the trading day and catch runners that extend throughout the session.</p>
+          <span class="tag">Flagship Course</span>
+        </div>
+        <div class="strategy-card">
+          <h4>NTT Day Trading</h4>
+          <p>NavigationTrading's proprietary day trading approach. A systematic method for reading intraday price action and executing trades with defined risk and clear exit rules.</p>
+          <span class="tag">Proprietary System</span>
+        </div>
+        <div class="strategy-card">
+          <h4>MOC Course (Market on Close)</h4>
+          <p>Capture end-of-day moves with a strategy built around the market close. Ideal for traders who can't watch the screen all morning but are available in the final hour.</p>
+          <span class="tag">End of Day</span>
+        </div>
+        <div class="strategy-card">
+          <h4>Price Action Futures Trading</h4>
+          <p>Apply price action principles to futures markets. Learn to read the tape, identify support and resistance levels, and execute clean entries without relying on lagging indicators.</p>
+          <span class="tag">Futures Trading</span>
+        </div>
+        <div class="strategy-card">
+          <h4>Power Hour Strategy Course</h4>
+          <p>The last hour of trading is where institutional money moves. This course teaches you how to read that flow and position yourself for high-probability end-of-day setups.</p>
+          <span class="tag">Power Hour</span>
+        </div>
+      </div>
+      </div><!-- /lib-cat-body-inner -->
+      </div><!-- /lib-cat-body -->
+    </div>
+
+    <!-- Category: 0 DTE -->
+    <div class="lib-cat-group reveal">
+      <button class="lib-cat-toggle" onclick="toggleLibCat(this)">
+        <div class="lib-cat-toggle-info">
+          <h3>0 DTE Strategies</h3>
+          <p>Same-Day Expiration Trading</p>
+        </div>
+        <span class="lib-cat-count">3 Courses</span>
+        <svg class="lib-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lib-cat-body">
+      <div class="lib-cat-body-inner">
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <h4>0 DTE Iron Condors — Early Entry</h4>
+          <p>Sell premium on same-day expiration options with a structured iron condor approach. Learn specific entry timing, strike selection, and risk management rules that make 0 DTE consistent.</p>
+          <span class="tag">Income Strategy</span>
+        </div>
+        <div class="strategy-card">
+          <h4>0 DTE Entries Using NTT Indicator</h4>
+          <p>Combine 0 DTE options with NavigationTrading's proprietary NTT indicator for precise entry timing. The indicator takes the guesswork out of when to enter your 0 DTE positions.</p>
+          <span class="tag">Indicator Driven</span>
+        </div>
+        <div class="strategy-card">
+          <h4>Reverse Iron Condors</h4>
+          <p>When volatility spikes, flip the script. Reverse iron condors profit from big moves — and this course teaches you when and how to deploy them on same-day expiration options.</p>
+          <span class="tag">Volatility Strategy</span>
+        </div>
+      </div>
+      </div><!-- /lib-cat-body-inner -->
+      </div><!-- /lib-cat-body -->
+    </div>
+
+    <!-- Category: Income & Spreads -->
+    <div class="lib-cat-group reveal">
+      <button class="lib-cat-toggle" onclick="toggleLibCat(this)">
+        <div class="lib-cat-toggle-info">
+          <h3>Income & Spread Strategies</h3>
+          <p>The Mechanics of Consistent Returns</p>
+        </div>
+        <span class="lib-cat-count">6 Courses</span>
+        <svg class="lib-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lib-cat-body">
+      <div class="lib-cat-body-inner">
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <h4>Transformer Option Spreads</h4>
+          <p>An advanced spread strategy that adapts to changing market conditions. Learn to transform a single position into different spread configurations as the market moves.</p>
+          <span class="tag">Adaptive Strategy</span>
+        </div>
+        <div class="strategy-card">
+          <h4>Calendar Spreads</h4>
+          <p>Profit from time decay differences between near-term and longer-term options. This course makes one of the most consistent income strategies crystal clear.</p>
+          <span class="tag">Theta Decay</span>
+        </div>
+        <div class="strategy-card">
+          <h4>Butterfly Spreads</h4>
+          <p>Defined-risk, defined-reward. Butterfly spreads let you target a specific price range with limited capital at risk. Learn when butterflies outperform other strategies.</p>
+          <span class="tag">Defined Risk</span>
+        </div>
+        <div class="strategy-card">
+          <h4>Iron Ducks</h4>
+          <p>NavigationTrading's unique twist on a classic strategy. Designed for consistent premium collection with built-in risk rules that keep your losses small.</p>
+          <span class="tag">NTT Original</span>
+        </div>
+        <div class="strategy-card">
+          <h4>The Hedge Hog Options Spread</h4>
+          <p>A hedged spread strategy that gives you income potential with downside protection. Structure positions that produce even when the market pulls back.</p>
+          <span class="tag">Downside Protection</span>
+        </div>
+        <div class="strategy-card">
+          <h4>Multiple Option Selling Strategies</h4>
+          <p>Master the art of selling premium across different market conditions. Covers covered strategies to naked puts with clear rules for each.</p>
+          <span class="tag">Premium Selling</span>
+        </div>
+      </div>
+      </div><!-- /lib-cat-body-inner -->
+      </div><!-- /lib-cat-body -->
+    </div>
+
+    <!-- Category: Trend & Portfolio -->
+    <div class="lib-cat-group reveal">
+      <button class="lib-cat-toggle" onclick="toggleLibCat(this)">
+        <div class="lib-cat-toggle-info">
+          <h3>Trend & Portfolio Strategies</h3>
+          <p>Long-Term Growth & Capital Efficiency</p>
+        </div>
+        <span class="lib-cat-count">3 Courses</span>
+        <svg class="lib-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lib-cat-body">
+      <div class="lib-cat-body-inner">
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <h4>NTT Trend Trading</h4>
+          <p>Longer-term trend following using the NTT system. Learn to identify trends that last days to weeks and position accordingly for larger moves.</p>
+          <span class="tag">Trend Following</span>
+        </div>
+        <div class="strategy-card">
+          <h4>Portfolio Margin Strategies</h4>
+          <p>Unlock capital-efficient strategies that aren't possible with standard margin. Maximize buying power with sophisticated position structuring.</p>
+          <span class="tag">Capital Efficiency</span>
+        </div>
+        <div class="strategy-card">
+          <h4>ELMO Mini Course</h4>
+          <p>A focused mini course on ELMO — a quick-deployment strategy for specific market setups. Short, actionable, and immediately applicable.</p>
+          <span class="tag">Mini Course</span>
+        </div>
+      </div>
+      </div><!-- /lib-cat-body-inner -->
+      </div><!-- /lib-cat-body -->
+    </div>
+
+    <div style="text-align:center; margin-top:80px;" class="reveal">
+      <a href="#" class="btn-hero" style="padding:16px 40px; font-size:16px;">Get Access to Every Strategy — Join Pro</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 6 — CUSTOM TOOLS & ALERTS -->
+<section class="tools-section" id="tools">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Pro-Exclusive Tools</span>
+      <h2>The Same Tools Our Team Uses — On Your Screen</h2>
+      <p>Pro members don't just learn strategies. They get professional-grade tools to execute them with precision — built by traders, for traders.</p>
+    </div>
+
+    <div class="tools-split reveal">
+
+      <!-- Left: feature rows -->
+      <div>
+        <div class="tool-feature-row">
+          <div class="tool-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div>
+            <div class="tool-feat-title">Custom Chart Indicators</div>
+            <p class="tool-feat-desc">Built by the NavigationTrading team over years of live trading. NTT signals, entry triggers, trend filters, 0 DTE timing — install them and see exactly what we see.</p>
+            <div class="tool-feat-pills">
+              <span class="tool-feat-pill">NTT Signals</span>
+              <span class="tool-feat-pill">Entry Triggers</span>
+              <span class="tool-feat-pill">Trend Filters</span>
+              <span class="tool-feat-pill">0 DTE Timing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-feature-row">
+          <div class="tool-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div>
+            <div class="tool-feat-title">Custom Watch Lists</div>
+            <p class="tool-feat-desc">Pre-built watch lists curated daily by our team. Start every morning with the setups we're already watching — no scanning hundreds of tickers to find what matters.</p>
+            <div class="tool-feat-pills">
+              <span class="tool-feat-pill">Team Curated</span>
+              <span class="tool-feat-pill">Updated Daily</span>
+              <span class="tool-feat-pill">Multi-Strategy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-feature-row">
+          <div class="tool-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <div>
+            <div class="tool-feat-title">Real-Time Alerts — Every Strategy</div>
+            <p class="tool-feat-desc">Pro members get alerts for everything — all 17+ strategies, all day, every market day. Every alert includes entry, exit rules, and risk plan.</p>
+            <div class="tool-feat-pills">
+              <span class="tool-feat-pill">All 17+ Strategies</span>
+              <span class="tool-feat-pill">Entry + Exit Rules</span>
+              <span class="tool-feat-pill">Risk Management</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:40px; text-align:center;" class="reveal">
+          <a href="#" class="btn-hero" style="background:var(--gold); padding:18px 44px; font-size:16px;">Get Pro Tools & Alerts — $179/month</a>
+        </div>
+      </div>
+
+      <!-- Right: stat cards (always visible, no image dependency) -->
+      <div class="tools-stats-panel reveal">
+        <div class="tools-stat-card">
+          <span class="tools-stat-num">17+</span>
+          <span class="tools-stat-label">Strategies Covered</span>
+          <span class="tools-stat-sub">Day trades, 0 DTE, spreads, trend & portfolio — all in one membership</span>
+        </div>
+        <div class="tools-stat-card">
+          <span class="tools-stat-num">3</span>
+          <span class="tools-stat-label">Indicator Suites</span>
+          <span class="tools-stat-sub">NTT signals, entry triggers & trend filters — built for our exact strategies</span>
+        </div>
+        <div class="tools-stat-card">
+          <span class="tools-stat-num">∞</span>
+          <span class="tools-stat-label">Alerts Per Day</span>
+          <span class="tools-stat-sub">Every alert we fire across every strategy is delivered to your device</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7 — WHO THIS IS FOR -->
+<section style="padding: 120px 0; background: #07111e;">
+  <div class="container">
+    <div class="section-head light reveal">
+      <span class="eyebrow">Is Pro Right for You?</span>
+      <h2>This Membership Isn't for Everyone. Here's How to Know.</h2>
+    </div>
+    <div class="for-not-for reveal">
+      <div class="fnf-box pro">
+        <h3>Pro Is for You If:</h3>
+        <ul class="fnf-list">
+          <li class="fnf-item">
+            <strong>You want access to every strategy without limits.</strong>
+            <span>You don't want to wonder what you're missing. You want the full playbook — day trading, 0 DTE, income spreads, trend trades, portfolio strategies — all of it, with nothing locked away.</span>
+          </li>
+          <li class="fnf-item">
+            <strong>You trade (or want to trade) multiple styles.</strong>
+            <span>Markets change. Some weeks favor day trading. Others favor selling premium or catching trends. You want the flexibility to trade whatever the market gives you, not force one approach on every setup.</span>
+          </li>
+          <li class="fnf-item">
+            <strong>You want real-time alerts you can act on immediately.</strong>
+            <span>You don't just want to learn strategies — you want to see them in action and get notified when setups appear. Pro alerts cover every strategy, every day.</span>
+          </li>
+          <li class="fnf-item">
+            <strong>You're serious about making trading a consistent part of your life.</strong>
+            <span>You're committing to showing up — watching the live streams, studying the courses, engaging in the community. You want real results from real effort.</span>
+          </li>
+        </ul>
+      </div>
+      <div class="fnf-box not">
+        <h3>Pro Is NOT for You If:</h3>
+        <ul class="fnf-list">
+          <li class="fnf-item">
+            <strong>You're a complete beginner who hasn't learned the basics yet.</strong>
+            <span>Start with our Free Membership. Learn what options are, how they work, and build your foundation first. Pro will still be here when you're ready.</span>
+          </li>
+          <li class="fnf-item">
+            <strong>You're looking for a "magic system" that trades itself.</strong>
+            <span>We teach strategies and share alerts, but you make your own trading decisions. This is education and tools, not autopilot.</span>
+          </li>
+          <li class="fnf-item">
+            <strong>You only want to trade one specific strategy.</strong>
+            <span>If you already know you only want to day trade and nothing else, the Day Trading membership might be a better fit. Pro is for traders who want everything.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="comparison">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Compare Your Options</span>
+      <h2>What Does the Extra $50 Get You?</h2>
+      <p>Both memberships include daily live streams, live trade calls, and an active trading community. Here's where Pro goes further.</p>
+    </div>
+
+    <div class="comp-table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-feature">What's Included</th>
+            <th class="col-dt">
+              <span class="col-dt-label">Day Trading</span>
+              <span class="col-dt-price">$129 / month</span>
+            </th>
+            <th class="pro-col">
+              <span class="pro-badge" style="display:block; margin-bottom:8px;">✦ Recommended</span>
+              <span class="pro-col-label">Pro Membership</span>
+              <span class="pro-col-price">$179 / month</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="feat-name">Daily Live Streams</span><span class="feat-sub">Morning open + Power Hour every market day</span></td>
+            <td class="check">✓</td>
+            <td class="pro-col check-pro">✓</td>
+          </tr>
+          <tr>
+            <td><span class="feat-name">Live Trade Calls</span><span class="feat-sub">Real-time calls as setups appear</span></td>
+            <td class="check">✓</td>
+            <td class="pro-col check-pro">✓</td>
+          </tr>
+          <tr>
+            <td><span class="feat-name">Day Trading Courses</span><span class="feat-sub">Full day-trading strategy curriculum</span></td>
+            <td style="font-weight:700; color:var(--navy);">10 Courses</td>
+            <td class="pro-col" style="font-weight:700; color:var(--navy);">10 Courses</td>
+          </tr>
+          <tr>
+            <td><span class="feat-name">Income & Spread Courses</span><span class="feat-sub">Iron condors, credit spreads, butterflies</span></td>
+            <td class="dash">—</td>
+            <td class="pro-col check-pro">✓ 6 Courses</td>
+          </tr>
+          <tr>
+            <td><span class="feat-name">Trend & Portfolio Courses</span><span class="feat-sub">Longer-term trend and portfolio strategies</span></td>
+            <td class="dash">—</td>
+            <td class="pro-col check-pro">✓ 3 Courses</td>
+          </tr>
+          <tr>
+            <td><span class="feat-name">Real-Time Alerts</span><span class="feat-sub">Entry, exit, and risk plan for every call</span></td>
+            <td style="color:#999; font-size:12px; font-weight:600;">Day trades only</td>
+            <td class="pro-col check-pro">✓ All Strategies</td>
+          </tr>
+          <tr>
+            <td><span class="feat-name">Custom Chart Indicators</span><span class="feat-sub">NTT signals, entry triggers, filters</span></td>
+            <td class="dash">—</td>
+            <td class="pro-col check-pro">✓</td>
+          </tr>
+          <tr>
+            <td><span class="feat-name">Total Strategy Courses</span><span class="feat-sub">All strategies across all market conditions</span></td>
+            <td style="font-size:20px; font-weight:800; color:#bbb;">10</td>
+            <td class="pro-col" style="font-size:22px; font-weight:900; color:var(--gold);">17+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="value-callout reveal">
+      <p>For $50 more per month, you unlock 7+ additional advanced strategy courses, trade alerts for every strategy (not just day trading), and the full suite of custom chart indicators and watch lists. That's less than $2/day for a complete professional trading toolkit.</p>
+    </div>
+
+    <div style="text-align:center; margin-top:40px;" class="reveal">
+       <a href="#" class="btn-hero" style="background:var(--gold);">Get the Complete System — Join Pro</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 — RESULTS (Radial Design) -->
+<section class="results-pro">
+  <div class="container">
+    <div class="section-head light reveal">
+      <span class="eyebrow" style="color:var(--gold);">What Changes When You Go Pro</span>
+      <h2>What You'll Walk Away With</h2>
+    </div>
+
+    <div class="orbital-scene-pro">
+      <!-- SVG Lines matching membership.html structure -->
+      <svg class="oc-svg-pro" viewBox="0 0 1100 560">
+        <!-- Left top -->
+        <path class="oc-line-pro" d="M 390,90 H 435 V 165"/>
+        <circle class="oc-dot-svg-pro" cx="435" cy="165" r="5"/>
+        <!-- Left mid -->
+        <path class="oc-line-pro" d="M 270,280 H 400"/>
+        <circle class="oc-dot-svg-pro" cx="400" cy="280" r="5"/>
+        <!-- Left bot -->
+        <path class="oc-line-pro" d="M 390,470 H 435 V 400"/>
+        <circle class="oc-dot-svg-pro" cx="435" cy="400" r="5"/>
+        <!-- Right top -->
+        <path class="oc-line-pro" d="M 665,165 V 90 H 710"/>
+        <circle class="oc-dot-svg-pro" cx="665" cy="165" r="5"/>
+        <!-- Right mid -->
+        <path class="oc-line-pro" d="M 700,280 H 830"/>
+        <circle class="oc-dot-svg-pro" cx="700" cy="280" r="5"/>
+        <!-- Right bot -->
+        <path class="oc-line-pro" d="M 665,400 V 470 H 710"/>
+        <circle class="oc-dot-svg-pro" cx="665" cy="400" r="5"/>
+      </svg>
+
+      <!-- Center logo -->
+      <div class="oc-center-pro">
+        <img src="logo.png" alt="NavigationTrading" class="oc-logo-pro">
+      </div>
+
+      <!-- LEFT items -->
+      <div class="oi-item-pro oi-item-1 reveal">
+        <span class="oi-verb-pro">Trade</span>
+        <h4>Multiple Strategies</h4>
+        <p>Trade multiple strategies based on what the market gives you each day — bullish, bearish, sideways, or volatile, you always have the right play.</p>
+      </div>
+      <div class="oi-item-pro oi-item-2 reveal">
+        <span class="oi-verb-pro">Receive</span>
+        <h4>Real-Time Alerts</h4>
+        <p>Receive real-time trade alerts across every strategy and know exactly what the setup is, why it's being taken, and how to manage it.</p>
+      </div>
+      <div class="oi-item-pro oi-item-3 reveal">
+        <span class="oi-verb-pro">Build</span>
+        <h4>A Diversified Portfolio</h4>
+        <p>Build a diversified options portfolio that combines income strategies, day trades, and trend plays — not all your eggs in one basket.</p>
+      </div>
+
+      <!-- RIGHT items -->
+      <div class="oi-item-pro oi-item-4 reveal">
+        <span class="oi-verb-pro">Use</span>
+        <h4>Professional Tools</h4>
+        <p>Use professional-grade chart indicators and watch lists on your own screen — the same tools the NavigationTrading team trades with daily.</p>
+      </div>
+      <div class="oi-item-pro oi-item-5 reveal">
+        <span class="oi-verb-pro">Follow</span>
+        <h4>Live Trading</h4>
+        <p>Follow along in a live trading room twice a day and see exactly how experienced traders read the market, manage risk, and execute in real time.</p>
+      </div>
+      <div class="oi-item-pro oi-item-6 reveal">
+        <span class="oi-verb-pro">Never Miss</span>
+        <h4>A Setup</h4>
+        <p>Never miss a strategy or setup because it wasn't part of your membership — Pro members get everything, nothing locked, nothing held back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10 — INSTRUCTOR -->
+<section class="instructor-section">
+  <div class="container">
+    <div class="section-head light reveal" style="margin-bottom: 80px;">
+      <span class="eyebrow">Who's Behind the Strategies</span>
+      <h2>Built by Traders. Taught by Traders.</h2>
+      <p>Every strategy in the Pro library is traded live on stream — by the same person who built it.</p>
+    </div>
+
+    <div class="instructor-layout-pro">
+
+      <!-- Left: Speaker Card -->
+      <div class="instructor-img-card reveal">
+        <div class="instructor-img-wrap-pro">
+          <img src="auther.jpeg" alt="Steve, Founder NavigationTrading">
+          <div class="instructor-gold-bar"></div>
+        </div>
+        <div class="instructor-card-footer">
+          <div class="instructor-card-name">Steve</div>
+          <div class="instructor-card-role">Founder & Head Trader, NavigationTrading</div>
+          <div class="instructor-stats-row">
+            <div class="i-stat">
+              <span class="i-stat-num">17+</span>
+              <span class="i-stat-label">Strategies Developed</span>
+            </div>
+            <div class="i-stat">
+              <span class="i-stat-num">4.8★</span>
+              <span class="i-stat-label">Avg Community Rating</span>
+            </div>
+            <div class="i-stat">
+              <span class="i-stat-num">3,400+</span>
+              <span class="i-stat-label">Community Members</span>
+            </div>
+            <div class="i-stat">
+              <span class="i-stat-num">10+</span>
+              <span class="i-stat-label">Years Live Trading</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Bio Card -->
+      <div class="instructor-bio-card-pro reveal">
+        <p class="instructor-bio-lead">"We don't teach what we don't trade. Every strategy in the Pro library is proven live — not on paper, not in backtests, not from a year ago."</p>
+        <div class="instructor-bio-body">
+          <p>NavigationTrading was founded by Steve, an active options trader who got tired of the hype-driven "gurus" selling dreams and delivering nothing. His approach is different: every strategy in the Pro library is built on statistics, probabilities, and repeatable rules — not gut feelings, not "trust me" calls, and definitely not hindsight screenshots.</p>
+          <p>Steve and the NavigationTrading team trade these strategies with their own capital, live on stream, every single day. When you join the live trading room, you're watching the same person who built these courses execute the same strategies he teaches. What you learn in the classroom is exactly what you'll see traded live on your screen.</p>
+          <p>That consistency — between what's taught, what's traded, and what's shared — is why NavigationTrading has maintained a 4.8 rating and members who've stayed for years.</p>
+        </div>
+        <ul class="instructor-creds-list">
+          <li class="instructor-cred-row">
+            <span class="instructor-cred-badge">✓</span>
+            <div>
+              <h4>No Theory, Just Execution</h4>
+              <p>We don't teach what we don't trade. Every strategy is proven in the live market with real capital.</p>
+            </div>
+          </li>
+          <li class="instructor-cred-row">
+            <span class="instructor-cred-badge">✓</span>
+            <div>
+              <h4>Statistics Over Gut Feelings</h4>
+              <p>Every entry and exit is rule-based — built on probabilities, not emotion or guesswork.</p>
+            </div>
+          </li>
+          <li class="instructor-cred-row">
+            <span class="instructor-cred-badge">✓</span>
+            <div>
+              <h4>Transparent Track Record</h4>
+              <p>4.8 stars from real members over years of daily live trading. Results you can see in real time.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS / SOCIAL PROOF ── -->
+<section class="reviews-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">WHAT PRO MEMBERS SAY</span>
+      <h2>4.8 Out of 5 Stars — From Real Traders</h2>
+    </div>
+    <p class="reviews-intro reveal" style="margin-top:-10px;"><strong>★★★★★ 4.8 / 5</strong> &nbsp;&bull;&nbsp; 25 ratings &nbsp;&bull;&nbsp; 84% five-star &nbsp;|&nbsp; 16% four-star &nbsp;|&nbsp; 0% three-star or below</p>
+
+    <div class="reviews-carousel-wrap reveal" style="margin-top:60px;">
+      <div class="reviews-track" id="reviewsTrack">
+
+        <!-- Card 1 — Annette M. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-1">AM</div>
+            <div class="review-header-info">
+              <div class="review-name">Annette M.</div>
+              <div class="review-role">Pro Member — 2+ Years</div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="review-before">
+            <div class="rv-label">Before NavigationTrading</div>
+            <p>"I was trading with one or two strategies regardless of market conditions. Same approach whether the market was flying up, sitting sideways, or dropping — and consistently getting inconsistent results."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">After NavigationTrading</div>
+            <p>"Two years in and I'm still discovering new strategies. Steve's clear explanations and the wide range of approaches have completely changed how I think about the market. I can't recommend them highly enough."</p>
+          </div>
+        </div>
+
+        <!-- Card 2 — Robert W. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-2">RW</div>
+            <div class="review-header-info">
+              <div class="review-name">Robert W.</div>
+              <div class="review-role">Pro Member — 1+ Year</div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div>
+          <div class="review-before">
+            <div class="rv-label">Before NavigationTrading</div>
+            <p>"I tried multiple programs that promised results. All hype, no substance. No real statistical edge behind what I was being taught. I kept making the same mistakes because I had no real system."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">After NavigationTrading</div>
+            <p>"NavigationTrading's approach is unlike anything else — purely statistics and probabilities. No emotion, no guessing. Over a year in and I couldn't be happier. The results speak for themselves."</p>
+          </div>
+        </div>
+
+        <!-- Card 3 — Michael T. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-3">MT</div>
+            <div class="review-header-info">
+              <div class="review-name">Michael T.</div>
+              <div class="review-role">Pro Member — 8 Months</div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="review-before">
+            <div class="rv-label">Before NavigationTrading</div>
+            <p>"I knew how options worked technically, but I had no idea when to actually enter or exit a trade. I was flying blind on every position, relying on gut feelings that were right maybe half the time."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">After NavigationTrading</div>
+            <p>"The live trade alerts changed everything. Now I see exactly when setups form, the entry reasoning, and the management plan. I'm finally trading with a real system — not just hoping."</p>
+          </div>
+        </div>
+
+        <!-- Card 4 — Sarah K. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-1" style="background:linear-gradient(135deg,#2a4a8c,#4a2a8c);">SK</div>
+            <div class="review-header-info">
+              <div class="review-name">Sarah K.</div>
+              <div class="review-role">Pro Member — 6 Months</div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="review-before">
+            <div class="rv-label">Before NavigationTrading</div>
+            <p>"I was overwhelmed trying to figure out which strategy to use when. Bullish market, sideways, volatile — I had the same approach for all of it and couldn't understand why it wasn't working."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">After NavigationTrading</div>
+            <p>"Learning multiple strategies for different market conditions was the game-changer. Now when conditions change, I change strategies instead of panicking. This is how trading is supposed to feel."</p>
+          </div>
+        </div>
+
+        <!-- Card 5 — David R. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-2" style="background:linear-gradient(135deg,#8c4a2a,#c8420a);">DR</div>
+            <div class="review-header-info">
+              <div class="review-name">David R.</div>
+              <div class="review-role">Pro Member — 1 Year</div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="review-before">
+            <div class="rv-label">Before NavigationTrading</div>
+            <p>"I lost more than I care to admit in my first year trading options. No proper risk management, no defined system. Just intuition and YouTube — which, it turns out, is a very expensive combination."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">After NavigationTrading</div>
+            <p>"The defined-risk strategies and position sizing rules in the Pro courses fundamentally changed my approach. I've been consistently profitable for eight months now — trading smaller, smarter."</p>
+          </div>
+        </div>
+
+        <!-- Card 6 — Jennifer L. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-3" style="background:linear-gradient(135deg,#2a6a5a,var(--gold));">JL</div>
+            <div class="review-header-info">
+              <div class="review-name">Jennifer L.</div>
+              <div class="review-role">Pro Member — 14 Months</div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="review-before">
+            <div class="rv-label">Before NavigationTrading</div>
+            <p>"I spent a year watching trading YouTube. Lots of talk, no actionable system. I could analyze a chart but couldn't turn it into consistent trades. The gap between theory and real execution felt impossible."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">After NavigationTrading</div>
+            <p>"The structured strategy library and live streams bridged that gap completely. Watching Steve execute the same strategies he teaches — live — was exactly what I needed to click everything into place."</p>
+          </div>
+        </div>
+
+      </div><!-- /reviews-track -->
+    </div><!-- /reviews-carousel-wrap -->
+
+    <div class="reviews-nav reveal">
+      <button class="reviews-nav-btn" id="reviewsPrev" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="reviews-dots" id="reviewsDots">
+        <button class="reviews-dot active" data-idx="0"></button>
+        <button class="reviews-dot" data-idx="1"></button>
+        <button class="reviews-dot" data-idx="2"></button>
+        <button class="reviews-dot" data-idx="3"></button>
+      </div>
+      <button class="reviews-nav-btn" id="reviewsNext" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+<section class="faq section" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <!-- Left: Title & Contact -->
+      <div class="faq-left reveal">
+        <span class="eyebrow" style="color:var(--gold);">FREQUENTLY ASKED QUESTIONS</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about the Pro membership and how it fits your trading style.</p>
+        <div class="faq-contact">
+          <div class="faq-contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <div class="faq-contact-text">
+            <strong>Still Have Questions?</strong>
+            <span>support@navigationtrading.com</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right: Accordion -->
+      <div class="faq-right reveal">
+        
+        <div class="faq-item open">
+          <div class="faq-q">
+            What's the difference between Pro and Day Trading membership?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a" style="max-height: 500px;">
+            <div class="faq-a-inner">
+              The Day Trading membership ($129/month) includes 10 day trading strategy courses, daily live streams, and trade alerts for day trading setups. Pro ($179/month) includes everything in Day Trading plus 7 additional advanced strategy courses covering income spreads, trend trading, and portfolio strategies. Pro members also get trade alerts for every strategy we teach — not just day trading — plus the full suite of custom chart indicators and watch lists. For $50 more per month, you get the complete NavigationTrading system.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Is $179/month worth it?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              That's $5.96 per day for daily live trading sessions, 17+ strategy courses, real-time alerts across every strategy, custom tools, and access to an active community of 200+ serious traders. Most traders lose more than that on a single bad trade made without proper education. The question isn't whether $179 is a lot — it's whether not having the right strategies and tools is costing you more.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            I'm a complete beginner. Should I start with Pro?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              If you've never traded options before, we recommend starting with our Free Membership to learn the fundamentals. The free courses cover options basics, how contracts work, and beginner strategies. Once you're comfortable with the foundations, Pro is where you take it to the next level. That said, if you're motivated and ready to commit, Pro gives you everything from day one — including the foundational knowledge.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Can I cancel anytime?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Yes. There are no long-term contracts. Your membership renews monthly, and you can cancel anytime. If you cancel, you keep access through the end of your current billing period.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            What time are the live streams?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              The morning session starts around 9:15 AM Eastern, before the market opens at 9:30. The Power Hour session begins around 3:00 PM Eastern for the final hour of trading. Both sessions run every market day (Monday through Friday, excluding market holidays).
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Do I need a large account to trade these strategies?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              No. Many of our strategies — especially the day trading and 0 DTE setups — can be traded with accounts of $5,000 or less. The courses cover how to match strategies to your account size. Some of the advanced strategies like portfolio margin are designed for larger accounts, but you don't need to trade every strategy to get value from Pro. Start with what fits your account and expand as you grow.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Will I get overwhelmed with 17+ strategies?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              No — and this is important. You don't learn all 17 strategies at once. They're organized by category (day trading, 0 DTE, income, trend, portfolio), and most members start with one category that matches their current goals. The live streams and alerts cover all strategies, but you choose which ones to focus on. Think of it as a library you grow into, not a firehose you drink from.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Can I talk to someone if I have questions?
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Absolutely. The live trading room has real-time chat where you can ask questions during the stream. The TradeHacker Discord community is active throughout the day. Experienced members and the NavigationTrading team are there to help. You're never trading alone.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 13 — FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-blob-a"></div>
+  <div class="final-cta-blob-b"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="final-cta-inner">
+      <span class="eyebrow" style="color:var(--gold);margin-bottom:20px;display:block;">PRO MEMBERSHIP</span>
+      <h2 class="reveal">Get the Complete Trading System</h2>
+      <p class="reveal" style="font-size:18px;color:rgba(255,255,255,.65);max-width:640px;margin:0 auto 40px;line-height:1.75;">17+ strategies. Daily live trading room. Real-time alerts for everything. Custom tools and indicators. 200+ active traders learning and growing together.</p>
+
+      <div class="reveal" style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.75);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Instant access to all 17+ courses
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.75);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Daily live streams every market day
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.75);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Cancel anytime, no contracts
+        </div>
+      </div>
+
+      <div class="reveal">
+        <a href="#" class="btn-final">
+          Join Pro — $179/month
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="final-note" style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.35);">★★★★★ 4.8 / 5 rating &nbsp;·&nbsp; 200+ active members &nbsp;·&nbsp; Cancel anytime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand"><img src="logo.png" alt="NavigationTrading" style="height:40px;width:auto;transform:scale(5);transform-origin:left center;vertical-align:middle;"></div>
+      <div class="footer-tagline">Free Options Trading Education</div>
+    </div>
+    <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact</div>
+        <a href="mailto:support@navigationtrading.com" style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
+      </div>
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Follow</div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://x.com/navtrading1?s=21" target="_blank" class="social-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.instagram.com/navigationtrading" target="_blank" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.6)" stroke="none"/></svg></a>
+          <a href="https://www.youtube.com/@navigationtrading" target="_blank" class="social-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a1828"/></svg></a>
+          <a href="https://www.linkedin.com/company/navigationtrading" target="_blank" class="social-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Legal</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk Disclosure</a>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Privacy Policy</a>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" style="line-height:1.75;font-size:11.5px;color:rgba(255,255,255,0.3);max-width:800px;">
+      The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities involve risk and are not suitable for all investors. Consider all relevant risk factors, including their personal financial situation, before trading. Past results of any individual or trading system published by Navigation Financial, LLC are not indicative of future returns.
+    </div>
+    <div class="footer-copy">&copy; Navigation Financial, LLC</div>
+  </div>
+</footer>
+
+<script>
+/* ── Progress bar ── */
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = document.body.scrollHeight - window.innerHeight;
+  bar.style.width = Math.min(100, (scrolled / total) * 100) + '%';
+});
+
+/* ── Navbar ── */
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── Sticky bar ── */
+const stickyBar = document.getElementById('stickyBar');
+window.addEventListener('scroll', () => {
+  stickyBar.classList.toggle('visible', window.scrollY > 800);
+});
+
+/* ── Reveal animation ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add('active');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── Timeline real-time ET tracking ── */
+(function updateTimeline() {
+  const items = document.querySelectorAll('.timeline-item[data-start]');
+  if (!items.length) return;
+
+  const etStr = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit' });
+  const [hh, mm] = etStr.split(':').map(Number);
+  const nowMin = hh * 60 + mm;
+  const etDay = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', weekday: 'short' });
+  const isWeekend = etDay === 'Sat' || etDay === 'Sun';
+
+  let activeSet = false;
+  items.forEach(item => {
+    const start = +item.dataset.start;
+    const end   = +item.dataset.end;
+    item.classList.remove('active', 'past');
+    const badge = item.querySelector('.timeline-status-badge');
+    if (badge) badge.remove();
+
+    if (isWeekend || nowMin < 510) {
+      // Before / weekend — show first as upcoming
+      if (start === 510) {
+        item.classList.add('active');
+        insertBadge(item, 'NEXT SESSION', 'upcoming');
+        activeSet = true;
+      }
+    } else if (nowMin >= start && nowMin <= end) {
+      item.classList.add('active');
+      insertBadge(item, 'LIVE NOW', 'live');
+      activeSet = true;
+    } else if (nowMin > end) {
+      item.classList.add('past');
+    }
+  });
+
+  // After market hours — all items past, no badge
+  if (!activeSet && nowMin > 1320) {
+    items.forEach(item => item.classList.add('past'));
+  }
+
+  // Update filled progress line
+  const timelineWrap = document.querySelector('.timeline-wrap');
+  const filledLine = timelineWrap && timelineWrap.querySelector('.timeline-line-filled');
+  if (filledLine) {
+    let maxY = 0;
+    items.forEach(item => {
+      if (item.classList.contains('past') || item.classList.contains('active')) {
+        const dot = item.querySelector('.timeline-dot');
+        if (dot) maxY = item.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+      }
+    });
+    filledLine.style.height = maxY + 'px';
+  }
+
+  setTimeout(updateTimeline, 60000);
+})();
+
+function insertBadge(item, label, type) {
+  const b = document.createElement('span');
+  b.className = 'timeline-status-badge badge-' + type;
+  b.textContent = label;
+  item.querySelector('h3').after(b);
+}
+
+/* ── Library accordion ── */
+function toggleLibCat(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  if (!isOpen) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    body.style.transition = 'max-height .85s ease-in-out';
+  } else {
+    body.style.maxHeight = '0';
+    body.style.transition = 'max-height .5s cubic-bezier(0,1,0.5,1)';
+  }
+}
+
+/* ── FAQ accordion ── */
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      const ia = i.querySelector('.faq-a');
+      if (ia) ia.style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+
+/* ── Reviews carousel ── */
+(function() {
+  const track = document.getElementById('reviewsTrack');
+  if (!track) return;
+  const cards = Array.from(track.children);
+  const dotsContainer = document.getElementById('reviewsDots');
+  const prevBtn = document.getElementById('reviewsPrev');
+  const nextBtn = document.getElementById('reviewsNext');
+  if (!cards.length) return;
+
+  const visibleCount = () => window.innerWidth >= 1024 ? 3 : window.innerWidth >= 700 ? 2 : 1;
+  let currentIdx = 0;
+
+  function getCardWidth() {
+    if (!cards[0]) return 0;
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 24;
+    const total = track.parentElement.offsetWidth;
+    const count = visibleCount();
+    return (total - gap * (count - 1)) / count;
+  }
+
+  function updateTrack() {
+    const w = getCardWidth();
+    const gap = 24;
+    cards.forEach(c => { c.style.flex = `0 0 ${w}px`; });
+    track.style.transform = `translateX(-${currentIdx * (w + gap)}px)`;
+
+    // Update dots
+    const maxIdx = Math.max(0, cards.length - visibleCount());
+    const dotsNeeded = Math.ceil(cards.length / visibleCount());
+    const dotBtns = dotsContainer ? dotsContainer.querySelectorAll('.reviews-dot') : [];
+    dotBtns.forEach((d, i) => d.classList.toggle('active', i === Math.floor(currentIdx / visibleCount())));
+  }
+
+  function slide(dir) {
+    const maxIdx = Math.max(0, cards.length - visibleCount());
+    currentIdx = Math.max(0, Math.min(maxIdx, currentIdx + dir));
+    updateTrack();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => slide(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => slide(1));
+
+  if (dotsContainer) {
+    dotsContainer.querySelectorAll('.reviews-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        currentIdx = parseInt(dot.dataset.idx) * visibleCount();
+        const maxIdx = Math.max(0, cards.length - visibleCount());
+        currentIdx = Math.min(currentIdx, maxIdx);
+        updateTrack();
+      });
+    });
+  }
+
+  window.addEventListener('resize', updateTrack);
+  updateTrack();
+})();
+</script>
+
+</body>
+</html>
