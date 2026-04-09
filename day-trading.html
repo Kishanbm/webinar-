@@ -3117,6 +3117,10 @@
           <input type="hidden" name="act" value="sub" />
           <input type="hidden" name="v" value="2" />
           <input type="hidden" name="or" value="57792a9c-25a5-4810-9ec8-f91e6e1e61ae" />
+          <input type="hidden" name="field[5]" id="utm_source" value="" />
+          <input type="hidden" name="field[6]" id="utm_medium" value="" />
+          <input type="hidden" name="field[7]" id="utm_campaign" value="" />
+          <input type="hidden" name="field[8]" id="utm_content" value="" />
           <div class="_form-content">
             <div class="_form_element _x07089279 _full_width ">
               <label for="fullname" class="_form-label">Full Name</label>
@@ -4318,6 +4322,14 @@
     }
 
     window._show_thank_you = function (id, message, trackcmp_url, email) {
+      // Fire GA4 lead event with UTM source
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          utm_source: sessionStorage.getItem('utm_source') || '(direct)',
+          utm_medium: sessionStorage.getItem('utm_medium') || '(none)',
+          utm_campaign: sessionStorage.getItem('utm_campaign') || '(none)'
+        });
+      }
       // Allow AC to finish its internal tracking, then redirect
       setTimeout(function () {
         window.location.href = 'thank-you-dtt.html';
@@ -4422,6 +4434,22 @@
         }
         return q.join("&")
       };
+
+      // Capture UTM parameters from URL and populate hidden fields
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        utmFields.forEach(function(key) {
+          var val = params.get(key);
+          if (val) {
+            sessionStorage.setItem(key, val);
+          }
+          var el = document.getElementById(key);
+          if (el) {
+            el.value = sessionStorage.getItem(key) || '';
+          }
+        });
+      })();
 
       var form_to_submit = document.getElementById('_form_126_');
       if (!form_to_submit) return;
