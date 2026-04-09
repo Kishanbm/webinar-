@@ -123,7 +123,7 @@ body {
   padding: 13px 60px;
   box-shadow: 0 2px 40px rgba(0,0,0,.5);
 }
-.nav-logo { height: 34px; width: auto; filter: brightness(1.1); }
+.nav-logo { height: 34px; width: auto; filter: brightness(1.1); transform: scale(5); transform-origin: left center; }
 .nav-right { display: flex; align-items: center; gap: 24px; }
 .nav-link {
   color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500;
@@ -432,8 +432,9 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-stats { justify-content: center; }
   .timeline-wrap { padding-left: 40px; }
-  .timeline-line { left: 70px; }
-  .timeline-line-filled { left: 70px; }
+  .timeline-line { left: 45px; }
+  .timeline-line-filled { left: 45px; }
+  .timeline-dot { left: -1px; }
   .timeline-time { display: none; }
   .lib-grid { grid-template-columns: 1fr; }
   .promise-layout { grid-template-columns: 1fr; }
@@ -618,7 +619,12 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
   border-radius: 50px; background: rgba(212,160,64,.08);
   border: 1px solid rgba(212,160,64,.2); color: var(--gold);
 }
-@media (max-width: 900px) { .tools-premium-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { 
+  .tools-premium-grid { grid-template-columns: 1fr; }
+  .btn-hero, .btn-final, .btn-sticky, .track-cta-inline, .btn-nav-pro { 
+    padding: 14px 24px !important; font-size: 15px !important; 
+  }
+}
 
 /* ══════════════════════════════════════
    SECTION 10 — INSTRUCTOR SPEAKER CARD
@@ -823,6 +829,56 @@ footer::before {
   background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
   opacity: 0.05; pointer-events: none;
 }
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 100px; /* Above sticky bar */
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 950;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(.22,.68,0,1.2);
+  box-shadow: 0 8px 25px rgba(212,160,64,.4);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: #e5b252;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(212,160,64,.5);
+}
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 3;
+  fill: none;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 120px; /* More space for mobile sticky bar */
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
 footer > .footer-top,
 footer > .footer-bottom { position: relative; z-index: 1; }
 .footer-top {
@@ -840,6 +896,27 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   padding-top: 24px; flex-wrap: wrap; gap: 16px;
 }
 .footer-copy { color: rgba(255,255,255,.2); font-size: 12px; }
+
+/* Reviews Nav Controls */
+.reviews-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+  width: 100%;
+}
+.reviews-nav-btn {
+  width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05); color: #fff; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .3s;
+}
+.reviews-nav-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); transform: scale(1.1); }
+.reviews-nav-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5; }
+.reviews-dots { display: flex; gap: 8px; align-items: center; }
+.reviews-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.15); border: none; cursor: pointer; transition: .3s; padding: 0; }
+.reviews-dot.active { background: var(--gold); transform: scale(1.4); }
+
 .social-icon {
   width: 32px; height: 32px; border-radius: 6px;
   background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
@@ -849,9 +926,119 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 .footer-link { color: rgba(255,255,255,.45); font-size: 13px; text-decoration: none; transition: color .2s; }
 .footer-link:hover { color: var(--gold); }
 
+@media (max-width: 1024px) {
+  .faq-layout { grid-template-columns: 1fr; gap: 48px; }
+  .faq-left { position: static; }
+}
+
+.footer-logo {
+  height: 40px;
+  width: auto;
+  transform: scale(5);
+  transform-origin: left center;
+  vertical-align: middle;
+  margin-top: -12px;
+}
+
 @media (max-width: 768px) {
-  footer { padding: 60px 24px 100px; }
-  .footer-top { flex-direction: column; }
+  .footer-logo {
+    transform: scale(1);
+    height: 32px;
+  }
+}
+
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVENESS (OVERRIDE)
+   ══════════════════════════════════════ */
+/* Nav Toggle hidden by default on desktop */
+@media (min-width: 769px) { .nav-toggle { display: none !important; } }
+
+@media (max-width: 768px) {
+  /* Reset Desktop Scale */
+  .nav-logo, .footer-brand img, .footer-logo { transform: none !important; height: 48px !important; width: auto !important; margin-top: 0 !important; }
+  .footer-brand { display: flex; justify-content: center; width: 100%; margin-bottom: 24px; text-align: center; }
+
+  .container { padding: 0 20px; }
+  .section-head { margin-bottom: 40px; }
+  .section-head h2 { font-size: 26px; }
+  
+  /* Nav Mobile */
+  .nav { padding: 12px 20px; }
+  .nav.scrolled { padding: 10px 20px; }
+  
+  .nav-toggle { 
+    display: block !important; position: relative; width: 26px; height: 20px; cursor: pointer; z-index: 1001; margin-top: 5px;
+  }
+  .nav-toggle span { 
+    position: absolute; left: 0; display: block; width: 26px; height: 2.5px; background: #fff; transition: .3s cubic-bezier(.22,.68,0,1.2); 
+    border-radius: 2px;
+  }
+  .nav-toggle span:nth-child(1) { top: 0; }
+  .nav-toggle span:nth-child(2) { top: 9px; }
+  .nav-toggle span:nth-child(3) { top: 18px; }
+
+  .nav-toggle.active span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-toggle.active span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+  
+  .nav-right {
+    position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+    background: #050C16; border-left: none;
+    flex-direction: column; justify-content: center; align-items: stretch;
+    gap: 0; transition: .4s cubic-bezier(.22,.68,0,1.2); padding: 60px 40px;
+    box-shadow: none;
+    opacity: 0; visibility: hidden;
+  }
+  .nav-right.active { right: 0; opacity: 1; visibility: visible; }
+  .nav-link { 
+    font-size: 22px; width: 100%; text-align: center; padding: 24px 0; 
+    border-bottom: 1px solid rgba(255,255,255,.08); 
+  }
+  .btn-nav-pro { margin-top: 32px; width: 100%; justify-content: center; padding: 18px !important; font-size: 17px !important; }
+  
+  /* Hero */
+  .hero { padding-top: 60px; text-align: center; }
+  .hero-inner { padding: 40px 20px; gap: 32px; }
+  .hero-headline { font-size: 34px; line-height: 1.2; }
+  .hero-sub { font-size: 15px; margin: 0 auto 32px; line-height: 1.6; }
+  .btn-hero { padding: 15px 22px !important; font-size: 15px !important; width: 100%; }
+  
+  /* Sticky Bar Mobile */
+  .sticky-inner { padding: 16px 20px; flex-direction: column; gap: 12px; text-align: center; }
+  .sticky-text { font-size: 12px; line-height: 1.4; margin-bottom: 4px; }
+  .sticky-text br { display: none; }
+  .sticky-price-row { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+  .btn-sticky { padding: 14px 20px !important; font-size: 15px !important; width: 100%; }
+  
+  /* Footer Mobile */
+  footer { padding: 60px 20px 80px; text-align: center; }
+  .footer-top { flex-direction: column; align-items: center; text-align: center; gap: 32px; }
+  .footer-links { flex-direction: column; gap: 20px; }
+  .footer-tagline { margin-bottom: 20px; display: block; width: 100%; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 20px; }
+  .footer-logo { margin: 0 auto 12px !important; }
+
+  /* Comparison Table Mobile */
+  .comp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { min-width: 600px; }
+  
+  /* Grid Layouts Stack */
+  .info-grid, .for-not-for, .instructor-layout-pro, .tools-premium-grid { grid-template-columns: 1fr !important; gap: 24px; }
+  .fnf-box { padding: 32px 20px; }
+  .instructor-stats-row { grid-template-columns: 1fr; }
+  
+  .track-inner { grid-template-columns: 1fr; gap: 40px; }
+  .track-sticky-head { position: static; }
+  .track-step { flex-direction: column; gap: 20px; text-align: center; }
+  .ts-left { flex-direction: row; justify-content: center; }
+  .ts-connector { display: none; }
+  .ts-tags { justify-content: center; }
+  .track-cta-inline { margin: 0 auto; width: 100%; justify-content: center; }
+
+  /* Final CTA */
+  .final-cta { padding: 80px 20px; }
+  .final-cta h2 { font-size: 28px; }
+  .btn-final { padding: 15px 22px !important; font-size: 15px !important; width: 100%; }
 }
 </style>
 </head>
@@ -865,7 +1052,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
     <div class="sticky-text">
       <strong>Pro Membership</strong> — 17+ Strategies, Daily Live Streams, Full Trade Alerts
     </div>
-    <div style="display:flex; align-items:center; gap:24px;">
+    <div class="sticky-price-row">
       <span style="color:#fff; font-weight:800; font-size:18px;">$179/mo</span>
       <a href="#" class="btn-sticky">Get Pro Access</a>
     </div>
@@ -874,12 +1061,17 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 
 <!-- NAVBAR -->
 <nav class="nav" id="navbar">
-  <a href="/" style="display:inline-block; line-height:0;"><img src="logo.png" alt="NavigationTrading" class="nav-logo" style="height:40px; transform:scale(5); transform-origin:left center;"></a>
-  <div class="nav-right">
+  <a href="/" style="display:inline-block; line-height:0;"><img src="logo.png" alt="NavigationTrading" class="nav-logo"></a>
+  <div class="nav-right" id="navMenu">
     <a href="#strategies" class="nav-link">Strategies</a>
     <a href="#tools" class="nav-link">Tools</a>
     <a href="#faq" class="nav-link">FAQ</a>
     <a href="#" class="btn-nav-pro">Join Pro — $179</a>
+  </div>
+  <div class="nav-toggle" id="navToggle">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </nav>
 
@@ -1431,7 +1623,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 <section class="results-pro">
   <div class="container">
     <div class="section-head light reveal">
-      <span class="eyebrow" style="color:var(--gold);">What Changes When You Go Pro</span>
+      <span class="eyebrow">What Changes When You Go Pro</span>
       <h2>What You'll Walk Away With</h2>
     </div>
 
@@ -1543,11 +1735,12 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 
       <!-- Right: Bio Card -->
       <div class="instructor-bio-card-pro reveal">
-        <p class="instructor-bio-lead">"We don't teach what we don't trade. Every strategy in the Pro library is proven live — not on paper, not in backtests, not from a year ago."</p>
+        <p class="instructor-bio-lead">"We don't teach what we don't trade. Every strategy in the Pro library is proven live — with real capital and real execution."</p>
         <div class="instructor-bio-body">
-          <p>NavigationTrading was founded by Steve, an active options trader who got tired of the hype-driven "gurus" selling dreams and delivering nothing. His approach is different: every strategy in the Pro library is built on statistics, probabilities, and repeatable rules — not gut feelings, not "trust me" calls, and definitely not hindsight screenshots.</p>
-          <p>Steve and the NavigationTrading team trade these strategies with their own capital, live on stream, every single day. When you join the live trading room, you're watching the same person who built these courses execute the same strategies he teaches. What you learn in the classroom is exactly what you'll see traded live on your screen.</p>
-          <p>That consistency — between what's taught, what's traded, and what's shared — is why NavigationTrading has maintained a 4.8 rating and members who've stayed for years.</p>
+          <p>NavigationTrading was founded by Steve, an active options trader who got tired of the hype-driven "gurus" selling dreams and delivering nothing.</p>
+          <p>His approach is different: every strategy in the Pro library is built on statistics, probabilities, and repeatable rules — not gut feelings, not "trust me" calls, not hindsight screenshots. Steve and the NavigationTrading team trade these strategies with their own capital, live on stream, every single day.</p>
+          <p>When you join the live trading room, you're watching the same person who built these courses execute the same strategies he teaches. There's no disconnect between the education and the execution. What you learn is what you'll see traded live on your screen.</p>
+          <p>That consistency — between what's taught, what's traded, and what's shared — is why NavigationTrading has a 4.8 rating and members who stay with us for years.</p>
         </div>
         <ul class="instructor-creds-list">
           <li class="instructor-cred-row">
@@ -1578,8 +1771,8 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   </div>
 </section>
 
-<!-- ── REVIEWS / SOCIAL PROOF ── -->
-<section class="reviews-section">
+<!-- ── SECTION 11 — SOCIAL PROOF ── -->
+<section class="reviews-section" id="social-proof">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">WHAT PRO MEMBERS SAY</span>
@@ -1597,17 +1790,21 @@ footer > .footer-bottom { position: relative; z-index: 1; }
             <div class="review-header-info">
               <div class="review-name">Annette M.</div>
               <div class="review-role">Pro Member — 2+ Years</div>
+              <div class="review-company-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                NavigationTrading
+              </div>
             </div>
             <span class="review-quote-icon">"</span>
           </div>
           <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <div class="review-before">
-            <div class="rv-label">Before NavigationTrading</div>
-            <p>"I was trading with one or two strategies regardless of market conditions. Same approach whether the market was flying up, sitting sideways, or dropping — and consistently getting inconsistent results."</p>
+            <div class="rv-label">Review</div>
+            <p>"I can't recommend Navigation Trading highly enough! I've been using their services for about two years and have learned an incredible amount along the way. They offer a wide range of option trading strategies, and even after all this time, I'm still learning new things."</p>
           </div>
           <div class="review-after">
-            <div class="rv-label">After NavigationTrading</div>
-            <p>"Two years in and I'm still discovering new strategies. Steve's clear explanations and the wide range of approaches have completely changed how I think about the market. I can't recommend them highly enough."</p>
+            <div class="rv-label">Verdict</div>
+            <p>"Steve's explanations are clear, simple, and delivered in plain English, making even complex concepts easy to grasp. If you're serious about mastering options trading and becoming a skilled, independent trader, look no further!"</p>
           </div>
         </div>
 
@@ -1618,17 +1815,21 @@ footer > .footer-bottom { position: relative; z-index: 1; }
             <div class="review-header-info">
               <div class="review-name">Robert W.</div>
               <div class="review-role">Pro Member — 1+ Year</div>
+              <div class="review-company-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                NavigationTrading
+              </div>
             </div>
             <span class="review-quote-icon">"</span>
           </div>
           <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div>
           <div class="review-before">
-            <div class="rv-label">Before NavigationTrading</div>
-            <p>"I tried multiple programs that promised results. All hype, no substance. No real statistical edge behind what I was being taught. I kept making the same mistakes because I had no real system."</p>
+            <div class="rv-label">Review</div>
+            <p>"I've been using Navigation Trading over a year, and it's the best investment I've made in my trading education. The strategies are based on real math, not hype. Steve shows up every day in the live room and trades exactly what he teaches."</p>
           </div>
           <div class="review-after">
-            <div class="rv-label">After NavigationTrading</div>
-            <p>"NavigationTrading's approach is unlike anything else — purely statistics and probabilities. No emotion, no guessing. Over a year in and I couldn't be happier. The results speak for themselves."</p>
+            <div class="rv-label">Verdict</div>
+            <p>"I finally have a repeatable system that handles any market condition. My trading is now mechanical and stress-free. No more guessing or emotional trading. The results speak for themselves."</p>
           </div>
         </div>
 
@@ -1638,102 +1839,41 @@ footer > .footer-bottom { position: relative; z-index: 1; }
             <div class="review-avatar rv-av-3">MT</div>
             <div class="review-header-info">
               <div class="review-name">Michael T.</div>
-              <div class="review-role">Pro Member — 8 Months</div>
+              <div class="review-role">Pro Member — 3+ Years</div>
+              <div class="review-company-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                NavigationTrading
+              </div>
             </div>
             <span class="review-quote-icon">"</span>
           </div>
           <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <div class="review-before">
-            <div class="rv-label">Before NavigationTrading</div>
-            <p>"I knew how options worked technically, but I had no idea when to actually enter or exit a trade. I was flying blind on every position, relying on gut feelings that were right maybe half the time."</p>
+            <div class="rv-label">Review</div>
+            <p>"Before Pro, I was only doing day trading. I didn't realize how much I was missing by not having a portfolio approach with income spreads and trend-following strategies. The gap between theory and real execution felt impossible."</p>
           </div>
           <div class="review-after">
-            <div class="rv-label">After NavigationTrading</div>
-            <p>"The live trade alerts changed everything. Now I see exactly when setups form, the entry reasoning, and the management plan. I'm finally trading with a real system — not just hoping."</p>
-          </div>
-        </div>
-
-        <!-- Card 4 — Sarah K. -->
-        <div class="review-card">
-          <div class="review-card-header">
-            <div class="review-avatar rv-av-1" style="background:linear-gradient(135deg,#2a4a8c,#4a2a8c);">SK</div>
-            <div class="review-header-info">
-              <div class="review-name">Sarah K.</div>
-              <div class="review-role">Pro Member — 6 Months</div>
-            </div>
-            <span class="review-quote-icon">"</span>
-          </div>
-          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-before">
-            <div class="rv-label">Before NavigationTrading</div>
-            <p>"I was overwhelmed trying to figure out which strategy to use when. Bullish market, sideways, volatile — I had the same approach for all of it and couldn't understand why it wasn't working."</p>
-          </div>
-          <div class="review-after">
-            <div class="rv-label">After NavigationTrading</div>
-            <p>"Learning multiple strategies for different market conditions was the game-changer. Now when conditions change, I change strategies instead of panicking. This is how trading is supposed to feel."</p>
-          </div>
-        </div>
-
-        <!-- Card 5 — David R. -->
-        <div class="review-card">
-          <div class="review-card-header">
-            <div class="review-avatar rv-av-2" style="background:linear-gradient(135deg,#8c4a2a,#c8420a);">DR</div>
-            <div class="review-header-info">
-              <div class="review-name">David R.</div>
-              <div class="review-role">Pro Member — 1 Year</div>
-            </div>
-            <span class="review-quote-icon">"</span>
-          </div>
-          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-before">
-            <div class="rv-label">Before NavigationTrading</div>
-            <p>"I lost more than I care to admit in my first year trading options. No proper risk management, no defined system. Just intuition and YouTube — which, it turns out, is a very expensive combination."</p>
-          </div>
-          <div class="review-after">
-            <div class="rv-label">After NavigationTrading</div>
-            <p>"The defined-risk strategies and position sizing rules in the Pro courses fundamentally changed my approach. I've been consistently profitable for eight months now — trading smaller, smarter."</p>
-          </div>
-        </div>
-
-        <!-- Card 6 — Jennifer L. -->
-        <div class="review-card">
-          <div class="review-card-header">
-            <div class="review-avatar rv-av-3" style="background:linear-gradient(135deg,#2a6a5a,var(--gold));">JL</div>
-            <div class="review-header-info">
-              <div class="review-name">Jennifer L.</div>
-              <div class="review-role">Pro Member — 14 Months</div>
-            </div>
-            <span class="review-quote-icon">"</span>
-          </div>
-          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-before">
-            <div class="rv-label">Before NavigationTrading</div>
-            <p>"I spent a year watching trading YouTube. Lots of talk, no actionable system. I could analyze a chart but couldn't turn it into consistent trades. The gap between theory and real execution felt impossible."</p>
-          </div>
-          <div class="review-after">
-            <div class="rv-label">After NavigationTrading</div>
+            <div class="rv-label">Verdict</div>
             <p>"The structured strategy library and live streams bridged that gap completely. Watching Steve execute the same strategies he teaches — live — was exactly what I needed to click everything into place."</p>
           </div>
         </div>
 
-      </div><!-- /reviews-track -->
-    </div><!-- /reviews-carousel-wrap -->
-
-    <div class="reviews-nav reveal">
-      <button class="reviews-nav-btn" id="reviewsPrev" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="reviews-dots" id="reviewsDots">
-        <button class="reviews-dot active" data-idx="0"></button>
-        <button class="reviews-dot" data-idx="1"></button>
-        <button class="reviews-dot" data-idx="2"></button>
-        <button class="reviews-dot" data-idx="3"></button>
       </div>
-      <button class="reviews-nav-btn" id="reviewsNext" aria-label="Next">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
 
+      <div class="reviews-controls reveal">
+        <button class="reviews-nav-btn" id="reviewsPrev">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="reviews-dots" id="reviewsDots">
+          <button class="reviews-dot active" data-idx="0"></button>
+          <button class="reviews-dot" data-idx="1"></button>
+          <button class="reviews-dot" data-idx="2"></button>
+        </div>
+        <button class="reviews-nav-btn" id="reviewsNext">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 <section class="faq section" id="faq">
@@ -1867,7 +2007,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
     <div class="final-cta-inner">
       <span class="eyebrow" style="color:var(--gold);margin-bottom:20px;display:block;">PRO MEMBERSHIP</span>
       <h2 class="reveal">Get the Complete Trading System</h2>
-      <p class="reveal" style="font-size:18px;color:rgba(255,255,255,.65);max-width:640px;margin:0 auto 40px;line-height:1.75;">17+ strategies. Daily live trading room. Real-time alerts for everything. Custom tools and indicators. 200+ active traders learning and growing together.</p>
+      <p class="reveal" style="font-size:18px;color:rgba(255,255,255,.65);max-width:640px;margin:0 auto 40px;line-height:1.75;">17+ strategies. Daily live trading room. Real-time alerts for everything. Custom tools and indicators. 200+ active traders learning and growing together. This is everything NavigationTrading has built — and it's all yours.</p>
 
       <div class="reveal" style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;">
         <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.75);">
@@ -1899,15 +2039,15 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-brand"><img src="logo.png" alt="NavigationTrading" style="height:40px;width:auto;transform:scale(5);transform-origin:left center;vertical-align:middle;"></div>
-      <div class="footer-tagline">Free Options Trading Education</div>
+      <div class="footer-brand"><img src="logo.png" alt="NavigationTrading" class="footer-logo"></div>
+      <div class="footer-tagline">Professional Options Trading Education</div>
     </div>
     <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
-      <div>
+      <div style="flex:1;min-width:140px;">
         <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact</div>
         <a href="mailto:support@navigationtrading.com" style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
       </div>
-      <div>
+      <div style="flex:1;min-width:140px;">
         <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Follow</div>
         <div style="display:flex;gap:8px;align-items:center;">
           <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
@@ -1917,7 +2057,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
           <a href="https://www.linkedin.com/company/navigationtrading" target="_blank" class="social-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
         </div>
       </div>
-      <div>
+      <div style="flex:1;min-width:120px;">
         <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Legal</div>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk Disclosure</a>
@@ -1933,6 +2073,9 @@ footer > .footer-bottom { position: relative; z-index: 1; }
     </div>
     <div class="footer-copy">&copy; Navigation Financial, LLC</div>
   </div>
+  <button class="back-to-top" id="backToTop" title="Back to Top">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
 </footer>
 
 <script>
@@ -1950,10 +2093,36 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-/* ── Sticky bar ── */
+// Mobile Menu Toggle
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link, .btn-nav-pro');
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  navMenu.classList.toggle('active');
+  document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ── Sticky bar & Back to Top ── */
 const stickyBar = document.getElementById('stickyBar');
+const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
-  stickyBar.classList.toggle('visible', window.scrollY > 800);
+  const scrolled = window.scrollY;
+  stickyBar.classList.toggle('visible', scrolled > 800);
+  backToTop.classList.toggle('visible', scrolled > 500);
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 /* ── Reveal animation ── */
