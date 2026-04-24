@@ -1,7 +1,17 @@
 {
   "cleanUrls": true,
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/day-trading",
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/home",
+      "destination": "/index"
+    },
     {
       "source": "/transformer-option-spreads",
       "destination": "/transformer-option-spreads-content/transformer-option-spreads"
