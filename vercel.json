@@ -23,6 +23,18 @@
     {
       "source": "/tos-thank-you",
       "destination": "/transformer-option-spreads-content/tos-thankyou"
+    },
+    {
+      "source": "/performance",
+      "destination": "/performance"
+    },
+    {
+      "source": "/podcast",
+      "destination": "/podcast"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/pricing"
     }
   ]
 }

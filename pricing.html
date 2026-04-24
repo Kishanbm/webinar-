@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PM36KHB');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7EFVS3VNV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-W7EFVS3VNV');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Plans — Navigation Trading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Cormorant+Garamond:wght@700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --teal-900: #0D2E4E;
+      --teal-800: #0d2040;
+      --teal-700: #102a52;
+      --teal-600: #163565;
+      --teal-500: #1e4d8c;
+      --orange: #c8420a;
+      --orange-bright: #e04d10;
+      --orange-glow: rgba(200, 66, 10, 0.35);
+      --gold: #d4a040;
+      --cream: #f0f6ff;
+      --warm-white: #f5f9ff;
+      --text-dark: #111;
+      --text-mid: #4a4a4a;
+      --text-light: #787878;
+      --green: #62BC46;
+      --brand-blue: #0D2E4E;
+      --brand-green: #62BC46;
+      --brand-grey: #E7E7E7;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #fff;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--orange);
+      border-radius: 4px
+    }
+
+    /* ── PROGRESS BAR ── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+      z-index: 1000;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      padding: 18px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(13, 46, 78, 0.97);
+      backdrop-filter: blur(20px);
+      padding: 12px 60px;
+      box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .navbar.scrolled .nav-links a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 5px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar.scrolled .nav-logo {
+        color: #fff;
+    }
+
+    .nav-logo img {
+        height: 40px;
+        width: auto;
+        transform: scale(5);
+        transform-origin: left center;
+        vertical-align: middle;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange) !important;
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .nav-cta::after {
+      content: '→';
+      font-size: 14px;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--orange-glow)
+    }
+
+    /* ── PRICING HERO ── */
+    .pricing-hero {
+      padding: 180px 0 100px;
+      background: url('pricing_hero_bg.png') top center / cover no-repeat;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+    
+    .pricing-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(13, 46, 78, 0.8), rgba(255, 255, 255, 0.1));
+        z-index: 1;
+    }
+
+    /* Trading Chart Overlay */
+    .pricing-hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+        opacity: 0.15;
+        mix-blend-mode: overlay;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .pricing-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .pricing-hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    
+    .pricing-hero h1 em {
+        font-style: normal;
+        color: var(--gold);
+    }
+
+    .pricing-hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── PRICING SECTION ── */
+    .pricing-section {
+      padding: 80px 0;
+      background: #fff;
+      position: relative;
+    }
+
+    .pricing-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      position: relative;
+      z-index: 5;
+      margin-top: -150px; /* Pull cards up into hero */
+    }
+
+    .pricing-card {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      border-color: var(--orange);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid var(--orange);
+      transform: scale(1.05);
+      z-index: 10;
+    }
+    
+    .pricing-card.popular:hover {
+        transform: scale(1.05) translateY(-10px);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange);
+      color: #fff;
+      padding: 6px 20px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .card-header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .card-header h3 {
+      font-size: 24px;
+      color: var(--teal-900);
+      margin-bottom: 10px;
+    }
+
+    .card-price {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .card-price span {
+      font-size: 16px;
+      color: var(--text-light);
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-mid);
+      margin-bottom: 30px;
+      min-height: 40px;
+    }
+
+    .card-features {
+      list-style: none;
+      margin-bottom: 40px;
+      flex-grow: 1;
+    }
+
+    .card-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+    }
+
+    .card-features li svg {
+      color: var(--brand-green);
+      flex-shrink: 0;
+    }
+
+    .card-cta {
+      width: 100%;
+      padding: 16px;
+      border-radius: 10px;
+      border: 2px solid var(--orange);
+      background: transparent;
+      color: var(--orange);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .card-cta:hover {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .popular .card-cta {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .popular .card-cta:hover {
+      background: var(--orange-bright);
+      box-shadow: 0 8px 20px var(--orange-glow);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--teal-900);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 80px 60px 40px;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      gap: 40px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      width: auto;
+      transform: scale(5);
+      transform-origin: left center;
+      vertical-align: middle;
+    }
+
+    .footer-tagline {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 13px;
+      margin-top: 100px;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--orange);
+    }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .social-icon:hover {
+      background: rgba(200, 66, 10, 0.3);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 11.5px;
+      line-height: 1.75;
+      max-width: 800px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .pricing-container {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: -100px;
+      }
+      .pricing-card.popular {
+          grid-column: span 2;
+          max-width: 500px;
+          margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 16px 24px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .pricing-container {
+        grid-template-columns: 1fr;
+        margin-top: -80px;
+        padding: 0 24px;
+      }
+      .pricing-card.popular {
+          grid-column: span 1;
+      }
+      footer {
+        padding: 60px 24px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM36KHB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div id="progress-bar"></div>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <a href="day-trading.html" class="nav-logo">
+      <img src="logo.png" alt="NavigationTrading">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#pricing">Membership Plans</a></li>
+      <li><a href="#pricing">Features</a></li>
+    </ul>
+    <a href="#pricing" class="nav-cta">Get Started</a>
+  </nav>
+
+  <!-- ── PRICING HERO ── -->
+  <section class="pricing-hero">
+    <div class="pricing-hero-content">
+      <span class="hero-label">Membership Plans</span>
+      <h1>Simple Plans for<br><em>Expert Trading</em></h1>
+      <p>Take your trading to the next level with our structured frameworks and real-time guidance.</p>
+    </div>
+  </section>
+
+  <!-- ── PRICING SECTION ── -->
+  <section class="pricing-section" id="pricing">
+    <div class="pricing-container">
+      
+      <!-- Free Membership -->
+      <div class="pricing-card">
+        <div class="card-header">
+          <h3>Free</h3>
+          <div class="card-price">$0<span>/forever</span></div>
+        </div>
+        <p class="card-desc">Perfect for beginners looking to start their trading journey.</p>
+        <ul class="card-features">
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            5 core strategy courses
+          </li>
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            TradeHacker Discord Community
+          </li>
+        </ul>
+        <a href="https://whop.com/navigationtrading/ntfree/" class="card-cta">Join Free</a>
+      </div>
+
+      <!-- Day Trading Membership (Popular) -->
+      <div class="pricing-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <div class="card-header">
+          <h3>Day Trading</h3>
+          <div class="card-price">Join Now<span>/mo</span></div>
+        </div>
+        <p class="card-desc">Comprehensive daily live stream and real-time execution.</p>
+        <ul class="card-features">
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Daily Live Stream
+          </li>
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Real-time live trades
+          </li>
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Day trading chart indicators
+          </li>
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Includes 0 DTE Strategies
+          </li>
+        </ul>
+        <a href="https://whop.com/navigationtrading/ntday/" class="card-cta">Start Now</a>
+      </div>
+
+      <!-- Pro Membership -->
+      <div class="pricing-card">
+        <div class="card-header">
+          <h3>Pro</h3>
+          <div class="card-price">Ultimate<span>/mo</span></div>
+        </div>
+        <p class="card-desc">The complete package for serious traders seeking mastery.</p>
+        <ul class="card-features">
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Everything in Day Trading
+          </li>
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            17 advanced strategy courses
+          </li>
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Real-time Trade Alerts
+          </li>
+          <li>
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Custom indicators & lists
+          </li>
+        </ul>
+        <a href="https://whop.com/navigationtrading/ntpro/" class="card-cta">Get Pro Access</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"></div>
+        <div class="footer-tagline">Directional Day Trading Education</div>
+      </div>
+      <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact</div>
+          <a href="mailto:support@navigationtrading.com" style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
+        </div>
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Follow</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
+            </a>
+            <a href="https://x.com/navtrading1?s=21" target="_blank" class="social-icon">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+            </a>
+            <a href="https://www.instagram.com/navigationtrading" target="_blank" class="social-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.6)" stroke="none" /></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Legal</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk Disclosure</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Privacy Policy</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities involve risk and are not suitable for all investors. Consider all relevant risk factors, including their personal financial situation, before trading. Past results of any individual or trading system published by Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods, techniques, or indicators presented in these products and services will be profitable or that they will not result in losses.
+      </div>
+      <div class="footer-copy">&copy; 2026 Navigation Financial, LLC</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── PROGRESS BAR ──
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+      bar.style.width = pct + '%';
+    });
+
+    // ── NAVBAR SCROLL ──
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+</body>
+
+</html>
