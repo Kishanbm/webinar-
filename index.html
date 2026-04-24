@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] || (w[l] = []), w[l].push({
+        'gtm.start': (new Date).getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = "dataLayer" != l ? "&l=" + l : "";
+      j.async = !0, j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl, f.parentNode.insertBefore(j, f)
+    })(window, document, "script", "dataLayer", "GTM-PM36KHB");</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7EFVS3VNV"></script>
+  <script>
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "G-W7EFVS3VNV")
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Trading – Simple Strategies. Expert Guidance.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&family=Cormorant+Garamond:wght@700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --bg-main: #ffffff;
+      --teal-900: #0D2E4E;
+      --teal-800: #1a4a7a;
+      --emerald-500: #10b981;
+      --emerald-600: #059669;
+      --orange: #c8420a;
+      --orange-bright: #e04d10;
+      --text-main: #111;
+      --text-dim: #64748b;
+      --border-light: rgba(0, 0, 0, 0.08);
+      --glass-bg: rgba(255, 255, 255, 0.7);
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .navbar.scrolled {
+      background: rgba(13, 46, 78, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 14px 60px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      transform: scale(5);
+      transform-origin: left center;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--emerald-500) !important;
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200, 66, 10, 0.3);
+    }
+
+    /* ── NEW DISTINCT HERO ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 60px 80px;
+      background: url('homepage_hero_bg_distinct_1777004862780.png') center/cover no-repeat;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Dark/Warm Atmospheric Gradient */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.8) 0%, rgba(30, 20, 15, 0.6) 100%);
+      z-index: 1;
+    }
+
+    /* WhatsApp Candlestick Overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+      opacity: 0.15;
+      mix-blend-mode: overlay;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      padding: 6px 18px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 84px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange-bright);
+    }
+
+    .hero p {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 48px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-main {
+      background: var(--orange);
+      color: #fff;
+      padding: 18px 40px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+      box-shadow: 0 10px 30px rgba(200, 66, 10, 0.2);
+    }
+
+    .btn-main:hover {
+      background: var(--orange-bright);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(200, 66, 10, 0.3);
+    }
+
+    /* ── STATS MOVED TO HERO ── */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stat-card-dark {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 32px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card-dark:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .stat-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(200, 66, 10, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange-bright);
+    }
+
+    .stat-icon-wrap svg { width: 20px; height: 20px; }
+
+    .stat-text h4 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .stat-text span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+    }
+
+    /* ── REDESIGNED APPROACH (WITH VIDEO) ── */
+    .approach-new {
+      padding: 140px 0;
+      background: #ffffff;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .approach-grid-new {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .approach-content h2 {
+      font-size: 48px;
+      color: var(--teal-900);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+    }
+
+    .approach-content p {
+      font-size: 18px;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ── WHAT YOU'LL LEARN (4 CARDS) ── */
+    .learn-dark {
+      padding: 120px 0;
+      background: url('homepage_hero_bg_distinct_1777004862780.png') center/cover no-repeat;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .learn-dark::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.8) 0%, rgba(30, 20, 15, 0.6) 100%);
+      z-index: 1;
+    }
+
+    /* WhatsApp Overlay */
+    .learn-dark::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+      opacity: 0.12;
+      mix-blend-mode: overlay;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .section-header-light {
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-header-light h2 {
+      font-size: 42px;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .section-header-light p {
+      color: rgba(255,255,255,0.6);
+      font-size: 18px;
+    }
+
+    .learn-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .learn-card-dark {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 32px 24px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .learn-card-dark:hover {
+      background: rgba(0, 0, 0, 0.6);
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .lc-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .learn-card-dark h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .learn-card-dark p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .learn-action-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--orange);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 8px;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+
+    .learn-action-btn:hover { background: var(--orange-bright); }
+
+
+
+    /* ── TRADEHACKER MINDSET SECTION ── */
+    .tradehacker-section {
+      padding: 140px 0;
+      background: #fcfdfe;
+    }
+
+    .tradehacker-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .tradehacker-content h2 {
+      font-size: 42px;
+      color: var(--teal-900);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .tradehacker-content h4 {
+      font-size: 18px;
+      color: var(--orange);
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .tradehacker-content p {
+      font-size: 17px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    /* ── ENHANCED REVIEWS SECTION (PODCAST & DARK THEME) ── */
+    .testimonials-carousel {
+      padding: 80px 0;
+      background: url('homepage_hero_bg_distinct_1777004862780.png') center/cover no-repeat;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials-carousel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.8) 0%, rgba(30, 20, 15, 0.6) 100%);
+      z-index: 1;
+    }
+
+    .testimonials-carousel::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center 85% / cover no-repeat;
+      opacity: 0.12;
+      mix-blend-mode: overlay;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .carousel-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .test-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .test-header h2 {
+      font-size: 42px;
+      color: #fff;
+      letter-spacing: -1px;
+      margin: 0 auto;
+    }
+
+    .carousel-track-wrap {
+      overflow: hidden;
+      margin: 0 -12px;
+      padding: 20px 12px;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    .test-item {
+      flex: 0 0 calc(33.333% - 16px);
+      min-width: 300px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .test-item::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 20%;
+        bottom: 20%;
+        width: 3px;
+        background: var(--orange);
+        border-radius: 0 4px 4px 0;
+        opacity: 0.6;
+        transition: all 0.3s;
+    }
+
+    .test-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(200, 66, 10, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .test-item:hover::after {
+        opacity: 1;
+        top: 15%;
+        bottom: 15%;
+    }
+
+    .test-item p {
+      font-size: 15.5px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 30px;
+      flex-grow: 1;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .test-author-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .test-author-block::before {
+        content: '';
+        width: 20px;
+        height: 2px;
+        background: var(--orange);
+    }
+
+    .author-info h4 {
+      font-size: 11px;
+      margin: 0;
+      color: #fff;
+    }
+    .author-info span {
+      display: none;
+    }
+    .author-avatar {
+        display: none;
+    }
+
+    .carousel-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        margin-top: 40px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .carousel-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-btn:hover {
+        background: var(--orange);
+        color: #fff;
+        border-color: var(--orange);
+        transform: scale(1.1);
+    }
+
+    .dots-wrap {
+        display: flex;
+        gap: 12px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        cursor: pointer;
+        transition: all 0.4s;
+    }
+
+    .dot.active {
+        width: 24px;
+        border-radius: 10px;
+        background: var(--orange);
+    }
+
+    /* ── FULL WIDTH MESH CTA ── */
+    .full-mesh-cta {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .full-mesh-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.6) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(200, 66, 10, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(13, 46, 78, 0.2) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .full-mesh-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+      opacity: 0.15;
+      mix-blend-mode: luminosity;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .cta-content-wrapper {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .cta-content-wrapper h2 {
+      font-size: 56px;
+      color: var(--teal-900);
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+      font-weight: 700;
+    }
+
+    .cta-content-wrapper p {
+      font-size: 22px;
+      color: var(--teal-800);
+      margin-bottom: 48px;
+    }
+
+    /* ── FOOTER & SPOTIFY WIDGET ── */
+    footer {
+      background: var(--teal-900);
+      padding: 80px 60px 40px;
+      color: #fff;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      gap: 40px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      width: auto;
+      transform: scale(5);
+      transform-origin: left center;
+    }
+
+    .footer-tagline {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 13px;
+      margin-top: 100px;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: var(--emerald-500); }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .social-icon:hover { background: var(--emerald-500); color: #000; }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 11.5px;
+      line-height: 1.75;
+      max-width: 800px;
+    }
+
+    #spotify-widget {
+        position: fixed;
+        bottom: 0;
+        right: 24px;
+        width: 340px;
+        z-index: 2000;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        transform: translateY(0);
+    }
+
+    #spotify-widget.minimized { transform: translateY(160px); }
+
+    .widget-container {
+        background: #282828;
+        border-radius: 12px 12px 0 0;
+        box-shadow: 0 -10px 50px rgba(0,0,0,0.5);
+        overflow: hidden;
+        padding: 4px;
+        border: 1px solid rgba(255,255,255,0.05);
+        border-bottom: none;
+    }
+
+    .widget-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    .widget-header span {
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .widget-header span::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #1DB954;
+        border-radius: 50%;
+        animation: pulse-live 1.5s infinite;
+    }
+
+    @keyframes pulse-live {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 0.5; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .close-widget {
+        color: #fff;
+        background: rgba(255,255,255,0.1);
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        transition: all 0.2s;
+    }
+
+    .close-widget svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: #fff;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    #spotify-widget.minimized .close-widget svg { transform: rotate(180deg); }
+    .close-widget:hover { background: #1DB954; }
+    .close-widget:hover svg { stroke: #000; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .approach-grid-new, .tradehacker-grid { grid-template-columns: 1fr; gap: 60px; }
+      .learn-grid-4 { grid-template-columns: 1fr 1fr; }
+      .plans-layout { grid-template-columns: 1fr; }
+      .plan-box.featured { transform: none; }
+      .test-item { flex: 0 0 calc(50% - 16px); }
+      .navbar { padding: 18px 30px; }
+      .test-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    @media (max-width: 768px) {
+      .learn-grid-4 { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 56px; }
+      .nav-links { display: none; }
+      #spotify-widget { width: calc(100% - 48px); right: 24px; }
+      .test-item { flex: 0 0 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM36KHB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <a href="/" class="nav-logo">
+      <img src="logo.png" alt="NavigationTrading">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/performance">Performance</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li><a href="/podcast">Podcast</a></li>
+      <li><a href="https://navigationtrading.com/blog/">Blog</a></li>
+    </ul>
+    <div style="display:flex; gap:16px; align-items:center;">
+        <a href="https://whop.com/orders/products/" style="color:#fff; text-decoration:none; font-size:14px; font-weight:600;">Login</a>
+        <a href="https://whop.com/navigationtrading/" class="nav-cta">Join Now</a>
+    </div>
+  </nav>
+
+  <!-- ── NEW DISTINCT HERO ── -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-label">Simple Strategies. Expert Guidance.</span>
+      <h1>Learn to build wealth trading <em>options.</em></h1>
+      <p>Institutional-grade methodology, real-time execution, and exponential results.</p>
+      
+      <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">GET FREE ACCESS TO OUR FLAGSHIP COURSES</a>
+
+      <div class="hero-stats">
+        <div class="stat-card-dark">
+          <div class="stat-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <div class="stat-text">
+            <h4>41,187+</h4>
+            <span>Happy Students</span>
+          </div>
+        </div>
+        <div class="stat-card-dark">
+          <div class="stat-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <div class="stat-text">
+            <h4>17+</h4>
+            <span>Strategy Courses</span>
+          </div>
+        </div>
+        <div class="stat-card-dark">
+          <div class="stat-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div class="stat-text">
+            <h4>20+ yrs</h4>
+            <span>Trading Experience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REDESIGNED APPROACH (WITH VIDEO) ── -->
+  <section class="approach-new">
+    <div class="container">
+      <div class="approach-grid-new">
+        <div class="approach-content">
+          <h2>Our Approach</h2>
+          <p style="font-weight: 500; color: var(--teal-900);">Simple, straightforward strategies with exponential results.</p>
+          <p>Our methodology is based on statistics and probabilities, not hype, emotion, or following some “Stock Market Guru” who claims to have a crystal ball. We post every trade we send to our Pro Members—both winners and losers.</p>
+          <p style="margin-bottom: 40px;">The best part is, we don't have to pick market direction to make money on our trades; that's the power of our trading method.</p>
+          <a href="/performance" class="btn-main">VIEW TRADE RESULTS</a>
+        </div>
+        <div class="approach-visual-new">
+          <div class="video-wrapper">
+             <iframe src="https://www.youtube.com/embed/fcrhsP5NOGY?rel=0" title="Welcome to NavigationTrading" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT YOU'LL LEARN (4 CARDS) ── -->
+  <section class="learn-dark">
+    <div class="container">
+      <div class="section-header-light">
+        <h2>What You'll Learn Inside This Class</h2>
+        <p>In this 45 minute live training, you'll learn:</p>
+      </div>
+      <div class="learn-grid-4">
+        <!-- Card 1 -->
+        <div class="learn-card-dark">
+          <div class="lc-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          </div>
+          <h3>Free Membership</h3>
+          <p>Get started with our five free strategy courses plus bonus resources.</p>
+          <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="learn-action-btn">Get Instant Access</a>
+        </div>
+        <!-- Card 2 -->
+        <div class="learn-card-dark">
+          <div class="lc-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <h3>Premium Memberships</h3>
+          <p>Learn more about premium memberships, live day trading stream, live trading alerts and more.</p>
+          <a href="pricing.html" class="learn-action-btn">Learn More</a>
+        </div>
+        <!-- Card 3 -->
+        <div class="learn-card-dark">
+          <div class="lc-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3>Join Our Community</h3>
+          <p>Interact with like-minded traders and get all of your trading related questions answered.</p>
+          <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="learn-action-btn">Learn More</a>
+        </div>
+        <!-- Card 4 -->
+        <div class="learn-card-dark">
+          <div class="lc-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <h3>Questions?</h3>
+          <p>Schedule a complimentary opening call with one of our full-time traders.</p>
+          <a href="https://calendly.com/navigationtrading" class="learn-action-btn">Schedule a Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ── THE TRADEHACKER MINDSET ── -->
+  <section class="tradehacker-section">
+    <div class="container">
+      <div class="tradehacker-grid">
+        <div class="tradehacker-content">
+          <h2>The Tradehacker Mindset</h2>
+          <h4>#1 Podcast for Trading Psychology</h4>
+          <p>This show is for experienced and novice traders who want to learn how to master the psychology (mindset) of trading. Learn from NavigationTrading. As top options wizard for trading firm, inside each episode, we share "ah ha" moments that we have learned from trading every day for the last 20+ years.</p>
+          <a href="/podcast" class="btn-main">Listen to the Podcast</a>
+        </div>
+        <div class="tradehacker-player">
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/42bqUnN2lA5RDHAiwPKJM5?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 1-LINER CAROUSEL TESTIMONIALS (MOVED DOWN & LIGHT THEME) ── -->
+  <section class="testimonials-carousel" id="reviews">
+    <div class="carousel-container">
+      <div class="test-header">
+        <h2>What Traders Are Saying</h2>
+      </div>
+      
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="reviewTrack">
+          <div class="test-item">
+            <p>“Just joined a couple of weeks ago now and love it. Winner on my first trade. This trading method is in line with my philosophy on making money in the market with smaller controlled positions.”</p>
+            <div class="test-author-block">
+              <div class="author-info">
+                <h4>Verified Member</h4>
+              </div>
+            </div>
+          </div>
+          <div class="test-item">
+            <p>“Many thanks to Navigation Trading, my life has changed. No day job, more free time, less stress and I can continue on and on. With huge respect and warm greetings from Prague.”</p>
+            <div class="test-author-block">
+              <div class="author-info">
+                <h4>International Trader</h4>
+              </div>
+            </div>
+          </div>
+          <div class="test-item">
+            <p>“After years of trading, I feel that I am not on the bullish side or bearish side of the market, but finally on the profitable side! The strategies taught here are the best.”</p>
+            <div class="test-author-block">
+              <div class="author-info">
+                <h4>Professional Trader</h4>
+              </div>
+            </div>
+          </div>
+          <div class="test-item">
+            <p>“I can not say enough about how well NT presents their material. It’s presented in a very logical, concise way and explained in a way that the average person can understand.”</p>
+            <div class="test-author-block">
+              <div class="author-info">
+                <h4>Avid Learner</h4>
+              </div>
+            </div>
+          </div>
+          <div class="test-item">
+            <p>“I’ve learned a ton since joining and have flipped my frustrating ‘roller coaster’ investment strategy into something that is finally making sense and working consistently.”</p>
+            <div class="test-author-block">
+              <div class="author-info">
+                <h4>Consistent Member</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-nav">
+          <button class="carousel-btn" id="prevReview">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="dots-wrap" id="reviewDots"></div>
+          <button class="carousel-btn" id="nextReview">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FULL WIDTH MESH CTA ── -->
+  <section class="full-mesh-cta">
+    <div class="cta-content-wrapper">
+      <h2>Master Your Mindset.</h2>
+      <p>Join Navigation Trading and start your journey towards consistent profitability today.</p>
+      <a href="/pricing" class="btn-main" style="background:var(--orange); box-shadow:0 10px 30px rgba(200,66,10,0.25);">View All Pricing Options</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"></div>
+        <div class="footer-tagline">Institutional Grade Trading Education</div>
+      </div>
+      <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact</div>
+          <a href="mailto:support@navigationtrading.com" style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Follow</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
+            </a>
+            <a href="https://x.com/navtrading1?s=21" target="_blank" class="social-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+            </a>
+            <a href="https://www.instagram.com/navigationtrading" target="_blank" class="social-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Legal</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk Disclosure</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Privacy Policy</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities involve risk and are not suitable for all investors. Consider all relevant risk factors, including their personal financial situation, before trading. Past results of any individual or trading system published by Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods, techniques, or indicators presented in these products and services will be profitable or that they will not result in losses.
+      </div>
+      <div class="footer-copy">&copy; 2026 Navigation Financial, LLC</div>
+    </div>
+  </footer>
+
+  <!-- ── FLOATING SPOTIFY WIDGET ── -->
+  <div id="spotify-widget">
+      <div class="widget-container">
+          <div class="widget-header" onclick="toggleWidget()">
+              <span>Latest</span>
+              <div class="close-widget">
+                  <svg viewBox="0 0 24 24">
+                      <path d="M17 11l-5-5-5 5" />
+                      <path d="M17 18l-5-5-5 5" />
+                  </svg>
+              </div>
+          </div>
+          <iframe style="border:none" src="https://open.spotify.com/embed/show/42bqUnN2lA5RDHAiwPKJM5?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+  </div>
+
+  <script>
+    function toggleWidget() {
+        const widget = document.getElementById('spotify-widget');
+        widget.classList.toggle('minimized');
+    }
+
+    // ── NAVBAR SCROLL ──
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── TESTIMONIAL CAROUSEL (ENHANCED AUTO-PLAYING) ──
+    (function () {
+      const track = document.getElementById('reviewTrack');
+      const dotsWrap = document.getElementById('reviewDots');
+      const prevBtn = document.getElementById('prevReview');
+      const nextBtn = document.getElementById('nextReview');
+      if (!track) return;
+
+      const cards = track.querySelectorAll('.test-item');
+      const total = cards.length;
+      function visibleCount() { return window.innerWidth < 700 ? 1 : (window.innerWidth < 1024 ? 2 : 3); }
+      let current = 0;
+      let autoplayInterval;
+
+      // Build dots
+      for (let i = 0; i < total; i++) {
+        const d = document.createElement('button');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => { goTo(i); resetAutoplay(); });
+        dotsWrap.appendChild(d);
+      }
+
+      function updateDots() {
+        dotsWrap.querySelectorAll('.dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      function goTo(idx) {
+        const vc = visibleCount();
+        const maxIdx = Math.max(0, total - vc);
+        
+        if (idx > maxIdx) current = 0;
+        else if (idx < 0) current = maxIdx;
+        else current = idx;
+
+        const cardEl = cards[0];
+        const gap = 24;
+        const cardW = cardEl.getBoundingClientRect().width;
+        track.style.transform = `translateX(-${current * (cardW + gap)}px)`;
+        updateDots();
+      }
+
+      function startAutoplay() {
+          autoplayInterval = setInterval(() => {
+              goTo(current + 1);
+          }, 5000);
+      }
+
+      function resetAutoplay() {
+          clearInterval(autoplayInterval);
+          startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
+      nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
+      window.addEventListener('resize', () => goTo(current));
+
+      startAutoplay();
+    })();
+  </script>
+</body>
+
+</html>
