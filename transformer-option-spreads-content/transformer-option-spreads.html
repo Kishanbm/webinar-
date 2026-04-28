@@ -1623,10 +1623,11 @@
 
     .results-header .sec-title {
       color: #fff;
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 900;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 700;
       margin: 0;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
+      font-family: 'DM Sans', sans-serif;
     }
 
     /* contained split card */
@@ -1726,7 +1727,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 80% top;
+      object-position: 0% top;
       display: block;
     }
 
@@ -4233,7 +4234,7 @@
           <div class="get-accord-row">
             <div class="get-accord-left">
               <div class="get-accord-title">Live 75-Minute Training</div>
-              <div class="get-accord-sub">Live session · April 30</div>
+              <div class="get-accord-sub">Live session · May 6th</div>
             </div>
             <div class="get-accord-plus">+</div>
           </div>
@@ -4314,7 +4315,7 @@
                 <line x1="8" y1="2" x2="8" y2="6" />
                 <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
-              April 30, 2026
+              May 6, 2026
             </div>
             <div class="get-card-stat">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -4461,7 +4462,7 @@
 
         <!-- RIGHT: dashboard image -->
         <div class="v3-right">
-          <img src="results.png" alt="FLUX Live Trading Dashboard">
+          <img src="results2.png" alt="FLUX Live Trading Dashboard">
           <div class="v3-badge">★&nbsp; $200/mo value — yours free</div>
         </div>
 
@@ -4953,7 +4954,7 @@
     const prev = { d: '', h: '', m: '', s: '' };
     // Set target to 20 days + 4 hours + 5 minutes from now so it's always counting live
     // const end = Date.now() + (20 * 24 * 3600 + 4 * 3600 + 5 * 60) * 1000;
-    // Set target to April 30, 2026
+    // Set target to May 6th, 2026
     const end = new Date('2026-05-06T15:30:00-05:00').getTime();
 
     function tick() {
