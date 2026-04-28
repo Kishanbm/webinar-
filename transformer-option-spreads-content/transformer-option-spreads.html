@@ -1521,36 +1521,100 @@
       stroke-width: 2
     }
 
+    /* ================================================================
+       DESIGN V1 — 3-col flanked (image center, 3 features each side)
+       Dark navy bg + WhatsApp texture overlay
+       ================================================================
     .results-section {
-      background: url('../pricing_hero_bg.png') top center / cover no-repeat;
+      background: linear-gradient(160deg, var(--teal-900) 0%, var(--teal-800) 100%);
       padding: 100px 0;
       position: relative;
-      overflow: hidden;
     }
-
-    /* WhatsApp Image Overlay only */
     .results-section::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('../WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-      opacity: 0.1;
-      mix-blend-mode: multiply; /* Better for light backgrounds */
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center / cover no-repeat;
+      opacity: 0.08;
+      mix-blend-mode: luminosity;
       z-index: 1;
       pointer-events: none;
     }
+    .results-header { position: relative; z-index: 2; text-align: center; margin-bottom: 48px; }
+    .results-header .sec-label { color: var(--orange); display: inline-block; margin-bottom: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 11px; }
+    .results-header .sec-title { color: #fff; font-size: clamp(32px, 5vw, 48px); font-weight: 900; margin: 0; letter-spacing: -0.02em; }
+    .rw-3col { display: grid; grid-template-columns: 1fr 360px 1fr; gap: 40px; align-items: center; max-width: 1140px; margin: 0 auto; position: relative; z-index: 2; }
+    .rw-center-img { position: relative; }
+    .rw-device-frame { background: rgba(255,255,255,0.04); border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06); }
+    .rw-frame-bar { background: rgba(0,0,0,0.35); padding: 10px 14px; display: flex; align-items: center; gap: 6px; }
+    .rw-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .rw-dot:nth-child(1) { background: rgba(255,95,87,0.7); }
+    .rw-dot:nth-child(2) { background: rgba(255,189,46,0.7); }
+    .rw-dot:nth-child(3) { background: rgba(40,201,64,0.7); }
+    .rw-frame-title { margin-left: 8px; font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 1px; font-weight: 600; text-transform: uppercase; }
+    .rw-img { width: 100%; display: block; }
+    .rw-center-badge { margin-top: 14px; text-align: center; font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 0.5px; opacity: 0.9; }
+    .rw-features { display: flex; flex-direction: column; gap: 36px; }
+    .rw-features.left { text-align: right; }
+    .rw-features.right { text-align: left; }
+    .rw-fi { position: relative; }
+    .rw-fi-verb { display: inline-block; font-size: 9px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+    .rw-fi h4 { font-size: 15px; font-weight: 800; color: #fff; margin: 0 0 6px; line-height: 1.3; }
+    .rw-fi p { font-size: 12px; color: rgba(255,255,255,0.52); line-height: 1.65; margin: 0; }
+    .rw-features.left .rw-fi + .rw-fi, .rw-features.right .rw-fi + .rw-fi { padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .rw-features.left .rw-fi::after, .rw-features.right .rw-fi::before { content: ''; position: absolute; top: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); opacity: 0.5; }
+    .rw-features.left .rw-fi::after { right: -52px; }
+    .rw-features.right .rw-fi::before { left: -52px; }
+    @media (max-width: 960px) {
+      .rw-3col { grid-template-columns: 1fr; gap: 40px; }
+      .rw-features.left, .rw-features.right { text-align: left; }
+      .rw-features.left .rw-fi::after, .rw-features.right .rw-fi::before { display: none; }
+      .rw-center-img { max-width: 480px; margin: 0 auto; }
+    }
+    ================================================================ */
+
+    /* ================================================================
+       DESIGN V2 — Bento grid (commented out)
+       ================================================================
+       [V2 CSS archived — see HTML comment block for V2 markup]
+       ================================================================ */
+
+    /* ================================================================
+       DESIGN V3 — Single dark "split card"
+       Light section bg, one big dark rounded card splits 50/50:
+       left = feature checklist, right = dashboard image bleeding in
+       ================================================================ */
+    .results-section {
+      background: var(--teal-900);
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .results-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center / cover no-repeat;
+      opacity: 0.06;
+      mix-blend-mode: luminosity;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .results-section::after { content: none; }
 
     .results-header {
       position: relative;
       z-index: 2;
       text-align: center;
-      margin-bottom: 70px;
+      margin-bottom: 28px;
     }
 
     .results-header .sec-label {
       color: var(--orange);
       display: inline-block;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -1558,162 +1622,148 @@
     }
 
     .results-header .sec-title {
-      color: var(--teal-900); /* Back to dark for light bg */
+      color: #fff;
       font-size: clamp(32px, 5vw, 48px);
       font-weight: 900;
       margin: 0;
       letter-spacing: -0.02em;
     }
 
-    .orbital-scene {
-      position: relative;
-      width: 100%;
-      max-width: 1100px;
-      height: 600px;
+    /* contained split card */
+    .v3-card {
+      display: grid;
+      grid-template-columns: 6fr 7fr;
+      max-width: 1080px;
       margin: 0 auto;
-    }
-
-    .oc-svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 2;
-      overflow: visible;
-    }
-
-    .oc-line {
-      fill: none;
-      stroke: rgba(200, 66, 10, 0.65); /* Brighter for dark mode */
-      stroke-width: 1.5;
-      stroke-dasharray: 5 6;
-    }
-
-    .oc-dot-svg {
-      fill: var(--orange);
-      filter: drop-shadow(0 0 5px rgba(200, 66, 10, 0.5));
-    }
-
-    .oc-center {
-      position: absolute;
-      left: 50%;
-      top: 54%; /* Moved down from 50% */
-      transform: translate(-50%, -50%);
-      z-index: 3;
-    }
-
-    .oc-logo {
-      width: 280px; /* Slightly wider for the new image */
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
-      border: 1px solid #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.35);
       position: relative;
       z-index: 2;
     }
 
-    .oc-center::before {
-      content: '';
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      background: var(--orange);
-      filter: blur(80px);
-      opacity: 0.15;
-      z-index: 1;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+    /* LEFT: white card side */
+    .v3-left {
+      background: #ffffff;
+      padding: 32px 40px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .oi-item {
-      position: absolute;
-      width: 280px;
-      z-index: 4;
-      padding: 18px 22px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.3); /* Light glass */
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-      transition: all 0.4s ease;
+    .v3-left-heading {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-align: center;
+      margin-bottom: 16px;
+      margin-top: -8px;
     }
 
-    .oi-item:hover {
-      background: rgba(255, 255, 255, 0.5);
-      border-color: var(--orange);
-      transform: translateY(-5px);
+    .v3-item {
+      padding: 11px 10px;
+      margin: 0 -10px;
+      border-bottom: 1px solid rgba(13,32,64,0.07);
+      border-radius: 10px;
+      transition: background 0.2s ease, transform 0.2s ease;
+      cursor: default;
     }
 
-    .oi-item:hover {
-      background: rgba(255, 255, 255, 0.45);
-      border-color: var(--orange);
-      transform: translateY(-5px);
+    .v3-item:last-child { border-bottom: none; }
+
+    .v3-item:hover {
+      background: rgba(200,66,10,0.05);
+      transform: translateX(4px);
+      border-bottom-color: transparent;
     }
 
-    /* Positions adjusted for narrower cards to keep the 15px gap from line ends */
-    .oi-item-1 { top: 10px; left: 95px; } /* Right edge: 375 (Line starts at 390) */
-    .oi-item-2 { top: 235px; left: -25px; } /* Right edge: 255 (Line starts at 270) */
-    .oi-item-3 { top: 460px; left: 95px; } /* Right edge: 375 (Line starts at 390) */
-
-    .oi-item-4 { top: 10px; right: 95px; } /* Left edge: 725 (Line ends at 710) */
-    .oi-item-5 { top: 235px; right: -25px; } /* Left edge: 845 (Line ends at 830) */
-    .oi-item-6 { top: 460px; right: 95px; } /* Left edge: 725 (Line ends at 710) */
-
-    .oi-verb {
-      display: block;
-      font-size: 9px; /* Smaller verb */
+    .v3-item-verb {
+      display: inline;
+      font-size: 14px;
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--orange);
-      margin-bottom: 6px;
     }
 
-    .oi-item h4 {
-      font-size: 15px;
+    .v3-item-title {
+      display: inline;
+      font-size: 14px;
       font-weight: 800;
-      color: var(--teal-900); /* Back to dark */
-      margin-bottom: 8px;
+      color: var(--teal-900);
+      line-height: 1.3;
+      transition: color 0.2s ease;
     }
 
-    .oi-item p {
-      font-size: 12px;
-      color: var(--text-mid); /* Back to dark */
-      line-height: 1.6;
-      margin: 0;
+    .v3-item-title::before {
+      content: " — ";
+      font-weight: 400;
+      color: var(--text-mid);
     }
 
-    @media (max-width: 1200px) {
-      .orbital-scene { height: auto; display: flex; flex-direction: column; gap: 30px; align-items: center; }
-      .oc-svg { display: none; }
-      .oi-item { position: static; width: 100%; max-width: 500px; }
-      .oc-center { position: relative; left: auto; top: auto; transform: none; margin: 40px 0; }
+    .v3-item:hover .v3-item-title {
+      color: var(--orange);
+    }
+
+    .v3-item-desc {
+      display: block;
+      margin-top: 3px;
+      font-size: 11.5px;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    /* RIGHT: image side */
+    .v3-right {
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .v3-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 80% top;
+      display: block;
+    }
+
+    /* soft blend — white feather into image */
+    .v3-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 18%, transparent 35%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* small pill badge bottom-right */
+    .v3-badge {
+      position: absolute;
+      bottom: 18px;
+      right: 20px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(200,66,10,0.9);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 30px;
+      white-space: nowrap;
     }
 
     @media (max-width: 860px) {
-      .orbital-scene { height: auto; display: flex; flex-direction: column; align-items: center; }
-      .oc-svg { display: none; }
-      .oc-center {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        margin: 0 auto 40px;
-        width: 100%;
-        max-width: 380px;
-      }
-      .oc-logo { width: 100%; }
-      .oi-item {
-        position: static;
-        width: 100%;
-        text-align: left !important;
-        margin-bottom: 20px;
-        padding: 16px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      }
+      .v3-card { grid-template-columns: 1fr; border-radius: 16px; }
+      .v3-right { min-height: 260px; }
+      .v3-left { padding: 40px 32px; }
+      .v3-right::before { background: linear-gradient(180deg, rgba(13,20,40,0.45) 0%, transparent 40%); }
     }
 
     @media(max-width:800px) {
@@ -4319,7 +4369,46 @@
     </div>
   </section>
 
-  <!-- ── RESULTS / WALK AWAY SECTION ── -->
+  <!-- ================================================================
+       DESIGN V1 — 3-col flanked (image center, 3 features each side)
+       Dark navy bg + WhatsApp texture overlay
+       ================================================================
+  <section class="results-section section">
+    <div class="container">
+      <div class="results-header reveal">
+        <div class="sec-label">Real Results That Build Your Foundation</div>
+        <h2 class="sec-title">What You'll Walk Away With</h2>
+      </div>
+      <div class="rw-3col">
+        <div class="rw-features left reveal">
+          <div class="rw-fi"><span class="rw-fi-verb">SEE</span><h4>Volatility At A Glance</h4><p>See how expensive or cheap options are right now on SPX, QQQ, and SPY — updated every five minutes so you're never guessing what the market is pricing.</p></div>
+          <div class="rw-fi"><span class="rw-fi-verb">KNOW</span><h4>When To Enter</h4><p>Know the exact moment to place a Double Calendar trade. FLUX shows you when conditions line up in your favor, so you stop entering on a hunch and start entering on a signal.</p></div>
+          <div class="rw-fi"><span class="rw-fi-verb">COMPARE</span><h4>Now vs. The Past 20 Days</h4><p>Compare today's market conditions against the last 5 and 20 days at a glance — so you can tell whether right now is a great setup or a waiting moment.</p></div>
+        </div>
+        <div class="rw-center-img reveal">
+          <div class="rw-device-frame">
+            <div class="rw-frame-bar"><span class="rw-dot"></span><span class="rw-dot"></span><span class="rw-dot"></span><span class="rw-frame-title">FLUX Dashboard</span></div>
+            <img src="restults.png" alt="FLUX Live Trading Dashboard" class="rw-img">
+          </div>
+          <div class="rw-center-badge">★ Valued at $200/month — yours free</div>
+        </div>
+        <div class="rw-features right reveal">
+          <div class="rw-fi"><span class="rw-fi-verb">PICK</span><h4>Your Trade Dates</h4><p>Pick the expiration dates you want to trade and instantly see how they line up. No more flipping between screens or guessing which combination makes sense.</p></div>
+          <div class="rw-fi"><span class="rw-fi-verb">TRADE</span><h4>Like The Pros</h4><p>Trade with the same tool the NavigationTrading team uses every day — the one that recently helped turn a single trade into a risk-free position in just 13 minutes.</p></div>
+          <div class="rw-fi"><span class="rw-fi-verb">GET</span><h4>A $200 Tool, Free</h4><p>Get a professional-grade trading tool that would cost $200/month elsewhere — included free with your Pro membership. No extra subscriptions, no hidden fees.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  ================================================================ -->
+
+  <!-- ================================================================
+       DESIGN V2 — Bento grid (commented out)
+       ================================================================
+  <section class="results-section section"> ... V2 bento markup ... </section>
+  ================================================================ -->
+
+  <!-- ── RESULTS / WALK AWAY SECTION — DESIGN V3 (Contained Split Card) ── -->
   <section class="results-section section">
     <div class="container">
       <div class="results-header reveal">
@@ -4327,69 +4416,56 @@
         <h2 class="sec-title">What You'll Walk Away With</h2>
       </div>
 
-      <div class="orbital-scene">
-        <!-- SVG connector overlay -->
-        <svg class="oc-svg" viewBox="0 0 1100 600" preserveAspectRatio="xMidYMid meet">
-          <!-- Left top -->
-          <path class="oc-line" d="M 390,90 H 435 V 240"/>
-          <circle class="oc-dot-svg" cx="435" cy="240" r="5"/>
-          <!-- Left mid -->
-          <path class="oc-line" d="M 270,325 H 400"/>
-          <circle class="oc-dot-svg" cx="400" cy="325" r="5"/>
-          <!-- Left bot -->
-          <path class="oc-line" d="M 390,570 H 435 V 440"/>
-          <circle class="oc-dot-svg" cx="435" cy="440" r="5"/>
-          <!-- Right top -->
-          <path class="oc-line" d="M 665,240 V 90 H 710"/>
-          <circle class="oc-dot-svg" cx="665" cy="240" r="5"/>
-          <!-- Right mid -->
-          <path class="oc-line" d="M 700,325 H 830"/>
-          <circle class="oc-dot-svg" cx="700" cy="325" r="5"/>
-          <!-- Right bot -->
-          <path class="oc-line" d="M 665,440 V 570 H 710"/>
-          <circle class="oc-dot-svg" cx="665" cy="440" r="5"/>
-        </svg>
+      <div class="v3-card reveal">
 
-        <!-- Center Results Image -->
-        <div class="oc-center">
-          <img src="restults.png" alt="Real Trading Results" class="oc-logo">
-        </div>
+        <!-- LEFT: checklist -->
+        <div class="v3-left">
+          <p class="v3-left-heading">What FLUX gives you</p>
 
-        <!-- LEFT items -->
-        <div class="oi-item left oi-item-1 reveal">
-          <div class="oi-verb">SEE</div>
-          <h4>Volatility At A Glance</h4>
-          <p>See how expensive or cheap options are right now on SPX, QQQ, and SPY — updated every five minutes so you're never guessing what the market is pricing.</p>
-        </div>
-        <div class="oi-item left oi-item-2 reveal">
-          <div class="oi-verb">KNOW</div>
-          <h4>When To Enter</h4>
-          <p>Know the exact moment to place a Double Calendar trade. FLUX shows you when conditions line up in your favor, so you stop entering on a hunch and start entering on a signal.</p>
-        </div>
-        <div class="oi-item left oi-item-3 reveal">
-          <div class="oi-verb">COMPARE</div>
-          <h4>Now vs. The Past 20 Days</h4>
-          <p>Compare today's market conditions against the last 5 and 20 days at a glance — so you can tell whether right now is a great setup or a waiting moment.</p>
+          <div class="v3-item">
+            <span class="v3-item-verb">SEE</span>
+            <span class="v3-item-title">Volatility At A Glance</span>
+            <span class="v3-item-desc">See how expensive or cheap options are right now on SPX, QQQ, and SPY — updated every five minutes so you're never guessing what the market is pricing.</span>
+          </div>
+
+          <div class="v3-item">
+            <span class="v3-item-verb">KNOW</span>
+            <span class="v3-item-title">When To Enter</span>
+            <span class="v3-item-desc">Know the exact moment to place a Double Calendar trade. FLUX shows you when conditions line up in your favor, so you stop entering on a hunch and start entering on a signal.</span>
+          </div>
+
+          <div class="v3-item">
+            <span class="v3-item-verb">COMPARE</span>
+            <span class="v3-item-title">Now vs. The Past 20 Days</span>
+            <span class="v3-item-desc">Compare today's market conditions against the last 5 and 20 days at a glance — so you can tell whether right now is a great setup or a waiting moment.</span>
+          </div>
+
+          <div class="v3-item">
+            <span class="v3-item-verb">PICK</span>
+            <span class="v3-item-title">Your Trade Dates</span>
+            <span class="v3-item-desc">Pick the expiration dates you want to trade and instantly see how they line up. No more flipping between screens or guessing which combination makes sense.</span>
+          </div>
+
+          <div class="v3-item">
+            <span class="v3-item-verb">TRADE</span>
+            <span class="v3-item-title">Like The Pros</span>
+            <span class="v3-item-desc">Trade with the same tool the NavigationTrading team uses every day — the one that recently helped turn a single trade into a risk-free position in just 13 minutes.</span>
+          </div>
+
+          <div class="v3-item">
+            <span class="v3-item-verb">GET</span>
+            <span class="v3-item-title">A $200 Tool, Free</span>
+            <span class="v3-item-desc">Get a professional-grade trading tool that would cost $200/month elsewhere — included free with your Pro membership. No extra subscriptions, no hidden fees.</span>
+          </div>
         </div>
 
-        <!-- RIGHT items -->
-        <div class="oi-item right oi-item-4 reveal">
-          <div class="oi-verb">PICK</div>
-          <h4>Your Trade Dates</h4>
-          <p>Pick the expiration dates you want to trade and instantly see how they line up. No more flipping between screens or guessing which combination makes sense.</p>
-        </div>
-        <div class="oi-item right oi-item-5 reveal">
-          <div class="oi-verb">TRADE</div>
-          <h4>Like The Pros</h4>
-          <p>Trade with the same tool the NavigationTrading team uses every day — the one that recently helped turn a single trade into a risk-free position in just 13 minutes.</p>
-        </div>
-        <div class="oi-item right oi-item-6 reveal">
-          <div class="oi-verb">GET</div>
-          <h4>A $200 Tool, Free</h4>
-          <p>Get a professional-grade trading tool that would cost $200/month elsewhere — included free with your Pro membership. No extra subscriptions, no hidden fees.</p>
+        <!-- RIGHT: dashboard image -->
+        <div class="v3-right">
+          <img src="restults.png" alt="FLUX Live Trading Dashboard">
+          <div class="v3-badge">★&nbsp; $200/mo value — yours free</div>
         </div>
 
-      </div><!-- /orbital-scene -->
+      </div><!-- /v3-card -->
     </div>
   </section>
 
