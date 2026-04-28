@@ -29,7 +29,7 @@
   <title>Navigation Trading – Simple Strategies. Expert Guidance.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&family=Cormorant+Garamond:wght@700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:wght@700&display=swap"
     rel="stylesheet">
   <style>
     *,
@@ -64,6 +64,7 @@
       color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.6;
+      font-size: 16px;
     }
 
     /* ── NAVBAR ── */
@@ -137,24 +138,24 @@
       box-shadow: 0 8px 25px rgba(200, 66, 10, 0.3);
     }
 
-    /* ── NEW DISTINCT HERO ── */
+    /* ── HERO (ATMOSPHERIC BLUE) ── */
     .hero {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 140px 60px 80px;
-      background: url('homepage_hero_bg_distinct_1777004862780.png') center/cover no-repeat;
+      padding: 140px 60px 120px;
+      background: url('pricing_hero_bg.png') top center / cover no-repeat;
       position: relative;
       text-align: center;
       overflow: hidden;
     }
 
-    /* Dark/Warm Atmospheric Gradient */
+    /* Blue Atmospheric Overlay (Matches Podcast) */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.8) 0%, rgba(30, 20, 15, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(13, 46, 78, 0.85), rgba(255, 255, 255, 0.1));
       z-index: 1;
     }
 
@@ -178,8 +179,8 @@
 
     .hero-label {
       display: inline-block;
-      padding: 6px 18px;
-      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 50px;
@@ -188,27 +189,27 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     .hero h1 {
-      font-size: clamp(48px, 8vw, 84px);
+      font-size: clamp(42px, 6vw, 68px);
       font-weight: 700;
       color: #fff;
-      line-height: 0.95;
-      letter-spacing: -3px;
+      line-height: 1.1;
+      letter-spacing: -1px;
       margin-bottom: 24px;
       text-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .hero h1 em {
       font-style: normal;
-      color: var(--orange-bright);
+      color: #d4a040; /* Gold accent to match Podcast */
     }
 
     .hero p {
-      font-size: 22px;
-      color: rgba(255, 255, 255, 0.85);
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
       margin-bottom: 48px;
       max-width: 600px;
       margin-left: auto;
@@ -281,7 +282,7 @@
       font-weight: 700;
       line-height: 1;
       margin-bottom: 4px;
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'DM Mono', monospace;
     }
 
     .stat-text span {
@@ -313,15 +314,15 @@
     }
 
     .approach-content h2 {
-      font-size: 48px;
+      font-size: 36px;
       color: var(--teal-900);
       line-height: 1.1;
-      letter-spacing: -1.5px;
+      letter-spacing: -1px;
       margin-bottom: 24px;
     }
 
     .approach-content p {
-      font-size: 18px;
+      font-size: 16px;
       color: var(--text-dim);
       margin-bottom: 40px;
       line-height: 1.8;
@@ -345,10 +346,10 @@
       border: 0;
     }
 
-    /* ── WHAT YOU'LL LEARN (4 CARDS) ── */
+    /* ── WHAT YOU'LL LEARN (BLUE THEME) ── */
     .learn-dark {
       padding: 120px 0;
-      background: url('homepage_hero_bg_distinct_1777004862780.png') center/cover no-repeat;
+      background: url('pricing_hero_bg.png') center/cover no-repeat;
       color: #fff;
       position: relative;
       overflow: hidden;
@@ -358,7 +359,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.8) 0%, rgba(30, 20, 15, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(13, 46, 78, 0.85) 0%, rgba(255, 255, 255, 0.1) 100%);
       z-index: 1;
     }
 
@@ -368,7 +369,7 @@
       position: absolute;
       inset: 0;
       background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-      opacity: 0.12;
+      opacity: 0.15;
       mix-blend-mode: overlay;
       z-index: 1;
       pointer-events: none;
@@ -382,7 +383,7 @@
     }
 
     .section-header-light h2 {
-      font-size: 42px;
+      font-size: 36px;
       margin-bottom: 16px;
       letter-spacing: -1px;
     }
@@ -496,10 +497,10 @@
       margin-bottom: 32px;
     }
 
-    /* ── ENHANCED REVIEWS SECTION (PODCAST & DARK THEME) ── */
+    /* ── ENHANCED REVIEWS SECTION (BLUE THEME) ── */
     .testimonials-carousel {
       padding: 80px 0;
-      background: url('homepage_hero_bg_distinct_1777004862780.png') center/cover no-repeat;
+      background: url('pricing_hero_bg.png') center/cover no-repeat;
       color: #fff;
       position: relative;
       overflow: hidden;
@@ -509,7 +510,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(10, 10, 15, 0.8) 0%, rgba(30, 20, 15, 0.6) 100%);
+      background: linear-gradient(to bottom, rgba(13, 46, 78, 0.85) 0%, rgba(255, 255, 255, 0.1) 100%);
       z-index: 1;
     }
 
@@ -518,7 +519,7 @@
       position: absolute;
       inset: 0;
       background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center 85% / cover no-repeat;
-      opacity: 0.12;
+      opacity: 0.15;
       mix-blend-mode: overlay;
       z-index: 1;
       pointer-events: none;
@@ -732,10 +733,10 @@
     }
 
     .cta-content-wrapper h2 {
-      font-size: 56px;
+      font-size: 42px;
       color: var(--teal-900);
       margin-bottom: 24px;
-      letter-spacing: -2px;
+      letter-spacing: -1px;
       font-weight: 700;
     }
 
@@ -959,7 +960,7 @@
   <section class="hero">
     <div class="hero-content">
       <span class="hero-label">Simple Strategies. Expert Guidance.</span>
-      <h1>Learn to build wealth trading <em>options.</em></h1>
+      <h1>Learn to build wealth<br>trading <em>options.</em></h1>
       <p>Institutional-grade methodology, real-time execution, and exponential results.</p>
       
       <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">GET FREE ACCESS TO OUR FLAGSHIP COURSES</a>
