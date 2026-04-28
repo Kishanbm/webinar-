@@ -2393,5 +2393,97 @@ revealEls.forEach(el => observer.observe(el));
 })();
 </script>
 
+  <!-- ── EXIT INTENT POPUP ── -->
+  <div id="exit-popup" aria-modal="true" role="dialog">
+    <div class="eip-overlay" id="eip-overlay"></div>
+    <div class="eip-wrap">
+      <div class="eip-card">
+      <div class="eip-left">
+        <div class="eip-logo-row"><img src="logo.png" alt="NavigationTrading" class="eip-logo"></div>
+        <div class="eip-badge">Free Live Webinar</div>
+        <h2 class="eip-headline">Turn Any Options Trade Into a Risk-Free Position</h2>
+        <p class="eip-tagline">Using the DC TimeMachine strategy — live, with real trades.</p>
+        <ul class="eip-bullets">
+          <li>&#10003; See FLUX signal a real entry live</li>
+          <li>&#10003; Learn the Double Calendar setup</li>
+          <li>&#10003; Get the $200/mo FLUX tool free</li>
+        </ul>
+        <div class="eip-date">&#128197;&nbsp; Tuesday, May 6 &nbsp;|&nbsp; 8 PM IST</div>
+      </div>
+      <div class="eip-right">
+        <button class="eip-close" id="eip-close" aria-label="Close">&#x2715;</button>
+        <p class="eip-form-title">Your Free Spot Is Still Open</p>
+        <p class="eip-form-sub">Register in seconds — no credit card required.</p>
+        <form method="POST" action="https://navigationtrading.activehosted.com/proc.php" id="eip-form" novalidate>
+          <input type="hidden" name="u" value="132">
+          <input type="hidden" name="f" value="132">
+          <input type="hidden" name="s" value="">
+          <input type="hidden" name="c" value="0">
+          <input type="hidden" name="m" value="0">
+          <input type="hidden" name="act" value="sub">
+          <input type="hidden" name="v" value="2">
+          <input type="hidden" name="or" value="0bd84310-9300-42fc-b42f-a518e37e890f">
+          <div class="eip-field"><input type="text" name="fullname" placeholder="Your Full Name *" required class="eip-input"></div>
+          <div class="eip-field"><input type="email" name="email" placeholder="Your Email Address *" required class="eip-input"></div>
+          <button type="submit" class="eip-submit">Reserve My Free Seat &rarr;</button>
+        </form>
+        <p class="eip-dismiss" id="eip-dismiss">No thanks, I'm not interested</p>
+      </div>
+    </div>
+    </div>
+  </div>
+  <style>
+    #exit-popup { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; padding:16px; }
+    #exit-popup.eip-open { display:flex; }
+    .eip-overlay { position:absolute; inset:0; background:rgba(5,12,28,0.85); backdrop-filter:blur(5px); }
+    .eip-wrap { position:relative; z-index:1; max-width:900px; width:100%; }
+    .eip-close { position:absolute; top:14px; right:14px; z-index:10; background:rgba(0,0,0,0.08); border:none; width:30px; height:30px; border-radius:50%; font-size:14px; color:#374151; cursor:pointer; display:none; align-items:center; justify-content:center; transition:background 0.2s; }
+    .eip-close:hover { background:rgba(0,0,0,0.15); }
+    #exit-popup.eip-open .eip-close { display:flex; }
+    .eip-card { position:relative; display:grid; grid-template-columns:1fr 1fr; width:100%; border-radius:20px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,0.55); animation:eip-in 0.35s cubic-bezier(.22,.68,0,1.2) both; }
+    @keyframes eip-in { from{opacity:0;transform:scale(0.9) translateY(16px)} to{opacity:1;transform:none} }
+    .eip-left { background:linear-gradient(rgba(13,46,78,0.88),rgba(13,46,78,0.88)),url('pricing_hero_bg.png') center/cover no-repeat; padding:44px 40px; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden; }
+    .eip-left::after { content:''; position:absolute; inset:0; background:url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat; opacity:0.12; mix-blend-mode:overlay; pointer-events:none; }
+    .eip-left > * { position:relative; z-index:1; }
+    .eip-logo-row { margin-bottom:28px; overflow:visible; }
+    .eip-logo { height:40px; width:auto; transform:scale(5); transform-origin:left center; filter:brightness(0) invert(1); display:block; }
+    .eip-badge { display:inline-block; width:fit-content; background:#c8420a; color:#fff; font-size:9px; font-weight:800; letter-spacing:2px; text-transform:uppercase; padding:4px 12px; border-radius:30px; margin-bottom:16px; }
+    .eip-headline { font-family:'DM Sans',sans-serif; font-size:22px; font-weight:800; color:#fff; margin:0 0 12px; line-height:1.25; }
+    .eip-tagline { font-size:13px; color:rgba(255,255,255,0.75); margin:0 0 18px; line-height:1.5; }
+    .eip-bullets { list-style:none; padding:0; margin:0 0 22px; }
+    .eip-bullets li { font-size:13px; color:rgba(255,255,255,0.88); margin-bottom:8px; font-weight:500; }
+    .eip-date { font-size:12px; color:#f97316; font-weight:700; }
+    .eip-right { background:#fff; padding:44px 40px; display:flex; flex-direction:column; justify-content:center; position:relative; }
+    .eip-form-title { font-family:'DM Sans',sans-serif; font-size:22px; font-weight:800; color:#0d2040; margin:0 0 6px; line-height:1.2; }
+    .eip-form-sub { font-size:13px; color:#6b7280; margin:0 0 24px; }
+    .eip-field { margin-bottom:14px; }
+    .eip-input { width:100%; padding:14px 16px; border:1.5px solid #e2e8f0; border-radius:10px; font-size:14.5px; font-family:'DM Sans',sans-serif; color:#1a202c; outline:none; transition:border-color 0.2s; box-sizing:border-box; }
+    .eip-input:focus { border-color:#c8420a; }
+    .eip-input::placeholder { color:#a0aec0; }
+    .eip-submit { width:100%; padding:16px; background:#c8420a; color:#fff; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:800; border:none; border-radius:10px; cursor:pointer; margin-top:4px; transition:background 0.2s,transform 0.15s; }
+    .eip-submit:hover { background:#e04d0e; transform:translateY(-2px); }
+    .eip-dismiss { font-size:11.5px; color:#a0aec0; cursor:pointer; margin:14px 0 0; text-align:center; text-decoration:underline; }
+    .eip-dismiss:hover { color:#718096; }
+    @media(max-width:600px) { .eip-card { grid-template-columns:1fr; } .eip-left,.eip-right { padding:28px 24px; } }
+  </style>
+  <script>
+    (function() {
+      var COOKIE='eip_shown',DAYS=3,MIN_TIME=5000;
+      function getCookie(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?m.pop():'';}
+      function setCookie(n,d){var e=new Date();e.setDate(e.getDate()+d);document.cookie=n+'=1;expires='+e.toUTCString()+';path=/';}
+      if(getCookie(COOKIE))return;
+      var popup=document.getElementById('exit-popup'),shown=false,pageReady=false;
+      setTimeout(function(){pageReady=true;},MIN_TIME);
+      function show(){if(shown||!pageReady)return;shown=true;popup.classList.add('eip-open');document.body.style.overflow='hidden';setCookie(COOKIE,DAYS);}
+      function hide(){popup.classList.remove('eip-open');document.body.style.overflow='';}
+      document.addEventListener('mouseleave',function(e){if(e.relatedTarget===null&&e.clientY<=0)show();});
+      setTimeout(function(){if(!shown&&window.innerWidth<768)show();},30000);
+      document.getElementById('eip-overlay').addEventListener('click',hide);
+      document.getElementById('eip-close').addEventListener('click',function(e){e.stopPropagation();hide();});
+      document.getElementById('eip-dismiss').addEventListener('click',function(e){e.stopPropagation();hide();});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')hide();});
+    })();
+  </script>
+
 </body>
 </html>
