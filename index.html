@@ -1290,6 +1290,65 @@
       startAutoplay();
     })();
   </script>
+
+  <!-- ── EXIT INTENT POPUP ── -->
+  <div id="exit-popup" aria-modal="true" role="dialog">
+    <div class="eip-overlay" id="eip-overlay"></div>
+    <div class="eip-card">
+      <button class="eip-close" id="eip-close" aria-label="Close">&#x2715;</button>
+      <div class="eip-badge">FREE WEBINAR</div>
+      <h2 class="eip-headline">Your Free Spot Is Still Open</h2>
+      <p class="eip-sub">Join NavigationTrading live and learn the exact strategy professionals use to time Double Calendar trades — and get the <strong>$200/mo FLUX tool at no cost</strong>.</p>
+      <ul class="eip-bullets">
+        <li>&#10003;&nbsp; Live session with real trades</li>
+        <li>&#10003;&nbsp; FLUX DC TimeMachine access included</li>
+        <li>&#10003;&nbsp; No prior experience required</li>
+      </ul>
+      <button class="eip-cta" id="eip-cta">Reserve My Free Seat &rarr;</button>
+      <p class="eip-dismiss" id="eip-dismiss">No thanks, I'm not interested</p>
+    </div>
+  </div>
+
+  <style>
+    #exit-popup { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; }
+    #exit-popup.eip-open { display: flex; }
+    .eip-overlay { position: absolute; inset: 0; background: rgba(5,12,28,0.82); backdrop-filter: blur(4px); }
+    .eip-card { position: relative; z-index: 1; background: #fff; border-radius: 20px; padding: 44px 48px 36px; max-width: 480px; width: 90%; text-align: center; box-shadow: 0 40px 100px rgba(0,0,0,0.5); animation: eip-in 0.35s cubic-bezier(.22,.68,0,1.2) both; }
+    @keyframes eip-in { from { opacity:0; transform: scale(0.88) translateY(20px); } to { opacity:1; transform: none; } }
+    .eip-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 18px; color: #aaa; cursor: pointer; line-height: 1; padding: 4px; }
+    .eip-close:hover { color: #333; }
+    .eip-badge { display: inline-block; background: #c8420a; color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 30px; margin-bottom: 18px; }
+    .eip-headline { font-family: 'DM Sans', sans-serif; font-size: clamp(22px, 4vw, 28px); font-weight: 800; color: #0d2040; margin: 0 0 14px; line-height: 1.2; }
+    .eip-sub { font-size: 14px; color: #4a5568; line-height: 1.6; margin: 0 0 20px; }
+    .eip-bullets { list-style: none; padding: 0; margin: 0 0 28px; text-align: left; display: inline-block; }
+    .eip-bullets li { font-size: 13px; font-weight: 600; color: #0d2040; margin-bottom: 8px; }
+    .eip-cta { display: block; width: 100%; background: #c8420a; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 800; border: none; border-radius: 10px; padding: 16px 24px; cursor: pointer; transition: background 0.2s, transform 0.2s; margin-bottom: 14px; }
+    .eip-cta:hover { background: #e04d0e; transform: translateY(-2px); }
+    .eip-dismiss { font-size: 12px; color: #aaa; cursor: pointer; margin: 0; text-decoration: underline; }
+    .eip-dismiss:hover { color: #777; }
+  </style>
+
+  <script>
+    (function() {
+      var COOKIE = 'eip_shown', DAYS = 3, MIN_TIME = 5000;
+      function getCookie(n) { var m = document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)'); return m ? m.pop() : ''; }
+      function setCookie(n, d) { var e = new Date(); e.setDate(e.getDate()+d); document.cookie = n+'=1;expires='+e.toUTCString()+';path=/'; }
+      if (getCookie(COOKIE)) return;
+      var popup = document.getElementById('exit-popup');
+      var shown = false, pageReady = false;
+      setTimeout(function() { pageReady = true; }, MIN_TIME);
+      function show() { if (shown || !pageReady) return; shown = true; popup.classList.add('eip-open'); document.body.style.overflow = 'hidden'; setCookie(COOKIE, DAYS); }
+      function hide() { popup.classList.remove('eip-open'); document.body.style.overflow = ''; }
+      document.addEventListener('mouseleave', function(e) { if (e.relatedTarget === null && e.clientY <= 0) show(); });
+      setTimeout(function() { if (!shown && window.innerWidth < 768) show(); }, 30000);
+      document.getElementById('eip-overlay').addEventListener('click', hide);
+      document.getElementById('eip-close').addEventListener('click', function(e) { e.stopPropagation(); hide(); });
+      document.getElementById('eip-dismiss').addEventListener('click', function(e) { e.stopPropagation(); hide(); });
+      document.getElementById('eip-cta').addEventListener('click', function(e) { e.stopPropagation(); hide(); window.location.href = 'transformer-option-spreads-content/transformer-option-spreads.html#booking-form'; });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') hide(); });
+    })();
+  </script>
+
 </body>
 
 </html>
