@@ -608,7 +608,7 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(135deg, rgba(13,32,64,.96) 0%, rgba(13,32,64,.82) 55%, rgba(13,32,64,.92) 100%);
-      z-index: 2;
+      z-index: 2; /* Layer 2: Overlay */
       pointer-events: none;
     }
 
@@ -617,9 +617,14 @@
       position: absolute;
       inset: 0;
       background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') top center / cover no-repeat;
-      opacity: 0.35;
-      z-index: 1;
+      opacity: 0.8; /* Increased opacity */
+      z-index: 1; /* Layer 1: Image */
       pointer-events: none;
+    }
+
+    .bento-section .container {
+      position: relative;
+      z-index: 10; /* Layer 10: Content (Always on top) */
     }
 
     .bento-header {
@@ -817,7 +822,7 @@
       position: absolute;
       inset: 0;
       background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') top center / cover no-repeat;
-      opacity: 0.15;
+      opacity: 0.8; /* Increased opacity */
       z-index: 1;
       pointer-events: none;
     }
@@ -829,6 +834,11 @@
       background: linear-gradient(135deg, rgba(13,32,64,.96) 0%, rgba(13,32,64,.82) 55%, rgba(13,32,64,.92) 100%);
       z-index: 2;
       pointer-events: none;
+    }
+
+    .learn-section-premium .container {
+      position: relative;
+      z-index: 10;
     }
 
     .learn-header-centered {
@@ -1024,7 +1034,7 @@
       position: absolute;
       inset: 0;
       background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') top center / cover no-repeat;
-      opacity: 0.25;
+      opacity: 0.8; /* Increased opacity */
       z-index: 1;
       pointer-events: none;
     }
@@ -1036,6 +1046,11 @@
       background: linear-gradient(135deg, rgba(13,32,64,.96) 0%, rgba(13,32,64,.82) 55%, rgba(13,32,64,.92) 100%);
       z-index: 2;
       pointer-events: none;
+    }
+
+    .testimonials-marquee .container, .testimonials-marquee .marquee-container {
+      position: relative;
+      z-index: 10;
     }
 
     .test-header {
@@ -1188,8 +1203,8 @@
 
     /* ── PREMIUM INSTITUTIONAL CTA ── */
     .premium-cta-section {
-      padding: 60px 0; /* Reduced further */
-      background: #050d17;
+      padding: 60px 0;
+      background: #ffffff; /* White theme */
       position: relative;
       overflow: hidden;
       display: flex;
@@ -1234,11 +1249,11 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(13, 46, 78, 0.05);
+      border: 1px solid rgba(13, 46, 78, 0.1);
       padding: 5px 14px;
       border-radius: 100px;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(13, 46, 78, 0.6);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
@@ -1249,9 +1264,9 @@
     .cta-badge .dot {
       width: 6px;
       height: 6px;
-      background: #0de2bb;
+      background: var(--orange);
       border-radius: 50%;
-      box-shadow: 0 0 10px #0de2bb;
+      box-shadow: 0 0 10px var(--orange);
       animation: dot-pulse 2s infinite;
     }
 
@@ -1263,7 +1278,7 @@
 
     .cta-content-box h2 {
       font-size: clamp(28px, 4vw, 48px);
-      color: #fff;
+      color: #050d17; /* Dark text */
       line-height: 1.1;
       margin-bottom: 20px;
       font-weight: 800;
@@ -1271,12 +1286,12 @@
     }
 
     .cta-content-box h2 span {
-      color: var(--orange); /* Changed to orange */
+      color: var(--orange);
     }
 
     .cta-content-box p {
       font-size: clamp(15px, 1.2vw, 18px);
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(5, 13, 23, 0.6); /* Darker text */
       margin-bottom: 40px;
       max-width: 600px;
       margin-left: auto;
@@ -1289,7 +1304,7 @@
       align-items: center;
       gap: 12px;
       padding: 16px 36px;
-      background: var(--orange); /* Changed to orange */
+      background: var(--orange);
       color: #fff;
       font-weight: 800;
       font-size: 15px;
@@ -1301,7 +1316,7 @@
 
     .cta-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 20px 40px rgba(13, 226, 187, 0.4);
+      box-shadow: 0 20px 40px rgba(200, 66, 10, 0.3);
       filter: brightness(1.1);
     }
 
@@ -1317,13 +1332,13 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(5, 13, 23, 0.5); /* Darker text */
       font-size: 12px;
       font-weight: 600;
     }
 
     .cta-trust-item .tick {
-      color: #0de2bb;
+      color: var(--orange);
       font-size: 14px;
     }
 
@@ -1548,7 +1563,7 @@
       <li><a href="/performance">Performance</a></li>
       <li><a href="/pricing">Pricing</a></li>
       <li class="nav-item-dropdown">
-        <a href="#">Memberships <span class="nav-chevron">▾</span></a>
+        <a href="#">Services <span class="nav-chevron">▾</span></a>
         <div class="dropdown-menu">
           <a href="/free-membership">Free Membership</a>
           <a href="/day-trading">Day Trade Membership</a>
@@ -2200,7 +2215,7 @@
 
           ctx.beginPath();
           ctx.arc(x, y, r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(2)})`; // Changed to white
+          ctx.fillStyle = `rgba(13, 46, 78, ${alpha.toFixed(2)})`; // Midnight stars
           ctx.fill();
         });
         requestAnimationFrame(draw);
