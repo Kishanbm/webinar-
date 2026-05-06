@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exit Popup Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; min-height:100vh; background:rgba(5,12,28,0.92); display:flex; align-items:center; justify-content:center; padding:24px; font-family:'DM Sans',sans-serif; }
+
+  .ep-card { display:grid; grid-template-columns:1fr 1fr; max-width:920px; width:100%; border-radius:20px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,0.55); font-family:'DM Sans',sans-serif; }
+  .ep-card * { box-sizing:border-box; }
+
+  .ep-left { position:relative; line-height:0; }
+  .ep-poster { width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* Right side — light gray theme */
+  .ep-right {
+    background: radial-gradient(ellipse at top right, #f5f5f7 0%, #e6e7eb 70%);
+    padding:48px 44px;
+    display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  /* subtle green accent glow in the corner */
+  .ep-right::before {
+    content:''; position:absolute; top:-80px; right:-80px;
+    width:240px; height:240px;
+    background: radial-gradient(circle, rgba(40,160,80,0.10) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .ep-right > * { position:relative; z-index:1; }
+
+  .ep-eyebrow {
+    display:inline-block; width:fit-content;
+    font-size:10px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase;
+    color:#1f9d4d; margin-bottom:14px;
+  }
+  .ep-form-title {
+    font-size:26px; font-weight:800; color:#0d2040;
+    margin:0 0 8px; line-height:1.2;
+  }
+  .ep-form-title span { color:#1f9d4d; }
+  .ep-form-sub {
+    font-size:14px; color:#6b7280;
+    margin:0 0 26px; line-height:1.5;
+  }
+  .ep-field { margin-bottom:14px; }
+  .ep-input {
+    width:100%; padding:15px 16px;
+    background:#ffffff;
+    border:1.5px solid #d1d5db;
+    border-radius:10px;
+    font-size:14.5px; color:#1a202c;
+    outline:none; transition:border-color 0.2s, box-shadow 0.2s;
+    font-family:inherit;
+  }
+  .ep-input:focus {
+    border-color:#1f9d4d;
+    box-shadow:0 0 0 3px rgba(31,157,77,0.12);
+  }
+  .ep-input::placeholder { color:#9ca3af; }
+
+  /* CTA — dark with green glow, matching the "REGISTER NOW" button on the poster */
+  .ep-submit {
+    display:block; width:100%; padding:17px;
+    background: #0a1929;
+    color:#fff;
+    font-size:14.5px; font-weight:800;
+    border:1.5px solid rgba(143,255,143,0.4);
+    border-radius:50px;
+    cursor:pointer;
+    margin-top:8px;
+    font-family:inherit;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    text-align:center;
+    text-decoration:none;
+    box-sizing:border-box;
+    box-shadow:
+      0 0 30px rgba(143,255,143,0.35),
+      0 0 60px rgba(143,255,143,0.15),
+      inset 0 0 20px rgba(143,255,143,0.05);
+    transition: box-shadow 0.25s, transform 0.15s, border-color 0.2s;
+    position:relative;
+  }
+  .ep-submit:hover {
+    transform:translateY(-2px);
+    border-color: rgba(143,255,143,0.7);
+    box-shadow:
+      0 0 40px rgba(143,255,143,0.55),
+      0 0 80px rgba(143,255,143,0.25),
+      inset 0 0 25px rgba(143,255,143,0.08);
+  }
+  .ep-trust {
+    margin-top:18px;
+    font-size:11.5px; color:#6b7280;
+    text-align:center; line-height:1.6;
+  }
+  .ep-trust strong { color:#1f9d4d; font-weight:700; }
+
+  @media(max-width:640px) {
+    .ep-card { grid-template-columns:1fr; max-width:420px; }
+    .ep-right { padding:36px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ep-card">
+  <div class="ep-left">
+    <img src="file:///C:/Users/Kishan%20B%20M/Downloads/exitintentpopup.jpeg" alt="Transformer Option Spreads Webinar" class="ep-poster">
+  </div>
+  <div class="ep-right">
+    <div class="ep-eyebrow">&bull; Limited Seats</div>
+    <p class="ep-form-title">Reserve Your <span>Free Spot</span></p>
+    <p class="ep-form-sub">Discover the third option almost no one talks about</p>
+    <form method="POST" action="https://navigationtrading.activehosted.com/proc.php" id="ep-form" novalidate>
+      <input type="hidden" name="u" value="132">
+      <input type="hidden" name="f" value="132">
+      <input type="hidden" name="s" value="">
+      <input type="hidden" name="c" value="0">
+      <input type="hidden" name="m" value="0">
+      <input type="hidden" name="act" value="sub">
+      <input type="hidden" name="v" value="2">
+      <input type="hidden" name="or" value="0bd84310-9300-42fc-b42f-a518e37e890f">
+      <input type="hidden" name="jumpto" value="https://webclass.navigationtrading.com/transformer-option-spreads?utm_source=activcampaign&utm_medium=web_popup&utm_campaign=cold_visitors&utm_id=webclass-5-6">
+      <div class="ep-field">
+        <input type="text" name="fullname" placeholder="Your Full Name *" required class="ep-input">
+      </div>
+      <div class="ep-field">
+        <input type="email" name="email" placeholder="Your Email Address *" required class="ep-input">
+      </div>
+      <button type="submit" class="ep-submit">Reserve My Free Seat &rarr;</button>
+    </form>
+    <p class="ep-trust">Seats are limited for this session. Secure yours now.<br>We'll never share your email.</p>
+  </div>
+</div>
+
+</body>
+</html>

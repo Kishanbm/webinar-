@@ -138,112 +138,227 @@
       box-shadow: 0 8px 25px rgba(200, 66, 10, 0.3);
     }
 
-    /* ── HERO (ATMOSPHERIC BLUE) ── */
+    /* ── HERO ── */
     .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 140px 60px 120px;
-      background: url('pricing_hero_bg.png') top center / cover no-repeat;
+      min-height: 100vh;
+      background: radial-gradient(circle at 15% 35%, rgba(58, 138, 191, 0.25) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 75%, rgba(106, 184, 221, 0.2) 0%, transparent 45%),
+                  linear-gradient(to bottom, #050d17 0%, #071828 35%, #0d2e52 65%, #1a5080 88%, #5ba8d6 100%);
       position: relative;
-      text-align: center;
       overflow: hidden;
+      padding: 0;
     }
 
-    /* Blue Atmospheric Overlay (Matches Podcast) */
+    /* Candlestick texture full cover */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(13, 46, 78, 0.85), rgba(255, 255, 255, 0.1));
-      z-index: 1;
-    }
-
-    /* WhatsApp Candlestick Overlay */
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
       background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-      opacity: 0.15;
+      opacity: 0.22;
       mix-blend-mode: overlay;
       z-index: 1;
       pointer-events: none;
     }
 
-    .hero-content {
+    .hero::after { display: none; }
+
+    /* Two-column layout: left text | right image flush to edge */
+    .hero-inner {
       position: relative;
-      z-index: 2;
-      max-width: 1000px;
+      z-index: 3;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      min-height: auto;
+    }
+
+    /* Left: content — left edge at 60px matching navbar logo */
+    .hero-content {
+      padding: 160px 40px 100px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .hero-label {
-      display: inline-block;
-      padding: 6px 16px;
-      background: rgba(255, 255, 255, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255,255,255,0.08);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: 50px;
-      color: #fff;
+      color: #7dd3f0;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38bdf8;
     }
 
     .hero h1 {
-      font-size: clamp(42px, 6vw, 68px);
-      font-weight: 700;
+      font-size: clamp(38px, 4vw, 58px);
+      font-weight: 800;
       color: #fff;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 24px;
-      text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
     }
 
     .hero h1 em {
       font-style: normal;
-      color: #d4a040; /* Gold accent to match Podcast */
+      color: #d4a040;
     }
 
-    .hero p {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.95);
-      margin-bottom: 48px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 40px;
+      line-height: 1.7;
+      max-width: 460px;
     }
 
     .btn-main {
-      background: var(--orange);
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
       color: #fff;
-      padding: 18px 40px;
-      font-size: 16px;
-      font-weight: 700;
-      border-radius: 12px;
+      padding: 14px 28px;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 10px;
       text-decoration: none;
-      display: inline-block;
-      transition: all 0.3s;
-      box-shadow: 0 10px 30px rgba(200, 66, 10, 0.2);
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(200,66,10,0.25);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
     }
 
     .btn-main:hover {
-      background: var(--orange-bright);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(200, 66, 10, 0.3);
+      background: linear-gradient(135deg, var(--orange-bright) 0%, #ff5e1a 100%);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(200,66,10,0.35);
     }
 
-    /* ── STATS MOVED TO HERO ── */
+    /* Right: image bigger, pushed down */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding-top: 80px;
+      overflow: visible;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      width: 118%;
+      margin-left: 0;
+      -webkit-mask-image: linear-gradient(to bottom, 
+        rgba(0,0,0,1) 0%, 
+        rgba(0,0,0,1) 60%, 
+        rgba(0,0,0,0) 90%
+      );
+      mask-image: linear-gradient(to bottom, 
+        rgba(0,0,0,1) 0%, 
+        rgba(0,0,0,1) 60%, 
+        rgba(0,0,0,0) 90%
+      );
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 650px;
+      object-fit: cover;
+      object-position: left top;
+      display: block;
+      border-radius: 20px 0 0 20px;
+      box-shadow: -20px 0 80px rgba(0,0,0,0.5), 0 30px 60px rgba(0,0,0,0.4);
+    }
+
+    /* Floating badge */
+    .hero-badge {
+      position: absolute;
+      bottom: 40px;
+      left: -10px;
+      background: rgba(10,25,50,0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 14px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      min-width: 200px;
+      z-index: 4;
+    }
+
+    .hero-badge-dot {
+      width: 10px; height: 10px;
+      background: #22c55e;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 6px #22c55e; }
+      50% { box-shadow: 0 0 14px #22c55e, 0 0 28px rgba(34,197,94,0.4); }
+    }
+
+    .hero-badge-text { font-size: 13px; font-weight: 600; line-height: 1.3; }
+    .hero-badge-text strong { display: block; font-size: 15px; font-weight: 800; color: #22c55e; }
+
+    /* Stats — inline under left content */
     .hero-stats {
       display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 60px;
-      flex-wrap: wrap;
+      gap: 0;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.15);
     }
 
+    .hero-stat {
+      flex: 1;
+      padding-right: 24px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .hero-stat:last-child { border-right: none; padding-right: 0; padding-left: 24px; }
+    .hero-stat:not(:first-child) { padding-left: 24px; }
+
+    .hero-stat h4 {
+      font-size: 30px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+      font-family: 'DM Mono', monospace;
+      white-space: nowrap;
+    }
+
+    .hero-stat span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* Legacy — keep for other sections */
     .stat-card-dark {
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(12px);
@@ -831,24 +946,27 @@
 
     #spotify-widget {
         position: fixed;
-        bottom: 0;
+        bottom: 24px;
         right: 24px;
         width: 340px;
         z-index: 2000;
-        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        transform: translateY(0);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        transform-origin: bottom right;
     }
 
-    #spotify-widget.minimized { transform: translateY(160px); }
+    #spotify-widget.minimized { 
+        right: -170px;
+        bottom: 60px;
+        transform: rotate(-90deg);
+    }
 
     .widget-container {
         background: #282828;
-        border-radius: 12px 12px 0 0;
-        box-shadow: 0 -10px 50px rgba(0,0,0,0.5);
+        border-radius: 12px;
+        box-shadow: 0 10px 50px rgba(0,0,0,0.5);
         overflow: hidden;
         padding: 4px;
         border: 1px solid rgba(255,255,255,0.05);
-        border-bottom: none;
     }
 
     .widget-header {
@@ -908,7 +1026,7 @@
         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    #spotify-widget.minimized .close-widget svg { transform: rotate(180deg); }
+    #spotify-widget.minimized .close-widget svg { transform: rotate(0deg); }
     .close-widget:hover { background: #1DB954; }
     .close-widget:hover svg { stroke: #000; }
 
@@ -923,12 +1041,22 @@
       .test-header { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
 
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; min-height: auto; }
+      .hero-content { padding: 120px 32px 60px; align-items: center; text-align: center; }
+      .hero-sub { max-width: 100%; }
+      .hero-visual { display: none; }
+      .hero-stats { padding: 40px 24px 60px; flex-wrap: wrap; justify-content: center; }
+      .hero-stat { width: auto; padding: 0 24px; }
+    }
     @media (max-width: 768px) {
       .learn-grid-4 { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 56px; }
+      .hero h1 { font-size: 42px; }
       .nav-links { display: none; }
       #spotify-widget { width: calc(100% - 48px); right: 24px; }
       .test-item { flex: 0 0 100%; }
+      .hero-stats { flex-direction: column; gap: 20px; border-top: none; padding-top: 24px; }
+      .hero-stat { border-right: none !important; padding: 0 !important; }
     }
   </style>
 </head>
@@ -956,44 +1084,39 @@
     </div>
   </nav>
 
-  <!-- ── NEW DISTINCT HERO ── -->
+  <!-- ── HERO ── -->
   <section class="hero">
-    <div class="hero-content">
-      <span class="hero-label">Simple Strategies. Expert Guidance.</span>
-      <h1>Learn to build wealth<br>trading <em>options.</em></h1>
-      <p>Institutional-grade methodology, real-time execution, and exponential results.</p>
-      
-      <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">GET FREE ACCESS TO OUR FLAGSHIP COURSES</a>
+    <div class="hero-inner">
 
-      <div class="hero-stats">
-        <div class="stat-card-dark">
-          <div class="stat-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          </div>
-          <div class="stat-text">
+      <!-- Left: Content + Stats -->
+      <div class="hero-content">
+        <span class="hero-label">Simple Strategies. Expert Guidance.</span>
+        <h1>Learn to build wealth<br>trading <em>options.</em></h1>
+        <p class="hero-sub">Institutional-grade methodology, real-time execution, and exponential results — without picking market direction.</p>
+        <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">GET FREE ACCESS TO OUR FLAGSHIP COURSES</a>
+        <div class="hero-stats">
+          <div class="hero-stat">
             <h4>41,187+</h4>
             <span>Happy Students</span>
           </div>
-        </div>
-        <div class="stat-card-dark">
-          <div class="stat-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-          </div>
-          <div class="stat-text">
+          <div class="hero-stat">
             <h4>17+</h4>
             <span>Strategy Courses</span>
           </div>
-        </div>
-        <div class="stat-card-dark">
-          <div class="stat-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          </div>
-          <div class="stat-text">
-            <h4>20+ yrs</h4>
+          <div class="hero-stat">
+            <h4>20+</h4>
             <span>Trading Experience</span>
           </div>
         </div>
       </div>
+
+      <!-- Right: image pushed down, bigger -->
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img src="results_final.png" alt="Trading Results Dashboard">
+        </div>
+      </div>
+
     </div>
   </section>
 
