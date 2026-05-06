@@ -601,7 +601,7 @@
 
     /* ── PREMIUM BENTO FEATURES SECTION ── */
     .bento-section {
-      padding: 100px 0;
+      padding: 50px 0;
       background: #0D2E4E; /* Matched to hero */
       position: relative;
       overflow: hidden;
@@ -633,7 +633,7 @@
 
     .bento-header {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 36px;
       position: relative;
       z-index: 2;
     }
@@ -673,7 +673,8 @@
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-rows: repeat(2, 240px);
+      gap: 14px;
       position: relative;
       z-index: 2;
     }
@@ -683,31 +684,34 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 32px;
+      border-radius: 24px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       text-decoration: none;
       position: relative;
+      height: 240px;
     }
 
     .bento-card.wide {
       grid-column: span 2;
       flex-direction: row;
-      align-items: center;
+      align-items: stretch;
+      height: 240px;
     }
 
     .bento-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       background: rgba(0, 0, 0, 0.55);
       border-color: rgba(200, 66, 10, 0.4);
-      box-shadow: 0 40px 80px -20px rgba(0,0,0,0.4), inset 0 0 40px rgba(200,66,10,0.1);
+      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4), inset 0 0 30px rgba(200,66,10,0.1);
     }
 
     .bento-image-wrapper {
       width: 100%;
-      height: 220px;
+      height: 130px;
+      flex-shrink: 0;
       overflow: hidden;
       position: relative;
       display: flex;
@@ -718,7 +722,7 @@
     .bento-card.wide .bento-image-wrapper {
       width: 50%;
       height: 100%;
-      min-height: 280px;
+      min-height: unset;
       order: 2;
     }
 
@@ -753,19 +757,21 @@
     }
 
     .bento-content {
-      padding: 0 40px 40px 40px;
+      padding: 0 24px 20px 24px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
       position: relative;
       z-index: 2;
-      margin-top: -40px;
+      margin-top: -24px;
+      overflow: hidden;
     }
 
     .bento-card.wide .bento-content {
       width: 50%;
-      padding: 40px;
+      padding: 24px;
       margin-top: 0;
+      justify-content: center;
       order: 1;
     }
     
@@ -774,10 +780,10 @@
     }
 
     .bento-content h3 {
-      font-size: clamp(20px, 2.5vw, 26px);
+      font-size: clamp(17px, 2vw, 21px);
       font-weight: 700;
       color: #fff;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -798,9 +804,9 @@
     }
 
     .bento-content p {
-      font-size: 16px;
+      font-size: 14.5px;
       color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     @media (max-width: 992px) {
@@ -815,7 +821,7 @@
 
     /* ── PREMIUM WHAT YOU'LL LEARN (XENTRO STYLE) ── */
     .learn-section-premium {
-      padding: 120px 0;
+      padding: 70px 0; /* Reduced padding */
       background: #0D2E4E; /* Matched to hero */
       position: relative;
       overflow: hidden;
@@ -935,7 +941,7 @@
 
     .lpc-content h3 {
       font-size: 22px;
-      color: #fff;
+      color: var(--orange); /* Titles to Orange */
       font-weight: 700;
       margin-bottom: 12px;
       letter-spacing: -0.5px;
@@ -953,7 +959,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: #fff;
+      color: var(--orange); /* Buttons to Orange */
       text-decoration: none;
       font-size: 13px;
       font-weight: 700;
