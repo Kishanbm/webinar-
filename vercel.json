@@ -39,6 +39,14 @@
     {
       "source": "/pricing",
       "destination": "/pricing"
+    },
+    {
+      "source": "/day-trading",
+      "destination": "/day-trading"
+    },
+    {
+      "source": "/contact",
+      "destination": "/index"
     }
   ]
 }

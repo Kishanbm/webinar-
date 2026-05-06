@@ -117,7 +117,53 @@
     }
 
     .nav-links a:hover {
-      color: var(--emerald-500) !important;
+      color: var(--orange) !important;
+    }
+
+    /* ── NAV DROPDOWN ── */
+    .nav-item-dropdown { position: relative; }
+    .nav-item-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+    .nav-chevron { font-size: 9px; transition: transform 0.25s; line-height: 1; opacity: 0.7; }
+    .nav-item-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: rgba(7,24,44,0.97);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 2px solid var(--orange);
+      border-radius: 12px;
+      min-width: 215px;
+      padding: 6px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.22s ease;
+      z-index: 200;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      pointer-events: none;
+    }
+    .nav-item-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: all;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 14px;
+      color: rgba(255,255,255,0.8) !important;
+      font-size: 13.5px;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(200,66,10,0.18) !important;
+      color: #e86428 !important;
     }
 
     .nav-cta {
@@ -310,69 +356,53 @@
       box-shadow: 0 12px 32px rgba(200,66,10,0.35);
     }
 
-    /* ── STATS RIBBON ── */
-    .stats-ribbon {
-      position: relative;
-      z-index: 10;
-      margin-top: -100px;
-      padding: 0 20px;
-    }
-
-    .stats-ribbon .hero-stats {
+    /* ── HERO STATS (INTEGRATED) ── */
+    .hero-stats-new {
       display: flex;
-      gap: 20px;
-      margin: 0 auto;
-      justify-content: center;
+      gap: 16px;
+      margin-top: 50px;
       width: 100%;
-      max-width: 900px;
-      background: rgba(13, 32, 64, 0.7);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
-      opacity: 0;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .stats-ribbon .hero-stat {
-      flex: 1;
+    .hero-stat-card {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 24px 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s;
+      min-width: 220px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .stats-ribbon .hero-stat:last-child {
-      border-right: none;
+    .hero-stat-card:hover {
+      background: rgba(0, 0, 0, 0.6);
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
 
-    .stats-ribbon .hero-stat:hover {
-      transform: translateY(-4px);
-    }
-
-    .stats-ribbon .hero-stat h4 {
-      font-size: 42px;
+    .hero-stat-card h4 {
+      font-size: 36px;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       line-height: 1;
-      background: linear-gradient(135deg, #fff 0%, #7dd3f0 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
       font-family: 'DM Mono', monospace;
     }
 
-    .stats-ribbon .hero-stat span {
-      font-size: 13px;
+    .hero-stat-card span {
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.5);
     }
 
     /* Legacy — keep for other sections */
@@ -568,9 +598,18 @@
     /* ── PREMIUM BENTO FEATURES SECTION ── */
     .bento-section {
       padding: 100px 0;
-      background: linear-gradient(to bottom, #050d17 0%, #071828 35%, #0d2e52 65%, #1a5080 88%, #5ba8d6 100%);
+      background: #0D2E4E; /* Matched to hero */
       position: relative;
       overflow: hidden;
+    }
+
+    .bento-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,32,64,.96) 0%, rgba(13,32,64,.82) 55%, rgba(13,32,64,.92) 100%);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .bento-section::before {
@@ -1508,8 +1547,17 @@
     <ul class="nav-links">
       <li><a href="/performance">Performance</a></li>
       <li><a href="/pricing">Pricing</a></li>
+      <li class="nav-item-dropdown">
+        <a href="#">Memberships <span class="nav-chevron">▾</span></a>
+        <div class="dropdown-menu">
+          <a href="/free-membership">Free Membership</a>
+          <a href="/day-trading">Day Trade Membership</a>
+          <a href="/pricing">Pro Membership</a>
+        </div>
+      </li>
       <li><a href="/podcast">Podcast</a></li>
       <li><a href="https://navigationtrading.com/blog/">Blog</a></li>
+      <li><a href="mailto:support@navigationtrading.com">Contact Us</a></li>
     </ul>
     <div style="display:flex; gap:16px; align-items:center;">
         <a href="https://whop.com/orders/products/" style="color:#fff; text-decoration:none; font-size:14px; font-weight:600;">Login</a>
@@ -1527,27 +1575,26 @@
         <h1>Learn to build wealth<br>trading <em>options.</em></h1>
         <p class="hero-sub">Institutional-grade methodology, real-time execution, and exponential results — without picking market direction.</p>
         <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">GET FREE ACCESS TO OUR FLAGSHIP COURSES</a>
+
+        <div class="hero-stats-new">
+          <div class="hero-stat-card">
+            <h4>41,187+</h4>
+            <span>Happy Students</span>
+          </div>
+          <div class="hero-stat-card">
+            <h4>17+</h4>
+            <span>Strategy Courses</span>
+          </div>
+          <div class="hero-stat-card">
+            <h4>20+</h4>
+            <span>Trading Experience</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── STATS RIBBON ── -->
-  <div class="stats-ribbon">
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <h4>41,187+</h4>
-        <span>Happy Students</span>
-      </div>
-      <div class="hero-stat">
-        <h4>17+</h4>
-        <span>Strategy Courses</span>
-      </div>
-      <div class="hero-stat">
-        <h4>20+</h4>
-        <span>Trading Experience</span>
-      </div>
-    </div>
-  </div>
+
 
   <section class="approach-new">
     <div class="container">
