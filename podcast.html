@@ -194,41 +194,39 @@
       box-shadow: 0 6px 20px var(--orange-glow)
     }
 
-    /* ── PODCAST HERO ── */
+    /* ── PODCAST HERO (matches performance.html) ── */
     .podcast-hero {
-      padding: 200px 0 120px;
-      background: url('pricing_hero_bg.png') top center / cover no-repeat;
+      padding: 140px 60px 120px;
+      background: #0D2E4E;
       position: relative;
       text-align: center;
       overflow: hidden;
     }
-    
-    .podcast-hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(13, 46, 78, 0.85), rgba(255, 255, 255, 0.1));
-        z-index: 1;
+
+    .podcast-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      opacity: 0.45;
     }
 
-    /* Trading Chart Overlay */
-    .podcast-hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-        opacity: 0.15;
-        mix-blend-mode: overlay;
-        z-index: 1;
-        pointer-events: none;
+    .podcast-hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%);
+      pointer-events: none;
     }
+
+    .podcast-hero::after { display: none; }
 
     .podcast-hero-content {
       position: relative;
       z-index: 2;
       max-width: 900px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 40px;
     }
 
     .hero-label {
@@ -255,7 +253,7 @@
     
     .podcast-hero h1 em {
         font-style: normal;
-        color: var(--gold);
+        color: var(--orange-bright);
     }
 
     .podcast-hero p {
@@ -290,8 +288,7 @@
 
     .platform-btn.apple:hover { background-color: #d83b96; border-color: #d83b96; }
     .platform-btn.spotify:hover { background-color: #1DB954; border-color: #1DB954; }
-    .platform-btn.google:hover { background-color: #4285F4; border-color: #4285F4; }
-    .platform-btn.stitcher:hover { background-color: #312e81; border-color: #312e81; }
+    .platform-btn.youtube:hover { background-color: #FF0000; border-color: #FF0000; }
 
     .platform-btn svg {
       width: 20px;
@@ -299,11 +296,78 @@
       opacity: 0.9;
     }
 
+    .platform-btn svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.9;
+    }
+
+    /* ── YOUR HOST SECTION ── */
+    .host-section {
+      padding: 70px 0;
+      background: #fff;
+      text-align: center;
+    }
+
+    .container-narrow {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-heading {
+      font-size: clamp(34px, 5vw, 48px);
+      color: var(--teal-900);
+      margin-bottom: 40px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+
+    .host-body-content p {
+      font-size: 19px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 24px;
+      text-align: justify;
+    }
+
+    .host-tagline {
+      font-weight: 700;
+      color: #000 !important;
+      font-size: 19px !important;
+      margin-top: 0;
+      display: inline;
+    }
+
+    .host-tagline::after { display: none; }
+
     /* ── EPISODES SECTION ── */
     .episodes-section {
-      padding: 120px 0;
-      background: #fcfdfe;
-      border-bottom: 1px solid rgba(0,0,0,0.03);
+      padding: 70px 0;
+      background: #0D2E4E;
+      border-bottom: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .episodes-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+      opacity: 0.28;
+      mix-blend-mode: overlay;
+      pointer-events: none;
     }
 
     .episodes-container {
@@ -314,6 +378,8 @@
       grid-template-columns: 1fr 1.2fr;
       align-items: center;
       gap: 80px;
+      position: relative;
+      z-index: 1;
     }
 
     .episodes-text {
@@ -322,7 +388,7 @@
 
     .episodes-section h2 {
       font-size: 42px;
-      color: var(--teal-900);
+      color: #ffffff;
       line-height: 1.2;
       margin-bottom: 24px;
       letter-spacing: -1px;
@@ -330,7 +396,7 @@
 
     .episodes-section p {
       font-size: 18px;
-      color: var(--text-mid);
+      color: rgba(255,255,255,0.65);
       margin-bottom: 40px;
       line-height: 1.7;
     }
@@ -349,48 +415,28 @@
         display: block;
     }
 
-    /* ── WHAT YOU'LL LEARN SECTION (MATCHING HERO - COMPACT) ── */
+    /* ── WHAT YOU'LL LEARN SECTION ── */
     .learn-section {
       padding: 100px 0 80px;
-      background: url('pricing_hero_bg.png') top center / cover no-repeat;
+      background: #ffffff;
       position: relative;
       text-align: center;
-      overflow: hidden;
-    }
-    
-    .learn-section::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(13, 46, 78, 0.85), rgba(255, 255, 255, 0.1));
-        z-index: 1;
     }
 
-    .learn-section::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-        opacity: 0.15;
-        mix-blend-mode: overlay;
-        z-index: 1;
-        pointer-events: none;
-    }
+    .learn-section::before, .learn-section::after { display: none; }
 
-    .learn-section .section-title { 
-        position: relative;
-        z-index: 2;
+    .learn-section .section-title {
         margin-bottom: 40px;
     }
 
     .learn-section .section-title h2 {
-        color: #fff;
+        color: var(--teal-900);
         font-size: clamp(32px, 5vw, 42px);
         margin-bottom: 15px;
     }
-    
+
     .learn-section .section-title p {
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--text-mid);
         font-size: 16px;
     }
 
@@ -402,12 +448,13 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
 
-    /* GLASS CARDS */
+    /* LEARN CARDS */
     .learn-card {
-      background: rgba(255, 255, 255, 0.95);
+      background: #ffffff;
+      border: 1px solid rgba(13,46,78,0.09);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(13, 46, 78, 0.1);
       border-radius: 20px;
@@ -490,21 +537,21 @@
       transform: translateY(-1px);
     }
 
-    /* ── ENHANCED REVIEWS SECTION ── */
+    /* ── REVIEWS SECTION ── */
     .reviews-section {
-      padding: 120px 0;
-      background: #fdfbf7;
+      padding: 70px 0;
+      background: #0D2E4E;
       position: relative;
       overflow: hidden;
     }
-    
+
     .reviews-section::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(rgba(200, 66, 10, 0.03) 1px, transparent 1px);
-        background-size: 30px 30px;
-        pointer-events: none;
+      content: '';
+      position: absolute; inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+      opacity: 0.25;
+      mix-blend-mode: overlay;
+      pointer-events: none;
     }
 
     .section-title {
@@ -521,6 +568,9 @@
         letter-spacing: -1px;
     }
 
+    .reviews-section .section-title h2 { color: #ffffff; }
+    .reviews-section .section-title p { color: rgba(255,255,255,0.6); }
+
     .reviews-carousel-wrap {
       max-width: 1240px;
       margin: 0 auto;
@@ -529,6 +579,8 @@
       overflow: hidden;
       z-index: 2;
     }
+
+    .reviews-section .section-title { position: relative; z-index: 2; }
 
     .reviews-track {
       display: flex;
@@ -540,82 +592,70 @@
     .review-card {
       flex: 0 0 calc(33.333% - 16px);
       min-width: 300px;
-      background: #fff;
-      border-radius: 20px;
-      padding: 40px;
-      border: 1px solid rgba(13, 46, 78, 0.06);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1);
+      background: rgba(245, 250, 255, 0.10);
+      backdrop-filter: blur(16px);
+      border-radius: 18px;
+      padding: 32px 28px 24px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-left: 3px solid var(--orange);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.12);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1);
       display: flex;
       flex-direction: column;
       position: relative;
     }
-    
-    .review-card::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 20%;
-        bottom: 20%;
-        width: 3px;
-        background: var(--orange);
-        border-radius: 0 4px 4px 0;
-        opacity: 0.3;
-        transition: all 0.3s;
-    }
+
+    .review-card::after { display: none; }
 
     .review-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 60px rgba(200, 66, 10, 0.08);
-      border-color: rgba(200, 66, 10, 0.2);
-    }
-    
-    .review-card:hover::after {
-        opacity: 1;
-        top: 15%;
-        bottom: 15%;
+      transform: translateY(-7px);
+      background: rgba(245,250,255,0.16);
+      border-left-color: var(--orange-bright);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.15);
     }
 
     .quote-mark {
-      color: var(--pink-accent);
-      font-size: 64px;
+      color: var(--orange);
+      font-size: 44px;
       font-family: serif;
       line-height: 1;
-      margin-bottom: -20px;
-      opacity: 0.2;
-      position: absolute;
-      top: 20px;
-      left: 30px;
+      margin-bottom: 10px;
+      opacity: 0.55;
+      display: block;
     }
 
     .review-text {
-      font-size: 15.5px;
+      font-size: 14.5px;
       line-height: 1.8;
-      color: #000;
-      margin-bottom: 30px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 24px;
       flex-grow: 1;
       font-style: italic;
       position: relative;
       z-index: 1;
-      padding-top: 30px;
+      padding-top: 0;
     }
 
     .review-author {
       font-weight: 700;
-      color: var(--teal-900);
+      color: var(--orange);
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 2px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      border-top: 1px solid rgba(255,255,255,0.09);
+      padding-top: 18px;
+      margin-top: auto;
     }
 
     .review-author::before {
-        content: '';
-        width: 20px;
-        height: 2px;
-        background: var(--orange);
+      content: '';
+      width: 14px;
+      height: 2px;
+      background: var(--orange);
+      flex-shrink: 0;
     }
 
     /* Carousel Nav */
@@ -630,8 +670,8 @@
     }
 
     .nav-btn {
-        background: #fff;
-        border: 1px solid rgba(0,0,0,0.08);
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
         width: 48px;
         height: 48px;
         border-radius: 50%;
@@ -640,8 +680,8 @@
         justify-content: center;
         cursor: pointer;
         transition: all 0.2s;
-        color: var(--teal-900);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        color: #ffffff;
+        box-shadow: none;
     }
 
     .nav-btn:hover {
@@ -671,45 +711,38 @@
         background: var(--orange);
     }
 
-    /* ── MULTI-COLOR MESH CTA SECTION (GRID LINES REMOVED) ── */
+    /* ── CTA SECTION ── */
     .podcast-cta {
-      padding: 140px 0;
-      background: #eef5ff; /* Base Light Blue */
+      padding: 100px 0;
+      background-color: #eef5fc;
+      background-image:
+        linear-gradient(rgba(30,111,168,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,111,168,0.07) 1px, transparent 1px);
+      background-size: 54px 54px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      color: var(--teal-900);
-    }
-    
-    /* VIBRANT MULTI-COLOR MESH (AURORA STYLE) */
-    .podcast-cta::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: 
-            radial-gradient(circle at 10% 20%, rgba(233, 30, 99, 0.18) 0%, transparent 40%),
-            radial-gradient(circle at 85% 15%, rgba(0, 188, 212, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 90% 80%, rgba(212, 160, 64, 0.18) 0%, transparent 40%),
-            radial-gradient(circle at 20% 75%, rgba(13, 46, 78, 0.08) 0%, transparent 40%),
-            linear-gradient(135deg, #f0f7ff 0%, #eef5ff 100%);
-        z-index: 1;
     }
 
-    /* Subtle Overlay Texture */
+    .podcast-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(255,255,255,0.7) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
     .podcast-cta::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-        opacity: 0.1;
-        mix-blend-mode: luminosity;
-        z-index: 1;
-        pointer-events: none;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(30,111,168,0.4) 30%, rgba(91,168,214,0.65) 50%, rgba(30,111,168,0.4) 70%, transparent);
+      pointer-events: none;
     }
 
     .podcast-cta .container {
-        position: relative;
-        z-index: 3;
+      position: relative;
+      z-index: 2;
     }
 
     .podcast-cta h2 {
@@ -719,13 +752,13 @@
       letter-spacing: -1.5px;
       font-weight: 700;
     }
-    
+
     .podcast-cta p {
-        color: var(--text-mid);
-        max-width: 600px;
-        margin: 0 auto 40px;
-        font-size: 18px;
-        line-height: 1.6;
+      color: var(--text-mid);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      font-size: 18px;
+      line-height: 1.6;
     }
 
     /* ── FOOTER (OFFICIAL PRICING VERSION) ── */
@@ -822,26 +855,27 @@
     /* ── FLOATING SPOTIFY WIDGET ── */
     #spotify-widget {
         position: fixed;
-        bottom: 0;
+        bottom: 24px;
         right: 24px;
         width: 340px;
         z-index: 1000;
-        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        transform: translateY(0);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        transform-origin: bottom right;
     }
 
     #spotify-widget.minimized {
-        transform: translateY(160px); 
+        right: -170px;
+        bottom: 60px;
+        transform: rotate(-90deg);
     }
 
     .widget-container {
         background: #282828;
-        border-radius: 12px 12px 0 0;
-        box-shadow: 0 -10px 50px rgba(0,0,0,0.5);
+        border-radius: 12px;
+        box-shadow: 0 10px 50px rgba(0,0,0,0.5);
         overflow: hidden;
         padding: 4px;
         border: 1px solid rgba(255,255,255,0.05);
-        border-bottom: none;
     }
 
     .widget-header {
@@ -902,7 +936,7 @@
     }
 
     #spotify-widget.minimized .close-widget svg {
-        transform: rotate(180deg);
+        transform: rotate(0deg);
     }
 
     .close-widget:hover { background: #1DB954; }
@@ -949,10 +983,11 @@
 
   <!-- ── PODCAST HERO ── -->
   <section class="podcast-hero">
+    <img class="podcast-hero-bg" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
     <div class="podcast-hero-content">
-      <span class="hero-label">#1 Podcast for Trading Psychology</span>
+      <span class="hero-label">A Podcast for Self-Directed Traders</span>
       <h1>The TradeHacker <em>Mindset</em></h1>
-      <p>Master your mental game and identification of your own trader psychology with veteran traders.</p>
+      <p>Honest conversations about the mental side of trading — patience, drawdowns, discipline, and the small habits that separate consistent traders from the rest.</p>
       
       <div class="platform-links" id="listen">
         <a href="https://podcasts.apple.com/us/podcast/the-tradehacker-mindset/id1558719467" class="platform-btn apple" target="_blank">
@@ -963,14 +998,21 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.514 17.294a.75.75 0 01-1.03.249c-2.846-1.738-6.425-2.13-10.643-1.168a.75.75 0 01-.336-1.46c4.61-1.054 8.56-.598 11.76 1.349a.75.75 0 01.249 1.03zm1.464-3.256a.938.938 0 01-1.287.308c-3.256-1.999-8.222-2.583-12.073-1.414a.937.937 0 01-.548-1.792c4.408-1.338 9.888-.69 13.6 1.587a.938.938 0 01.308 1.311zm.126-3.414c-3.906-2.319-10.347-2.532-14.124-1.385a1.125 1.125 0 01-.655-2.155c4.32-1.312 11.439-1.055 15.93 1.613a1.125 1.125 0 01-1.151 1.927z"/></svg>
           Spotify
         </a>
-        <a href="https://podcasts.google.com/feed/aHR0cHM6Ly90aGV0cmFkZWhhY2tlcm1pbmRzZXQubGlic3luLmNvbS9yc3M" class="platform-btn google" target="_blank">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v10h-2zm-4 3h2v4H7zm8 0h2v4h-2z"/></svg>
-          Google Podcasts
+        <a href="https://www.youtube.com/@NavigationTrading" class="platform-btn youtube" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
         </a>
-        <a href="https://www.stitcher.com/show/the-tradehacker-mindset" class="platform-btn stitcher" target="_blank">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 2l-1 2h-6l-1-2h-8v16h8l1 2h6l1-2h8v-16h-8zm-7 14h-5v-12h5v12zm7 2h-5v-16h5v16zm7-2h-5v-12h5v12z"/></svg>
-          Stitcher
-        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── YOUR HOST SECTION ── -->
+  <section class="host-section">
+    <div class="container-narrow">
+      <span class="section-eyebrow">YOUR HOST</span>
+      <h2 class="section-heading">Honest Talk From a Trader<br><span style="color:var(--orange)">Who Trades.</span></h2>
+      <div class="host-body-content">
+        <p>The TradeHacker Mindset is hosted by the NavigationTrading team — active options traders who execute the same strategies we teach, every market day. No theory. No "I read a book about trading psychology once." Just real talk from people who've been in drawdowns, fought the urge to revenge trade, sat through boring weeks, and showed up the next day anyway.<br><span class="host-tagline">That's the show. That's why it sounds different.</span></p>
       </div>
     </div>
   </section>
@@ -979,8 +1021,8 @@
   <section class="episodes-section" id="episodes">
     <div class="episodes-container">
       <div class="episodes-text">
-        <h2>Watch Recent <br>Episodes.</h2>
-        <p>Explore our deep dives into the mental edge required for consistent trading success. Watch the latest strategies and mindset breakthroughs directly from veteran traders.</p>
+        <h2>Recent Episodes.</h2>
+        <p>Real conversations on the mental habits that separate disciplined traders from the rest. New episodes covering patience, drawdowns, process, and the parts of trading nobody talks about.</p>
         <a href="#listen" class="nav-cta">Listen on the go</a>
       </div>
       <div class="video-wrapper">
