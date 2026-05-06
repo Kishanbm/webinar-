@@ -1399,6 +1399,157 @@
 
     .footer-link:hover { color: var(--emerald-500); }
 
+    /* ── HOME PRICING SECTION ── */
+    .pricing-section-home {
+      padding: 120px 0;
+      background: #ffffff; /* White scroll break */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-home-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .pricing-home-header h2 {
+      font-size: clamp(32px, 4.5vw, 48px);
+      color: #050d17;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+
+    .pricing-home-header h2 span {
+      color: var(--orange);
+    }
+
+    .pricing-home-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .pricing-card-home {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .pricing-card-home:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+      border-color: var(--orange);
+    }
+
+    .pricing-card-home.popular {
+      border: 2.5px solid var(--orange);
+      box-shadow: 0 20px 40px rgba(200, 66, 10, 0.1);
+      transform: scale(1.05);
+    }
+
+    .pricing-card-home.popular:hover {
+      transform: scale(1.05) translateY(-12px);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--orange);
+      color: #fff;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .p-card-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .p-card-header h3 {
+      font-size: 24px;
+      color: #0d2e4e;
+      margin-bottom: 12px;
+    }
+
+    .p-card-price {
+      font-size: 44px;
+      font-weight: 800;
+      color: #050d17;
+      margin-bottom: 8px;
+      letter-spacing: -1.5px;
+    }
+
+    .p-card-price span {
+      font-size: 15px;
+      font-weight: 400;
+      color: #666;
+    }
+
+    .p-card-features {
+      list-style: none;
+      margin-bottom: 40px;
+      flex-grow: 1;
+    }
+
+    .p-card-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .p-card-features li svg {
+      color: #62BC46;
+      flex-shrink: 0;
+    }
+
+    .p-card-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 15px;
+      transition: all 0.3s;
+      border: 2px solid var(--orange);
+      color: var(--orange);
+    }
+
+    .p-card-btn:hover {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .popular .p-card-btn {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    @media (max-width: 992px) {
+      .pricing-home-grid { grid-template-columns: 1fr; max-width: 500px; }
+      .pricing-card-home.popular { transform: none; }
+      .pricing-card-home.popular:hover { transform: translateY(-12px); }
+    }
+
     .social-icon {
       width: 32px;
       height: 32px;
@@ -1712,11 +1863,65 @@
     </div>
   </section>
 
+  <!-- ── PRICING SECTION (HOME) ── -->
+  <section class="pricing-section-home" id="membership-plans">
+    <div class="container">
+      <div class="pricing-home-header">
+        <div class="s-eyebrow" style="color: var(--orange); margin-bottom: 20px;">MEMBERSHIP PLANS</div>
+        <h2>Simple Plans for <span>Expert Trading.</span></h2>
+      </div>
+
+      <div class="pricing-home-grid">
+        <!-- Free -->
+        <div class="pricing-card-home">
+          <div class="p-card-header">
+            <h3>Free</h3>
+            <div class="p-card-price">$0<span>/forever</span></div>
+          </div>
+          <ul class="p-card-features">
+            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 5 core strategy courses</li>
+            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Discord Community</li>
+          </ul>
+          <a href="https://whop.com/navigationtrading/ntfree/" class="p-card-btn">Join Free</a>
+        </div>
+
+        <!-- Day Trading (Popular) -->
+        <div class="pricing-card-home popular">
+          <div class="popular-tag">Most Popular</div>
+          <div class="p-card-header">
+            <h3>Day Trading</h3>
+            <div class="p-card-price">Join Now<span>/mo</span></div>
+          </div>
+          <ul class="p-card-features">
+            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Daily Live Stream</li>
+            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Real-time live trades</li>
+            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Includes 0 DTE Setup</li>
+          </ul>
+          <a href="https://whop.com/navigationtrading/ntday/" class="p-card-btn">Start Now</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="pricing-card-home">
+          <div class="p-card-header">
+            <h3>Pro</h3>
+            <div class="p-card-price">Ultimate<span>/mo</span></div>
+          </div>
+          <ul class="p-card-features">
+            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Everything in Day Trading</li>
+            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 17 advanced courses</li>
+            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Trade Alerts & Custom Tools</li>
+          </ul>
+          <a href="https://whop.com/navigationtrading/ntpro/" class="p-card-btn">Get Pro Access</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── PREMIUM WHAT YOU'LL LEARN (XENTRO STYLE) ── -->
   <section class="learn-section-premium">
     <div class="container" style="max-width: 1400px;">
       <div class="learn-header-centered">
-        <div class="s-eyebrow light">LEARNING PATH</div>
+        <div class="s-eyebrow" style="color: var(--orange); margin-bottom: 20px;">LEARNING PATH</div>
         <h2>Everything You Need to <br> <span>Trade Like a Pro.</span></h2>
         <p>Institutional grade trading education designed to take you from a novice to a rule-based professional trader.</p>
       </div>
