@@ -111,25 +111,126 @@ body {
 /* ══════════════════════════════════════
    NAVBAR
    ══════════════════════════════════════ */
-.nav {
-  position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 60px;
-  transition: all .35s ease;
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.nav.scrolled {
-  background: rgba(5,12,22,.97);
+
+.navbar.scrolled {
+  background: rgba(13, 46, 78, 0.98);
   backdrop-filter: blur(20px);
-  padding: 13px 60px;
-  box-shadow: 0 2px 40px rgba(0,0,0,.5);
+  padding: 14px 60px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 }
-.nav-logo { height: 34px; width: auto; filter: brightness(1.1); transform: scale(5); transform-origin: left center; }
-.nav-right { display: flex; align-items: center; gap: 24px; }
-.nav-link {
-  color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500;
-  text-decoration: none; transition: color .2s;
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
-.nav-link:hover { color: #fff; }
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  transform: scale(5);
+  transform-origin: left center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--orange) !important;
+}
+
+/* ── NAV DROPDOWN ── */
+.nav-item-dropdown { position: relative; }
+.nav-item-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.nav-chevron { font-size: 9px; transition: transform 0.25s; line-height: 1; opacity: 0.7; }
+.nav-item-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: rgba(7,24,44,0.97);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-top: 2px solid var(--orange);
+  border-radius: 12px;
+  min-width: 215px;
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.22s ease;
+  z-index: 200;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+  pointer-events: none;
+}
+.dropdown-menu::before {
+  content: ''; position: absolute;
+  top: -20px; left: 0; right: 0; height: 20px;
+}
+.nav-item-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: all;
+}
+.dropdown-menu a {
+  display: block;
+  padding: 10px 14px;
+  color: rgba(255,255,255,0.8) !important;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.dropdown-menu a:hover {
+  background: rgba(200,66,10,0.18) !important;
+  color: #e86428 !important;
+}
+
+.nav-cta {
+  background: var(--orange);
+  color: #fff;
+  padding: 10px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.nav-cta:hover {
+  background: var(--orange-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(200, 66, 10, 0.3);
+}
 
 /* ══════════════════════════════════════
    SECTION 1 — HERO
@@ -985,20 +1086,9 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   .nav-toggle.active span:nth-child(2) { opacity: 0; width: 0; }
   .nav-toggle.active span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
   
-  .nav-right {
-    position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-    background: #050C16; border-left: none;
-    flex-direction: column; justify-content: center; align-items: stretch;
-    gap: 0; transition: .4s cubic-bezier(.22,.68,0,1.2); padding: 60px 40px;
-    box-shadow: none;
-    opacity: 0; visibility: hidden;
-  }
-  .nav-right.active { right: 0; opacity: 1; visibility: visible; }
-  .nav-link { 
-    font-size: 22px; width: 100%; text-align: center; padding: 24px 0; 
-    border-bottom: 1px solid rgba(255,255,255,.08); 
-  }
-  .btn-nav-pro { margin-top: 32px; width: 100%; justify-content: center; padding: 18px !important; font-size: 17px !important; }
+  .navbar { padding: 18px 30px; }
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
   
   /* Hero */
   .hero { padding-top: 60px; text-align: center; }
@@ -1064,13 +1154,28 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 </div>
 
 <!-- NAVBAR -->
-<nav class="nav" id="navbar">
-  <a href="/" style="display:inline-block; line-height:0;"><img src="logo.png" alt="NavigationTrading" class="nav-logo"></a>
-  <div class="nav-right" id="navMenu">
-    <a href="#strategies" class="nav-link">Strategies</a>
-    <a href="#tools" class="nav-link">Tools</a>
-    <a href="#faq" class="nav-link">FAQ</a>
-    <a href="#" class="btn-nav-pro">Join Pro — $179</a>
+<nav class="navbar" id="navbar">
+  <a href="/home" class="nav-logo">
+    <img src="logo.png" alt="NavigationTrading">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/performance">Performance</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li class="nav-item-dropdown">
+      <a href="#">Services <span class="nav-chevron">▾</span></a>
+      <div class="dropdown-menu">
+        <a href="/free-membership">Free Membership</a>
+        <a href="/day-trading-membership">Day Trade Membership</a>
+        <a href="/paid-membership">Pro Membership</a>
+      </div>
+    </li>
+    <li><a href="/podcast">Podcast</a></li>
+    <li><a href="https://navigationtrading.com/blog/">Blog</a></li>
+    <li><a href="/contact">Contact Us</a></li>
+  </ul>
+  <div style="display:flex; gap:16px; align-items:center;">
+      <a href="https://whop.com/orders/products/" style="color:#fff; text-decoration:none; font-size:14px; font-weight:600;" class="nav-login">Login</a>
+      <a href="https://whop.com/navigationtrading/" class="nav-cta">Join Now</a>
   </div>
   <div class="nav-toggle" id="navToggle">
     <span></span>
@@ -2099,22 +2204,17 @@ window.addEventListener('scroll', () => {
 
 // Mobile Menu Toggle
 const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-const navLinks = document.querySelectorAll('.nav-link, .btn-nav-pro');
+const navLinks = document.querySelectorAll('.nav-links a, .nav-cta, .nav-login');
 
-navToggle.addEventListener('click', () => {
-  navToggle.classList.toggle('active');
-  navMenu.classList.toggle('active');
-  document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-});
-
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navToggle.classList.remove('active');
-    navMenu.classList.remove('active');
-    document.body.style.overflow = '';
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    // For now index.html doesn't have a full mobile menu structure like paid-membership had,
+    // so we'll just toggle the nav-links visibility if needed or use the existing structure.
+    // However, the standard navbar just hides links. 
+    // I'll keep the toggle logic in case we add the mobile menu style back.
   });
-});
+}
 
 /* ── Sticky bar & Back to Top ── */
 const stickyBar = document.getElementById('stickyBar');
