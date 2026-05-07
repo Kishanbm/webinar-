@@ -1495,136 +1495,276 @@
     .footer-link:hover { color: var(--emerald-500); }
 
     /* ── HOME PRICING SECTION ── */
+    /* ── PLANS + RESOURCES (combined premium light) ── */
     .pricing-section-home {
-      padding: 60px 0; /* Reduced padding */
-      background: #ffffff;
+      padding: 80px 0 90px;
+      background: #fbfcfd;
       position: relative;
       overflow: hidden;
     }
 
+    /* Soft mesh accent */
     .pricing-section-home::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
-      opacity: 0.03; /* Very subtle texture */
+      background:
+        radial-gradient(ellipse 40% 30% at 18% 18%, rgba(200,66,10,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 35% 25% at 82% 82%, rgba(13,46,78,0.06) 0%, transparent 60%);
       pointer-events: none;
     }
 
+    /* Faint grid lines for premium texture */
+    .pricing-section-home::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(13, 46, 78, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13, 46, 78, 0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 20%, transparent 75%);
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .pricing-section-home .container { position: relative; z-index: 2; }
+
     .pricing-home-header {
       text-align: center;
-      margin-bottom: 70px;
+      margin-bottom: 44px;
+    }
+
+    .pricing-home-header .bento-eyebrow {
+      background: rgba(200, 66, 10, 0.08);
+      border-color: rgba(200, 66, 10, 0.25);
+      margin-bottom: 18px;
     }
 
     .pricing-home-header h2 {
-      font-size: clamp(32px, 4.5vw, 48px);
-      color: #050d17;
+      font-size: clamp(28px, 3.8vw, 42px);
+      color: var(--teal-900);
       font-weight: 800;
-      letter-spacing: -1.5px;
+      letter-spacing: -1.2px;
       line-height: 1.1;
+      margin: 0 auto;
+      max-width: 720px;
     }
 
     .pricing-home-header h2 span {
-      color: var(--orange);
+      background: linear-gradient(135deg, var(--orange) 0%, #d4a040 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .pricing-home-header p {
+      margin-top: 14px;
+      font-size: 15px;
+      color: rgba(13,46,78,0.62);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
     }
 
     .pricing-home-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      gap: 20px;
+      max-width: 1080px;
+      margin: 14px auto 28px;
+      padding: 14px 20px 0;
+      align-items: stretch;
     }
 
     .pricing-card-home {
-      background: rgba(15, 20, 25, 0.12); /* Slightly darker light-black */
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      border: 1px solid rgba(255, 255, 255, 0.9); /* Restored white border */
-      border-radius: 24px;
-      padding: 40px 30px;
+      background: #ffffff;
+      border: 1px solid rgba(13, 46, 78, 0.08);
+      border-radius: 16px;
+      padding: 26px 24px 22px;
       display: flex;
       flex-direction: column;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s, border-color 0.4s;
       position: relative;
-      box-shadow: 0 15px 40px rgba(13, 46, 78, 0.08), inset 0 2px 20px rgba(255, 255, 255, 0.7);
+      box-shadow: 0 1px 2px rgba(13, 46, 78, 0.04), 0 8px 24px -12px rgba(13, 46, 78, 0.12);
+    }
+
+    .pricing-card-home > * { position: relative; z-index: 1; }
+
+    /* Top accent bar — present on all cards */
+    .pricing-card-home::after {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px;
+      height: 3px;
+      border-radius: 16px 16px 0 0;
+      z-index: 2;
     }
 
     .pricing-card-home:hover {
-      transform: translateY(-10px);
-      background: rgba(15, 20, 25, 0.16);
-      box-shadow: 0 30px 60px rgba(13, 46, 78, 0.12), inset 0 2px 20px rgba(255, 255, 255, 0.8);
-      border-color: var(--orange);
+      transform: translateY(-6px);
+      border-color: rgba(13, 46, 78, 0.18);
+      box-shadow: 0 1px 2px rgba(13, 46, 78, 0.04), 0 24px 48px -16px rgba(13, 46, 78, 0.18);
     }
 
+    /* FREE — teal accent (1st card) */
+    .pricing-card-home:nth-child(1)::after {
+      background: linear-gradient(90deg, transparent, #1e4d8c 30%, #0d2e4e 50%, #1e4d8c 70%, transparent);
+    }
+    .pricing-card-home:nth-child(1):hover {
+      border-color: rgba(13, 46, 78, 0.35);
+      box-shadow: 0 1px 2px rgba(13, 46, 78, 0.06), 0 24px 48px -16px rgba(13, 46, 78, 0.25);
+    }
+    .pricing-card-home:nth-child(1) .p-icon-circle {
+      background: linear-gradient(135deg, #0d2e4e 0%, #1e4d8c 100%);
+      box-shadow: 0 3px 10px rgba(13, 46, 78, 0.32);
+    }
+    .pricing-card-home:nth-child(1) .p-card-btn {
+      border-color: var(--teal-900);
+      color: var(--teal-900);
+    }
+    .pricing-card-home:nth-child(1) .p-card-btn:hover {
+      background: linear-gradient(135deg, #0d2e4e 0%, #1e4d8c 100%);
+      color: #fff;
+      box-shadow: 0 8px 22px rgba(13, 46, 78, 0.3);
+    }
+    .pricing-card-home:nth-child(1) .p-price-row::after {
+      background: linear-gradient(90deg, transparent, var(--teal-900), transparent);
+      opacity: 0.4;
+    }
+
+    /* POPULAR — orange accent + tag sitting on the bar */
     .pricing-card-home.popular {
-      background: rgba(15, 20, 25, 0.14);
-      border: 1px solid var(--orange);
-      box-shadow: 0 20px 50px rgba(200, 66, 10, 0.08), inset 0 2px 20px rgba(255, 255, 255, 0.6);
-      transform: scale(1.02);
+      background: #ffffff;
+      border: 1px solid rgba(200, 66, 10, 0.35);
+      padding: 26px 24px 22px;
+      box-shadow:
+        0 1px 2px rgba(200, 66, 10, 0.06),
+        0 24px 48px -16px rgba(200, 66, 10, 0.22),
+        inset 0 0 0 1px rgba(200, 66, 10, 0.08);
       z-index: 5;
+      overflow: visible;
+    }
+
+    .pricing-card-home.popular::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 100% 50% at 50% 0%, rgba(200,66,10,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 50% at 50% 100%, rgba(212,160,64,0.03) 0%, transparent 60%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .pricing-card-home.popular::after {
+      background: linear-gradient(90deg, transparent, var(--orange) 25%, #d4a040 50%, var(--orange) 75%, transparent);
     }
 
     .pricing-card-home.popular:hover {
-      transform: scale(1.02) translateY(-10px);
-      background: rgba(15, 20, 25, 0.18);
-      box-shadow: 0 40px 80px rgba(200, 66, 10, 0.15), inset 0 2px 20px rgba(255, 255, 255, 0.8);
+      transform: translateY(-6px);
+      border-color: rgba(200, 66, 10, 0.55);
+      box-shadow:
+        0 1px 2px rgba(200, 66, 10, 0.08),
+        0 32px 60px -16px rgba(200, 66, 10, 0.32),
+        inset 0 0 0 1px rgba(200, 66, 10, 0.14);
+    }
+
+    .pricing-card-home.popular .p-card-price {
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* PRO — gold accent (3rd card) */
+    .pricing-card-home:nth-child(3)::after {
+      background: linear-gradient(90deg, transparent, #b8841f 30%, #d4a040 50%, #b8841f 70%, transparent);
+    }
+    .pricing-card-home:nth-child(3) {
+      border-color: rgba(212, 160, 64, 0.22);
+    }
+    .pricing-card-home:nth-child(3):hover {
+      border-color: rgba(212, 160, 64, 0.5);
+      box-shadow: 0 1px 2px rgba(212, 160, 64, 0.08), 0 24px 48px -16px rgba(212, 160, 64, 0.32);
+    }
+    .pricing-card-home:nth-child(3) .p-icon-circle {
+      background: linear-gradient(135deg, #d4a040 0%, #b8841f 100%);
+      box-shadow: 0 3px 10px rgba(212, 160, 64, 0.32);
+    }
+    .pricing-card-home:nth-child(3) .p-card-btn {
+      border-color: #d4a040;
+      color: #b8841f;
+    }
+    .pricing-card-home:nth-child(3) .p-card-btn:hover {
+      background: linear-gradient(135deg, #d4a040 0%, #b8841f 100%);
+      color: #fff;
+      box-shadow: 0 8px 22px rgba(212, 160, 64, 0.35);
+    }
+    .pricing-card-home:nth-child(3) .p-card-price {
+      background: linear-gradient(135deg, #d4a040 0%, #b8841f 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .pricing-card-home:nth-child(3) .p-price-row::after {
+      background: linear-gradient(90deg, transparent, #d4a040, transparent);
     }
 
     .p-plan-row {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      background: rgba(13, 46, 78, 0.15); /* Normal transparent tint */
-      padding: 6px 24px 6px 6px;
+      gap: 10px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(13,46,78,0.05) 0%, rgba(13,46,78,0.02) 100%);
+      padding: 4px 16px 4px 4px;
       border-radius: 50px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(13, 46, 78, 0.08);
+      box-shadow: 0 3px 10px rgba(13, 46, 78, 0.04);
     }
 
     .p-icon-circle {
-      width: 32px;
-      height: 32px;
-      background: var(--orange);
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
       color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 4px 10px rgba(200, 66, 10, 0.2);
+      box-shadow: 0 3px 8px rgba(200, 66, 10, 0.3);
     }
 
     .p-icon-circle svg {
-      width: 16px;
-      height: 16px;
+      width: 13px;
+      height: 13px;
     }
 
     .p-card-header h3 {
-      font-size: 18px;
-      color: #0d2e4e; /* Dark navy text for light glass */
+      font-size: 14px;
+      color: var(--teal-900);
       margin: 0;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
     }
 
     .p-price-row {
       position: relative;
-      padding-bottom: 20px;
-      margin-bottom: 24px;
+      padding-bottom: 16px;
+      margin-bottom: 18px;
     }
 
-    /* Tailing Line (Sharp Center-out) */
     .p-price-row::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 140px;
+      width: 100px;
       height: 1px;
       background: linear-gradient(90deg, transparent 0%, var(--orange) 50%, transparent 100%);
       opacity: 0.4;
@@ -1632,87 +1772,302 @@
 
     .popular-tag {
       position: absolute;
-      top: -15px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--orange);
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
       color: #fff;
-      padding: 6px 18px;
+      padding: 5px 16px;
       border-radius: 50px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.6px;
+      box-shadow: 0 6px 18px rgba(200, 66, 10, 0.45), 0 0 0 3px #fbfcfd;
+      white-space: nowrap;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .popular-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 8px rgba(255,255,255,0.8);
+      animation: pulseDot 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
     }
 
     .p-card-header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .p-card-price {
-      font-size: 48px;
+      font-size: 32px;
       font-weight: 800;
-      color: #050d17;
-      margin-bottom: 4px;
-      letter-spacing: -1.5px;
+      color: var(--teal-900);
+      margin-bottom: 2px;
+      letter-spacing: -1px;
       display: block;
+      line-height: 1;
     }
 
     .p-card-price span {
-      font-size: 15px;
-      font-weight: 400;
-      color: #666;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(13,46,78,0.5);
+      letter-spacing: 0.3px;
     }
 
     .p-card-features {
       list-style: none;
-      margin-bottom: 40px;
-      flex-grow: 1;
+      margin-bottom: 22px;
     }
 
     .p-card-features li {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 15px;
-      color: #444;
-      margin-bottom: 16px;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(13,46,78,0.78);
+      margin-bottom: 10px;
+      line-height: 1.4;
     }
 
     .p-card-features li svg {
-      color: #62BC46;
+      width: 15px;
+      height: 15px;
+      color: var(--orange);
       flex-shrink: 0;
+      padding: 2px;
+      background: rgba(200,66,10,0.1);
+      border-radius: 50%;
     }
 
     .p-card-btn {
       display: block;
       width: 100%;
-      padding: 16px;
-      border-radius: 12px;
+      padding: 12px 16px;
+      border-radius: 10px;
       text-align: center;
       text-decoration: none;
-      font-weight: 800;
-      font-size: 15px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.3px;
       transition: all 0.3s;
-      border: 2px solid var(--orange);
+      border: 1.5px solid var(--orange);
       color: var(--orange);
+      background: transparent;
     }
 
     .p-card-btn:hover {
       background: var(--orange);
       color: #fff;
+      box-shadow: 0 8px 22px rgba(200, 66, 10, 0.3);
+      transform: translateY(-1px);
     }
 
     .popular .p-card-btn {
-      background: var(--orange);
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
       color: #fff;
+      box-shadow: 0 8px 20px rgba(200, 66, 10, 0.25);
+    }
+
+    .popular .p-card-btn:hover {
+      box-shadow: 0 12px 28px rgba(200, 66, 10, 0.4);
+      transform: translateY(-2px);
     }
 
     @media (max-width: 992px) {
       .pricing-home-grid { grid-template-columns: 1fr; max-width: 500px; }
       .pricing-card-home.popular { transform: none; }
       .pricing-card-home.popular:hover { transform: translateY(-12px); }
+    }
+
+    /* ── RESOURCES ROW (Performance + Podcast) ── */
+    .pr-divider {
+      max-width: 1080px;
+      margin: 18px auto 24px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .pr-divider::before,
+    .pr-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(13,46,78,0.18) 50%, transparent 100%);
+    }
+
+    .pr-divider span {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: rgba(13, 46, 78, 0.55);
+    }
+
+    .pr-resources-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .pr-resource-card {
+      background: linear-gradient(180deg, #f4f8fc 0%, #eaf0f7 100%);
+      border: 2px solid rgba(13, 46, 78, 0.5);
+      border-top: 1px solid rgba(13, 46, 78, 0.12);
+      border-radius: 18px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      align-items: stretch;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow:
+        0 1px 2px rgba(13, 46, 78, 0.06),
+        0 22px 50px -22px rgba(13, 46, 78, 0.28);
+      position: relative;
+    }
+
+    /* Top accent bar — same as popular pricing card */
+    .pr-resource-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--orange) 25%, #d4a040 50%, var(--orange) 75%, transparent);
+      z-index: 3;
+      border-radius: 18px 18px 0 0;
+    }
+
+    /* Subtle dot texture for depth */
+    .pr-resource-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(13,46,78,0.06) 1px, transparent 0);
+      background-size: 18px 18px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 100% 100% at 100% 50%, #000 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 100% 100% at 100% 50%, #000 30%, transparent 75%);
+    }
+
+    .pr-resource-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 66, 10, 0.35);
+      box-shadow:
+        0 1px 2px rgba(200, 66, 10, 0.06),
+        0 30px 60px -20px rgba(200, 66, 10, 0.22),
+        0 0 0 1px rgba(200, 66, 10, 0.15);
+    }
+
+    .pr-resource-img {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e3eaf3 0%, #d0dae7 100%);
+      min-height: 180px;
+    }
+
+    .pr-resource-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .pr-resource-card:hover .pr-resource-img img {
+      transform: scale(1.06);
+    }
+
+    /* Right-side dark smoke fade for premium edge */
+    .pr-resource-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, transparent 50%, rgba(8, 24, 44, 0.55) 85%, rgba(8, 24, 44, 0.85) 100%);
+      pointer-events: none;
+    }
+
+    .pr-resource-body {
+      padding: 24px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pr-resource-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+      padding: 4px 12px;
+      background: rgba(200, 66, 10, 0.1);
+      border: 1px solid rgba(200, 66, 10, 0.28);
+      border-radius: 50px;
+      color: var(--orange);
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .pr-resource-body h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--teal-900);
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .pr-resource-body h3 svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--orange);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: all 0.3s ease;
+    }
+
+    .pr-resource-card:hover .pr-resource-body h3 svg {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .pr-resource-body p {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: rgba(13, 46, 78, 0.65);
+      margin: 0;
+    }
+
+    @media (max-width: 992px) {
+      .pr-resources-grid { grid-template-columns: 1fr; max-width: 500px; }
+      .pr-resource-card { grid-template-columns: 1fr; }
+      .pr-resource-img { min-height: 160px; }
     }
 
     .social-icon {
@@ -2193,70 +2548,13 @@
     </div>
   </section>
 
-  <!-- ── PREMIUM BENTO FEATURES SECTION ── -->
-  <section class="bento-section">
-    <div class="container">
-      <div class="bento-header">
-        <div class="bento-eyebrow">The Ecosystem</div>
-        <h2>Everything You Need to <span>Trade Like a Pro.</span></h2>
-      </div>
-
-      <div class="bento-grid">
-        
-        <!-- Feature 1: Pro Membership (Wide, Span 2) -->
-        <a href="pricing.html" class="bento-card wide">
-          <div class="bento-image-wrapper">
-            <img src="feature_pro.png" alt="Pro Membership">
-          </div>
-          <div class="bento-content">
-            <h3>Pro Membership <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></h3>
-            <p>Unlock our live day trading room, exclusive proprietary indicators, real-time trade alerts, and direct access to our head traders.</p>
-          </div>
-        </a>
-
-        <!-- Feature 2: Free Membership (Normal, Span 1) -->
-        <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="bento-card">
-          <div class="bento-image-wrapper">
-            <img src="feature_free.png" alt="Free Membership">
-          </div>
-          <div class="bento-content">
-            <h3>Free Membership <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></h3>
-            <p>Get immediate access to foundational courses and daily insights.</p>
-          </div>
-        </a>
-
-        <!-- Feature 3: Performance (Normal, Span 1) -->
-        <a href="/performance" class="bento-card">
-          <div class="bento-image-wrapper">
-            <img src="feature_performance.png" alt="Verified Performance">
-          </div>
-          <div class="bento-content">
-            <h3>Verified Logs <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></h3>
-            <p>View our completely transparent, verified trade logs for every strategy.</p>
-          </div>
-        </a>
-
-        <!-- Feature 4: Podcast (Wide, Span 2, Reverse) -->
-        <a href="/podcast" class="bento-card wide reverse">
-          <div class="bento-image-wrapper">
-            <img src="feature_podcast.png" alt="TradeHacker Podcast">
-          </div>
-          <div class="bento-content">
-            <h3>The Podcast <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></h3>
-            <p>Master the psychology of trading. Listen to the #1 podcast for trading mindset, featuring hard-won wisdom from 20+ years in the markets.</p>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── PRICING SECTION (HOME) ── -->
+  <!-- ── COMBINED: MEMBERSHIP PLANS + RESOURCES (premium light) ── -->
   <section class="pricing-section-home" id="membership-plans">
     <div class="container">
       <div class="pricing-home-header">
-        <div class="bento-eyebrow">MEMBERSHIP PLANS</div>
-        <h2>Simple Plans for <span>Expert Trading.</span></h2>
+        <div class="bento-eyebrow">The Ecosystem</div>
+        <h2>Everything You Need to <span>Trade Like a Pro.</span></h2>
+        <p>Pick the plan that fits your goals — then dive into our verified track record and the podcast that takes you behind the scenes.</p>
       </div>
 
       <div class="pricing-home-grid">
@@ -2325,6 +2623,40 @@
           </ul>
           <a href="https://whop.com/navigationtrading/ntpro/" class="p-card-btn">Get Pro Access</a>
         </div>
+      </div>
+
+      <!-- Divider between rows -->
+      <div class="pr-divider"><span>Built on Proof &amp; Honest Talk</span></div>
+
+      <!-- Row 2: Performance + Podcast -->
+      <div class="pr-resources-grid">
+        <a href="/performance" class="pr-resource-card">
+          <div class="pr-resource-img">
+            <img src="feature_performance.png" alt="Verified Performance">
+          </div>
+          <div class="pr-resource-body">
+            <span class="pr-resource-tag">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Verified Logs
+            </span>
+            <h3>Performance <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></h3>
+            <p>Completely transparent, verified trade logs for every strategy we teach. No cherry-picking.</p>
+          </div>
+        </a>
+
+        <a href="/podcast" class="pr-resource-card">
+          <div class="pr-resource-img">
+            <img src="feature_podcast.png" alt="TradeHacker Podcast">
+          </div>
+          <div class="pr-resource-body">
+            <span class="pr-resource-tag">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zm5 9a1 1 0 0 1 1 1 6 6 0 0 1-5 5.91V21h-2v-3.09A6 6 0 0 1 6 12a1 1 0 0 1 2 0 4 4 0 0 0 8 0 1 1 0 0 1 1-1z"/></svg>
+              TradeHacker Mindset
+            </span>
+            <h3>The Podcast <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></h3>
+            <p>Hard-won wisdom from 20+ years in the markets. Real talk on the psychology of consistent trading.</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
