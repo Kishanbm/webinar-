@@ -194,603 +194,387 @@
       padding: 0 40px;
     }
 
-    /* ── CONTACT HERO ── */
-    /* ── HERO BAND (HubSpot style with floating cards) ── */
-    .contact-hero-band {
-      padding: 130px 0 140px;
+
+    /* ═══════════════════════════════════════
+       CONTACT PAGE — Tradient-style full dark
+    ═══════════════════════════════════════ */
+
+    /* ── HERO ── */
+    .contact-hero {
+      padding: 160px 0 90px;
       background: #0D2E4E;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
 
-    /* Background image (same as index hero) */
-    .contact-hero-band .hero-bg-img {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.45;
+    .contact-hero .hero-bg-img {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      opacity: 0.32;
     }
 
-    .contact-hero-band .hero-bg-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%);
+    .contact-hero .hero-bg-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(13,46,78,0.92) 0%, rgba(13,46,78,0.7) 60%, #0D2E4E 100%);
       pointer-events: none;
     }
 
-    .contact-hero-band .hero-glow {
-      position: absolute;
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(30,100,200,0.22) 0%, transparent 65%);
-      top: -200px;
-      right: -100px;
-      pointer-events: none;
-      z-index: 2;
-      animation: pulseglow 6s ease-in-out infinite;
-    }
-
-    .contact-hero-band .hero-glow-2 {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(16,90,180,0.35) 0%, transparent 65%);
-      bottom: -100px;
-      left: -50px;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    @keyframes pulseglow {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.7; }
-    }
-
-    .contact-hero-band .dot-grid {
-      position: absolute;
-      z-index: 3;
-      pointer-events: none;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
-      background-size: 22px 22px;
-    }
-
-    .contact-hero-band .container {
+    .contact-hero .container {
       position: relative;
-      z-index: 4;
+      z-index: 5;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
 
-    /* Single-column band content */
-    .band-grid {
-      max-width: 720px;
-    }
-
-    .contact-hero-content {
-      text-align: left;
-    }
-
-    .contact-hero-band h1 {
-      font-size: clamp(30px, 3.6vw, 42px);
+    .contact-hero h1 {
+      font-size: clamp(40px, 5.6vw, 64px);
       font-weight: 800;
       color: #fff;
-      line-height: 1.1;
-      letter-spacing: -1.2px;
-      margin-bottom: 14px;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
     }
 
-    .contact-hero-band h1 em {
-      font-style: italic;
-      background: linear-gradient(135deg, #ffb380 0%, #d4a040 100%);
+    .contact-hero h1 .gold {
+      background: linear-gradient(135deg, #e8500d 0%, #c8420a 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
       font-weight: 700;
     }
 
-    .contact-hero-band h1 .accent-dot {
-      color: var(--orange);
+    .contact-hero p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.65;
     }
 
-    .contact-hero-band p {
-      font-size: 15px;
-      color: rgba(255,255,255,0.7);
-      max-width: 480px;
-      line-height: 1.6;
-    }
-
-    /* Right side: stylized chat mockup */
-    .band-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 240px;
-    }
-
-    .band-visual::before {
-      content: '';
-      position: absolute;
-      width: 280px; height: 280px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,66,10,0.22) 0%, transparent 60%);
-      filter: blur(20px);
-    }
-
-    .chat-mockup {
-      position: relative;
-      width: 100%;
-      max-width: 340px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
-      padding: 18px 18px 20px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-
-    .chat-mockup::before {
-      content: '';
-      position: absolute;
-      top: -1px; left: 30%; right: 30%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--orange), transparent);
-      border-radius: 22px 22px 0 0;
-    }
-
-    .chat-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .chat-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange) 0%, #d4a040 100%);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; flex-shrink: 0;
-      box-shadow: 0 6px 18px rgba(200,66,10,0.32);
-    }
-
-    .chat-meta { line-height: 1.3; flex: 1; }
-    .chat-meta strong { color: #fff; font-size: 13px; font-weight: 700; display: block; }
-    .chat-meta .status {
-      color: rgba(255,255,255,0.55);
-      font-size: 11px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .chat-meta .status::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 8px rgba(74,222,128,0.6);
-      animation: chatPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes chatPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    .chat-msgs {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .chat-msg {
-      max-width: 80%;
-      padding: 8px 12px;
-      font-size: 12.5px;
-      line-height: 1.45;
-      border-radius: 12px;
-      animation: msgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    }
-
-    .msg-them {
-      align-self: flex-start;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.92);
-      border-bottom-left-radius: 4px;
-      animation-delay: 0.2s;
-    }
-
-    .msg-you {
-      align-self: flex-end;
-      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
-      color: #fff;
-      border-bottom-right-radius: 4px;
-      box-shadow: 0 6px 16px rgba(200,66,10,0.28);
-      animation-delay: 0.6s;
-    }
-
-    .msg-typing {
-      align-self: flex-start;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-bottom-left-radius: 4px;
-      padding: 12px 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      animation-delay: 1s;
-    }
-
-    .msg-typing span {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.6);
-      animation: typingDot 1.4s ease-in-out infinite;
-    }
-    .msg-typing span:nth-child(2) { animation-delay: 0.2s; }
-    .msg-typing span:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes typingDot {
-      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-      30% { opacity: 1; transform: translateY(-3px); }
-    }
-
-    @keyframes msgPop {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── FLOATING ACTION CARDS overlapping the band ── */
-    .action-cards-floating {
-      position: relative;
-      z-index: 5;
-      margin-top: -90px;
-      margin-bottom: 60px;
-    }
-
-    .action-cards-floating .container {
-      max-width: 1120px;
-    }
-
-    .action-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .action-card {
-      background: #ffffff;
-      border: 1px solid rgba(13, 46, 78, 0.1);
-      border-bottom: 4px solid var(--teal-900);
-      border-radius: 18px;
-      padding: 32px 28px 28px;
-      text-align: left;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      text-decoration: none;
-      box-shadow:
-        0 1px 2px rgba(13, 46, 78, 0.04),
-        0 30px 60px -20px rgba(13, 46, 78, 0.4);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .action-card::after {
-      content: '';
-      position: absolute;
-      top: -1px; left: -1px; right: -1px;
-      height: 3px;
-      border-radius: 18px 18px 0 0;
-      background: linear-gradient(90deg, transparent 0%, #000 30%, var(--teal-900) 50%, #000 70%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .action-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0, 0, 0, 0.4);
-      border-bottom-color: #000;
-      box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.08),
-        0 36px 70px -18px rgba(0, 0, 0, 0.32);
-    }
-
-    .action-card:hover::after { opacity: 1; }
-
-    .action-icon {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      background: var(--teal-900);
-      border: 1px solid var(--teal-900);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff;
-      margin-bottom: 20px;
-      transition: all 0.3s;
-    }
-
-    .action-card:hover .action-icon {
-      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-      border-color: #000;
-      color: #fff;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.32);
-      transform: rotate(-6deg) scale(1.05);
-    }
-
-    .action-card h3 {
-      font-size: 19px;
-      font-weight: 800;
-      color: var(--teal-900);
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .action-card h3 svg.arrow {
-      width: 16px;
-      height: 16px;
-      color: #000;
-      opacity: 0;
-      transform: translateX(-6px);
-      transition: all 0.3s;
-      flex-shrink: 0;
-    }
-
-    .action-card:hover h3 svg.arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .action-card p {
-      font-size: 14px;
-      color: #111;
-      line-height: 1.6;
-      margin: 0;
-      font-weight: 500;
-    }
-
-    /* ── CONTACT FORM SECTION ── */
-    .contact-section {
-      padding: 90px 0 100px;
-      background:
-        radial-gradient(ellipse 50% 30% at 0% 0%, rgba(200,66,10,0.05) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 30% at 100% 100%, rgba(13,46,78,0.06) 0%, transparent 60%),
-        #f7f9fc;
+    /* ── FORM SECTION (light/white) ── */
+    .contact-form-section {
+      padding: 90px 0 110px;
+      background: #fbfcfd;
       position: relative;
       overflow: hidden;
     }
 
-    .contact-section::before {
+    .contact-form-section::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(13, 46, 78, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(13, 46, 78, 0.04) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 20%, transparent 75%);
+      background:
+        radial-gradient(ellipse 40% 30% at 18% 18%, rgba(200,66,10,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 35% 25% at 82% 82%, rgba(13,46,78,0.05) 0%, transparent 60%);
       pointer-events: none;
-      opacity: 0.7;
     }
 
-    .contact-section .container { position: relative; z-index: 2; }
+    .contact-form-section .hero-bg-img,
+    .contact-form-section .hero-bg-overlay { display: none; }
 
-    .contact-layout {
+    .contact-form-section .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .form-section-title {
+      text-align: center;
+      font-size: clamp(28px, 3.4vw, 38px);
+      font-weight: 800;
+      color: var(--teal-900);
+      letter-spacing: -1px;
+      margin-bottom: 56px;
+    }
+
+    .form-section-title .gold {
+      background: linear-gradient(135deg, #e8500d 0%, #c8420a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 40px;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 0;
       align-items: start;
     }
 
-    .form-card {
-      background: #ffffff;
-      border: 2px solid #0d2e4e;
-      border-radius: 22px;
-      padding: 44px 40px 38px;
-      box-shadow:
-        0 1px 2px rgba(13, 46, 78, 0.06),
-        0 30px 70px -20px rgba(13, 46, 78, 0.25),
-        5px 5px 0 0 #0d2e4e;
-      position: relative;
+    /* ── FORM CARD WRAPPER ── */
+    .form-card-wrap {
+      background: #fff;
+      border: 1.5px solid rgba(13,46,78,0.1);
+      border-radius: 18px;
+      padding: 38px 36px;
+      box-shadow: 0 20px 60px -20px rgba(13,46,78,0.14), 0 4px 24px rgba(13,46,78,0.06);
+      margin-right: 40px;
     }
 
-    .form-card::before {
-      content: '';
-      position: absolute;
-      top: -2px; left: -2px; right: -2px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent 0%, #000 30%, var(--teal-900) 50%, #000 70%, transparent 100%);
-      border-radius: 22px 22px 0 0;
-    }
+    /* ── FORM (left) — light inputs ── */
+    .form-stack { display: flex; flex-direction: column; gap: 18px; }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-bottom: 22px;
-    }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group.full { grid-column: span 2; }
+
     .form-group label {
-      font-size: 12px; font-weight: 800; color: #0d2e4e;
-      text-transform: uppercase; letter-spacing: 1.6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--teal-900);
     }
+
     .form-input, .form-select, .form-textarea {
       width: 100%;
-      padding: 14px 16px;
-      border: 2px solid #0d2e4e;
-      border-radius: 10px;
-      font-size: 15px;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(13,46,78,0.18);
+      border-radius: 8px;
+      font-size: 14.5px;
       font-family: inherit;
-      color: #0d2e4e;
+      color: var(--teal-900);
       background: #fff;
       transition: all 0.2s;
     }
-    .form-input::placeholder, .form-textarea::placeholder { color: rgba(13,46,78,0.4); }
+
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(13,46,78,0.35); }
+
     .form-input:focus, .form-select:focus, .form-textarea:focus {
       outline: none;
-      border-color: #000;
-      box-shadow: 0 0 0 4px rgba(13,46,78,0.12);
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px rgba(200,66,10,0.1);
     }
-    .form-textarea { height: 140px; resize: vertical; }
 
-    /* Custom select with arrow */
+    .form-textarea { height: 130px; resize: vertical; }
+
     .form-select {
       appearance: none;
       -webkit-appearance: none;
-      -moz-appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230d2e4e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 16px center;
-      padding-right: 44px;
+      padding-right: 42px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 500;
     }
-    .form-select::-ms-expand { display: none; }
-    .form-select option { color: #0d2e4e; background: #fff; padding: 12px; font-weight: 500; }
+
+    .form-select option { color: #0d2e4e; background: #fff; }
 
     .btn-submit {
-      width: auto;
-      background: #0d2e4e;
+      width: 100%;
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
       color: #fff;
-      border: 1.5px solid #0d2e4e;
-      padding: 13px 28px;
-      border-radius: 10px;
-      font-size: 14px; font-weight: 700;
+      border: none;
+      padding: 15px 28px;
+      border-radius: 50px;
+      font-size: 14.5px;
+      font-weight: 700;
       cursor: pointer;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.4px;
       transition: all 0.3s;
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    }
-    .btn-submit:hover {
-      background: #000;
-      border-color: #000;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 12px 28px rgba(200,66,10,0.32);
+      margin-top: 6px;
     }
 
-    /* ── SIDEBAR — combined info card + discord ── */
-    .contact-info {
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(200,66,10,0.45);
+    }
+
+    /* ── INFO (right side) ── */
+    .contact-info-side {
+      padding-left: 50px;
+      padding-top: 10px;
+      border-left: 1px solid rgba(13,46,78,0.12);
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .info-card-combined {
-      background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 22px;
-      padding: 32px 28px;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.5), 5px 5px 0 0 var(--teal-900);
-    }
-
-    .info-card-combined::before {
-      content: '';
-      position: absolute;
-      top: -1px; left: -1px; right: -1px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent 0%, #d4a040 30%, #fff 50%, #d4a040 70%, transparent 100%);
-      border-radius: 22px 22px 0 0;
-    }
-
-    .info-card-combined::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
-      background-size: 18px 18px;
-      pointer-events: none;
-      mask-image: radial-gradient(ellipse 100% 100% at 100% 0%, #000 30%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 100% 100% at 100% 0%, #000 30%, transparent 75%);
-    }
-
-    .info-card-combined > * { position: relative; z-index: 1; }
-
-    .info-card-combined h4 {
-      font-size: 11px; font-weight: 800; color: #d4a040;
-      text-transform: uppercase; letter-spacing: 2.2px;
-      margin-bottom: 22px;
-    }
-
     .info-row {
-      display: flex; gap: 14px; align-items: flex-start;
-      padding: 16px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 4px 0;
     }
-    .info-row:first-of-type { border-top: none; padding-top: 0; }
-    .info-row:last-of-type { padding-bottom: 0; }
 
-    .info-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.04) 100%);
-      border: 1px solid rgba(255,255,255,0.14);
+    .info-row-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--teal-900) 0%, #1a4a7a 100%);
       display: flex; align-items: center; justify-content: center;
-      color: #fff; flex-shrink: 0;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(13,46,78,0.18);
     }
 
-    .info-text h5 {
-      font-size: 14px; font-weight: 700; color: #fff;
+    .info-row-text { flex: 1; }
+    .info-row-text strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      color: rgba(13,46,78,0.5);
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
       margin-bottom: 4px;
     }
-    .info-text p {
-      font-size: 13px; color: rgba(255,255,255,0.6);
-      margin: 0; line-height: 1.55;
-    }
-    .info-text a {
-      color: rgba(255,255,255,0.85);
+    .info-row-text a, .info-row-text span {
+      color: var(--teal-900);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 14.5px;
+      font-weight: 600;
       transition: color 0.2s;
     }
-    .info-text a:hover { color: #d4a040; }
+    .info-row-text a:hover { color: var(--orange); }
 
-    .discord-cta-small {
-      background: linear-gradient(135deg, #5865F2 0%, #404bd1 100%);
-      border-radius: 18px;
-      padding: 24px 24px 22px;
-      color: #fff;
+    .contact-socials {
       display: flex;
-      flex-direction: column;
-      gap: 14px;
-      box-shadow: 0 20px 50px -16px rgba(88,101,242,0.5);
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(13,46,78,0.1);
+    }
+
+    .contact-socials a {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid rgba(13,46,78,0.14);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal-900);
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 4px 12px rgba(13,46,78,0.06);
+    }
+
+    .contact-socials a:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(200,66,10,0.32);
+    }
+
+    /* ── BOTTOM CTA STRIP ── */
+    .contact-cta {
+      padding: 0 0 90px;
+      background: #fbfcfd;
+    }
+
+    .contact-cta .hero-bg-img,
+    .contact-cta .hero-bg-overlay { display: none; }
+
+    .contact-cta .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .cta-strip-card {
+      background: #fff;
+      border: 1.5px solid rgba(13,46,78,0.12);
+      border-radius: 20px;
+      padding: 48px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      box-shadow: 0 20px 60px -20px rgba(13,46,78,0.12), 0 4px 20px rgba(13,46,78,0.06);
       position: relative;
       overflow: hidden;
     }
-    .discord-cta-small::before {
+
+    .cta-strip-card::before {
       content: '';
       position: absolute;
-      top: -40px; right: -40px;
-      width: 140px; height: 140px;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange) 0%, #e04d10 100%);
+    }
+
+    .cta-strip-card::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 220px; height: 220px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.08);
+      background: radial-gradient(circle, rgba(13,46,78,0.05) 0%, transparent 70%);
+      pointer-events: none;
     }
-    .discord-cta-small > * { position: relative; z-index: 1; }
-    .discord-cta-small h4 { font-size: 17px; font-weight: 800; margin: 0; }
-    .discord-cta-small p { font-size: 13px; opacity: 0.92; margin: 0; line-height: 1.55; }
-    .btn-discord-small {
-      background: #fff; color: #5865F2;
-      padding: 11px 18px; border-radius: 10px;
-      text-decoration: none; font-size: 13px; font-weight: 800;
-      text-align: center; transition: all 0.2s;
-      width: fit-content;
+
+    .cta-strip-text { flex: 1; }
+
+    .cta-strip-text h2 {
+      font-size: clamp(22px, 2.6vw, 30px);
+      font-weight: 800;
+      color: var(--teal-900);
+      line-height: 1.15;
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
     }
-    .btn-discord-small:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.18); }
+
+    .cta-strip-text h2 .orange-italic {
+      color: var(--orange);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .cta-strip-text p {
+      font-size: 14.5px;
+      color: var(--text-dim);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
+      color: #fff;
+      padding: 16px 34px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.4px;
+      transition: all 0.3s;
+      box-shadow: 0 12px 28px rgba(200,66,10,0.35);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(200,66,10,0.5);
+    }
+
+    @media (max-width: 992px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info-side { padding-left: 0; border-left: none; border-top: 1px solid rgba(13,46,78,0.12); padding-top: 36px; }
+      .form-card-wrap { margin-right: 0; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 15px 24px; }
+      .nav-links, .nav-cta, .nav-logo img { display: none; }
+      .contact-hero { padding: 130px 0 70px; }
+      .contact-form-section { padding: 60px 0 80px; }
+      .contact-cta { padding: 0 0 60px; }
+      .cta-strip-card { flex-direction: column; align-items: flex-start; padding: 36px 28px; gap: 24px; }
+      .cta-btn { width: 100%; justify-content: center; }
+    }
 
     /* ── FOOTER (Copied from index) ── */
     footer {
@@ -890,118 +674,120 @@
     </div>
   </nav>
 
-  <!-- ── HERO BAND ── -->
-  <section class="contact-hero-band">
+  <!-- ── HERO ── -->
+  <section class="contact-hero">
     <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
     <div class="hero-bg-overlay"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="dot-grid" style="top:30px;right:340px;width:140px;height:100px;"></div>
-    <div class="dot-grid" style="bottom:60px;left:30px;width:90px;height:70px;opacity:0.5;"></div>
     <div class="container">
-      <div class="band-grid">
-        <div class="contact-hero-content">
-          <h1>How can we help your <em>trading</em> journey<span class="accent-dot">.</span></h1>
-          <p>Whether you have a question about our memberships, need technical support, or just want to say hello, we're here to help.</p>
+      <h1>Let&rsquo;s talk <span class="gold">trading.</span></h1>
+      <p>Have a question about our memberships, need technical support, or just want to say hello? We&rsquo;re here to help you on every step of your trading journey.</p>
+    </div>
+  </section>
+
+  <!-- ── FORM SECTION (form left, info right) ── -->
+  <section class="contact-form-section" id="form">
+    <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
+    <div class="hero-bg-overlay"></div>
+    <div class="container">
+      <h2 class="form-section-title">Let&rsquo;s grow your <span class="gold">trading.</span></h2>
+
+      <div class="contact-grid">
+        <!-- LEFT: Form (inside card) -->
+        <div class="form-card-wrap">
+        <form class="form-stack" action="#">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-input" placeholder="Your email" required>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select class="form-select">
+              <option>Technical Support</option>
+              <option>Membership Question</option>
+              <option>Partnership Inquiry</option>
+              <option>General Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Message</label>
+            <textarea class="form-textarea" placeholder="Write your thoughts..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            Submit
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+        </div><!-- /form-card-wrap -->
+
+        <!-- RIGHT: Contact Info -->
+        <div class="contact-info-side">
+          <div class="info-row">
+            <div class="info-row-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="info-row-text">
+              <strong>Location</strong>
+              <span>Online &mdash; Trading Worldwide</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-row-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="info-row-text">
+              <strong>Response Time</strong>
+              <span>Mon &ndash; Fri &middot; &lt; 24 hours</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-row-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            </div>
+            <div class="info-row-text">
+              <strong>Email</strong>
+              <a href="mailto:support@navigationtrading.com">support@navigationtrading.com</a>
+            </div>
+          </div>
+
+          <div class="contact-socials">
+            <a href="https://www.facebook.com/navigationtrading" target="_blank" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/navtrading1" target="_blank" aria-label="Twitter / X">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/navigationtrading" target="_blank" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://whop.com/navigationtrading/" target="_blank" aria-label="Discord">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 5.672a16.014 16.014 0 0 0-3.954-1.225 12.196 12.196 0 0 0-.504 1.034 14.929 14.929 0 0 0-4.49 0 12.196 12.196 0 0 0-.504-1.034 16.014 16.014 0 0 0-3.954 1.225C3.025 9.4 2.296 13.034 2.66 16.612a16.137 16.137 0 0 0 4.943 2.5 11.91 11.91 0 0 0 1.06-1.717 10.346 10.346 0 0 1-1.67-.797c.14-.103.277-.21.41-.319a11.488 11.488 0 0 0 9.88 0c.133.11.27.216.41.32a10.336 10.336 0 0 1-1.67.796c.302.61.658 1.187 1.06 1.717a16.137 16.137 0 0 0 4.943-2.5c.418-4.131-.706-7.731-2.706-10.94zM9.667 14.36c-.97 0-1.768-.892-1.768-1.987 0-1.094.78-1.987 1.768-1.987.99 0 1.787.892 1.768 1.987 0 1.094-.78 1.987-1.768 1.987zm6.547 0c-.97 0-1.768-.892-1.768-1.987 0-1.094.78-1.987 1.768-1.987.99 0 1.787.892 1.768 1.987 0 1.094-.778 1.987-1.768 1.987z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── FLOATING ACTION CARDS (overlap band) ── -->
-  <div class="action-cards-floating">
+  <!-- ── BOTTOM CTA STRIP ── -->
+  <section class="contact-cta">
+    <img class="hero-bg-img" src="" alt="">
+    <div class="hero-bg-overlay"></div>
     <div class="container">
-      <div class="action-grid">
-        <a href="https://whop.com/navigationtrading/" target="_blank" class="action-card">
-          <div class="action-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Join the Community <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></h3>
-          <p>Get instant help from 3,400+ traders and our expert moderators in Discord.</p>
-        </a>
-        <a href="#form" class="action-card">
-          <div class="action-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <h3>Support Ticket <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></h3>
-          <p>Submit a formal request and our team will get back to you within 24 hours.</p>
-        </a>
-        <a href="/free-membership#faq" class="action-card">
-          <div class="action-icon">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <h3>Help Center <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></h3>
-          <p>Browse our most frequently asked questions for instant answers.</p>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── CONTACT FORM SECTION ── -->
-  <section class="contact-section" id="form">
-    <div class="container">
-      <div class="contact-layout">
-        <div class="form-card">
-          <form action="#">
-            <div class="form-grid">
-              <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" class="form-input" placeholder="John Doe" required>
-              </div>
-              <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" class="form-input" placeholder="john@example.com" required>
-              </div>
-              <div class="form-group full">
-                <label>Inquiry Type</label>
-                <select class="form-select">
-                  <option>Technical Support</option>
-                  <option>Membership Question</option>
-                  <option>Partnership Inquiry</option>
-                  <option>General Question</option>
-                </select>
-              </div>
-              <div class="form-group full">
-                <label>Message</label>
-                <textarea class="form-textarea" placeholder="How can we help?"></textarea>
-              </div>
-            </div>
-            <button type="submit" class="btn-submit">
-              Send Message
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            </button>
-          </form>
+      <div class="cta-strip-card">
+        <div class="cta-strip-text">
+          <h2>You bring the <span class="orange-italic">discipline.</span> We&rsquo;ll bring the strategies.</h2>
+          <p>Skip the chat &mdash; jump straight in. Get instant access to our 5 core strategy courses and join 3,400+ active traders.</p>
         </div>
-
-        <div class="contact-info">
-          <div class="info-card-combined">
-            <h4>Contact Info</h4>
-            <div class="info-row">
-              <div class="info-icon">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-              </div>
-              <div class="info-text">
-                <h5>Email Us</h5>
-                <a href="mailto:support@navigationtrading.com">support@navigationtrading.com</a>
-              </div>
-            </div>
-            <div class="info-row">
-              <div class="info-icon">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              </div>
-              <div class="info-text">
-                <h5>Response Time</h5>
-                <p>Mon &ndash; Fri, 9am &ndash; 5pm EST<br>Average response: &lt; 24 hours</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="discord-cta-small">
-              <h4>Need faster help?</h4>
-              <p>Our Discord community is the fastest way to get your trading questions answered by experts.</p>
-              <a href="https://whop.com/navigationtrading/" class="btn-discord-small">Join Discord Community</a>
-          </div>
-        </div>
+        <a href="https://whop.com/navigationtrading/ntfree/" class="cta-btn">
+          Get Started Now
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
     </div>
   </section>

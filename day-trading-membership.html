@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] || (w[l] = []), w[l].push({
+        'gtm.start': (new Date).getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = "dataLayer" != l ? "&l=" + l : "";
+      j.async = !0, j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl, f.parentNode.insertBefore(j, f)
+    })(window, document, "script", "dataLayer", "GTM-PM36KHB");</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day Trading Membership — Live Trading Room | Navigation Trading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-main: #ffffff;
+      --teal-900: #0D2E4E;
+      --teal-800: #1a4a7a;
+      --teal-light: #f0f6fb;
+      --emerald-500: #10b981;
+      --orange: #c8420a;
+      --orange-bright: #e04d10;
+      --gold: #d4a040;
+      --text-main: #111;
+      --text-dim: #64748b;
+      --border-light: rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+      font-size: 16px;
+      padding-bottom: 76px; /* leave room for sticky CTA */
+    }
+
+    /* ── NAVBAR (verbatim from index) ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 24px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      background: rgba(13,46,78,0.98); backdrop-filter: blur(20px);
+    }
+    .navbar.scrolled { padding: 14px 60px; box-shadow: 0 4px 30px rgba(0,0,0,0.15); }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 40px; width: auto; transform: scale(5); transform-origin: left center; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange) !important; }
+    .nav-item-dropdown { position: relative; }
+    .nav-item-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+    .nav-chevron { font-size: 9px; transition: transform 0.25s; line-height: 1; opacity: 0.7; }
+    .nav-item-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 8px); left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: rgba(7,24,44,0.97); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 2px solid var(--orange);
+      border-radius: 12px; min-width: 215px; padding: 6px;
+      opacity: 0; visibility: hidden; transition: all 0.22s ease;
+      z-index: 200; box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+      pointer-events: none;
+    }
+    .dropdown-menu::before { content:''; position:absolute; top:-20px; left:0; right:0; height:20px; }
+    .nav-item-dropdown:hover .dropdown-menu {
+      opacity: 1; visibility: visible;
+      transform: translateX(-50%) translateY(0); pointer-events: all;
+    }
+    .dropdown-menu a {
+      display: block; padding: 10px 14px;
+      color: rgba(255,255,255,0.8) !important;
+      font-size: 13.5px; font-weight: 500;
+      border-radius: 8px; transition: background 0.18s, color 0.18s;
+      white-space: nowrap; text-decoration: none;
+    }
+    .dropdown-menu a:hover { background: rgba(200,66,10,0.18) !important; color: #e86428 !important; }
+    .nav-cta {
+      background: var(--orange); color: #fff;
+      padding: 10px 24px; font-size: 13px; font-weight: 700;
+      border: none; border-radius: 8px;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .nav-cta:hover { background: var(--orange-bright); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(200,66,10,0.3); }
+
+    /* ── COMMON SECTION ── */
+    .section { padding: 100px 60px; position: relative; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .container-narrow { max-width: 920px; margin: 0 auto; }
+    .section-header { text-align: center; max-width: 760px; margin: 0 auto 60px; }
+    .section-eyebrow {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(32px, 4.2vw, 48px); color: var(--teal-900);
+      letter-spacing: -1px; line-height: 1.15; font-weight: 700;
+    }
+    .section-title em { color: var(--orange); font-style: normal; }
+    .section-sub { font-size: 17px; color: var(--text-dim); margin-top: 18px; line-height: 1.65; }
+
+    /* ── HERO ── */
+    .dt-hero {
+      padding: 0; background: #0D2E4E;
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .dt-hero .hero-bg-img {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      opacity: 0.45;
+    }
+    .hero-bg-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%);
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute; width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(30,100,200,0.22) 0%, transparent 65%);
+      top: -200px; right: -100px; pointer-events: none; z-index: 2;
+      animation: pulseglow 6s ease-in-out infinite;
+    }
+    .hero-glow-2 {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(16,90,180,0.35) 0%, transparent 65%);
+      bottom: -100px; left: -50px; pointer-events: none; z-index: 2;
+    }
+    @keyframes pulseglow { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+    .dot-grid {
+      position: absolute; z-index: 3; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    .dt-hero-content {
+      position: relative; z-index: 5;
+      max-width: 920px; margin: 0 auto;
+      padding: 160px 24px 90px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 18px; background: rgba(220,38,38,0.18);
+      border: 1px solid rgba(220,38,38,0.4); border-radius: 50px;
+      color: #ff6b6b; font-size: 11px; font-weight: 800;
+      letter-spacing: 2.2px; text-transform: uppercase; margin-bottom: 26px;
+    }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #ff3838; box-shadow: 0 0 10px #ff3838; animation: livepulse 1.8s ease-in-out infinite; }
+    @keyframes livepulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .dt-hero h1 {
+      font-size: clamp(42px, 6.5vw, 76px); color: #fff;
+      line-height: 1.05; margin-bottom: 24px;
+      letter-spacing: -2px; font-weight: 800;
+    }
+    .dt-hero h1 em { font-style: normal; color: var(--gold); }
+    .dt-hero p {
+      font-size: 19px; color: rgba(255,255,255,0.82);
+      max-width: 740px; margin: 0 auto 38px; line-height: 1.6;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 17px 38px; background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
+      color: #fff; text-decoration: none;
+      font-size: 14.5px; font-weight: 800; letter-spacing: 0.6px;
+      border-radius: 12px; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 12px 30px rgba(200,66,10,0.30);
+    }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 16px 38px rgba(200,66,10,0.40); }
+    .trust-bar {
+      margin-top: 36px; display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 28px; font-size: 13px;
+      color: rgba(255,255,255,0.65); font-weight: 500;
+    }
+    .trust-bar > * { display: inline-flex; align-items: center; gap: 8px; }
+    .trust-bar strong { color: #fff; font-weight: 700; }
+    .stars-row { color: var(--gold); letter-spacing: 1px; }
+
+    /* ── PROBLEM SECTION ── */
+    .problem-section { background: #fff; padding: 110px 60px; }
+    .problem-section .section-header { margin-bottom: 40px; }
+    .problem-body {
+      max-width: 780px; margin: 0 auto; text-align: center;
+    }
+    .problem-body p {
+      font-size: 17.5px; color: #334155; line-height: 1.75;
+      margin-bottom: 22px;
+    }
+    .problem-pull {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; line-height: 1.4; color: var(--teal-900);
+      font-weight: 700; padding: 28px 0; margin: 30px 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-section { background: var(--teal-light); padding: 110px 60px; position: relative; }
+    .timeline {
+      max-width: 980px; margin: 0 auto; position: relative;
+      padding: 30px 0;
+    }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 130px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(180deg, var(--orange) 0%, var(--teal-900) 100%);
+    }
+    .timeline-item {
+      display: grid; grid-template-columns: 130px 1fr; gap: 40px;
+      padding: 24px 0; position: relative;
+      align-items: flex-start;
+    }
+    .timeline-time {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px; font-weight: 700; color: var(--orange);
+      text-align: right; padding-top: 6px; padding-right: 20px;
+      letter-spacing: 0.5px;
+    }
+    .timeline-marker {
+      position: absolute; left: 122px; top: 14px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--orange);
+      border: 4px solid var(--teal-light);
+      box-shadow: 0 0 0 2px var(--orange);
+    }
+    .timeline-card {
+      background: #fff; border-radius: 14px;
+      padding: 24px 28px; border: 1px solid var(--border-light);
+      box-shadow: 0 6px 18px rgba(13,46,78,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .timeline-card:hover { transform: translateX(4px); box-shadow: 0 12px 28px rgba(13,46,78,0.10); }
+    .timeline-card h3 {
+      font-size: 18px; font-weight: 700; color: var(--teal-900);
+      margin-bottom: 8px;
+    }
+    .timeline-card p { font-size: 14.5px; color: var(--text-dim); line-height: 1.6; }
+    .timeline-cta-wrap { text-align: center; margin-top: 50px; }
+
+    /* ── LIVE EXPERIENCE BLOCKS ── */
+    .live-section { background: #fff; padding: 110px 60px; }
+    .live-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+    }
+    .live-card {
+      padding: 36px 32px; border-radius: 18px;
+      background: linear-gradient(135deg, #fbfcfd 0%, #f3f7fb 100%);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      position: relative; overflow: hidden;
+    }
+    .live-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 0;
+      background: var(--orange); transition: height 0.4s;
+    }
+    .live-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(13,46,78,0.10); border-color: rgba(200,66,10,0.18); }
+    .live-card:hover::before { height: 100%; }
+    .live-icon {
+      width: 50px; height: 50px; border-radius: 12px;
+      background: rgba(200,66,10,0.10);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange); margin-bottom: 18px;
+    }
+    .live-icon svg { width: 26px; height: 26px; }
+    .live-card h3 { font-size: 20px; font-weight: 700; color: var(--teal-900); margin-bottom: 10px; }
+    .live-card p { font-size: 14.5px; color: var(--text-dim); line-height: 1.65; }
+
+    /* ── CURRICULUM ── */
+    .curriculum-section { background: var(--teal-900); padding: 110px 60px; color: #fff; position: relative; overflow: hidden; }
+    .curriculum-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+      opacity: 0.06; pointer-events: none;
+    }
+    .curriculum-section .section-title { color: #fff; }
+    .curriculum-section .section-title em { color: var(--gold); }
+    .curriculum-section .section-eyebrow { color: var(--gold); }
+    .curriculum-section .section-sub { color: rgba(255,255,255,0.7); }
+    .curriculum-group {
+      max-width: 1200px; margin: 0 auto 50px;
+      position: relative; z-index: 2;
+    }
+    .group-title {
+      font-size: 14px; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); margin: 30px 0 22px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .group-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(212,160,64,0.45), transparent);
+    }
+    .courses-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px;
+    }
+    .course-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 28px;
+      transition: all 0.3s; position: relative;
+      backdrop-filter: blur(10px);
+    }
+    .course-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(212,160,64,0.40);
+      transform: translateY(-3px);
+    }
+    .course-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(212,160,64,0.18);
+      color: var(--gold); font-family: 'DM Mono', monospace;
+      font-size: 14px; font-weight: 700; margin-bottom: 16px;
+      border: 1px solid rgba(212,160,64,0.30);
+    }
+    .course-card h3 {
+      font-size: 18px; font-weight: 700; color: #fff;
+      margin-bottom: 10px; line-height: 1.3;
+    }
+    .course-card p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.65; }
+    .curriculum-cta-wrap { text-align: center; margin-top: 50px; position: relative; z-index: 2; }
+
+    /* ── TOOLS SECTION ── */
+    .tools-section { background: #fff; padding: 110px 60px; }
+    .tools-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .tool-card {
+      padding: 38px 30px; border-radius: 18px;
+      background: #fff; border: 1px solid var(--border-light);
+      box-shadow: 0 6px 22px rgba(13,46,78,0.05);
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .tool-card::after {
+      content: ''; position: absolute; top: -40px; right: -40px;
+      width: 140px; height: 140px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,66,10,0.10), transparent);
+    }
+    .tool-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(13,46,78,0.12); border-color: rgba(200,66,10,0.20); }
+    .tool-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--teal-900), var(--teal-800));
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px; position: relative; z-index: 1;
+    }
+    .tool-icon svg { width: 28px; height: 28px; }
+    .tool-card h3 { font-size: 21px; font-weight: 700; color: var(--teal-900); margin-bottom: 12px; position: relative; z-index: 1; }
+    .tool-card p { font-size: 14.5px; color: var(--text-dim); line-height: 1.7; position: relative; z-index: 1; }
+    .tools-cta-wrap { text-align: center; margin-top: 50px; }
+
+    /* ── WHO IS FOR ── */
+    .audience-section { background: #f8fafc; padding: 110px 60px; }
+    .audience-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+    }
+    .audience-col {
+      background: #fff; border-radius: 18px;
+      padding: 44px 38px; border: 1px solid var(--border-light);
+      box-shadow: 0 8px 26px rgba(13,46,78,0.05);
+    }
+    .audience-col.is-for { border-top: 4px solid var(--emerald-500); }
+    .audience-col.not-for { border-top: 4px solid #94a3b8; }
+    .audience-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 26px;
+    }
+    .audience-pill {
+      display: inline-block; padding: 6px 12px; border-radius: 30px;
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .audience-pill.green { background: rgba(16,185,129,0.10); color: var(--emerald-500); }
+    .audience-pill.gray { background: rgba(148,163,184,0.18); color: #475569; }
+    .audience-col h3 { font-size: 22px; color: var(--teal-900); font-weight: 700; line-height: 1.3; }
+    .audience-list { list-style: none; padding: 0; margin: 0; }
+    .audience-list li {
+      padding: 18px 0 18px 36px; position: relative;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .audience-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .audience-list li::before {
+      content: ''; position: absolute; left: 0; top: 22px;
+      width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: #fff;
+    }
+    .audience-list.green-check li::before { content: '✓'; background: var(--emerald-500); }
+    .audience-list.gray-x li::before { content: '✕'; background: #94a3b8; }
+    .audience-list strong { display: block; color: var(--teal-900); font-size: 15.5px; margin-bottom: 6px; }
+    .audience-list span { color: var(--text-dim); font-size: 14px; line-height: 1.6; display: block; }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-section { background: #fff; padding: 110px 60px; }
+    .compare-table-wrap {
+      max-width: 980px; margin: 0 auto;
+      background: #fff; border-radius: 22px; overflow: hidden;
+      box-shadow: 0 16px 50px rgba(13,46,78,0.10);
+      border: 1px solid var(--border-light);
+    }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table thead th {
+      padding: 24px 20px; font-size: 13px; font-weight: 800;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      text-align: center; color: var(--text-dim);
+      background: #f8fafc; border-bottom: 2px solid var(--border-light);
+    }
+    .compare-table thead th.feat { text-align: left; padding-left: 30px; color: var(--teal-900); }
+    .compare-table thead th.highlight {
+      color: var(--orange); position: relative;
+      background: linear-gradient(180deg, rgba(200,66,10,0.08), #fff);
+    }
+    .compare-table thead th.highlight::before {
+      content: 'You\'re Choosing This'; display: block;
+      font-size: 9px; color: #fff; background: var(--orange);
+      padding: 3px 9px; border-radius: 30px; width: fit-content; margin: 0 auto 6px;
+      letter-spacing: 1px;
+    }
+    .compare-table tbody td {
+      padding: 18px 20px; font-size: 14.5px; color: #334155;
+      text-align: center; border-bottom: 1px solid var(--border-light);
+    }
+    .compare-table tbody td.feat { text-align: left; padding-left: 30px; font-weight: 600; color: var(--teal-900); }
+    .compare-table tbody td.highlight { background: rgba(200,66,10,0.04); font-weight: 700; color: var(--orange); }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-check { color: var(--emerald-500); font-weight: 800; font-size: 16px; }
+    .compare-dash { color: #cbd5e1; font-size: 18px; }
+    .compare-callout {
+      max-width: 980px; margin: 36px auto 0;
+      padding: 26px 30px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(200,66,10,0.06), rgba(212,160,64,0.06));
+      border: 1px solid rgba(200,66,10,0.15);
+      font-size: 15.5px; color: #1e293b; line-height: 1.65; text-align: center;
+    }
+    .compare-cta-wrap { text-align: center; margin-top: 40px; }
+
+    /* ── RESULTS RADIAL ── */
+    .results-section {
+      padding: 110px 60px; background: var(--teal-900);
+      color: #fff; position: relative; overflow: hidden;
+    }
+    .results-section::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 900px; height: 900px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,160,64,0.10) 0%, transparent 60%);
+      transform: translate(-50%, -50%); pointer-events: none;
+    }
+    .results-section .section-title { color: #fff; }
+    .results-section .section-title em { color: var(--gold); }
+    .results-section .section-eyebrow { color: var(--gold); }
+    .results-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      position: relative; z-index: 2;
+    }
+    .result-card {
+      padding: 32px 28px; border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    .result-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(212,160,64,0.40);
+      transform: translateY(-4px);
+    }
+    .result-verb {
+      font-size: 32px; font-weight: 800; color: var(--gold);
+      letter-spacing: -1px; margin-bottom: 10px;
+    }
+    .result-card p { font-size: 15px; color: rgba(255,255,255,0.78); line-height: 1.65; }
+
+    /* ── INSTRUCTOR ── */
+    .instructor-section { background: #fff; padding: 110px 60px; }
+    .instructor-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px;
+      align-items: center;
+    }
+    .instructor-photo {
+      aspect-ratio: 1; border-radius: 24px; overflow: hidden;
+      background: linear-gradient(135deg, var(--teal-900), var(--teal-800));
+      box-shadow: 0 20px 60px rgba(13,46,78,0.18);
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .instructor-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .instructor-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      padding: 10px 18px; background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px); border-radius: 50px;
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--teal-900);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .instructor-badge::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: #ff3838; box-shadow: 0 0 8px #ff3838;
+      animation: livepulse 1.8s ease-in-out infinite;
+    }
+    .instructor-content h2 {
+      font-size: clamp(28px, 3.5vw, 40px); color: var(--teal-900);
+      letter-spacing: -1px; line-height: 1.18; font-weight: 700; margin-bottom: 22px;
+    }
+    .instructor-content h2 em { color: var(--orange); font-style: normal; }
+    .instructor-content p {
+      font-size: 16px; color: #334155; line-height: 1.75; margin-bottom: 18px;
+    }
+    .instructor-stats {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 10px; margin-top: 28px;
+      padding-top: 26px; border-top: 1px solid var(--border-light);
+    }
+    .instructor-stat {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13.5px; color: var(--text-dim);
+    }
+    .instructor-stat svg {
+      width: 18px; height: 18px; flex-shrink: 0;
+      color: var(--emerald-500); margin-top: 1px;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .social-section { background: #f8fafc; padding: 110px 60px; }
+    .rating-summary {
+      max-width: 480px; margin: 0 auto 50px; text-align: center;
+      padding: 36px 30px; background: #fff; border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(13,46,78,0.08);
+      border: 1px solid var(--border-light);
+    }
+    .rating-big { font-size: 56px; font-weight: 800; color: var(--teal-900); letter-spacing: -2px; line-height: 1; }
+    .rating-stars { color: var(--gold); font-size: 22px; letter-spacing: 4px; margin: 6px 0 12px; }
+    .rating-label { font-size: 13px; color: var(--text-dim); }
+    .rating-bars { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border-light); }
+    .rating-bar-row {
+      display: grid; grid-template-columns: 50px 1fr 50px;
+      gap: 10px; align-items: center; margin-bottom: 6px;
+      font-size: 12px; color: var(--text-dim);
+    }
+    .rating-bar { height: 6px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+    .rating-bar > div { height: 100%; background: var(--gold); border-radius: 4px; }
+    .reviews-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    }
+    .review-card {
+      padding: 32px 30px; background: #fff; border-radius: 18px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 6px 20px rgba(13,46,78,0.05);
+      transition: all 0.3s;
+    }
+    .review-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,46,78,0.10); }
+    .review-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 14px;
+    }
+    .review-author { font-weight: 700; color: var(--teal-900); font-size: 15.5px; }
+    .review-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; }
+    .review-quote { font-size: 14.5px; color: #334155; line-height: 1.7; font-style: italic; }
+    .review-quote::before { content: '"'; font-family: 'Cormorant Garamond', serif; font-size: 50px; color: var(--gold); line-height: 0; vertical-align: -20px; margin-right: 4px; }
+
+    /* ── FAQ ── */
+    .faq-section { background: #fff; padding: 110px 60px; }
+    .faq-list { max-width: 860px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border-light); padding: 22px 0;
+    }
+    .faq-q {
+      font-size: 17px; font-weight: 700; color: var(--teal-900);
+      cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; gap: 20px; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--orange); }
+    .faq-toggle {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(200,66,10,0.10); color: var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-weight: 800; font-size: 16px;
+      transition: transform 0.3s, background 0.2s;
+    }
+    .faq-item[open] .faq-toggle { transform: rotate(45deg); background: var(--orange); color: #fff; }
+    .faq-a {
+      font-size: 15px; color: #475569; line-height: 1.75;
+      padding-top: 14px; padding-right: 46px;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      padding: 130px 60px;
+      background: linear-gradient(135deg, var(--teal-900) 0%, var(--teal-800) 100%);
+      color: #fff; text-align: center; position: relative; overflow: hidden;
+    }
+    .final-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+      opacity: 0.10; pointer-events: none;
+    }
+    .final-cta-eyebrow {
+      display: inline-block; font-size: 11px; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 18px; position: relative; z-index: 2;
+    }
+    .final-cta h2 {
+      font-size: clamp(36px, 5vw, 60px); color: #fff;
+      letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 22px;
+      font-weight: 800; position: relative; z-index: 2;
+    }
+    .final-cta p {
+      font-size: 18px; color: rgba(255,255,255,0.78);
+      max-width: 700px; margin: 0 auto 36px; line-height: 1.65;
+      position: relative; z-index: 2;
+    }
+    .final-cta .reassure {
+      margin-top: 22px; font-size: 13px; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.4px; position: relative; z-index: 2;
+    }
+
+    /* ── STICKY CTA BAR ── */
+    .sticky-cta {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(13,46,78,0.97); backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 -8px 30px rgba(0,0,0,0.20);
+      padding: 14px 60px; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px;
+    }
+    .sticky-cta-text { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 600; }
+    .sticky-cta-text strong { color: #fff; font-weight: 800; }
+    .sticky-cta-right { display: flex; align-items: center; gap: 18px; }
+    .sticky-price {
+      color: var(--gold); font-weight: 800; font-size: 18px;
+      font-family: 'DM Sans', sans-serif; letter-spacing: -0.5px;
+    }
+    .sticky-price small { font-weight: 500; font-size: 12px; color: rgba(255,255,255,0.6); }
+    .sticky-cta-btn {
+      padding: 11px 24px; background: var(--orange); color: #fff;
+      font-size: 13px; font-weight: 800; letter-spacing: 0.6px;
+      text-decoration: none; border-radius: 8px;
+      transition: all 0.25s;
+    }
+    .sticky-cta-btn:hover { background: var(--orange-bright); transform: translateY(-1px); }
+
+    /* ── FOOTER (verbatim from index) ── */
+    footer {
+      background: var(--teal-900);
+      padding: 80px 60px 40px;
+      color: #fff;
+      position: relative;
+    }
+    footer::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.05; pointer-events: none;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.07);
+      gap: 40px; flex-wrap: wrap; position: relative; z-index: 2;
+    }
+    .footer-brand img { height: 40px; width: auto; transform: scale(5); transform-origin: left center; }
+    .footer-tagline { color: rgba(255,255,255,0.35); font-size: 13px; margin-top: 100px; }
+    .footer-link { color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+    .footer-link:hover { color: var(--emerald-500); }
+    .social-icon {
+      width: 32px; height: 32px; border-radius: 6px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s; color: rgba(255,255,255,0.6);
+    }
+    .social-icon:hover { background: var(--emerald-500); color: #000; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 40px; flex-wrap: wrap; gap: 20px; position: relative; z-index: 2;
+    }
+    .footer-copy { color: rgba(255,255,255,0.3); font-size: 11.5px; line-height: 1.75; max-width: 800px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .live-grid, .courses-grid, .results-grid, .reviews-grid, .audience-grid, .instructor-grid, .tools-grid {
+        grid-template-columns: 1fr;
+      }
+      .instructor-grid { gap: 32px; }
+      .timeline::before { left: 18px; }
+      .timeline-item { grid-template-columns: 70px 1fr; gap: 16px; }
+      .timeline-time { text-align: left; padding-right: 0; padding-left: 36px; }
+      .timeline-marker { left: 10px; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .section, .problem-section, .timeline-section, .live-section, .curriculum-section,
+      .tools-section, .audience-section, .compare-section, .results-section,
+      .instructor-section, .social-section, .faq-section, .final-cta {
+        padding-left: 24px; padding-right: 24px;
+      }
+      .sticky-cta { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+      .sticky-cta-text { font-size: 12px; flex: 1 1 100%; }
+      footer { padding: 60px 24px 32px; }
+      .dt-hero-content { padding: 140px 20px 70px; }
+      .compare-table thead th, .compare-table tbody td { padding: 14px 8px; font-size: 12.5px; }
+      .compare-table thead th.feat, .compare-table tbody td.feat { padding-left: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <a href="/home" class="nav-logo">
+      <img src="logo.png" alt="NavigationTrading">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/performance">Performance</a></li>
+      <li><a href="/pricing">Pricing</a></li>
+      <li class="nav-item-dropdown">
+        <a href="#">Services <span class="nav-chevron">▾</span></a>
+        <div class="dropdown-menu">
+          <a href="/free-membership">Free Membership</a>
+          <a href="/day-trading">Day Trade Membership</a>
+          <a href="/pricing">Pro Membership</a>
+        </div>
+      </li>
+      <li><a href="/podcast">Podcast</a></li>
+      <li><a href="https://navigationtrading.com/blog/">Blog</a></li>
+      <li><a href="mailto:support@navigationtrading.com">Contact Us</a></li>
+    </ul>
+    <div style="display:flex; gap:16px; align-items:center;">
+        <a href="https://whop.com/orders/products/" style="color:#fff; text-decoration:none; font-size:14px; font-weight:600;">Login</a>
+        <a href="https://whop.com/navigationtrading/" class="nav-cta">Join Now</a>
+    </div>
+  </nav>
+
+  <!-- ────────────────────────────── 1. HERO ────────────────────────────── -->
+  <section class="dt-hero">
+    <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="dot-grid" style="top:60px;right:380px;width:160px;height:120px;z-index:3"></div>
+    <div class="dot-grid" style="bottom:80px;left:40px;width:100px;height:80px;opacity:0.5;z-index:3"></div>
+
+    <div class="dt-hero-content">
+      <span class="hero-eyebrow"><span class="live-dot"></span>Live Trading. Every Market Day.</span>
+      <h1>Stop Watching Replays.<br>Start Trading <em>Live.</em></h1>
+      <p>Join a daily live trading room where real trades are called out in real time — not after the fact. Get 10 proven day trading strategy courses, professional chart indicators, and 0 DTE strategies for $129/month. This is where learning turns into doing.</p>
+      <a href="https://whop.com/navigationtrading/" class="btn-primary">Join the Live Trading Room — $129/month →</a>
+      <div class="trust-bar">
+        <span><strong>64</strong> Active Members</span>
+        <span class="stars-row">★★★★★ <strong>4.8</strong> Rating</span>
+        <span><strong>25</strong> Reviews</span>
+        <span>By <strong>NavigationTrading</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 2. PROBLEM ────────────────────────────── -->
+  <section class="problem-section">
+    <div class="section-header">
+      <span class="section-eyebrow">The Gap Between Learning and Trading</span>
+      <h2 class="section-title">You've Studied the Strategies. But You're Still <em>Hesitating to Trade.</em></h2>
+    </div>
+    <div class="problem-body">
+      <p>You've watched the videos. You understand calls, puts, and spreads on paper. Maybe you've even taken a few trades. But when the market opens and it's time to execute — something holds you back.</p>
+      <div class="problem-pull">That's not a knowledge problem. It's a confidence problem.</div>
+      <p>And confidence doesn't come from more courses. It comes from watching an experienced trader execute in real time, hearing why they're taking a trade, seeing how they manage risk as it unfolds, and being able to ask questions while it's happening.</p>
+      <p>That's what the NavigationTrading Day Trading Membership is built for. Not more theory. Real trading, live, every market day.</p>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 3. DAILY SCHEDULE ────────────────────────────── -->
+  <section class="timeline-section">
+    <div class="section-header">
+      <span class="section-eyebrow">A Day in the Life of a Day Trading Member</span>
+      <h2 class="section-title">Your Full Trading Morning — <em>Guided from Start to Finish</em></h2>
+      <p class="section-sub">Day Trading membership isn't something you log into once. It's a daily routine that runs alongside your trading.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">8:30 AM</div>
+        <div class="timeline-marker"></div>
+        <div class="timeline-card">
+          <h3>Pre-Market Prep</h3>
+          <p>Review your chart indicators and the day's market setup. Check pre-market levels, overnight action, and key support and resistance zones. You know what to look for before the bell even rings.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:15 AM</div>
+        <div class="timeline-marker"></div>
+        <div class="timeline-card">
+          <h3>Live Stream Begins</h3>
+          <p>Join the morning trading room. Steve and the team break down the market open game plan — what they're watching, which setups are forming, and where the opportunities are. You're not guessing. You're prepared.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:30 AM</div>
+        <div class="timeline-marker"></div>
+        <div class="timeline-card">
+          <h3>Market Open: Live Trade Calls</h3>
+          <p>The bell rings. Trades are called out as they happen. You see the entry, the stop, the target, the reasoning — all live. Not a screenshot posted an hour later. Not a recap video at the end of the day. Real trades, real time, real decisions happening in front of you.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10 AM – 12 PM</div>
+        <div class="timeline-marker"></div>
+        <div class="timeline-card">
+          <h3>Morning Session Continues</h3>
+          <p>The live stream runs through the morning. 0 DTE setups are identified and called. Day trades are managed — adjustments, exits, and new entries as the market moves. You're watching a professional trader navigate the morning in real time.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">3:00 PM</div>
+        <div class="timeline-marker"></div>
+        <div class="timeline-card">
+          <h3>Power Hour Live Stream</h3>
+          <p>The second session of the day. Late-day setups, end-of-day momentum plays, and MOC (Market on Close) strategies. Some of the cleanest day trading setups happen in the final hour — and you're there for them.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">4:00 PM</div>
+        <div class="timeline-marker"></div>
+        <div class="timeline-card">
+          <h3>After Hours: Recaps &amp; Discussion</h3>
+          <p>The day wraps up with trade recaps and community discussion in the chat rooms. What worked, what didn't, what's setting up for tomorrow. This is where the daily learning compounds over weeks and months.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-cta-wrap">
+      <a href="https://whop.com/navigationtrading/" class="btn-primary">Experience a Full Trading Day — Join Now →</a>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 4. LIVE EXPERIENCE ────────────────────────────── -->
+  <section class="live-section">
+    <div class="section-header">
+      <span class="section-eyebrow">More Than a Course. A Live Trading Room.</span>
+      <h2 class="section-title">Watch. Learn. Trade. <em>Every Single Day.</em></h2>
+      <p class="section-sub">The Day Trading membership is built around one idea: the fastest way to become a confident trader is to trade alongside one.</p>
+    </div>
+
+    <div class="live-grid">
+      <div class="live-card">
+        <div class="live-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h3>Twice-Daily Live Streams</h3>
+        <p>Two sessions every market day — morning open and Power Hour. These aren't pre-recorded webinars. They're live trading rooms where real decisions are made with real money. You see the thinking behind every trade as it happens.</p>
+      </div>
+      <div class="live-card">
+        <div class="live-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Live Trade Calls in Real Time</h3>
+        <p>When a setup appears, it's called out live. Entry, stop loss, profit target, and the reasoning behind it. You see trades being taken as they happen — not cherry-picked winners posted after the fact. The wins and the losses. That transparency is how you actually learn.</p>
+      </div>
+      <div class="live-card">
+        <div class="live-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <h3>Trade Alerts</h3>
+        <p>Can't be glued to the stream every minute? Day trading trade alerts notify you when setups appear throughout the session. Each alert includes the strategy, entry, and management plan so you can evaluate and act on your own terms.</p>
+      </div>
+      <div class="live-card">
+        <div class="live-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Live Chat Rooms</h3>
+        <p>Ask questions during the stream. Share what you're seeing on your charts. Discuss setups with other members. The chat room turns a broadcast into a conversation — and that interaction is where the deepest learning happens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 5. CURRICULUM ────────────────────────────── -->
+  <section class="curriculum-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Your Day Trading Education</span>
+      <h2 class="section-title">10 Complete Strategy Courses. <em>Learn at Your Pace.</em></h2>
+      <p class="section-sub">The live streams show you how it's done. The courses teach you why. Each one is a full, structured course with video lessons, trade examples, and clear rules you can follow.</p>
+    </div>
+
+    <div class="curriculum-group">
+      <div class="group-title">Core Day Trading Strategies</div>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-num">01</div>
+          <h3>Mighty Ninety and Runner Strategies</h3>
+          <p>The foundation of NavigationTrading's day trading approach. Learn to identify high-probability setups in the first 90 minutes of the trading day — the most active, opportunity-rich window — and how to catch runners that extend well beyond the open.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-num">02</div>
+          <h3>NTT Day Trading</h3>
+          <p>NavigationTrading's proprietary day trading system. A step-by-step method for reading intraday price action, identifying entries with defined risk, and following clear exit rules. This isn't discretionary trading — it's systematic.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-num">03</div>
+          <h3>MOC Course (Market on Close)</h3>
+          <p>Not everyone can trade the morning session. The MOC strategy is built specifically for the final hour of trading, using end-of-day momentum and institutional closing flows. Perfect for traders with a day job who are available in the afternoon.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-num">04</div>
+          <h3>Price Action Futures Trading</h3>
+          <p>Expand beyond options into futures with a pure price action approach. Learn to read the tape, identify key levels, and execute clean entries on futures contracts without relying on lagging indicators.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-num">05</div>
+          <h3>Power Hour Strategy Course</h3>
+          <p>The last hour of the trading day is where institutional money moves. This course teaches you to read that flow, identify high-probability setups, and position yourself for end-of-day moves that most retail traders miss entirely.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="curriculum-group">
+      <div class="group-title">0 DTE Strategies (Same-Day Expiration)</div>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-num">06</div>
+          <h3>0 DTE Iron Condors — Early Day Entry</h3>
+          <p>Sell premium on options that expire today. This course covers the specific timing, strike selection, and risk management rules that make 0 DTE iron condors a consistent strategy rather than a coin flip. Early day entries give you the best probability setup.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-num">07</div>
+          <h3>0 DTE Entries Using NTT Indicator</h3>
+          <p>Combine same-day expiration trades with NavigationTrading's proprietary NTT indicator for precision entry timing. The indicator gives you objective signals — taking the guesswork and emotion out of when to enter your 0 DTE positions.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-num">08</div>
+          <h3>Reverse Iron Condors</h3>
+          <p>When the market moves big, reverse iron condors profit. This course teaches you to recognize high-volatility conditions and deploy the opposite of a traditional iron condor — a strategy that benefits from large moves rather than range-bound markets.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="curriculum-group">
+      <div class="group-title">Additional Courses</div>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-num">09</div>
+          <h3>ELMO Mini Course</h3>
+          <p>A focused mini course on ELMO — a quick-deploy strategy for specific intraday setups. Short, actionable, and designed to add another tool to your daily trading toolkit.</p>
+        </div>
+        <div class="course-card">
+          <div class="course-num">10</div>
+          <h3>Power Hour Strategy Deep Dive</h3>
+          <p>Deep dive into late-day trading setups and how to capitalize on the increased volume and volatility that shows up consistently in the final 60 minutes of the trading session.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="curriculum-cta-wrap">
+      <a href="https://whop.com/navigationtrading/" class="btn-primary">Get Access to All 10 Courses — Join Day Trading →</a>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 6. TOOLS ────────────────────────────── -->
+  <section class="tools-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Professional Tools Included</span>
+      <h2 class="section-title">Day Trading Chart Indicators — <em>Built for These Strategies</em></h2>
+      <p class="section-sub">You're not just getting courses and live streams. You're getting the tools to execute on your own.</p>
+    </div>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Day Trading Chart Indicators</h3>
+        <p>Custom indicators built by the NavigationTrading team — designed specifically for the strategies you're learning. NTT signals, entry triggers, momentum filters — install them on your charting platform and see the same setups the team sees on their screens every day. These aren't generic moving averages from a free indicator pack. They're proprietary tools refined through years of live day trading.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>0 DTE Strategy Toolkit</h3>
+        <p>Specific tools and templates for executing 0 DTE strategies. Strike selection frameworks, entry timing rules, and risk management parameters — all built into the indicator suite so you're not calculating on the fly when speed matters.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Trade Alert System</h3>
+        <p>Real-time alerts delivered when day trading setups appear. Each alert tells you the strategy being used, the entry, the stop, and the management rules. You evaluate and decide — the alert gives you everything you need to make an informed decision quickly.</p>
+      </div>
+    </div>
+
+    <div class="tools-cta-wrap">
+      <a href="https://whop.com/navigationtrading/" class="btn-primary">Get the Tools + Education — $129/month →</a>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 7. WHO IS FOR / NOT FOR ────────────────────────────── -->
+  <section class="audience-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Is Day Trading Membership Right for You?</span>
+      <h2 class="section-title">This Isn't for Everyone. <em>Here's How to Know.</em></h2>
+    </div>
+
+    <div class="audience-grid">
+      <div class="audience-col is-for">
+        <div class="audience-header">
+          <span class="audience-pill green">It's for you if</span>
+        </div>
+        <h3>Day Trading Membership Is for You If:</h3>
+        <ul class="audience-list green-check">
+          <li>
+            <strong>You want to learn day trading through live, real-time experience — not just videos.</strong>
+            <span>You understand that watching pre-recorded content only gets you so far. You want to see a professional trader make decisions as the market moves and learn from the process, not just the outcome.</span>
+          </li>
+          <li>
+            <strong>You have at least 1–2 hours during market hours (9:30 AM – 4:00 PM ET).</strong>
+            <span>The live streams are where the core value lives. You don't need to watch every minute, but you need some time during market hours to participate. The morning session and Power Hour are the two key windows.</span>
+          </li>
+          <li>
+            <strong>You already understand the basics of options trading.</strong>
+            <span>You know what calls, puts, and basic strategies are. You don't need to be an expert — but you're past the "what is an option?" stage. If you're not there yet, start with our Free Membership and come back when you're ready.</span>
+          </li>
+          <li>
+            <strong>You're ready to commit to a daily practice.</strong>
+            <span>Day trading isn't something you study once and master. It's a skill you build through daily repetition. This membership is designed for people who are willing to show up consistently.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="audience-col not-for">
+        <div class="audience-header">
+          <span class="audience-pill gray">It's NOT for you if</span>
+        </div>
+        <h3>Day Trading Membership Is NOT for You If:</h3>
+        <ul class="audience-list gray-x">
+          <li>
+            <strong>You're a complete beginner who hasn't learned the fundamentals.</strong>
+            <span>Start with the Free Membership. The 5 beginner courses will give you the foundation you need. Jumping into a live trading room without understanding the basics will overwhelm you, not help you.</span>
+          </li>
+          <li>
+            <strong>You want someone else to make all your trading decisions.</strong>
+            <span>We share live trades and alerts, but you are responsible for your own trading decisions. This is education and guided experience — not a copy-trade service.</span>
+          </li>
+          <li>
+            <strong>You want income strategies, trend trading, and portfolio-level approaches.</strong>
+            <span>The Day Trading membership focuses specifically on day trading and 0 DTE strategies. If you want the complete library — including income spreads, trend trading, butterflies, calendars, and more — the <a href="/pricing" style="color:var(--orange);font-weight:700;">Pro Membership ($179/month)</a> includes everything.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 8. COMPARISON ────────────────────────────── -->
+  <section class="compare-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Compare Your Options</span>
+      <h2 class="section-title">What Does $129/Month Get You <em>Beyond Free?</em></h2>
+      <p class="section-sub">The Free Membership teaches you what options are. The Day Trading Membership shows you how to trade them — live, every day.</p>
+    </div>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="feat">Feature</th>
+            <th>Free<br><small style="color:var(--text-dim);font-weight:500;">$0</small></th>
+            <th class="highlight">Day Trading<br><small style="color:var(--orange);font-weight:700;">$129/mo</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="feat">Beginner Strategy Courses</td><td><span class="compare-check">✓</span> 5 Courses</td><td class="highlight"><span class="compare-check">✓</span> Included</td></tr>
+          <tr><td class="feat">Day Trading Strategy Courses</td><td><span class="compare-dash">—</span></td><td class="highlight"><span class="compare-check">✓</span> 10 Courses</td></tr>
+          <tr><td class="feat">Daily Live Trading Streams</td><td><span class="compare-dash">—</span></td><td class="highlight"><span class="compare-check">✓</span> Twice Daily</td></tr>
+          <tr><td class="feat">Live Trade Calls in Real Time</td><td><span class="compare-dash">—</span></td><td class="highlight"><span class="compare-check">✓</span></td></tr>
+          <tr><td class="feat">Trade Alerts (Day Trading)</td><td><span class="compare-dash">—</span></td><td class="highlight"><span class="compare-check">✓</span></td></tr>
+          <tr><td class="feat">Day Trading Chart Indicators</td><td><span class="compare-dash">—</span></td><td class="highlight"><span class="compare-check">✓</span></td></tr>
+          <tr><td class="feat">0 DTE Strategies &amp; Tools</td><td><span class="compare-dash">—</span></td><td class="highlight"><span class="compare-check">✓</span></td></tr>
+          <tr><td class="feat">Live Chat Rooms</td><td><span class="compare-dash">—</span></td><td class="highlight"><span class="compare-check">✓</span></td></tr>
+          <tr><td class="feat">TradeHacker Discord Community</td><td><span class="compare-check">✓</span></td><td class="highlight"><span class="compare-check">✓</span></td></tr>
+          <tr><td class="feat">Access</td><td>Lifetime</td><td class="highlight">Monthly (cancel anytime)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="compare-callout">
+      The Free Membership gives you a strong foundation. The Day Trading Membership puts you in a live trading room every market day with the strategies, tools, and community to actually trade. <strong>That's the difference between knowing options and trading options.</strong>
+    </div>
+
+    <div class="compare-cta-wrap">
+      <a href="https://whop.com/navigationtrading/" class="btn-primary">Make the Jump — Join Day Trading →</a>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 9. RESULTS ────────────────────────────── -->
+  <section class="results-section">
+    <div class="section-header">
+      <span class="section-eyebrow">What Changes When You Join</span>
+      <h2 class="section-title">What You'll <em>Walk Away With</em></h2>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-verb">Execute</div>
+        <p>trades with confidence because you've watched them done live, in real time, by a professional trader who explains every decision as it happens.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-verb">Follow</div>
+        <p>a structured daily trading routine — pre-market prep, live sessions, trade alerts, and after-hours review — so your trading has rhythm instead of randomness.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-verb">Trade</div>
+        <p>0 DTE strategies with specific entry rules, strike selection frameworks, and risk management parameters — not gut-feel gambling on same-day options.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-verb">Use</div>
+        <p>professional day trading indicators on your own charts — the same tools the NavigationTrading team uses to identify setups every morning.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-verb">Ask</div>
+        <p>questions in real time during live sessions and get feedback from the team and community — no more trading in isolation wondering if you're doing it right.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-verb">Build</div>
+        <p>the daily reps that turn a beginner into a consistent trader — because skill in day trading comes from showing up and doing it, not just studying it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 10. INSTRUCTOR ────────────────────────────── -->
+  <section class="instructor-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Who's in the Trading Room</span>
+    </div>
+
+    <div class="instructor-grid">
+      <div class="instructor-photo">
+        <img src="auther.jpeg" alt="Steve — NavigationTrading">
+        <span class="instructor-badge">Live in the Room</span>
+      </div>
+      <div class="instructor-content">
+        <h2>You're Trading Alongside Steve — <em>Not a Recording of Him</em></h2>
+        <p>NavigationTrading was built by Steve, an active day trader who shows up every market morning and does exactly what he teaches — live, on stream, with real money.</p>
+        <p>That's not a small thing. Most trading educators sell courses and disappear. Steve sits in the same live trading room as his members, calls trades as they happen, explains his reasoning in real time, and takes the wins and losses in front of everyone.</p>
+        <p>His approach is built on statistics, probabilities, and repeatable rules. No "secret indicators." No hype. No screenshots of winning trades with the losers conveniently deleted. Every strategy in the Day Trading membership is one Steve actively trades — and you can watch him do it, every single day.</p>
+        <div class="instructor-stats">
+          <div class="instructor-stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Active trader, live every market day
+          </div>
+          <div class="instructor-stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            10 strategies refined over years
+          </div>
+          <div class="instructor-stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            64 active Day Trading members
+          </div>
+          <div class="instructor-stat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            4.8 / 5 from 25 verified reviews
+          </div>
+          <div class="instructor-stat" style="grid-column:1 / -1;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Statistics &amp; probability-based — no hype, no gut-feel trading
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 11. SOCIAL PROOF ────────────────────────────── -->
+  <section class="social-section">
+    <div class="section-header">
+      <span class="section-eyebrow">What Members Say</span>
+      <h2 class="section-title">4.8 Out of 5 Stars — <em>From Real Traders</em></h2>
+    </div>
+
+    <div class="rating-summary">
+      <div class="rating-big">4.8</div>
+      <div class="rating-stars">★★★★★</div>
+      <div class="rating-label">25 ratings</div>
+      <div class="rating-bars">
+        <div class="rating-bar-row"><span>5★</span><div class="rating-bar"><div style="width:84%"></div></div><span>84%</span></div>
+        <div class="rating-bar-row"><span>4★</span><div class="rating-bar"><div style="width:16%"></div></div><span>16%</span></div>
+        <div class="rating-bar-row"><span>3★</span><div class="rating-bar"><div style="width:0%"></div></div><span>0%</span></div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-author">Annette M.</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+        <p class="review-quote">I can't recommend Navigation Trading highly enough! I've been using their services for about two years and have learned an incredible amount along the way. They offer a wide range of option trading strategies, and even after all this time, I'm still learning new things. Steve's explanations are clear...</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-author">Robert W.</div>
+          <div class="review-stars">★★★★☆</div>
+        </div>
+        <p class="review-quote">I've been using Navigation Trading over a year, and I couldn't be happier with the results! Their approach to options trading is refreshingly straightforward and methodical. Unlike other programs that rely on hype and emotion, Navigation Trading bases its strategies on statistics and probabilities...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 12. FAQ ────────────────────────────── -->
+  <section class="faq-section">
+    <div class="section-header">
+      <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">What's included in the Day Trading membership?<span class="faq-toggle">+</span></summary>
+        <div class="faq-a">You get 10 complete day trading strategy courses, daily live trading streams (twice per day — morning open and Power Hour), live trade calls in real time, day trading trade alerts, professional chart indicators, 0 DTE strategy tools, live chat rooms, and access to the TradeHacker Discord community. Everything is available instantly when you sign up.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Is $129/month worth it?<span class="faq-toggle">+</span></summary>
+        <div class="faq-a">That's $4.30 per day for a live trading room with a professional trader, 10 strategy courses, real-time trade alerts, and custom chart indicators. Most traders lose more than that on a single impulsive trade made without proper guidance. The membership pays for itself the first time it keeps you out of a bad trade — or puts you into a good one with the right plan.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">I'm a complete beginner. Should I start here?<span class="faq-toggle">+</span></summary>
+        <div class="faq-a">If you've never traded options before, we recommend starting with the Free Membership first. It covers the fundamentals — what options are, how they work, and basic strategies. Once you're comfortable with those concepts, the Day Trading membership is where you take it live. That said, if you're motivated and learn quickly, the Day Trading courses start from the ground up within their specific strategies.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What time are the live streams?<span class="faq-toggle">+</span></summary>
+        <div class="faq-a">The morning session starts around 9:15 AM Eastern, before market open at 9:30 AM. The Power Hour session begins around 3:00 PM Eastern for the final hour of trading. Both run every market day, Monday through Friday (excluding market holidays).</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Can I cancel anytime?<span class="faq-toggle">+</span></summary>
+        <div class="faq-a">Yes. No contracts, no commitments. Your membership renews monthly and you can cancel anytime. If you cancel, you keep access through the end of your current billing period.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Do I need a large trading account?<span class="faq-toggle">+</span></summary>
+        <div class="faq-a">No. Many of the day trading strategies — especially the 0 DTE setups — can be executed with accounts of $2,000–$5,000, depending on your broker. The courses cover how to match strategies and position sizes to your specific account. You don't need a big account to start. You need the right strategies for the account you have.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What's the difference between Day Trading and Pro membership?<span class="faq-toggle">+</span></summary>
+        <div class="faq-a">Day Trading ($129/month) focuses on day trading and 0 DTE strategies — 10 courses, daily live streams, and day trading alerts and indicators. Pro ($179/month) includes everything in Day Trading plus 7 additional advanced strategy courses (income spreads, trend trading, portfolio strategies), trade alerts for every strategy, and the full suite of custom chart indicators and watch lists. If you want to go beyond day trading, Pro gives you the complete system.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Can I talk to someone if I have questions?<span class="faq-toggle">+</span></summary>
+        <div class="faq-a">Yes. The live trading room has real-time chat where you can ask questions during the stream. The TradeHacker Discord is active throughout the day with members and the team available to help. You're never trading alone.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────── 13. FINAL CTA ────────────────────────────── -->
+  <section class="final-cta">
+    <span class="final-cta-eyebrow">Ready to Trade Live?</span>
+    <h2>Join the Live <em style="color:var(--gold);font-style:normal;">Trading Room</em></h2>
+    <p>10 day trading courses. Daily live streams with real-time trade calls. Professional chart indicators. 0 DTE strategies. An active community of traders who show up every morning ready to trade.<br><br>This is where you stop studying and start doing.</p>
+    <a href="https://whop.com/navigationtrading/" class="btn-primary" style="font-size:15px;padding:18px 42px;">Get Day Trading Access — $129/month →</a>
+    <div class="reassure">Cancel anytime. Instant access. No long-term commitment.</div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"></div>
+        <div class="footer-tagline">Institutional Grade Trading Education</div>
+      </div>
+      <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact</div>
+          <a href="mailto:support@navigationtrading.com" style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Follow</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
+            </a>
+            <a href="https://x.com/navtrading1?s=21" target="_blank" class="social-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+            </a>
+            <a href="https://www.instagram.com/navigationtrading" target="_blank" class="social-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Legal</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk Disclosure</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Privacy Policy</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities involve risk and are not suitable for all investors. Consider all relevant risk factors, including their personal financial situation, before trading. Past results of any individual or trading system published by Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods, techniques, or indicators presented in these products and services will be profitable or that they will not result in losses.
+      </div>
+      <div class="footer-copy">&copy; 2026 Navigation Financial, LLC</div>
+    </div>
+  </footer>
+
+  <!-- ── STICKY CTA BAR ── -->
+  <div class="sticky-cta">
+    <div class="sticky-cta-text">
+      <strong>Day Trading Membership</strong> — Live Streams, 10 Courses, Trade Alerts
+    </div>
+    <div class="sticky-cta-right">
+      <div class="sticky-price">$129<small>/mo</small></div>
+      <a href="https://whop.com/navigationtrading/" class="sticky-cta-btn">Join Day Trading →</a>
+    </div>
+  </div>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+</body>
+</html>
