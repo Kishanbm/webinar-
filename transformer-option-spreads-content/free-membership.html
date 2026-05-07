@@ -58,34 +58,70 @@ body {
 /* ══════════════════════════════════════
    NAVBAR
 ══════════════════════════════════════ */
-.nav {
-  position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 18px 60px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 60px;
-  transition: all .35s ease;
+  transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
 }
-.nav.scrolled {
-  background: rgba(13,32,64,.97);
+.navbar.scrolled {
+  background: rgba(13,46,78,0.97);
   backdrop-filter: blur(20px);
-  padding: 13px 60px;
-  box-shadow: 0 2px 40px rgba(0,0,0,.5);
+  padding: 12px 60px;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.4);
 }
-.nav-logo { height: 34px; width: auto; object-fit: contain; }
-.nav-right { display: flex; align-items: center; gap: 24px; }
-.nav-link {
-  color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500;
-  text-decoration: none; transition: color .2s;
+.nav-logo {
+  font-family: 'DM Sans', sans-serif; color: #fff;
+  text-decoration: none; display: flex; align-items: center;
 }
-.nav-link:hover { color: #fff; }
-.btn-nav {
+.nav-logo img {
+  height: 40px; width: auto;
+  transform: scale(5); transform-origin: left center; vertical-align: middle;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 32px; list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500;
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--orange) !important; }
+.nav-item-dropdown { position: relative; }
+.nav-item-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.nav-chevron { font-size: 9px; transition: transform 0.25s; line-height: 1; opacity: 0.7; }
+.nav-item-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+.dropdown-menu {
+  position: absolute; top: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: rgba(7,24,44,0.97); backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1); border-top: 2px solid var(--orange);
+  border-radius: 12px; min-width: 215px; padding: 6px;
+  opacity: 0; visibility: hidden; transition: all 0.22s ease;
+  z-index: 200; box-shadow: 0 20px 50px rgba(0,0,0,0.45); pointer-events: none;
+}
+.nav-item-dropdown:hover .dropdown-menu {
+  opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: all;
+}
+.dropdown-menu a {
+  display: block; padding: 10px 14px; color: rgba(255,255,255,0.8) !important;
+  font-size: 13.5px; font-weight: 500; border-radius: 8px;
+  transition: background 0.18s, color 0.18s; white-space: nowrap; text-decoration: none;
+}
+.dropdown-menu a:hover { background: rgba(200,66,10,0.18) !important; color: #e86428 !important; }
+.nav-login {
+  color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500;
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-login:hover { color: #fff; }
+.nav-cta {
   background: var(--orange); color: #fff;
-  padding: 10px 24px; border-radius: 6px; font-size: 13px;
-  font-weight: 700; text-decoration: none; letter-spacing: .4px;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 22px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.5px; border: none; border-radius: 6px;
+  display: inline-flex; align-items: center; gap: 8px;
+  white-space: nowrap; text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
-.btn-nav::after { content: '→'; font-size: 13px; }
-.btn-nav:hover { background: var(--orange-lit); transform: translateY(-1px); box-shadow: 0 6px 20px var(--orange-glow); }
+.nav-cta:hover { background: var(--orange-lit); transform: translateY(-1px); box-shadow: 0 6px 20px var(--orange-glow); }
 
 /* ══════════════════════════════════════
    HERO
@@ -960,210 +996,87 @@ body {
    SECTION 7 — BONUSES (Spotlight Carousel)
 ══════════════════════════════════════ */
 .bonuses {
-  padding: 80px 0;
-  background:
-    radial-gradient(ellipse at 10% 80%, rgba(200,66,10,.18) 0%, transparent 42%),
-    radial-gradient(ellipse at 90% 8%, rgba(22,53,140,.2) 0%, transparent 38%),
-    #071020;
+  padding: 70px 0; /* Reduced padding for compact view */
+  background: var(--navy);
   position: relative; overflow: hidden;
 }
-.bonuses::before { display: none; }
+.bonuses::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url("WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15; /* Reduced image opacity */
+  pointer-events: none;
+}
 .bonuses::after {
   content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 2;
-  background: linear-gradient(90deg, transparent, rgba(200,66,10,.55) 30%, rgba(212,160,64,.4) 60%, transparent);
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(135deg, rgba(13,46,78,.85) 0%, rgba(13,46,78,.7) 50%, rgba(13,46,78,.9) 100%);
+  pointer-events: none;
 }
-.bg-blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 1; }
-.bg-blob-a {
-  width: 680px; height: 680px;
-  background: radial-gradient(circle, rgba(200,66,10,.1) 0%, transparent 65%);
-  top: -220px; left: -160px; animation: blobFloat 9s ease-in-out infinite;
-}
-.bg-blob-b {
-  width: 520px; height: 520px;
-  background: radial-gradient(circle, rgba(22,53,140,.17) 0%, transparent 65%);
-  bottom: -130px; right: -100px; animation: blobFloat 12s ease-in-out 3s infinite reverse;
-}
-.bg-blob-c {
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(212,160,64,.08) 0%, transparent 65%);
-  top: 45%; left: 52%; animation: blobFloat 7s ease-in-out 1.5s infinite;
-}
-@keyframes blobFloat {
-  0%,100% { transform: translateY(0) scale(1); }
-  50%      { transform: translateY(-28px) scale(1.06); }
-}
-.bonuses > .container { position: relative; z-index: 3; }
+.bonuses > .container { position: relative; z-index: 3; max-width: 1280px; }
 
-/* ── Header ── */
-.bonuses-header { text-align: center; margin-bottom: 44px; }
+/* ── EYEBROW PILL (Matches Podcast bento-eyebrow) ── */
 .bonuses-pill {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(200,66,10,.12); border: 1px solid rgba(200,66,10,.3);
-  border-radius: 50px; padding: 7px 18px; margin-bottom: 16px;
-  font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(200,66,10,0.15);
+  border: 1px solid rgba(200,66,10,0.32);
+  border-radius: 50px;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
 }
-.bonuses-pill-dot {
-  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
-  background: var(--orange); box-shadow: 0 0 10px var(--orange);
-  animation: pulse-dot 1.8s ease-in-out infinite;
+
+/* ── CENTERED HEADER ── */
+.bonuses-header-center {
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto; margin-right: auto;
 }
-.bonuses-header h2 { color: #fff; margin-bottom: 12px; }
-.bonuses-header h2 em {
+.bonuses-header-center h2 { color: #fff; margin-bottom: 16px; font-size: clamp(32px, 3.5vw, 46px); line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; }
+.bonuses-header-center p { color: rgba(255,255,255,.65); font-size: 16px; line-height: 1.7; }
+.bonuses-header-center h2 em {
   font-style: normal;
   background: linear-gradient(115deg, var(--orange) 20%, var(--gold) 80%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.bonuses-header p { color: rgba(255,255,255,.46); max-width: 480px; margin: 0 auto; font-size: 15px; line-height: 1.65; }
 
-/* ══ SPOTLIGHT CAROUSEL ══ */
-.bonuses-carousel { position: relative; margin-bottom: 4px; }
-
-.carousel-viewport {
-  overflow: hidden;
-  padding: 36px 0 38px;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%);
-}
-.carousel-track {
-  display: flex; gap: 22px;
-  transition: transform .58s cubic-bezier(.4,0,.2,1);
-  will-change: transform;
+/* ── GRID WRAPPER ── */
+.bonuses-grid-wrapper {
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 32px;
 }
 
-/* ── Card base ── */
-.bonus-ccard {
-  flex: 0 0 360px;
-  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09);
-  border-radius: 20px; padding: 30px 28px;
+/* ── LONG BOTTOM STRIP ── */
+.bonuses-strip-long {
+  grid-column: 1 / -1;
+  background: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px; padding: 24px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 30px;
   position: relative; overflow: hidden;
-  transition: transform .52s cubic-bezier(.34,1.2,.64,1),
-              opacity .52s ease, box-shadow .52s ease, border-color .45s ease;
-  cursor: pointer;
+  margin-top: 10px;
 }
-.bonus-ccard.is-prev,
-.bonus-ccard.is-next { transform: scale(0.84); opacity: 0.45; }
-.bonus-ccard.is-prev:hover,
-.bonus-ccard.is-next:hover { opacity: 0.68; }
-.bonus-ccard.is-far  { transform: scale(0.72); opacity: 0; pointer-events: none; }
-
-/* Center spotlight */
-.bonus-ccard.is-active {
-  transform: scale(1); opacity: 1;
-  border-color: rgba(200,66,10,.42);
-  animation: cCardGlow 2.6s ease-in-out infinite;
-}
-@keyframes cCardGlow {
-  0%,100% { box-shadow: 0 40px 90px rgba(0,0,0,.65), 0 0 0 1px rgba(200,66,10,.28), 0 0 45px rgba(200,66,10,.12); }
-  50%      { box-shadow: 0 40px 90px rgba(0,0,0,.65), 0 0 0 1px rgba(200,66,10,.6),  0 0 80px rgba(200,66,10,.26); }
-}
-
-/* Shimmer sweep on active */
-.bonus-ccard.is-active::before {
-  content: '';
-  position: absolute; top: -110%; left: -40%; width: 180%; height: 55%;
-  background: linear-gradient(170deg, transparent, rgba(255,255,255,.065), transparent);
-  animation: cShimmer 5s ease-in-out infinite 2s; pointer-events: none;
-}
-@keyframes cShimmer { 0%,55%,100% { top: -110%; } 35% { top: 150%; } }
-
-/* Top accent per variant */
-.bonus-ccard::after {
-  content: ''; position: absolute; top: 0; left: 8%; right: 8%; height: 2px;
-  border-radius: 0 0 4px 4px; opacity: 0; transition: opacity .5s;
-}
-.bonus-ccard.is-active::after { opacity: 1; }
-.bonus-ccard.cc-orange::after { background: linear-gradient(90deg, transparent, var(--orange), transparent); }
-.bonus-ccard.cc-blue::after   { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
-.bonus-ccard.cc-gold::after   { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-.bonus-ccard.cc-indigo::after { background: linear-gradient(90deg, transparent, #818cf8, transparent); }
-
-/* Watermark */
-.cc-watermark {
-  position: absolute; bottom: -6px; right: 14px;
-  font-size: 80px; font-weight: 700; color: rgba(255,255,255,.025);
-  line-height: 1; user-select: none; pointer-events: none; transition: color .5s;
-}
-.bonus-ccard.is-active .cc-watermark { color: rgba(200,66,10,.055); }
-
-/* Icon */
-.cc-icon {
-  width: 56px; height: 56px; border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
-  transition: transform .45s cubic-bezier(.34,1.4,.64,1);
-}
-.bonus-ccard.is-active .cc-icon { transform: scale(1.1) rotate(-5deg); }
-.cc-icon.i-orange { background: rgba(200,66,10,.18);  border: 1px solid rgba(200,66,10,.3);  box-shadow: 0 8px 24px rgba(200,66,10,.15); }
-.cc-icon.i-blue   { background: rgba(59,130,246,.16); border: 1px solid rgba(59,130,246,.3);  box-shadow: 0 8px 24px rgba(59,130,246,.12); }
-.cc-icon.i-gold   { background: rgba(212,160,64,.16); border: 1px solid rgba(212,160,64,.3);  box-shadow: 0 8px 24px rgba(212,160,64,.12); }
-.cc-icon.i-indigo { background: rgba(129,140,248,.16);border: 1px solid rgba(129,140,248,.3); box-shadow: 0 8px 24px rgba(129,140,248,.12); }
-
-.cc-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-.bonus-ccard.cc-orange .cc-label { color: var(--orange); }
-.bonus-ccard.cc-blue   .cc-label { color: #60a5fa; }
-.bonus-ccard.cc-gold   .cc-label { color: var(--gold); }
-.bonus-ccard.cc-indigo .cc-label { color: #a5b4fc; }
-
-.bonus-ccard h3 { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 10px; }
-.bonus-ccard p  { font-size: 13px; color: rgba(255,255,255,.48); line-height: 1.68; margin-bottom: 20px; }
-
-.cc-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 16px; border-top: 1px solid rgba(255,255,255,.07);
-}
-.cc-val-cross { font-size: 12px; color: rgba(255,255,255,.25); text-decoration: line-through; font-weight: 500; }
-.cc-val-free {
-  font-size: 12px; font-weight: 900; letter-spacing: .5px; text-transform: uppercase;
-  padding: 6px 16px; border-radius: 50px;
-  color: var(--orange); background: rgba(200,66,10,.12); border: 1px solid rgba(200,66,10,.28);
-  transition: background .35s, border-color .35s;
-}
-.bonus-ccard.is-active .cc-val-free { background: rgba(200,66,10,.22); border-color: rgba(200,66,10,.55); }
-
-/* ── Navigation arrows ── */
-.carousel-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 48px; height: 48px; border-radius: 50%;
-  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
-  color: #fff; cursor: pointer; z-index: 10;
-  display: flex; align-items: center; justify-content: center;
-  transition: background .22s, border-color .22s, transform .22s;
-  backdrop-filter: blur(10px);
-}
-.carousel-arrow:hover {
-  background: rgba(200,66,10,.28); border-color: rgba(200,66,10,.55);
-  transform: translateY(-50%) scale(1.12);
-}
-.carousel-arrow svg { width: 20px; height: 20px; }
-.carousel-prev { left: 0; }
-.carousel-next { right: 0; }
-
-/* ── Dot indicators (hidden) ── */
-.carousel-dots { display: none; }
-.carousel-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: rgba(255,255,255,.2); border: none; padding: 0; cursor: pointer;
-  transition: width .35s ease, background .35s ease, border-radius .35s ease, box-shadow .35s ease;
-}
-.carousel-dot.is-active {
-  width: 30px; border-radius: 4px;
-  background: var(--orange); box-shadow: 0 0 14px rgba(200,66,10,.55);
-}
-
-/* ── Bottom strip ── */
-.bonuses-strip {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-  border-radius: 16px; padding: 18px 28px;
-  display: flex; align-items: center; justify-content: space-between; gap: 20px;
-  position: relative; overflow: hidden;
-}
-.bonuses-strip::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+.bonuses-strip-long::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, var(--orange), var(--gold), transparent 70%);
 }
-.bs-pills { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.bs-pills-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .bs-pill {
   display: inline-flex; align-items: center; gap: 6px;
   background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
@@ -1171,26 +1084,89 @@ body {
   font-size: 12px; font-weight: 600; color: rgba(255,255,255,.65);
 }
 .bs-pill svg { width: 11px; height: 11px; color: var(--orange); flex-shrink: 0; stroke-width: 3; }
-.bs-right { flex-shrink: 0; text-align: right; }
-.bs-cross { font-size: 12px; color: rgba(255,255,255,.28); text-decoration: line-through; margin-bottom: 2px; }
-.bs-free  { font-size: 24px; font-weight: 900; color: var(--orange); letter-spacing: -.02em; line-height: 1; }
+.bs-right-row { text-align: right; flex-shrink: 0; padding-left: 30px; border-left: 1px solid rgba(255,255,255,0.06); }
+.bs-cross { font-size: 13px; color: rgba(255,255,255,.4); text-decoration: line-through; margin-bottom: 4px; }
+.bs-free  { font-size: 28px; font-weight: 900; color: var(--orange); letter-spacing: -.02em; line-height: 1; }
 
-@media (max-width: 900px) {
-  .bonus-ccard { flex: 0 0 280px; padding: 24px 20px; }
-  .bonus-ccard h3 { font-size: 16px; }
+.bonus-list-card {
+  background: rgba(0, 0, 0, 0.4); /* Darker like podcast testimonial */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px; /* Matching podcast radius */
+  padding: 30px; /* Matching podcast padding */
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: flex-start;
+  transition: transform .3s, background .3s, border-color .3s, box-shadow .3s;
 }
-@media (max-width: 640px) {
-  .bonus-ccard { flex: 0 0 78vw; }
-  .carousel-arrow { display: none; }
-  .bonuses-strip { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .bs-right { align-self: flex-end; }
+.bonus-list-card:hover {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,.15);
+}
+
+.bonus-list-card::after {
+  content: ''; position: absolute; top: 0; left: 8%; right: 8%; height: 2px;
+  border-radius: 0 0 4px 4px; opacity: 0; transition: opacity .3s;
+}
+.bonus-list-card:hover::after { opacity: 1; }
+.bonus-list-card.cc-orange::after { background: linear-gradient(90deg, transparent, var(--orange), transparent); }
+.bonus-list-card.cc-blue::after   { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+.bonus-list-card.cc-gold::after   { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.bonus-list-card.cc-indigo::after { background: linear-gradient(90deg, transparent, #818cf8, transparent); }
+
+.cc-watermark {
+  position: absolute; bottom: -10px; right: 20px;
+  font-size: 80px; font-weight: 800; color: rgba(255,255,255,.03);
+  line-height: 1; user-select: none; pointer-events: none; transition: color .3s;
+}
+.bonus-list-card:hover .cc-watermark { color: rgba(255,255,255,.06); }
+
+.cc-content { flex: 1; z-index: 2; position: relative; width: 100%; }
+
+.cc-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+.bonus-list-card.cc-orange .cc-label { color: var(--orange); }
+.bonus-list-card.cc-blue   .cc-label { color: #60a5fa; }
+.bonus-list-card.cc-gold   .cc-label { color: var(--gold); }
+.bonus-list-card.cc-indigo .cc-label { color: #a5b4fc; }
+
+.cc-header-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+}
+
+.cc-icon-small {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform .3s;
+}
+.bonus-list-card:hover .cc-icon-small { transform: scale(1.05) rotate(-5deg); }
+.cc-icon-small.i-orange { background: rgba(200,66,10,.18);  border: 1px solid rgba(200,66,10,.3); }
+.cc-icon-small.i-blue   { background: rgba(59,130,246,.16); border: 1px solid rgba(59,130,246,.3); }
+.cc-icon-small.i-gold   { background: rgba(212,160,64,.16); border: 1px solid rgba(212,160,64,.3); }
+.cc-icon-small.i-indigo { background: rgba(129,140,248,.16);border: 1px solid rgba(129,140,248,.3); }
+
+.cc-icon-small svg { width: 16px; height: 16px; }
+
+.cc-header-row h3 { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 0; }
+.cc-content p  { font-size: 13.5px; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 0; }
+
+@media (max-width: 960px) {
+  .bonuses-layout { grid-template-columns: 1fr; gap: 40px; }
+  .bonuses-left { position: static; gap: 30px; }
+}
+}
+@media (max-width: 600px) {
+  .bonuses-right { grid-template-columns: 1fr; padding: 24px; gap: 16px; }
+  .bonus-list-card { padding: 24px; }
 }
 
 /* ══════════════════════════════════════
    SECTION 8 — FAQ
 ══════════════════════════════════════ */
 .faq {
-  background: #04080f;
+  background: #ffffff;
   padding: 110px 0;
 }
 .faq-layout {
@@ -1202,16 +1178,25 @@ body {
 .faq-left {
   position: sticky; top: 100px;
 }
+.faq-eyebrow {
+  display: inline-block;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
 .faq-left h2 {
   font-size: clamp(26px, 3vw, 38px);
-  font-weight: 800; color: #fff; line-height: 1.15;
+  font-weight: 800; color: var(--teal-900); line-height: 1.15;
   letter-spacing: -.02em; margin-top: 10px; margin-bottom: 16px;
 }
-.faq-left p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.75; margin-bottom: 32px; }
+.faq-left p { font-size: 14px; color: var(--text-mid); line-height: 1.75; margin-bottom: 32px; }
 .faq-contact {
   display: flex; align-items: center; gap: 12px;
   padding: 16px 20px; border-radius: 12px;
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.03); border: 1px solid rgba(0,0,0,.06);
 }
 .faq-contact-icon {
   width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
@@ -1219,25 +1204,26 @@ body {
   display: flex; align-items: center; justify-content: center;
 }
 .faq-contact-icon svg { width: 16px; height: 16px; color: var(--orange); }
-.faq-contact-text strong { display: block; font-size: 13px; color: #fff; font-weight: 700; }
-.faq-contact-text span { font-size: 12px; color: rgba(255,255,255,.4); }
+.faq-contact-text strong { display: block; font-size: 13px; color: var(--teal-900); font-weight: 700; }
+.faq-contact-text span { font-size: 12px; color: var(--text-mid); }
 
 .faq-right { display: flex; flex-direction: column; gap: 8px; }
 .faq-item {
-  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+  background: #ffffff; border: 1px solid rgba(0,0,0,.08);
   border-radius: 14px; overflow: hidden;
-  transition: border-color .25s, background .25s;
+  transition: border-color .25s, background .25s, box-shadow .25s;
 }
 .faq-item.open {
-  background: rgba(255,255,255,.05);
+  background: #fafafa;
   border-color: rgba(200,66,10,.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,.03);
 }
 .faq-q {
   padding: 22px 28px; cursor: pointer;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  font-size: 16px; font-weight: 700; color: #fff; user-select: none;
+  font-size: 16px; font-weight: 700; color: var(--teal-900); user-select: none;
 }
-.faq-q:hover { color: rgba(255,255,255,.85); }
+.faq-q:hover { color: var(--orange); }
 .faq-icon {
   width: 28px; height: 28px; border-radius: 50%;
   background: rgba(200,66,10,.12); border: 1px solid rgba(200,66,10,.25);
@@ -1247,29 +1233,56 @@ body {
 }
 .faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(200,66,10,.22); }
 .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-.faq-a-inner { padding: 0 28px 24px; font-size: 14px; color: rgba(255,255,255,.58); line-height: 1.75; }
+.faq-a-inner { padding: 0 28px 24px; font-size: 14px; color: var(--text-mid); line-height: 1.75; }
 .faq-a-inner a { color: var(--orange); }
 
 /* ══════════════════════════════════════
    SECTION 9 — FINAL CTA
 ══════════════════════════════════════ */
 .final-cta {
-  background: url("WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg") center/cover no-repeat;
-  position: relative; padding: 140px 0;
+  background-color: #eaf2ff; /* More bluish light background */
+  position: relative; padding: 80px 0;
   text-align: center;
+  overflow: hidden;
 }
 .final-cta::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(13,32,64,.95) 0%, rgba(8,24,40,.92) 100%);
+  content: ''; position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(13,46,78,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,46,78,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
 }
+.final-cta::after { display: none; }
+
+.final-cta-card {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  background: #2d3748;
+  border-radius: 6px;
+  padding: 40px 60px; /* Reduced vertical padding */
+  box-shadow: 0 30px 70px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+/* Corner Accents */
+.final-cta-card .corner {
+  position: absolute; width: 30px; height: 30px;
+  border: 2px solid var(--orange); opacity: 0.8;
+}
+.final-cta-card .corner.tl { top: 24px; left: 24px; border-right: 0; border-bottom: 0; }
+.final-cta-card .corner.tr { top: 24px; right: 24px; border-left: 0; border-bottom: 0; }
+.final-cta-card .corner.bl { bottom: 24px; left: 24px; border-right: 0; border-top: 0; }
+.final-cta-card .corner.br { bottom: 24px; right: 24px; border-left: 0; border-top: 0; }
 .final-cta-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
 .final-cta h2 {
-  font-size: clamp(32px, 4vw, 52px); font-weight: 900;
-  color: #fff; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 18px;
+  font-size: clamp(32px, 3.5vw, 46px); /* Normalized font size */
+  font-weight: 900;
+  color: #ffffff; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px;
 }
 .final-cta h2 em { font-style: normal; color: var(--orange); }
-.final-cta p { font-size: 17px; color: rgba(255,255,255,.7); line-height: 1.65; margin-bottom: 44px; }
+.final-cta p { font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 36px; }
 .final-cta-perks {
   display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
   margin-bottom: 44px;
@@ -1364,9 +1377,9 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 }
 
 @media (max-width: 768px) {
-  .nav { padding: 16px 24px; }
-  .nav.scrolled { padding: 12px 24px; }
-  .nav-link { display: none; }
+  .navbar { padding: 16px 24px; }
+  .navbar.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
   .container { padding: 0 24px; }
   .summary-trust-row { flex-direction: column; gap: 20px; }
   .outcomes-grid { grid-template-columns: 1fr; }
@@ -1434,13 +1447,28 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 </div>
 
 <!-- ═══ NAVBAR ═══ -->
-<nav class="nav" id="navbar">
-  <a href="#" style="display:inline-block; line-height:0;"><img src="logo.png" alt="NavigationTrading" style="height:40px; width:auto; transform:scale(5); transform-origin:left center; vertical-align:middle;"></a>
-  <div class="nav-right">
-    <a href="#track" class="nav-link">Curriculum</a>
-    <a href="#community" class="nav-link">Community</a>
-    <a href="#faq" class="nav-link">FAQ</a>
-    <a href="#hero-cta" class="btn-nav">Join Free</a>
+<nav class="navbar" id="navbar">
+  <a href="../index.html" class="nav-logo">
+    <img src="logo.png" alt="NavigationTrading">
+  </a>
+  <ul class="nav-links">
+    <li><a href="../performance.html">Performance</a></li>
+    <li><a href="../pricing.html">Pricing</a></li>
+    <li class="nav-item-dropdown">
+      <a href="#">Services <span class="nav-chevron">▾</span></a>
+      <div class="dropdown-menu">
+        <a href="free-membership.html">Free Membership</a>
+        <a href="#">Day Trade Membership</a>
+        <a href="../pricing.html">Pro Membership</a>
+      </div>
+    </li>
+    <li><a href="../podcast.html">Podcast</a></li>
+    <li><a href="https://navigationtrading.com/blog/">Blog</a></li>
+    <li><a href="mailto:support@navigationtrading.com">Contact Us</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <a href="#" class="nav-login">Login</a>
+    <a href="../pricing.html" class="nav-cta">Join Now</a>
   </div>
 </nav>
 
@@ -1928,130 +1956,111 @@ footer > .footer-bottom { position: relative; z-index: 1; }
      SECTION 7 — BONUSES
 ═══════════════════════════════ -->
 <section class="bonuses" id="bonuses">
-  <div class="bg-blob bg-blob-a"></div>
-  <div class="bg-blob bg-blob-b"></div>
-  <div class="bg-blob bg-blob-c"></div>
   <div class="container">
-
-    <div class="bonuses-header reveal">
+    <!-- ── CENTERED HEADER ── -->
+    <div class="bonuses-header-center reveal">
       <div class="bonuses-pill">
-        <span class="bonuses-pill-dot"></span>
         INCLUDED WITH YOUR FREE MEMBERSHIP
       </div>
       <h2>It's Free — But It Doesn't Feel Like It</h2>
       <p>Most trading educators charge hundreds for less than what you're about to get. Here's everything included the moment you sign up.</p>
     </div>
 
-    <!-- Spotlight Carousel -->
-    <div class="bonuses-carousel reveal">
-      <button class="carousel-arrow carousel-prev" id="bonusPrev" aria-label="Previous">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button class="carousel-arrow carousel-next" id="bonusNext" aria-label="Next">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
+    <!-- ── GRID WRAPPER ── -->
+    <div class="bonuses-grid-wrapper reveal">
 
-      <div class="carousel-viewport">
-        <div class="carousel-track" id="bonusTrack">
-
-          <!-- Bonus 1: Instant Access -->
-          <div class="bonus-ccard cc-orange">
-            <div class="cc-watermark">01</div>
-            <div class="cc-icon i-orange">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-              </svg>
+      <!-- Bonus 1: Instant Access -->
+      <div class="bonus-list-card cc-orange">
+        <div class="cc-watermark">01</div>
+        <div class="cc-content">
+          <div class="cc-label">Bonus #1</div>
+          <div class="cc-header-row">
+            <div class="cc-icon-small i-orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
-            <div class="cc-label">Bonus #1</div>
             <h3>Instant Access, No Waiting</h3>
-            <p>The second you sign up, every course and the Discord community are unlocked. No drip schedule. No waiting for modules to open. Learn at your own pace.</p>
           </div>
+          <p>The second you sign up, every course and the Discord community are unlocked. No drip schedule. No waiting for modules to open. Learn at your own pace.</p>
+        </div>
+      </div>
 
-          <!-- Bonus 2: Taught by Active Traders -->
-          <div class="bonus-ccard cc-blue">
-            <div class="cc-watermark">02</div>
-            <div class="cc-icon i-blue">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#60a5fa">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-              </svg>
+      <!-- Bonus 2: Taught by Active Traders -->
+      <div class="bonus-list-card cc-blue">
+        <div class="cc-watermark">02</div>
+        <div class="cc-content">
+          <div class="cc-label">Bonus #2</div>
+          <div class="cc-header-row">
+            <div class="cc-icon-small i-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#60a5fa"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <div class="cc-label">Bonus #2</div>
             <h3>Taught by Active Traders</h3>
-            <p>Built by Steve and the NavigationTrading team — traders who execute these strategies with real money, every single day. Learning from practitioners, not theorists.</p>
           </div>
+          <p>Built by Steve and the NavigationTrading team — traders who execute these strategies with real money, every single day. Learning from practitioners, not theorists.</p>
+        </div>
+      </div>
 
-          <!-- Bonus 3: Lifetime Access -->
-          <div class="bonus-ccard cc-gold">
-            <div class="cc-watermark">03</div>
-            <div class="cc-icon i-gold">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
+      <!-- Bonus 3: Lifetime Access -->
+      <div class="bonus-list-card cc-gold">
+        <div class="cc-watermark">03</div>
+        <div class="cc-content">
+          <div class="cc-label">Bonus #3</div>
+          <div class="cc-header-row">
+            <div class="cc-icon-small i-gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <div class="cc-label">Bonus #3</div>
             <h3>Lifetime Access</h3>
-            <p>This isn't a 7-day trial that locks you out. Your free membership doesn't expire. Come back to review a course six months from now. The content will still be there.</p>
           </div>
+          <p>This isn't a 7-day trial that locks you out. Your free membership doesn't expire. Come back to review a course six months from now. The content will still be there.</p>
+        </div>
+      </div>
 
-          <!-- Bonus 4: Real Strategy Foundation -->
-          <div class="bonus-ccard cc-indigo">
-            <div class="cc-watermark">04</div>
-            <div class="cc-icon i-indigo">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:#a5b4fc">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
+      <!-- Bonus 4: Real Strategy Foundation -->
+      <div class="bonus-list-card cc-indigo">
+        <div class="cc-watermark">04</div>
+        <div class="cc-content">
+          <div class="cc-label">Bonus #4</div>
+          <div class="cc-header-row">
+            <div class="cc-icon-small i-indigo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#a5b4fc"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            <div class="cc-label">Bonus #4</div>
             <h3>A Real Strategy Foundation</h3>
-            <p>The courses cover the same foundational strategies that our Day Trading and Pro members build on. You're getting the real starting point, not a watered-down version.</p>
           </div>
+          <p>The courses cover the same foundational strategies that our Day Trading and Pro members build on. You're getting the real starting point, not a watered-down version.</p>
+        </div>
+      </div>
 
-          <!-- Bonus 5: No Credit Card Required -->
-          <div class="bonus-ccard cc-orange">
-            <div class="cc-watermark">05</div>
-            <div class="cc-icon i-orange">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)">
-                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-                <line x1="1" y1="10" x2="23" y2="10"/>
-              </svg>
+      <!-- Bonus 5: No Credit Card Required -->
+      <div class="bonus-list-card cc-orange">
+        <div class="cc-watermark">05</div>
+        <div class="cc-content">
+          <div class="cc-label">Bonus #5</div>
+          <div class="cc-header-row">
+            <div class="cc-icon-small i-orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
             </div>
-            <div class="cc-label">Bonus #5</div>
             <h3>No Credit Card Required</h3>
-            <p>We don't ask for payment info. There's no "free trial" that auto-charges. You sign up with your email, and you're in. That's it.</p>
           </div>
-
-        </div><!-- /carousel-track -->
-      </div><!-- /carousel-viewport -->
-    </div><!-- /bonuses-carousel -->
-
-    <div class="carousel-dots" id="bonusDots" style="display:none;">
-      <button class="carousel-dot is-active"></button>
-      <button class="carousel-dot"></button>
-      <button class="carousel-dot"></button>
-      <button class="carousel-dot"></button>
-    </div>
-
-    <!-- Bottom summary strip -->
-    <div class="bonuses-strip reveal">
-      <div class="bs-pills">
-        <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>5 Options Courses</div>
-        <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Discord Community</div>
-        <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Instant Access</div>
-        <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Active Traders</div>
-        <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Lifetime Access</div>
-        <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>No Credit Card</div>
+          <p>We don't ask for payment info. There's no "free trial" that auto-charges. You sign up with your email, and you're in. That's it.</p>
+        </div>
       </div>
-      <div class="bs-right">
-        <div class="bs-cross">Total Value: $497+</div>
-        <div class="bs-free">All Free →</div>
-      </div>
-    </div>
 
+      <!-- Long Bottom Strip -->
+      <div class="bonuses-strip-long">
+        <div class="bs-pills-row">
+          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>5 Options Courses</div>
+          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Discord Community</div>
+          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Instant Access</div>
+          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Active Traders</div>
+          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Lifetime Access</div>
+          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>No Credit Card</div>
+        </div>
+        <div class="bs-right-row">
+          <div class="bs-cross">Total Value: $497+</div>
+          <div class="bs-free">All Free →</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -2062,7 +2071,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   <div class="container">
     <div class="faq-layout">
       <div class="faq-left">
-        <span class="eyebrow white">FAQ</span>
+        <div class="faq-eyebrow">FAQ</div>
         <h2>Common Questions</h2>
         <p>Everything you need to know before joining. Still have questions? Reach out — we're real people.</p>
         <div class="faq-contact">
@@ -2126,18 +2135,24 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 ═══════════════════════════════ -->
 <section class="final-cta">
   <div class="container">
-    <div class="final-cta-inner">
-      <span class="eyebrow white" style="margin-bottom:20px;">Ready to Start?</span>
-      <h2>Start Your Trading Education Today</h2>
-      <p>5 courses. 3,400+ trader community. Lifetime access. No credit card. Everything you need to go from "I've heard of options" to "I understand how to trade them."</p>
+    <div class="final-cta-card">
+      <!-- Decorative Corners -->
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
 
-      <div class="final-cta-perks" style="display:none;"></div>
+      <div class="final-cta-inner">
+        <span class="eyebrow" style="margin-bottom:15px; color:var(--orange);">Ready to Start?</span>
+        <h2>Start Your Trading Education Today</h2>
+        <p>5 courses. 3,400+ trader community. Lifetime access. No credit card. Everything you need to go from "I've heard of options" to "I understand how to trade them."</p>
 
-      <a href="#hero-cta" class="btn-final">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        Join Free — Start Learning Now
-      </a>
-      <div class="final-note">Free forever. No credit card. Instant access.</div>
+        <a href="#hero-cta" class="btn-final">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Join Free — Start Learning Now
+        </a>
+        <div class="final-note">Free forever. No credit card. Instant access.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -2307,90 +2322,7 @@ revealEls.forEach(el => observer.observe(el));
   });
 })();
 
-/* ── BONUS SPOTLIGHT CAROUSEL (infinite loop) ── */
-(function() {
-  const track = document.getElementById('bonusTrack');
-  if (!track) return;
 
-  const origCards = Array.from(track.querySelectorAll('.bonus-ccard'));
-  const dots      = Array.from(document.querySelectorAll('#bonusDots .carousel-dot'));
-  const total     = origCards.length;
-
-  /* Prepend last 2 clones, append first 2 clones for seamless wrapping */
-  [origCards[total-2], origCards[total-1]].reverse().forEach(c => track.prepend(c.cloneNode(true)));
-  [origCards[0],       origCards[1]      ].forEach(c => track.append(c.cloneNode(true)));
-
-  const all    = Array.from(track.querySelectorAll('.bonus-ccard'));
-  const OFFSET = 2; // number of clones prepended
-  let current  = OFFSET; // start at first real card
-  let timer, busy = false;
-
-  function slotW() {
-    const gap = parseInt(getComputedStyle(track).gap) || 26;
-    return all[0].offsetWidth + gap;
-  }
-
-  function place(animated) {
-    const vp = track.parentElement;
-    const cardW = all[0].offsetWidth;
-    const tx = (vp.offsetWidth / 2) - (current * slotW()) - (cardW / 2);
-    track.style.transition = animated ? 'transform .58s cubic-bezier(.4,0,.2,1)' : 'none';
-    track.style.transform  = `translateX(${tx}px)`;
-  }
-
-  function paint() {
-    all.forEach((c, i) => {
-      c.classList.remove('is-active','is-prev','is-next','is-far');
-      const d = i - current;
-      if (d === 0)  c.classList.add('is-active');
-      else if (d === -1) c.classList.add('is-prev');
-      else if (d === 1)  c.classList.add('is-next');
-      else               c.classList.add('is-far');
-    });
-    const realIdx = ((current - OFFSET) % total + total) % total;
-    dots.forEach((d, i) => d.classList.toggle('is-active', i === realIdx));
-  }
-
-  /* After animated slide, silently jump if we landed on a clone */
-  track.addEventListener('transitionend', () => {
-    busy = false;
-    if (current < OFFSET) {
-      current += total; place(false); paint();
-    } else if (current >= OFFSET + total) {
-      current -= total; place(false); paint();
-    }
-  });
-
-  function goTo(idx) {
-    if (busy) return;
-    busy    = true;
-    current = idx;
-    paint();
-    place(true);
-  }
-
-  function startAuto() { timer = setInterval(() => goTo(current + 1), 4500); }
-  function stopAuto()  { clearInterval(timer); }
-
-  document.getElementById('bonusPrev').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
-  document.getElementById('bonusNext').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
-  dots.forEach((d, i) => d.addEventListener('click', () => { stopAuto(); goTo(OFFSET + i); startAuto(); }));
-
-  /* Swipe */
-  let tx0 = 0;
-  track.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, {passive:true});
-  track.addEventListener('touchend',   e => {
-    const d = tx0 - e.changedTouches[0].clientX;
-    if (Math.abs(d) > 45) { stopAuto(); goTo(current + (d > 0 ? 1 : -1)); startAuto(); }
-  });
-
-  track.addEventListener('mouseenter', stopAuto);
-  track.addEventListener('mouseleave', startAuto);
-  window.addEventListener('resize', () => place(false));
-
-  paint(); place(false);
-  startAuto();
-})();
 </script>
 
   <!-- ── EXIT INTENT POPUP ── -->

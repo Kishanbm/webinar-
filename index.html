@@ -193,26 +193,26 @@
       background: #0D2E4E; /* Matched to free-membership */
       position: relative;
       overflow: hidden;
-      padding: 0 0 100px 0;
+      padding: 0;
     }
 
-    /* ── PREMIUM HERO BACKGROUND ── */
-    .hero::before {
-      content: '';
+    /* ── HERO BACKGROUND ── */
+    .hero-bg-img {
       position: absolute;
       inset: 0;
-      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') top center / cover no-repeat;
-      opacity: 0.8; /* Increased opacity */
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.45;
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
       z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(13,32,64,.96) 0%, rgba(13,32,64,.82) 55%, rgba(13,32,64,.92) 100%);
-      z-index: 2;
+      background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%);
       pointer-events: none;
     }
 
@@ -221,30 +221,37 @@
       width: 800px;
       height: 800px;
       border-radius: 50%;
-      filter: blur(120px);
-      z-index: 1;
-      opacity: 0.5;
-      animation: float-glow 12s infinite ease-in-out alternate;
-      pointer-events: none;
-    }
-    
-    .hero-glow-1 {
+      background: radial-gradient(circle, rgba(30,100,200,0.22) 0%, transparent 65%);
       top: -200px;
-      left: -200px;
-      background: radial-gradient(circle, rgba(30, 77, 140, 0.28) 0%, transparent 70%); /* Matched to free-membership */
-      animation-delay: 0s;
+      right: -100px;
+      pointer-events: none;
+      z-index: 2;
+      animation: pulseglow 6s ease-in-out infinite;
     }
 
     .hero-glow-2 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16,90,180,0.35) 0%, transparent 65%);
       bottom: -100px;
-      right: -200px;
-      background: radial-gradient(circle, rgba(200, 66, 10, 0.18) 0%, transparent 70%); /* Matched to free-membership */
-      animation-delay: -6s;
+      left: -50px;
+      pointer-events: none;
+      z-index: 2;
     }
 
-    @keyframes float-glow {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(100px, 50px) scale(1.1); }
+    @keyframes pulseglow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+
+    .dot-grid {
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
     }
 
     /* Staggered Animations */
@@ -283,7 +290,7 @@
 
     /* Centered content */
     .hero-content {
-      padding: 140px 20px 20px 20px;
+      padding: 140px 20px 50px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -360,53 +367,46 @@
       box-shadow: 0 12px 32px rgba(200,66,10,0.35);
     }
 
-    /* ── HERO STATS (INTEGRATED) ── */
-    .hero-stats-new {
-      display: flex;
-      gap: 16px;
-      margin-top: 50px;
-      width: 100%;
-      justify-content: center;
-      flex-wrap: wrap;
+    /* ── STATS BAR (below hero, separate section) ── */
+    .stats-bar {
+      background: var(--teal-900);
+      padding: 24px 0;
     }
 
-    .hero-stat-card {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 24px 32px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
       text-align: center;
-      min-width: 220px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0 14px;
+      border-right: 1px solid rgba(255,255,255,0.08);
     }
 
-    .hero-stat-card:hover {
-      background: rgba(0, 0, 0, 0.6);
-      transform: translateY(-5px);
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    .stat-item:last-child {
+      border-right: none;
     }
 
-    .hero-stat-card h4 {
-      font-size: 36px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 6px;
-      line-height: 1;
-      font-family: 'DM Mono', monospace;
-    }
-
-    .hero-stat-card span {
-      font-size: 11px;
+    .stat-num {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 28px;
       font-weight: 700;
-      text-transform: uppercase;
+      background: linear-gradient(135deg, #fff, #d4a040);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: rgba(255,255,255,0.45);
+      font-size: 10px;
       letter-spacing: 1.5px;
-      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      margin-top: 5px;
     }
 
     /* Legacy — keep for other sections */
@@ -499,14 +499,14 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 6px 14px;
-      background: rgba(200, 66, 10, 0.05);
-      border: 1px solid rgba(200, 66, 10, 0.1);
+      padding: 6px 16px;
+      background: rgba(200, 66, 10, 0.12);
+      border: 1px solid rgba(200, 66, 10, 0.28);
       border-radius: 50px;
       color: var(--orange);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 24px;
     }
@@ -642,17 +642,16 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 14px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 16px;
+      background: rgba(200, 66, 10, 0.15);
+      border: 1px solid rgba(200, 66, 10, 0.32);
       border-radius: 50px;
-      color: #fff;
+      color: var(--orange);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 24px;
-      backdrop-filter: blur(10px);
     }
 
     .bento-header h2 {
@@ -949,7 +948,7 @@
 
     .lpc-content p {
       font-size: 14px;
-      color: rgba(255, 255, 255, 0.5);
+      color: #ffffff; /* Full White */
       line-height: 1.6;
       margin-bottom: 24px;
     }
@@ -992,8 +991,10 @@
 
     /* ── THE TRADEHACKER MINDSET SECTION ── */
     .tradehacker-section {
-      padding: 140px 0;
+      padding: 60px 0;
       background: #f8f9fa;
+      position: relative;
+      overflow: hidden;
     }
 
     .tradehacker-grid {
@@ -1004,18 +1005,102 @@
     }
 
     .tradehacker-content h2 {
-      font-size: 42px;
+      font-size: clamp(32px, 4vw, 50px);
       color: var(--teal-900);
-      margin-bottom: 16px;
-      letter-spacing: -1px;
+      margin-bottom: 20px;
+      letter-spacing: -1.5px;
+      font-weight: 800;
+      line-height: 1.1;
     }
 
-    .tradehacker-content h4 {
+    .tradehacker-content h2 em { font-style: normal; color: var(--orange); }
+
+    .th-subhead {
       font-size: 18px;
-      color: var(--orange);
-      margin-bottom: 24px;
-      font-weight: 700;
+      color: var(--text-dim);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      font-weight: 500;
     }
+
+    .th-body {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .th-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .th-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid rgba(13,46,78,0.1);
+      border-left: 3px solid var(--orange);
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal-900);
+    }
+
+    .th-pill-icon {
+      width: 30px;
+      height: 30px;
+      background: rgba(200,66,10,0.1);
+      border: 1px solid rgba(200,66,10,0.2);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .th-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .th-btn-spotify {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 24px;
+      background: #1DB954;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 6px 20px rgba(29,185,84,0.25);
+    }
+    .th-btn-spotify:hover { background: #17a349; transform: translateY(-2px); }
+
+    .th-btn-apple {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 24px;
+      background: #fff;
+      color: var(--teal-900);
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1.5px solid rgba(13,46,78,0.15);
+      transition: all 0.25s;
+    }
+    .th-btn-apple:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
 
     .tradehacker-content p {
       font-size: 17px;
@@ -1411,10 +1496,19 @@
 
     /* ── HOME PRICING SECTION ── */
     .pricing-section-home {
-      padding: 120px 0;
-      background: #ffffff; /* White scroll break */
+      padding: 60px 0; /* Reduced padding */
+      background: #ffffff;
       position: relative;
       overflow: hidden;
+    }
+
+    .pricing-section-home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.03; /* Very subtle texture */
+      pointer-events: none;
     }
 
     .pricing-home-header {
@@ -1444,30 +1538,96 @@
     }
 
     .pricing-card-home {
-      background: #fff;
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(15, 20, 25, 0.12); /* Slightly darker light-black */
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.9); /* Restored white border */
       border-radius: 24px;
-      padding: 40px;
+      padding: 40px 30px;
       display: flex;
       flex-direction: column;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      box-shadow: 0 15px 40px rgba(13, 46, 78, 0.08), inset 0 2px 20px rgba(255, 255, 255, 0.7);
     }
 
     .pricing-card-home:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+      transform: translateY(-10px);
+      background: rgba(15, 20, 25, 0.16);
+      box-shadow: 0 30px 60px rgba(13, 46, 78, 0.12), inset 0 2px 20px rgba(255, 255, 255, 0.8);
       border-color: var(--orange);
     }
 
     .pricing-card-home.popular {
-      border: 2.5px solid var(--orange);
-      box-shadow: 0 20px 40px rgba(200, 66, 10, 0.1);
-      transform: scale(1.05);
+      background: rgba(15, 20, 25, 0.14);
+      border: 1px solid var(--orange);
+      box-shadow: 0 20px 50px rgba(200, 66, 10, 0.08), inset 0 2px 20px rgba(255, 255, 255, 0.6);
+      transform: scale(1.02);
+      z-index: 5;
     }
 
     .pricing-card-home.popular:hover {
-      transform: scale(1.05) translateY(-12px);
+      transform: scale(1.02) translateY(-10px);
+      background: rgba(15, 20, 25, 0.18);
+      box-shadow: 0 40px 80px rgba(200, 66, 10, 0.15), inset 0 2px 20px rgba(255, 255, 255, 0.8);
+    }
+
+    .p-plan-row {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      background: rgba(13, 46, 78, 0.15); /* Normal transparent tint */
+      padding: 6px 24px 6px 6px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    .p-icon-circle {
+      width: 32px;
+      height: 32px;
+      background: var(--orange);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(200, 66, 10, 0.2);
+    }
+
+    .p-icon-circle svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .p-card-header h3 {
+      font-size: 18px;
+      color: #0d2e4e; /* Dark navy text for light glass */
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .p-price-row {
+      position: relative;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    /* Tailing Line (Sharp Center-out) */
+    .p-price-row::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--orange) 50%, transparent 100%);
+      opacity: 0.4;
     }
 
     .popular-tag {
@@ -1487,21 +1647,16 @@
 
     .p-card-header {
       text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .p-card-header h3 {
-      font-size: 24px;
-      color: #0d2e4e;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
 
     .p-card-price {
-      font-size: 44px;
+      font-size: 48px;
       font-weight: 800;
       color: #050d17;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
       letter-spacing: -1.5px;
+      display: block;
     }
 
     .p-card-price span {
@@ -1678,6 +1833,180 @@
     .close-widget:hover { background: #1DB954; }
     .close-widget:hover svg { stroke: #000; }
 
+    /* ── PROOF IN THE OPEN ── */
+    .proof-section {
+      background: #0D2E4E;
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0;
+    }
+    .proof-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') top center / cover no-repeat;
+      opacity: 0.8;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .proof-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,32,64,.96) 0%, rgba(13,32,64,.82) 55%, rgba(13,32,64,.92) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .proof-section .container { position: relative; z-index: 1; }
+    .proof-header {
+      text-align: center;
+      margin-bottom: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .proof-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(200,66,10,0.15);
+      border: 1px solid rgba(200,66,10,0.3);
+      border-radius: 50px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .proof-header h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      color: #fff;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+    }
+    .proof-header h2 em { font-style: normal; color: var(--orange); }
+    .proof-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .proof-promo-card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .proof-promo-card::before {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,66,10,0.22) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .proof-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(200,66,10,0.15);
+      border: 1px solid rgba(200,66,10,0.3);
+      color: var(--orange);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      width: fit-content;
+    }
+    .proof-promo-card h3 {
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .proof-promo-card p {
+      color: rgba(255,255,255,0.65);
+      font-size: 16px;
+      line-height: 1.75;
+      flex-grow: 1;
+      margin-bottom: 32px;
+    }
+    .proof-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      align-self: flex-start;
+      box-shadow: 0 8px 24px rgba(200,66,10,0.25);
+    }
+    .proof-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,66,10,0.4); }
+    .proof-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .proof-feature {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 28px 26px;
+      transition: background 0.3s, border-color 0.3s, transform 0.25s;
+      flex: 1;
+    }
+    .proof-feature:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(200,66,10,0.35);
+      transform: translateX(4px);
+    }
+    .proof-feature-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      background: rgba(200,66,10,0.18);
+      border: 1px solid rgba(200,66,10,0.3);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .proof-feature-label {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .proof-feature-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      .proof-layout { grid-template-columns: 1fr; }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .approach-grid-new, .tradehacker-grid { grid-template-columns: 1fr; gap: 60px; }
@@ -1743,6 +2072,13 @@
 
   <!-- ── PREMIUM HERO ── -->
   <section class="hero">
+    <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="dot-grid" style="top:40px;right:380px;width:160px;height:120px;z-index:3"></div>
+    <div class="dot-grid" style="bottom:80px;left:40px;width:100px;height:80px;opacity:0.5;z-index:3"></div>
+
     <div class="hero-inner">
 
       <!-- Centered Content + Stats -->
@@ -1751,57 +2087,42 @@
         <h1>Learn to build wealth<br>trading <em>options.</em></h1>
         <p class="hero-sub">Institutional-grade methodology, real-time execution, and exponential results — without picking market direction.</p>
         <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">GET FREE ACCESS TO OUR FLAGSHIP COURSES</a>
-
-        <div class="hero-stats-new">
-          <div class="hero-stat-card">
-            <h4>41,187+</h4>
-            <span>Happy Students</span>
-          </div>
-          <div class="hero-stat-card">
-            <h4>17+</h4>
-            <span>Strategy Courses</span>
-          </div>
-          <div class="hero-stat-card">
-            <h4>20+</h4>
-            <span>Trading Experience</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-
+  <!-- ── STATS BAR ── -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">41,187+</div>
+          <div class="stat-label">Happy Students</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">17+</div>
+          <div class="stat-label">Strategy Courses</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Trading Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="approach-new">
     <div class="container">
       <div class="approach-header">
-        <div class="approach-eyebrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg>
-          Institutional Methodology
-        </div>
-        <h2>A <span>Smarter Way</span> to Navigate the <em>Markets.</em></h2>
+        <h2>Our <em>Approach</em></h2>
+        <p style="font-size:18px; color:var(--text-dim); margin-top:16px; line-height:1.6;">Simple, straightforward strategies grounded in real math.</p>
       </div>
 
       <div class="approach-grid-new">
         <div class="approach-content">
-          <p>Our methodology is based on mathematical statistics and real-world probabilities—not hype, emotion, or following "Stock Market Gurus."</p>
-          
-          <ul class="approach-features">
-            <li class="approach-feature">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>No directional guessing required to build wealth.</span>
-            </li>
-            <li class="approach-feature">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Full transparency: we post every trade we send to members.</span>
-            </li>
-            <li class="approach-feature">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Strategies designed to profit in any market environment.</span>
-            </li>
-          </ul>
+          <p>Our methodology is based on statistics and probabilities, not hype, emotion, or following some "Stock Market Guru" who claims to have a crystal ball. We post every trade we send to our Pro Members—both winners and losers. The best part is, we don't need to predict market direction to find quality setups; that's the power of our trading method.</p>
 
-          <a href="/performance" class="btn-main" style="border-radius: 50px;">VIEW OUR TRADE RESULTS &rarr;</a>
+          <a href="/performance" class="btn-main" style="border-radius: 50px;">VIEW TRADE RESULTS &rarr;</a>
         </div>
         <div class="approach-visual-new">
           <div class="video-wrapper">
@@ -1812,14 +2133,71 @@
     </div>
   </section>
 
+  <!-- ── PROOF IN THE OPEN ── -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="proof-header">
+        <div class="proof-eyebrow">Verified Performance</div>
+        <h2>Every Trade. Every Month. <em>On the Record.</em></h2>
+      </div>
+      <div class="proof-layout">
+
+        <!-- Left: main promo card -->
+        <div class="proof-left">
+          <div class="proof-promo-card">
+            <span class="proof-badge">Verified Performance</span>
+            <h3>Every Trade. Every Month.<br><span style="color:var(--orange)">On the Record.</span></h3>
+            <p>We don't wait for a good quarter to share results. Every single trade we send to our Pro members—winners, losers, adjustments, partial exits—is documented and published in our monthly performance reports. No edits. No omissions. No cherry-picking.</p>
+            <a href="/performance" class="proof-cta-btn">See Our Full Track Record <span>→</span></a>
+          </div>
+        </div>
+
+        <!-- Right: 3 glass feature cards -->
+        <div class="proof-right">
+          <div class="proof-feature">
+            <div class="proof-feature-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+              </svg>
+            </div>
+            <div>
+              <div class="proof-feature-label">Monthly Cadence</div>
+              <p class="proof-feature-text">New report every month</p>
+            </div>
+          </div>
+          <div class="proof-feature">
+            <div class="proof-feature-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+            <div>
+              <div class="proof-feature-label">Every Trade Documented</div>
+              <p class="proof-feature-text">Wins, losses, and everything between</p>
+            </div>
+          </div>
+          <div class="proof-feature">
+            <div class="proof-feature-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+              </svg>
+            </div>
+            <div>
+              <div class="proof-feature-label">Public &amp; Permanent</div>
+              <p class="proof-feature-text">Published live, archived since 2017</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ── PREMIUM BENTO FEATURES SECTION ── -->
   <section class="bento-section">
     <div class="container">
       <div class="bento-header">
-        <div class="bento-eyebrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg>
-          The Ecosystem
-        </div>
+        <div class="bento-eyebrow">The Ecosystem</div>
         <h2>Everything You Need to <span>Trade Like a Pro.</span></h2>
       </div>
 
@@ -1877,7 +2255,7 @@
   <section class="pricing-section-home" id="membership-plans">
     <div class="container">
       <div class="pricing-home-header">
-        <div class="s-eyebrow" style="color: var(--orange); margin-bottom: 20px;">MEMBERSHIP PLANS</div>
+        <div class="bento-eyebrow">MEMBERSHIP PLANS</div>
         <h2>Simple Plans for <span>Expert Trading.</span></h2>
       </div>
 
@@ -1885,12 +2263,20 @@
         <!-- Free -->
         <div class="pricing-card-home">
           <div class="p-card-header">
-            <h3>Free</h3>
-            <div class="p-card-price">$0<span>/forever</span></div>
+            <div class="p-plan-row">
+              <div class="p-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3 2 4h-2c-2 4.5-4.5 7-10 8"></path></svg>
+              </div>
+              <h3>Free</h3>
+            </div>
+            <div class="p-price-row">
+               <div class="p-card-price">$0<span>/forever</span></div>
+            </div>
           </div>
           <ul class="p-card-features">
-            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 5 core strategy courses</li>
-            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Discord Community</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 5 core strategy courses</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Discord Community</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Daily Market Insights</li>
           </ul>
           <a href="https://whop.com/navigationtrading/ntfree/" class="p-card-btn">Join Free</a>
         </div>
@@ -1899,13 +2285,21 @@
         <div class="pricing-card-home popular">
           <div class="popular-tag">Most Popular</div>
           <div class="p-card-header">
-            <h3>Day Trading</h3>
-            <div class="p-card-price">Join Now<span>/mo</span></div>
+            <div class="p-plan-row">
+              <div class="p-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              </div>
+              <h3>Day Trading</h3>
+            </div>
+            <div class="p-price-row">
+               <div class="p-card-price">Join Now<span>/mo</span></div>
+            </div>
           </div>
           <ul class="p-card-features">
-            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Daily Live Stream</li>
-            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Real-time live trades</li>
-            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Includes 0 DTE Setup</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Daily Live Stream</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Real-time live trades</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Includes 0 DTE Setup</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Proprietary Indicators</li>
           </ul>
           <a href="https://whop.com/navigationtrading/ntday/" class="p-card-btn">Start Now</a>
         </div>
@@ -1913,13 +2307,21 @@
         <!-- Pro -->
         <div class="pricing-card-home">
           <div class="p-card-header">
-            <h3>Pro</h3>
-            <div class="p-card-price">Ultimate<span>/mo</span></div>
+            <div class="p-plan-row">
+              <div class="p-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+              </div>
+              <h3>Pro</h3>
+            </div>
+            <div class="p-price-row">
+               <div class="p-card-price">Ultimate<span>/mo</span></div>
+            </div>
           </div>
           <ul class="p-card-features">
-            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Everything in Day Trading</li>
-            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 17 advanced courses</li>
-            <li><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Trade Alerts & Custom Tools</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Everything in Day Trading</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 17 advanced courses</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Trade Alerts & Custom Tools</li>
+            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Priority Member Support</li>
           </ul>
           <a href="https://whop.com/navigationtrading/ntpro/" class="p-card-btn">Get Pro Access</a>
         </div>
@@ -1931,9 +2333,9 @@
   <section class="learn-section-premium">
     <div class="container" style="max-width: 1400px;">
       <div class="learn-header-centered">
-        <div class="s-eyebrow" style="color: var(--orange); margin-bottom: 20px;">LEARNING PATH</div>
-        <h2>Everything You Need to <br> <span>Trade Like a Pro.</span></h2>
-        <p>Institutional grade trading education designed to take you from a novice to a rule-based professional trader.</p>
+        <div class="bento-eyebrow">LEARNING PATH</div>
+        <h2>Where to <span>Start</span></h2>
+        <p>Choose the path that fits where you are right now.</p>
       </div>
 
       <div class="learn-premium-grid">
@@ -1958,10 +2360,10 @@
             <img src="learn_pro_v1_1778069929103.png" alt="Pro Membership">
           </div>
           <div class="lpc-content">
-            <h3>Pro Membership</h3>
-            <p>Full access to all premium strategies, live day trading streams, and real-time trade alerts.</p>
+            <h3>Premium Memberships</h3>
+            <p>Learn more about premium memberships, live day trading stream, live trading alerts, and more.</p>
             <a href="pricing.html" class="lpc-btn">
-              Explore Pro Plans
+              Learn More
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
@@ -1973,10 +2375,10 @@
             <img src="learn_community_v1_1778069948265.png" alt="Trading Community">
           </div>
           <div class="lpc-content">
-            <h3>Global Community</h3>
-            <p>Interact with thousands of like-minded traders and get your questions answered daily.</p>
+            <h3>Join Our Community</h3>
+            <p>Interact with like-minded traders and get all your trading-related questions answered.</p>
             <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">
-              Join the Discord
+              Learn More
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
           </div>
@@ -1988,8 +2390,8 @@
             <img src="learn_support_v1_1778069966327.png" alt="24/7 Support">
           </div>
           <div class="lpc-content">
-            <h3>Direct Support</h3>
-            <p>Schedule a complimentary opening call with one of our full-time traders for expert guidance.</p>
+            <h3>Questions?</h3>
+            <p>Schedule a complimentary coaching call with one of our full-time traders.</p>
             <a href="https://calendly.com/navigationtrading" class="lpc-btn">
               Schedule a Call
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -2005,13 +2407,45 @@
   <!-- ── THE TRADEHACKER MINDSET ── -->
   <section class="tradehacker-section">
     <div class="container">
+
+      <!-- Centered header above grid -->
+      <div style="text-align:center; margin-bottom:56px;">
+        <div class="bento-eyebrow" style="margin-bottom:20px;">THE TRADEHACKER MINDSET</div>
+        <h2 style="font-size:clamp(32px,4vw,50px); font-weight:800; color:var(--teal-900); letter-spacing:-1.5px; line-height:1.1;">The Mental Game Behind <em style="font-style:normal; color:var(--orange);">Every Good Trade.</em></h2>
+      </div>
+
       <div class="tradehacker-grid">
         <div class="tradehacker-content">
-          <h2>The Tradehacker Mindset</h2>
-          <h4>#1 Podcast for Trading Psychology</h4>
-          <p>This show is for experienced and novice traders who want to learn how to master the psychology (mindset) of trading. Learn from NavigationTrading. As top options wizard for trading firm, inside each episode, we share "ah ha" moments that we have learned from trading every day for the last 20+ years.</p>
-          <a href="/podcast" class="btn-main">Listen to the Podcast</a>
+          <p class="th-subhead">Most traders don't lose because they picked the wrong strategy. They lose because they couldn't sit on their hands when it counted.</p>
+          <p class="th-body">The TradeHacker Mindset Podcast is where we talk about the part nobody else covers — patience, drawdowns, revenge trading, the boredom of doing it right, and the small mental habits that separate consistent traders from the ones who blow up. Real conversations from people who trade real money, every day.</p>
+
+          <div class="th-pills">
+            <div class="th-pill">
+              <div class="th-pill-icon">🎙️</div>
+              Shift to Mental Analysis
+            </div>
+            <div class="th-pill">
+              <div class="th-pill-icon">🎙️</div>
+              The Lure &amp; Dangers of Trading
+            </div>
+            <div class="th-pill">
+              <div class="th-pill-icon">🎙️</div>
+              Shaping Your Mental Environment
+            </div>
+          </div>
+
+          <div class="th-buttons">
+            <a href="https://open.spotify.com/show/42bqUnN2lA5RDHAiwPKJM5" class="th-btn-spotify" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Listen on Spotify
+            </a>
+            <a href="https://podcasts.apple.com/podcast/tradehacker-mindset/id1484316697" class="th-btn-apple" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+              Listen on Apple Podcasts
+            </a>
+          </div>
         </div>
+
         <div class="tradehacker-player">
           <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/42bqUnN2lA5RDHAiwPKJM5?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
@@ -2023,9 +2457,7 @@
   <section class="testimonials-marquee" id="reviews">
     <div class="container">
       <div class="test-header">
-        <div class="bento-eyebrow">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg>
-          Testimonials
+        <div class="bento-eyebrow">Testimonials
         </div>
         <h2>What Traders Are <span>Saying</span></h2>
       </div>
@@ -2296,11 +2728,11 @@
         <span class="dot"></span>
         Ready to Start Today?
       </div>
-      <h2>Don't Just Watch the Results. <br> <span>Trade Them.</span></h2>
-      <p>Join our community and receive the exact same alerts we execute in our own accounts — in real time, every time.</p>
-      
+      <h2>Master Your <span>Mindset.</span></h2>
+      <p>Join Navigation Trading and start your journey toward becoming a more disciplined trader.</p>
+
       <a href="/pricing" class="cta-primary">
-        Explore Membership Plans
+        View All Pricing Options
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
 

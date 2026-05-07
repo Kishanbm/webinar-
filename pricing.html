@@ -220,39 +220,57 @@
 
     /* ── PRICING HERO ── */
     .pricing-hero {
-      padding: 180px 0 100px;
-      background: url('pricing_hero_bg.png') top center / cover no-repeat;
+      padding: 0;
+      background: #0D2E4E;
       position: relative;
       text-align: center;
       overflow: hidden;
     }
-    
-    .pricing-hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(13, 46, 78, 0.8), rgba(255, 255, 255, 0.1));
-        z-index: 1;
+
+    .pricing-hero .hero-bg-img {
+      position: absolute;
+      inset: 0; z-index: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      opacity: 0.55;
     }
 
-    /* Trading Chart Overlay */
-    .pricing-hero::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-        opacity: 0.15;
-        mix-blend-mode: overlay;
-        z-index: 1;
-        pointer-events: none;
+    .hero-bg-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(13,46,78,0.70) 0%, rgba(13,46,78,0.50) 50%, rgba(13,46,78,0.68) 100%);
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute; width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(30,100,200,0.22) 0%, transparent 65%);
+      top: -200px; right: -100px; pointer-events: none; z-index: 2;
+      animation: pulseglow 6s ease-in-out infinite;
+    }
+
+    .hero-glow-2 {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(16,90,180,0.35) 0%, transparent 65%);
+      bottom: -100px; left: -50px; pointer-events: none; z-index: 2;
+    }
+
+    @keyframes pulseglow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+
+    .dot-grid {
+      position: absolute; z-index: 3; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
+      background-size: 22px 22px;
     }
 
     .pricing-hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 5;
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 140px 20px 100px;
     }
 
     .hero-label {
@@ -592,6 +610,12 @@
 
   <!-- ── PRICING HERO ── -->
   <section class="pricing-hero">
+    <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="dot-grid" style="top:40px;right:380px;width:160px;height:120px;z-index:3"></div>
+    <div class="dot-grid" style="bottom:80px;left:40px;width:100px;height:80px;opacity:0.5;z-index:3"></div>
     <div class="pricing-hero-content">
       <span class="hero-label">Membership Plans</span>
       <h1>Simple Plans for<br><em>Expert Trading</em></h1>
