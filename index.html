@@ -1015,14 +1015,6 @@
 
     .tradehacker-content h2 em { font-style: normal; color: var(--orange); }
 
-    .th-subhead {
-      font-size: 18px;
-      color: var(--text-dim);
-      line-height: 1.65;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-
     .th-body {
       font-size: 16px;
       color: var(--text-dim);
@@ -1032,41 +1024,36 @@
 
     .th-pills {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
     }
 
     .th-pill {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 7px;
       background: #fff;
       border: 1px solid rgba(13,46,78,0.1);
-      border-left: 3px solid var(--orange);
       border-radius: 8px;
-      padding: 12px 18px;
-      font-size: 14px;
+      padding: 10px 14px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--teal-900);
+      white-space: nowrap;
+      flex: 0 0 auto;
     }
 
-    .th-pill-icon {
-      width: 30px;
-      height: 30px;
-      background: rgba(200,66,10,0.1);
-      border: 1px solid rgba(200,66,10,0.2);
-      border-radius: 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .th-pill-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
       flex-shrink: 0;
-      font-size: 14px;
     }
 
     .th-buttons {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
@@ -1074,33 +1061,35 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 13px 24px;
-      background: #1DB954;
+      padding: 12px 22px;
+      background: rgba(13,46,78,0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
       color: #fff;
       font-size: 14px;
-      font-weight: 700;
-      border-radius: 10px;
+      font-weight: 600;
+      border-radius: 12px;
       text-decoration: none;
       transition: all 0.25s;
-      box-shadow: 0 6px 20px rgba(29,185,84,0.25);
     }
-    .th-btn-spotify:hover { background: #17a349; transform: translateY(-2px); }
+    .th-btn-spotify:hover { background: #1DB954; border-color: #1DB954; transform: translateY(-2px); }
 
     .th-btn-apple {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 13px 24px;
-      background: #fff;
-      color: var(--teal-900);
+      padding: 12px 22px;
+      background: rgba(13,46,78,0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
       font-size: 14px;
-      font-weight: 700;
-      border-radius: 10px;
+      font-weight: 600;
+      border-radius: 12px;
       text-decoration: none;
-      border: 1.5px solid rgba(13,46,78,0.15);
       transition: all 0.25s;
     }
-    .th-btn-apple:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+    .th-btn-apple:hover { background: #555; border-color: #555; transform: translateY(-2px); }
 
     .tradehacker-content p {
       font-size: 17px;
@@ -1194,10 +1183,6 @@
       animation: marquee-scroll-left 50s linear infinite;
     }
 
-    .marquee-track.right {
-      animation: marquee-scroll-right 50s linear infinite;
-    }
-
     .marquee-track:hover {
       animation-play-state: paused;
     }
@@ -1205,11 +1190,6 @@
     @keyframes marquee-scroll-left {
       0% { transform: translateX(0); }
       100% { transform: translateX(calc(-50% - 10px)); }
-    }
-
-    @keyframes marquee-scroll-right {
-      0% { transform: translateX(calc(-50% - 10px)); }
-      100% { transform: translateX(0); }
     }
 
     .test-card {
@@ -2748,20 +2728,19 @@
 
       <div class="tradehacker-grid">
         <div class="tradehacker-content">
-          <p class="th-subhead">Most traders don't lose because they picked the wrong strategy. They lose because they couldn't sit on their hands when it counted.</p>
-          <p class="th-body">The TradeHacker Mindset Podcast is where we talk about the part nobody else covers — patience, drawdowns, revenge trading, the boredom of doing it right, and the small mental habits that separate consistent traders from the ones who blow up. Real conversations from people who trade real money, every day.</p>
+          <p class="th-body">Most traders don't lose because they picked the wrong strategy — they lose because they couldn't sit on their hands when it counted. The TradeHacker Mindset Podcast covers the part nobody else talks about: patience, drawdowns, revenge trading, and the small mental habits that separate consistent traders from the ones who blow up.</p>
 
           <div class="th-pills">
             <div class="th-pill">
-              <div class="th-pill-icon">🎙️</div>
+              <span class="th-pill-dot"></span>
               Shift to Mental Analysis
             </div>
             <div class="th-pill">
-              <div class="th-pill-icon">🎙️</div>
+              <span class="th-pill-dot"></span>
               The Lure &amp; Dangers of Trading
             </div>
             <div class="th-pill">
-              <div class="th-pill-icon">🎙️</div>
+              <span class="th-pill-dot"></span>
               Shaping Your Mental Environment
             </div>
           </div>
@@ -2937,109 +2916,6 @@
           <div class="test-author">
             <div class="test-avatar">S</div>
             <div class="test-author-info"><h4>Strategic Member</h4><span>Community</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ROW 2: RIGHT SCROLLING -->
-      <div class="marquee-track right">
-        <div class="test-card">
-          <div class="test-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p>“I can not say enough about how well NT presents their material. It’s presented in a very logical, concise way and explained in a way that the average person can understand.”</p>
-          <div class="test-author">
-            <div class="test-avatar">A</div>
-            <div class="test-author-info"><h4>Avid Learner</h4><span>Community</span></div>
-          </div>
-        </div>
-        <div class="test-card">
-          <div class="test-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p>“I’ve learned a ton since joining and have flipped my frustrating ‘roller coaster’ investment strategy into something that is finally making sense and working consistently.”</p>
-          <div class="test-author">
-            <div class="test-avatar">C</div>
-            <div class="test-author-info"><h4>Consistent Member</h4><span>Community</span></div>
-          </div>
-        </div>
-        <div class="test-card">
-          <div class="test-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p>“Best decision I ever made for my trading career. The community is supportive and the strategies are crystal clear.”</p>
-          <div class="test-author">
-            <div class="test-avatar">B</div>
-            <div class="test-author-info"><h4>Business Trader</h4><span>Community</span></div>
-          </div>
-        </div>
-        <div class="test-card">
-          <div class="test-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p>“The results speak for themselves. I was skeptical at first, but the data doesn't lie. NavigationTrading is the real deal.”</p>
-          <div class="test-author">
-            <div class="test-avatar">R</div>
-            <div class="test-author-info"><h4>Results Driven</h4><span>Community</span></div>
-          </div>
-        </div>
-        <div class="test-card">
-          <div class="test-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p>“Finally a trading education company that isn't just trying to sell you a dream. Real strategies, real risk management.”</p>
-          <div class="test-author">
-            <div class="test-avatar">E</div>
-            <div class="test-author-info"><h4>Educated Trader</h4><span>Community</span></div>
-          </div>
-        </div>
-        <!-- CLONES FOR ROW 2 -->
-        <div class="test-card">
-          <div class="test-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p>“I can not say enough about how well NT presents their material. It’s presented in a very logical, concise way and explained in a way that the average person can understand.”</p>
-          <div class="test-author">
-            <div class="test-avatar">A</div>
-            <div class="test-author-info"><h4>Avid Learner</h4><span>Community</span></div>
-          </div>
-        </div>
-        <div class="test-card">
-          <div class="test-stars">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p>“I’ve learned a ton since joining and have flipped my frustrating ‘roller coaster’ investment strategy into something that is finally making sense and working consistently.”</p>
-          <div class="test-author">
-            <div class="test-avatar">C</div>
-            <div class="test-author-info"><h4>Consistent Member</h4><span>Community</span></div>
           </div>
         </div>
       </div>

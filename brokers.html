@@ -177,11 +177,6 @@
 
     /* ── BROKERS SECTION ── */
     .brokers-section { padding: 100px 60px; background: #fbfcfd; position: relative; }
-    .brokers-section::before {
-      content: ''; position: absolute; top: -80px; left: 0; right: 0; height: 80px;
-      background: linear-gradient(180deg, transparent, #fbfcfd);
-      pointer-events: none;
-    }
     .section-header { text-align: center; max-width: 720px; margin: 0 auto 60px; }
     .section-eyebrow {
       display: inline-block; font-size: 11px; font-weight: 700;
@@ -210,34 +205,34 @@
     .broker-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
       background: linear-gradient(90deg, var(--teal-900), var(--teal-800));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+      transform: scaleX(1);
     }
     .broker-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 16px 48px rgba(13,46,78,0.12);
       border-color: rgba(13,46,78,0.15);
     }
-    .broker-card:hover::before { transform: scaleX(1); }
-    .broker-card.featured::before { transform: scaleX(1); background: linear-gradient(90deg, var(--orange), var(--orange-bright)); }
+    .broker-card.featured::before { background: linear-gradient(90deg, var(--orange), var(--orange-bright)); }
     .broker-badge {
-      position: absolute; top: 18px; right: 18px;
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
       background: var(--gold); color: #4d3a10;
       font-size: 9.5px; font-weight: 800; letter-spacing: 1.5px;
-      text-transform: uppercase; padding: 5px 11px; border-radius: 30px;
+      text-transform: uppercase; padding: 5px 14px;
+      border-radius: 0 0 8px 8px;
+      white-space: nowrap;
     }
     .broker-logo {
-      height: 60px; display: flex; align-items: center; justify-content: center;
+      height: 64px; display: flex; align-items: center; justify-content: center;
       margin-bottom: 24px;
     }
-    .broker-logo .logo-text {
-      font-family: 'DM Sans', sans-serif; font-weight: 800;
-      font-size: 26px; color: var(--teal-900); letter-spacing: -0.5px;
+    .broker-logo img {
+      max-height: 52px;
+      max-width: 220px;
+      width: auto;
+      object-fit: contain;
     }
-    .broker-logo .logo-text span { font-weight: 400; }
-    .broker-logo .logo-text.tradier { color: #4a4a4a; letter-spacing: 0; }
-    .broker-logo .logo-text.schwab { font-family: 'Cormorant Garamond', serif; font-size: 30px; }
-    .broker-logo .logo-text.schwab .schwab-bold { font-family: 'DM Sans', sans-serif; font-weight: 800; letter-spacing: 1.5px; font-size: 22px; }
+    .broker-logo img.logo-tradier { max-height: 44px; }
+    .broker-logo img.logo-schwab  { max-height: 36px; }
     .broker-name { font-size: 13px; font-weight: 700; color: var(--orange); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
     .broker-tagline { font-size: 16px; color: var(--text-main); font-weight: 600; line-height: 1.4; margin-bottom: 20px; }
     .broker-features { list-style: none; padding: 0; margin: 0 0 28px; flex-grow: 1; }
@@ -271,42 +266,61 @@
     /* ── COMPARISON DOWNLOAD ── */
     .comparison-section { padding: 90px 60px; background: #fff; }
     .comparison-card {
-      max-width: 1100px; margin: 0 auto;
-      background: linear-gradient(135deg, var(--teal-900) 0%, var(--teal-800) 100%);
-      border-radius: 22px; overflow: hidden;
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      box-shadow: 0 28px 70px rgba(13,46,78,0.20);
+      max-width: 1200px; margin: 0 auto;
+      background: linear-gradient(135deg, var(--teal-900) 0%, #0f3a62 60%, var(--teal-800) 100%);
+      border-radius: 24px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      box-shadow: 0 36px 90px rgba(13,46,78,0.25);
       position: relative;
     }
     .comparison-card::before {
       content: ''; position: absolute; inset: 0;
       background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-      opacity: 0.08; pointer-events: none;
+      opacity: 0.06; pointer-events: none;
     }
-    .comparison-left { padding: 50px 50px; color: #fff; position: relative; z-index: 2; }
+    .comparison-card::after {
+      content: ''; position: absolute;
+      bottom: -100px; right: -100px;
+      width: 380px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,66,10,0.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .comparison-left { padding: 60px 56px; color: #fff; position: relative; z-index: 2; }
     .comparison-eyebrow {
       display: inline-block; font-size: 11px; font-weight: 700;
       letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 14px;
+      color: var(--orange); margin-bottom: 16px;
     }
     .comparison-card h2 {
-      font-size: 32px; font-weight: 700;
-      letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 18px;
+      font-size: clamp(26px, 2.8vw, 38px); font-weight: 800;
+      letter-spacing: -1px; line-height: 1.15; margin-bottom: 18px; color: #fff;
     }
-    .comparison-card p { font-size: 15.5px; color: rgba(255,255,255,0.78); margin-bottom: 28px; line-height: 1.65; }
+    .comparison-card p { font-size: 15px; color: rgba(255,255,255,0.72); margin-bottom: 32px; line-height: 1.7; }
     .download-cta {
       display: inline-flex; align-items: center; gap: 10px;
-      padding: 14px 28px; background: var(--orange); color: #fff;
+      padding: 15px 30px; background: var(--orange); color: #fff;
       text-decoration: none; font-size: 13.5px; font-weight: 800;
       letter-spacing: 0.6px; text-transform: uppercase;
-      border-radius: 10px; transition: all 0.25s;
-      box-shadow: 0 8px 22px rgba(200,66,10,0.30);
+      border-radius: 50px; transition: all 0.25s;
+      box-shadow: 0 10px 28px rgba(200,66,10,0.36);
     }
-    .download-cta:hover { background: var(--orange-bright); transform: translateY(-2px); }
+    .download-cta:hover { background: var(--orange-bright); transform: translateY(-2px); box-shadow: 0 16px 36px rgba(200,66,10,0.48); }
     .comparison-right {
       position: relative; z-index: 2;
       display: flex; align-items: center; justify-content: center;
-      padding: 30px;
+      padding: 40px 36px;
+    }
+    .comparison-img-frame {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+      width: 100%;
+    }
+    .comparison-img-frame img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
     }
     .scale-illustration {
       width: 100%; max-width: 320px; aspect-ratio: 1;
@@ -439,7 +453,7 @@
       <!-- Interactive Brokers -->
       <div class="broker-card">
         <div class="broker-logo">
-          <span class="logo-text">Interactive<span>Brokers</span></span>
+          <img src="Interactive_Brokers_Logo_2014.svg-800x123.png" alt="Interactive Brokers">
         </div>
         <div class="broker-name">Interactive Brokers</div>
         <div class="broker-tagline">Open your account today and receive free Class A Common Stock.</div>
@@ -455,7 +469,7 @@
       <div class="broker-card featured">
         <div class="broker-badge">Most Popular</div>
         <div class="broker-logo">
-          <span class="logo-text tradier">tradier<span style="color: var(--orange);">▴</span></span>
+          <img src="logo-tradier-1-800x364.png" alt="Tradier" class="logo-tradier">
         </div>
         <div class="broker-name">Tradier Brokerage</div>
         <div class="broker-tagline">Get instant access to the advanced Tradier Pro platform.</div>
@@ -470,7 +484,7 @@
       <!-- Charles Schwab -->
       <div class="broker-card">
         <div class="broker-logo">
-          <span class="logo-text schwab">charles <span class="schwab-bold">SCHWAB</span></span>
+          <img src="charles-schwab-logo-1-1.png" alt="Charles Schwab" class="logo-schwab">
         </div>
         <div class="broker-name">Charles Schwab</div>
         <div class="broker-tagline">Start trading with the industry-leading thinkorswim® platform.</div>
@@ -498,40 +512,8 @@
         </a>
       </div>
       <div class="comparison-right">
-        <div class="scale-illustration">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <!-- chart bg -->
-            <g opacity="0.18" stroke="#d4a040" stroke-width="2" fill="none">
-              <line x1="20" y1="170" x2="35" y2="155"/>
-              <line x1="35" y1="155" x2="50" y2="160"/>
-              <line x1="50" y1="160" x2="65" y2="140"/>
-              <line x1="65" y1="140" x2="80" y2="135"/>
-              <rect x="150" y="120" width="6" height="30" fill="#d4a040" stroke="none"/>
-              <rect x="160" y="105" width="6" height="40" fill="#d4a040" stroke="none"/>
-              <rect x="170" y="90" width="6" height="55" fill="#d4a040" stroke="none"/>
-              <rect x="180" y="115" width="6" height="35" fill="#d4a040" stroke="none"/>
-            </g>
-            <!-- scale -->
-            <g stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round">
-              <line x1="100" y1="40" x2="100" y2="170"/>
-              <line x1="100" y1="55" x2="50" y2="55"/>
-              <line x1="100" y1="55" x2="150" y2="55"/>
-              <!-- left pan -->
-              <path d="M 30 75 L 50 55 L 70 75 Z" fill="#1a4a7a"/>
-              <line x1="50" y1="55" x2="50" y2="75"/>
-              <!-- right pan -->
-              <path d="M 130 75 L 150 55 L 170 75 Z" fill="#c8420a"/>
-              <line x1="150" y1="55" x2="150" y2="75"/>
-              <!-- base -->
-              <line x1="80" y1="170" x2="120" y2="170"/>
-              <line x1="90" y1="170" x2="90" y2="180"/>
-              <line x1="110" y1="170" x2="110" y2="180"/>
-              <line x1="80" y1="180" x2="120" y2="180"/>
-            </g>
-            <!-- $ symbols -->
-            <text x="50" y="68" text-anchor="middle" fill="#fff" font-family="DM Sans" font-weight="800" font-size="14">$</text>
-            <text x="150" y="68" text-anchor="middle" fill="#fff" font-family="DM Sans" font-weight="800" font-size="14">$</text>
-          </svg>
+        <div class="comparison-img-frame">
+          <img src="Broker-Commission-comparison-tool-T-800x400.png" alt="Broker Commission Comparison Tool">
         </div>
       </div>
     </div>
