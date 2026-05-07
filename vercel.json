@@ -41,12 +41,12 @@
       "destination": "/pricing"
     },
     {
-      "source": "/day-trading",
-      "destination": "/day-trading"
+      "source": "/day-trading-membership",
+      "destination": "/day-trading-membership"
     },
     {
       "source": "/contact",
-      "destination": "/index"
+      "destination": "/contact"
     }
   ]
 }
