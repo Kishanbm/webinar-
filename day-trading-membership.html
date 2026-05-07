@@ -55,7 +55,7 @@
     /* ── SHARED HELPERS ── */
     .pm-container { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
     .pm-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--orange); margin-bottom: 14px; }
-    .pm-section-head { text-align: center; margin-bottom: 64px; }
+    .pm-section-head { text-align: center; margin-bottom: 44px; }
     .pm-section-head .pm-eyebrow { display: block; }
     .pm-section-head h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; letter-spacing: -.02em; line-height: 1.15; color: var(--teal-900); }
     .pm-section-head h2 em { color: var(--orange); font-style: normal; }
@@ -140,14 +140,17 @@
     .pm-promise-right strong { color: var(--teal-900); font-weight: 700; }
 
     /* ══ SECTION 3: TIMELINE ══ */
-    .pm-timeline { background: #071828; padding: 120px 0; }
-    .pm-tl-wrap { position: relative; max-width: 900px; margin: 60px auto 0; padding-left: 100px; }
+    .pm-timeline { background: #0D2E4E; padding: 70px 0; position: relative; overflow: hidden; }
+    .pm-timeline::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
+    .pm-timeline::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.80) 0%, rgba(13,46,78,0.62) 50%, rgba(13,46,78,0.78) 100%); pointer-events: none; }
+    .pm-timeline .pm-container { position: relative; z-index: 2; }
+    .pm-tl-wrap { position: relative; max-width: 900px; margin: 36px auto 0; padding-left: 100px; }
     .pm-tl-line { position: absolute; left: 131px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,.08); }
     .pm-tl-fill { position: absolute; left: 131px; top: 0; width: 2px; height: 0; background: linear-gradient(to bottom, var(--orange), rgba(200,66,10,.4)); z-index: 1; transition: height 1.2s ease; pointer-events: none; }
     .pm-tl-item { position: relative; margin-bottom: 60px; padding-left: 60px; }
     .pm-tl-item:last-child { margin-bottom: 0; }
     .pm-tl-time { position: absolute; left: -100px; top: 0; font-size: 14px; font-weight: 800; color: var(--orange); width: 80px; text-align: right; font-family: 'DM Mono', monospace; }
-    .pm-tl-dot { position: absolute; left: 26px; top: 3px; width: 12px; height: 12px; border-radius: 50%; background: #071828; border: 3px solid var(--orange); z-index: 2; box-shadow: 0 0 10px rgba(200,66,10,0.3); transition: background .4s, box-shadow .4s; }
+    .pm-tl-dot { position: absolute; left: 26px; top: 3px; width: 12px; height: 12px; border-radius: 50%; background: #0D2E4E; border: 3px solid var(--orange); z-index: 2; box-shadow: 0 0 10px rgba(200,66,10,0.3); transition: background .4s, box-shadow .4s; }
     .pm-tl-item.active .pm-tl-dot { background: var(--orange); box-shadow: 0 0 0 4px rgba(200,66,10,.2), 0 0 16px rgba(200,66,10,.3); }
     .pm-tl-item h3 { font-size: 20px; font-weight: 800; color: rgba(255,255,255,.65); margin-bottom: 8px; transition: color .3s; }
     .pm-tl-item.active h3 { color: #fff; }
@@ -158,7 +161,7 @@
     .pm-tl-item.past p { color: rgba(255,255,255,.18); }
 
     /* ══ SECTION 4: LIVE EXPERIENCE ══ */
-    .pm-live { padding: 120px 0; background: var(--cream); }
+    .pm-live { padding: 70px 0; background: var(--cream); }
     .pm-info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; }
     .pm-info-card { background: #fff; padding: 40px; border-radius: 20px; border: 1px solid rgba(0,0,0,.06); box-shadow: 0 4px 24px rgba(13,46,78,.05); transition: all .3s ease; }
     .pm-info-card:hover { border-color: rgba(200,66,10,.3); box-shadow: 0 16px 48px rgba(0,0,0,.09); transform: translateY(-4px); }
@@ -168,9 +171,9 @@
     .pm-info-card p { font-size: 15px; color: #555; line-height: 1.78; }
 
     /* ══ SECTION 5: CURRICULUM (ACCORDION) ══ */
-    .pm-library { padding: 140px 0; background: #071828; position: relative; overflow: hidden; }
-    .pm-library::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.07; pointer-events: none; }
-    .pm-library::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(200,66,10,0.09) 0%, transparent 60%); pointer-events: none; }
+    .pm-library { padding: 70px 0; background: #0D2E4E; position: relative; overflow: hidden; }
+    .pm-library::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
+    .pm-library::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
     .pm-library .pm-container { position: relative; z-index: 2; }
     .lib-cat-group { margin-bottom: 20px; }
     .lib-cat-group:last-child { margin-bottom: 0; }
@@ -194,8 +197,8 @@
     .strategy-card .tag { display: inline-block; padding: 4px 12px; border-radius: 4px; background: rgba(200,66,10,0.1); color: var(--orange); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-top: auto; align-self: flex-start; }
 
     /* ══ SECTION 6: TOOLS ══ */
-    .pm-tools { padding: 120px 0; background: #fff; }
-    .pm-tools-split { display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; margin-top: 64px; }
+    .pm-tools { padding: 70px 0; background: #fff; }
+    .pm-tools-split { display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; margin-top: 40px; }
     .pm-tool-row { display: flex; align-items: flex-start; gap: 20px; padding: 28px 0; border-bottom: 1px solid rgba(0,0,0,.06); }
     .pm-tool-row:last-of-type { border-bottom: none; }
     .pm-tool-icon-box { width: 48px; height: 48px; border-radius: 14px; background: var(--teal-900); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -212,8 +215,9 @@
     .pm-stat-sub { font-size: 12.5px; color: #666; margin-top: 9px; line-height: 1.6; display: block; border-top: 1px solid rgba(200,66,10,.15); padding-top: 9px; }
 
     /* ══ SECTION 7: WHO IT'S FOR ══ */
-    .pm-who { padding: 120px 0; background: #071828; position: relative; overflow: hidden; }
-    .pm-who::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.05; pointer-events: none; }
+    .pm-who { padding: 70px 0; background: #0D2E4E; position: relative; overflow: hidden; }
+    .pm-who::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
+    .pm-who::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
     .pm-who .pm-container { position: relative; z-index: 2; }
     .pm-fnf { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
     .pm-fnf-box { padding: 40px; border-radius: 24px; }
@@ -228,7 +232,7 @@
     .pm-fnf-box.pm-not .pm-fnf-item::before { content: '×'; position: absolute; left: 0; top: 0; color: rgba(255,255,255,.35); font-size: 18px; }
 
     /* ══ SECTION 8: COMPARISON ══ */
-    .pm-comparison { padding: 120px 0; background: var(--cream); }
+    .pm-comparison { padding: 70px 0; background: var(--cream); }
     .pm-table-wrap { margin-top: 60px; overflow-x: auto; border-radius: 24px; border: 1px solid rgba(0,0,0,.1); box-shadow: 0 30px 80px rgba(0,0,0,.08); }
     .pm-comp-table { width: 100%; border-collapse: collapse; min-width: 580px; background: #fff; border-radius: 24px; overflow: hidden; }
     .pm-comp-table th { padding: 20px 28px; text-align: center; border-bottom: 1px solid rgba(0,0,0,.07); }
@@ -259,9 +263,9 @@
     .pm-cta-wrap { text-align: center; margin-top: 44px; }
 
     /* ══ SECTION 9: RESULTS ══ */
-    .pm-results { background: #071828; padding: 120px 0; position: relative; overflow: hidden; }
-    .pm-results::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.06; pointer-events: none; }
-    .pm-results::after { content: ''; position: absolute; top: 50%; left: 50%; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(200,66,10,0.09) 0%, transparent 60%); transform: translate(-50%,-50%); pointer-events: none; }
+    .pm-results { background: #0D2E4E; padding: 70px 0; position: relative; overflow: hidden; }
+    .pm-results::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
+    .pm-results::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
     .pm-results .pm-container { position: relative; z-index: 2; }
     .pm-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .pm-result-card { padding: 32px 28px; border-radius: 16px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); backdrop-filter: blur(10px); transition: all .3s; }
@@ -271,8 +275,9 @@
     .pm-result-card p { font-size: 13.5px; color: rgba(255,255,255,.5); line-height: 1.65; }
 
     /* ══ SECTION 10: INSTRUCTOR ══ */
-    .pm-instructor { padding: 120px 0; background: #06101e; position: relative; overflow: hidden; }
-    .pm-instructor::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.05; pointer-events: none; }
+    .pm-instructor { padding: 70px 0; background: #0D2E4E; position: relative; overflow: hidden; }
+    .pm-instructor::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
+    .pm-instructor::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
     .pm-instructor .pm-container { position: relative; z-index: 2; }
     .pm-instr-layout { display: grid; grid-template-columns: 360px 1fr; gap: 60px; align-items: start; }
     .pm-instr-img-card { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,.07); }
@@ -297,7 +302,10 @@
     .pm-cred-row p { font-size: 13px; color: rgba(255,255,255,.42); margin: 0; line-height: 1.65; }
 
     /* ══ SECTION 11: REVIEWS ══ */
-    .pm-reviews { padding: 120px 0; background: var(--cream); }
+    .pm-reviews { padding: 70px 0; background: #0D2E4E; position: relative; overflow: hidden; }
+    .pm-reviews::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
+    .pm-reviews::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
+    .pm-reviews .pm-container { position: relative; z-index: 2; }
     .pm-rating-box { max-width: 480px; margin: 0 auto 56px; text-align: center; padding: 36px 30px; background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(13,46,78,.08); border: 1px solid rgba(0,0,0,.06); }
     .pm-rating-big { font-size: 56px; font-weight: 800; color: var(--teal-900); letter-spacing: -2px; line-height: 1; }
     .pm-rating-stars { color: var(--gold); font-size: 22px; letter-spacing: 4px; margin: 6px 0 10px; }
@@ -321,33 +329,35 @@
     .pm-rv-body p { font-size: 13.5px; line-height: 1.7; color: #555; font-style: italic; margin: 0; }
 
     /* ══ SECTION 12: FAQ ══ */
-    .pm-faq { background: #04080f; padding: 120px 0; }
+    .pm-faq { background: #fff; padding: 70px 0; }
     .pm-faq-layout { display: grid; grid-template-columns: 360px 1fr; gap: 80px; align-items: start; }
     .pm-faq-left { position: sticky; top: 100px; }
-    .pm-faq-left h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -.02em; margin-top: 10px; margin-bottom: 16px; }
-    .pm-faq-left p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.75; margin-bottom: 32px; }
-    .pm-faq-contact-box { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
-    .pm-faq-contact-icon { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; background: rgba(200,66,10,.14); border: 1px solid rgba(200,66,10,.25); display: flex; align-items: center; justify-content: center; }
+    .pm-faq-left h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: var(--teal-900); line-height: 1.15; letter-spacing: -.02em; margin-top: 10px; margin-bottom: 16px; }
+    .pm-faq-left p { font-size: 14px; color: #666; line-height: 1.75; margin-bottom: 32px; }
+    .pm-faq-contact-box { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-radius: 12px; background: #f8fbff; border: 1px solid rgba(13,46,78,.1); }
+    .pm-faq-contact-icon { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; background: rgba(200,66,10,.1); border: 1px solid rgba(200,66,10,.25); display: flex; align-items: center; justify-content: center; }
     .pm-faq-contact-icon svg { width: 16px; height: 16px; stroke: var(--orange); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .pm-faq-contact-text strong { display: block; font-size: 13px; color: #fff; font-weight: 700; }
-    .pm-faq-contact-text span { font-size: 12px; color: rgba(255,255,255,.4); }
+    .pm-faq-contact-text strong { display: block; font-size: 13px; color: var(--teal-900); font-weight: 700; }
+    .pm-faq-contact-text span { font-size: 12px; color: #888; }
     .pm-faq-right { display: flex; flex-direction: column; gap: 8px; }
-    .pm-faq-item { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; overflow: hidden; transition: border-color .25s, background .25s; }
-    .pm-faq-item.open { background: rgba(255,255,255,.05); border-color: rgba(200,66,10,.32); }
-    .pm-faq-q { padding: 22px 28px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 16px; font-weight: 700; color: #fff; user-select: none; }
+    .pm-faq-item { background: #f8fbff; border: 1px solid rgba(13,46,78,.08); border-radius: 14px; overflow: hidden; transition: border-color .25s, background .25s; }
+    .pm-faq-item.open { background: #fff; border-color: rgba(200,66,10,.3); box-shadow: 0 4px 20px rgba(200,66,10,.08); }
+    .pm-faq-q { padding: 22px 28px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 16px; font-weight: 700; color: var(--teal-900); user-select: none; }
     .pm-faq-q:hover { color: rgba(255,255,255,.8); }
     .pm-faq-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(200,66,10,.1); border: 1px solid rgba(200,66,10,.22); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; color: var(--orange); transition: transform .3s, background .3s; }
     .pm-faq-item.open .pm-faq-icon { transform: rotate(45deg); background: rgba(200,66,10,.22); }
     .pm-faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .pm-faq-ans-inner { padding: 0 28px 24px; font-size: 14.5px; color: rgba(255,255,255,.55); line-height: 1.75; }
+    .pm-faq-ans-inner { padding: 0 28px 24px; font-size: 14.5px; color: #555; line-height: 1.75; }
 
     /* ══ SECTION 13: FINAL CTA ══ */
-    .pm-final-cta { position: relative; padding: 160px 0; text-align: center; overflow: hidden; background: radial-gradient(ellipse at 10% 80%, rgba(200,66,10,.2) 0%, transparent 42%), radial-gradient(ellipse at 90% 8%, rgba(13,46,78,.3) 0%, transparent 38%), radial-gradient(ellipse at 50% 45%, rgba(200,66,10,.08) 0%, transparent 55%), #071020; }
-    .pm-final-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 2; background: linear-gradient(90deg, transparent, rgba(200,66,10,.45) 30%, rgba(200,66,10,.4) 65%, transparent); }
-    .pm-final-blob-a { position: absolute; width: 600px; height: 600px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(200,66,10,.1) 0%, transparent 65%); top: -200px; left: -150px; animation: blobPulse 9s ease-in-out infinite; }
-    .pm-final-blob-b { position: absolute; width: 500px; height: 500px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(13,46,78,.2) 0%, transparent 65%); bottom: -150px; right: -100px; animation: blobPulse 12s ease-in-out 3s infinite reverse; }
+    .pm-final-cta { position: relative; padding: 90px 0; text-align: center; overflow: hidden; background: #0D2E4E; }
+    .pm-final-cta-bg { position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; z-index: 0; }
+    .pm-final-cta-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 10% 80%, rgba(200,66,10,.25) 0%, transparent 45%), radial-gradient(ellipse at 90% 10%, rgba(13,46,78,.4) 0%, transparent 40%), linear-gradient(135deg, rgba(13,46,78,0.80) 0%, rgba(13,46,78,0.60) 50%, rgba(13,46,78,0.78) 100%); pointer-events: none; z-index: 1; }
+    .pm-final-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 4; background: linear-gradient(90deg, transparent, rgba(200,66,10,.45) 30%, rgba(200,66,10,.4) 65%, transparent); }
+    .pm-final-blob-a { position: absolute; width: 600px; height: 600px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(200,66,10,.15) 0%, transparent 65%); top: -200px; left: -150px; animation: blobPulse 9s ease-in-out infinite; z-index: 2; }
+    .pm-final-blob-b { position: absolute; width: 500px; height: 500px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 65%); bottom: -150px; right: -100px; animation: blobPulse 12s ease-in-out 3s infinite reverse; z-index: 2; }
     @keyframes blobPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08) translateY(-20px); } }
-    .pm-final-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    .pm-final-inner { position: relative; z-index: 3; max-width: 800px; margin: 0 auto; padding: 0 24px; }
     .pm-final-cta h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: #fff; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 24px; }
     .pm-final-cta p { font-size: 18px; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 48px; }
     .btn-final { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--orange), var(--orange-bright)); color: #fff; padding: 22px 56px; border-radius: 12px; text-decoration: none; font-size: 17px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; transition: all .3s cubic-bezier(.175,.885,.32,1.275); box-shadow: 0 20px 40px rgba(200,66,10,.3); }
@@ -407,7 +417,7 @@
       .pm-callout { padding: 28px 24px; }
       .pm-instr-bio { padding: 24px; }
       .pm-fnf-box { padding: 28px 20px; }
-      .pm-final-cta { padding: 80px 0; }
+      .pm-final-cta { padding: 50px 0; }
       .btn-final { padding: 16px 28px; font-size: 15px; }
       .sticky-cta { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
       .sticky-cta-text { font-size: 12px; flex: 1 1 100%; }
@@ -1034,8 +1044,8 @@
   <section class="pm-reviews">
     <div class="pm-container">
       <div class="pm-section-head reveal">
-        <span class="pm-eyebrow">What Members Say</span>
-        <h2>4.8 Out of 5 Stars — <em>From Real Traders</em></h2>
+        <span class="pm-eyebrow" style="color:rgba(255,255,255,.6);">What Members Say</span>
+        <h2 style="color:#fff;">4.8 Out of 5 Stars — <em style="color:var(--orange);">From Real Traders</em></h2>
       </div>
       <div class="pm-rating-box reveal">
         <div class="pm-rating-big">4.8</div>
@@ -1178,6 +1188,8 @@
 
   <!-- ── 13. FINAL CTA ── -->
   <section class="pm-final-cta">
+    <div class="pm-final-cta-bg"></div>
+    <div class="pm-final-cta-overlay"></div>
     <div class="pm-final-blob-a"></div>
     <div class="pm-final-blob-b"></div>
     <div class="pm-final-inner">
