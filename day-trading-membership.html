@@ -758,54 +758,70 @@
     @media (max-width: 860px) { .dt-mosaic { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 540px) { .dt-mosaic { grid-template-columns: 1fr; } }
 
-    /* ══ SECTION 10: INSTRUCTOR — WHITE EDITORIAL ══ */
-    .dt-instructor { padding: 60px 0; background: #fff; position: relative; overflow: hidden; }
-    .dt-instructor::after { content: ''; position: absolute; right: 0; top: 0; width: 40%; height: 100%; background: linear-gradient(135deg, transparent 0%, #f8fbff 100%); pointer-events: none; }
-    .dt-instr-grid { display: grid; grid-template-columns: 1fr 360px; gap: 80px; align-items: start; }
-    .dt-instr-quote { font-family: 'Cormorant Garamond',serif; font-size: clamp(19px,2.2vw,26px); font-style: italic; color: var(--teal-900); line-height: 1.55; padding: 24px 0 24px 28px; border-left: 4px solid var(--orange); margin-bottom: 32px; }
-    .dt-instr-bio-body p { font-size: 15.5px; line-height: 1.85; color: #444; margin-bottom: 16px; }
+    /* ══ SECTION 10: INSTRUCTOR ══ */
+    .dt-instructor { padding: 100px 0; background: #fff; }
+    .dt-instr-grid { display: grid; grid-template-columns: 380px 1fr; gap: 60px; align-items: start; }
+    .dt-instr-right { border-radius: 24px; overflow: hidden; }
+    .dt-instr-photo { position: relative; }
+    .dt-instr-photo img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: top; }
+    .dt-instr-bar { display: none; }
+    .dt-instr-nameplate { padding: 26px 28px; background: #eef5fc; border: 1.5px solid #c8ddf0; border-top: none; border-radius: 0 0 24px 24px; box-shadow: 0 6px 20px rgba(13,46,78,.09); }
+    .dt-instr-name { color: var(--teal-900); font-size: 20px; font-weight: 800; margin-bottom: 3px; }
+    .dt-instr-role { color: var(--orange); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 22px; }
+    .dt-instr-mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .dt-i-mini { padding: 14px 12px; border-radius: 12px; text-align: center; background: #d8eaf8; border: 1px solid #c4dcf2; }
+    .dt-i-mini-num { font-family: 'Cormorant Garamond',serif; font-size: 24px; font-weight: 700; color: var(--orange); display: block; line-height: 1; margin-bottom: 3px; }
+    .dt-i-mini-lbl { font-size: 10px; color: #5a7a99; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+    .dt-instr-left { background: #f7f8fa; border: 1px solid rgba(0,0,0,.07); border-radius: 24px; padding: 48px; }
+    .dt-instr-quote { font-family: 'Cormorant Garamond',serif; font-size: clamp(19px,1.9vw,24px); font-style: italic; color: var(--teal-900); line-height: 1.55; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(0,0,0,.08); }
+    .dt-instr-bio-body p { font-size: 15px; line-height: 1.85; color: #555; margin-bottom: 18px; }
     .dt-instr-bio-body p:last-child { margin-bottom: 0; }
     .dt-instr-bio-body strong { color: var(--teal-900); font-weight: 700; }
-    .dt-instr-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(13,46,78,.08); }
-    .dt-instr-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(13,46,78,.05); border: 1px solid rgba(13,46,78,.1); font-size: 12.5px; font-weight: 700; color: var(--teal-900); }
-    .dt-instr-badge::before { content: '✓'; color: var(--orange); font-size: 12px; font-weight: 900; }
-    .dt-instr-right { position: relative; z-index: 2; }
-    .dt-instr-photo { border-radius: 20px; overflow: hidden; border: 1px solid rgba(13,46,78,.09); box-shadow: 0 24px 64px rgba(13,46,78,.1); }
-    .dt-instr-photo img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: top; }
-    .dt-instr-bar { height: 4px; background: linear-gradient(90deg, var(--orange), var(--orange-bright)); }
-    .dt-instr-nameplate { padding: 22px 24px; background: var(--teal-900); }
-    .dt-instr-name { color: #fff; font-size: 18px; font-weight: 800; margin-bottom: 2px; }
-    .dt-instr-role { color: var(--orange); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
-    .dt-instr-mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .dt-i-mini { padding: 10px; border-radius: 8px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.07); text-align: center; }
-    .dt-i-mini-num { font-family: 'Cormorant Garamond',serif; font-size: 22px; font-weight: 700; color: var(--orange); display: block; line-height: 1; }
-    .dt-i-mini-lbl { font-size: 9.5px; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+    .dt-instr-creds-list { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; padding-top: 36px; border-top: 1px solid rgba(0,0,0,.08); list-style: none; }
+    .dt-instr-cred-row { display: flex; align-items: flex-start; gap: 14px; }
+    .dt-instr-cred-badge { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; background: rgba(200,66,10,.1); border: 1px solid rgba(200,66,10,.25); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--orange); font-weight: 900; margin-top: 1px; }
+    .dt-instr-cred-content h4 { font-size: 14.5px; color: var(--teal-900); font-weight: 700; margin-bottom: 2px; }
+    .dt-instr-cred-content p { font-size: 13px; color: #777; margin: 0; line-height: 1.65; }
+
+    @media (max-width: 900px) {
+      .dt-instr-grid { grid-template-columns: 1fr; }
+    }
 
     /* ══ SECTION 11: REVIEWS — BLUE QUOTE-FORWARD ══ */
     .dt-reviews { padding: 60px 0; background: #0D2E4E; position: relative; overflow: hidden; }
     .dt-reviews::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
     .dt-reviews::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
     .dt-reviews .pm-container { position: relative; z-index: 2; }
-    .dt-reviews-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; flex-wrap: wrap; gap: 24px; }
-    .dt-reviews-heading .pm-eyebrow { color: rgba(255,255,255,.5); }
-    .dt-reviews-heading h2 { font-size: clamp(26px,3.5vw,40px); color: #fff; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin-top: 6px; }
-    .dt-reviews-heading h2 em { color: var(--orange); font-style: normal; }
-    .dt-rating-inline { text-align: right; }
-    .dt-rating-num { font-family: 'Cormorant Garamond',serif; font-size: 54px; font-weight: 700; color: #fff; line-height: 1; display: block; }
-    .dt-rating-stars { color: var(--gold); font-size: 15px; letter-spacing: 3px; display: block; margin: 3px 0; }
-    .dt-rating-count { font-size: 12px; color: rgba(255,255,255,.42); display: block; }
+
+    .dt-rating-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 24px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    .dt-rating-tag-stars { color: var(--orange); letter-spacing: 2px; font-size: 13px; line-height: 1; }
+    .dt-rating-tag-count { font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500; border-left: 1px solid rgba(255,255,255,0.25); padding-left: 12px; }
     .dt-quote-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .dt-quote-card { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07); border-radius: 24px; padding: 40px; position: relative; overflow: hidden; transition: all .3s; }
-    .dt-quote-card:hover { background: rgba(255,255,255,.045); border-color: rgba(200,66,10,.25); }
-    .dt-big-quote { position: absolute; top: 16px; right: 24px; font-family: 'Cormorant Garamond',serif; font-size: 96px; line-height: 1; color: rgba(200,66,10,.18); pointer-events: none; user-select: none; }
-    .dt-quote-text { font-family: 'Cormorant Garamond',serif; font-size: 16.5px; color: rgba(255,255,255,.82); line-height: 1.75; font-style: italic; margin-bottom: 28px; position: relative; z-index: 2; }
-    .dt-quote-author { display: flex; align-items: center; gap: 14px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.06); }
-    .dt-quote-avatar { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond',serif; font-size: 18px; font-weight: 700; color: #fff; }
-    .dt-av-navy { background: linear-gradient(135deg, var(--teal-900), #0a2040); }
-    .dt-av-orange { background: linear-gradient(135deg, var(--orange), #8a2f07); }
-    .dt-quote-name { font-size: 13.5px; font-weight: 700; color: #fff; display: block; }
-    .dt-quote-role { font-size: 11.5px; color: rgba(255,255,255,.38); display: block; }
-    .dt-quote-stars { margin-left: auto; color: var(--gold); font-size: 13px; letter-spacing: 2px; flex-shrink: 0; }
+    .dt-quote-card { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; display: flex; flex-direction: column; transition: all 0.3s ease; }
+    .dt-quote-card:hover { background: rgba(0, 0, 0, 0.6); border-color: rgba(255, 255, 255, 0.25); transform: translateY(-5px); }
+    .dt-quote-stars { display: flex; gap: 3px; color: var(--orange); margin-bottom: 20px; }
+    .dt-quote-stars svg { width: 14px; height: 14px; fill: currentColor; }
+    .dt-quote-text { font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, 0.8); margin-bottom: 24px; flex-grow: 1; font-style: normal; font-family: inherit; }
+    .dt-quote-author { display: flex; align-items: center; gap: 12px; }
+    .dt-quote-avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 16px; flex-shrink: 0; }
+    .dt-quote-info { display: flex; flex-direction: column; }
+    .dt-quote-name { font-size: 14px; font-weight: 700; color: #fff; margin: 0 0 2px 0; display: block; }
+    .dt-quote-role { font-size: 11px; color: var(--orange); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: block; }
 
     /* ══ SECTION 12: FAQ ══ */
     .pm-faq { background: #fff; padding: 60px 0; }
@@ -871,7 +887,7 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1080px) {
       .dt-bento { grid-template-columns: 1fr 1fr; }
-      .dt-instr-grid { grid-template-columns: 1fr 300px; gap: 48px; }
+      .dt-instr-grid { grid-template-columns: 260px 1fr; gap: 40px; }
     }
     @media (max-width: 960px) {
       .dt-promise-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1717,35 +1733,50 @@
         <h2>You're Trading Alongside <em>Steve — Not a Recording of Him</em></h2>
       </div>
       <div class="dt-instr-grid reveal">
+        
+        <!-- Left: Speaker Card -->
+        <div class="dt-instr-right">
+          <div class="dt-instr-photo">
+            <img src="auther.jpeg" alt="Steve — NavigationTrading">
+          </div>
+          <div class="dt-instr-nameplate">
+            <div class="dt-instr-name">Steve</div>
+            <div class="dt-instr-role">Founder & Head Trader</div>
+            <div class="dt-instr-mini-stats">
+              <div class="dt-i-mini"><span class="dt-i-mini-num">10</span><span class="dt-i-mini-lbl">Courses</span></div>
+              <div class="dt-i-mini"><span class="dt-i-mini-num">4.8★</span><span class="dt-i-mini-lbl">Star Rating</span></div>
+              <div class="dt-i-mini"><span class="dt-i-mini-num">3,400+</span><span class="dt-i-mini-lbl">Members</span></div>
+              <div class="dt-i-mini"><span class="dt-i-mini-num">10+</span><span class="dt-i-mini-lbl">Years Live</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Bio Body -->
         <div class="dt-instr-left">
           <div class="dt-instr-quote">"I sit in the same live trading room as my members. I call trades as they happen, explain my reasoning in real time, and take the wins and losses in front of everyone."</div>
           <div class="dt-instr-bio-body">
             <p>NavigationTrading was built by Steve, an active day trader who shows up every market morning and does exactly what he teaches — live, on stream, with real money. <strong>That's not a small thing.</strong> Most trading educators sell courses and disappear.</p>
             <p>His approach is built on statistics, probabilities, and repeatable rules. No "secret indicators." No hype. No screenshots of winning trades with the losers conveniently deleted. Every strategy in this membership is one Steve actively trades — and you can watch him do it, every single day.</p>
           </div>
-          <div class="dt-instr-badges">
-            <span class="dt-instr-badge">Active trader, live every market day</span>
-            <span class="dt-instr-badge">Statistics &amp; probability-based</span>
-            <span class="dt-instr-badge">No hype, no gut-feel trading</span>
-            <span class="dt-instr-badge">10 strategies refined over years</span>
-          </div>
+          
+          <ul class="dt-instr-creds-list">
+            <li class="dt-instr-cred-row">
+              <span class="dt-instr-cred-badge">✓</span>
+              <div class="dt-instr-cred-content">
+                <h4>No Theory, Just Execution</h4>
+                <p>We don't teach what we don't trade. Every strategy is proven in the live market with real capital.</p>
+              </div>
+            </li>
+            <li class="dt-instr-cred-row">
+              <span class="dt-instr-cred-badge">✓</span>
+              <div class="dt-instr-cred-content">
+                <h4>Statistics Over Gut Feelings</h4>
+                <p>Every entry and exit is rule-based — built on probabilities, not emotion or guesswork.</p>
+              </div>
+            </li>
+          </ul>
         </div>
-        <div class="dt-instr-right">
-          <div class="dt-instr-photo">
-            <img src="auther.jpeg" alt="Steve — NavigationTrading">
-            <div class="dt-instr-bar"></div>
-          </div>
-          <div class="dt-instr-nameplate">
-            <div class="dt-instr-name">Steve</div>
-            <div class="dt-instr-role">Lead Trader &amp; Founder</div>
-            <div class="dt-instr-mini-stats">
-              <div class="dt-i-mini"><span class="dt-i-mini-num">64</span><span class="dt-i-mini-lbl">Members</span></div>
-              <div class="dt-i-mini"><span class="dt-i-mini-num">4.8</span><span class="dt-i-mini-lbl">Star Rating</span></div>
-              <div class="dt-i-mini"><span class="dt-i-mini-num">10</span><span class="dt-i-mini-lbl">Courses</span></div>
-              <div class="dt-i-mini"><span class="dt-i-mini-num">25</span><span class="dt-i-mini-lbl">Reviews</span></div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -1753,40 +1784,48 @@
   <!-- ── 11. REVIEWS ── -->
   <section class="dt-reviews">
     <div class="pm-container">
-      <div class="dt-reviews-top reveal">
-        <div class="dt-reviews-heading">
-          <span class="pm-eyebrow">What Members Say</span>
-          <h2>4.8 Out of 5 Stars — <em>From Real Traders</em></h2>
-        </div>
-        <div class="dt-rating-inline">
-          <span class="dt-rating-num">4.8</span>
-          <span class="dt-rating-stars">★★★★★</span>
-          <span class="dt-rating-count">25 verified ratings</span>
+      <div class="pm-section-head reveal light" style="margin-bottom: 56px;">
+        <span class="pm-eyebrow">What Members Say</span>
+        <h2>4.8 Out of 5 Stars — <em>From Real Traders</em></h2>
+        <div class="dt-rating-tag">
+          <span class="dt-rating-tag-val">4.8</span>
+          <span class="dt-rating-tag-stars">★★★★★</span>
+          <span class="dt-rating-tag-count">25 verified ratings</span>
         </div>
       </div>
       <div class="dt-quote-cards reveal">
         <div class="dt-quote-card">
-          <div class="dt-big-quote">"</div>
-          <p class="dt-quote-text">I can't recommend Navigation Trading highly enough. I've been using their services for about two years and have learned an incredible amount along the way. They offer a wide range of option trading strategies, and even after all this time, I'm still learning new things. Steve's explanations are clear and his approach is based on real probabilities, not guesswork. The live trading room is where the real value is.</p>
+          <div class="dt-quote-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="dt-quote-text">"I can't recommend Navigation Trading highly enough. I've been using their services for about two years and have learned an incredible amount along the way. They offer a wide range of option trading strategies, and even after all this time, I'm still learning new things. Steve's explanations are clear and his approach is based on real probabilities, not guesswork. The live trading room is where the real value is."</p>
           <div class="dt-quote-author">
-            <div class="dt-quote-avatar dt-av-navy">A</div>
-            <div>
+            <div class="dt-quote-avatar">A</div>
+            <div class="dt-quote-info">
               <span class="dt-quote-name">Annette M.</span>
               <span class="dt-quote-role">Day Trading Member</span>
             </div>
-            <span class="dt-quote-stars">★★★★★</span>
           </div>
         </div>
         <div class="dt-quote-card">
-          <div class="dt-big-quote">"</div>
-          <p class="dt-quote-text">I've been using Navigation Trading for over a year, and I couldn't be happier with the results. Their approach to options trading is refreshingly straightforward and methodical. Unlike other programs that rely on hype and emotion, Navigation Trading bases its strategies on statistics and probabilities. The live streams keep me honest and focused on following the process.</p>
+          <div class="dt-quote-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" style="opacity:0.3;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="dt-quote-text">"I've been using Navigation Trading for over a year, and I couldn't be happier with the results. Their approach to options trading is refreshingly straightforward and methodical. Unlike other programs that rely on hype and emotion, Navigation Trading bases its strategies on statistics and probabilities. The live streams keep me honest and focused on following the process."</p>
           <div class="dt-quote-author">
-            <div class="dt-quote-avatar dt-av-orange">R</div>
-            <div>
+            <div class="dt-quote-avatar">R</div>
+            <div class="dt-quote-info">
               <span class="dt-quote-name">Robert W.</span>
               <span class="dt-quote-role">Day Trading Member</span>
             </div>
-            <span class="dt-quote-stars">★★★★☆</span>
           </div>
         </div>
       </div>
