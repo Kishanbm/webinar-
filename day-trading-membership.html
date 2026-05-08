@@ -413,7 +413,7 @@
     }
 
     /* ══ SECTION 5: THE UNFOLDING ROADMAP — STICKY FIX ══ */
-    .dt-curriculum { padding: 100px 0 200px 0; background: #061527; position: relative; }
+    .dt-curriculum { padding: 60px 0 200px 0; background: #061527; position: relative; }
     .dt-curriculum-bg { 
       position: absolute; inset: 0; 
       background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.02) 1px, transparent 0);
@@ -445,19 +445,16 @@
     }
     .dt-vault-header:hover { background: rgba(255,255,255,0.03); }
     
-    .dt-vault-layout { 
-      display: flex; 
-      gap: 0; 
-      max-height: 0; 
-      overflow: hidden; /* Important: this hides content during expansion */
+    .dt-vault-layout {
+      display: flex;
+      gap: 0;
+      max-height: 0;
+      overflow: clip;
       opacity: 0;
       transition: max-height 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease;
       align-items: flex-start;
     }
-    .dt-vault-group.expanded .dt-vault-layout { max-height: 3000px; opacity: 1; }
-    
-    /* Crucial Fix: Allow sticky to work after expansion animation finishes */
-    .dt-vault-group.ready-sticky .dt-vault-layout { overflow: visible; }
+    .dt-vault-group.expanded .dt-vault-layout { max-height: 3000px; opacity: 1; overflow: visible; }
 
     /* Ultra-Wide Sidebar (600px) */
     .dt-vault-sidebar {
@@ -510,49 +507,209 @@
 
     .dt-vh-count { color: var(--orange) !important; }
 
-    /* ══ SECTION 6: TOOLS — WHITE BENTO ══ */
-    .dt-tools { padding: 70px 0; background: #fff; }
-    .dt-bento { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .dt-bento-card { border-radius: 20px; padding: 36px; border: 1px solid rgba(13,46,78,.08); background: #fff; transition: all .3s; position: relative; overflow: hidden; }
-    .dt-bento-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--orange), rgba(200,66,10,.3)); opacity: 0; transition: opacity .3s; }
-    .dt-bento-card:hover::before { opacity: 1; }
-    .dt-bento-card:hover { border-color: rgba(200,66,10,.25); box-shadow: 0 14px 44px rgba(0,0,0,.07); transform: translateY(-4px); }
-    .dt-bento-icon { width: 46px; height: 46px; border-radius: 13px; background: rgba(13,46,78,.07); border: 1px solid rgba(13,46,78,.12); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
-    .dt-bento-icon svg { width: 21px; height: 21px; stroke: var(--teal-900); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .dt-bento-card h3 { font-size: 17px; font-weight: 800; color: var(--teal-900); margin-bottom: 10px; }
-    .dt-bento-card p { font-size: 13.5px; color: #666; line-height: 1.75; margin-bottom: 16px; }
-    .dt-bento-pills { display: flex; flex-wrap: wrap; gap: 7px; }
-    .dt-bento-pill { font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 50px; background: rgba(13,46,78,.06); color: var(--teal-900); border: 1px solid rgba(13,46,78,.1); }
-    .dt-bento-stats { grid-column: 1 / -1; background: var(--teal-900); border-radius: 20px; padding: 32px 48px; display: flex; align-items: center; justify-content: space-around; gap: 24px; }
-    .dt-bento-stat { text-align: center; }
-    .dt-bento-stat-num { font-family: 'Cormorant Garamond',serif; font-size: 44px; font-weight: 700; color: var(--orange); line-height: 1; display: block; }
-    .dt-bento-stat-lbl { font-size: 10.5px; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; display: block; margin-top: 5px; }
-    .dt-bento-sep { width: 1px; height: 44px; background: rgba(255,255,255,.1); }
+    /* ══ SECTION 6: TOOLS — KINETIC GLASS ══ */
+    .dt-tools { padding: 60px 0; background: #fff; position: relative; }
+    
+    .dt-bento { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 30px; 
+      margin-top: 60px; 
+    }
+    
+    .dt-bento-card {
+      background: rgba(30, 28, 25, 0.04); /* Brownish lighter black glass */
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(139, 115, 85, 0.15);
+      border-radius: 24px;
+      padding: 40px 0 0 0; 
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    .dt-bento-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(139, 115, 85, 0.1); border-color: rgba(200, 66, 10, 0.3); }
 
-    /* ══ SECTION 7: WHO FOR — BLUE DRAMATIC SPLIT ══ */
-    .dt-who { padding: 70px 0; background: #0D2E4E; position: relative; overflow: hidden; }
-    .dt-who::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
-    .dt-who::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
-    .dt-who .pm-container { position: relative; z-index: 2; }
-    .dt-who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,.06); }
-    .dt-who-col { padding: 44px 40px; }
-    .dt-who-col.for-col { background: rgba(200,66,10,.06); border-right: 1px solid rgba(255,255,255,.06); }
-    .dt-who-col.not-col { background: rgba(255,255,255,.02); }
-    .dt-who-col-head { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.06); }
-    .dt-who-col-icon { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; flex-shrink: 0; }
-    .for-col .dt-who-col-icon { background: rgba(200,66,10,.15); color: var(--orange); border: 1px solid rgba(200,66,10,.3); }
-    .not-col .dt-who-col-icon { background: rgba(255,255,255,.05); color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.1); }
-    .dt-who-col-head h3 { color: #fff; font-size: 16px; font-weight: 800; }
-    .dt-who-list { list-style: none; display: flex; flex-direction: column; gap: 22px; }
-    .dt-who-item { display: flex; gap: 14px; align-items: flex-start; }
-    .dt-who-check { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; }
-    .for-col .dt-who-check { background: rgba(200,66,10,.14); color: var(--orange); border: 1px solid rgba(200,66,10,.28); }
-    .not-col .dt-who-check { background: rgba(255,255,255,.04); color: rgba(255,255,255,.28); border: 1px solid rgba(255,255,255,.1); }
-    .dt-who-item-body strong { display: block; color: rgba(255,255,255,.88); font-size: 14px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
-    .dt-who-item-body span { color: rgba(255,255,255,.36); font-size: 13px; line-height: 1.65; }
+    .dt-bento-card-top { padding: 0 40px 35px 40px; flex: 1; }
+
+    .dt-bento-card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .dt-bento-icon {
+      width: 44px; height: 44px;
+      background: rgba(200, 66, 10, 0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .dt-bento-icon svg { width: 22px; height: 22px; stroke: var(--orange); fill: none; stroke-width: 2.5; }
+    
+    .dt-bento-card h3 { font-size: 20px; color: var(--teal-900); margin-bottom: 0; font-weight: 800; letter-spacing: -0.01em; }
+    .dt-bento-card p { font-size: 14.5px; color: #555; line-height: 1.6; margin-bottom: 0; }
+
+    /* Kinetic Ticker */
+    .dt-ticker-wrap {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: auto;
+    }
+    .dt-ticker {
+      overflow: hidden;
+      width: 100%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+    .dt-ticker-track {
+      display: flex;
+      gap: 12px;
+      width: max-content;
+      animation: dt-ticker-left 30s linear infinite;
+    }
+    .dt-ticker-track.reverse { animation: dt-ticker-right 30s linear infinite; }
+    
+    .dt-bento-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(139, 115, 85, 0.1);
+      color: var(--teal-900);
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 0 14px;
+      height: 30px;
+      border-radius: 30px;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .dt-bento-pill svg { width: 12px; height: 12px; stroke: var(--orange); fill: none; stroke-width: 2.5; }
+
+    @keyframes dt-ticker-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes dt-ticker-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+    /* ══ SECTION 7: WHO FOR — KINETIC GLASS DUO ══ */
+    .dt-who { 
+      padding: 100px 0; 
+      background: #03080F; /* Super dark institutional navy */
+      position: relative; 
+      overflow: hidden; 
+    }
+    
+    /* Animated Ambient Glow Orbs */
+    .dt-who-orb-1 {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: var(--orange);
+      border-radius: 50%;
+      filter: blur(150px);
+      opacity: 0.12;
+      top: 5%; left: 10%;
+      animation: dt-orbFloat1 20s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+    .dt-who-orb-2 {
+      position: absolute;
+      width: 500px; height: 500px;
+      background: #1e4d8c;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+      bottom: 5%; right: 10%;
+      animation: dt-orbFloat2 25s infinite alternate-reverse ease-in-out;
+      pointer-events: none;
+    }
+    @keyframes dt-orbFloat1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(120px, 80px) scale(1.1); } }
+    @keyframes dt-orbFloat2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-100px, -60px) scale(1.2); } }
+
+    .dt-who .pm-container { position: relative; z-index: 10; }
+
+    .dt-who-grid { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 40px; 
+      margin-top: 56px; 
+    }
+    
+    .dt-premium-card {
+      background: rgba(10, 20, 35, 0.4);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      padding: 50px 44px;
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .dt-premium-card:hover {
+      transform: translateY(-12px);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .dt-premium-card.for-card:hover {
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 80px rgba(200, 66, 10, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border-color: rgba(200, 66, 10, 0.3);
+    }
+
+    .dt-pc-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .dt-pc-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 900; flex-shrink: 0;
+    }
+    .for-card .dt-pc-icon { background: linear-gradient(135deg, var(--orange), #8a2f07); color: #fff; box-shadow: 0 10px 20px rgba(200, 66, 10, 0.3); }
+    .not-card .dt-pc-icon { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); }
+
+    .dt-pc-header h3 { color: #fff; font-size: 26px; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
+
+    .dt-pc-list { display: flex; flex-direction: column; gap: 20px; }
+    .dt-pc-item {
+      display: flex; gap: 20px;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
+      transition: all 0.3s ease;
+    }
+    .dt-pc-item:hover { background: rgba(255,255,255,0.05); transform: translateX(8px); }
+    .for-card .dt-pc-item:hover { border-color: rgba(200, 66, 10, 0.15); }
+
+    .dt-pc-item-marker {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 14px; font-weight: 900;
+    }
+    .for-card .dt-pc-item-marker { background: rgba(200, 66, 10, 0.15); color: var(--orange); }
+    .not-card .dt-pc-item-marker { background: rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.3); }
+
+    .dt-pc-item-content strong { display: block; font-size: 16px; color: #fff; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+    .dt-pc-item-content span { display: block; font-size: 14px; color: rgba(255, 255, 255, 0.5); line-height: 1.6; }
 
     /* ══ SECTION 8: COMPARISON — WHITE PLAN CARDS ══ */
-    .dt-comparison { padding: 70px 0; background: var(--cream); }
+    .dt-comparison { padding: 60px 0; background: var(--cream); }
     .dt-plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
     .dt-plan-card { border-radius: 24px; padding: 40px; position: relative; overflow: hidden; }
     .dt-plan-card.free-card { background: #fff; border: 1px solid rgba(0,0,0,.09); }
@@ -579,23 +736,56 @@
     .dt-comp-cta { text-align: center; margin-top: 36px; }
 
     /* ══ SECTION 9: RESULTS — BLUE BENTO MOSAIC ══ */
-    .dt-results { background: #0D2E4E; padding: 70px 0; position: relative; overflow: hidden; }
+    .dt-results { background: #0D2E4E; padding: 80px 0; position: relative; overflow: hidden; }
     .dt-results::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
     .dt-results::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
     .dt-results .pm-container { position: relative; z-index: 2; }
-    .dt-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
-    .dt-mosaic-cell { border-radius: 18px; padding: 32px 28px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); transition: all .3s; }
-    .dt-mosaic-cell:hover { background: rgba(255,255,255,.055); border-color: rgba(200,66,10,.28); transform: translateY(-3px); }
-    .dt-mosaic-cell.stat-cell { background: rgba(200,66,10,.07); border-color: rgba(200,66,10,.18); display: flex; flex-direction: column; justify-content: flex-end; }
-    .dt-mosaic-cell.stat-cell:hover { background: rgba(200,66,10,.1); border-color: rgba(200,66,10,.32); }
-    .dt-mosaic-big { font-family: 'Cormorant Garamond',serif; font-size: 68px; font-weight: 700; color: var(--orange); line-height: 1; display: block; margin-bottom: 6px; }
-    .dt-mosaic-big-lbl { font-size: 11.5px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
-    .dt-mosaic-verb { display: block; font-size: 10px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
-    .dt-mosaic-cell h4 { font-size: 17px; color: #fff; font-weight: 800; margin-bottom: 8px; line-height: 1.25; }
-    .dt-mosaic-cell p { font-size: 13px; color: rgba(255,255,255,.42); line-height: 1.65; }
+    .dt-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
+    .dt-mosaic-card {
+      background: rgba(0,0,0,.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 30px;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: flex-start;
+      transition: transform .3s, background .3s, border-color .3s, box-shadow .3s;
+    }
+    .dt-mosaic-card:hover { background: rgba(0,0,0,.6); border-color: rgba(255,255,255,.25); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,.2); }
+    .dt-mosaic-card::after { content: ''; position: absolute; top: 0; left: 8%; right: 8%; height: 2px; border-radius: 0 0 4px 4px; opacity: 0; transition: opacity .3s; }
+    .dt-mosaic-card:hover::after { opacity: 1; }
+    .dt-mosaic-card.mc-orange::after { background: linear-gradient(90deg, transparent, var(--orange), transparent); }
+    .dt-mosaic-card.mc-blue::after   { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+    .dt-mosaic-card.mc-gold::after   { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .dt-mosaic-card.mc-indigo::after { background: linear-gradient(90deg, transparent, #818cf8, transparent); }
+    .dt-mosaic-wm {
+      position: absolute; bottom: -10px; right: 16px;
+      font-size: 80px; font-weight: 800; color: rgba(255,255,255,.03);
+      line-height: 1; user-select: none; pointer-events: none; transition: color .3s;
+    }
+    .dt-mosaic-card:hover .dt-mosaic-wm { color: rgba(255,255,255,.06); }
+    .dt-mosaic-inner { flex: 1; z-index: 2; position: relative; width: 100%; }
+    .dt-mosaic-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .dt-mosaic-card.mc-orange .dt-mosaic-label { color: var(--orange); }
+    .dt-mosaic-card.mc-blue   .dt-mosaic-label { color: #60a5fa; }
+    .dt-mosaic-card.mc-gold   .dt-mosaic-label { color: var(--gold); }
+    .dt-mosaic-card.mc-indigo .dt-mosaic-label { color: #a5b4fc; }
+    .dt-mosaic-hrow { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .dt-mosaic-icon {
+      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .3s;
+    }
+    .dt-mosaic-card:hover .dt-mosaic-icon { transform: scale(1.05) rotate(-5deg); }
+    .dt-mosaic-icon.i-orange { background: rgba(200,66,10,.18);  border: 1px solid rgba(200,66,10,.3); }
+    .dt-mosaic-icon.i-blue   { background: rgba(59,130,246,.16); border: 1px solid rgba(59,130,246,.3); }
+    .dt-mosaic-icon.i-gold   { background: rgba(212,160,64,.16); border: 1px solid rgba(212,160,64,.3); }
+    .dt-mosaic-icon.i-indigo { background: rgba(129,140,248,.16);border: 1px solid rgba(129,140,248,.3); }
+    .dt-mosaic-icon svg { width: 16px; height: 16px; }
+    .dt-mosaic-hrow h4 { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 0; }
+    .dt-mosaic-inner p { font-size: 13.5px; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 0; }
+    @media (max-width: 860px) { .dt-mosaic { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px) { .dt-mosaic { grid-template-columns: 1fr; } }
 
     /* ══ SECTION 10: INSTRUCTOR — WHITE EDITORIAL ══ */
-    .dt-instructor { padding: 70px 0; background: #fff; position: relative; overflow: hidden; }
+    .dt-instructor { padding: 60px 0; background: #fff; position: relative; overflow: hidden; }
     .dt-instructor::after { content: ''; position: absolute; right: 0; top: 0; width: 40%; height: 100%; background: linear-gradient(135deg, transparent 0%, #f8fbff 100%); pointer-events: none; }
     .dt-instr-grid { display: grid; grid-template-columns: 1fr 360px; gap: 80px; align-items: start; }
     .dt-instr-quote { font-family: 'Cormorant Garamond',serif; font-size: clamp(19px,2.2vw,26px); font-style: italic; color: var(--teal-900); line-height: 1.55; padding: 24px 0 24px 28px; border-left: 4px solid var(--orange); margin-bottom: 32px; }
@@ -618,7 +808,7 @@
     .dt-i-mini-lbl { font-size: 9.5px; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
     /* ══ SECTION 11: REVIEWS — BLUE QUOTE-FORWARD ══ */
-    .dt-reviews { padding: 70px 0; background: #0D2E4E; position: relative; overflow: hidden; }
+    .dt-reviews { padding: 60px 0; background: #0D2E4E; position: relative; overflow: hidden; }
     .dt-reviews::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
     .dt-reviews::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
     .dt-reviews .pm-container { position: relative; z-index: 2; }
@@ -644,7 +834,7 @@
     .dt-quote-stars { margin-left: auto; color: var(--gold); font-size: 13px; letter-spacing: 2px; flex-shrink: 0; }
 
     /* ══ SECTION 12: FAQ ══ */
-    .pm-faq { background: #fff; padding: 70px 0; }
+    .pm-faq { background: #fff; padding: 60px 0; }
     .pm-faq-layout { display: grid; grid-template-columns: 360px 1fr; gap: 80px; align-items: start; }
     .pm-faq-left { position: sticky; top: 100px; }
     .pm-faq-left h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: var(--teal-900); line-height: 1.15; letter-spacing: -.02em; margin-top: 10px; margin-bottom: 16px; }
@@ -665,19 +855,21 @@
     .pm-faq-ans-inner { padding: 0 28px 24px; font-size: 14.5px; color: #555; line-height: 1.75; }
 
     /* ══ SECTION 13: FINAL CTA ══ */
-    .pm-final-cta { position: relative; padding: 90px 0; text-align: center; overflow: hidden; background: #0D2E4E; }
-    .pm-final-cta-bg { position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; z-index: 0; }
-    .pm-final-cta-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 10% 80%, rgba(200,66,10,.25) 0%, transparent 45%), radial-gradient(ellipse at 90% 10%, rgba(13,46,78,.4) 0%, transparent 40%), linear-gradient(135deg, rgba(13,46,78,0.80) 0%, rgba(13,46,78,0.60) 50%, rgba(13,46,78,0.78) 100%); pointer-events: none; z-index: 1; }
-    .pm-final-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 4; background: linear-gradient(90deg, transparent, rgba(200,66,10,.45) 30%, rgba(200,66,10,.4) 65%, transparent); }
-    .pm-final-blob-a { position: absolute; width: 600px; height: 600px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(200,66,10,.15) 0%, transparent 65%); top: -200px; left: -150px; animation: blobPulse 9s ease-in-out infinite; z-index: 2; }
-    .pm-final-blob-b { position: absolute; width: 500px; height: 500px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 65%); bottom: -150px; right: -100px; animation: blobPulse 12s ease-in-out 3s infinite reverse; z-index: 2; }
-    @keyframes blobPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08) translateY(-20px); } }
-    .pm-final-inner { position: relative; z-index: 3; max-width: 800px; margin: 0 auto; padding: 0 24px; }
-    .pm-final-cta h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: #fff; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 24px; }
-    .pm-final-cta p { font-size: 18px; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 48px; }
-    .btn-final { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--orange), var(--orange-bright)); color: #fff; padding: 22px 56px; border-radius: 12px; text-decoration: none; font-size: 17px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; transition: all .3s cubic-bezier(.175,.885,.32,1.275); box-shadow: 0 20px 40px rgba(200,66,10,.3); }
-    .btn-final:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 25px 50px rgba(200,66,10,.4); }
-    .pm-final-note { margin-top: 28px; font-size: 14px; color: rgba(255,255,255,.4); font-weight: 500; }
+    .pm-final-cta { background-color: #eaf2ff; position: relative; padding: 80px 0; text-align: center; overflow: hidden; }
+    .pm-final-cta::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(13,46,78,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(13,46,78,0.04) 1px, transparent 1px); background-size: 50px 50px; pointer-events: none; }
+    .pm-final-cta-card { position: relative; max-width: 860px; margin: 0 auto; background: #2d3748; border-radius: 6px; padding: 40px 60px; box-shadow: 0 30px 70px rgba(0,0,0,0.1); z-index: 1; }
+    .pm-final-cta-card .corner { position: absolute; width: 30px; height: 30px; border: 2px solid var(--orange); opacity: 0.8; }
+    .pm-final-cta-card .corner.tl { top: 24px; left: 24px; border-right: 0; border-bottom: 0; }
+    .pm-final-cta-card .corner.tr { top: 24px; right: 24px; border-left: 0; border-bottom: 0; }
+    .pm-final-cta-card .corner.bl { bottom: 24px; left: 24px; border-right: 0; border-top: 0; }
+    .pm-final-cta-card .corner.br { bottom: 24px; right: 24px; border-left: 0; border-top: 0; }
+    .pm-final-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+    .pm-final-cta h2 { font-size: clamp(32px, 3.5vw, 46px); font-weight: 900; color: #fff; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px; }
+    .pm-final-cta h2 em { font-style: normal; color: var(--orange); }
+    .pm-final-cta p { font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 36px; }
+    .btn-final { display: inline-flex; align-items: center; gap: 10px; background: var(--orange); color: #fff; padding: 20px 52px; border-radius: 10px; text-decoration: none; font-size: 17px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; transition: background .2s, transform .15s, box-shadow .2s; }
+    .btn-final:hover { background: var(--orange-bright); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(200,66,10,.35); }
+    .pm-final-note { margin-top: 24px; font-size: 13px; color: rgba(255,255,255,.4); }
 
     /* ── FOOTER ── */
     footer { background: var(--teal-900); padding: 80px 60px 40px; color: #fff; position: relative; }
@@ -1167,67 +1359,120 @@
         <h2>Day Trading Chart Indicators — <em>Built for These Strategies</em></h2>
         <p>You're not just getting courses and live streams. You're getting the tools to execute on your own charts every morning.</p>
       </div>
+
       <div class="dt-bento reveal">
+        <!-- Card 1 -->
         <div class="dt-bento-card">
-          <div class="dt-bento-icon">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div class="dt-bento-card-top">
+            <div class="dt-bento-card-header">
+              <div class="dt-bento-icon">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <h3>Custom Chart Indicators</h3>
+            </div>
+            <p>Custom indicators built by the NavigationTrading team — designed specifically for the strategies you're learning. NTT signals, entry triggers, momentum filters — install them on your charting platform and see the same setups the team sees every day.</p>
           </div>
-          <h3>Custom Chart Indicators</h3>
-          <p>Proprietary NTT signals, entry triggers, and momentum filters built specifically for these strategies. Install them once and see the same setups the team sees every morning. Not generic tools — years-refined, trade-tested.</p>
-          <div class="dt-bento-pills">
-            <span class="dt-bento-pill">NTT Signals</span>
-            <span class="dt-bento-pill">Entry Triggers</span>
-            <span class="dt-bento-pill">Momentum Filters</span>
-            <span class="dt-bento-pill">0 DTE Timing</span>
+          
+          <div class="dt-ticker-wrap">
+            <div class="dt-ticker">
+              <div class="dt-ticker-track">
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> NTT Signals</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Entry Triggers</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Momentum Filters</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 0 DTE Timing</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> NTT Signals</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Entry Triggers</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Momentum Filters</span>
+              </div>
+            </div>
+            <div class="dt-ticker">
+              <div class="dt-ticker-track reverse">
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Trade Tested</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Systematic</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Price Action</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Live Signals</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Trade Tested</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Systematic</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Price Action</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Card 2 -->
         <div class="dt-bento-card">
-          <div class="dt-bento-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="dt-bento-card-top">
+            <div class="dt-bento-card-header">
+              <div class="dt-bento-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3>0 DTE Strategy Toolkit</h3>
+            </div>
+            <p>Specific tools and templates for executing 0 DTE strategies. Strike selection frameworks, entry timing rules, and risk management parameters — all built into the indicator suite so you're not calculating on the fly when speed matters.</p>
           </div>
-          <h3>0 DTE Strategy Toolkit</h3>
-          <p>Strike selection frameworks, entry timing rules, and risk parameters built into the indicator suite. When speed matters, you're not calculating on the fly — the tools give you the answer.</p>
-          <div class="dt-bento-pills">
-            <span class="dt-bento-pill">Strike Selection</span>
-            <span class="dt-bento-pill">Entry Timing</span>
-            <span class="dt-bento-pill">Risk Parameters</span>
+
+          <div class="dt-ticker-wrap">
+            <div class="dt-ticker">
+              <div class="dt-ticker-track">
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Strike Selection</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Entry Timing</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Risk Parameters</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Theta Capture</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Strike Selection</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Entry Timing</span>
+              </div>
+            </div>
+            <div class="dt-ticker">
+              <div class="dt-ticker-track reverse">
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Fast Execution</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Rules Based</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Probabilities</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Data Driven</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Fast Execution</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Rules Based</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Card 3 -->
         <div class="dt-bento-card">
-          <div class="dt-bento-icon">
-            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <div class="dt-bento-card-top">
+            <div class="dt-bento-card-header">
+              <div class="dt-bento-icon">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <h3>Trade Alert System</h3>
+            </div>
+            <p>Real-time alerts delivered when day trading setups appear. Each alert tells you the strategy being used, the entry, the stop, and the management rules. You evaluate and decide — the alert gives you everything you need.</p>
           </div>
-          <h3>Real-Time Trade Alerts</h3>
-          <p>Alerts delivered the moment a setup appears. Strategy, entry, stop, and management rules — everything needed to evaluate and act with confidence, even if you're away from the stream.</p>
-          <div class="dt-bento-pills">
-            <span class="dt-bento-pill">Real-Time Delivery</span>
-            <span class="dt-bento-pill">Entry + Exit Rules</span>
-            <span class="dt-bento-pill">Risk Management</span>
-          </div>
-        </div>
-        <div class="dt-bento-stats">
-          <div class="dt-bento-stat">
-            <span class="dt-bento-stat-num">10</span>
-            <span class="dt-bento-stat-lbl">Strategy Courses</span>
-          </div>
-          <div class="dt-bento-sep"></div>
-          <div class="dt-bento-stat">
-            <span class="dt-bento-stat-num">2×</span>
-            <span class="dt-bento-stat-lbl">Daily Live Sessions</span>
-          </div>
-          <div class="dt-bento-sep"></div>
-          <div class="dt-bento-stat">
-            <span class="dt-bento-stat-num">∞</span>
-            <span class="dt-bento-stat-lbl">Alerts Per Day</span>
-          </div>
-          <div class="dt-bento-sep"></div>
-          <div class="dt-bento-stat">
-            <span class="dt-bento-stat-num">$129</span>
-            <span class="dt-bento-stat-lbl">Per Month</span>
+
+          <div class="dt-ticker-wrap">
+            <div class="dt-ticker">
+              <div class="dt-ticker-track">
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Instant Alerts</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Multi Strategy</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Entry + Exit</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Stop Targets</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Instant Alerts</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Multi Strategy</span>
+              </div>
+            </div>
+            <div class="dt-ticker">
+              <div class="dt-ticker-track reverse">
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Mobile Push</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> High Context</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Risk Guided</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Discord Sync</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Mobile Push</span>
+                <span class="dt-bento-pill"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> High Context</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div style="text-align:center; margin-top:36px;" class="reveal">
+      
+      <div style="text-align:center; margin-top:60px;" class="reveal">
         <a href="https://whop.com/navigationtrading/" class="btn-pm">Get the Tools + Education — $129/month →</a>
       </div>
     </div>
@@ -1240,72 +1485,81 @@
         <span class="pm-eyebrow">Is Day Trading Membership Right for You?</span>
         <h2>This Isn't for Everyone. <em style="color:var(--orange)">Here's How to Know.</em></h2>
       </div>
+      <!-- Ambient Orbs -->
+      <div class="dt-who-orb-1"></div>
+      <div class="dt-who-orb-2"></div>
+
       <div class="dt-who-grid reveal">
-        <div class="dt-who-col for-col">
-          <div class="dt-who-col-head">
-            <div class="dt-who-col-icon">✓</div>
+        
+        <!-- CARD 1: FOR YOU -->
+        <div class="dt-premium-card for-card">
+          <div class="dt-pc-header">
+            <div class="dt-pc-icon">✓</div>
             <h3>Day Trading Is for You If:</h3>
           </div>
-          <ul class="dt-who-list">
-            <li class="dt-who-item">
-              <div class="dt-who-check">✓</div>
-              <div class="dt-who-item-body">
-                <strong>You want live, real-time experience — not just videos.</strong>
+          <div class="dt-pc-list">
+            <div class="dt-pc-item">
+              <div class="dt-pc-item-marker">✓</div>
+              <div class="dt-pc-item-content">
+                <strong>Learn through live, real-time experience — not just videos.</strong>
                 <span>Pre-recorded content only gets you so far. You want to see a professional make decisions as the market moves and learn from the process, not just the outcome.</span>
               </div>
-            </li>
-            <li class="dt-who-item">
-              <div class="dt-who-check">✓</div>
-              <div class="dt-who-item-body">
+            </div>
+            <div class="dt-pc-item">
+              <div class="dt-pc-item-marker">✓</div>
+              <div class="dt-pc-item-content">
                 <strong>You have 1–2 hours during market hours (9:30 AM–4:00 PM ET).</strong>
                 <span>The live streams are where the core value lives. The morning session and Power Hour are the two key windows. You don't need every minute — just some skin in the game.</span>
               </div>
-            </li>
-            <li class="dt-who-item">
-              <div class="dt-who-check">✓</div>
-              <div class="dt-who-item-body">
-                <strong>You understand the basics of options trading.</strong>
+            </div>
+            <div class="dt-pc-item">
+              <div class="dt-pc-item-marker">✓</div>
+              <div class="dt-pc-item-content">
+                <strong>You already understand the basics of options trading.</strong>
                 <span>You know what calls, puts, and basic strategies are. Not an expert — but past the "what is an option?" stage. If not, start with the Free Membership first.</span>
               </div>
-            </li>
-            <li class="dt-who-item">
-              <div class="dt-who-check">✓</div>
-              <div class="dt-who-item-body">
+            </div>
+            <div class="dt-pc-item">
+              <div class="dt-pc-item-marker">✓</div>
+              <div class="dt-pc-item-content">
                 <strong>You're ready to commit to a daily practice.</strong>
                 <span>Day trading is a skill built through daily repetition. This membership is designed for people who are willing to show up consistently.</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
-        <div class="dt-who-col not-col">
-          <div class="dt-who-col-head">
-            <div class="dt-who-col-icon">×</div>
+
+        <!-- CARD 2: NOT FOR YOU -->
+        <div class="dt-premium-card not-card">
+          <div class="dt-pc-header">
+            <div class="dt-pc-icon">×</div>
             <h3>Day Trading Is NOT for You If:</h3>
           </div>
-          <ul class="dt-who-list">
-            <li class="dt-who-item">
-              <div class="dt-who-check">×</div>
-              <div class="dt-who-item-body">
+          <div class="dt-pc-list">
+            <div class="dt-pc-item">
+              <div class="dt-pc-item-marker">×</div>
+              <div class="dt-pc-item-content">
                 <strong>You're a complete beginner who hasn't learned the fundamentals.</strong>
                 <span>Start with the Free Membership. The 5 beginner courses build the foundation you need. Jumping into a live trading room without that base will overwhelm, not accelerate.</span>
               </div>
-            </li>
-            <li class="dt-who-item">
-              <div class="dt-who-check">×</div>
-              <div class="dt-who-item-body">
+            </div>
+            <div class="dt-pc-item">
+              <div class="dt-pc-item-marker">×</div>
+              <div class="dt-pc-item-content">
                 <strong>You want someone else to make all your trading decisions.</strong>
                 <span>We share live trades and alerts, but you are responsible for your own decisions. This is education and guided experience — not a copy-trade service.</span>
               </div>
-            </li>
-            <li class="dt-who-item">
-              <div class="dt-who-check">×</div>
-              <div class="dt-who-item-body">
+            </div>
+            <div class="dt-pc-item">
+              <div class="dt-pc-item-marker">×</div>
+              <div class="dt-pc-item-content">
                 <strong>You want income spreads, trend trading, and portfolio-level strategies.</strong>
                 <span>Day Trading focuses on day trading and 0 DTE. For the full library — butterflies, calendars, income spreads — the <a href="/paid-membership" style="color:var(--orange);font-weight:700;">Pro Membership ($179/month)</a> includes everything.</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -1369,34 +1623,91 @@
         <p>Not theory. Not a certificate. Real skills that show up in how you trade every single day.</p>
       </div>
       <div class="dt-mosaic reveal">
-        <div class="dt-mosaic-cell stat-cell">
-          <span class="dt-mosaic-big">2×</span>
-          <span class="dt-mosaic-big-lbl">Live Sessions Every Day</span>
+
+        <!-- 1 -->
+        <div class="dt-mosaic-card mc-orange">
+          <div class="dt-mosaic-wm">01</div>
+          <div class="dt-mosaic-inner">
+            <div class="dt-mosaic-hrow">
+              <div class="dt-mosaic-icon i-orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <h4>Execution Confidence</h4>
+            </div>
+            <p>You've watched trades placed live by a professional who narrates every decision as it happens — not in hindsight. Hesitation disappears when you've seen the process hundreds of times.</p>
+          </div>
         </div>
-        <div class="dt-mosaic-cell">
-          <span class="dt-mosaic-verb">Execute</span>
-          <h4>With Confidence</h4>
-          <p>You've watched trades done live by a professional who explains every decision as it happens — not after the fact.</p>
+
+        <!-- 2 -->
+        <div class="dt-mosaic-card mc-blue">
+          <div class="dt-mosaic-wm">02</div>
+          <div class="dt-mosaic-inner">
+            <div class="dt-mosaic-hrow">
+              <div class="dt-mosaic-icon i-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#60a5fa"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <h4>A Daily Trading Routine</h4>
+            </div>
+            <p>Pre-market prep, two live sessions, real-time trade alerts, and after-hours review — your trading day has structure instead of guesswork so you show up knowing exactly what to do.</p>
+          </div>
         </div>
-        <div class="dt-mosaic-cell">
-          <span class="dt-mosaic-verb">Follow</span>
-          <h4>A Daily Routine</h4>
-          <p>Pre-market prep, live sessions, trade alerts, and after-hours review — so your trading has rhythm instead of randomness.</p>
+
+        <!-- 3 -->
+        <div class="dt-mosaic-card mc-gold">
+          <div class="dt-mosaic-wm">03</div>
+          <div class="dt-mosaic-inner">
+            <div class="dt-mosaic-hrow">
+              <div class="dt-mosaic-icon i-gold">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <h4>0 DTE Strategy Rules</h4>
+            </div>
+            <p>Specific entry criteria, strike selection frameworks, and defined risk parameters for same-day options — so you're trading a system, not chasing momentum on impulse.</p>
+          </div>
         </div>
-        <div class="dt-mosaic-cell">
-          <span class="dt-mosaic-verb">Trade</span>
-          <h4>0 DTE Strategies</h4>
-          <p>With specific entry rules, strike selection frameworks, and risk parameters — not gut-feel gambling on same-day options.</p>
+
+        <!-- 4 -->
+        <div class="dt-mosaic-card mc-indigo">
+          <div class="dt-mosaic-wm">04</div>
+          <div class="dt-mosaic-inner">
+            <div class="dt-mosaic-hrow">
+              <div class="dt-mosaic-icon i-indigo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#a5b4fc"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
+              </div>
+              <h4>Professional Chart Indicators</h4>
+            </div>
+            <p>Use professional day trading indicators on your own charts — the same tools the NavigationTrading team uses to identify setups every morning. Not generic moving averages. Proprietary tools refined through years of live trading.</p>
+          </div>
         </div>
-        <div class="dt-mosaic-cell">
-          <span class="dt-mosaic-verb">Ask</span>
-          <h4>Questions Live</h4>
-          <p>Get feedback from the team and community in real time during sessions — no more trading in isolation wondering if you're on track.</p>
+
+        <!-- 5 -->
+        <div class="dt-mosaic-card mc-orange">
+          <div class="dt-mosaic-wm">05</div>
+          <div class="dt-mosaic-inner">
+            <div class="dt-mosaic-hrow">
+              <div class="dt-mosaic-icon i-orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <h4>Live Answers, Not Isolation</h4>
+            </div>
+            <p>Ask questions in real time during live sessions and get feedback from the team and community — no more trading alone wondering if you're reading the market right or making the same mistake twice.</p>
+          </div>
         </div>
-        <div class="dt-mosaic-cell stat-cell">
-          <span class="dt-mosaic-big">10</span>
-          <span class="dt-mosaic-big-lbl">Strategy Courses Included</span>
+
+        <!-- 6 -->
+        <div class="dt-mosaic-card mc-blue">
+          <div class="dt-mosaic-wm">06</div>
+          <div class="dt-mosaic-inner">
+            <div class="dt-mosaic-hrow">
+              <div class="dt-mosaic-icon i-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#60a5fa"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <h4>The Reps That Build Consistency</h4>
+            </div>
+            <p>Build the daily reps that turn a beginner into a consistent trader — because skill in day trading comes from showing up and doing it, not just studying it. Every session adds to that foundation.</p>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -1583,16 +1894,23 @@
 
   <!-- ── 13. FINAL CTA ── -->
   <section class="pm-final-cta">
-    <div class="pm-final-cta-bg"></div>
-    <div class="pm-final-cta-overlay"></div>
-    <div class="pm-final-blob-a"></div>
-    <div class="pm-final-blob-b"></div>
-    <div class="pm-final-inner">
-      <span class="pm-eyebrow" style="color:rgba(255,255,255,.55);">Ready to Trade Live?</span>
-      <h2>Join the Live<br>Trading Room</h2>
-      <p>10 day trading courses. Daily live streams with real-time trade calls. Professional chart indicators. 0 DTE strategies. An active community of traders who show up every morning ready to trade.<br><br>This is where you stop studying and start doing.</p>
-      <a href="https://whop.com/navigationtrading/" class="btn-final">Get Day Trading Access — $129/month →</a>
-      <div class="pm-final-note">Cancel anytime. Instant access. No long-term commitment.</div>
+    <div class="pm-container">
+      <div class="pm-final-cta-card">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        <div class="pm-final-inner">
+          <span class="pm-eyebrow" style="margin-bottom:15px; color:var(--orange);">Ready to Trade Live?</span>
+          <h2>Join the <em>Live Trading Room</em></h2>
+          <p>10 day trading courses. Daily live streams with real-time trade calls. Professional chart indicators. 0 DTE strategies. An active community of traders who show up every morning ready to trade.</p>
+          <a href="https://whop.com/navigationtrading/" class="btn-final">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Get Day Trading Access — $129/month
+          </a>
+          <div class="pm-final-note">Cancel anytime. Instant access. No long-term commitment.</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1676,31 +1994,21 @@
       const groups = document.querySelectorAll('.dt-vault-group');
       const target = document.getElementById('group-' + catId);
       const wasExpanded = target.classList.contains('expanded');
-      
-      // Close all
-      groups.forEach(g => {
-        g.classList.remove('expanded');
-        g.classList.remove('ready-sticky');
-      });
-      
+
+      // Record where the target card sits on screen before any DOM change
+      const targetScreenTop = target.getBoundingClientRect().top;
+
+      // Close all open groups
+      groups.forEach(g => g.classList.remove('expanded'));
+
+      // The collapse of a previously open card shrinks the page above the target,
+      // causing the browser to shift the viewport. Measure the drift and correct it
+      // synchronously so no visible jump occurs.
+      const drift = target.getBoundingClientRect().top - targetScreenTop;
+      if (drift !== 0) window.scrollBy({ top: drift, behavior: 'instant' });
+
       if (!wasExpanded) {
         target.classList.add('expanded');
-        
-        // Wait for DOM to reflow then use Absolute Positioning for the scroll
-        setTimeout(() => {
-          const rect = target.getBoundingClientRect();
-          const absoluteTop = rect.top + window.pageYOffset;
-          
-          window.scrollTo({
-            top: absoluteTop - 110, // Offset for sticky navbar
-            behavior: 'smooth'
-          });
-          
-          // Enable sticky after animation completes
-          setTimeout(() => {
-            target.classList.add('ready-sticky');
-          }, 500);
-        }, 10); 
       }
     }
 
