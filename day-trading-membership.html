@@ -125,17 +125,77 @@
     .dt-hero p { font-size: 19px; color: rgba(255,255,255,0.82); max-width: 740px; margin: 0 auto 38px; line-height: 1.6; }
     .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 17px 38px; background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 800; letter-spacing: 0.6px; border-radius: 12px; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 12px 30px rgba(200,66,10,0.30); }
     .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 16px 38px rgba(200,66,10,0.40); }
-    .trust-bar { margin-top: 36px; display: flex; justify-content: center; flex-wrap: wrap; gap: 28px; font-size: 13px; color: rgba(255,255,255,0.65); font-weight: 500; }
-    .trust-bar > * { display: inline-flex; align-items: center; gap: 8px; }
-    .trust-bar strong { color: #fff; font-weight: 700; }
-    .stars-row { color: var(--gold); letter-spacing: 1px; }
+    /* ── STATS BAR (below hero) ── */
+    .stats-bar {
+      background: var(--teal-900);
+      padding: 24px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0 20px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .stat-num .stars-small {
+      font-size: 14px;
+      -webkit-text-fill-color: var(--gold);
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .stat-label {
+      color: rgba(255,255,255,0.45);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .stat-item:nth-child(2) { border-right: none; }
+    }
 
     /* ══ SECTION 2: PROMISE — WHITE EDITORIAL ══ */
-    .dt-promise { padding: 100px 0 80px; background: #fff; position: relative; overflow: hidden; }
+    .dt-promise { padding: 60px 0 40px; background: #fff; position: relative; overflow: hidden; }
     .dt-promise-wm { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: clamp(100px,16vw,200px); font-family: 'Cormorant Garamond',serif; font-weight: 700; color: rgba(13,46,78,.04); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: -4px; line-height: 1; }
     .dt-promise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 60px; }
-    .dt-promise-left { position: relative; padding-left: 28px; }
-    .dt-promise-left::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--orange), rgba(200,66,10,.15)); border-radius: 2px; }
+    .dt-promise-left { position: relative; }
     .dt-promise-h2 { font-family: 'Cormorant Garamond',serif; font-size: clamp(34px,4vw,54px); font-weight: 700; color: var(--teal-900); line-height: 1.1; letter-spacing: -.02em; margin-top: 12px; }
     .dt-promise-h2 em { font-style: italic; color: var(--orange); }
     .dt-promise-right p { font-size: 16.5px; line-height: 1.85; color: #444; margin-bottom: 20px; }
@@ -424,8 +484,8 @@
     .dt-curriculum .pm-container { max-width: 1180px; width: 90%; }
 
     /* ── Tab Layout ── */
-    .dt-vault-tabs { display: grid; grid-template-columns: 200px 60px 1fr; gap: 0; margin-top: 52px; align-items: start; position: relative; }
-    .dt-vault-tabs::before { content: ''; position: absolute; left: 230px; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,.1); pointer-events: none; }
+    .dt-vault-tabs { display: grid; grid-template-columns: 320px 40px 1fr; gap: 0; margin-top: 52px; align-items: start; position: relative; }
+    .dt-vault-tabs::before { content: ''; position: absolute; left: 340px; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,.1); pointer-events: none; }
     .dt-vtab-divider { visibility: hidden; }
 
     /* Left tab cards */
@@ -456,29 +516,79 @@
     .dt-vtab-panel:last-child { margin-bottom: 0; }
     .dt-vtab-section-label { font-size: 20px; font-weight: 800; color: var(--orange); letter-spacing: -.01em; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.1); line-height: 1.2; text-align: center; }
 
-    .dt-vc-grid { display: flex; flex-direction: column; gap: 10px; }
+    .dt-vc-grid { display: flex; flex-direction: column; gap: 16px; }
     .dt-vc-card {
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      border-radius: 0;
-      padding: 20px 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 24px 28px;
       display: grid;
-      grid-template-columns: 44px 1fr auto;
-      gap: 18px;
+      grid-template-columns: 50px 1fr auto;
+      gap: 24px;
       align-items: center;
-      transition: all .3s;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       position: relative;
       overflow: hidden;
     }
-    .dt-vc-card:last-child { border-bottom: none; }
-    .dt-vc-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 100%; background: rgba(200,66,10,.07); pointer-events: none; }
-    .dt-vc-card:hover { transform: translateX(6px); }
-    .dt-vc-num { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: rgba(255,255,255,.2); position: relative; z-index: 1; }
-    .dt-vc-content { position: relative; z-index: 1; }
-    .dt-vc-content h4 { font-size: 18px; color: #fff; margin-bottom: 6px; font-weight: 700; }
-    .dt-vc-content p { font-size: 14px; color: rgba(255,255,255,.48); line-height: 1.55; margin: 0; }
-    .dt-vc-tag { background: rgba(200,66,10,.12); border: 1px solid rgba(200,66,10,.28); color: var(--orange); font-size: 9.5px; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: .8px; white-space: nowrap; position: relative; z-index: 1; }
+    .dt-vc-card::before { 
+      content: ''; 
+      position: absolute; 
+      inset: 0; 
+      background: linear-gradient(90deg, rgba(200,66,10,0.03), transparent); 
+      opacity: 0; 
+      transition: opacity 0.4s ease;
+      pointer-events: none; 
+    }
+    .dt-vc-card:hover { 
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.12);
+      transform: translateX(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .dt-vc-card:hover::before { opacity: 1; }
+
+    .dt-vc-num { 
+      font-family: 'Cormorant Garamond', serif; 
+      font-size: 32px; 
+      font-weight: 700; 
+      color: rgba(255,255,255,0.15); 
+      line-height: 1;
+      font-style: italic;
+    }
+    .dt-vc-card:hover .dt-vc-num { color: var(--orange); opacity: 0.4; }
+
+    .dt-vc-content h4 { 
+      font-size: 19px; 
+      color: #fff; 
+      margin-bottom: 8px; 
+      font-weight: 700; 
+      letter-spacing: -0.01em;
+    }
+    .dt-vc-content p { 
+      font-size: 14.5px; 
+      color: rgba(255,255,255,0.5); 
+      line-height: 1.6; 
+      margin: 0; 
+      max-width: 90%;
+    }
+    .dt-vc-tag { 
+      background: rgba(255,255,255,0.05); 
+      border: 1px solid rgba(255,255,255,0.1); 
+      color: rgba(255,255,255,0.6); 
+      font-size: 9px; 
+      font-weight: 800; 
+      padding: 5px 12px; 
+      border-radius: 4px; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+      white-space: nowrap; 
+      transition: all 0.3s;
+    }
+    .dt-vc-card:hover .dt-vc-tag {
+      background: rgba(200,66,10,0.15);
+      border-color: rgba(200,66,10,0.3);
+      color: var(--orange);
+    }
 
     .dt-vh-count { background: rgba(200,66,10,0.1); padding: 6px 16px; border-radius: 50px; color: var(--orange) !important; font-weight: 800; font-size: 11px; letter-spacing: 1px; }
 
@@ -689,50 +799,107 @@
     .dt-results { background: #0D2E4E; padding: 80px 0; position: relative; overflow: hidden; }
     .dt-results::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat; opacity: 0.35; pointer-events: none; }
     .dt-results::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%); pointer-events: none; }
-    .dt-results .pm-container { position: relative; z-index: 2; }
-    .dt-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 52px; }
-    .dt-mosaic-card {
-      background: rgba(0,0,0,.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 30px;
-      position: relative; overflow: hidden;
-      display: flex; flex-direction: column; align-items: flex-start;
-      transition: transform .3s, background .3s, border-color .3s, box-shadow .3s;
+    .dt-results .pm-container { position: relative; z-index: 2; max-width: 1200px; }
+
+    .dt-results-list { 
+      background: #071626;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 52px; 
+      max-width: 1200px; 
+      margin-left: auto; 
+      margin-right: auto; 
     }
-    .dt-mosaic-card:hover { background: rgba(0,0,0,.6); border-color: rgba(255,255,255,.25); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,.2); }
-    .dt-mosaic-card::after { content: ''; position: absolute; top: 0; left: 8%; right: 8%; height: 2px; border-radius: 0 0 4px 4px; opacity: 0; transition: opacity .3s; }
-    .dt-mosaic-card:hover::after { opacity: 1; }
-    .dt-mosaic-card.mc-orange::after { background: linear-gradient(90deg, transparent, var(--orange), transparent); }
-    .dt-mosaic-card.mc-blue::after   { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
-    .dt-mosaic-card.mc-gold::after   { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-    .dt-mosaic-card.mc-indigo::after { background: linear-gradient(90deg, transparent, #818cf8, transparent); }
-    .dt-mosaic-wm {
-      position: absolute; bottom: -10px; right: 16px;
-      font-size: 80px; font-weight: 800; color: rgba(255,255,255,.03);
-      line-height: 1; user-select: none; pointer-events: none; transition: color .3s;
+    .dt-results-row {
+      padding: 36px 50px;
+      display: grid;
+      grid-template-columns: 140px 1fr 60px;
+      gap: 40px;
+      align-items: center;
+      transition: all 0.4s ease;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
-    .dt-mosaic-card:hover .dt-mosaic-wm { color: rgba(255,255,255,.06); }
-    .dt-mosaic-inner { flex: 1; z-index: 2; position: relative; width: 100%; }
-    .dt-mosaic-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-    .dt-mosaic-card.mc-orange .dt-mosaic-label { color: var(--orange); }
-    .dt-mosaic-card.mc-blue   .dt-mosaic-label { color: #60a5fa; }
-    .dt-mosaic-card.mc-gold   .dt-mosaic-label { color: var(--gold); }
-    .dt-mosaic-card.mc-indigo .dt-mosaic-label { color: #a5b4fc; }
-    .dt-mosaic-hrow { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-    .dt-mosaic-icon {
-      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform .3s;
+    .dt-results-row:last-child { border-bottom: none; }
+    .dt-results-row:hover {
+      background: rgba(255, 255, 255, 0.02);
     }
-    .dt-mosaic-card:hover .dt-mosaic-icon { transform: scale(1.05) rotate(-5deg); }
-    .dt-mosaic-icon.i-orange { background: rgba(200,66,10,.18);  border: 1px solid rgba(200,66,10,.3); }
-    .dt-mosaic-icon.i-blue   { background: rgba(59,130,246,.16); border: 1px solid rgba(59,130,246,.3); }
-    .dt-mosaic-icon.i-gold   { background: rgba(212,160,64,.16); border: 1px solid rgba(212,160,64,.3); }
-    .dt-mosaic-icon.i-indigo { background: rgba(129,140,248,.16);border: 1px solid rgba(129,140,248,.3); }
-    .dt-mosaic-icon svg { width: 16px; height: 16px; }
-    .dt-mosaic-hrow h4 { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -.02em; line-height: 1.2; margin-bottom: 0; }
-    .dt-mosaic-inner p { font-size: 13.5px; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 0; }
-    @media (max-width: 860px) { .dt-mosaic { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 540px) { .dt-mosaic { grid-template-columns: 1fr; } }
+    .dt-rr-num {
+      font-size: 110px;
+      font-weight: 700;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      line-height: 0.8;
+      color: transparent;
+      user-select: none;
+      transition: all 0.4s ease;
+      transform: translateX(-6px);
+      width: 140px;
+      display: block;
+      text-align: center;
+    }
+    .dt-results-row:hover .dt-rr-num { transform: translateX(0); }
+    
+    .rr-orange .dt-rr-num { -webkit-text-stroke: 1.5px rgba(200,66,10,0.5); }
+    .rr-blue   .dt-rr-num { -webkit-text-stroke: 1.5px rgba(59,130,246,0.5); }
+    .rr-gold   .dt-rr-num { -webkit-text-stroke: 1.5px rgba(212,160,64,0.5); }
+    .rr-indigo .dt-rr-num { -webkit-text-stroke: 1.5px rgba(129,140,248,0.5); }
+
+    .rr-orange:hover .dt-rr-num { -webkit-text-stroke-color: var(--orange); }
+    .rr-blue:hover   .dt-rr-num { -webkit-text-stroke-color: #60a5fa; }
+    .rr-gold:hover   .dt-rr-num { -webkit-text-stroke-color: var(--gold); }
+    .rr-indigo:hover .dt-rr-num { -webkit-text-stroke-color: #a5b4fc; }
+
+    .dt-rr-content h4 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      line-height: 1.2;
+    }
+    .dt-rr-content p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 98%;
+    }
+    .dt-rr-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s;
+    }
+    .rr-orange .dt-rr-icon svg { color: var(--orange); }
+    .rr-blue   .dt-rr-icon svg { color: #60a5fa; }
+    .rr-gold   .dt-rr-icon svg { color: var(--gold); }
+    .rr-indigo .dt-rr-icon svg { color: #a5b4fc; }
+
+    .rr-orange:hover .dt-rr-icon { background: var(--orange); border-color: var(--orange); }
+    .rr-blue:hover   .dt-rr-icon { background: #3b82f6; border-color: #3b82f6; }
+    .rr-gold:hover   .dt-rr-icon { background: var(--gold); border-color: var(--gold); }
+    .rr-indigo:hover .dt-rr-icon { background: #818cf8; border-color: #818cf8; }
+
+    .dt-results-row:hover .dt-rr-icon {
+      transform: scale(1.05) rotate(5deg);
+    }
+    .dt-rr-icon svg { width: 24px; height: 24px; stroke-width: 2; transition: color 0.3s; }
+    .dt-results-row:hover .dt-rr-icon svg { color: #fff; }
+
+    @media (max-width: 960px) {
+      .dt-results-row { grid-template-columns: 1fr; gap: 24px; padding: 40px 32px; text-align: center; }
+      .dt-rr-content p { max-width: 100%; }
+      .dt-rr-icon { margin: 0 auto; width: 80px; height: 80px; }
+      .dt-rr-num { font-size: 80px; transform: none !important; }
+    }
 
     /* ══ SECTION 10: INSTRUCTOR ══ */
     .dt-instructor { padding: 100px 0; background: #fff; }
@@ -957,18 +1124,35 @@
       <h1>Stop Watching Replays.<br>Start Trading <em>Live.</em></h1>
       <p>Join a daily live trading room where real trades are called out in real time — not after the fact. Get 10 proven day trading strategy courses, professional chart indicators, and 0 DTE strategies for $129/month. This is where learning turns into doing.</p>
       <a href="https://whop.com/navigationtrading/" class="btn-primary">Join the Live Trading Room — $129/month →</a>
-      <div class="trust-bar">
-        <span><strong>64</strong> Active Members</span>
-        <span class="stars-row">★★★★★ <strong>4.8</strong> Rating</span>
-        <span><strong>25</strong> Reviews</span>
-        <span>By <strong>NavigationTrading</strong></span>
-      </div>
     </div>
   </section>
 
+  <!-- ── STATS BAR ── -->
+  <div class="stats-bar">
+    <div class="pm-container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="64">0</span></div>
+          <div class="stat-label">Active Members</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="4.8">0.0</span> <span class="stars-small">★★★★★</span></div>
+          <div class="stat-label">Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="25">0</span></div>
+          <div class="stat-label">Reviews</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" style="font-size: 16px; background: none; -webkit-text-fill-color: rgba(255,255,255,0.9); letter-spacing: 2px;">BY</div>
+          <div class="stat-label">NavigationTrading</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── 2. PROMISE ── -->
   <section class="dt-promise">
-    <div class="dt-promise-wm">LIVE</div>
     <div class="pm-container">
       <div style="text-align:center; margin-bottom:40px;" class="reveal">
         <span class="pm-eyebrow">The Gap Between Learning and Trading</span>
@@ -1498,93 +1682,80 @@
   <section class="dt-results">
     <div class="pm-container">
       <div class="pm-section-head light reveal">
-        <span class="pm-eyebrow">What Changes When You Join</span>
+        <span class="pm-eyebrow">WHAT CHANGES WHEN YOU JOIN</span>
         <h2>What You'll <em style="color:var(--orange)">Walk Away With</em></h2>
-        <p>Not theory. Not a certificate. Real skills that show up in how you trade every single day.</p>
       </div>
-      <div class="dt-mosaic reveal">
+      <div class="dt-results-list reveal">
 
         <!-- 1 -->
-        <div class="dt-mosaic-card mc-orange">
-          <div class="dt-mosaic-wm">01</div>
-          <div class="dt-mosaic-inner">
-            <div class="dt-mosaic-hrow">
-              <div class="dt-mosaic-icon i-orange">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              </div>
-              <h4>Execution Confidence</h4>
-            </div>
-            <p>You've watched trades placed live by a professional who narrates every decision as it happens — not in hindsight. Hesitation disappears when you've seen the process hundreds of times.</p>
+        <div class="dt-results-row rr-orange">
+          <div class="dt-rr-num">01</div>
+          <div class="dt-rr-content">
+            <h4>Execute</h4>
+            <p>Execute trades with confidence because you've watched them done live, in real time, by a professional trader who explains every decision as it happens.</p>
+          </div>
+          <div class="dt-rr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
         </div>
 
         <!-- 2 -->
-        <div class="dt-mosaic-card mc-blue">
-          <div class="dt-mosaic-wm">02</div>
-          <div class="dt-mosaic-inner">
-            <div class="dt-mosaic-hrow">
-              <div class="dt-mosaic-icon i-blue">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#60a5fa"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              </div>
-              <h4>A Daily Trading Routine</h4>
-            </div>
-            <p>Pre-market prep, two live sessions, real-time trade alerts, and after-hours review — your trading day has structure instead of guesswork so you show up knowing exactly what to do.</p>
+        <div class="dt-results-row rr-blue">
+          <div class="dt-rr-num">02</div>
+          <div class="dt-rr-content">
+            <h4>Follow</h4>
+            <p>Follow a structured daily trading routine — pre-market prep, live sessions, trade alerts, and after-hours review — so your trading has rhythm instead of randomness.</p>
+          </div>
+          <div class="dt-rr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
         </div>
 
         <!-- 3 -->
-        <div class="dt-mosaic-card mc-gold">
-          <div class="dt-mosaic-wm">03</div>
-          <div class="dt-mosaic-inner">
-            <div class="dt-mosaic-hrow">
-              <div class="dt-mosaic-icon i-gold">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              </div>
-              <h4>0 DTE Strategy Rules</h4>
-            </div>
-            <p>Specific entry criteria, strike selection frameworks, and defined risk parameters for same-day options — so you're trading a system, not chasing momentum on impulse.</p>
+        <div class="dt-results-row rr-gold">
+          <div class="dt-rr-num">03</div>
+          <div class="dt-rr-content">
+            <h4>Trade</h4>
+            <p>Trade 0 DTE strategies with specific entry rules, strike selection frameworks, and risk management parameters — not gut-feel gambling on same-day options.</p>
+          </div>
+          <div class="dt-rr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           </div>
         </div>
 
         <!-- 4 -->
-        <div class="dt-mosaic-card mc-indigo">
-          <div class="dt-mosaic-wm">04</div>
-          <div class="dt-mosaic-inner">
-            <div class="dt-mosaic-hrow">
-              <div class="dt-mosaic-icon i-indigo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#a5b4fc"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
-              </div>
-              <h4>Professional Chart Indicators</h4>
-            </div>
-            <p>Use professional day trading indicators on your own charts — the same tools the NavigationTrading team uses to identify setups every morning. Not generic moving averages. Proprietary tools refined through years of live trading.</p>
+        <div class="dt-results-row rr-indigo">
+          <div class="dt-rr-num">04</div>
+          <div class="dt-rr-content">
+            <h4>Use</h4>
+            <p>Use professional day trading indicators on your own charts — the same tools the NavigationTrading team uses to identify setups every morning.</p>
+          </div>
+          <div class="dt-rr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
           </div>
         </div>
 
         <!-- 5 -->
-        <div class="dt-mosaic-card mc-orange">
-          <div class="dt-mosaic-wm">05</div>
-          <div class="dt-mosaic-inner">
-            <div class="dt-mosaic-hrow">
-              <div class="dt-mosaic-icon i-orange">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              </div>
-              <h4>Live Answers, Not Isolation</h4>
-            </div>
-            <p>Ask questions in real time during live sessions and get feedback from the team and community — no more trading alone wondering if you're reading the market right or making the same mistake twice.</p>
+        <div class="dt-results-row rr-orange">
+          <div class="dt-rr-num">05</div>
+          <div class="dt-rr-content">
+            <h4>Ask</h4>
+            <p>Ask questions in real time during live sessions and get feedback from the team and community — no more trading in isolation wondering if you're doing it right.</p>
+          </div>
+          <div class="dt-rr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
         </div>
 
         <!-- 6 -->
-        <div class="dt-mosaic-card mc-blue">
-          <div class="dt-mosaic-wm">06</div>
-          <div class="dt-mosaic-inner">
-            <div class="dt-mosaic-hrow">
-              <div class="dt-mosaic-icon i-blue">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#60a5fa"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-              </div>
-              <h4>The Reps That Build Consistency</h4>
-            </div>
-            <p>Build the daily reps that turn a beginner into a consistent trader — because skill in day trading comes from showing up and doing it, not just studying it. Every session adds to that foundation.</p>
+        <div class="dt-results-row rr-blue">
+          <div class="dt-rr-num">06</div>
+          <div class="dt-rr-content">
+            <h4>Build</h4>
+            <p>Build the daily reps that turn a beginner into a consistent trader — because skill in day trading comes from showing up and doing it, not just studying it.</p>
+          </div>
+          <div class="dt-rr-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
         </div>
 
@@ -2010,6 +2181,46 @@
         ans.style.maxHeight = ans.scrollHeight + 'px';
       }
     }
+
+    /* Count Up Animation */
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      const duration = 1000; // Faster animation (1 second)
+
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        const isDecimal = counter.getAttribute('data-target').includes('.');
+        let startTimestamp = null;
+
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          const currentCount = progress * target;
+          
+          counter.innerText = isDecimal ? currentCount.toFixed(1) : Math.floor(currentCount);
+          
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          } else {
+            counter.innerText = isDecimal ? target.toFixed(1) : target;
+          }
+        };
+        window.requestAnimationFrame(step);
+      });
+    }
+    
+    // Run when visible
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsBar = document.querySelector('.stats-bar');
+    if (statsBar) statsObserver.observe(statsBar);
   </script>
 </body>
 </html>
