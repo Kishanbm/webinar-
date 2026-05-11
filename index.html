@@ -60,7 +60,7 @@
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--bg-main);
+      background: #030d1a; /* Dark default to prevent white flashes */
       color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.6;
@@ -188,190 +188,412 @@
       box-shadow: 0 8px 25px rgba(200, 66, 10, 0.3);
     }
 
-    /* ── HERO ── */
+    /* ══ HERO — XENTRO PERSPECTIVE FLOOR STYLE ══ */
     .hero {
-      background: #0D2E4E; /* Matched to free-membership */
+      background: #030d1a;
       position: relative;
       overflow: hidden;
       padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      border-bottom: none;
     }
 
-    /* ── HERO BACKGROUND ── */
-    .hero-bg-img {
+    /* Container bottom fade to blend into the next white section */
+    .hero::after {
+      content: '';
       position: absolute;
-      inset: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.45;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(to top, #030d1a, transparent);
+      z-index: 6;
+      pointer-events: none;
     }
 
-    .hero-bg-overlay {
+    /* Radial glow top-center (brand color) */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(200,66,10,0.22) 0%, rgba(13,46,78,0.15) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Stars / particle dots */
+    .hero-stars {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(135deg, rgba(13,46,78,0.82) 0%, rgba(13,46,78,0.65) 50%, rgba(13,46,78,0.80) 100%);
       pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+      background-size: 200px 200px, 130px 130px, 80px 80px;
+      background-position: 10px 20px, 60px 80px, 15px 55px;
+      opacity: 0.35;
     }
 
-    .hero-glow {
+    /* TOP orange accent line */
+    .hero-line-accent {
       position: absolute;
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(30,100,200,0.22) 0%, transparent 65%);
-      top: -200px;
-      right: -100px;
-      pointer-events: none;
-      z-index: 2;
-      animation: pulseglow 6s ease-in-out infinite;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange) 30%, #d4a040 50%, var(--orange) 70%, transparent);
+      z-index: 10;
     }
 
-    .hero-glow-2 {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(16,90,180,0.35) 0%, transparent 65%);
-      bottom: -100px;
-      left: -50px;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    @keyframes pulseglow {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.7; }
-    }
-
-    .dot-grid {
-      position: absolute;
-      z-index: 3;
-      pointer-events: none;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px);
-      background-size: 22px 22px;
-    }
-
-    /* Staggered Animations */
-    .hero-content > * {
-      opacity: 0;
-      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      position: relative;
-      z-index: 3;
-    }
-
-    .hero-label { animation-delay: 0.1s; }
-    .hero h1 { animation-delay: 0.3s; }
-    .hero-sub { animation-delay: 0.5s; }
-    .btn-main { animation-delay: 0.7s; }
-    .hero-stats { animation-delay: 0.9s; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Single-column centered layout */
+    /* Center wrapper */
     .hero-inner {
       position: relative;
-      z-index: 3;
+      z-index: 5;
       width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: auto;
-      padding-bottom: 0;
+      padding: 0 40px;
     }
 
-    /* Centered content */
+    /* ── TEXT BLOCK (centered) ── */
     .hero-content {
-      padding: 140px 20px 50px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      padding: 120px 0 56px;
+      max-width: 860px;
       width: 100%;
     }
 
-    .hero-label {
+    .hero-content > * {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-badge   { animation-delay: 0.05s; }
+    .hero h1      { animation-delay: 0.2s; }
+    .hero-sub     { animation-delay: 0.35s; }
+    .hero-cta-row { animation-delay: 0.5s; }
+    .hero-trust   { animation-delay: 0.65s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Live badge */
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.18);
+      gap: 9px;
+      padding: 6px 16px 6px 10px;
+      background: rgba(200,66,10,0.1);
+      border: 1px solid rgba(200,66,10,0.3);
       border-radius: 50px;
-      color: #7dd3f0;
-      font-size: 12px;
-      font-weight: 700;
+      color: #ff9060;
+      font-size: 11px;
+      font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
-
-    .hero-label::before {
-      content: '';
-      width: 8px; height: 8px;
-      background: #38bdf8;
+    .hero-badge-dot {
+      width: 7px; height: 7px;
       border-radius: 50%;
-      box-shadow: 0 0 8px #38bdf8;
+      background: var(--orange);
+      box-shadow: 0 0 0 3px rgba(200,66,10,0.28);
+      animation: live-pulse 2s ease-in-out infinite;
+    }
+    @keyframes live-pulse {
+      0%,100% { box-shadow: 0 0 0 3px rgba(200,66,10,0.28); }
+      50%      { box-shadow: 0 0 0 7px rgba(200,66,10,0.08); }
     }
 
+    /* Headline */
     .hero h1 {
-      font-size: clamp(48px, 6vw, 76px);
+      font-size: clamp(44px, 5.5vw, 76px);
       font-weight: 800;
       color: #fff;
-      line-height: 1.1;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
-      max-width: 900px;
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      margin-bottom: 20px;
+      max-width: 820px;
     }
-
     .hero h1 em {
       font-style: normal;
-      color: #d4a040;
+      background: linear-gradient(135deg, var(--orange) 0%, #d4a040 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
+    /* Sub */
     .hero-sub {
-      font-size: 20px;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 48px;
-      line-height: 1.6;
-      max-width: 700px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 38px;
+      line-height: 1.65;
+      max-width: 620px;
     }
 
+    /* CTAs */
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 38px;
+    }
     .btn-main {
       background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
       color: #fff;
-      padding: 16px 36px;
-      font-size: 15px;
+      padding: 15px 32px;
+      font-size: 14px;
       font-weight: 800;
-      border-radius: 12px;
+      border-radius: 10px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
+      gap: 8px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 8px 24px rgba(200,66,10,0.25);
-      letter-spacing: 0.5px;
+      box-shadow: 0 8px 28px rgba(200,66,10,0.35);
+      letter-spacing: 0.4px;
     }
-
     .btn-main:hover {
-      background: linear-gradient(135deg, var(--orange-bright) 0%, #ff5e1a 100%);
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 12px 32px rgba(200,66,10,0.35);
+      box-shadow: 0 16px 38px rgba(200,66,10,0.45);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 15px 24px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 10px;
+      transition: all 0.3s;
+      background: rgba(255,255,255,0.04);
+    }
+    .btn-ghost:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.08);
     }
 
-    /* ── STATS BAR (below hero, separate section) ── */
-    .stats-bar {
-      background: var(--teal-900);
-      padding: 24px 0;
+    /* Trust */
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.42);
+    }
+    .hero-trust-item svg { color: var(--orange); flex-shrink: 0; }
+
+    /* ───── PERSPECTIVE FLOOR DASHBOARD ───── */
+    .hero-floor-wrap {
+      position: relative;
+      width: 100%;
+      /* Perspective applied here so children appear to go 'into' the screen */
+      perspective: 1200px;
+      margin-top: 0;
+      /* overflow: hidden cuts the bottom so it bleeds naturally */
+    }
+
+    /* The sharp glowing horizon LINE at top of the perspective panel */
+    .hero-horizon-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      z-index: 20;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(200,66,10,0.5) 10%,
+        var(--orange) 30%,
+        #ff9a60 50%,
+        var(--orange) 70%,
+        rgba(200,66,10,0.5) 90%,
+        transparent 100%
+      );
+      box-shadow:
+        0 0 6px rgba(200,66,10,1),
+        0 0 18px rgba(200,66,10,0.7),
+        0 0 40px rgba(200,66,10,0.4),
+        0 0 80px rgba(200,66,10,0.15);
+    }
+
+    /* The actual dashboard panel that gets the perspective tilt */
+    .hero-dash-floor {
+      width: 100%;
+      max-height: 420px;
+      transform: rotateX(28deg);
+      transform-origin: top center;
+      background: #060f1c;
+      border-left: 1px solid rgba(255,255,255,0.06);
+      border-right: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-dash-floor::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80%;
+      background: linear-gradient(to bottom, transparent 0%, #030d1a 100%);
+      pointer-events: none;
+      z-index: 15;
+    }
+    /* Left/right fade for natural edge bleed */
+    .hero-dash-floor::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, #030d1a 0%, transparent 8%, transparent 92%, #030d1a 100%);
+      pointer-events: none;
+      z-index: 16;
+    }
+
+    /* Dashboard top bar */
+    .dash-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 28px;
+      background: #081220;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .dash-topbar-tabs { display: flex; gap: 4px; }
+    .dash-tab {
+      padding: 5px 16px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+    }
+    .dash-tab.active {
+      background: rgba(200,66,10,0.14);
+      color: var(--orange);
+      border: 1px solid rgba(200,66,10,0.22);
+    }
+    .dash-top-stats { display: flex; gap: 24px; }
+    .dash-ts {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.3);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .dash-ts span { color: #10b981; font-weight: 700; }
+    .dash-ts span.red { color: #ef4444; }
+
+    /* Options chain table */
+    .dash-chain {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr 1fr 1fr;
+      padding: 6px 28px 2px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .dash-chain-hdr {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.2);
+      padding: 4px 0;
+    }
+    .dash-chain-row { display: contents; }
+    .dash-chain-cell {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      padding: 5px 0;
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
+    .dash-chain-cell.strike { color: #fff; font-weight: 800; }
+    .dash-chain-cell.call { color: #10b981; }
+    .dash-chain-cell.put  { color: #ef4444; }
+    .dash-chain-row.hl .dash-chain-cell { background: rgba(200,66,10,0.05); }
+
+    /* Chart */
+    .dash-chart-area { padding: 12px 28px 0; position: relative; }
+    .dash-chart-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .dash-chart-label::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 5px var(--orange);
+    }
+    .dash-chart-svg { width: 100%; display: block; }
+
+    /* Alerts */
+    .dash-alerts {
+      padding: 10px 28px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .dash-alert-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .dash-alert-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .dash-alert-dot.g { background: #10b981; box-shadow: 0 0 4px #10b981; }
+    .dash-alert-dot.r { background: #ef4444; box-shadow: 0 0 4px #ef4444; }
+    .dash-alert-dot.o { background: var(--orange); box-shadow: 0 0 4px var(--orange); }
+    .dash-alert-text { font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.6); flex: 1; }
+    .dash-alert-val  { font-size: 10.5px; font-weight: 800; }
+    .dash-alert-val.g { color: #10b981; }
+    .dash-alert-val.r { color: #ef4444; }
+    .dash-alert-val.o { color: var(--orange); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: #020b18;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 22px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+
 
     .stats-grid {
       display: grid;
@@ -2354,12 +2576,13 @@
     }
 
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; min-height: auto; }
-      .hero-content { padding: 120px 32px 60px; align-items: center; text-align: center; }
-      .hero-sub { max-width: 100%; }
-      .hero-visual { display: none; }
-      .hero-stats { padding: 40px 24px 60px; flex-wrap: wrap; justify-content: center; }
-      .hero-stat { width: auto; padding: 0 24px; }
+      .hero-inner { min-height: auto; padding: 0 20px; }
+      .hero-content { padding: 100px 0 40px; }
+      .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+      .hero-floor-wrap { perspective: 1000px; }
+      .hero-dash-floor { transform: rotateX(20deg); max-height: 350px; }
+      .dash-topbar { padding: 10px 15px; }
+      .dash-top-stats { display: none; } /* Hide stats on mobile for space */
     }
     @media (max-width: 768px) {
       .learn-grid-4 { grid-template-columns: 1fr; }
@@ -2405,26 +2628,184 @@
     </div>
   </nav>
 
-  <!-- ── PREMIUM HERO ── -->
-  <section class="hero">
-    <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
-    <div class="hero-bg-overlay"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="dot-grid" style="top:40px;right:380px;width:160px;height:120px;z-index:3"></div>
-    <div class="dot-grid" style="bottom:80px;left:40px;width:100px;height:80px;opacity:0.5;z-index:3"></div>
+  <!-- ══ HERO — CENTERED + PERSPECTIVE FLOOR ══ -->
+  <section class="hero" id="hero">
+    <div class="hero-line-accent"></div>
+    <div class="hero-stars"></div>
 
     <div class="hero-inner">
 
-      <!-- Centered Content + Stats -->
+      <!-- CENTERED Text Block -->
       <div class="hero-content">
-        <span class="hero-label">Simple Strategies. Expert Guidance.</span>
-        <h1>Learn to build wealth<br>trading <em>options.</em></h1>
-        <p class="hero-sub">Institutional-grade methodology, real-time execution, and exponential results — without picking market direction.</p>
-        <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">GET FREE ACCESS TO OUR FLAGSHIP COURSES</a>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Live Trading Room Open Now
+        </div>
+
+        <h1>Trade Options With<br><em>Institutional Edge.</em></h1>
+
+        <p class="hero-sub">Real-time live streams, proven strategies, and the tools to execute confidently — without predicting market direction.</p>
+
+        <div class="hero-cta-row">
+          <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">
+            Get Free Access
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/performance" class="btn-ghost">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            View Track Record
+          </a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="hero-trust-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+            41,000+ Students
+          </div>
+          <div class="hero-trust-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+            20+ Years Experience
+          </div>
+          <div class="hero-trust-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+            Cancel Anytime
+          </div>
+        </div>
       </div>
+
+      <!-- PERSPECTIVE FLOOR: Dashboard goes INTO the screen -->
+      <div class="hero-floor-wrap">
+        <!-- The sharp glowing horizon line -->
+        <div class="hero-horizon-line"></div>
+
+        <!-- Dashboard tilted on X axis -->
+        <div class="hero-dash-floor">
+          <!-- Top bar -->
+          <div class="dash-topbar">
+            <div class="dash-topbar-tabs">
+              <div class="dash-tab active">Live Room</div>
+              <div class="dash-tab">0 DTE</div>
+              <div class="dash-tab">Alerts</div>
+              <div class="dash-tab">Performance</div>
+            </div>
+            <div class="dash-top-stats">
+              <div class="dash-ts">SPX &nbsp;<span>+0.43%</span></div>
+              <div class="dash-ts">QQQ &nbsp;<span>+0.61%</span></div>
+              <div class="dash-ts">VIX &nbsp;<span class="red">18.2</span></div>
+              <div class="dash-ts">P/L Today &nbsp;<span>+$2,340</span></div>
+            </div>
+          </div>
+
+          <!-- Options chain -->
+          <div class="dash-chain">
+            <div class="dash-chain-hdr">Call Bid</div>
+            <div class="dash-chain-hdr">Call Ask</div>
+            <div class="dash-chain-hdr">Strike</div>
+            <div class="dash-chain-hdr">Put Bid</div>
+            <div class="dash-chain-hdr">Put Ask</div>
+            <div class="dash-chain-row hl">
+              <div class="dash-chain-cell call">18.40</div>
+              <div class="dash-chain-cell call">18.60</div>
+              <div class="dash-chain-cell strike">5790</div>
+              <div class="dash-chain-cell put">9.20</div>
+              <div class="dash-chain-cell put">9.35</div>
+            </div>
+            <div class="dash-chain-row hl">
+              <div class="dash-chain-cell call">14.20</div>
+              <div class="dash-chain-cell call">14.30</div>
+              <div class="dash-chain-cell strike">5800</div>
+              <div class="dash-chain-cell put">11.80</div>
+              <div class="dash-chain-cell put">11.95</div>
+            </div>
+            <div class="dash-chain-row">
+              <div class="dash-chain-cell call">9.40</div>
+              <div class="dash-chain-cell call">9.55</div>
+              <div class="dash-chain-cell strike">5810</div>
+              <div class="dash-chain-cell put">15.20</div>
+              <div class="dash-chain-cell put">15.40</div>
+            </div>
+            <div class="dash-chain-row">
+              <div class="dash-chain-cell call">5.80</div>
+              <div class="dash-chain-cell call">5.90</div>
+              <div class="dash-chain-cell strike">5820</div>
+              <div class="dash-chain-cell put">19.60</div>
+              <div class="dash-chain-cell put">19.80</div>
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <div class="dash-chart-area">
+            <div class="dash-chart-label">SPX Live Chart — 0 DTE &nbsp;&nbsp; NTT Indicator Active</div>
+            <svg class="dash-chart-svg" viewBox="0 0 1100 140" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="35" x2="1100" y2="35" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="0" y1="70" x2="1100" y2="70" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <line x1="0" y1="105" x2="1100" y2="105" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <!-- Candles (green/red alternating, trending up) -->
+              <rect x="10"  y="65" width="12" height="35" fill="#10b981" rx="1"/>
+              <rect x="28"  y="60" width="12" height="28" fill="#10b981" rx="1"/>
+              <rect x="46"  y="68" width="12" height="22" fill="#ef4444" rx="1"/>
+              <rect x="64"  y="55" width="12" height="32" fill="#10b981" rx="1"/>
+              <rect x="82"  y="58" width="12" height="20" fill="#ef4444" rx="1"/>
+              <rect x="100" y="50" width="12" height="36" fill="#10b981" rx="1"/>
+              <rect x="118" y="48" width="12" height="24" fill="#10b981" rx="1"/>
+              <rect x="136" y="56" width="12" height="26" fill="#ef4444" rx="1"/>
+              <rect x="154" y="44" width="12" height="30" fill="#10b981" rx="1"/>
+              <rect x="172" y="42" width="12" height="22" fill="#10b981" rx="1"/>
+              <rect x="190" y="50" width="12" height="28" fill="#ef4444" rx="1"/>
+              <rect x="208" y="36" width="12" height="38" fill="#10b981" rx="1"/>
+              <rect x="226" y="38" width="12" height="20" fill="#10b981" rx="1"/>
+              <rect x="244" y="44" width="12" height="30" fill="#ef4444" rx="1"/>
+              <rect x="262" y="32" width="12" height="26" fill="#10b981" rx="1"/>
+              <rect x="280" y="30" width="12" height="32" fill="#10b981" rx="1"/>
+              <rect x="298" y="36" width="12" height="22" fill="#ef4444" rx="1"/>
+              <rect x="316" y="28" width="12" height="28" fill="#10b981" rx="1"/>
+              <rect x="334" y="26" width="12" height="20" fill="#10b981" rx="1"/>
+              <rect x="352" y="22" width="12" height="30" fill="#10b981" rx="1"/>
+              <rect x="370" y="28" width="12" height="18" fill="#ef4444" rx="1"/>
+              <rect x="388" y="18" width="12" height="28" fill="#10b981" rx="1"/>
+              <rect x="406" y="16" width="12" height="22" fill="#10b981" rx="1"/>
+              <rect x="424" y="20" width="12" height="26" fill="#ef4444" rx="1"/>
+              <rect x="442" y="14" width="12" height="24" fill="#10b981" rx="1"/>
+              <rect x="460" y="12" width="12" height="20" fill="#10b981" rx="1"/>
+              <!-- NTT Indicator (orange line) -->
+              <polyline
+                points="16,95 34,90 52,93 70,83 88,86 106,74 124,70 142,78 160,66 178,62 196,70 214,54 232,50 250,60 268,47 286,44 304,50 322,41 340,38 358,34 376,40 394,30 412,27 430,33 448,24 466,22"
+                fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+              <!-- Signal dot -->
+              <circle cx="466" cy="22" r="5" fill="var(--orange)" opacity="1"/>
+              <circle cx="466" cy="22" r="10" fill="var(--orange)" opacity="0.2"/>
+            </svg>
+          </div>
+
+          <!-- Alerts row -->
+          <div class="dash-alerts">
+            <div class="dash-alert-row">
+              <div class="dash-alert-dot o"></div>
+              <div class="dash-alert-text">🔔 LIVE ALERT — Iron Condor 5790/5800/5820/5830 — Entry at 9:41 AM</div>
+              <div class="dash-alert-val o">OPEN</div>
+            </div>
+            <div class="dash-alert-row">
+              <div class="dash-alert-dot g"></div>
+              <div class="dash-alert-text">Mighty 90 Setup — Long SPY 580C — Closed +68%</div>
+              <div class="dash-alert-val g">+$680</div>
+            </div>
+            <div class="dash-alert-row">
+              <div class="dash-alert-dot r"></div>
+              <div class="dash-alert-text">Power Hour — MOC Short — Stopped at max loss rule (-1.2R)</div>
+              <div class="dash-alert-val r">-$220</div>
+            </div>
+            <div class="dash-alert-row">
+              <div class="dash-alert-dot g"></div>
+              <div class="dash-alert-text">0 DTE IC 5795/5800/5810/5815 — Expired worthless</div>
+              <div class="dash-alert-val g">+$380</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
+
 
   <!-- ── STATS BAR ── -->
   <div class="stats-bar">
@@ -2440,7 +2821,7 @@
         </div>
         <div class="stat-item">
           <div class="stat-num">20+</div>
-          <div class="stat-label">Trading Experience</div>
+          <div class="stat-label">Years Experience</div>
         </div>
       </div>
     </div>
