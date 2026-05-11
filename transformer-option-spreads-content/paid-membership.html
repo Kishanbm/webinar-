@@ -335,6 +335,7 @@ body {
   position: absolute; left: -100px; top: 0;
   font-size: 14px; font-weight: 800; color: var(--gold);
   width: 80px; text-align: right;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
 }
 .timeline-dot {
   position: absolute; left: 26px; top: 3px;
@@ -356,9 +357,9 @@ body {
 .timeline-item p { font-size: 15px; color: rgba(255,255,255,.4); line-height: 1.7; transition: color .3s; }
 .timeline-item.active p { color: rgba(255,255,255,.65); }
 .timeline-status-badge {
-  display: inline-flex; align-items: center; font-size: 10px; font-weight: 800;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 50px;
+  display: inline-flex; align-items: center; font-size: 9px; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 50px;
   color: var(--gold); background: rgba(212,160,64,.12); border: 1px solid rgba(212,160,64,.25);
   white-space: nowrap;
 }
@@ -376,7 +377,7 @@ body {
 /* ══════════════════════════════════════
    SECTION 5 — STRATEGY LIBRARY (REDESIGNED)
    ══════════════════════════════════════ */
-.library { padding: 140px 0; background: var(--navy-deep); position: relative; overflow: hidden; }
+.library { padding: 80px 0; background: #06101e; position: relative; overflow: hidden; }
 .library::before {
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(circle at 50% 10%, rgba(212,160,64,0.08) 0%, transparent 60%);
@@ -438,8 +439,8 @@ body {
 .comparison { padding: 120px 0; background: var(--cream); }
 .comp-table-wrap {
   margin-top: 60px; overflow-x: auto;
-  border-radius: 24px; border: 1px solid rgba(0,0,0,.1);
-  box-shadow: 0 30px 80px rgba(0,0,0,.08);
+  border-radius: 24px; border: 1px solid rgba(0,0,0,.12);
+  box-shadow: 0 8px 12px rgba(0,0,0,.06), 0 24px 60px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.04);
 }
 table { width: 100%; border-collapse: collapse; min-width: 620px; background: #fff; border-radius: 24px; overflow: hidden; }
 /* Header rows */
@@ -459,15 +460,15 @@ th.pro-col {
 .pro-col-label { font-size: 14px; font-weight: 800; color: var(--navy); display: block; margin-bottom: 2px; }
 .pro-col-price { font-size: 11px; color: var(--gold); font-weight: 700; display: block; }
 /* Data rows */
-td { padding: 18px 28px; text-align: center; border-bottom: 1px solid rgba(0,0,0,.05); font-size: 14px; color: #555; transition: background .15s; }
+td { padding: 22px 28px; text-align: center; border-bottom: 1px solid rgba(0,0,0,.05); font-size: 16px; color: #555; transition: background .15s; }
 td:first-child { text-align: left; }
 tr:last-child td { border-bottom: none; }
 tr:nth-child(even) td { background: rgba(0,0,0,.012); }
 tr:hover td { background: rgba(0,0,0,.025); }
 tr:hover td.pro-col { background: rgba(212,160,64,.12); }
 /* Feature column */
-.feat-name { font-size: 14px; font-weight: 700; color: var(--navy); display: block; }
-.feat-sub  { font-size: 12px; color: #aaa; display: block; margin-top: 2px; font-weight: 400; }
+.feat-name { font-size: 17px; font-weight: 700; color: var(--navy); display: block; }
+.feat-sub  { font-size: 14px; color: #aaa; display: block; margin-top: 3px; font-weight: 400; }
 /* Pro data column */
 td.pro-col {
   background: rgba(212,160,64,.05);
@@ -548,7 +549,7 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 /* ══════════════════════════════════════
    SECTION 9 — RESULTS (ORBITAL DESIGN)
    ══════════════════════════════════════ */
-.results-pro { background: var(--navy-deep); padding: 120px 0; position: relative; overflow: hidden; }
+.results-pro { background: var(--navy-mid); padding: 120px 0; position: relative; overflow: hidden; }
 
 .orbital-scene-pro {
   position: relative;
@@ -641,46 +642,121 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 
 /* ── WHO FOR: dark glass cards ── */
 .for-not-for { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
-.fnf-box { padding: 40px; border-radius: 24px; }
+.fnf-box {
+  padding: 40px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
 .fnf-box.pro {
-  background: rgba(212,160,64,.04);
-  border: 1px solid rgba(212,160,64,.18);
+  background: rgba(212,160,64,.07);
+  border: 1px solid rgba(212,160,64,.3);
+  box-shadow: 0 4px 32px rgba(212,160,64,.06), inset 0 1px 0 rgba(212,160,64,.15);
+}
+.fnf-box.pro::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), rgba(212,160,64,.4));
 }
 .fnf-box.not {
-  background: rgba(200,66,10,.03);
-  border: 1px solid rgba(200,66,10,.15);
+  background: rgba(200,66,10,.07);
+  border: 1px solid rgba(200,66,10,.28);
+  box-shadow: 0 4px 32px rgba(200,66,10,.05), inset 0 1px 0 rgba(200,66,10,.12);
+}
+.fnf-box.not::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--orange), rgba(200,66,10,.4));
 }
 .fnf-box h3 { color: #fff !important; font-size: 20px; font-weight: 800; }
-.fnf-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 18px; }
-.fnf-item { position: relative; padding-left: 32px; }
-.fnf-item strong { color: rgba(255,255,255,.9); display: block; margin-bottom: 4px; font-size: 15px; }
-.fnf-item span { color: rgba(255,255,255,.45); font-size: 14px; line-height: 1.7; display: block; }
-.fnf-item::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 900; font-size: 16px; }
-.fnf-box.not .fnf-item::before { content: '×'; color: var(--orange); font-size: 18px; }
+.fnf-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 0; }
+.fnf-item {
+  position: relative; padding: 16px 0 16px 36px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.fnf-item:last-child { border-bottom: none; }
+.fnf-item strong { color: #fff; display: block; margin-bottom: 4px; font-size: 15px; font-weight: 700; }
+.fnf-item span { color: rgba(255,255,255,.55); font-size: 14px; line-height: 1.7; display: block; }
+.fnf-item::before {
+  content: '✓'; position: absolute; left: 0; top: 18px;
+  color: var(--gold); font-weight: 900; font-size: 16px;
+  width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+  background: rgba(212,160,64,.1); border-radius: 50%;
+}
+.fnf-box.not .fnf-item::before {
+  content: '✕'; color: var(--orange); font-size: 14px;
+  background: rgba(200,66,10,.12);
+}
 
 /* ══════════════════════════════════════
-   LIBRARY ACCORDION
+   LIBRARY TAB LAYOUT
    ══════════════════════════════════════ */
-.lib-cat-group { margin-bottom: 20px; }
-.lib-cat-group:last-child { margin-bottom: 0; }
-.lib-cat-toggle {
-  width: 100%; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 18px; cursor: pointer; display: flex; align-items: center; gap: 18px;
-  padding: 22px 28px; text-align: left;
-  transition: background .3s, border-color .3s;
+.lib-layout {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  background: #0c1b2e;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 520px;
+  box-shadow: 0 8px 48px rgba(0,0,0,.35);
 }
-.lib-cat-toggle:hover { background: rgba(255,255,255,.055); border-color: rgba(212,160,64,.2); }
-.lib-cat-toggle.open { background: rgba(212,160,64,.05); border-color: rgba(212,160,64,.28); }
-.lib-cat-toggle-icon { font-size: 24px; flex-shrink: 0; }
-.lib-cat-toggle-info { flex: 1; }
-.lib-cat-toggle-info h3 { color: #fff; font-size: 20px; font-weight: 800; letter-spacing: -.02em; line-height: 1.15; }
-.lib-cat-toggle-info p { color: var(--gold); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
-.lib-cat-count { font-size: 12px; color: rgba(255,255,255,.28); font-weight: 600; white-space: nowrap; flex-shrink: 0; }
-.lib-cat-chevron { flex-shrink: 0; color: rgba(255,255,255,.35); transition: transform .38s ease, color .3s; }
-.lib-cat-toggle.open .lib-cat-chevron { transform: rotate(180deg); color: var(--gold); }
-.lib-cat-body { max-height: 0; overflow: hidden; transition: max-height .55s cubic-bezier(0,1,0.5,1); }
-.lib-cat-toggle.open ~ .lib-cat-body { max-height: 2400px; transition: max-height .85s ease-in-out; }
-.lib-cat-body-inner { padding: 28px 0 12px; }
+.lib-nav {
+  border-right: 1px solid rgba(255,255,255,.07);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0,0,0,.2);
+}
+.lib-nav-item {
+  padding: 18px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-left: 3px solid transparent;
+  transition: background .2s, border-color .2s;
+  user-select: none;
+}
+.lib-nav-item:hover { background: rgba(255,255,255,.04); }
+.lib-nav-item.active {
+  background: rgba(212,160,64,.08);
+  border-color: rgba(212,160,64,.2);
+  border-left-color: var(--gold);
+}
+.lib-nav-item h3 { color: #fff; font-size: 15px; font-weight: 700; line-height: 1.25; }
+.lib-nav-item .lib-nav-sub { color: var(--gold); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+.lib-nav-item .lib-nav-count { font-size: 11px; color: rgba(255,255,255,.28); margin-top: 6px; }
+
+.lib-panels { padding: 36px 44px; }
+.lib-panel { display: none; }
+.lib-panel.active { display: block; }
+.lib-panel-head { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.lib-panel-head h2 { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+.lib-panel-head p { color: var(--gold); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; }
+
+.lib-course-list { list-style: none; }
+.lib-course-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  transition: background .15s;
+}
+.lib-course-item:last-child { border-bottom: none; }
+.lib-course-num { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.2); min-width: 22px; text-align: right; flex-shrink: 0; }
+.lib-course-name { flex: 1; color: rgba(255,255,255,.82); font-size: 15px; font-weight: 600; line-height: 1.3; }
+.lib-course-tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--gold); padding: 3px 10px;
+  border: 1px solid rgba(212,160,64,.25); border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+}
+@media (max-width: 860px) {
+  .lib-layout { grid-template-columns: 1fr; }
+  .lib-nav { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .lib-nav-item { flex: 1 1 45%; }
+  .lib-panels { padding: 24px 20px; }
+  .lib-course-tag { display: none; }
+}
 
 /* ══════════════════════════════════════
    SECTION 6 — TOOLS (WHITE PREMIUM)
@@ -734,13 +810,14 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 /* ══════════════════════════════════════
    SECTION 10 — INSTRUCTOR SPEAKER CARD
    ══════════════════════════════════════ */
-.instructor-section { padding: 120px 0; background: #06101e; }
-.instructor-section .section-head h2 { color: #fff; }
-.instructor-section .section-head p { color: rgba(255,255,255,.55); }
+.instructor-section { padding: 120px 0; background: #fff; }
+.instructor-section .section-head h2 { color: var(--navy); }
+.instructor-section .section-head p { color: #555; }
 .instructor-layout-pro { display: grid; grid-template-columns: 380px 1fr; gap: 60px; align-items: start; }
 .instructor-img-card {
   border-radius: 24px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,.07);
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 8px 40px rgba(0,0,0,.1);
 }
 .instructor-img-wrap-pro { position: relative; }
 .instructor-img-wrap-pro img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: top; }
@@ -748,24 +825,25 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
   position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
   background: linear-gradient(90deg, var(--orange), var(--gold));
 }
-.instructor-card-footer { padding: 26px 28px; background: rgba(255,255,255,.02); }
-.instructor-card-name { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 3px; }
+.instructor-card-footer { padding: 26px 28px; background: var(--cream); }
+.instructor-card-name { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 3px; }
 .instructor-card-role { font-size: 12px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 22px; }
 .instructor-stats-row { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
 .i-stat {
   padding: 14px 12px; border-radius: 12px; text-align: center;
-  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
+  background: #fff; border: 1px solid rgba(0,0,0,.08);
 }
 .i-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--gold); display: block; line-height: 1; margin-bottom: 3px; }
-.i-stat-label { font-size: 10px; color: rgba(255,255,255,.38); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.i-stat-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 .instructor-bio-card-pro {
-  background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+  background: var(--cream); border: 1px solid rgba(0,0,0,.08);
   border-radius: 24px; padding: 48px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
 }
-.instructor-bio-lead { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: rgba(255,255,255,.85); line-height: 1.55; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.07); }
-.instructor-bio-body p { color: rgba(255,255,255,.6); font-size: 15px; line-height: 1.85; margin-bottom: 18px; }
+.instructor-bio-lead { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--navy); line-height: 1.55; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(0,0,0,.08); }
+.instructor-bio-body p { color: #444; font-size: 15px; line-height: 1.85; margin-bottom: 18px; }
 .instructor-bio-body p:last-child { margin-bottom: 0; }
-.instructor-creds-list { margin-top: 36px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,.07); display: flex; flex-direction: column; gap: 16px; }
+.instructor-creds-list { margin-top: 36px; padding-top: 36px; border-top: 1px solid rgba(0,0,0,.08); display: flex; flex-direction: column; gap: 16px; }
 .instructor-cred-row { display: flex; align-items: flex-start; gap: 14px; }
 .instructor-cred-badge {
   width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
@@ -773,8 +851,8 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
   display: flex; align-items: center; justify-content: center;
   font-size: 11px; color: var(--gold); font-weight: 900; margin-top: 1px;
 }
-.instructor-cred-row h4 { font-size: 14.5px; color: #fff; font-weight: 700; margin-bottom: 2px; }
-.instructor-cred-row p { font-size: 13px; color: rgba(255,255,255,.42); margin: 0; line-height: 1.65; }
+.instructor-cred-row h4 { font-size: 14.5px; color: var(--navy); font-weight: 700; margin-bottom: 2px; }
+.instructor-cred-row p { font-size: 13px; color: #666; margin: 0; line-height: 1.65; }
 @media (max-width: 960px) {
   .instructor-layout-pro { grid-template-columns: 1fr; }
   .instructor-img-wrap-pro img { aspect-ratio: 4/3; }
@@ -875,49 +953,73 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 }
 
 /* ══════════════════════════════════════
-   SECTION 13 — FINAL CTA (MESH GRADIENT)
+   SECTION 13 — FINAL CTA
    ══════════════════════════════════════ */
 .final-cta {
-  position: relative; padding: 160px 0;
+  background-color: #eaf2ff;
+  position: relative; padding: 80px 0;
   text-align: center; overflow: hidden;
-  background:
-    radial-gradient(ellipse at 10% 80%, rgba(200,66,10,.22) 0%, transparent 42%),
-    radial-gradient(ellipse at 90% 8%, rgba(22,53,140,.28) 0%, transparent 38%),
-    radial-gradient(ellipse at 50% 45%, rgba(212,160,64,.1) 0%, transparent 55%),
-    #071020;
 }
-.final-cta::before {
+.final-cta::before,
+.final-cta::after {
   content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 2;
-  background: linear-gradient(90deg, transparent, rgba(212,160,64,.45) 30%, rgba(200,66,10,.4) 65%, transparent);
+  position: absolute;
+  left: -60%; right: -60%;
+  height: 60%;
+  background-image:
+    linear-gradient(rgba(13,46,78,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,46,78,0.18) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
 }
-.final-cta-blob-a {
-  position: absolute; width: 600px; height: 600px; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, rgba(200,66,10,.08) 0%, transparent 65%);
-  top: -200px; left: -150px; animation: blobPulse 9s ease-in-out infinite;
+/* Floor — bottom half tilting up toward vanishing point */
+.final-cta::before {
+  bottom: 0;
+  transform: perspective(480px) rotateX(55deg);
+  transform-origin: center top;
+  mask-image: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 100%);
 }
-.final-cta-blob-b {
-  position: absolute; width: 500px; height: 500px; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(circle, rgba(22,53,140,.14) 0%, transparent 65%);
-  bottom: -150px; right: -100px; animation: blobPulse 12s ease-in-out 3s infinite reverse;
+/* Ceiling — top half tilting down toward vanishing point */
+.final-cta::after {
+  top: 0;
+  transform: perspective(480px) rotateX(-55deg);
+  transform-origin: center bottom;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.55) 0%, transparent 100%);
 }
-@keyframes blobPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08) translateY(-20px); } }
-.final-cta-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+.final-cta-blob-a, .final-cta-blob-b { display: none; }
+.final-cta-card {
+  position: relative; max-width: 820px; margin: 0 auto;
+  background: #2d3748; border-radius: 6px;
+  padding: 44px 52px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.15);
+  z-index: 1;
+}
+.final-cta-card .corner {
+  position: absolute; width: 30px; height: 30px;
+  border: 2px solid var(--orange); opacity: 0.8;
+}
+.final-cta-card .corner.tl { top: 24px; left: 24px; border-right: 0; border-bottom: 0; }
+.final-cta-card .corner.tr { top: 24px; right: 24px; border-left: 0; border-bottom: 0; }
+.final-cta-card .corner.bl { bottom: 24px; left: 24px; border-right: 0; border-top: 0; }
+.final-cta-card .corner.br { bottom: 24px; right: 24px; border-left: 0; border-top: 0; }
+.final-cta-inner { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
 .final-cta h2 {
-  font-size: clamp(32px, 4vw, 52px); font-weight: 900;
-  color: #fff; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 24px;
+  font-size: clamp(32px, 3.5vw, 46px); font-weight: 900;
+  color: #fff; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 16px;
 }
-.final-cta p { font-size: 18px; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 48px; }
+.final-cta p { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.65; margin-bottom: 36px; }
 .btn-final {
   display: inline-flex; align-items: center; gap: 10px;
-  background: var(--gold); color: #fff;
-  padding: 22px 56px; border-radius: 12px; text-decoration: none;
-  font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-  transition: all .3s cubic-bezier(.175,.885,.32,1.275);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  background: var(--orange); color: #fff;
+  padding: 20px 52px; border-radius: 10px; text-decoration: none;
+  font-size: 17px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px;
+  transition: background .2s, transform .15s, box-shadow .2s;
 }
-.btn-final:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 25px 50px rgba(212,160,64,0.3); background: #e5b252; }
-.final-note { margin-top: 28px; font-size: 14px; color: rgba(255,255,255,.45); font-weight: 500; }
+.btn-final:hover { background: var(--orange-lit); transform: translateY(-3px); box-shadow: 0 16px 40px var(--orange-glow); }
+.final-note { margin-top: 24px; font-size: 13px; color: rgba(255,255,255,.4); }
 
 /* ══════════════════════════════════════
    FOOTER
@@ -1349,162 +1451,176 @@ footer > .footer-bottom { position: relative; z-index: 1; }
       <p>Each strategy is a full course with video lessons, trade examples, and actionable rules. They're organized by style so you can learn progressively — start with what matches your trading today and expand from there.</p>
     </div>
 
-    <!-- Category: Day Trading -->
-    <div class="lib-cat-group reveal">
-      <button class="lib-cat-toggle open" onclick="toggleLibCat(this)">
-        <div class="lib-cat-toggle-info">
+    <!-- Two-column tab layout -->
+    <div class="lib-layout">
+
+      <!-- Left Nav -->
+      <div class="lib-nav">
+        <div class="lib-nav-item active" onclick="switchLibTab('day-trading', this)">
           <h3>Day Trading Strategies</h3>
-          <p>The First 90 Minutes and Beyond</p>
+          <div class="lib-nav-count">5 Courses</div>
         </div>
-        <span class="lib-cat-count">5 Courses</span>
-        <svg class="lib-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="lib-cat-body" style="max-height:2400px; transition:max-height .85s ease-in-out;">
-      <div class="lib-cat-body-inner">
-      <div class="strategy-grid">
-        <div class="strategy-card">
-          <h4>Mighty Ninety and Runner Strategies</h4>
-          <p>The bread-and-butter day trading setups. Learn to identify high-probability entries in the first 90 minutes of the trading day and catch runners that extend throughout the session.</p>
-          <span class="tag">Flagship Course</span>
-        </div>
-        <div class="strategy-card">
-          <h4>NTT Day Trading</h4>
-          <p>NavigationTrading's proprietary day trading approach. A systematic method for reading intraday price action and executing trades with defined risk and clear exit rules.</p>
-          <span class="tag">Proprietary System</span>
-        </div>
-        <div class="strategy-card">
-          <h4>MOC Course (Market on Close)</h4>
-          <p>Capture end-of-day moves with a strategy built around the market close. Ideal for traders who can't watch the screen all morning but are available in the final hour.</p>
-          <span class="tag">End of Day</span>
-        </div>
-        <div class="strategy-card">
-          <h4>Price Action Futures Trading</h4>
-          <p>Apply price action principles to futures markets. Learn to read the tape, identify support and resistance levels, and execute clean entries without relying on lagging indicators.</p>
-          <span class="tag">Futures Trading</span>
-        </div>
-        <div class="strategy-card">
-          <h4>Power Hour Strategy Course</h4>
-          <p>The last hour of trading is where institutional money moves. This course teaches you how to read that flow and position yourself for high-probability end-of-day setups.</p>
-          <span class="tag">Power Hour</span>
-        </div>
-      </div>
-      </div><!-- /lib-cat-body-inner -->
-      </div><!-- /lib-cat-body -->
-    </div>
-
-    <!-- Category: 0 DTE -->
-    <div class="lib-cat-group reveal">
-      <button class="lib-cat-toggle" onclick="toggleLibCat(this)">
-        <div class="lib-cat-toggle-info">
+        <div class="lib-nav-item" onclick="switchLibTab('dte', this)">
           <h3>0 DTE Strategies</h3>
-          <p>Same-Day Expiration Trading</p>
+          <div class="lib-nav-count">3 Courses</div>
         </div>
-        <span class="lib-cat-count">3 Courses</span>
-        <svg class="lib-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="lib-cat-body">
-      <div class="lib-cat-body-inner">
-      <div class="strategy-grid">
-        <div class="strategy-card">
-          <h4>0 DTE Iron Condors — Early Entry</h4>
-          <p>Sell premium on same-day expiration options with a structured iron condor approach. Learn specific entry timing, strike selection, and risk management rules that make 0 DTE consistent.</p>
-          <span class="tag">Income Strategy</span>
+        <div class="lib-nav-item" onclick="switchLibTab('income', this)">
+          <h3>Income &amp; Spread Strategies</h3>
+          <div class="lib-nav-count">6 Courses</div>
         </div>
-        <div class="strategy-card">
-          <h4>0 DTE Entries Using NTT Indicator</h4>
-          <p>Combine 0 DTE options with NavigationTrading's proprietary NTT indicator for precise entry timing. The indicator takes the guesswork out of when to enter your 0 DTE positions.</p>
-          <span class="tag">Indicator Driven</span>
-        </div>
-        <div class="strategy-card">
-          <h4>Reverse Iron Condors</h4>
-          <p>When volatility spikes, flip the script. Reverse iron condors profit from big moves — and this course teaches you when and how to deploy them on same-day expiration options.</p>
-          <span class="tag">Volatility Strategy</span>
+        <div class="lib-nav-item" onclick="switchLibTab('trend', this)">
+          <h3>Trend &amp; Portfolio Strategies</h3>
+          <div class="lib-nav-count">3 Courses</div>
         </div>
       </div>
-      </div><!-- /lib-cat-body-inner -->
-      </div><!-- /lib-cat-body -->
-    </div>
 
-    <!-- Category: Income & Spreads -->
-    <div class="lib-cat-group reveal">
-      <button class="lib-cat-toggle" onclick="toggleLibCat(this)">
-        <div class="lib-cat-toggle-info">
-          <h3>Income & Spread Strategies</h3>
-          <p>The Mechanics of Consistent Returns</p>
-        </div>
-        <span class="lib-cat-count">6 Courses</span>
-        <svg class="lib-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="lib-cat-body">
-      <div class="lib-cat-body-inner">
-      <div class="strategy-grid">
-        <div class="strategy-card">
-          <h4>Transformer Option Spreads</h4>
-          <p>An advanced spread strategy that adapts to changing market conditions. Learn to transform a single position into different spread configurations as the market moves.</p>
-          <span class="tag">Adaptive Strategy</span>
-        </div>
-        <div class="strategy-card">
-          <h4>Calendar Spreads</h4>
-          <p>Profit from time decay differences between near-term and longer-term options. This course makes one of the most consistent income strategies crystal clear.</p>
-          <span class="tag">Theta Decay</span>
-        </div>
-        <div class="strategy-card">
-          <h4>Butterfly Spreads</h4>
-          <p>Defined-risk, defined-reward. Butterfly spreads let you target a specific price range with limited capital at risk. Learn when butterflies outperform other strategies.</p>
-          <span class="tag">Defined Risk</span>
-        </div>
-        <div class="strategy-card">
-          <h4>Iron Ducks</h4>
-          <p>NavigationTrading's unique twist on a classic strategy. Designed for consistent premium collection with built-in risk rules that keep your losses small.</p>
-          <span class="tag">NTT Original</span>
-        </div>
-        <div class="strategy-card">
-          <h4>The Hedge Hog Options Spread</h4>
-          <p>A hedged spread strategy that gives you income potential with downside protection. Structure positions that produce even when the market pulls back.</p>
-          <span class="tag">Downside Protection</span>
-        </div>
-        <div class="strategy-card">
-          <h4>Multiple Option Selling Strategies</h4>
-          <p>Master the art of selling premium across different market conditions. Covers covered strategies to naked puts with clear rules for each.</p>
-          <span class="tag">Premium Selling</span>
-        </div>
-      </div>
-      </div><!-- /lib-cat-body-inner -->
-      </div><!-- /lib-cat-body -->
-    </div>
+      <!-- Right Panels -->
+      <div class="lib-panels">
 
-    <!-- Category: Trend & Portfolio -->
-    <div class="lib-cat-group reveal">
-      <button class="lib-cat-toggle" onclick="toggleLibCat(this)">
-        <div class="lib-cat-toggle-info">
-          <h3>Trend & Portfolio Strategies</h3>
-          <p>Long-Term Growth & Capital Efficiency</p>
+        <!-- Day Trading -->
+        <div class="lib-panel active" id="lib-day-trading">
+          <div class="lib-panel-head">
+            <h2>Day Trading Strategies</h2>
+            <p>The First 90 Minutes and Beyond</p>
+          </div>
+          <ul class="lib-course-list">
+            <li class="lib-course-item">
+              <span class="lib-course-num">01</span>
+
+              <span class="lib-course-name">Mighty Ninety and Runner Strategies</span>
+              <span class="lib-course-tag">Flagship Course</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">02</span>
+
+              <span class="lib-course-name">NTT Day Trading</span>
+              <span class="lib-course-tag">Proprietary System</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">03</span>
+
+              <span class="lib-course-name">MOC Course (Market on Close)</span>
+              <span class="lib-course-tag">End of Day</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">04</span>
+
+              <span class="lib-course-name">Price Action Futures Trading</span>
+              <span class="lib-course-tag">Futures Trading</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">05</span>
+
+              <span class="lib-course-name">Power Hour Strategy Course</span>
+              <span class="lib-course-tag">Power Hour</span>
+            </li>
+          </ul>
         </div>
-        <span class="lib-cat-count">3 Courses</span>
-        <svg class="lib-cat-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="lib-cat-body">
-      <div class="lib-cat-body-inner">
-      <div class="strategy-grid">
-        <div class="strategy-card">
-          <h4>NTT Trend Trading</h4>
-          <p>Longer-term trend following using the NTT system. Learn to identify trends that last days to weeks and position accordingly for larger moves.</p>
-          <span class="tag">Trend Following</span>
+
+        <!-- 0 DTE -->
+        <div class="lib-panel" id="lib-dte">
+          <div class="lib-panel-head">
+            <h2>0 DTE Strategies</h2>
+            <p>Same-Day Expiration Trading</p>
+          </div>
+          <ul class="lib-course-list">
+            <li class="lib-course-item">
+              <span class="lib-course-num">01</span>
+
+              <span class="lib-course-name">0 DTE Iron Condors — Early Entry</span>
+              <span class="lib-course-tag">Income Strategy</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">02</span>
+
+              <span class="lib-course-name">0 DTE Entries Using NTT Indicator</span>
+              <span class="lib-course-tag">Indicator Driven</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">03</span>
+
+              <span class="lib-course-name">Reverse Iron Condors</span>
+              <span class="lib-course-tag">Volatility Strategy</span>
+            </li>
+          </ul>
         </div>
-        <div class="strategy-card">
-          <h4>Portfolio Margin Strategies</h4>
-          <p>Unlock capital-efficient strategies that aren't possible with standard margin. Maximize buying power with sophisticated position structuring.</p>
-          <span class="tag">Capital Efficiency</span>
+
+        <!-- Income & Spreads -->
+        <div class="lib-panel" id="lib-income">
+          <div class="lib-panel-head">
+            <h2>Income &amp; Spread Strategies</h2>
+            <p>The Mechanics of Consistent Returns</p>
+          </div>
+          <ul class="lib-course-list">
+            <li class="lib-course-item">
+              <span class="lib-course-num">01</span>
+
+              <span class="lib-course-name">Transformer Option Spreads</span>
+              <span class="lib-course-tag">Adaptive Strategy</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">02</span>
+
+              <span class="lib-course-name">Calendar Spreads</span>
+              <span class="lib-course-tag">Theta Decay</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">03</span>
+
+              <span class="lib-course-name">Butterfly Spreads</span>
+              <span class="lib-course-tag">Defined Risk</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">04</span>
+
+              <span class="lib-course-name">Iron Ducks</span>
+              <span class="lib-course-tag">NTT Original</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">05</span>
+
+              <span class="lib-course-name">The Hedge Hog Options Spread</span>
+              <span class="lib-course-tag">Downside Protection</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">06</span>
+
+              <span class="lib-course-name">Multiple Option Selling Strategies</span>
+              <span class="lib-course-tag">Premium Selling</span>
+            </li>
+          </ul>
         </div>
-        <div class="strategy-card">
-          <h4>ELMO Mini Course</h4>
-          <p>A focused mini course on ELMO — a quick-deployment strategy for specific market setups. Short, actionable, and immediately applicable.</p>
-          <span class="tag">Mini Course</span>
+
+        <!-- Trend & Portfolio -->
+        <div class="lib-panel" id="lib-trend">
+          <div class="lib-panel-head">
+            <h2>Trend &amp; Portfolio Strategies</h2>
+            <p>Long-Term Growth &amp; Capital Efficiency</p>
+          </div>
+          <ul class="lib-course-list">
+            <li class="lib-course-item">
+              <span class="lib-course-num">01</span>
+
+              <span class="lib-course-name">NTT Trend Trading</span>
+              <span class="lib-course-tag">Trend Following</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">02</span>
+
+              <span class="lib-course-name">Portfolio Margin Strategies</span>
+              <span class="lib-course-tag">Capital Efficiency</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">03</span>
+
+              <span class="lib-course-name">ELMO Mini Course</span>
+              <span class="lib-course-tag">Mini Course</span>
+            </li>
+          </ul>
         </div>
-      </div>
-      </div><!-- /lib-cat-body-inner -->
-      </div><!-- /lib-cat-body -->
-    </div>
+
+      </div><!-- /lib-panels -->
+    </div><!-- /lib-layout -->
 
     <div style="text-align:center; margin-top:80px;" class="reveal">
       <a href="#" class="btn-hero" style="padding:16px 40px; font-size:16px;">Get Access to Every Strategy — Join Pro</a>
@@ -1601,7 +1717,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 </section>
 
 <!-- SECTION 7 — WHO THIS IS FOR -->
-<section style="padding: 120px 0; background: #07111e;">
+<section style="padding: 70px 0; background: #07111e;">
   <div class="container">
     <div class="section-head light reveal">
       <span class="eyebrow">Is Pro Right for You?</span>
@@ -1880,111 +1996,6 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   </div>
 </section>
 
-<!-- ── SECTION 11 — SOCIAL PROOF ── -->
-<section class="reviews-section" id="social-proof">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">WHAT PRO MEMBERS SAY</span>
-      <h2>4.8 Out of 5 Stars — From Real Traders</h2>
-    </div>
-    <p class="reviews-intro reveal" style="margin-top:-10px;"><strong>★★★★★ 4.8 / 5</strong> &nbsp;&bull;&nbsp; 25 ratings &nbsp;&bull;&nbsp; 84% five-star &nbsp;|&nbsp; 16% four-star &nbsp;|&nbsp; 0% three-star or below</p>
-
-    <div class="reviews-carousel-wrap reveal" style="margin-top:60px;">
-      <div class="reviews-track" id="reviewsTrack">
-
-        <!-- Card 1 — Annette M. -->
-        <div class="review-card">
-          <div class="review-card-header">
-            <div class="review-avatar rv-av-1">AM</div>
-            <div class="review-header-info">
-              <div class="review-name">Annette M.</div>
-              <div class="review-role">Pro Member — 2+ Years</div>
-              <div class="review-company-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                NavigationTrading
-              </div>
-            </div>
-            <span class="review-quote-icon">"</span>
-          </div>
-          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-before">
-            <div class="rv-label">Review</div>
-            <p>"I can't recommend Navigation Trading highly enough! I've been using their services for about two years and have learned an incredible amount along the way. They offer a wide range of option trading strategies, and even after all this time, I'm still learning new things."</p>
-          </div>
-          <div class="review-after">
-            <div class="rv-label">Verdict</div>
-            <p>"Steve's explanations are clear, simple, and delivered in plain English, making even complex concepts easy to grasp. If you're serious about mastering options trading and becoming a skilled, independent trader, look no further!"</p>
-          </div>
-        </div>
-
-        <!-- Card 2 — Robert W. -->
-        <div class="review-card">
-          <div class="review-card-header">
-            <div class="review-avatar rv-av-2">RW</div>
-            <div class="review-header-info">
-              <div class="review-name">Robert W.</div>
-              <div class="review-role">Pro Member — 1+ Year</div>
-              <div class="review-company-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                NavigationTrading
-              </div>
-            </div>
-            <span class="review-quote-icon">"</span>
-          </div>
-          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div>
-          <div class="review-before">
-            <div class="rv-label">Review</div>
-            <p>"I've been using Navigation Trading over a year, and it's the best investment I've made in my trading education. The strategies are based on real math, not hype. Steve shows up every day in the live room and trades exactly what he teaches."</p>
-          </div>
-          <div class="review-after">
-            <div class="rv-label">Verdict</div>
-            <p>"I finally have a repeatable system that handles any market condition. My trading is now mechanical and stress-free. No more guessing or emotional trading. The results speak for themselves."</p>
-          </div>
-        </div>
-
-        <!-- Card 3 — Michael T. -->
-        <div class="review-card">
-          <div class="review-card-header">
-            <div class="review-avatar rv-av-3">MT</div>
-            <div class="review-header-info">
-              <div class="review-name">Michael T.</div>
-              <div class="review-role">Pro Member — 3+ Years</div>
-              <div class="review-company-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                NavigationTrading
-              </div>
-            </div>
-            <span class="review-quote-icon">"</span>
-          </div>
-          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <div class="review-before">
-            <div class="rv-label">Review</div>
-            <p>"Before Pro, I was only doing day trading. I didn't realize how much I was missing by not having a portfolio approach with income spreads and trend-following strategies. The gap between theory and real execution felt impossible."</p>
-          </div>
-          <div class="review-after">
-            <div class="rv-label">Verdict</div>
-            <p>"The structured strategy library and live streams bridged that gap completely. Watching Steve execute the same strategies he teaches — live — was exactly what I needed to click everything into place."</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="reviews-controls reveal">
-        <button class="reviews-nav-btn" id="reviewsPrev">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <div class="reviews-dots" id="reviewsDots">
-          <button class="reviews-dot active" data-idx="0"></button>
-          <button class="reviews-dot" data-idx="1"></button>
-          <button class="reviews-dot" data-idx="2"></button>
-        </div>
-        <button class="reviews-nav-btn" id="reviewsNext">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
 <section class="faq section" id="faq">
   <div class="container">
     <div class="faq-layout">
@@ -2108,15 +2119,123 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   </div>
 </section>
 
+<!-- ── SECTION 11 — SOCIAL PROOF ── -->
+<section class="reviews-section" id="social-proof">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">WHAT PRO MEMBERS SAY</span>
+      <h2>4.8 Out of 5 Stars — From Real Traders</h2>
+    </div>
+    <p class="reviews-intro reveal" style="margin-top:-10px;"><strong>★★★★★ 4.8 / 5</strong> &nbsp;&bull;&nbsp; 25 ratings &nbsp;&bull;&nbsp; 84% five-star &nbsp;|&nbsp; 16% four-star &nbsp;|&nbsp; 0% three-star or below</p>
+
+    <div class="reviews-carousel-wrap reveal" style="margin-top:60px;">
+      <div class="reviews-track" id="reviewsTrack">
+
+        <!-- Card 1 — Annette M. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-1">AM</div>
+            <div class="review-header-info">
+              <div class="review-name">Annette M.</div>
+              <div class="review-role">Pro Member — 2+ Years</div>
+              <div class="review-company-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                NavigationTrading
+              </div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="review-before">
+            <div class="rv-label">Review</div>
+            <p>"I can't recommend Navigation Trading highly enough! I've been using their services for about two years and have learned an incredible amount along the way. They offer a wide range of option trading strategies, and even after all this time, I'm still learning new things."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">Verdict</div>
+            <p>"Steve's explanations are clear, simple, and delivered in plain English, making even complex concepts easy to grasp. If you're serious about mastering options trading and becoming a skilled, independent trader, look no further!"</p>
+          </div>
+        </div>
+
+        <!-- Card 2 — Robert W. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-2">RW</div>
+            <div class="review-header-info">
+              <div class="review-name">Robert W.</div>
+              <div class="review-role">Pro Member — 1+ Year</div>
+              <div class="review-company-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                NavigationTrading
+              </div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div>
+          <div class="review-before">
+            <div class="rv-label">Review</div>
+            <p>"I've been using Navigation Trading over a year, and it's the best investment I've made in my trading education. The strategies are based on real math, not hype. Steve shows up every day in the live room and trades exactly what he teaches."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">Verdict</div>
+            <p>"I finally have a repeatable system that handles any market condition. My trading is now mechanical and stress-free. No more guessing or emotional trading. The results speak for themselves."</p>
+          </div>
+        </div>
+
+        <!-- Card 3 — Michael T. -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <div class="review-avatar rv-av-3">MT</div>
+            <div class="review-header-info">
+              <div class="review-name">Michael T.</div>
+              <div class="review-role">Pro Member — 3+ Years</div>
+              <div class="review-company-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                NavigationTrading
+              </div>
+            </div>
+            <span class="review-quote-icon">"</span>
+          </div>
+          <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="review-before">
+            <div class="rv-label">Review</div>
+            <p>"Before Pro, I was only doing day trading. I didn't realize how much I was missing by not having a portfolio approach with income spreads and trend-following strategies. The gap between theory and real execution felt impossible."</p>
+          </div>
+          <div class="review-after">
+            <div class="rv-label">Verdict</div>
+            <p>"The structured strategy library and live streams bridged that gap completely. Watching Steve execute the same strategies he teaches — live — was exactly what I needed to click everything into place."</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reviews-controls reveal">
+        <button class="reviews-nav-btn" id="reviewsPrev">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="reviews-dots" id="reviewsDots">
+          <button class="reviews-dot active" data-idx="0"></button>
+          <button class="reviews-dot" data-idx="1"></button>
+          <button class="reviews-dot" data-idx="2"></button>
+        </div>
+        <button class="reviews-nav-btn" id="reviewsNext">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- SECTION 13 — FINAL CTA -->
 <section class="final-cta">
-  <div class="final-cta-blob-a"></div>
-  <div class="final-cta-blob-b"></div>
   <div class="container" style="position:relative;z-index:2;">
-    <div class="final-cta-inner">
+    <div class="final-cta-card">
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+      <div class="final-cta-inner">
       <span class="eyebrow" style="color:var(--gold);margin-bottom:20px;display:block;">PRO MEMBERSHIP</span>
       <h2 class="reveal">Get the Complete Trading System</h2>
-      <p class="reveal" style="font-size:18px;color:rgba(255,255,255,.65);max-width:640px;margin:0 auto 40px;line-height:1.75;">17+ strategies. Daily live trading room. Real-time alerts for everything. Custom tools and indicators. 200+ active traders learning and growing together. This is everything NavigationTrading has built — and it's all yours.</p>
+      <p class="reveal" style="font-size:14px;color:rgba(255,255,255,.65);max-width:640px;margin:0 auto 40px;line-height:1.75;">17+ strategies. Daily live trading room. Real-time alerts for everything. Custom tools and indicators. 200+ active traders learning and growing together. This is everything NavigationTrading has built — and it's all yours.</p>
 
       <div class="reveal" style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;">
         <div style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.75);">
@@ -2140,7 +2259,8 @@ footer > .footer-bottom { position: relative; z-index: 1; }
         </a>
         <div class="final-note" style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.35);">★★★★★ 4.8 / 5 rating &nbsp;·&nbsp; 200+ active members &nbsp;·&nbsp; Cancel anytime</div>
       </div>
-    </div>
+      </div><!-- /final-cta-inner -->
+    </div><!-- /final-cta-card -->
   </div>
 </section>
 
@@ -2318,22 +2438,16 @@ function insertBadge(item, label, type) {
   const b = document.createElement('span');
   b.className = 'timeline-status-badge badge-' + type;
   b.textContent = label;
-  const h3 = item.querySelector('h3');
-  if (h3) h3.appendChild(b);
+  const time = item.querySelector('.timeline-time');
+  if (time) time.appendChild(b);
 }
 
-/* ── Library accordion ── */
-function toggleLibCat(btn) {
-  const body = btn.nextElementSibling;
-  const isOpen = btn.classList.contains('open');
-  btn.classList.toggle('open', !isOpen);
-  if (!isOpen) {
-    body.style.maxHeight = body.scrollHeight + 'px';
-    body.style.transition = 'max-height .85s ease-in-out';
-  } else {
-    body.style.maxHeight = '0';
-    body.style.transition = 'max-height .5s cubic-bezier(0,1,0.5,1)';
-  }
+/* ── Library tab switcher ── */
+function switchLibTab(id, el) {
+  document.querySelectorAll('.lib-nav-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.lib-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('lib-' + id).classList.add('active');
 }
 
 /* ── FAQ accordion ── */
