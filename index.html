@@ -1198,114 +1198,176 @@
       z-index: 10;
     }
 
-    /* ── WHERE TO START — PREMIUM GLASS ── */
+    /* ── WHERE TO START — REFINED INSTITUTIONAL ── */
     .learn-section-premium {
-      padding: 120px 0;
-      background: #030d1a; /* Deepest Navy */
+      padding: 60px 0;
+      background: #020b18;
       position: relative;
       overflow: hidden;
     }
 
+    /* Vibrant Ambient Glows */
     .learn-section-premium::before {
       content: '';
       position: absolute;
-      top: -10%; left: -10%; width: 40%; height: 40%;
-      background: radial-gradient(circle, rgba(200, 66, 10, 0.08) 0%, transparent 70%);
-      filter: blur(80px);
+      bottom: -10%; left: 50%; width: 80%; height: 40%;
+      background: radial-gradient(ellipse at center, rgba(200, 66, 10, 0.15) 0%, transparent 70%);
+      transform: translateX(-50%);
       pointer-events: none;
     }
 
     .learn-header-centered {
       text-align: center;
-      margin-bottom: 80px;
+      max-width: 900px;
+      margin: 0 auto 80px auto;
+      position: relative;
+      z-index: 20;
+    }
+
+    .learn-header-centered .bento-eyebrow {
+      display: inline-flex;
+      padding: 8px 24px;
+      background: rgba(200, 66, 10, 0.15);
+      border: 1px solid rgba(200, 66, 10, 0.4);
+      border-radius: 100px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
     }
 
     .learn-header-centered h2 {
-      font-size: clamp(36px, 5vw, 56px);
+      font-size: clamp(44px, 6vw, 76px);
       color: #fff;
       font-weight: 800;
-      letter-spacing: -2px;
-      margin-bottom: 20px;
+      letter-spacing: -3px;
+      line-height: 1.05;
+      margin-bottom: 24px;
     }
 
     .learn-header-centered h2 span {
-      color: var(--orange);
-      background: linear-gradient(135deg, var(--orange), #f97316);
+      background: linear-gradient(135deg, #fff 20%, var(--orange) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .learn-premium-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      max-width: 1300px;
+    .learn-header-centered p {
+      font-size: 20px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      max-width: 600px;
       margin: 0 auto;
     }
 
+    .learn-premium-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 300px);
+      gap: 24px;
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
     .learn-premium-card {
-      background: rgba(13, 28, 48, 0.4);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(10, 10, 12, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 28px;
       padding: 40px;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      position: relative;
+      justify-content: space-between;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .learn-premium-card:hover {
-      transform: translateY(-12px);
-      background: rgba(13, 28, 48, 0.6);
-      border-color: rgba(200, 66, 10, 0.3);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+      transform: translateY(-8px);
+      background: rgba(14, 14, 18, 0.82);
+      border-color: rgba(200, 66, 10, 0.5);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,66,10,0.12);
     }
 
-    .lpc-icon {
-      width: 64px;
-      height: 64px;
-      background: rgba(200, 66, 10, 0.1);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--orange);
-      margin-bottom: 30px;
-      transition: all 0.3s ease;
+    /* Visual Background Assets */
+    .lpc-visual-bg {
+      position: absolute;
+      top: 0; right: 0;
+      width: 100%; height: 100%;
+      opacity: 0.35;
+      transition: all 0.8s ease;
+      mask-image: radial-gradient(circle at 75% 50%, black 25%, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at 75% 50%, black 25%, transparent 75%);
     }
-    .learn-premium-card:hover .lpc-icon {
-      background: var(--orange);
-      color: #fff;
-      transform: scale(1.1) rotate(5deg);
+    .lpc-visual-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .learn-premium-card:hover .lpc-visual-bg {
+      opacity: 0.55;
+      transform: scale(1.04);
+    }
+
+    .lpc-content {
+      position: relative;
+      z-index: 2;
+      max-width: 65%;
     }
 
     .lpc-content h3 {
-      font-size: 24px;
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 15px;
+      font-size: 28px;
+      color: #ffffff;
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
     }
 
     .lpc-content p {
       font-size: 15px;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.7;
-      margin-bottom: 30px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
 
     .lpc-btn {
-      margin-top: auto;
-      color: var(--orange);
+      width: fit-content;
+      padding: 10px 22px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(200,66,10,0.5);
+      border-radius: 50px;
+      color: #e8551a;
       text-decoration: none;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13px;
       display: flex;
       align-items: center;
       gap: 8px;
       transition: all 0.3s;
+      box-shadow: none;
     }
-    .lpc-btn:hover { color: #fff; }
+    .lpc-btn:hover {
+      background: rgba(200,66,10,0.2);
+      border-color: #e8551a;
+      color: #ff7043;
+      transform: translateX(5px);
+    }
+
+    .card-large { grid-column: span 6; }
+    .card-wide  { grid-column: span 8; }
+    .card-small { grid-column: span 4; }
+
+    @media (max-width: 1024px) {
+      .learn-premium-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .card-large, .card-wide, .card-small { grid-column: span 12; }
+      .lpc-visual-bg { width: 100%; opacity: 0.15; }
+      .lpc-content { max-width: 100%; }
+    }
 
     @media (max-width: 1100px) {
       .learn-premium-grid { grid-template-columns: repeat(2, 1fr); }
@@ -3040,13 +3102,13 @@
 
       <div class="learn-premium-grid">
         <!-- Card 1: Free Membership -->
-        <div class="learn-premium-card">
-          <div class="lpc-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+        <div class="learn-premium-card card-large">
+          <div class="lpc-visual-bg">
+            <img src="images/learning-path/education_natural.png" alt="Free Education">
           </div>
           <div class="lpc-content">
             <h3>Free Membership</h3>
-            <p>Get started with our five free strategy courses plus bonus resources to build your foundation.</p>
+            <p>Master the foundations with 5 core strategy courses and institutional resources — 100% free.</p>
             <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">
               Get Instant Access &rarr;
             </a>
@@ -3054,43 +3116,43 @@
         </div>
 
         <!-- Card 2: Pro Membership -->
-        <div class="learn-premium-card">
-          <div class="lpc-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+        <div class="learn-premium-card card-large">
+          <div class="lpc-visual-bg">
+            <img src="images/learning-path/pro_natural.png" alt="Pro Trading">
           </div>
           <div class="lpc-content">
-            <h3>Premium Memberships</h3>
-            <p>Learn more about premium memberships, live day trading stream, live trading alerts, and more.</p>
+            <h3 style="white-space: nowrap;">Premium Memberships</h3>
+            <p>Access the live trading stream, real-time alerts, and advanced institutional strategies.</p>
             <a href="pricing.html" class="lpc-btn">
-              Learn More &rarr;
+              Explore Plans &rarr;
             </a>
           </div>
         </div>
 
         <!-- Card 3: Community -->
-        <div class="learn-premium-card">
-          <div class="lpc-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <div class="learn-premium-card card-wide">
+          <div class="lpc-visual-bg">
+            <img src="images/learning-path/community_natural.png" alt="Community">
           </div>
           <div class="lpc-content">
-            <h3>Join Our Community</h3>
-            <p>Interact with like-minded traders and get all your trading-related questions answered.</p>
+            <h3>Join Our Global Community</h3>
+            <p>Interact with thousands of like-minded traders and get your questions answered in real-time by full-time traders.</p>
             <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">
-              Learn More &rarr;
+              Join the Room &rarr;
             </a>
           </div>
         </div>
 
         <!-- Card 4: Support -->
-        <div class="learn-premium-card">
-          <div class="lpc-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <div class="learn-premium-card card-small">
+          <div class="lpc-visual-bg">
+            <img src="images/learning-path/support_natural.png" alt="Support">
           </div>
           <div class="lpc-content">
-            <h3>Questions?</h3>
-            <p>Schedule a complimentary coaching call with one of our full-time traders.</p>
+            <h3>Support?</h3>
+            <p>Schedule a coaching call with our team.</p>
             <a href="https://calendly.com/navigationtrading" class="lpc-btn">
-              Schedule a Call &rarr;
+              Book Call &rarr;
             </a>
           </div>
         </div>
