@@ -190,7 +190,7 @@
 
     /* ══ HERO ══ */
     .hero {
-      background: #030d1a;
+      background: #0D2E4E;
       position: relative;
       overflow: hidden;
       padding: 0;
@@ -208,7 +208,7 @@
       transform: translateX(-50%);
       width: 900px;
       height: 600px;
-      background: radial-gradient(ellipse at center, rgba(200,66,10,0.2) 0%, rgba(13,46,78,0.12) 40%, transparent 70%);
+      background: none;
       pointer-events: none;
       z-index: 1;
     }
@@ -226,19 +226,7 @@
     }
 
     /* Stars / particle dots */
-    .hero-stars {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
-      background-size: 200px 200px, 130px 130px, 80px 80px;
-      background-position: 10px 20px, 60px 80px, 15px 55px;
-      opacity: 0.35;
-    }
+    .hero-stars { display: none; }
 
     /* TOP orange accent line */
     .hero-line-accent {
@@ -266,7 +254,7 @@
       align-items: flex-start;
       text-align: left;
       padding: 150px 60px 60px 80px; /* top for navbar, left for alignment */
-      max-width: 760px;
+      max-width: 1100px;
       width: 100%;
     }
 
@@ -315,13 +303,13 @@
 
     /* Headline — 2 lines exactly */
     .hero h1 {
-      font-size: clamp(38px, 4.2vw, 58px);
+      font-size: clamp(28px, 3.2vw, 46px);
       font-weight: 800;
       color: #fff;
       line-height: 1.1;
       letter-spacing: -1.5px;
       margin-bottom: 22px;
-      white-space: nowrap; /* keeps each line on one row */
+      white-space: normal;
     }
     .hero h1 em {
       font-style: normal;
@@ -329,7 +317,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      display: block; /* forces 'Institutional Edge.' to its own line */
+      display: inline;
     }
 
     /* Sub */
@@ -338,7 +326,7 @@
       color: rgba(255,255,255,0.55);
       margin-bottom: 38px;
       line-height: 1.65;
-      max-width: 620px;
+      max-width: 800px;
     }
 
     /* CTAs */
@@ -409,7 +397,7 @@
     /* ─── PREMIUM DASHBOARD IMAGE — Xentro style ─── */
     .hero-dashboard-wrapper {
       position: absolute;
-      top: -60px;   /* glow line right below CTA buttons */
+      top: 150px;
       left: 0;
       right: 0;
       bottom: 0;
@@ -434,7 +422,7 @@
     /* Bottom gradient cover — fades image into hero background */
     .hero-dashboard-cover {
       pointer-events: none;
-      background-image: linear-gradient(transparent, #030d1a);
+      background-image: linear-gradient(transparent, #0D2E4E);
       height: 320px;
       position: absolute;
       inset: auto 0% 0%;
@@ -550,51 +538,62 @@
     .dash-alert-val.r { color: #ef4444; }
     .dash-alert-val.o { color: var(--orange); }
 
-    /* ── STATS BAR ── */
+    /* ── STATS BAR — Tradient style ── */
     .stats-bar {
       background: #020b18;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 22px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 45px 0;
       position: relative;
-      z-index: 10;
+      z-index: 20;
+      box-shadow: 0 -20px 40px rgba(0,0,0,0.4);
     }
-
-
 
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      max-width: 480px;
+      max-width: 1000px;
       margin: 0 auto;
+      gap: 40px;
     }
 
     .stat-item {
       text-align: center;
-      padding: 0 14px;
-      border-right: 1px solid rgba(255,255,255,0.08);
+      padding: 0 20px;
+      position: relative;
+      transition: transform 0.3s ease;
     }
+    .stat-item:hover { transform: translateY(-5px); }
 
-    .stat-item:last-child {
-      border-right: none;
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
     }
 
     .stat-num {
       font-family: 'DM Sans', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #fff, #d4a040);
+      font-size: clamp(32px, 3.5vw, 44px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(200,66,10,0.3);
+      background: linear-gradient(135deg, #fff 40%, var(--orange) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      line-height: 1;
     }
 
     .stat-label {
-      color: rgba(255,255,255,0.45);
-      font-size: 10px;
-      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      margin-top: 5px;
     }
 
     /* Legacy — keep for other sections */
@@ -647,99 +646,126 @@
       font-weight: 600;
     }
 
-    /* ── REDESIGNED APPROACH (WITH VIDEO) ── */
+    /* ── APPROACH SECTION — PREMIUM REFINEMENT ── */
     .approach-new {
-      padding: 80px 0;
-      background: radial-gradient(circle at 80% 20%, rgba(200, 66, 10, 0.05) 0%, transparent 40%),
-                  radial-gradient(circle at 20% 80%, rgba(58, 138, 191, 0.05) 0%, transparent 40%),
-                  #fdfdfd;
+      padding: 120px 0;
+      background: #fdfdfd;
       position: relative;
-      border-bottom: 1px solid #f1f5f9;
-      overflow: hidden;
-    }
-
-    .approach-new::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(13, 46, 78, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(circle at center, black, transparent 80%);
-      pointer-events: none;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 40px;
     }
 
     .approach-header {
       text-align: center;
-      max-width: 900px;
-      margin: 0 auto 40px auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .approach-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 6px 16px;
-      background: rgba(200, 66, 10, 0.12);
-      border: 1px solid rgba(200, 66, 10, 0.28);
-      border-radius: 50px;
-      color: var(--orange);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
+      max-width: 800px;
+      margin: 0 auto 60px auto;
     }
 
     .approach-header h2 {
-      font-size: clamp(36px, 4.5vw, 54px);
-      color: var(--teal-900);
-      line-height: 1.05;
-      letter-spacing: -2px;
+      font-size: clamp(40px, 5vw, 64px);
+      color: #0d2e4e;
       font-weight: 800;
-    }
-
-    .approach-header h2 span {
-      background: linear-gradient(135deg, var(--teal-900) 0%, #1a5080 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 20px;
     }
 
     .approach-header h2 em {
       font-style: normal;
       color: var(--orange);
-      position: relative;
+      background: linear-gradient(135deg, var(--orange), #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .approach-grid-new {
+    .approach-header p {
+      font-size: 20px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Bento Grid Layout */
+    .approach-bento {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: flex-start;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 30px;
+      margin-top: 40px;
     }
 
-    .approach-content p {
-      font-size: 18px;
-      color: var(--text-dim);
-      margin-bottom: 40px;
-      line-height: 1.7;
-    }
-
-    .approach-features {
-      list-style: none;
-      margin-bottom: 40px;
+    .bento-card {
+      background: #ffffff;
+      border: 1px solid rgba(13, 46, 78, 0.08);
+      border-radius: 32px;
+      padding: 40px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      justify-content: center;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 40px rgba(13, 46, 78, 0.04);
+    }
+
+    .bento-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 40px 80px rgba(13, 46, 78, 0.12);
+      border-color: rgba(200,66,10,0.3);
+    }
+
+    .bento-main {
+      grid-column: span 5;
+      grid-row: span 1;
+    }
+
+    .bento-video {
+      grid-column: span 7;
+      grid-row: span 2;
+      padding: 20px;
+      background: #f1f5f9;
+    }
+
+    .bento-stat {
+      grid-column: span 5;
+      grid-row: span 1;
+      background: linear-gradient(135deg, rgba(200,66,10,0.05) 0%, #fff 100%);
+    }
+
+    .bento-card p {
+      font-size: 18px;
+      color: #1e293b;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .bento-tag {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .bento-card h4 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #0d2e4e;
+      margin-bottom: 15px;
+    }
+
+    .video-wrapper-new {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .video-wrapper-new iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 1024px) {
+      .bento-main, .bento-video, .bento-stat { grid-column: span 12; grid-row: auto; }
     }
 
     .approach-feature {
@@ -2606,7 +2632,7 @@
 
         <h1>Trade Options With <em>Institutional Edge.</em></h1>
 
-        <p class="hero-sub">Real-time live streams, proven strategies, and the tools to execute confidently — without predicting market direction.</p>
+        <p class="hero-sub">Real-time live streams, proven strategies, and the tools to execute confidently<br>— without predicting market direction.</p>
 
         <div class="hero-cta-row">
           <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">
@@ -2625,7 +2651,7 @@
 
     <!-- PREMIUM DASHBOARD IMAGE — bottom-anchored, Xentro style -->
     <div class="hero-dashboard-wrapper">
-      <img src="images/hero-dashboard.png" alt="Navigation Trading Dashboard" class="hero-dashboard-img">
+      <img src="transformer-option-spreads-content/692e90a1ba342d093201afa7_Hero Dashboard -p-2000.webp" alt="Navigation Trading Dashboard" class="hero-dashboard-img">
       <div class="hero-dashboard-cover"></div>
     </div>
 
@@ -2659,15 +2685,29 @@
         <p style="font-size:18px; color:var(--text-dim); margin-top:16px; line-height:1.6;">Simple, straightforward strategies grounded in real math.</p>
       </div>
 
-      <div class="approach-grid-new">
-        <div class="approach-content">
-          <p>Our methodology is based on statistics and probabilities, not hype, emotion, or following some "Stock Market Guru" who claims to have a crystal ball. We post every trade we send to our Pro Members—both winners and losers. The best part is, we don't need to predict market direction to find quality setups; that's the power of our trading method.</p>
-
-          <a href="/performance" class="btn-main" style="border-radius: 50px;">VIEW TRADE RESULTS &rarr;</a>
+      <div class="approach-bento">
+        <!-- Main Content Card -->
+        <div class="bento-card bento-main">
+          <p>Our methodology is based on statistics and probabilities, not hype, emotion, or following some "Stock Market Guru" who claims to have a crystal ball. We post every trade we send to our Pro Members—both winners and losers.</p>
+          <p>The best part is, we don't need to predict market direction to find quality setups; that's the power of our trading method.</p>
         </div>
-        <div class="approach-visual-new">
-          <div class="video-wrapper">
+
+        <!-- Video Card -->
+        <div class="bento-card bento-video">
+          <div class="video-wrapper-new">
              <iframe src="https://www.youtube.com/embed/fcrhsP5NOGY?autoplay=0&enablejsapi=1&wmode=opaque" title="Welcome to NavigationTrading" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div style="margin-top:20px; text-align:center;">
+            <a href="/performance" class="btn-main" style="border-radius: 50px;">VIEW TRADE RESULTS &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Stat Tile -->
+        <div class="bento-card bento-stat">
+          <div>
+            <span class="bento-tag">Verified Proof</span>
+            <h4>Real Math. Real Trades.</h4>
+            <p style="font-size:14px; color:var(--text-dim);">No edits. No omissions. Every trade is documented since 2017.</p>
           </div>
         </div>
       </div>
