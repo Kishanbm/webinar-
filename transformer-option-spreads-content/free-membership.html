@@ -1001,153 +1001,211 @@ body {
 
 
 /* ══════════════════════════════════════
-   SECTION 7 — BONUSES (Spotlight Carousel)
+   SECTION 7 — THE INSTITUTIONAL MANIFEST
 ══════════════════════════════════════ */
-.bonuses {
-  padding: 70px 0; /* Reduced padding for compact view */
-  background: var(--navy);
-  position: relative; overflow: hidden;
+.bonuses-manifest {
+  padding: 120px 0;
+  background: #0D2040;
+  position: relative;
+  overflow: hidden;
 }
-.bonuses::before {
+
+.bonuses-manifest::before {
   content: '';
   position: absolute; inset: 0; z-index: 0;
   background-image: url("WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg");
   background-size: cover;
   background-position: center;
-  opacity: 0.15; /* Reduced image opacity */
+  opacity: 0.12;
   pointer-events: none;
 }
-.bonuses::after {
+
+.bonuses-manifest::after {
   content: '';
   position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(135deg, rgba(13,46,78,.85) 0%, rgba(13,46,78,.7) 50%, rgba(13,46,78,.9) 100%);
+  background: radial-gradient(circle at 50% 50%, rgba(13,32,64,0.7) 0%, #0D2040 100%);
   pointer-events: none;
 }
-.bonuses > .container { position: relative; z-index: 3; max-width: 1280px; }
 
-/* ── EYEBROW PILL (Matches Podcast bento-eyebrow) ── */
-.bonuses-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  background: rgba(200,66,10,0.15);
-  border: 1px solid rgba(200,66,10,0.32);
-  border-radius: 50px;
+.manifest-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.manifest-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(200,66,10,0.1);
+  border: 1px solid rgba(200,66,10,0.3);
   color: var(--orange);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  border-radius: 50px;
+  margin-bottom: 20px;
 }
 
-/* ── CENTERED HEADER ── */
-.bonuses-header-center {
-  text-align: center;
-  margin-bottom: 50px;
-  max-width: 800px;
-  margin-left: auto; margin-right: auto;
-}
-.bonuses-header-center h2 { color: #fff; margin-bottom: 16px; font-size: clamp(32px, 3.5vw, 46px); line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; }
-.bonuses-header-center p { color: rgba(255,255,255,.65); font-size: 16px; line-height: 1.7; }
-.bonuses-header-center h2 em {
-  font-style: normal;
-  background: linear-gradient(115deg, var(--orange) 20%, var(--gold) 80%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+.manifest-header h2 {
+  font-size: clamp(32px, 4vw, 52px);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
 }
 
-/* ── GRID WRAPPER ── */
-.bonuses-grid-wrapper {
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-  gap: 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 24px;
-  padding: 32px;
+.manifest-header p {
+  color: rgba(255,255,255,0.6);
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* ── LONG BOTTOM STRIP ── */
-.bonuses-strip-long {
-  grid-column: 1 / -1;
-  background: rgba(0, 0, 0, 0.4); 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px; padding: 24px 32px;
-  display: flex; align-items: center; justify-content: space-between; gap: 30px;
-  position: relative; overflow: hidden;
-  margin-top: 10px;
-}
-.bonuses-strip-long::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--orange), var(--gold), transparent 70%);
-}
-.bs-pills-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.bs-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
-  border-radius: 50px; padding: 6px 14px;
-  font-size: 12px; font-weight: 600; color: rgba(255,255,255,.65);
-}
-.bs-pill svg { width: 11px; height: 11px; color: var(--orange); flex-shrink: 0; stroke-width: 3; }
-.bs-right-row { text-align: right; flex-shrink: 0; padding-left: 30px; border-left: 1px solid rgba(255,255,255,0.06); }
-.bs-cross { font-size: 13px; color: rgba(255,255,255,.4); text-decoration: line-through; margin-bottom: 4px; }
-.bs-free  { font-size: 28px; font-weight: 900; color: var(--orange); letter-spacing: -.02em; line-height: 1; }
-
-.bonus-list-card {
-  background: rgba(0, 0, 0, 0.4); /* Darker like podcast testimonial */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px; /* Matching podcast radius */
-  padding: 30px; /* Matching podcast padding */
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column; align-items: flex-start;
-  transition: transform .3s, background .3s, border-color .3s, box-shadow .3s;
-}
-.bonus-list-card:hover {
-  background: rgba(0, 0, 0, 0.6);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,.15);
+/* The List */
+.manifest-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.bonus-list-card::after {
-  content: ''; position: absolute; top: 0; left: 8%; right: 8%; height: 2px;
-  border-radius: 0 0 4px 4px; opacity: 0; transition: opacity .3s;
-}
-.bonus-list-card:hover::after { opacity: 1; }
-.bonus-list-card.cc-orange::after { background: linear-gradient(90deg, transparent, var(--orange), transparent); }
-.bonus-list-card.cc-blue::after   { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
-.bonus-list-card.cc-gold::after   { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-.bonus-list-card.cc-indigo::after { background: linear-gradient(90deg, transparent, #818cf8, transparent); }
-
-.cc-watermark {
-  position: absolute; bottom: -10px; right: 20px;
-  font-size: 80px; font-weight: 800; color: rgba(255,255,255,.03);
-  line-height: 1; user-select: none; pointer-events: none; transition: color .3s;
-}
-.bonus-list-card:hover .cc-watermark { color: rgba(255,255,255,.06); }
-
-.cc-content { flex: 1; z-index: 2; position: relative; width: 100%; }
-
-.cc-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-.bonus-list-card.cc-orange .cc-label { color: var(--orange); }
-.bonus-list-card.cc-blue   .cc-label { color: #60a5fa; }
-.bonus-list-card.cc-gold   .cc-label { color: var(--gold); }
-.bonus-list-card.cc-indigo .cc-label { color: #a5b4fc; }
-
-.cc-header-row {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+.manifest-row {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 24px 40px;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.cc-icon-small {
-  width: 32px; height: 32px; border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
+.manifest-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--orange);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.manifest-row:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.12);
+  transform: translateX(10px);
+}
+
+.manifest-row:hover::before {
+  transform: scaleY(1);
+}
+
+.mr-index {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.15);
+  margin-right: 32px;
+  width: 40px;
+}
+
+.mr-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  margin-right: 32px;
   flex-shrink: 0;
-  transition: transform .3s;
+  transition: all 0.3s ease;
+}
+
+.manifest-row:hover .mr-icon {
+  background: rgba(200,66,10,0.1);
+  border-color: rgba(200,66,10,0.3);
+  transform: scale(1.1);
+}
+
+.mr-content {
+  flex: 1;
+}
+
+.mr-content h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.mr-content p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+}
+
+.mr-value {
+  text-align: right;
+  margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.v-original {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  text-decoration: line-through;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.v-free {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--orange);
+  letter-spacing: 1px;
+}
+
+/* Footer Summary */
+.manifest-footer {
+  max-width: 1000px;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  background: rgba(200,66,10,0.05);
+  border: 1px dashed rgba(200,66,10,0.25);
+  border-radius: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.mf-total { color: rgba(255,255,255,0.6); font-size: 15px; }
+.mf-total strong { color: #fff; text-decoration: line-through; }
+.mf-final { font-size: 22px; color: #fff; font-weight: 800; }
+.mf-final strong { color: var(--orange); font-size: 32px; margin-left: 10px; }
+
+@media (max-width: 768px) {
+  .manifest-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+  }
+  .mr-index, .mr-icon { margin-bottom: 16px; }
+  .mr-value { margin-left: 0; margin-top: 20px; align-items: flex-start; text-align: left; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; padding-top: 16px; }
+  .manifest-footer { flex-direction: column; gap: 20px; text-align: center; }
+}
 }
 .bonus-list-card:hover .cc-icon-small { transform: scale(1.05) rotate(-5deg); }
 .cc-icon-small.i-orange { background: rgba(200,66,10,.18);  border: 1px solid rgba(200,66,10,.3); }
@@ -1941,114 +1999,107 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 
 
 <!-- ═══════════════════════════════
-     SECTION 7 — BONUSES
+     SECTION 7 — THE INSTITUTIONAL MANIFEST
 ═══════════════════════════════ -->
-<section class="bonuses" id="bonuses">
+<section class="bonuses-manifest" id="bonuses">
   <div class="container">
-    <!-- ── CENTERED HEADER ── -->
-    <div class="bonuses-header-center reveal">
-      <div class="bonuses-pill">
-        INCLUDED WITH YOUR FREE MEMBERSHIP
-      </div>
-      <h2>Free Membership That Doesn't Feel Like It</h2>
-      <p>Most trading educators charge hundreds for less than what you're about to get. Here's everything included the moment you sign up.</p>
+    
+    <div class="manifest-header reveal">
+      <div class="manifest-pill">INCLUDED FREE</div>
+      <h2>The Institutional Starter Kit</h2>
+      <p>Most trading educators charge hundreds for less than what you're about to get. Here is your complete day-one inventory.</p>
     </div>
 
-    <!-- ── GRID WRAPPER ── -->
-    <div class="bonuses-grid-wrapper reveal">
-
-      <!-- Bonus 1: Instant Access -->
-      <div class="bonus-list-card cc-orange">
-        <div class="cc-watermark">01</div>
-        <div class="cc-content">
-          <div class="cc-label">Bonus #1</div>
-          <div class="cc-header-row">
-            <div class="cc-icon-small i-orange">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
-            <h3>Instant Access, No Waiting</h3>
-          </div>
-          <p>The second you sign up, every course and the Discord community are unlocked. No drip schedule. No waiting for modules to open. Learn at your own pace.</p>
+    <div class="manifest-list reveal">
+      
+      <!-- Bonus 01 -->
+      <div class="manifest-row">
+        <div class="mr-index">01</div>
+        <div class="mr-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="mr-content">
+          <h3>Instant Access, No Waiting</h3>
+          <p>The second you sign up, every course and the Discord community are unlocked. No waiting for modules to open.</p>
+        </div>
+        <div class="mr-value">
+          <span class="v-original">$97 Value</span>
+          <span class="v-free">FREE</span>
         </div>
       </div>
 
-      <!-- Bonus 2: Taught by Active Traders -->
-      <div class="bonus-list-card cc-blue">
-        <div class="cc-watermark">02</div>
-        <div class="cc-content">
-          <div class="cc-label">Bonus #2</div>
-          <div class="cc-header-row">
-            <div class="cc-icon-small i-blue">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#60a5fa"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3>Taught by Active Traders</h3>
-          </div>
-          <p>Built by Steve and the NavigationTrading team — traders who execute these strategies with real money, every single day. Learning from practitioners, not theorists.</p>
+      <!-- Bonus 02 -->
+      <div class="manifest-row">
+        <div class="mr-index">02</div>
+        <div class="mr-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="mr-content">
+          <h3>Taught by Active Traders</h3>
+          <p>Built by practitioners who execute these strategies with real money every single day. No theorists.</p>
+        </div>
+        <div class="mr-value">
+          <span class="v-original">$147 Value</span>
+          <span class="v-free">FREE</span>
         </div>
       </div>
 
-      <!-- Bonus 3: Lifetime Access -->
-      <div class="bonus-list-card cc-gold">
-        <div class="cc-watermark">03</div>
-        <div class="cc-content">
-          <div class="cc-label">Bonus #3</div>
-          <div class="cc-header-row">
-            <div class="cc-icon-small i-gold">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <h3>Lifetime Access</h3>
-          </div>
-          <p>This isn't a 7-day trial that locks you out. Your free membership doesn't expire. Come back to review a course six months from now. The content will still be there.</p>
+      <!-- Bonus 03 -->
+      <div class="manifest-row">
+        <div class="mr-index">03</div>
+        <div class="mr-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="mr-content">
+          <h3>Lifetime Access</h3>
+          <p>Your free membership doesn't expire. Review any course six months from now—it will still be here.</p>
+        </div>
+        <div class="mr-value">
+          <span class="v-original">$97 Value</span>
+          <span class="v-free">FREE</span>
         </div>
       </div>
 
-      <!-- Bonus 4: Real Strategy Foundation -->
-      <div class="bonus-list-card cc-indigo">
-        <div class="cc-watermark">04</div>
-        <div class="cc-content">
-          <div class="cc-label">Bonus #4</div>
-          <div class="cc-header-row">
-            <div class="cc-icon-small i-indigo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#a5b4fc"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <h3>A Real Strategy Foundation</h3>
-          </div>
-          <p>The courses cover the same foundational strategies that our Day Trading and Pro members build on. You're getting the real starting point, not a watered-down version.</p>
+      <!-- Bonus 04 -->
+      <div class="manifest-row">
+        <div class="mr-index">04</div>
+        <div class="mr-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="mr-content">
+          <h3>Real Strategy Foundation</h3>
+          <p>Get the same foundational strategies that our elite Day Trading and Pro members build their careers on.</p>
+        </div>
+        <div class="mr-value">
+          <span class="v-original">$127 Value</span>
+          <span class="v-free">FREE</span>
         </div>
       </div>
 
-      <!-- Bonus 5: No Credit Card Required -->
-      <div class="bonus-list-card cc-orange">
-        <div class="cc-watermark">05</div>
-        <div class="cc-content">
-          <div class="cc-label">Bonus #5</div>
-          <div class="cc-header-row">
-            <div class="cc-icon-small i-orange">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-            </div>
-            <h3>No Credit Card Required</h3>
-          </div>
-          <p>We don't ask for payment info. There's no "free trial" that auto-charges. You sign up with your email, and you're in. That's it.</p>
+      <!-- Bonus 05 -->
+      <div class="manifest-row">
+        <div class="mr-index">05</div>
+        <div class="mr-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
         </div>
-      </div>
-
-      <!-- Long Bottom Strip -->
-      <div class="bonuses-strip-long">
-        <div class="bs-pills-row">
-          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>5 Options Courses</div>
-          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Discord Community</div>
-          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Instant Access</div>
-          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Active Traders</div>
-          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>Lifetime Access</div>
-          <div class="bs-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>No Credit Card</div>
+        <div class="mr-content">
+          <h3>No Credit Card Required</h3>
+          <p>We don't ask for payment info. There's no "free trial" that auto-charges. Just your email and you're in.</p>
         </div>
-        <div class="bs-right-row">
-          <div class="bs-cross">Total Value: $497+</div>
-          <div class="bs-free">All Free →</div>
+        <div class="mr-value">
+          <span class="v-original">$29 Value</span>
+          <span class="v-free">FREE</span>
         </div>
       </div>
 
     </div>
+
+    <!-- Final Value Footer -->
+    <div class="manifest-footer reveal">
+      <div class="mf-total">Total Package Value: <strong>$497.00</strong></div>
+      <div class="mf-final">Your Final Cost: <strong>$0.00</strong></div>
+    </div>
+
   </div>
 </section>
 
