@@ -646,26 +646,35 @@
       font-weight: 600;
     }
 
-    /* ── APPROACH SECTION — PREMIUM REFINEMENT ── */
+    /* ── CORE LAYOUT ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── APPROACH SECTION ── */
     .approach-new {
-      padding: 120px 0;
-      background: #fdfdfd;
+      padding: 56px 0 64px;
+      background: #f4f7fb;
       position: relative;
     }
 
     .approach-header {
       text-align: center;
       max-width: 800px;
-      margin: 0 auto 60px auto;
+      margin: 0 auto 32px auto;
     }
 
     .approach-header h2 {
-      font-size: clamp(40px, 5vw, 64px);
+      font-size: clamp(36px, 4.5vw, 58px);
       color: #0d2e4e;
       font-weight: 800;
       letter-spacing: -2px;
       line-height: 1.1;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .approach-header h2 em {
@@ -677,95 +686,222 @@
     }
 
     .approach-header p {
-      font-size: 20px;
+      font-size: 18px;
       color: #64748b;
       line-height: 1.6;
     }
 
-    /* Bento Grid Layout */
+    /* Bento Grid — left 5 cols, right 7 cols */
     .approach-bento {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: 5fr 7fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
     }
 
-    .bento-card {
-      background: #ffffff;
-      border: 1px solid rgba(13, 46, 78, 0.08);
-      border-radius: 32px;
-      padding: 40px;
+    .approach-bento .bento-card {
+      border-radius: 20px;
+      padding: 24px 28px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 10px 40px rgba(13, 46, 78, 0.04);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+      box-shadow: 0 2px 6px rgba(13, 46, 78, 0.07), 0 8px 24px rgba(13, 46, 78, 0.09), 0 28px 60px rgba(13, 46, 78, 0.06);
     }
 
-    .bento-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 40px 80px rgba(13, 46, 78, 0.12);
-      border-color: rgba(200,66,10,0.3);
+    .approach-bento .bento-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 12px rgba(13, 46, 78, 0.1), 0 16px 40px rgba(13, 46, 78, 0.14), 0 40px 80px rgba(13, 46, 78, 0.09);
     }
 
+    /* Left top card */
     .bento-main {
-      grid-column: span 5;
-      grid-row: span 1;
+      grid-column: 1;
+      grid-row: 1;
+      background: #ffffff !important;
+      border: 1px solid rgba(13, 46, 78, 0.08) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      justify-content: flex-start;
+      height: auto !important;
     }
 
-    .bento-video {
-      grid-column: span 7;
-      grid-row: span 2;
-      padding: 20px;
-      background: #f1f5f9;
-    }
-
-    .bento-stat {
-      grid-column: span 5;
-      grid-row: span 1;
-      background: linear-gradient(135deg, rgba(200,66,10,0.05) 0%, #fff 100%);
-    }
-
-    .bento-card p {
-      font-size: 18px;
-      color: #1e293b;
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    .bento-tag {
-      font-size: 12px;
+    .bento-main-eyebrow {
+      font-size: 10px;
       font-weight: 800;
-      color: var(--orange);
-      text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 15px;
-      display: block;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
     }
 
-    .bento-card h4 {
-      font-size: 26px;
+    .bento-main h3 {
+      font-size: 18px;
       font-weight: 800;
       color: #0d2e4e;
-      margin-bottom: 15px;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+
+    .bento-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .bento-pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+    }
+
+    .bento-pillar-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #e8f0fb 0%, #dbe8f8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #1e4d8c;
+    }
+
+    .bento-pillar-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .bento-pillar-text strong {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0d2e4e;
+      line-height: 1.2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .bento-pillar-text span {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.2;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Left bottom card */
+    .bento-stat {
+      grid-column: 1;
+      grid-row: 2;
+      background: linear-gradient(135deg, #0d2e4e 0%, #1e4d8c 100%) !important;
+      border: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      flex-direction: row !important;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 28px;
+      height: auto !important;
+    }
+
+    .bento-stat:hover {
+      border-color: transparent !important;
+      background: linear-gradient(135deg, #0d2e4e 0%, #1e4d8c 100%) !important;
+    }
+
+    .bento-stat-left { flex: 1; }
+
+    .bento-stat-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+
+    .bento-stat-headline {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .bento-stat-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 3px;
+    }
+
+    .bento-stat-cta {
+      display: inline-flex;
+      align-items: center;
+      background: var(--orange);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 50px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.25s, transform 0.25s;
+      flex-shrink: 0;
+    }
+
+    .bento-stat-cta:hover { background: #d94d00; transform: translateY(-2px); }
+
+    /* Right video card — spans both rows */
+    .bento-video {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      background: #ffffff !important;
+      border: 1px solid rgba(13, 46, 78, 0.08) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      padding: 18px;
+      justify-content: flex-start;
+      height: auto !important;
+    }
+
+    .bento-video-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 12px;
     }
 
     .video-wrapper-new {
       width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: 20px;
+      flex: 1;
+      min-height: 260px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
     }
 
     .video-wrapper-new iframe {
       width: 100%;
       height: 100%;
+      min-height: 260px;
       border: none;
+      display: block;
     }
 
     @media (max-width: 1024px) {
-      .bento-main, .bento-video, .bento-stat { grid-column: span 12; grid-row: auto; }
+      .approach-bento {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .bento-main, .bento-stat, .bento-video {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+      }
+      .bento-stat { flex-direction: column !important; align-items: flex-start !important; }
     }
 
     .approach-feature {
@@ -783,9 +919,7 @@
       margin-top: 4px;
     }
 
-    .approach-feature span {
-      line-height: 1.5;
-    }
+    .approach-feature span { line-height: 1.5; }
 
     .video-wrapper {
       position: relative;
@@ -892,7 +1026,7 @@
       z-index: 2;
     }
 
-    .bento-card {
+    .bento-grid .bento-card {
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -907,14 +1041,14 @@
       height: 240px;
     }
 
-    .bento-card.wide {
+    .bento-grid .bento-card.wide {
       grid-column: span 2;
       flex-direction: row;
       align-items: stretch;
       height: 240px;
     }
 
-    .bento-card:hover {
+    .bento-grid .bento-card:hover {
       transform: translateY(-6px);
       background: rgba(0, 0, 0, 0.55);
       border-color: rgba(200, 66, 10, 0.4);
@@ -932,7 +1066,7 @@
       justify-content: center;
     }
 
-    .bento-card.wide .bento-image-wrapper {
+    .bento-grid .bento-card.wide .bento-image-wrapper {
       width: 50%;
       height: 100%;
       min-height: unset;
@@ -946,7 +1080,7 @@
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .bento-card:hover .bento-image-wrapper img {
+    .bento-grid .bento-card:hover .bento-image-wrapper img {
       transform: scale(1.08) !important;
     }
 
@@ -957,15 +1091,15 @@
       background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
     }
 
-    .bento-card.wide .bento-image-wrapper::after {
+    .bento-grid .bento-card.wide .bento-image-wrapper::after {
       background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 100%);
     }
 
-    .bento-card.wide.reverse .bento-image-wrapper {
+    .bento-grid .bento-card.wide.reverse .bento-image-wrapper {
       order: 1;
     }
-    
-    .bento-card.wide.reverse .bento-image-wrapper::after {
+
+    .bento-grid .bento-card.wide.reverse .bento-image-wrapper::after {
       background: linear-gradient(to left, rgba(0,0,0,0.8) 0%, transparent 100%);
     }
 
@@ -980,15 +1114,15 @@
       overflow: hidden;
     }
 
-    .bento-card.wide .bento-content {
+    .bento-grid .bento-card.wide .bento-content {
       width: 50%;
       padding: 24px;
       margin-top: 0;
       justify-content: center;
       order: 1;
     }
-    
-    .bento-card.wide.reverse .bento-content {
+
+    .bento-grid .bento-card.wide.reverse .bento-content {
       order: 2;
     }
 
@@ -1024,12 +1158,12 @@
 
     @media (max-width: 992px) {
       .bento-grid { grid-template-columns: 1fr; }
-      .bento-card.wide { grid-column: span 1; flex-direction: column; }
-      .bento-card.wide .bento-image-wrapper, .bento-card.wide .bento-content { width: 100%; order: unset; }
-      .bento-card.wide .bento-image-wrapper { height: 220px; min-height: auto; }
+      .bento-grid .bento-card.wide { grid-column: span 1; flex-direction: column; }
+      .bento-grid .bento-card.wide .bento-image-wrapper, .bento-grid .bento-card.wide .bento-content { width: 100%; order: unset; }
+      .bento-grid .bento-card.wide .bento-image-wrapper { height: 220px; min-height: auto; }
       .bento-content { margin-top: -30px; padding: 0 30px 30px 30px; }
-      .bento-card.wide .bento-content { padding: 0 30px 30px 30px; margin-top: -30px; }
-      .bento-card.wide .bento-image-wrapper::after, .bento-card.wide.reverse .bento-image-wrapper::after { background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); }
+      .bento-grid .bento-card.wide .bento-content { padding: 0 30px 30px 30px; margin-top: -30px; }
+      .bento-grid .bento-card.wide .bento-image-wrapper::after, .bento-grid .bento-card.wide.reverse .bento-image-wrapper::after { background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); }
     }
 
     /* ── PREMIUM WHAT YOU'LL LEARN (XENTRO STYLE) ── */
@@ -1064,135 +1198,114 @@
       z-index: 10;
     }
 
+    /* ── WHERE TO START — PREMIUM GLASS ── */
+    .learn-section-premium {
+      padding: 120px 0;
+      background: #030d1a; /* Deepest Navy */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .learn-section-premium::before {
+      content: '';
+      position: absolute;
+      top: -10%; left: -10%; width: 40%; height: 40%;
+      background: radial-gradient(circle, rgba(200, 66, 10, 0.08) 0%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
     .learn-header-centered {
       text-align: center;
       margin-bottom: 80px;
-      position: relative;
-      z-index: 5;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .learn-header-centered .s-eyebrow {
-      margin-bottom: 24px;
     }
 
     .learn-header-centered h2 {
-      font-size: clamp(32px, 4.5vw, 52px);
+      font-size: clamp(36px, 5vw, 56px);
       color: #fff;
       font-weight: 800;
-      line-height: 1.1;
       letter-spacing: -2px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .learn-header-centered h2 span {
       color: var(--orange);
-    }
-
-    .learn-header-centered p {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.5);
-      line-height: 1.6;
+      background: linear-gradient(135deg, var(--orange), #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .learn-premium-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-      position: relative;
-      z-index: 5;
-      max-width: 1400px; /* Wider grid */
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .learn-premium-card {
-      background: rgba(13, 28, 48, 0.6);
+      background: rgba(13, 28, 48, 0.4);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: 30px; /* Increased padding */
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 28px;
+      padding: 40px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      height: 100%;
+      position: relative;
     }
 
     .learn-premium-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-12px);
       background: rgba(13, 28, 48, 0.6);
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      border-color: rgba(200, 66, 10, 0.3);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4);
     }
 
-    .lpc-visual {
-      width: 100%;
-      height: 180px;
-      background: #0a1421;
+    .lpc-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(200, 66, 10, 0.1);
       border-radius: 16px;
-      margin-bottom: 24px;
-      position: relative;
-      overflow: hidden;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
     }
-
-    .lpc-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.8;
-      transition: all 0.6s ease;
-    }
-
-    .learn-premium-card:hover .lpc-visual img {
-      transform: scale(1.1);
-      opacity: 1;
+    .learn-premium-card:hover .lpc-icon {
+      background: var(--orange);
+      color: #fff;
+      transform: scale(1.1) rotate(5deg);
     }
 
     .lpc-content h3 {
-      font-size: 22px;
-      color: var(--orange); /* Titles to Orange */
+      font-size: 24px;
+      color: #fff;
       font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
+      margin-bottom: 15px;
     }
 
     .lpc-content p {
-      font-size: 14px;
-      color: #ffffff; /* Full White */
-      line-height: 1.6;
-      margin-bottom: 24px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 30px;
     }
 
     .lpc-btn {
       margin-top: auto;
-      display: inline-flex;
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--orange); /* Buttons to Orange */
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 10px 0;
       transition: all 0.3s;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      width: 100%;
     }
-
-    .lpc-btn svg {
-      transition: transform 0.3s;
-    }
-
-    .lpc-btn:hover {
-      color: var(--orange);
-    }
-
-    .lpc-btn:hover svg {
-      transform: translateX(5px);
-    }
+    .lpc-btn:hover { color: #fff; }
 
     @media (max-width: 1100px) {
       .learn-premium-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2686,30 +2799,59 @@
       </div>
 
       <div class="approach-bento">
-        <!-- Main Content Card -->
+        <!-- Left top: Methodology card -->
         <div class="bento-card bento-main">
-          <p>Our methodology is based on statistics and probabilities, not hype, emotion, or following some "Stock Market Guru" who claims to have a crystal ball. We post every trade we send to our Pro Members—both winners and losers.</p>
-          <p>The best part is, we don't need to predict market direction to find quality setups; that's the power of our trading method.</p>
+          <div class="bento-main-eyebrow">Our Methodology</div>
+          <h3>Statistics &amp; probability, not hype or guesswork.</h3>
+          <div class="bento-pillars">
+            <div class="bento-pillar">
+              <div class="bento-pillar-icon">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="bento-pillar-text">
+                <strong>Probability-based setups</strong>
+                <span>Every trade has a statistical edge — no crystal ball required.</span>
+              </div>
+            </div>
+            <div class="bento-pillar">
+              <div class="bento-pillar-icon">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="bento-pillar-text">
+                <strong>Full transparency</strong>
+                <span>Winners and losers both published — no cherry-picking.</span>
+              </div>
+            </div>
+            <div class="bento-pillar">
+              <div class="bento-pillar-icon">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div class="bento-pillar-text">
+                <strong>Direction-neutral strategies</strong>
+                <span>We profit in up, down, and sideways markets.</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Video Card -->
+        <!-- Right: Video card (spans both rows) -->
         <div class="bento-card bento-video">
+          <div class="bento-video-label">Watch &amp; Learn</div>
           <div class="video-wrapper-new">
-             <iframe src="https://www.youtube.com/embed/fcrhsP5NOGY?autoplay=0&enablejsapi=1&wmode=opaque" title="Welcome to NavigationTrading" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div style="margin-top:20px; text-align:center;">
-            <a href="/performance" class="btn-main" style="border-radius: 50px;">VIEW TRADE RESULTS &rarr;</a>
+            <iframe src="https://www.youtube-nocookie.com/embed/fcrhsP5NOGY?rel=0" title="Welcome to NavigationTrading" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
 
-        <!-- Stat Tile -->
+        <!-- Left bottom: Stat + CTA -->
         <div class="bento-card bento-stat">
-          <div>
-            <span class="bento-tag">Verified Proof</span>
-            <h4>Real Math. Real Trades.</h4>
-            <p style="font-size:14px; color:var(--text-dim);">No edits. No omissions. Every trade is documented since 2017.</p>
+          <div class="bento-stat-left">
+            <div class="bento-stat-label">Verified Proof</div>
+            <div class="bento-stat-headline">Real Math. Real Trades.</div>
+            <div class="bento-stat-sub">Every trade documented since 2017 — no edits, no omissions.</div>
           </div>
+          <a href="/performance" class="bento-stat-cta">View Results &rarr;</a>
         </div>
+
       </div>
     </div>
   </section>
@@ -2899,60 +3041,56 @@
       <div class="learn-premium-grid">
         <!-- Card 1: Free Membership -->
         <div class="learn-premium-card">
-          <div class="lpc-visual">
-            <img src="learn_free_v1_1778069894479.png" alt="Free Membership">
+          <div class="lpc-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
           </div>
           <div class="lpc-content">
             <h3>Free Membership</h3>
             <p>Get started with our five free strategy courses plus bonus resources to build your foundation.</p>
             <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">
-              Get Instant Access
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              Get Instant Access &rarr;
             </a>
           </div>
         </div>
 
         <!-- Card 2: Pro Membership -->
         <div class="learn-premium-card">
-          <div class="lpc-visual">
-            <img src="learn_pro_v1_1778069929103.png" alt="Pro Membership">
+          <div class="lpc-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
           </div>
           <div class="lpc-content">
             <h3>Premium Memberships</h3>
             <p>Learn more about premium memberships, live day trading stream, live trading alerts, and more.</p>
             <a href="pricing.html" class="lpc-btn">
-              Learn More
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              Learn More &rarr;
             </a>
           </div>
         </div>
 
         <!-- Card 3: Community -->
         <div class="learn-premium-card">
-          <div class="lpc-visual">
-            <img src="learn_community_v1_1778069948265.png" alt="Trading Community">
+          <div class="lpc-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
           <div class="lpc-content">
             <h3>Join Our Community</h3>
             <p>Interact with like-minded traders and get all your trading-related questions answered.</p>
             <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">
-              Learn More
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              Learn More &rarr;
             </a>
           </div>
         </div>
 
         <!-- Card 4: Support -->
         <div class="learn-premium-card">
-          <div class="lpc-visual">
-            <img src="learn_support_v1_1778069966327.png" alt="24/7 Support">
+          <div class="lpc-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           </div>
           <div class="lpc-content">
             <h3>Questions?</h3>
             <p>Schedule a complimentary coaching call with one of our full-time traders.</p>
             <a href="https://calendly.com/navigationtrading" class="lpc-btn">
-              Schedule a Call
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              Schedule a Call &rarr;
             </a>
           </div>
         </div>
