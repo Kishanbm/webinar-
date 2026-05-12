@@ -498,9 +498,9 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 }
 .value-callout p { font-size: 16px; color: var(--navy); line-height: 1.85; font-weight: 500; max-width: 780px; margin: 0 auto; }
 /* Section 6 — Tools (image as full section bg) */
-.tools-section { padding: 120px 0; background: #fff; }
+.tools-section { padding: 64px 0; background: #fff; }
 /* Left/right split */
-.tools-split { display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; margin-top: 64px; }
+.tools-split { display: flex; flex-direction: column; gap: 64px; margin-top: 64px; }
 .tool-feature-row { display: flex; align-items: flex-start; gap: 20px; padding: 28px 0; border-bottom: 1px solid rgba(0,0,0,.06); }
 .tool-feature-row:last-child { border-bottom: none; }
 .tool-feat-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--navy); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -509,13 +509,13 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 .tool-feat-desc { font-size: 14px; color: #666; line-height: 1.75; margin-bottom: 14px; }
 .tool-feat-pills { display: flex; flex-wrap: wrap; gap: 7px; }
 .tool-feat-pill { font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 50px; background: rgba(5,12,22,.06); color: var(--navy); border: 1px solid rgba(5,12,22,.1); }
-/* Right stat panel */
-.tools-stats-panel { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 100px; }
+/* Stat panel moved to bottom */
+.tools-stats-panel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
 .tools-stat-card {
   background: linear-gradient(145deg, #fffbf2 0%, #fff9ed 100%);
   border: 1px solid rgba(212,160,64,.3);
   border-radius: 18px; padding: 24px 22px;
-  box-shadow: 0 4px 20px rgba(212,160,64,.12);
+  box-shadow: 0 2px 8px rgba(212,160,64,.25), 0 16px 48px rgba(212,160,64,.15);
   position: relative; overflow: hidden;
 }
 .tools-stat-card::before {
@@ -525,7 +525,7 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 .tools-stat-num { font-family: 'Cormorant Garamond',serif; font-size: 42px; font-weight: 700; color: var(--gold); line-height: 1; display: block; }
 .tools-stat-label { font-size: 10px; color: #b8922a; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; display: block; font-weight: 700; }
 .tools-stat-sub { font-size: 12.5px; color: #7a6535; margin-top: 9px; line-height: 1.6; display: block; border-top: 1px solid rgba(212,160,64,.18); padding-top: 9px; }
-@media (max-width: 1080px) { .tools-split { grid-template-columns: 1fr; } .tools-stats-panel { flex-direction: row; flex-wrap: wrap; position: static; } .tools-stat-card { flex: 1; min-width: 160px; } }
+@media (max-width: 1080px) { .tools-stats-panel { grid-template-columns: 1fr; } }
 
 /* ══════════════════════════════════════
    UTILITIES & ANIMATIONS
@@ -687,81 +687,277 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 }
 
 /* ══════════════════════════════════════
-   LIBRARY TAB LAYOUT
+   LIBRARY LAYOUT - LEFT CARDS + RIGHT CONTENT
    ══════════════════════════════════════ */
 .lib-layout {
   display: grid;
-  grid-template-columns: 270px 1fr;
-  background: #0c1b2e;
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 20px;
-  overflow: hidden;
-  min-height: 520px;
-  box-shadow: 0 8px 48px rgba(0,0,0,.35);
+  grid-template-columns: 380px 1fr;
+  gap: 48px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  min-height: auto;
+  box-shadow: none;
+  align-items: flex-start;
 }
+
+/* LEFT COLUMN — Beautiful cards */
 .lib-nav {
-  border-right: 1px solid rgba(255,255,255,.07);
-  padding: 12px;
+  border-right: none;
+  border-bottom: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  background: rgba(0,0,0,.2);
+  gap: 20px;
+  background: transparent;
+  position: sticky;
+  top: 80px;
 }
+
 .lib-nav-item {
-  padding: 18px 20px;
-  border-radius: 12px;
+  padding: 32px 28px;
+  border-radius: 18px;
   cursor: pointer;
-  border: 1px solid transparent;
-  border-left: 3px solid transparent;
-  transition: background .2s, border-color .2s;
+  border: 1px solid rgba(255,255,255,.08);
+  border-left: none;
+  transition: all .4s cubic-bezier(.22,.61,.36,1);
   user-select: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  white-space: normal;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
 }
-.lib-nav-item:hover { background: rgba(255,255,255,.04); }
+
+.lib-nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212,160,64,.2), transparent);
+  transition: left .5s ease;
+  pointer-events: none;
+}
+
+.lib-nav-item:hover::before {
+  left: 100%;
+}
+
+.lib-nav-item:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  border-color: rgba(212,160,64,.4);
+  box-shadow: 0 2px 12px rgba(212,160,64,.2), 0 20px 60px rgba(0,0,0,.3);
+}
+
 .lib-nav-item.active {
-  background: rgba(212,160,64,.08);
-  border-color: rgba(212,160,64,.2);
-  border-left-color: var(--gold);
+  background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  border-color: rgba(212,160,64,.4);
+  box-shadow: 0 2px 12px rgba(212,160,64,.2), 0 20px 60px rgba(0,0,0,.3);
 }
-.lib-nav-item h3 { color: #fff; font-size: 15px; font-weight: 700; line-height: 1.25; }
-.lib-nav-item .lib-nav-sub { color: var(--gold); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
-.lib-nav-item .lib-nav-count { font-size: 11px; color: rgba(255,255,255,.28); margin-top: 6px; }
 
-.lib-panels { padding: 36px 44px; }
-.lib-panel { display: none; }
-.lib-panel.active { display: block; }
-.lib-panel-head { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.07); }
-.lib-panel-head h2 { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
-.lib-panel-head p { color: var(--gold); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; }
+.lib-nav-item h3 {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 8px 0;
+  letter-spacing: -.01em;
+  position: relative;
+  z-index: 1;
+}
 
-.lib-course-list { list-style: none; }
+.lib-nav-item .lib-nav-count {
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+  margin-top: 0;
+  display: inline;
+  margin-left: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.lib-nav-item .lib-nav-sub {
+  display: none;
+}
+
+/* RIGHT COLUMN — Content pane */
+.lib-panels {
+  padding: 0;
+  display: block;
+  background: transparent;
+}
+
+.lib-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.lib-panel.active {
+  display: block;
+  opacity: 1;
+}
+
+.lib-panel-head {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.lib-panel-head h2 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin: 0 0 8px 0;
+}
+
+.lib-panel-head p {
+  color: rgba(212,160,64,.9);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* Course list */
+.lib-course-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .lib-course-item {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(255,255,255,.05);
-  transition: background .15s;
+  padding: 24px 28px;
+  border-bottom: none;
+  transition: all .2s ease;
+  background: rgba(0,0,0,.3);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  flex-direction: row;
 }
-.lib-course-item:last-child { border-bottom: none; }
-.lib-course-num { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.2); min-width: 22px; text-align: right; flex-shrink: 0; }
-.lib-course-name { flex: 1; color: rgba(255,255,255,.82); font-size: 15px; font-weight: 600; line-height: 1.3; }
+
+.lib-course-item:last-child {
+  border-bottom: none;
+}
+
+.lib-course-item:hover {
+  background: rgba(0,0,0,.4);
+  border-color: rgba(212,160,64,.2);
+  box-shadow: 0 2px 12px rgba(212,160,64,.1), 0 8px 20px rgba(0,0,0,.25);
+}
+
+.lib-course-num {
+  font-size: 16px;
+  font-weight: 800;
+  color: rgba(212,160,64,.6);
+  min-width: 28px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.lib-course-name {
+  flex: 1;
+  color: rgba(255,255,255,.85);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+
 .lib-course-tag {
-  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--gold); padding: 3px 10px;
-  border: 1px solid rgba(212,160,64,.25); border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  padding: 4px 12px;
+  border: 1px solid rgba(212,160,64,.3);
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: transparent;
+  display: inline-block;
+  width: fit-content;
 }
-@media (max-width: 860px) {
-  .lib-layout { grid-template-columns: 1fr; }
-  .lib-nav { flex-direction: row; flex-wrap: wrap; border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
-  .lib-nav-item { flex: 1 1 45%; }
-  .lib-panels { padding: 24px 20px; }
-  .lib-course-tag { display: none; }
+
+@media (max-width: 1100px) {
+  .lib-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .lib-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: static;
+  }
+
+  .lib-nav-item {
+    flex: 1 1 calc(50% - 8px);
+    padding: 24px 20px;
+  }
+
+  .lib-panel-head h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lib-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .lib-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .lib-nav-item {
+    flex: 1 1 calc(50% - 6px);
+    padding: 20px 16px;
+  }
+
+  .lib-nav-item h3 {
+    font-size: 15px;
+  }
+
+  .lib-panel-head h2 {
+    font-size: 24px;
+  }
+
+  .lib-course-item {
+    padding: 14px 0;
+  }
+
+  .lib-course-name {
+    font-size: 14px;
+  }
+
+  .lib-course-tag {
+    font-size: 9px;
+  }
 }
 
 /* ══════════════════════════════════════
    SECTION 6 — TOOLS (WHITE PREMIUM)
    ══════════════════════════════════════ */
-.tools-section { padding: 120px 0; background: #fff; }
+.tools-section { padding: 64px 0; background: #fff; }
 .tools-premium-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 56px; }
 .tool-card-premium {
   background: #fff; border: 1px solid rgba(0,0,0,.07);
@@ -1456,19 +1652,19 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 
       <!-- Left Nav -->
       <div class="lib-nav">
-        <div class="lib-nav-item active" onclick="switchLibTab('day-trading', this)">
+        <div class="lib-nav-item active" onmouseover="switchLibTab('day-trading', this)">
           <h3>Day Trading Strategies</h3>
           <div class="lib-nav-count">5 Courses</div>
         </div>
-        <div class="lib-nav-item" onclick="switchLibTab('dte', this)">
+        <div class="lib-nav-item" onmouseover="switchLibTab('dte', this)">
           <h3>0 DTE Strategies</h3>
           <div class="lib-nav-count">3 Courses</div>
         </div>
-        <div class="lib-nav-item" onclick="switchLibTab('income', this)">
+        <div class="lib-nav-item" onmouseover="switchLibTab('income', this)">
           <h3>Income &amp; Spread Strategies</h3>
           <div class="lib-nav-count">6 Courses</div>
         </div>
-        <div class="lib-nav-item" onclick="switchLibTab('trend', this)">
+        <div class="lib-nav-item" onmouseover="switchLibTab('trend', this)">
           <h3>Trend &amp; Portfolio Strategies</h3>
           <div class="lib-nav-count">3 Courses</div>
         </div>
@@ -1688,27 +1884,27 @@ footer > .footer-bottom { position: relative; z-index: 1; }
           </div>
         </div>
 
+        <!-- Stat cards moved above button -->
+        <div class="tools-stats-panel reveal">
+          <div class="tools-stat-card">
+            <span class="tools-stat-num">17+</span>
+            <span class="tools-stat-label">Strategies Covered</span>
+            <span class="tools-stat-sub">Day trades, 0 DTE, spreads, trend and portfolio, all in one membership</span>
+          </div>
+          <div class="tools-stat-card">
+            <span class="tools-stat-num">3</span>
+            <span class="tools-stat-label">Indicator Suites</span>
+            <span class="tools-stat-sub">NTT signals, entry triggers and trend filters, built for our exact strategies</span>
+          </div>
+          <div class="tools-stat-card">
+            <span class="tools-stat-num">∞</span>
+            <span class="tools-stat-label">Alerts Per Day</span>
+            <span class="tools-stat-sub">Every alert we fire across every strategy is delivered to your device</span>
+          </div>
+        </div>
+
         <div style="margin-top:40px; text-align:center;" class="reveal">
           <a href="#" class="btn-hero" style="background:var(--gold); padding:18px 44px; font-size:16px;">Get Pro Tools and Alerts for $179/month</a>
-        </div>
-      </div>
-
-      <!-- Right: stat cards (always visible, no image dependency) -->
-      <div class="tools-stats-panel reveal">
-        <div class="tools-stat-card">
-          <span class="tools-stat-num">17+</span>
-          <span class="tools-stat-label">Strategies Covered</span>
-          <span class="tools-stat-sub">Day trades, 0 DTE, spreads, trend and portfolio, all in one membership</span>
-        </div>
-        <div class="tools-stat-card">
-          <span class="tools-stat-num">3</span>
-          <span class="tools-stat-label">Indicator Suites</span>
-          <span class="tools-stat-sub">NTT signals, entry triggers and trend filters, built for our exact strategies</span>
-        </div>
-        <div class="tools-stat-card">
-          <span class="tools-stat-num">∞</span>
-          <span class="tools-stat-label">Alerts Per Day</span>
-          <span class="tools-stat-sub">Every alert we fire across every strategy is delivered to your device</span>
         </div>
       </div>
 

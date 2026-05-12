@@ -422,19 +422,25 @@ body {
 ══════════════════════════════════════ */
 .summary {
   background: #fff;
-  padding: 100px 0 80px;
+  padding: 60px 0 80px;
   position: relative; overflow: hidden;
 }
 .summary-accent {
   position: absolute; top: 0; left: 0; right: 0; height: 4px;
   background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 40%, var(--orange) 70%, var(--gold) 100%);
 }
+.summary > .container > .eyebrow {
+  display: block;
+  text-align: center;
+  margin-bottom: 14px;
+}
 .summary-layout {
   display: grid;
   grid-template-columns: 1fr 1px 1fr;
   gap: 0 64px;
   align-items: center;
-  margin-top: 56px;
+  margin-top: 40px;
+  text-align: center;
 }
 .summary-divider {
   background: rgba(13,46,78,.1);
@@ -451,6 +457,7 @@ body {
   color: var(--navy);
   line-height: 1.25;
   letter-spacing: -.01em;
+  text-align: center;
 }
 .summary-left .big-statement em {
   font-style: italic;
@@ -464,6 +471,7 @@ body {
   line-height: 1.8;
   color: #444;
   margin-bottom: 20px;
+  text-align: justify;
 }
 .summary-right p:last-child { margin-bottom: 0; }
 .summary-right strong { color: var(--navy); font-weight: 700; }
@@ -701,8 +709,8 @@ body {
    SECTION 5 — COMMUNITY
 ══════════════════════════════════════ */
 .community { background: var(--navy); overflow: hidden; position: relative; }
-.community-wrap { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
-.c-radar { background: var(--navy-deep); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 46px 44px; }
+.community-wrap { display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
+.c-radar { background: var(--navy-deep); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 38px 44px; min-height: 500px; }
 .c-radar::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,.012) 0px, rgba(255,255,255,.012) 1px, transparent 1px, transparent 24px); pointer-events: none; }
 .radar-container { position: relative; width: 195px; height: 195px; margin-bottom: 28px; flex-shrink: 0; }
 .r-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(200,66,10,.12); top: 50%; left: 50%; transform: translate(-50%,-50%); }
@@ -728,11 +736,11 @@ body {
 .c-discord-pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; background: rgba(88,101,242,.15); border: 1px solid rgba(88,101,242,.3); border-radius: 50px; padding: 8px 20px; color: rgba(255,255,255,.8); font-size: 12px; font-weight: 600; transition: all 0.3s ease; }
 .c-discord-pill:hover { background: rgba(88,101,242,.25); transform: translateY(-2px); }
 .c-discord-pill svg { width: 16px; height: 16px; color: #7289da; }
-.c-features { padding: 46px 52px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid rgba(255,255,255,.05); }
-.c-features-head { margin-bottom: 34px; }
+.c-features { padding: 38px 52px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid rgba(255,255,255,.05); }
+.c-features-head { margin-bottom: 28px; }
 .c-features-head h2 { font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -.02em; margin-top: 10px; }
 .c-features-head p { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.7; margin-top: 10px; max-width: 400px; }
-.c-strip { padding: 18px 0; border-top: 1px solid rgba(255,255,255,.06); display: grid; grid-template-columns: 44px 1fr; gap: 0 18px; align-items: start; transition: border-color .3s; }
+.c-strip { padding: 15px 0; border-top: 1px solid rgba(255,255,255,.06); display: grid; grid-template-columns: 44px 1fr; gap: 0 18px; align-items: start; transition: border-color .3s; }
 .c-strip:last-child { border-bottom: 1px solid rgba(255,255,255,.06); }
 .c-strip:hover { border-top-color: rgba(200,66,10,.25); }
 .c-strip:hover .c-strip-n { color: var(--orange); }
@@ -1156,7 +1164,7 @@ body {
   .bonuses-layout { grid-template-columns: 1fr; gap: 40px; }
   .bonuses-left { position: static; gap: 30px; }
 }
-}
+
 @media (max-width: 600px) {
   .bonuses-right { grid-template-columns: 1fr; padding: 24px; gap: 16px; }
   .bonus-list-card { padding: 24px; }
@@ -1792,35 +1800,15 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 <!-- ══ S5: COMMUNITY ★ NEW ★ ══ -->
 <section class="community" id="community">
   <div class="community-wrap">
-    <!-- LEFT: Radar -->
-    <div class="c-radar reveal-l">
-      <div class="radar-container">
-        <div class="r-ring r-ring-1"></div>
-        <div class="r-ring r-ring-2"></div>
-        <div class="r-ring r-ring-3"></div>
-        <div class="r-cross"></div>
-        <div class="r-sweep"></div>
-        <div class="r-blip"></div>
-        <div class="r-blip"></div>
-        <div class="r-blip"></div>
-        <div class="r-blip"></div>
-        <div class="r-center">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L13.5 8.5L20 7L16 12L20 17L13.5 15.5L12 22L10.5 15.5L4 17L8 12L4 7L10.5 8.5L12 2Z" stroke="var(--orange)" stroke-width="1.5" stroke-linejoin="round" fill="rgba(200,66,10,.12)"/>
-          </svg>
-        </div>
-      </div>
-      <div class="c-radar-stat">3,400<em>+</em></div>
-      <div class="c-radar-stat-sub">Active Community Members</div>
-      <div class="c-discord-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
-        TradeHacker Discord
-      </div>
+    <!-- LEFT: Image -->
+    <div class="c-image-wrap reveal-l" style="position: relative; width: 100%; height: 100%; min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: url('trader_community_desk.png') center/cover no-repeat;">
+      <div style="position: absolute; inset: 0; background: rgba(13, 32, 64, 0.2);"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent 60%, var(--navy) 100%);"></div>
     </div>
     <!-- RIGHT: Strips -->
     <div class="c-features reveal-r">
       <div class="c-features-head">
-        <span class="eyebrow white">YOU WON'T LEARN ALONE</span>
+        <span class="eyebrow">YOU WON'T LEARN ALONE</span>
         <h2>Join 3,400+ Traders in the TradeHacker Community</h2>
         <p>Courses teach you the strategies. Community shows you how real traders apply them every single day.</p>
       </div>
