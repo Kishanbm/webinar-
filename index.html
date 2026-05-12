@@ -1564,157 +1564,152 @@
       .test-card p { font-size: 14px; }
     }
 
-    /* ── PREMIUM INSTITUTIONAL CTA ── */
+    /* ── PREMIUM INSTITUTIONAL CTA (INNOVATIVE SPLIT-DECK) ── */
     .premium-cta-section {
-      padding: 60px 0;
-      background: #ffffff; /* White theme */
+      padding: 120px 0;
+      background: #f8fafc; /* Light institutional background */
       position: relative;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* Subtle Institutional Grid */
-      background-image: 
-        linear-gradient(rgba(5, 13, 23, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(5, 13, 23, 0.07) 1px, transparent 1px);
-      background-size: 60px 60px;
-      background-position: center center;
     }
 
-    #ctaCanvas {
+    .premium-cta-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      background: #ffffff;
+      border-radius: 40px;
+      overflow: hidden;
+      /* Layered shadow for "lifting" effect */
+      box-shadow: 0 10px 30px rgba(13,32,64,0.05), 0 40px 100px rgba(13,32,64,0.12);
+      border: 1px solid rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .premium-cta-left {
+      flex: 1.2;
+      padding: 100px 80px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .premium-cta-left .eyebrow {
+      display: inline-block;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .premium-cta-left h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      color: #0D2040;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+
+    .premium-cta-left h2 span {
+      color: var(--orange);
+    }
+
+    .premium-cta-left p {
+      font-size: 18px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 500px;
+    }
+
+    .premium-cta-right {
+      flex: 0.8;
+      position: relative;
+      min-height: 500px;
+      background: #000;
+    }
+
+    .premium-cta-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
-      pointer-events: none;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .cta-content-box {
-      position: relative;
-      z-index: 5;
-      max-width: 850px; /* Reduced width */
-      width: 90%;
-      padding: 50px 30px; /* Reduced further */
-      text-align: center;
+    .premium-cta-container:hover .premium-cta-img {
+      transform: scale(1.08);
     }
 
-    /* Corner Accents */
-    .cta-corner {
+    .premium-cta-right::after {
+      content: '';
       position: absolute;
-      width: 30px;
-      height: 30px;
-      border-color: var(--orange); /* Changed to orange */
-      border-style: solid;
-      pointer-events: none;
-      opacity: 0.5;
-    }
-    .cta-corner.tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
-    .cta-corner.tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
-    .cta-corner.bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
-    .cta-corner.br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
-
-    .cta-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(13, 46, 78, 0.05);
-      border: 1px solid rgba(13, 46, 78, 0.1);
-      padding: 5px 14px;
-      border-radius: 100px;
-      color: rgba(13, 46, 78, 0.6);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
+      top: 0; left: 0; bottom: 0; width: 200px;
+      background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+      z-index: 1;
     }
 
-    .cta-badge .dot {
-      width: 6px;
-      height: 6px;
-      background: var(--orange);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--orange);
-      animation: dot-pulse 2s infinite;
-    }
-
-    @keyframes dot-pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    .cta-content-box h2 {
-      font-size: clamp(28px, 4vw, 48px);
-      color: #050d17; /* Dark text */
-      line-height: 1.1;
-      margin-bottom: 20px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-    }
-
-    .cta-content-box h2 span {
-      color: var(--orange);
-    }
-
-    .cta-content-box p {
-      font-size: clamp(15px, 1.2vw, 18px);
-      color: rgba(5, 13, 23, 0.6); /* Darker text */
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-
-    .cta-primary {
+    .btn-cta-final {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 36px;
       background: var(--orange);
       color: #fff;
-      font-weight: 800;
-      font-size: 15px;
-      border-radius: 12px;
+      padding: 22px 50px;
+      border-radius: 14px;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(200, 66, 10, 0.2);
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      width: fit-content;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 30px rgba(200,66,10,0.25);
     }
 
-    .cta-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 40px rgba(200, 66, 10, 0.3);
-      filter: brightness(1.1);
+    .btn-cta-final:hover {
+      transform: translateY(-4px);
+      background: #e04d0e;
+      box-shadow: 0 15px 45px rgba(200,66,10,0.35);
     }
 
-    .cta-trust {
+    .cta-trust-row {
       display: flex;
-      justify-content: center;
-      gap: 28px;
+      gap: 24px;
       margin-top: 40px;
       flex-wrap: wrap;
     }
 
-    .cta-trust-item {
+    .cta-trust-pill {
       display: flex;
       align-items: center;
       gap: 8px;
-      color: rgba(5, 13, 23, 0.5); /* Darker text */
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0D2040;
+      opacity: 0.6;
     }
 
-    .cta-trust-item .tick {
+    .cta-trust-pill svg {
+      width: 16px;
+      height: 16px;
       color: var(--orange);
-      font-size: 14px;
     }
 
-    @media (max-width: 768px) {
-      .cta-content-box { padding: 40px 20px; }
-      .premium-cta-section { padding: 60px 0; }
-      .cta-trust { gap: 12px; }
+    @media (max-width: 1024px) {
+      .premium-cta-container { flex-direction: column; margin: 0 20px; }
+      .premium-cta-left { padding: 60px 40px; }
+      .premium-cta-right { min-height: 350px; order: -1; }
+      .premium-cta-right::after { 
+        width: 100%; height: 150px; top: auto; bottom: 0;
+        background: linear-gradient(0deg, #ffffff 0%, transparent 100%);
+      }
     }
 
     /* ── FOOTER & SPOTIFY WIDGET ── */
@@ -1768,85 +1763,116 @@
 
     .footer-link:hover { color: var(--emerald-500); }
 
-    /* ── HOME PRICING SECTION ── */
-    /* ── PLANS + RESOURCES (combined premium light) ── */
+    /* ── HOME PRICING SECTION ── INNOVATIVE ECOSYSTEM ── */
     .pricing-section-home {
-      padding: 80px 0 90px;
-      background: #fbfcfd;
+      padding: 60px 0;
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 50%, #ffffff 100%);
       position: relative;
       overflow: hidden;
     }
 
-    /* Soft mesh accent */
+    /* Animated gradient mesh background */
     .pricing-section-home::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 40% 30% at 18% 18%, rgba(200,66,10,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 35% 25% at 82% 82%, rgba(13,46,78,0.06) 0%, transparent 60%);
+        radial-gradient(circle at 20% 50%, rgba(200,66,10,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(16,185,129,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 0%, rgba(200,66,10,0.03) 0%, transparent 50%);
+      animation: gradient-shift 15s ease-in-out infinite;
       pointer-events: none;
+      z-index: 1;
     }
 
-    /* Faint grid lines for premium texture */
-    .pricing-section-home::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(13, 46, 78, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(13, 46, 78, 0.035) 1px, transparent 1px);
-      background-size: 64px 64px;
-      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 20%, transparent 75%);
-      pointer-events: none;
-      opacity: 0.6;
+    @keyframes gradient-shift {
+      0%, 100% {
+        background:
+          radial-gradient(circle at 20% 50%, rgba(200,66,10,0.06) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(16,185,129,0.05) 0%, transparent 50%),
+          radial-gradient(circle at 40% 0%, rgba(200,66,10,0.03) 0%, transparent 50%);
+      }
+      50% {
+        background:
+          radial-gradient(circle at 80% 50%, rgba(200,66,10,0.08) 0%, transparent 50%),
+          radial-gradient(circle at 20% 20%, rgba(16,185,129,0.06) 0%, transparent 50%),
+          radial-gradient(circle at 60% 100%, rgba(200,66,10,0.04) 0%, transparent 50%);
+      }
     }
 
-    .pricing-section-home .container { position: relative; z-index: 2; }
+    .pricing-section-home .container {
+      position: relative;
+      z-index: 10;
+    }
 
     .pricing-home-header {
       text-align: center;
-      margin-bottom: 44px;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
     }
 
     .pricing-home-header .bento-eyebrow {
-      background: rgba(200, 66, 10, 0.08);
-      border-color: rgba(200, 66, 10, 0.25);
-      margin-bottom: 18px;
+      background: rgba(200, 66, 10, 0.12);
+      border: 1px solid rgba(200, 66, 10, 0.25);
+      margin-bottom: 24px;
+      animation: fadeInDown 0.8s ease-out;
+      color: var(--orange);
     }
 
     .pricing-home-header h2 {
-      font-size: clamp(28px, 3.8vw, 42px);
-      color: var(--teal-900);
-      font-weight: 800;
-      letter-spacing: -1.2px;
+      font-size: clamp(40px, 5vw, 64px);
+      color: #0D2E4E;
+      font-weight: 900;
+      letter-spacing: -2px;
       line-height: 1.1;
       margin: 0 auto;
-      max-width: 720px;
+      max-width: 900px;
+      animation: fadeInUp 0.9s ease-out 0.1s both;
     }
 
     .pricing-home-header h2 span {
-      background: linear-gradient(135deg, var(--orange) 0%, #d4a040 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #c8420a;
     }
 
     .pricing-home-header p {
-      margin-top: 14px;
-      font-size: 15px;
-      color: rgba(13,46,78,0.62);
-      max-width: 540px;
+      margin-top: 24px;
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 650px;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.6;
+      line-height: 1.7;
+      animation: fadeInUp 0.9s ease-out 0.2s both;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .pricing-home-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 28px;
+      margin-bottom: 60px;
       max-width: 1080px;
       margin: 14px auto 28px;
       padding: 14px 20px 0;
@@ -1854,96 +1880,95 @@
     }
 
     .pricing-card-home {
-      background: #ffffff;
-      border: 1px solid rgba(13, 46, 78, 0.08);
-      border-radius: 16px;
-      padding: 26px 24px 22px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 40px 32px;
       display: flex;
       flex-direction: column;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s, border-color 0.4s;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
-      box-shadow: 0 1px 2px rgba(13, 46, 78, 0.04), 0 8px 24px -12px rgba(13, 46, 78, 0.12);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
 
-    .pricing-card-home > * { position: relative; z-index: 1; }
-
-    /* Top accent bar — present on all cards */
-    .pricing-card-home::after {
+    .pricing-card-home::before {
       content: '';
       position: absolute;
-      top: -1px; left: -1px; right: -1px;
-      height: 3px;
-      border-radius: 16px 16px 0 0;
-      z-index: 2;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: 24px;
+    }
+
+    .pricing-card-home > * {
+      position: relative;
+      z-index: 1;
     }
 
     .pricing-card-home:hover {
-      transform: translateY(-6px);
-      border-color: rgba(13, 46, 78, 0.18);
-      box-shadow: 0 1px 2px rgba(13, 46, 78, 0.04), 0 24px 48px -16px rgba(13, 46, 78, 0.18);
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(200, 66, 10, 0.15);
     }
 
-    /* FREE — teal accent (1st card) */
-    .pricing-card-home:nth-child(1)::after {
-      background: linear-gradient(90deg, transparent, #1e4d8c 30%, #0d2e4e 50%, #1e4d8c 70%, transparent);
+    /* CARD 1: FREE — Teal glow */
+    .pricing-card-home:nth-child(1) {
+      border-color: rgba(16, 185, 129, 0.3);
     }
     .pricing-card-home:nth-child(1):hover {
-      border-color: rgba(13, 46, 78, 0.35);
-      box-shadow: 0 1px 2px rgba(13, 46, 78, 0.06), 0 24px 48px -16px rgba(13, 46, 78, 0.25);
+      border-color: rgba(16, 185, 129, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(16, 185, 129, 0.2);
     }
     .pricing-card-home:nth-child(1) .p-icon-circle {
-      background: linear-gradient(135deg, #0d2e4e 0%, #1e4d8c 100%);
-      box-shadow: 0 3px 10px rgba(13, 46, 78, 0.32);
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25);
     }
     .pricing-card-home:nth-child(1) .p-card-btn {
-      border-color: var(--teal-900);
-      color: var(--teal-900);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.08);
     }
     .pricing-card-home:nth-child(1) .p-card-btn:hover {
-      background: linear-gradient(135deg, #0d2e4e 0%, #1e4d8c 100%);
-      color: #fff;
-      box-shadow: 0 8px 22px rgba(13, 46, 78, 0.3);
-    }
-    .pricing-card-home:nth-child(1) .p-price-row::after {
-      background: linear-gradient(90deg, transparent, var(--teal-900), transparent);
-      opacity: 0.4;
+      background: rgba(16, 185, 129, 0.2);
+      border-color: #10b981;
+      transform: translateX(6px);
     }
 
-    /* POPULAR — orange accent + tag sitting on the bar */
+    /* CARD 2: POPULAR — Orange glow */
     .pricing-card-home.popular {
-      background: #ffffff;
-      border: 1px solid rgba(200, 66, 10, 0.35);
-      padding: 26px 24px 22px;
+      border-color: rgba(200, 66, 10, 0.4);
       box-shadow:
-        0 1px 2px rgba(200, 66, 10, 0.06),
-        0 24px 48px -16px rgba(200, 66, 10, 0.22),
-        inset 0 0 0 1px rgba(200, 66, 10, 0.08);
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 0 30px rgba(200, 66, 10, 0.15);
       z-index: 5;
       overflow: visible;
     }
 
-    .pricing-card-home.popular::before {
+    .pricing-card-home.popular::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 100% 50% at 50% 0%, rgba(200,66,10,0.04) 0%, transparent 60%),
-        radial-gradient(ellipse 100% 50% at 50% 100%, rgba(212,160,64,0.03) 0%, transparent 60%);
-      border-radius: inherit;
-      pointer-events: none;
+      inset: -2px;
+      background: conic-gradient(from 0deg, rgba(200,66,10,0.2), rgba(200,66,10,0.1), rgba(200,66,10,0.2));
+      border-radius: 24px;
+      z-index: 0;
+      animation: spin-slow 8s linear infinite;
     }
 
-    .pricing-card-home.popular::after {
-      background: linear-gradient(90deg, transparent, var(--orange) 25%, #d4a040 50%, var(--orange) 75%, transparent);
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .pricing-card-home.popular:hover {
-      transform: translateY(-6px);
-      border-color: rgba(200, 66, 10, 0.55);
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(200, 66, 10, 0.6);
       box-shadow:
-        0 1px 2px rgba(200, 66, 10, 0.08),
-        0 32px 60px -16px rgba(200, 66, 10, 0.32),
-        inset 0 0 0 1px rgba(200, 66, 10, 0.14);
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 50px rgba(200, 66, 10, 0.35);
     }
 
     .pricing-card-home.popular .p-card-price {
@@ -1953,16 +1978,13 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* PRO — gold accent (3rd card) */
-    .pricing-card-home:nth-child(3)::after {
-      background: linear-gradient(90deg, transparent, #b8841f 30%, #d4a040 50%, #b8841f 70%, transparent);
-    }
+    /* CARD 3: PRO — Gold glow */
     .pricing-card-home:nth-child(3) {
-      border-color: rgba(212, 160, 64, 0.22);
+      border-color: rgba(212, 160, 64, 0.35);
     }
     .pricing-card-home:nth-child(3):hover {
-      border-color: rgba(212, 160, 64, 0.5);
-      box-shadow: 0 1px 2px rgba(212, 160, 64, 0.08), 0 24px 48px -16px rgba(212, 160, 64, 0.32);
+      border-color: rgba(212, 160, 64, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(212, 160, 64, 0.25);
     }
     .pricing-card-home:nth-child(3) .p-icon-circle {
       background: linear-gradient(135deg, #d4a040 0%, #b8841f 100%);
@@ -2019,8 +2041,8 @@
     }
 
     .p-card-header h3 {
-      font-size: 14px;
-      color: var(--teal-900);
+      font-size: 16px;
+      color: #ffffff;
       margin: 0;
       font-weight: 800;
       letter-spacing: 0.4px;
@@ -2088,7 +2110,7 @@
     .p-card-price {
       font-size: 32px;
       font-weight: 800;
-      color: var(--teal-900);
+      color: #ffffff;
       margin-bottom: 2px;
       letter-spacing: -1px;
       display: block;
@@ -2098,7 +2120,7 @@
     .p-card-price span {
       font-size: 12px;
       font-weight: 500;
-      color: rgba(13,46,78,0.5);
+      color: rgba(255,255,255,0.6);
       letter-spacing: 0.3px;
     }
 
@@ -2111,10 +2133,27 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 13px;
-      color: rgba(13,46,78,0.78);
-      margin-bottom: 10px;
-      line-height: 1.4;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 12px;
+      line-height: 1.5;
+      animation: slideInLeft 0.6s ease-out backwards;
+    }
+
+    .p-card-features li:nth-child(1) { animation-delay: 0s; }
+    .p-card-features li:nth-child(2) { animation-delay: 0.1s; }
+    .p-card-features li:nth-child(3) { animation-delay: 0.2s; }
+    .p-card-features li:nth-child(4) { animation-delay: 0.3s; }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .p-card-features li svg {
@@ -2130,41 +2169,558 @@
     .p-card-btn {
       display: block;
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 10px;
+      padding: 14px 20px;
+      border-radius: 12px;
       text-align: center;
       text-decoration: none;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: 0.3px;
-      transition: all 0.3s;
-      border: 1.5px solid var(--orange);
-      color: var(--orange);
-      background: transparent;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: #ffffff;
+      background: rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .p-card-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
     }
 
     .p-card-btn:hover {
-      background: var(--orange);
-      color: #fff;
-      box-shadow: 0 8px 22px rgba(200, 66, 10, 0.3);
-      transform: translateY(-1px);
+      background: rgba(200, 66, 10, 0.25);
+      border-color: rgba(200, 66, 10, 0.6);
+      color: var(--orange);
+      box-shadow: 0 10px 30px rgba(200, 66, 10, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .p-card-btn:hover::before {
+      opacity: 1;
     }
 
     .popular .p-card-btn {
-      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
+      background: linear-gradient(135deg, rgba(200, 66, 10, 0.3) 0%, rgba(200, 66, 10, 0.1) 100%);
       color: #fff;
-      box-shadow: 0 8px 20px rgba(200, 66, 10, 0.25);
+      border-color: rgba(200, 66, 10, 0.5);
+      box-shadow: 0 10px 25px rgba(200, 66, 10, 0.2);
     }
 
     .popular .p-card-btn:hover {
-      box-shadow: 0 12px 28px rgba(200, 66, 10, 0.4);
-      transform: translateY(-2px);
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
+      border-color: var(--orange);
+      box-shadow: 0 15px 40px rgba(200, 66, 10, 0.35);
+      transform: translateY(-3px);
     }
 
     @media (max-width: 992px) {
       .pricing-home-grid { grid-template-columns: 1fr; max-width: 500px; }
       .pricing-card-home.popular { transform: none; }
       .pricing-card-home.popular:hover { transform: translateY(-12px); }
+    }
+
+    /* ── 2-COLUMN LAYOUT ── */
+    .ecosystem-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .ecosystem-left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .proof-card {
+      padding: 32px;
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid rgba(13, 46, 78, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+    }
+
+    .proof-card:hover {
+      border-color: rgba(200, 66, 10, 0.3);
+      box-shadow: 0 12px 40px rgba(200, 66, 10, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .proof-accent-bar {
+      display: block;
+      width: 6px;
+      height: 40px;
+      background: #c8420a;
+      border-radius: 3px;
+      margin-bottom: 16px;
+    }
+
+    .proof-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #c8420a;
+      background: rgba(200, 66, 10, 0.1);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .proof-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0D2E4E;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .proof-card p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .proof-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #c8420a;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .proof-cta:hover {
+      gap: 12px;
+      color: #e04d10;
+    }
+
+    .ecosystem-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── ECOSYSTEM ANIMATED ORBITS ── */
+    .ecosystem-orbits {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .orbit-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      aspect-ratio: 1;
+    }
+
+    .central-circle {
+      position: absolute;
+      inset: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, rgba(200,66,10,0.15) 0%, rgba(200,66,10,0.08) 100%);
+      border: 2px solid rgba(200, 66, 10, 0.3);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      z-index: 10;
+      text-align: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #0D2E4E;
+      line-height: 1.2;
+      box-shadow: 0 0 60px rgba(200, 66, 10, 0.15), inset 0 0 40px rgba(200,66,10,0.08);
+    }
+
+    .central-circle::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, rgba(200,66,10,0.3), rgba(200,66,10,0.2), rgba(200,66,10,0.3));
+      animation: spin 8s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+    }
+
+    .orbit-1 {
+      border: 2px dashed rgba(200, 66, 10, 0.15);
+      opacity: 0.5;
+    }
+
+    .orbit-item {
+      position: absolute;
+      inset: 0;
+      animation: orbit-rotate 20s linear infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes orbit-rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(200,66,10,0.2) 0%, rgba(200,66,10,0.1) 100%);
+      border: 2px solid rgba(200, 66, 10, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      z-index: 5;
+      top: 50%;
+      left: 50%;
+      margin-left: 150px;
+      margin-top: -30px;
+      opacity: 0;
+      animation: fadeInDot 0.6s ease-out forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes fadeInDot {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .dot-glow {
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,66,10,0.3) 0%, transparent 70%);
+      opacity: 0;
+      animation: glow-pulse 2s ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .orbit-dot svg {
+      width: 28px;
+      height: 28px;
+      color: var(--orange);
+      position: relative;
+      z-index: 2;
+    }
+
+    .orbit-dot:hover {
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
+      border-color: var(--orange);
+      transform: scale(1.15);
+      box-shadow: 0 0 30px rgba(200, 66, 10, 0.4);
+    }
+
+    .orbit-dot:hover svg {
+      color: #000;
+    }
+
+    .orbit-label {
+      position: absolute;
+      font-size: 11px;
+      font-weight: 800;
+      color: #0D2E4E;
+      text-align: center;
+      width: 90px;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+      white-space: normal;
+      top: 50%;
+      left: 50%;
+      margin-left: 150px;
+      margin-top: 45px;
+    }
+
+    /* ── ECOSYSTEM CTA ── */
+    .ecosystem-cta-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .ecosystem-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px 48px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 12px 40px rgba(200, 66, 10, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ecosystem-cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.3) 100%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .ecosystem-cta-btn::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: conic-gradient(from 0deg, rgba(200,66,10,0.4), rgba(200,66,10,0.2), rgba(200,66,10,0.4));
+      border-radius: 14px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .ecosystem-cta-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(200, 66, 10, 0.4);
+    }
+
+    .ecosystem-cta-btn:hover::before {
+      opacity: 1;
+    }
+
+    .ecosystem-cta-btn:hover::after {
+      opacity: 1;
+    }
+
+    .ecosystem-cta-btn svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .ecosystem-cta-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ── PROOF SHOWCASE ── */
+    .proof-showcase {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .proof-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .proof-left {
+      grid-template-columns: 1fr 1.1fr;
+    }
+
+    .proof-right {
+      grid-template-columns: 1.1fr 1fr;
+    }
+
+
+    .proof-tag {
+      display: inline-block;
+      padding: 8px 18px;
+      background: rgba(200, 66, 10, 0.12);
+      border: 1.5px solid rgba(200, 66, 10, 0.25);
+      border-radius: 50px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .proof-content-block h3 {
+      font-size: 36px;
+      font-weight: 900;
+      color: #0D2E4E;
+      letter-spacing: -1px;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .proof-content-block p {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin: 0 0 24px 0;
+    }
+
+    .proof-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: var(--orange);
+      color: #000;
+      font-weight: 900;
+      font-size: 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 20px rgba(200, 66, 10, 0.25);
+    }
+
+    .proof-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(200, 66, 10, 0.35);
+    }
+
+    .proof-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .image-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, rgba(200,66,10,0.1) 0%, rgba(16,185,129,0.08) 100%);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .proof-wrapper:hover .image-frame img {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 1024px) {
+      .ecosystem-2col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .proof-showcase {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .proof-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-left,
+      .proof-right {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .ecosystem-2col {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .proof-card {
+        padding: 28px;
+      }
+
+      .proof-card h3 {
+        font-size: 20px;
+      }
+
+      .proof-card p {
+        font-size: 14px;
+      }
+
+      .orbit-container {
+        max-width: 280px;
+      }
+
+      .orbit-item {
+        animation: orbit-rotate 12s linear infinite;
+      }
+
+      @keyframes orbit-rotate {
+        0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+      }
+
+      .orbit-label {
+        font-size: 9px;
+        bottom: -45px;
+        width: 70px;
+      }
+
+      .ecosystem-cta-btn {
+        padding: 14px 32px;
+        font-size: 14px;
+      }
+
+      .proof-content-block h3 {
+        font-size: 24px;
+      }
+
+      .proof-content-block p {
+        font-size: 14px;
+      }
     }
 
     /* ── RESOURCES ROW (Performance + Podcast) ── */
@@ -2182,167 +2738,17 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(13,46,78,0.18) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(13, 46, 78, 0.1) 50%, transparent 100%);
     }
 
     .pr-divider span {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 2.4px;
       text-transform: uppercase;
-      color: rgba(13, 46, 78, 0.55);
+      color: rgba(13, 46, 78, 0.4);
     }
 
-    .pr-resources-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .pr-resource-card {
-      background: linear-gradient(180deg, #f4f8fc 0%, #eaf0f7 100%);
-      border: 2px solid rgba(13, 46, 78, 0.5);
-      border-top: 1px solid rgba(13, 46, 78, 0.12);
-      border-radius: 18px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      align-items: stretch;
-      text-decoration: none;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow:
-        0 1px 2px rgba(13, 46, 78, 0.06),
-        0 22px 50px -22px rgba(13, 46, 78, 0.28);
-      position: relative;
-    }
-
-    /* Top accent bar — same as popular pricing card */
-    .pr-resource-card::before {
-      content: '';
-      position: absolute;
-      top: -1px; left: -1px; right: -1px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--orange) 25%, #d4a040 50%, var(--orange) 75%, transparent);
-      z-index: 3;
-      border-radius: 18px 18px 0 0;
-    }
-
-    /* Subtle dot texture for depth */
-    .pr-resource-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle at 1px 1px, rgba(13,46,78,0.06) 1px, transparent 0);
-      background-size: 18px 18px;
-      pointer-events: none;
-      mask-image: radial-gradient(ellipse 100% 100% at 100% 50%, #000 30%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 100% 100% at 100% 50%, #000 30%, transparent 75%);
-    }
-
-    .pr-resource-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(200, 66, 10, 0.35);
-      box-shadow:
-        0 1px 2px rgba(200, 66, 10, 0.06),
-        0 30px 60px -20px rgba(200, 66, 10, 0.22),
-        0 0 0 1px rgba(200, 66, 10, 0.15);
-    }
-
-    .pr-resource-img {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #e3eaf3 0%, #d0dae7 100%);
-      min-height: 180px;
-    }
-
-    .pr-resource-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .pr-resource-card:hover .pr-resource-img img {
-      transform: scale(1.06);
-    }
-
-    /* Right-side dark smoke fade for premium edge */
-    .pr-resource-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent 0%, transparent 50%, rgba(8, 24, 44, 0.55) 85%, rgba(8, 24, 44, 0.85) 100%);
-      pointer-events: none;
-    }
-
-    .pr-resource-body {
-      padding: 24px 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .pr-resource-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      width: fit-content;
-      padding: 4px 12px;
-      background: rgba(200, 66, 10, 0.1);
-      border: 1px solid rgba(200, 66, 10, 0.28);
-      border-radius: 50px;
-      color: var(--orange);
-      font-size: 9.5px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .pr-resource-body h3 {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--teal-900);
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .pr-resource-body h3 svg {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      color: var(--orange);
-      opacity: 0;
-      transform: translateX(-6px);
-      transition: all 0.3s ease;
-    }
-
-    .pr-resource-card:hover .pr-resource-body h3 svg {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .pr-resource-body p {
-      font-size: 13.5px;
-      line-height: 1.6;
-      color: rgba(13, 46, 78, 0.65);
-      margin: 0;
-    }
-
-    @media (max-width: 992px) {
-      .pr-resources-grid { grid-template-columns: 1fr; max-width: 500px; }
-      .pr-resource-card { grid-template-columns: 1fr; }
-      .pr-resource-img { min-height: 160px; }
-    }
 
     .social-icon {
       width: 32px;
@@ -2884,105 +3290,92 @@
         <p>Pick the plan that fits your goals — then dive into our verified track record and the podcast that takes you behind the scenes.</p>
       </div>
 
-      <div class="pricing-home-grid">
-        <!-- Free -->
-        <div class="pricing-card-home">
-          <div class="p-card-header">
-            <div class="p-plan-row">
-              <div class="p-icon-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3 2 4h-2c-2 4.5-4.5 7-10 8"></path></svg>
-              </div>
-              <h3>Free</h3>
-            </div>
-            <div class="p-price-row">
-               <div class="p-card-price">$0<span>/forever</span></div>
-            </div>
+      <!-- 2-COLUMN LAYOUT: CARDS LEFT + ORBIT RIGHT -->
+      <div class="ecosystem-2col">
+
+        <!-- LEFT COLUMN: PROOF CARDS -->
+        <div class="ecosystem-left">
+          <div class="proof-card">
+            <div class="proof-accent-bar"></div>
+            <span class="proof-tag">Verified Logs</span>
+            <h3>Built on Real Results</h3>
+            <p>Every trade is documented. Monthly reports with zero cherry-picking. Complete transparency in everything we do.</p>
+            <a href="/performance" class="proof-cta">View Full Performance →</a>
           </div>
-          <ul class="p-card-features">
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 5 core strategy courses</li>
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Discord Community</li>
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Daily Market Insights</li>
-          </ul>
-          <a href="https://whop.com/navigationtrading/ntfree/" class="p-card-btn">Join Free</a>
+
+          <div class="proof-card">
+            <div class="proof-accent-bar"></div>
+            <span class="proof-tag">Tradehacker Mindset</span>
+            <h3>20+ Years of Wisdom</h3>
+            <p>Real talk on psychology, discipline, and consistency. The honest conversations about what it takes to win.</p>
+            <a href="/podcast" class="proof-cta">Listen Now →</a>
+          </div>
         </div>
 
-        <!-- Day Trading (Popular) -->
-        <div class="pricing-card-home popular">
-          <div class="popular-tag">Most Popular</div>
-          <div class="p-card-header">
-            <div class="p-plan-row">
-              <div class="p-icon-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <!-- RIGHT COLUMN: ANIMATED ORBIT -->
+        <div class="ecosystem-right">
+          <div class="ecosystem-orbits">
+            <div class="orbit-container">
+              <div class="central-circle">
+                <span>Everything</span>
+                <span>You Need</span>
               </div>
-              <h3>Day Trading</h3>
-            </div>
-            <div class="p-price-row">
-               <div class="p-card-price">Join Now<span>/mo</span></div>
+
+              <!-- Feature orbs rotating around center -->
+              <div class="orbit orbit-1">
+                <div class="orbit-item" style="--delay: 0s">
+                  <div class="orbit-dot">
+                    <div class="dot-glow"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+                  </div>
+                  <div class="orbit-label">Live Trading Room</div>
+                </div>
+                <div class="orbit-item" style="--delay: 2s">
+                  <div class="orbit-dot">
+                    <div class="dot-glow"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </div>
+                  <div class="orbit-label">Verified Results</div>
+                </div>
+                <div class="orbit-item" style="--delay: 4s">
+                  <div class="orbit-dot">
+                    <div class="dot-glow"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zm5 9a1 1 0 0 1 1 1 6 6 0 0 1-5 5.91V21h-2v-3.09A6 6 0 0 1 6 12a1 1 0 0 1 2 0 4 4 0 0 0 8 0 1 1 0 0 1 1-1z"/></svg>
+                  </div>
+                  <div class="orbit-label">Mindset Podcast</div>
+                </div>
+                <div class="orbit-item" style="--delay: 6s">
+                  <div class="orbit-dot">
+                    <div class="dot-glow"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+                  <div class="orbit-label">Community</div>
+                </div>
+                <div class="orbit-item" style="--delay: 8s">
+                  <div class="orbit-dot">
+                    <div class="dot-glow"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </div>
+                  <div class="orbit-label">Proprietary Tools</div>
+                </div>
+                <div class="orbit-item" style="--delay: 10s">
+                  <div class="orbit-dot">
+                    <div class="dot-glow"></div>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                  </div>
+                  <div class="orbit-label">17+ Courses</div>
+                </div>
+              </div>
             </div>
           </div>
-          <ul class="p-card-features">
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Daily Live Stream</li>
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Real-time live trades</li>
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Includes 0 DTE Setup</li>
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Proprietary Indicators</li>
-          </ul>
-          <a href="https://whop.com/navigationtrading/ntday/" class="p-card-btn">Start Now</a>
         </div>
 
-        <!-- Pro -->
-        <div class="pricing-card-home">
-          <div class="p-card-header">
-            <div class="p-plan-row">
-              <div class="p-icon-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
-              </div>
-              <h3>Pro</h3>
-            </div>
-            <div class="p-price-row">
-               <div class="p-card-price">Ultimate<span>/mo</span></div>
-            </div>
-          </div>
-          <ul class="p-card-features">
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Everything in Day Trading</li>
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 17 advanced courses</li>
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Trade Alerts & Custom Tools</li>
-            <li><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> Priority Member Support</li>
-          </ul>
-          <a href="https://whop.com/navigationtrading/ntpro/" class="p-card-btn">Get Pro Access</a>
-        </div>
       </div>
 
-      <!-- Divider between rows -->
-      <div class="pr-divider"><span>Built on Proof &amp; Honest Talk</span></div>
-
-      <!-- Row 2: Performance + Podcast -->
-      <div class="pr-resources-grid">
-        <a href="/performance" class="pr-resource-card">
-          <div class="pr-resource-img">
-            <img src="feature_performance.png" alt="Verified Performance">
-          </div>
-          <div class="pr-resource-body">
-            <span class="pr-resource-tag">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Verified Logs
-            </span>
-            <h3>Performance <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></h3>
-            <p>Completely transparent, verified trade logs for every strategy we teach. No cherry-picking.</p>
-          </div>
-        </a>
-
-        <a href="/podcast" class="pr-resource-card">
-          <div class="pr-resource-img">
-            <img src="feature_podcast.png" alt="TradeHacker Podcast">
-          </div>
-          <div class="pr-resource-body">
-            <span class="pr-resource-tag">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3zm5 9a1 1 0 0 1 1 1 6 6 0 0 1-5 5.91V21h-2v-3.09A6 6 0 0 1 6 12a1 1 0 0 1 2 0 4 4 0 0 0 8 0 1 1 0 0 1 1-1z"/></svg>
-              TradeHacker Mindset
-            </span>
-            <h3>The Podcast <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></h3>
-            <p>Hard-won wisdom from 20+ years in the markets. Real talk on the psychology of consistent trading.</p>
-          </div>
+      <div class="ecosystem-cta-section">
+        <a href="pricing.html" class="ecosystem-cta-btn">
+          <span>Explore All Plans</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
     </div>
@@ -3265,32 +3658,36 @@
     </div>
   </section>
 
-  <!-- ── PREMIUM INSTITUTIONAL CTA ── -->
   <section class="premium-cta-section">
-    <canvas id="ctaCanvas"></canvas>
-    <div class="cta-content-box">
-      <!-- Corners -->
-      <div class="cta-corner tl"></div>
-      <div class="cta-corner tr"></div>
-      <div class="cta-corner bl"></div>
-      <div class="cta-corner br"></div>
+    <div class="premium-cta-container">
+      <div class="premium-cta-left">
+        <span class="eyebrow">Ready to Start Today?</span>
+        <h2>Master Your <span>Mindset.</span></h2>
+        <p>Join Navigation Trading and start your journey toward becoming a more disciplined trader.</p>
 
-      <div class="cta-badge">
-        <span class="dot"></span>
-        Ready to Start Today?
+        <a href="/pricing" class="btn-cta-final">
+          Explore All Plans
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <div class="cta-trust-row">
+          <div class="cta-trust-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            9+ Years of Verified Data
+          </div>
+          <div class="cta-trust-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Real-Time Trade Alerts
+          </div>
+          <div class="cta-trust-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Full Transparency
+          </div>
+        </div>
       </div>
-      <h2>Master Your <span>Mindset.</span></h2>
-      <p>Join Navigation Trading and start your journey toward becoming a more disciplined trader.</p>
 
-      <a href="/pricing" class="cta-primary">
-        View All Pricing Options
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-
-      <div class="cta-trust">
-        <div class="cta-trust-item"><span class="tick">✓</span> 9+ Years of Verified Data</div>
-        <div class="cta-trust-item"><span class="tick">✓</span> Real-Time Trade Alerts</div>
-        <div class="cta-trust-item"><span class="tick">✓</span> Full Transparency, Always</div>
+      <div class="premium-cta-right">
+        <img src="premium_trader_cta_setup_1778598905044.png" alt="Premium Trader Setup" class="premium-cta-img">
       </div>
     </div>
   </section>
@@ -3367,59 +3764,7 @@
       if (nav) nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // ── CTA STARFIELD — dots fly from center outward ──
-    (function() {
-      const canvas = document.getElementById('ctaCanvas');
-      if(!canvas) return;
-      const ctx = canvas.getContext('2d');
 
-      let W, H, cx, cy;
-      function resize() {
-        const s = canvas.parentElement;
-        W = canvas.width  = s.offsetWidth;
-        H = canvas.height = s.offsetHeight;
-        cx = W / 2;
-        cy = H / 2;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      const COUNT = 140;
-
-      function spawn() {
-        const angle = Math.random() * Math.PI * 2;
-        return {
-          angle,
-          dist: Math.random() * 40,          // start near center
-          speed: 0.5 + Math.random() * 0.8,  // px per frame
-          maxDist: Math.hypot(W, H) * 0.55,
-        };
-      }
-
-      const stars = Array.from({ length: COUNT }, spawn);
-      stars.forEach(s => { s.dist = Math.random() * s.maxDist; });
-
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-        stars.forEach(s => {
-          s.dist += s.speed;
-          if (s.dist > s.maxDist) Object.assign(s, spawn());
-
-          const progress = s.dist / s.maxDist;          // 0 → 1
-          const x = cx + Math.cos(s.angle) * s.dist;
-          const y = cy + Math.sin(s.angle) * s.dist;
-          const r = 0.3 + progress * 2.8;
-          const alpha = progress * 0.65;
-
-          ctx.beginPath();
-          ctx.arc(x, y, r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(13, 46, 78, ${alpha.toFixed(2)})`; // Midnight stars
-          ctx.fill();
-        });
-        requestAnimationFrame(draw);
-      }
-      requestAnimationFrame(draw);
-    })();
   </script>
 
 
