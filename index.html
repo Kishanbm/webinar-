@@ -60,7 +60,7 @@
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: #030d1a; /* Dark default to prevent white flashes */
+      background: #0D2E4E; /* Match hero background */
       color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.6;
@@ -197,6 +197,21 @@
       min-height: 1050px;
       display: flex;
       flex-direction: column;
+    }
+
+    /* Subtle texture — only in content area, fades out before dashboard image */
+    .hero-bg-texture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 520px;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center 40% / cover no-repeat;
+      opacity: 0.05;
+      z-index: 1;
+      pointer-events: none;
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.8) 60%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.8) 60%, transparent 100%);
     }
 
     /* Radial glow top-center */
@@ -2793,6 +2808,7 @@
 
   <!-- ══ HERO — CENTERED + PERSPECTIVE FLOOR ══ -->
   <section class="hero" id="hero">
+    <div class="hero-bg-texture"></div>
     <div class="hero-line-accent"></div>
     <div class="hero-stars"></div>
 
