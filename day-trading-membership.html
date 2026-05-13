@@ -983,255 +983,408 @@
       width: 100%;
     }
 
-    /* ══ SECTION 5: THE UNFOLDING ROADMAP — STICKY FIX ══ */
+    /* ══ SECTION 5: STRATEGY TERMINAL — PRO TRADER COCKPIT ══ */
     .dt-curriculum {
-      padding: 60px 0 40px 0;
+      padding: 90px 0 100px 0;
       background: #0D2E4E;
       position: relative;
+      overflow: hidden;
     }
 
     .dt-curriculum-bg {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.02) 1px, transparent 0);
-      background-size: 60px 60px;
-      opacity: 0.3;
+      background-image: radial-gradient(circle at 1.5px 1.5px, rgba(255, 255, 255, 0.025) 1px, transparent 0);
+      background-size: 40px 40px;
       pointer-events: none;
+    }
+
+    .dt-curriculum-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .dt-orb-1 {
+      width: 460px;
+      height: 460px;
+      background: radial-gradient(circle, rgba(200, 66, 10, 0.5), transparent 70%);
+      top: -10%;
+      left: -8%;
+    }
+
+    .dt-orb-2 {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(80, 130, 220, 0.35), transparent 70%);
+      bottom: -10%;
+      right: -8%;
     }
 
     .dt-curriculum .pm-container {
-      max-width: 1180px;
-      width: 90%;
-    }
-
-    /* ── Tab Layout ── */
-    .dt-vault-tabs {
-      display: grid;
-      grid-template-columns: 320px 40px 1fr;
-      gap: 0;
-      margin-top: 52px;
-      align-items: start;
+      max-width: 1280px;
+      width: 92%;
       position: relative;
+      z-index: 2;
     }
 
-    .dt-vault-tabs::before {
-      content: '';
-      position: absolute;
-      left: 340px;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: rgba(255, 255, 255, .1);
-      pointer-events: none;
-    }
-
-    .dt-vtab-divider {
-      visibility: hidden;
-    }
-
-    /* Left tab cards */
-    .dt-vtab-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      position: sticky;
-      top: 120px;
-    }
-
-    .dt-vtab {
-      background: rgba(4, 16, 32, .45);
-      border: 1px solid rgba(255, 255, 255, .08);
-      border-left: 3px solid transparent;
-      border-radius: 16px;
-      padding: 22px 20px;
-      cursor: pointer;
-      transition: all .3s ease;
-      position: relative;
+    /* ── TICKER TAPE ── */
+    .dt-trm-tape {
+      margin-top: 50px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
       overflow: hidden;
-    }
-
-    .dt-vtab::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(200, 66, 10, .1), transparent 60%);
-      opacity: 0;
-      transition: opacity .3s;
-      pointer-events: none;
-    }
-
-    .dt-vtab:hover {
-      border-left-color: rgba(200, 66, 10, .5);
-    }
-
-    .dt-vtab:hover::before {
-      opacity: 1;
-    }
-
-    .dt-vtab.active {
-      background: rgba(200, 66, 10, .15);
-      border-color: rgba(200, 66, 10, .35);
-      border-left-color: var(--orange);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, .25);
-    }
-
-    .dt-vtab.active::before {
-      opacity: 1;
-    }
-
-    .dt-vtab-badge {
-      display: inline-block;
-      background: rgba(200, 66, 10, .15);
-      border: 1px solid rgba(200, 66, 10, .3);
-      color: var(--orange);
-      font-size: 9px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 3px 10px;
-      border-radius: 50px;
-      margin-bottom: 10px;
-    }
-
-    .dt-vtab h3 {
-      font-size: 15px;
-      font-weight: 800;
-      color: rgba(255, 255, 255, .6);
-      margin-bottom: 0;
-      line-height: 1.3;
-    }
-
-    .dt-vtab.active h3 {
-      color: #fff;
-    }
-
-    /* Right panels — continuous scroll */
-    .dt-vtab-panels {
       position: relative;
-      padding-bottom: 200px;
-    }
-
-    .dt-vtab-panel {
-      display: block;
-      margin-bottom: 56px;
-    }
-
-    .dt-vtab-panel:last-child {
-      margin-bottom: 0;
-    }
-
-    .dt-vtab-section-label {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--orange);
-      letter-spacing: -.01em;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, .1);
-      line-height: 1.2;
-      text-align: center;
-    }
-
-    .dt-vc-grid {
+      height: 44px;
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .dt-vc-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 24px 28px;
-      display: grid;
-      grid-template-columns: 50px 1fr auto;
-      gap: 24px;
       align-items: center;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      position: relative;
-      overflow: hidden;
     }
 
-    .dt-vc-card::before {
+    .dt-trm-tape::before,
+    .dt-trm-tape::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(200, 66, 10, 0.03), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      top: 0; bottom: 0;
+      width: 70px;
       pointer-events: none;
+      z-index: 4;
     }
+    .dt-trm-tape::before { left: 0;  background: linear-gradient(90deg, #0a223f 30%, transparent); }
+    .dt-trm-tape::after  { right: 0; background: linear-gradient(-90deg, #0a223f 30%, transparent); }
 
-    .dt-vc-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.12);
-      transform: translateX(8px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .dt-vc-card:hover::before {
-      opacity: 1;
-    }
-
-    .dt-vc-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.15);
-      line-height: 1;
-      font-style: italic;
-    }
-
-    .dt-vc-card:hover .dt-vc-num {
-      color: var(--orange);
-      opacity: 0.4;
-    }
-
-    .dt-vc-content h4 {
-      font-size: 19px;
-      color: #fff;
-      margin-bottom: 8px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .dt-vc-content p {
-      font-size: 14.5px;
-      color: rgba(255, 255, 255, 0.5);
-      line-height: 1.6;
-      margin: 0;
-      max-width: 90%;
-    }
-
-    .dt-vc-tag {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 9px;
-      font-weight: 800;
-      padding: 5px 12px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .dt-trm-tape-track {
+      display: flex;
+      gap: 40px;
+      padding-left: 24px;
+      animation: dtTrmScroll 55s linear infinite;
       white-space: nowrap;
-      transition: all 0.3s;
+      will-change: transform;
     }
+    .dt-trm-tape:hover .dt-trm-tape-track { animation-play-state: paused; }
 
-    .dt-vc-card:hover .dt-vc-tag {
-      background: rgba(200, 66, 10, 0.15);
-      border-color: rgba(200, 66, 10, 0.3);
+    .dt-trm-ticker {
+      font-family: 'DM Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.65);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.3px;
+    }
+    .dt-trm-ticker .sym {
       color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+    .dt-trm-ticker .sep {
+      color: rgba(255, 255, 255, 0.15);
     }
 
-    .dt-vh-count {
+    @keyframes dtTrmScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── COCKPIT GRID ── */
+    .dt-trm-cockpit {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    /* ── SPOTLIGHT TERMINAL ── */
+    .dt-trm-screen {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.18) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      padding: 34px 36px 34px;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Screen header */
+    .dt-trm-screen-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      color: rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 28px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .dt-trm-screen-head .lhs { display: inline-flex; align-items: center; gap: 12px; }
+    .dt-trm-screen-head .idx {
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .dt-trm-screen-head .badge {
       background: rgba(200, 66, 10, 0.1);
-      padding: 6px 16px;
-      border-radius: 50px;
-      color: var(--orange) !important;
+      border: 1px solid rgba(200, 66, 10, 0.3);
+      color: var(--orange);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    /* Title */
+    .dt-trm-screen-title {
+      font-size: 34px;
+      line-height: 1.15;
       font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin: 0 0 26px;
+      min-height: 78px;
+    }
+
+    /* Stat row */
+    .dt-trm-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+    .dt-trm-statbox {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .dt-trm-statbox .k {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 8px;
+    }
+    .dt-trm-statbox .v {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .dt-trm-statbox .dots {
+      display: inline-flex;
+      gap: 5px;
+      align-items: center;
+    }
+    .dt-trm-statbox .dots .d {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .dt-trm-statbox .dots .d.on { background: var(--orange); }
+
+    /* Body */
+    .dt-trm-body {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      font-size: 15px;
+      flex: 1;
+      margin: 0 0 28px;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* CTA */
+    .dt-trm-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--orange);
+      border: 1px solid var(--orange);
+      color: #fff;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: all 0.25s;
+    }
+    .dt-trm-cta:hover {
+      background: #e04d10;
+      border-color: #e04d10;
+      box-shadow: 0 10px 28px rgba(200, 66, 10, 0.35);
+      transform: translateY(-2px);
+    }
+    .dt-trm-cta svg { transition: transform 0.25s; }
+    .dt-trm-cta:hover svg { transform: translateX(3px); }
+
+    /* ── INDEX PANEL ── */
+    .dt-trm-index {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.18) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 22px 18px;
+      min-height: 520px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .dt-trm-index-head {
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      color: rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .dt-trm-index-head .count {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .dt-trm-index-group { margin-bottom: 22px; }
+    .dt-trm-index-group:last-child { margin-bottom: 0; }
+
+    .dt-trm-group-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      color: rgba(200, 66, 10, 0.85);
+      text-transform: uppercase;
+      margin: 0 6px 10px;
+    }
+
+    .dt-trm-row {
+      display: grid;
+      grid-template-columns: 26px 60px 1fr 10px;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      border: 1px solid transparent;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 2px;
+      color: inherit;
+      font-family: inherit;
+    }
+    .dt-trm-row:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .dt-trm-row.active {
+      background: rgba(200, 66, 10, 0.1);
+      border-color: rgba(200, 66, 10, 0.3);
+    }
+    .dt-trm-row .num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .dt-trm-row.active .num { color: var(--orange); }
+    .dt-trm-row .sym {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.5px;
+    }
+    .dt-trm-row.active .sym { color: var(--orange); }
+    .dt-trm-row .name {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dt-trm-row.active .name { color: #fff; font-weight: 600; }
+    .dt-trm-row .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      justify-self: end;
+      transition: all 0.2s;
+    }
+    .dt-trm-row:hover .dot {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+    .dt-trm-row.active .dot {
+      background: var(--orange);
+      border-color: var(--orange);
+      box-shadow: 0 0 8px rgba(200, 66, 10, 0.7);
+    }
+
+    /* ── STATUS FOOTER ── */
+    .dt-trm-status {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
       font-size: 11px;
       letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+      flex-wrap: wrap;
+      gap: 26px;
     }
+    .dt-trm-status .item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dt-trm-status .item b {
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 600;
+    }
+    .dt-trm-status .led {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .dt-trm-status .led.orange { background: var(--orange); }
+    .dt-trm-status .led.red { background: #94a3b8; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .dt-trm-cockpit { grid-template-columns: 1fr; }
+      .dt-trm-screen { min-height: auto; padding: 28px 24px; }
+      .dt-trm-index { min-height: auto; }
+      .dt-trm-screen-title { font-size: 26px; min-height: 60px; }
+    }
+    @media (max-width: 620px) {
+      .dt-curriculum { padding: 70px 0 80px; }
+      .dt-trm-screen { padding: 24px 18px; }
+      .dt-trm-screen-title { font-size: 22px; min-height: auto; }
+      .dt-trm-stats { grid-template-columns: 1fr; gap: 10px; }
+      .dt-trm-status { flex-direction: column; align-items: center; gap: 10px; }
+      .dt-trm-tape-track { gap: 28px; padding-left: 20px; }
+      .dt-trm-ticker { font-size: 12px; }
+    }
+
 
     /* ══ SECTION 6: TOOLS — KINETIC GLASS ══ */
     .dt-tools {
@@ -3250,6 +3403,8 @@
 
   <section class="dt-curriculum" id="strategies">
     <div class="dt-curriculum-bg"></div>
+    <div class="dt-curriculum-orb dt-orb-1"></div>
+    <div class="dt-curriculum-orb dt-orb-2"></div>
 
     <div class="pm-container">
       <div class="pm-section-head light reveal">
@@ -3259,129 +3414,120 @@
           video lessons, trade examples, and clear rules.</p>
       </div>
 
-      <div class="dt-vault-tabs reveal">
-        <!-- Left: Tab Cards -->
-        <div class="dt-vtab-list">
-          <div class="dt-vtab active" data-tab="core" onclick="scrollToVaultPanel('core')">
-            <span class="dt-vtab-badge">5 Courses</span>
-            <h3>Core Day Trading Strategies</h3>
-          </div>
-          <div class="dt-vtab" data-tab="zero" onclick="scrollToVaultPanel('zero')">
-            <span class="dt-vtab-badge">3 Courses</span>
-            <h3>0 DTE Strategies</h3>
-          </div>
-          <div class="dt-vtab" data-tab="add" onclick="scrollToVaultPanel('add')">
-            <span class="dt-vtab-badge">2 Courses</span>
-            <h3>Additional Courses</h3>
-          </div>
-        </div>
-
-        <div class="dt-vtab-divider"></div>
-
-        <!-- Right: Panels -->
-        <div class="dt-vtab-panels">
-          <!-- Panel: Core -->
-          <div class="dt-vtab-panel" id="vtab-core">
-            <div class="dt-vtab-section-label">Core Day Trading Strategies</div>
-            <div class="dt-vc-grid">
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">01</div>
-                <div class="dt-vc-content">
-                  <h4>Mighty Ninety and Runner Strategies</h4>
-                  <p>Learn to identify high-probability setups in the first 90 minutes of the trading day — the most
-                    active window — and how to catch runners that extend well beyond the open.</p>
-                </div><span class="dt-vc-tag">Flagship</span>
-              </div>
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">02</div>
-                <div class="dt-vc-content">
-                  <h4>NTT Day Trading</h4>
-                  <p>NavigationTrading's proprietary day trading system. A step-by-step method for reading intraday
-                    price action, identifying entries with defined risk, and following clear exit rules.</p>
-                </div><span class="dt-vc-tag">Proprietary</span>
-              </div>
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">03</div>
-                <div class="dt-vc-content">
-                  <h4>MOC Course (Market on Close)</h4>
-                  <p>Built specifically for the final hour of trading, using end-of-day momentum and institutional
-                    closing flows. Perfect for traders with a day job available in the afternoon.</p>
-                </div><span class="dt-vc-tag">End of Day</span>
-              </div>
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">04</div>
-                <div class="dt-vc-content">
-                  <h4>Price Action Futures Trading</h4>
-                  <p>Expand beyond options into futures with a pure price action approach. Learn to read the tape,
-                    identify key levels, and execute clean entries without lagging indicators.</p>
-                </div><span class="dt-vc-tag">Futures</span>
-              </div>
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">05</div>
-                <div class="dt-vc-content">
-                  <h4>Power Hour Strategy Course</h4>
-                  <p>The last hour is where institutional money moves. Read that flow, identify setups, and position
-                    yourself for end-of-day moves that most retail traders miss entirely.</p>
-                </div><span class="dt-vc-tag">Power Hour</span>
-              </div>
-            </div>
-          </div>
-          <!-- Panel: 0 DTE -->
-          <div class="dt-vtab-panel" id="vtab-zero">
-            <div class="dt-vtab-section-label">0 DTE Strategies</div>
-            <div class="dt-vc-grid">
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">06</div>
-                <div class="dt-vc-content">
-                  <h4>0 DTE Iron Condors, Early Day Entry</h4>
-                  <p>Cover specific timing, strike selection, and risk management rules that make 0 DTE iron condors a
-                    consistent strategy. Early day entries give you the best probability.</p>
-                </div><span class="dt-vc-tag">Income</span>
-              </div>
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">07</div>
-                <div class="dt-vc-content">
-                  <h4>0 DTE Entries Using NTT Indicator</h4>
-                  <p>Combine same-day expiration trades with proprietary indicators for precision timing. Objective
-                    signals take the guesswork and emotion out of your 0 DTE positions.</p>
-                </div><span class="dt-vc-tag">Indicator</span>
-              </div>
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">08</div>
-                <div class="dt-vc-content">
-                  <h4>Reverse Iron Condors</h4>
-                  <p>Recognize high-volatility conditions and deploy the opposite of a traditional iron condor — a
-                    strategy that benefits from large moves rather than range-bound markets.</p>
-                </div><span class="dt-vc-tag">Volatility</span>
-              </div>
-            </div>
-          </div>
-          <!-- Panel: Additional -->
-          <div class="dt-vtab-panel" id="vtab-add">
-            <div class="dt-vtab-section-label">Additional Courses</div>
-            <div class="dt-vc-grid">
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">09</div>
-                <div class="dt-vc-content">
-                  <h4>ELMO Mini Course</h4>
-                  <p>A focused mini course on ELMO — a quick-deploy strategy for specific intraday setups. Short,
-                    actionable, and designed to add another tool to your daily toolkit.</p>
-                </div><span class="dt-vc-tag">Quick Strike</span>
-              </div>
-              <div class="dt-vc-card">
-                <div class="dt-vc-num">10</div>
-                <div class="dt-vc-content">
-                  <h4>Power Hour Strategy Deep Dive</h4>
-                  <p>Capitalize on the increased volume and volatility that shows up consistently in the final 60
-                    minutes of the session with advanced institutional flow analysis.</p>
-                </div><span class="dt-vc-tag">Deep Dive</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- TICKER TAPE -->
+      <div class="dt-trm-tape reveal" aria-hidden="true">
+        <div class="dt-trm-tape-track" id="dtTrmTape"></div>
       </div>
 
-      <div style="text-align:center; margin-top:80px;" class="reveal">
+      <!-- COCKPIT: spotlight terminal + index -->
+      <div class="dt-trm-cockpit reveal">
+        <!-- ▸ SPOTLIGHT SCREEN -->
+        <div class="dt-trm-screen" id="dtTrmScreen">
+          <div class="dt-trm-screen-head">
+            <span class="lhs">
+              <span class="idx" data-bind="idx">STRATEGY 01</span>
+              <span>NAVIGATION TRADING CURRICULUM</span>
+            </span>
+            <span class="badge" data-bind="badge">FLAGSHIP</span>
+          </div>
+
+          <h3 class="dt-trm-screen-title">
+            <span data-bind="title">Mighty Ninety and Runner Strategies</span>
+          </h3>
+
+          <div class="dt-trm-stats">
+            <div class="dt-trm-statbox">
+              <span class="k">Category</span>
+              <span class="v" data-bind="cat">Core Day Trading</span>
+            </div>
+            <div class="dt-trm-statbox">
+              <span class="k">Depth</span>
+              <span class="v"><span class="dots" data-bind="dots"></span></span>
+            </div>
+            <div class="dt-trm-statbox">
+              <span class="k">Time Window</span>
+              <span class="v" data-bind="time">09:30 – 11:00 ET</span>
+            </div>
+          </div>
+
+          <p class="dt-trm-body" data-bind="desc">Learn to identify high-probability setups in the first 90 minutes
+            of the trading day — the most active window — and how to catch runners that extend well beyond the open.</p>
+
+          <a class="dt-trm-cta" href="https://whop.com/navigationtrading/" id="dtTrmCta">
+            <span data-bind="cta">Enroll in MNTY</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <!-- ▸ STRATEGY INDEX -->
+        <aside class="dt-trm-index" id="dtTrmIndex">
+          <div class="dt-trm-index-head">
+            <span>◢ STRATEGY INDEX</span>
+            <span><span class="count">10</span> / 10 LOADED</span>
+          </div>
+
+          <div class="dt-trm-index-group">
+            <div class="dt-trm-group-label">Core Day Trading</div>
+            <button class="dt-trm-row active" type="button" data-id="01" id="vtab-core">
+              <span class="num">01</span><span class="sym">MNTY</span>
+              <span class="name">Mighty Ninety & Runners</span><span class="dot"></span>
+            </button>
+            <button class="dt-trm-row" type="button" data-id="02">
+              <span class="num">02</span><span class="sym">NTT</span>
+              <span class="name">NTT Day Trading</span><span class="dot"></span>
+            </button>
+            <button class="dt-trm-row" type="button" data-id="03">
+              <span class="num">03</span><span class="sym">MOC</span>
+              <span class="name">Market on Close</span><span class="dot"></span>
+            </button>
+            <button class="dt-trm-row" type="button" data-id="04">
+              <span class="num">04</span><span class="sym">PXFT</span>
+              <span class="name">Price Action Futures</span><span class="dot"></span>
+            </button>
+            <button class="dt-trm-row" type="button" data-id="05">
+              <span class="num">05</span><span class="sym">PWRH</span>
+              <span class="name">Power Hour Strategy</span><span class="dot"></span>
+            </button>
+          </div>
+
+          <div class="dt-trm-index-group">
+            <div class="dt-trm-group-label">0 DTE Strategies</div>
+            <button class="dt-trm-row" type="button" data-id="06" id="vtab-zero">
+              <span class="num">06</span><span class="sym">ICED</span>
+              <span class="name">0 DTE Iron Condors</span><span class="dot"></span>
+            </button>
+            <button class="dt-trm-row" type="button" data-id="07">
+              <span class="num">07</span><span class="sym">NTIN</span>
+              <span class="name">0 DTE NTT Indicator</span><span class="dot"></span>
+            </button>
+            <button class="dt-trm-row" type="button" data-id="08">
+              <span class="num">08</span><span class="sym">RICN</span>
+              <span class="name">Reverse Iron Condors</span><span class="dot"></span>
+            </button>
+          </div>
+
+          <div class="dt-trm-index-group">
+            <div class="dt-trm-group-label">Additional Courses</div>
+            <button class="dt-trm-row" type="button" data-id="09" id="vtab-add">
+              <span class="num">09</span><span class="sym">ELMO</span>
+              <span class="name">ELMO Mini Course</span><span class="dot"></span>
+            </button>
+            <button class="dt-trm-row" type="button" data-id="10">
+              <span class="num">10</span><span class="sym">PHDD</span>
+              <span class="name">Power Hour Deep Dive</span><span class="dot"></span>
+            </button>
+          </div>
+        </aside>
+      </div>
+
+      <!-- LIVE STATUS BAR -->
+      <div class="dt-trm-status reveal">
+        <span class="item"><span class="led" id="dtTrmMktLed"></span>Market <b id="dtTrmMktStatus">…</b></span>
+        <span class="item">ET <b id="dtTrmClock">--:--:--</b></span>
+        <span class="item">10 / 10 strategies loaded</span>
+      </div>
+
+      <div style="text-align:center; margin-top:54px;" class="reveal">
         <a href="https://whop.com/navigationtrading/" class="btn-pm">Unlock the Full Strategy Vault →</a>
       </div>
     </div>
@@ -4193,45 +4339,155 @@
     }, { threshold: 0.1 });
     revealEls.forEach(el => revealObs.observe(el));
 
-    /* Strategy Vault — Scroll-to on click */
-    function scrollToVaultPanel(tabId) {
-      const panel = document.getElementById('vtab-' + tabId);
-      if (!panel) return;
-      const offset = 140; // account for sticky nav/tab height
-      const top = panel.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-
-    /* Strategy Vault — Scrollspy: highlight left tab matching visible right panel */
+    /* ── STRATEGY TERMINAL — data binding, ticker tape, market clock ── */
     (function () {
-      const panels = document.querySelectorAll('.dt-vtab-panel');
-      const tabs = document.querySelectorAll('.dt-vtab[data-tab]');
-      if (!panels.length || !tabs.length) return;
+      const STRATEGIES = [
+        { id: '01', sym: 'MNTY', cat: 'Core Day Trading', tag: 'FLAGSHIP', depth: 5, time: '09:30 – 11:00 ET', tone: 'up',
+          title: 'Mighty Ninety and Runner Strategies',
+          desc: "Learn to identify high-probability setups in the first 90 minutes of the trading day — the most active window — and how to catch runners that extend well beyond the open." },
+        { id: '02', sym: 'NTT', cat: 'Core Day Trading', tag: 'PROPRIETARY', depth: 5, time: 'All Session', tone: 'up',
+          title: 'NTT Day Trading',
+          desc: "NavigationTrading's proprietary day trading system. A step-by-step method for reading intraday price action, identifying entries with defined risk, and following clear exit rules." },
+        { id: '03', sym: 'MOC', cat: 'Core Day Trading', tag: 'END-OF-DAY', depth: 4, time: '15:00 – 16:00 ET', tone: 'up',
+          title: 'MOC Course (Market on Close)',
+          desc: "Built specifically for the final hour of trading, using end-of-day momentum and institutional closing flows. Perfect for traders with a day job available in the afternoon." },
+        { id: '04', sym: 'PXFT', cat: 'Core Day Trading', tag: 'FUTURES', depth: 4, time: 'All Session', tone: 'up',
+          title: 'Price Action Futures Trading',
+          desc: "Expand beyond options into futures with a pure price action approach. Learn to read the tape, identify key levels, and execute clean entries without lagging indicators." },
+        { id: '05', sym: 'PWRH', cat: 'Core Day Trading', tag: 'POWER HOUR', depth: 4, time: '15:00 – 16:00 ET', tone: 'up',
+          title: 'Power Hour Strategy Course',
+          desc: "The last hour is where institutional money moves. Read that flow, identify setups, and position yourself for end-of-day moves that most retail traders miss entirely." },
+        { id: '06', sym: 'ICED', cat: '0 DTE Strategies', tag: 'INCOME', depth: 5, time: '09:30 – 12:00 ET', tone: 'up',
+          title: '0 DTE Iron Condors, Early Day Entry',
+          desc: "Cover specific timing, strike selection, and risk management rules that make 0 DTE iron condors a consistent strategy. Early day entries give you the best probability." },
+        { id: '07', sym: 'NTIN', cat: '0 DTE Strategies', tag: 'INDICATOR', depth: 4, time: 'Intraday', tone: 'up',
+          title: '0 DTE Entries Using NTT Indicator',
+          desc: "Combine same-day expiration trades with proprietary indicators for precision timing. Objective signals take the guesswork and emotion out of your 0 DTE positions." },
+        { id: '08', sym: 'RICN', cat: '0 DTE Strategies', tag: 'VOLATILITY', depth: 4, time: 'High-Vol Days', tone: 'dn',
+          title: 'Reverse Iron Condors',
+          desc: "Recognize high-volatility conditions and deploy the opposite of a traditional iron condor — a strategy that benefits from large moves rather than range-bound markets." },
+        { id: '09', sym: 'ELMO', cat: 'Additional Courses', tag: 'QUICK STRIKE', depth: 3, time: 'Intraday', tone: 'up',
+          title: 'ELMO Mini Course',
+          desc: "A focused mini course on ELMO — a quick-deploy strategy for specific intraday setups. Short, actionable, and designed to add another tool to your daily toolkit." },
+        { id: '10', sym: 'PHDD', cat: 'Additional Courses', tag: 'DEEP DIVE', depth: 5, time: '15:00 – 16:00 ET', tone: 'up',
+          title: 'Power Hour Strategy Deep Dive',
+          desc: "Capitalize on the increased volume and volatility that shows up consistently in the final 60 minutes of the session with advanced institutional flow analysis." }
+      ];
 
-      function setActive(tabId) {
-        tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabId));
+      const screen = document.getElementById('dtTrmScreen');
+      const rows = document.querySelectorAll('.dt-trm-row');
+      const tape = document.getElementById('dtTrmTape');
+      if (!screen || !rows.length) return;
+
+      // BUILD TICKER TAPE (double the items for seamless loop)
+      if (tape) {
+        const items = STRATEGIES.map(s =>
+          `<span class="dt-trm-ticker"><span class="sym">${s.sym}</span> ${s.title}</span>`
+        );
+        const sep = '<span class="dt-trm-ticker sep">·</span>';
+        const html = items.join(sep);
+        tape.innerHTML = html + sep + html;
       }
 
-      // Set first tab active on load
-      if (panels[0]) setActive(panels[0].id.replace('vtab-', ''));
+      // Render selected strategy into the screen
+      function render(id) {
+        const s = STRATEGIES.find(x => x.id === id);
+        if (!s) return;
 
-      const obs = new IntersectionObserver(entries => {
-        // Find the topmost intersecting panel
-        let best = null, bestTop = Infinity;
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            const top = e.boundingClientRect.top;
-            if (top < bestTop) { bestTop = top; best = e.target; }
+        const $title = screen.querySelector('[data-bind="title"]');
+        const $idx = screen.querySelector('[data-bind="idx"]');
+        const $badge = screen.querySelector('[data-bind="badge"]');
+        const $cat = screen.querySelector('[data-bind="cat"]');
+        const $time = screen.querySelector('[data-bind="time"]');
+        const $desc = screen.querySelector('[data-bind="desc"]');
+        const $dots = screen.querySelector('[data-bind="dots"]');
+        const $cta = screen.querySelector('[data-bind="cta"]');
+
+        // Fade swap
+        const els = [$title, $cat, $time, $desc];
+        els.forEach(el => el && (el.style.opacity = '0'));
+
+        setTimeout(() => {
+          if ($idx) $idx.textContent = 'STRATEGY ' + s.id;
+          if ($badge) $badge.textContent = s.tag;
+          if ($title) $title.textContent = s.title;
+          if ($cat) $cat.textContent = s.cat;
+          if ($time) $time.textContent = s.time;
+          if ($desc) $desc.textContent = s.desc;
+          if ($cta) $cta.textContent = 'Enroll in ' + s.sym;
+          if ($dots) {
+            let html = '';
+            for (let i = 0; i < 5; i++) html += `<span class="d${i < s.depth ? ' on' : ''}"></span>`;
+            $dots.innerHTML = html;
           }
-        });
-        if (best) setActive(best.id.replace('vtab-', ''));
-      }, {
-        rootMargin: '-120px 0px -40% 0px',
-        threshold: 0
+          els.forEach(el => el && (el.style.transition = 'opacity .35s ease', el.style.opacity = '1'));
+        }, 180);
+
+        // Update active row
+        rows.forEach(r => r.classList.toggle('active', r.dataset.id === id));
+      }
+
+      // Initial paint
+      render('01');
+
+      // Row click switches strategy
+      rows.forEach(r => {
+        r.addEventListener('click', () => render(r.dataset.id));
       });
 
-      panels.forEach(p => obs.observe(p));
+      // Auto-advance every 6s, paused on hover or after user interacts
+      let userInteracted = false;
+      rows.forEach(r => r.addEventListener('click', () => { userInteracted = true; }));
+      let idx = 0;
+      setInterval(() => {
+        if (userInteracted) return;
+        if (document.hidden) return;
+        const cockpit = document.querySelector('.dt-trm-cockpit');
+        if (cockpit && cockpit.matches(':hover')) return;
+        idx = (idx + 1) % STRATEGIES.length;
+        render(STRATEGIES[idx].id);
+      }, 5500);
+
+      // ── ET MARKET CLOCK + STATUS LED ──
+      const clockEl = document.getElementById('dtTrmClock');
+      const mktEl = document.getElementById('dtTrmMktStatus');
+      const ledEl = document.getElementById('dtTrmMktLed');
+
+      function updateClock() {
+        try {
+          const now = new Date();
+          const fmt = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/New_York',
+            hour: '2-digit', minute: '2-digit', second: '2-digit',
+            hour12: false, weekday: 'short'
+          });
+          const parts = fmt.formatToParts(now);
+          const get = (t) => (parts.find(p => p.type === t) || {}).value;
+          const hh = get('hour'), mm = get('minute'), ss = get('second');
+          const wd = (get('weekday') || '').toUpperCase();
+          if (clockEl) clockEl.textContent = `${hh}:${mm}:${ss}`;
+
+          const mins = parseInt(hh, 10) * 60 + parseInt(mm, 10);
+          const isWeekday = !['SAT', 'SUN'].includes(wd);
+          const open = isWeekday && mins >= 570 && mins < 960; // 9:30–16:00
+          if (mktEl) mktEl.textContent = open ? 'OPEN' : 'CLOSED';
+          if (ledEl) {
+            ledEl.classList.remove('orange', 'red');
+            ledEl.classList.add(open ? 'orange' : 'red');
+          }
+        } catch (e) { /* ignore */ }
+      }
+      updateClock();
+      setInterval(updateClock, 1000);
     })();
+
+    /* Backwards-compat: any deep links pointing to old tab IDs still scroll */
+    function scrollToVaultPanel(tabId) {
+      const el = document.getElementById('vtab-' + tabId);
+      if (!el) return;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 120;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
 
     /* Timeline logic */
     function updateTimeline() {
