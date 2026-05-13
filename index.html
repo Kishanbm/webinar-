@@ -1564,30 +1564,29 @@
       .test-card p { font-size: 14px; }
     }
 
-    /* ── PREMIUM INSTITUTIONAL CTA (INNOVATIVE SPLIT-DECK) ── */
+    /* ── PREMIUM INSTITUTIONAL CTA (SPLIT-DECK FADE) ── */
     .premium-cta-section {
-      padding: 120px 0;
-      background: #f8fafc; /* Light institutional background */
+      padding: 100px 0;
+      background: #f1f5f9; /* Slightly darker than pure white to make the card pop */
       position: relative;
       overflow: hidden;
     }
 
-    .premium-cta-container {
-      max-width: 1200px;
+    .saas-cta-card {
+      max-width: 1050px; /* Reduced width */
       margin: 0 auto;
       display: flex;
       background: #ffffff;
-      border-radius: 40px;
+      border-radius: 32px; /* Slightly tighter border radius */
       overflow: hidden;
-      /* Layered shadow for "lifting" effect */
-      box-shadow: 0 10px 30px rgba(13,32,64,0.05), 0 40px 100px rgba(13,32,64,0.12);
-      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 10px 30px rgba(13,32,64,0.06), 0 30px 80px rgba(13,32,64,0.1);
+      border: 1px solid rgba(0,0,0,0.04);
       position: relative;
     }
 
-    .premium-cta-left {
-      flex: 1.2;
-      padding: 100px 80px;
+    .saas-cta-content {
+      flex: 0.8; /* Reduced from 1.1 to give more space to the image */
+      padding: 80px 60px; /* Slightly reduced padding */
       position: relative;
       z-index: 2;
       display: flex;
@@ -1595,7 +1594,7 @@
       justify-content: center;
     }
 
-    .premium-cta-left .eyebrow {
+    .saas-eyebrow {
       display: inline-block;
       color: var(--orange);
       font-size: 11px;
@@ -1605,110 +1604,119 @@
       margin-bottom: 20px;
     }
 
-    .premium-cta-left h2 {
-      font-size: clamp(32px, 4vw, 52px);
+    .saas-cta-content h2 {
+      font-size: clamp(28px, 3.5vw, 40px); /* Slightly smaller heading to fit reduced space */
       font-weight: 900;
       color: #0D2040;
       line-height: 1.05;
       margin-bottom: 24px;
-      letter-spacing: -1.5px;
+      letter-spacing: -1px;
     }
 
-    .premium-cta-left h2 span {
+    .saas-cta-content h2 span {
       color: var(--orange);
     }
 
-    .premium-cta-left p {
-      font-size: 18px;
+    .saas-cta-content p {
+      font-size: 16px;
       color: #64748b;
       line-height: 1.6;
-      margin-bottom: 40px;
-      max-width: 500px;
+      margin-bottom: 36px;
+      max-width: 420px; /* Adjusted max-width */
     }
 
-    .premium-cta-right {
-      flex: 0.8;
+    .saas-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .saas-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: #fff;
+      padding: 12px 22px; /* Reduced button size */
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(200, 66, 10, 0.2);
+      white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .saas-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(200, 66, 10, 0.3);
+      filter: brightness(1.05);
+    }
+
+    .saas-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8fafc;
+      color: #0D2040;
+      padding: 12px 22px; /* Reduced button size */
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0,0,0,0.06);
+      white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .saas-btn-secondary:hover {
+      background: #f1f5f9;
+      transform: translateY(-2px);
+    }
+
+    .saas-cta-visual {
+      flex: 1.2; /* Increased from 0.9 to extend the image to the left */
       position: relative;
-      min-height: 500px;
+      min-height: 480px;
       background: #000;
     }
 
-    .premium-cta-img {
+    .saas-visual-inner {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
+    }
+
+    .saas-visual-inner img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      opacity: 0.85;
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.95;
+      /* Removed the scale hover transition here to prevent the fade line clipping */
     }
 
-    .premium-cta-container:hover .premium-cta-img {
-      transform: scale(1.08);
-    }
-
-    .premium-cta-right::after {
+    /* THE FADE BETWEEN LEFT TEXT AND RIGHT IMAGE */
+    .saas-cta-visual::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; bottom: 0; width: 200px;
-      background: linear-gradient(90deg, #ffffff 0%, transparent 100%);
+      top: -2px; left: -2px; bottom: -2px; width: 350px; /* Increased fade width for a smoother blend */
+      background: linear-gradient(90deg, #ffffff 0%, #ffffff 15%, transparent 100%);
       z-index: 1;
-    }
-
-    .btn-cta-final {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--orange);
-      color: #fff;
-      padding: 22px 50px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      width: fit-content;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 10px 30px rgba(200,66,10,0.25);
-    }
-
-    .btn-cta-final:hover {
-      transform: translateY(-4px);
-      background: #e04d0e;
-      box-shadow: 0 15px 45px rgba(200,66,10,0.35);
-    }
-
-    .cta-trust-row {
-      display: flex;
-      gap: 24px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-
-    .cta-trust-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #0D2040;
-      opacity: 0.6;
-    }
-
-    .cta-trust-pill svg {
-      width: 16px;
-      height: 16px;
-      color: var(--orange);
+      pointer-events: none;
     }
 
     @media (max-width: 1024px) {
-      .premium-cta-container { flex-direction: column; margin: 0 20px; }
-      .premium-cta-left { padding: 60px 40px; }
-      .premium-cta-right { min-height: 350px; order: -1; }
-      .premium-cta-right::after { 
-        width: 100%; height: 150px; top: auto; bottom: 0;
-        background: linear-gradient(0deg, #ffffff 0%, transparent 100%);
+      .saas-cta-card { flex-direction: column; margin: 0 20px; }
+      .saas-cta-content { padding: 60px 40px; }
+      .saas-cta-visual { min-height: 350px; order: -1; flex: auto; }
+      .saas-cta-visual::after { 
+        width: 100%; height: 200px; top: auto; bottom: -2px; left: 0;
+        background: linear-gradient(0deg, #ffffff 0%, #ffffff 15%, transparent 100%);
       }
     }
 
@@ -2256,12 +2264,7 @@
     }
 
     .proof-accent-bar {
-      display: block;
-      width: 6px;
-      height: 40px;
-      background: #c8420a;
-      border-radius: 3px;
-      margin-bottom: 16px;
+      display: none;
     }
 
     .proof-tag {
@@ -2412,18 +2415,18 @@
       margin-left: 150px;
       margin-top: -30px;
       opacity: 0;
-      animation: fadeInDot 0.6s ease-out forwards;
-      animation-delay: var(--delay, 0s);
+      animation: fadeInDot 0.8s ease-out forwards;
+      animation-delay: calc(var(--delay, 0s) + 0.2s);
     }
 
     @keyframes fadeInDot {
       from {
         opacity: 0;
-        transform: scale(0.8);
+        transform: translate(-100px, -100px) scale(0.5);
       }
       to {
         opacity: 1;
-        transform: scale(1);
+        transform: translate(0, 0) scale(1);
       }
     }
 
@@ -2475,6 +2478,9 @@
       left: 50%;
       margin-left: 150px;
       margin-top: 45px;
+      opacity: 0;
+      animation: fadeInDot 0.8s ease-out forwards;
+      animation-delay: calc(var(--delay, 0s) + 0.2s);
     }
 
     /* ── ECOSYSTEM CTA ── */
@@ -3075,6 +3081,57 @@
       .nav-links { display: none; }
       #spotify-widget { width: calc(100% - 48px); right: 24px; }
       .test-item { flex: 0 0 100%; }
+
+      /* Stats bar mobile */
+      .stats-grid { grid-template-columns: 1fr; gap: 24px; max-width: 100%; }
+      .stat-item { padding: 0 12px; }
+      .stat-item:not(:last-child)::after { display: none; }
+      .stat-num { font-size: clamp(24px, 6vw, 36px); }
+      .stat-label { font-size: 10px; }
+
+      /* Ecosystem mobile */
+      .ecosystem-2col { grid-template-columns: 1fr; gap: 32px; }
+      .ecosystem-right { margin-top: 40px; }
+      .orbit-container { max-width: 400px; }
+
+      /* Approach section mobile */
+      .approach-bento { grid-template-columns: 1fr; }
+      .approach-video { order: -1; margin-bottom: 32px; }
+
+      /* Tradehacker mobile */
+      .tradehacker-grid { grid-template-columns: 1fr; }
+      .tradehacker-visual { margin-top: 40px; }
+
+      /* Proof cards mobile */
+      .proof-card { padding: 24px; }
+      .proof-card h3 { font-size: 18px; }
+      .proof-card p { font-size: 13px; }
+
+      /* Container padding */
+      .container { padding: 0 24px; }
+
+      /* Section padding */
+      .approach-new { padding: 40px 0; }
+      .pricing-section-home { padding: 40px 0; }
+      .tradehacker-section { padding: 40px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .orbit-container { max-width: 320px; }
+      .orbit-dot { width: 48px; height: 48px; }
+      .orbit-label { font-size: 10px; width: 70px; }
+      .proof-card { padding: 20px; margin-bottom: 16px; }
+      .proof-card h3 { font-size: 16px; }
+      .proof-card p { font-size: 12px; line-height: 1.4; }
+      .hero h1 { font-size: 28px; }
+      .approach-header h2 { font-size: 28px; }
+
+      /* Stats bar extra small */
+      .stats-grid { gap: 16px; }
+      .stat-num { font-size: clamp(20px, 5vw, 28px); }
+      .stat-label { font-size: 9px; letter-spacing: 1px; }
+      .stat-item { padding: 0 8px; }
     }
   </style>
 </head>
@@ -3659,35 +3716,27 @@
   </section>
 
   <section class="premium-cta-section">
-    <div class="premium-cta-container">
-      <div class="premium-cta-left">
-        <span class="eyebrow">Ready to Start Today?</span>
-        <h2>Master Your <span>Mindset.</span></h2>
-        <p>Join Navigation Trading and start your journey toward becoming a more disciplined trader.</p>
-
-        <a href="/pricing" class="btn-cta-final">
-          Explore All Plans
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-
-        <div class="cta-trust-row">
-          <div class="cta-trust-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            9+ Years of Verified Data
-          </div>
-          <div class="cta-trust-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Real-Time Trade Alerts
-          </div>
-          <div class="cta-trust-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Full Transparency
-          </div>
+    <div class="saas-cta-card">
+      <div class="saas-cta-content">
+        <span class="saas-eyebrow">Ready to Start?</span>
+        <h2>Master Your Mindset.</h2>
+        <p>Join Navigation Trading and start your journey toward becoming a more disciplined trader. Gain access to transparent, verified strategies.</p>
+        
+        <div class="saas-actions">
+          <a href="/pricing" class="saas-btn-primary">
+            Explore All Plans
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="/free-membership" class="saas-btn-secondary">
+            Join for Free
+          </a>
         </div>
       </div>
-
-      <div class="premium-cta-right">
-        <img src="premium_trader_cta_setup_1778598905044.png" alt="Premium Trader Setup" class="premium-cta-img">
+      
+      <div class="saas-cta-visual">
+        <div class="saas-visual-inner">
+          <img src="dark_trading_desk_cta.png" alt="Clean Minimalist Trading Desk">
+        </div>
       </div>
     </div>
   </section>
