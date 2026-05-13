@@ -1398,7 +1398,7 @@
        V2 CSS — STRATEGY ORBIT (scroll-pinned, 3 cluster cards)
        ══════════════════════════════════════════════════════════════════ */
     .dt-orb-v2 {
-      background: #0D2E4E; /* Matched to Section 3 bluish theme */
+      background: #0a192f; /* Deep Navigation Navy */
       position: relative;
       color: #fff;
       isolation: isolate;
@@ -1428,18 +1428,51 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background: #0D2E4E;
+      background: #0a192f;
+      overflow: hidden;
+    }
+    .dt-orb-nebula {
+      position: absolute;
+      inset: -20%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(200, 66, 10, 0.05) 0%, transparent 50%);
+      filter: blur(80px);
+      animation: nebulaPulse 25s infinite alternate ease-in-out;
+      opacity: 0.7;
+    }
+    /* Floating cosmic particles for depth */
+    .dt-orb-particles {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(1px 1px at 10% 10%, #fff 100%, transparent),
+        radial-gradient(1.5px 1.5px at 90% 85%, #fff 100%, transparent),
+        radial-gradient(1px 1px at 30% 70%, #fff 100%, transparent),
+        radial-gradient(2px 2px at 70% 20%, #fff 100%, transparent);
+      background-size: 400px 400px;
+      opacity: 0.15;
+      animation: particleDrift 60s infinite linear;
+    }
+    @keyframes nebulaPulse {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.15) translate(3%, 4%); }
+    }
+    @keyframes particleDrift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-400px); }
     }
     .dt-orb-grid {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(ellipse at center, #000 35%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse at center, #000 35%, transparent 80%);
-      opacity: 0.45;
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 80px 80px; /* Larger grid for more depth */
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%);
+      -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 75%);
+      opacity: 0.6;
     }
     .dt-orb-stars {
       position: absolute;
@@ -1473,9 +1506,9 @@
       will-change: transform, opacity;
       transition: opacity .9s ease, transform .9s ease;
     }
-    .dt-orb-glow--orange { width: 600px; height: 600px; top: 15%; left: -10%; background: radial-gradient(circle, rgba(200, 66, 10, 0.35), transparent 70%); opacity: 0.25; }
-    .dt-orb-glow--violet { width: 520px; height: 520px; bottom: 5%; right: -8%; background: radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent 70%); opacity: 0; }
-    .dt-orb-glow--cyan   { width: 560px; height: 560px; top: 40%; right: 15%; background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%); opacity: 0; }
+    .dt-orb-glow--orange { width: 600px; height: 600px; top: 15%; left: -10%; background: radial-gradient(circle, rgba(200, 66, 10, 0.55), transparent 70%); opacity: 0.35; }
+    .dt-orb-glow--violet { width: 520px; height: 520px; bottom: 5%; right: -8%; background: radial-gradient(circle, rgba(124, 58, 237, 0.5), transparent 70%); opacity: 0; }
+    .dt-orb-glow--cyan   { width: 560px; height: 560px; top: 40%; right: 15%; background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent 70%); opacity: 0; }
 
     .dt-orb-pin[data-cluster="1"] .dt-orb-glow--orange { opacity: 0.45; transform: translate(0, 0); }
     .dt-orb-pin[data-cluster="2"] .dt-orb-glow--orange { opacity: 0.15; }
@@ -4322,6 +4355,8 @@
 
         <!-- Deep space background -->
         <div class="dt-orb-space">
+          <div class="dt-orb-nebula"></div>
+          <div class="dt-orb-particles"></div>
           <div class="dt-orb-grid"></div>
           <div class="dt-orb-stars dt-orb-stars--a"></div>
           <div class="dt-orb-stars dt-orb-stars--b"></div>
