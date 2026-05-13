@@ -214,6 +214,10 @@
     .nav-links a:hover {
       color: var(--orange) !important;
     }
+    .nav-links a.active {
+      color: var(--orange) !important;
+      font-weight: 700;
+    }
 
     .nav-item-dropdown {
       position: relative;
@@ -3937,13 +3941,14 @@
       <img src="logo.png" alt="NavigationTrading">
     </a>
     <ul class="nav-links">
+      <li><a href="/home">Home</a></li>
       <li><a href="/performance">Performance</a></li>
       <li><a href="/pricing">Pricing</a></li>
       <li class="nav-item-dropdown">
-        <a href="#">Services <span class="nav-chevron">▾</span></a>
+        <a href="#" class="active">Services <span class="nav-chevron">▾</span></a>
         <div class="dropdown-menu">
           <a href="/free-membership">Free Membership</a>
-          <a href="/day-trading-membership">Day Trade Membership</a>
+          <a href="#" class="active">Day Trade Membership</a>
           <a href="/paid-membership">Pro Membership</a>
         </div>
       </li>

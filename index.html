@@ -119,6 +119,10 @@
     .nav-links a:hover {
       color: var(--orange) !important;
     }
+    .nav-links a.active {
+      color: var(--orange) !important;
+      font-weight: 700;
+    }
 
     /* ── NAV DROPDOWN ── */
     .nav-item-dropdown { position: relative; }
@@ -3148,6 +3152,7 @@
       <img src="logo.png" alt="NavigationTrading">
     </a>
     <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
       <li><a href="/performance">Performance</a></li>
       <li><a href="/pricing">Pricing</a></li>
       <li class="nav-item-dropdown">

@@ -64,6 +64,8 @@
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--orange) !important; }
+    .nav-links a.active { color: var(--orange) !important; font-weight: 700; }
+    .nav-links a.active { color: var(--orange) !important; font-weight: 700; }
     .nav-item-dropdown { position: relative; }
     .nav-item-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; }
     .nav-chevron { font-size: 9px; transition: transform 0.25s; line-height: 1; opacity: 0.7; }
@@ -398,10 +400,11 @@
 
   <!-- ── NAVBAR ── -->
   <nav class="navbar" id="navbar">
-    <a href="/home" class="nav-logo">
+    <a href="/" class="nav-logo">
       <img src="logo.png" alt="NavigationTrading">
     </a>
     <ul class="nav-links">
+      <li><a href="/home">Home</a></li>
       <li><a href="/performance">Performance</a></li>
       <li><a href="/pricing">Pricing</a></li>
       <li class="nav-item-dropdown">
