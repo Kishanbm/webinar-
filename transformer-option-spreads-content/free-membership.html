@@ -400,12 +400,14 @@ body {
 ══════════════════════════════════════ */
 .container { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
 .eyebrow {
-  display: inline-block; font-size: 12px; font-weight: 700;
+  display: block; font-size: 12px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 2px; color: var(--orange);
   margin-bottom: 14px;
+  text-align: left;
 }
-.eyebrow.white { color: rgba(255,255,255,.6); }
+.eyebrow.white { color: var(--orange); }
 .section-head { text-align: center; margin-bottom: 64px; }
+.section-head .eyebrow { text-align: center; }
 .section-head h2 {
   font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; letter-spacing: -.02em;
   line-height: 1.1;
@@ -428,11 +430,6 @@ body {
 .summary-accent {
   position: absolute; top: 0; left: 0; right: 0; height: 4px;
   background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 40%, var(--orange) 70%, var(--gold) 100%);
-}
-.summary > .container > .eyebrow {
-  display: block;
-  text-align: center;
-  margin-bottom: 14px;
 }
 .summary-layout {
   display: grid;
@@ -457,7 +454,7 @@ body {
   color: var(--navy);
   line-height: 1.25;
   letter-spacing: -.01em;
-  text-align: center;
+  text-align: left;
 }
 .summary-left .big-statement em {
   font-style: italic;
@@ -511,6 +508,7 @@ body {
 
 /* ── Header ── */
 .results-header { text-align: center; margin-bottom: 60px; }
+.results-header .eyebrow { text-align: center; }
 .results-header h2 {
   font-size: clamp(28px, 3.5vw, 46px);
   font-weight: 800; color: #fff; line-height: 1.1;
@@ -640,6 +638,7 @@ body {
 .track-sticky-head {
   position: sticky;
   top: 100px;
+  text-align: left;
 }
 .track-sticky-head h2 {
   font-size: clamp(28px, 3vw, 40px);
@@ -1004,7 +1003,7 @@ body {
    SECTION 7 — THE INSTITUTIONAL MANIFEST
 ══════════════════════════════════════ */
 .bonuses-manifest {
-  padding: 100px 0;
+  padding: 60px 0 100px;
   background: var(--navy-deep);
   position: relative;
   overflow: hidden;
@@ -1235,7 +1234,8 @@ body {
   position: sticky; top: 100px;
 }
 .faq-eyebrow {
-  display: inline-block;
+  display: block;
+  text-align: left;
   color: var(--orange);
   font-size: 11px;
   font-weight: 800;
@@ -1368,11 +1368,6 @@ body {
   height: 100%;
   object-fit: cover;
   opacity: 0.85;
-  transition: transform 1s ease;
-}
-
-.final-cta-split:hover .final-cta-img {
-  transform: scale(1.05);
 }
 
 .final-cta-right::after {
@@ -1709,10 +1704,10 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 <section class="summary">
   <div class="summary-accent"></div>
   <div class="container">
-    <span class="eyebrow">WHAT YOU'RE GETTING</span>
     <div class="summary-layout">
       <div class="summary-left">
-        <p class="big-statement">A Complete Beginner's Trading Education — Not a Sales Pitch</p>
+        <span class="eyebrow">WHAT YOU'RE GETTING</span>
+        <p class="big-statement">A Complete Beginner's Trading Education <span style="color: var(--orange);">Not a Sales Pitch</span></p>
       </div>
       <div class="summary-divider"></div>
       <div class="summary-right">
@@ -1848,7 +1843,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
     <div class="track-inner">
       <div class="track-sticky-head">
         <span class="eyebrow">YOUR LEARNING PATH</span>
-        <h2>5 Courses. One Clear Path. Zero Cost.</h2>
+        <h2>5 Courses. One Clear Path. <span style="color: var(--orange);">Zero Cost.</span></h2>
         <p>Each course builds on the last. By the end, you won't just know what options are — you'll know how to trade them.</p>
         <a href="#hero-cta" class="track-cta-inline">
           Start Your Learning Path — Join Free

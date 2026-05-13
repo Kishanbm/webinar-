@@ -1398,7 +1398,7 @@
        V2 CSS — STRATEGY ORBIT (scroll-pinned, 3 cluster cards)
        ══════════════════════════════════════════════════════════════════ */
     .dt-orb-v2 {
-      background: #07101e;
+      background: #0D2E4E; /* Matched to Section 3 bluish theme */
       position: relative;
       color: #fff;
       isolation: isolate;
@@ -1407,7 +1407,7 @@
     /* track: intro + 3 cluster scenes (each ~320vh) */
     .dt-orb-track {
       position: relative;
-      height: 1100vh;
+      height: 1200vh; /* Increased for smoother, slower pacing */
     }
 
     .dt-orb-pin {
@@ -1428,7 +1428,7 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background: #07101e;
+      background: #0D2E4E;
     }
     .dt-orb-grid {
       position: absolute;
@@ -1473,9 +1473,9 @@
       will-change: transform, opacity;
       transition: opacity .9s ease, transform .9s ease;
     }
-    .dt-orb-glow--orange { width: 600px; height: 600px; top: 15%; left: -10%; background: radial-gradient(circle, rgba(200, 66, 10, 0.55), transparent 70%); opacity: 0.35; }
-    .dt-orb-glow--violet { width: 520px; height: 520px; bottom: 5%; right: -8%; background: radial-gradient(circle, rgba(124, 58, 237, 0.5), transparent 70%); opacity: 0; }
-    .dt-orb-glow--cyan   { width: 560px; height: 560px; top: 40%; right: 15%; background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent 70%); opacity: 0; }
+    .dt-orb-glow--orange { width: 600px; height: 600px; top: 15%; left: -10%; background: radial-gradient(circle, rgba(200, 66, 10, 0.35), transparent 70%); opacity: 0.25; }
+    .dt-orb-glow--violet { width: 520px; height: 520px; bottom: 5%; right: -8%; background: radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent 70%); opacity: 0; }
+    .dt-orb-glow--cyan   { width: 560px; height: 560px; top: 40%; right: 15%; background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%); opacity: 0; }
 
     .dt-orb-pin[data-cluster="1"] .dt-orb-glow--orange { opacity: 0.45; transform: translate(0, 0); }
     .dt-orb-pin[data-cluster="2"] .dt-orb-glow--orange { opacity: 0.15; }
@@ -1632,8 +1632,8 @@
       position: absolute;
       top: 50%;
       left: 0;
-      width: clamp(290px, 34vw, 410px);
-      height: clamp(380px, 52vh, 480px);
+      width: clamp(240px, 20vw, 280px); /* Reduced size */
+      height: clamp(240px, 28vh, 300px); /* Reduced size */
       margin: 0;
       padding: 0;
       transform: translateY(-50%) translateX(100vw);
@@ -1646,14 +1646,16 @@
     .dt-orb-card-inner {
       width: 100%;
       height: 100%;
-      padding: 32px 28px 28px;
+      padding: 30px 26px;
       border-radius: 20px;
-      background: #111e30;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
       border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
-      display: grid;
-      grid-template-rows: auto auto 1fr auto auto;
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       position: relative;
       overflow: hidden;
     }
@@ -1741,7 +1743,7 @@
       position: absolute;
       top: 50%;
       right: 2%;
-      width: clamp(320px, 52vw, 620px);
+      width: clamp(400px, 68vw, 840px); /* Increased width to close the gap */
       height: clamp(380px, 52vh, 480px);
       transform: translateY(-50%) translateX(70vw);
       opacity: 0;
@@ -1764,12 +1766,14 @@
       align-items: center;
       justify-content: space-between;
       font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
-      letter-spacing: 1.4px;
+      font-size: 11.5px; /* Slightly larger */
+      letter-spacing: 1.6px;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
-      padding: 0 4px 10px;
-      border-bottom: none;
+      color: rgba(255, 255, 255, 0.9); /* Brighter */
+      font-weight: 700;
+      padding: 0 4px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Added line for separation */
+      margin-bottom: 4px;
     }
     .dt-orb-panel-head b { color: var(--orange); font-weight: 700; }
     .dt-orb-panel[data-panel="2"] .dt-orb-panel-head b { color: #38bdf8; }
@@ -1778,7 +1782,10 @@
     /* list container — overflows visually below panel boundary */
     .dt-orb-slist {
       flex: 1;
-      overflow: visible;
+      overflow: visible; /* Allowed to overflow at the bottom */
+      /* Clip only at the top (0px), allow 1000px overflow at the bottom */
+      clip-path: inset(0px 0px -1000px 0px);
+      -webkit-clip-path: inset(0px 0px -1000px 0px);
     }
     .dt-orb-strack {
       display: flex;
@@ -1790,15 +1797,65 @@
     /* compact strategy card inside list */
     .dt-orb-scard {
       flex-shrink: 0;
-      padding: 16px 18px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 22px 24px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      display: grid;
+      grid-template-columns: 32px 1fr; /* Added column for number */
+      gap: 16px;
+      transition: all 0.25s ease;
+    }
+    .dt-orb-scard:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateX(4px);
+    }
+    .dt-orb-scard-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: 700;
+      padding-top: 4px;
+    }
+    .dt-orb-scard-body {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      transition: border-color 0.2s;
+      gap: 12px;
     }
+    .dt-orb-scard .dt-orb-scard-title {
+      font-size: 19px;
+      color: #ff6b00 !important; /* Force vibrant orange */
+      margin: 0;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    .dt-orb-panel[data-panel="1"] .dt-orb-scard-title { color: #ff6b00 !important; }
+    .dt-orb-panel[data-panel="2"] .dt-orb-scard-title { color: #38bdf8 !important; }
+    .dt-orb-panel[data-panel="3"] .dt-orb-scard-title { color: #a78bfa !important; }
+    .dt-orb-scard-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.95); /* Much brighter/lighter white for better visibility */
+      margin: 0;
+    }
+    .dt-orb-scard-info {
+      align-self: flex-start;
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #ff6b00; /* Vibrant Navigation Orange */
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.05); /* Neutral glass bg to prevent muddiness */
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .dt-orb-panel[data-panel="2"] .dt-orb-scard-info { color: #38bdf8; }
+    .dt-orb-panel[data-panel="3"] .dt-orb-scard-info { color: #a78bfa; }
     .dt-orb-scard:hover { border-color: rgba(255, 255, 255, 0.15); }
 
     .dt-orb-scard-top {
@@ -4308,58 +4365,31 @@
           <!-- CLUSTER CARDS (appear left when strategies are shown) -->
           <article class="dt-orb-card" data-card="1">
             <div class="dt-orb-card-inner">
-              <div class="dt-orb-card-top">
-                <span class="dt-orb-card-idx">CLUSTER 01</span>
-                <span class="dt-orb-card-dot"></span>
-                <span class="dt-orb-card-meta">Core Day Trading</span>
+              <div>
+                <span class="dt-orb-mini-tag">Cluster 01</span>
+                <h4 style="font-size:clamp(22px, 2.4vw, 28px); color:#fff; margin:14px 0 0; font-weight:700;">Core Day Trading</h4>
               </div>
-              <h3 class="dt-orb-card-title">The Day Trading Engine</h3>
-              <p class="dt-orb-card-desc">The five foundational strategies every NavigationTrading member starts with — built around the Mighty Ninety opening, NTT's proprietary intraday system, and the high-flow afternoon close.</p>
-              <div class="dt-orb-card-stat">
-                <div class="dt-orb-card-num">5</div>
-                <div class="dt-orb-card-num-label">structured<br/>courses</div>
-              </div>
-              <ul class="dt-orb-card-tags">
-                <li>Opening drive</li><li>Intraday flow</li><li>Closing hour</li>
-              </ul>
+              <span class="dt-orb-mini-count">5 strategies</span>
             </div>
           </article>
 
           <article class="dt-orb-card" data-card="2">
             <div class="dt-orb-card-inner">
-              <div class="dt-orb-card-top">
-                <span class="dt-orb-card-idx">CLUSTER 02</span>
-                <span class="dt-orb-card-dot"></span>
-                <span class="dt-orb-card-meta">0 DTE Mastery</span>
+              <div>
+                <span class="dt-orb-mini-tag" style="color:#38bdf8;">Cluster 02</span>
+                <h4 style="font-size:clamp(22px, 2.4vw, 28px); color:#fff; margin:14px 0 0; font-weight:700;">0 DTE Mastery</h4>
               </div>
-              <h3 class="dt-orb-card-title">Same-Day Expiration Income</h3>
-              <p class="dt-orb-card-desc">A complete framework for trading zero-days-to-expiration options — iron condors, indicator-driven entries, and reverse condors for volatile sessions.</p>
-              <div class="dt-orb-card-stat">
-                <div class="dt-orb-card-num">3</div>
-                <div class="dt-orb-card-num-label">precision<br/>systems</div>
-              </div>
-              <ul class="dt-orb-card-tags">
-                <li>0 DTE</li><li>Defined risk</li><li>Volatility</li>
-              </ul>
+              <span class="dt-orb-mini-count">3 strategies</span>
             </div>
           </article>
 
           <article class="dt-orb-card" data-card="3">
             <div class="dt-orb-card-inner">
-              <div class="dt-orb-card-top">
-                <span class="dt-orb-card-idx">CLUSTER 03</span>
-                <span class="dt-orb-card-dot"></span>
-                <span class="dt-orb-card-meta">Specialized Edge</span>
+              <div>
+                <span class="dt-orb-mini-tag" style="color:#a78bfa;">Cluster 03</span>
+                <h4 style="font-size:clamp(22px, 2.4vw, 28px); color:#fff; margin:14px 0 0; font-weight:700;">Specialized Edge</h4>
               </div>
-              <h3 class="dt-orb-card-title">Sharp-Tooled Additions</h3>
-              <p class="dt-orb-card-desc">Focused mini courses that complement the core curriculum — quick-deploy intraday setups and a deep dive into the most consistently profitable hour of the day.</p>
-              <div class="dt-orb-card-stat">
-                <div class="dt-orb-card-num">2</div>
-                <div class="dt-orb-card-num-label">specialty<br/>courses</div>
-              </div>
-              <ul class="dt-orb-card-tags">
-                <li>Quick strike</li><li>Power hour</li><li>Deep dive</li>
-              </ul>
+              <span class="dt-orb-mini-count">2 strategies</span>
             </div>
           </article>
 
@@ -4372,49 +4402,44 @@
             <div class="dt-orb-slist" id="dtSlist1">
               <div class="dt-orb-strack">
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">01</span>
-                    <span class="dt-orb-scard-sym">MNTY</span>
-                    <span class="dt-orb-scard-tag">FLAGSHIP</span>
+                  <span class="dt-orb-scard-num">01</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">Mighty Ninety and Runner Strategies</h4>
+                    <p class="dt-orb-scard-desc">The foundation of NavigationTrading's day trading approach. Learn to identify high-probability setups in the first 90 minutes of the trading day — the most active window — and how to catch runners that extend well beyond the open.</p>
+                    <div class="dt-orb-scard-info">09:30 – 11:00 ET</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">Mighty Ninety and Runner Strategies</h4>
-                  <div class="dt-orb-scard-info"><span class="v">09:30 – 11:00 ET</span></div>
                 </div>
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">02</span>
-                    <span class="dt-orb-scard-sym">NTT</span>
-                    <span class="dt-orb-scard-tag">PROPRIETARY</span>
+                  <span class="dt-orb-scard-num">02</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">NTT Day Trading</h4>
+                    <p class="dt-orb-scard-desc">NavigationTrading's proprietary day trading system. A step-by-step method for reading intraday price action, identifying entries with defined risk, and following clear exit rules. This isn't discretionary trading — it's systematic.</p>
+                    <div class="dt-orb-scard-info">All Session</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">NTT Day Trading</h4>
-                  <div class="dt-orb-scard-info"><span class="v">All Session</span></div>
                 </div>
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">03</span>
-                    <span class="dt-orb-scard-sym">MOC</span>
-                    <span class="dt-orb-scard-tag">END-OF-DAY</span>
+                  <span class="dt-orb-scard-num">03</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">MOC Course (Market on Close)</h4>
+                    <p class="dt-orb-scard-desc">The MOC strategy is built specifically for the final hour of trading, using end-of-day momentum and institutional closing flows. Perfect for traders with a day job available in the afternoon.</p>
+                    <div class="dt-orb-scard-info">15:00 – 16:00 ET</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">MOC Course (Market on Close)</h4>
-                  <div class="dt-orb-scard-info"><span class="v">15:00 – 16:00 ET</span></div>
                 </div>
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">04</span>
-                    <span class="dt-orb-scard-sym">PXFT</span>
-                    <span class="dt-orb-scard-tag">FUTURES</span>
+                  <span class="dt-orb-scard-num">04</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">Price Action Futures Trading</h4>
+                    <p class="dt-orb-scard-desc">Expand beyond options into futures with a pure price action approach. Learn to read the tape, identify key levels, and execute clean entries on futures contracts without relying on lagging indicators.</p>
+                    <div class="dt-orb-scard-info">All Session</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">Price Action Futures Trading</h4>
-                  <div class="dt-orb-scard-info"><span class="v">All Session</span></div>
                 </div>
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">05</span>
-                    <span class="dt-orb-scard-sym">PWRH</span>
-                    <span class="dt-orb-scard-tag">POWER HOUR</span>
+                  <span class="dt-orb-scard-num">05</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">Power Hour Strategy Course</h4>
+                    <p class="dt-orb-scard-desc">The last hour of the trading day is where institutional money moves. This course teaches you to read that flow, identify high-probability setups, and position yourself for end-of-day moves that most retail traders miss entirely.</p>
+                    <div class="dt-orb-scard-info">15:00 – 16:00 ET</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">Power Hour Strategy Course</h4>
-                  <div class="dt-orb-scard-info"><span class="v">15:00 – 16:00 ET</span></div>
                 </div>
               </div>
             </div>
@@ -4428,31 +4453,28 @@
             <div class="dt-orb-slist" id="dtSlist2">
               <div class="dt-orb-strack">
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">06</span>
-                    <span class="dt-orb-scard-sym">ICED</span>
-                    <span class="dt-orb-scard-tag">INCOME</span>
+                  <span class="dt-orb-scard-num">01</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">0 DTE Iron Condors — Early Day Entry</h4>
+                    <p class="dt-orb-scard-desc">Sell premium on options that expire today. This course covers the specific timing, strike selection, and risk management rules that make 0 DTE iron condors a consistent strategy rather than a coin flip. Early day entries give you the best probability setup.</p>
+                    <div class="dt-orb-scard-info">09:30 – 12:00 ET</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">0 DTE Iron Condors, Early Day Entry</h4>
-                  <div class="dt-orb-scard-info"><span class="v">09:30 – 12:00 ET</span></div>
                 </div>
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">07</span>
-                    <span class="dt-orb-scard-sym">NTIN</span>
-                    <span class="dt-orb-scard-tag">INDICATOR</span>
+                  <span class="dt-orb-scard-num">02</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">0 DTE Entries Using NTT Indicator</h4>
+                    <p class="dt-orb-scard-desc">Combine same-day expiration trades with NavigationTrading's proprietary NTT indicator for precision entry timing. The indicator gives you objective signals — taking the guesswork and emotion out of when to enter your 0 DTE positions.</p>
+                    <div class="dt-orb-scard-info">Intraday</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">0 DTE Entries Using NTT Indicator</h4>
-                  <div class="dt-orb-scard-info"><span class="v">Intraday</span></div>
                 </div>
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">08</span>
-                    <span class="dt-orb-scard-sym">RICN</span>
-                    <span class="dt-orb-scard-tag">VOLATILITY</span>
+                  <span class="dt-orb-scard-num">03</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">Reverse Iron Condors</h4>
+                    <p class="dt-orb-scard-desc">When the market moves big, reverse iron condors profit. This course teaches you to recognize high-volatility conditions and deploy the opposite of a traditional iron condor — a strategy that benefits from large moves rather than range-bound markets.</p>
+                    <div class="dt-orb-scard-info">High-Vol Days</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">Reverse Iron Condors</h4>
-                  <div class="dt-orb-scard-info"><span class="v">High-Vol Days</span></div>
                 </div>
               </div>
             </div>
@@ -4466,22 +4488,20 @@
             <div class="dt-orb-slist" id="dtSlist3">
               <div class="dt-orb-strack">
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">09</span>
-                    <span class="dt-orb-scard-sym">ELMO</span>
-                    <span class="dt-orb-scard-tag">QUICK STRIKE</span>
+                  <span class="dt-orb-scard-num">01</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">ELMO Mini Course</h4>
+                    <p class="dt-orb-scard-desc">A focused mini course on ELMO — a quick-deploy strategy for specific intraday setups. Short, actionable, and designed to add another tool to your daily trading toolkit.</p>
+                    <div class="dt-orb-scard-info">Intraday</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">ELMO Mini Course</h4>
-                  <div class="dt-orb-scard-info"><span class="v">Intraday</span></div>
                 </div>
                 <div class="dt-orb-scard">
-                  <div class="dt-orb-scard-top">
-                    <span class="dt-orb-scard-num">10</span>
-                    <span class="dt-orb-scard-sym">PHDD</span>
-                    <span class="dt-orb-scard-tag">DEEP DIVE</span>
+                  <span class="dt-orb-scard-num">02</span>
+                  <div class="dt-orb-scard-body">
+                    <h4 class="dt-orb-scard-title">Power Hour Strategy Course</h4>
+                    <p class="dt-orb-scard-desc">Deep dive into late-day trading setups and how to capitalize on the increased volume and volatility that shows up consistently in the final 60 minutes of the trading session.</p>
+                    <div class="dt-orb-scard-info">15:00 – 16:00 ET</div>
                   </div>
-                  <h4 class="dt-orb-scard-title">Power Hour Strategy Deep Dive</h4>
-                  <div class="dt-orb-scard-info"><span class="v">15:00 – 16:00 ET</span></div>
                 </div>
               </div>
             </div>
@@ -5513,25 +5533,26 @@
       var clamp    = function(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); };
       var easeOut  = function(t) { var c = clamp(t, 0, 1); return 1 - Math.pow(1 - c, 3); };
 
-      /* Cluster boundaries — global progress 0→1 */
+      /* Cluster boundaries — global progress 0→1 
+         Increased gaps to 10% to slow down the transitions between chapters. */
       var BOUNDS = [
-        [0.10, 0.42],
-        [0.42, 0.70],
-        [0.70, 1.00],
+        [0.05, 0.30],
+        [0.40, 0.65],
+        [0.75, 1.00],
       ];
 
-      /* Local-progress phase thresholds */
-      var T_ENTER  = 0.18;  /* 0.00–0.18: card enters solo from right */
-      var T_DWELL  = 0.35;  /* 0.18–0.35: card dwells center */
-      var T_SLIDE  = 0.50;  /* 0.35–0.50: card slides left, panel enters */
-      /* 0.50–1.00: list visible, hold; exit driven by next cluster */
+      /* Local-progress phase thresholds (Relative to cluster bound) */
+      var T_ENTER  = 0.15;  /* 0.00–0.15: card enters solo from right */
+      var T_DWELL  = 0.25;  /* 0.15–0.25: card dwells center */
+      var T_SLIDE  = 0.40;  /* 0.25–0.40: card slides left, panel enters */
+      /* 0.40–1.00: list scrolling phase (Expanded to 60% of bound) */
 
       /* vw positions */
       var CC_OFF_R  = 100;
-      var CC_CENTER = 30;
-      var CC_LEFT   = 8;    /* brought closer to center for tighter pairing */
+      var CC_CENTER = 40;   
+      var CC_LEFT   = 4;    /* Moved even further left */
       var CC_OFF_L  = -52;
-      var PC_OFF_R  = 70;   /* panel off-screen offset */
+      var PC_OFF_R  = 85;   /* Increased starting offset to match wider panel */
 
       function setCCard(el, tx, op) {
         el.style.transform = 'translateY(-50%) translateX(' + tx.toFixed(2) + 'vw)';
@@ -5554,29 +5575,47 @@
         if (!card || !panel) return;
 
         var cardTx, cardOp, panelTx, panelOp;
+        var listTrack = panel.querySelector('.dt-orb-strack');
 
         if (lp <= 0) {
           /* Before this cluster */
           cardTx = CC_OFF_R;  cardOp = 0;
           panelTx = PC_OFF_R; panelOp = 0;
+          if (listTrack) listTrack.style.transform = '';
         } else if (lp < T_ENTER) {
           /* Card enters solo from right */
           var t0 = easeOut(lp / T_ENTER);
           cardTx = CC_OFF_R + (CC_CENTER - CC_OFF_R) * t0; cardOp = t0;
           panelTx = PC_OFF_R; panelOp = 0;
+          if (listTrack) listTrack.style.transform = '';
         } else if (lp < T_DWELL) {
           /* Dwell solo at center */
           cardTx = CC_CENTER; cardOp = 1;
           panelTx = PC_OFF_R; panelOp = 0;
+          if (listTrack) listTrack.style.transform = '';
         } else if (lp < T_SLIDE) {
           /* Card slides left, panel slides in from right */
           var t1 = easeOut((lp - T_DWELL) / (T_SLIDE - T_DWELL));
           cardTx  = CC_CENTER + (CC_LEFT - CC_CENTER) * t1; cardOp = 1;
           panelTx = PC_OFF_R * (1 - t1); panelOp = t1;
+          if (listTrack) listTrack.style.transform = '';
         } else {
           /* Hold: card left, panel visible — exit only when next cluster enters */
           cardTx = CC_LEFT; cardOp = 1;
           panelTx = 0;      panelOp = 1;
+
+          /* Internal List Scroll: Scroll the strategies list up before cluster exit */
+          if (listTrack) {
+            var listProgress = clamp((lp - T_SLIDE) / (1 - T_SLIDE), 0, 1);
+            
+            // Using the panel's bounded height as the viewport reference
+            var listH = listTrack.scrollHeight;
+            var containerH = panel.offsetHeight - 40; 
+            
+            var maxScroll = Math.max(0, listH - containerH);
+            var scrollY = listProgress * maxScroll;
+            listTrack.style.transform = 'translate3d(0, -' + scrollY.toFixed(1) + 'px, 0)';
+          }
 
           if (lpNext !== undefined && lpNext > 0) {
             /* Drive exit via next cluster's entry progress */
@@ -5605,18 +5644,18 @@
         var scrolled = clamp(-rect.top, 0, max);
         var p        = max > 0 ? scrolled / max : 0;
 
-        /* Intro — fade out as cluster 1 enters, permanently hidden after */
+        /* Intro — fade out as cluster 1 enters */
         if (intro) {
-          if (p < 0.10) {
+          if (p < 0.05) {
             intro.style.opacity   = '1';
             intro.style.transform = 'none';
-          } else if (p < 0.18) {
-            var ti = (p - 0.10) / 0.08;
+          } else if (p < 0.15) {
+            var ti = (p - 0.05) / 0.10;
             intro.style.opacity   = (1 - ti).toFixed(3);
-            intro.style.transform = 'translate3d(0,' + (-5 * ti).toFixed(1) + 'vh,0) scale(' + (1 - 0.06 * ti).toFixed(3) + ')';
+            intro.style.transform = 'translate3d(0,' + (-10 * ti).toFixed(1) + 'vh,0) scale(' + (1 - 0.05 * ti).toFixed(3) + ')';
           } else {
             intro.style.opacity   = '0';
-            intro.style.transform = '';
+            intro.style.transform = 'translate3d(0, -10vh, 0)';
           }
         }
 
