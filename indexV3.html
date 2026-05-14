@@ -3532,6 +3532,159 @@
     }
 
     /* ════════════════════════════════════════
+       HERO V3 — Atmospheric · Cinematic
+       ════════════════════════════════════════ */
+    .hero-v3 {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #06090d;
+    }
+    /* Background photo — dominant, warmed to amber uniformly */
+    .hv3-bg {
+      position: absolute; inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.85;
+      z-index: 1;
+      transform: scale(1.08);
+      filter: sepia(1) hue-rotate(-22deg) saturate(2.4) brightness(0.62) contrast(1.22);
+    }
+    /* Uniform warm amber color grade across entire hero — no spotlight */
+    .hv3-glow {
+      position: absolute; inset: 0; z-index: 2;
+      background:
+        linear-gradient(135deg, rgba(80,28,5,0.42) 0%, rgba(140,55,12,0.32) 50%, rgba(80,28,5,0.42) 100%),
+        radial-gradient(ellipse 100% 80% at 50% 50%, rgba(220,110,25,0.16) 0%, rgba(180,80,15,0.10) 50%, transparent 100%);
+      pointer-events: none;
+      mix-blend-mode: normal;
+    }
+    /* Edge darken only — top and bottom, very subtle on sides */
+    .hv3-vignette {
+      position: absolute; inset: 0; z-index: 3;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.45) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.55) 100%),
+        radial-gradient(ellipse 100% 85% at center, transparent 50%, rgba(0,0,0,0.25) 100%);
+      pointer-events: none;
+    }
+    /* Legacy overlay kept (transparent now) */
+    .hv3-overlay { display: none; }
+    /* Fade into stats bar below */
+    .hv3-fade-btm {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(transparent, #020b18);
+      z-index: 3; pointer-events: none;
+    }
+    /* Centered content block */
+    .hv3-inner {
+      position: relative; z-index: 10;
+      text-align: center;
+      padding: 148px 40px 130px;
+      display: flex; flex-direction: column; align-items: center;
+      max-width: 880px; width: 100%;
+    }
+    /* Staggered fade-up */
+    .hv3-inner > * {
+      opacity: 0;
+      animation: fadeUp 1.1s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .hv3-eyebrow  { animation-delay: 0.08s; }
+    .hv3-h1       { animation-delay: 0.24s; }
+    .hv3-sub      { animation-delay: 0.40s; }
+    .hv3-cta-row  { animation-delay: 0.54s; }
+    .hv3-trust    { animation-delay: 0.68s; }
+
+    /* DM Mono eyebrow */
+    .hv3-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px; font-weight: 500;
+      letter-spacing: 5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 30px;
+    }
+    .hv3-eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 10px rgba(200,66,10,0.8);
+      animation: live-pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    /* Cormorant Garamond headline */
+    .hv3-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(56px, 7.8vw, 104px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.01;
+      letter-spacing: -2.5px;
+      margin-bottom: 22px;
+    }
+    .hv3-h1 em {
+      font-style: italic;
+      background: linear-gradient(130deg, #f5c842 0%, #e8701a 55%, #c8420a 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Subheadline */
+    .hv3-sub {
+      font-size: 18px; font-weight: 400;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.65;
+      max-width: 490px; margin: 0 auto 50px;
+    }
+
+    /* Single underlined CTA — Moooi style */
+    .hv3-cta-row {
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 44px;
+    }
+    .hv3-link-cta {
+      display: inline-flex; align-items: center; gap: 12px;
+      color: #fff;
+      font-size: 16px; font-weight: 500;
+      text-decoration: none; letter-spacing: 0.4px;
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      padding-bottom: 7px;
+      transition: color 0.4s, border-color 0.4s, gap 0.3s;
+    }
+    .hv3-link-cta svg { transition: transform 0.3s; opacity: 0.85; }
+    .hv3-link-cta:hover { color: #f5c842; border-color: #f5c842; gap: 18px; }
+    .hv3-link-cta:hover svg { transform: translateX(4px); opacity: 1; }
+
+    /* Trust row — small subtle text */
+    .hv3-trust {
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 0;
+    }
+    .hv3-trust-item {
+      display: inline-flex; align-items: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.32);
+      padding: 0 18px; position: relative;
+    }
+    .hv3-trust-item:not(:last-child)::after {
+      content: '·';
+      position: absolute; right: -3px;
+      color: rgba(255,255,255,0.18); font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-v3 { min-height: auto; }
+      .hv3-inner { padding: 110px 24px 100px; }
+      .hv3-h1 { font-size: clamp(46px, 14vw, 72px); letter-spacing: -1.5px; }
+      .hv3-cta-sep { display: none; }
+      .hv3-sub { font-size: 16px; }
+    }
+
+    /* ════════════════════════════════════════
        ECOSYSTEM V2 — The Four Pillars (dark)
        ════════════════════════════════════════ */
     .eco-v2 {
@@ -3722,6 +3875,249 @@
       .eco-v2-grid { grid-template-columns: 1fr; }
       .eco-v2-card.wide .eco-v2-card-body { grid-template-columns: 1fr; gap: 32px; }
       .eco-v2-wrap { padding: 0 24px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       ECOSYSTEM V3 — VERTICAL TIMELINE JOURNEY
+       ══════════════════════════════════════════════ */
+    .eco-v3 {
+      padding: 90px 0 90px;
+      background: linear-gradient(180deg, #f6f3ee 0%, #efe9df 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .eco-v3::before {
+      content: ''; position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(200,66,10,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(13,46,78,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .eco-v3-wrap {
+      max-width: 1380px; margin: 0 auto;
+      padding: 0 50px; position: relative; z-index: 2;
+    }
+    /* Section header — centered */
+    .eco-v3-hdr {
+      text-align: center;
+      margin-bottom: 56px;
+      max-width: 760px;
+      margin-left: auto; margin-right: auto;
+    }
+    .eco-v3-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 4.5px; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 22px;
+    }
+    .eco-v3-eyebrow::before, .eco-v3-eyebrow::after {
+      content: ''; width: 28px; height: 1px;
+      background: rgba(200,66,10,0.4);
+    }
+    .eco-v3-hdr-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 4.8vw, 64px);
+      font-weight: 700; color: #0D2E4E;
+      line-height: 1.04; letter-spacing: -1.8px;
+      margin-bottom: 18px;
+    }
+    .eco-v3-hdr-title em { font-style: italic; color: var(--orange); }
+    .eco-v3-hdr-sub {
+      font-size: 16px; color: #64748b; line-height: 1.65;
+      max-width: 580px; margin: 0 auto;
+    }
+
+    /* ── VERTICAL TIMELINE / JOURNEY ── */
+    .eco-v3-timeline {
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 30px 0 20px;
+    }
+    /* Central vertical spine */
+    .eco-v3-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(200,66,10,0.4) 8%,
+        rgba(200,66,10,0.55) 50%,
+        rgba(200,66,10,0.4) 92%,
+        transparent 100%);
+    }
+
+    /* Each step in the journey */
+    .eco-v3-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 56px;
+    }
+    .eco-v3-step:last-child { margin-bottom: 0; }
+
+    /* Center dot/marker */
+    .eco-v3-marker {
+      grid-column: 2;
+      position: relative;
+      width: 80px; height: 80px;
+      display: flex; align-items: center; justify-content: center;
+      justify-self: center;
+      z-index: 5;
+    }
+    .eco-v3-marker-ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: #f6f3ee;
+      border: 2px solid rgba(200,66,10,0.4);
+      box-shadow: 0 0 0 8px #f6f3ee, 0 8px 24px rgba(200,66,10,0.18);
+      transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .eco-v3-marker-num {
+      position: relative; z-index: 2;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px; font-weight: 700;
+      color: #0D2E4E;
+      letter-spacing: -1px;
+      transition: color 0.4s;
+    }
+    .eco-v3-marker::before {
+      content: '';
+      position: absolute; inset: -16px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,66,10,0.18) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    /* Card on left or right of spine */
+    .eco-v3-step-card {
+      grid-column: 1;
+      background: linear-gradient(135deg, #0c1f38 0%, #07172b 100%);
+      border-radius: 18px;
+      padding: 28px 30px 26px;
+      text-decoration: none;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 12px 32px -8px rgba(13,46,78,0.18);
+    }
+    /* Cards on the right side */
+    .eco-v3-step.right .eco-v3-step-card {
+      grid-column: 3;
+    }
+    /* Connector line from card to dot */
+    .eco-v3-step-card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 30px; height: 2px;
+      background: linear-gradient(90deg, rgba(200,66,10,0.5), rgba(200,66,10,0.15));
+      transform: translateY(-50%);
+    }
+    .eco-v3-step:not(.right) .eco-v3-step-card::after {
+      right: -30px;
+      background: linear-gradient(90deg, rgba(200,66,10,0.15), rgba(200,66,10,0.5));
+    }
+    .eco-v3-step.right .eco-v3-step-card::after {
+      left: -30px;
+    }
+
+    /* Card hover */
+    .eco-v3-step-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(200,66,10,0.35);
+      box-shadow: 0 24px 50px -10px rgba(13,46,78,0.3), 0 0 0 1px rgba(200,66,10,0.2);
+    }
+    .eco-v3-step:hover .eco-v3-marker-ring {
+      background: linear-gradient(135deg, #f5c842 0%, #e8701a 100%);
+      border-color: rgba(245,200,66,0.8);
+      transform: scale(1.08);
+    }
+    .eco-v3-step:hover .eco-v3-marker-num {
+      color: #fff;
+    }
+    .eco-v3-step:hover .eco-v3-marker::before { opacity: 1; }
+
+    /* Card header */
+    .eco-v3-step-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 9.5px; font-weight: 500;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(200,66,10,0.12);
+      border: 1px solid rgba(200,66,10,0.25);
+      padding: 5px 12px; border-radius: 50px;
+      margin-bottom: 14px;
+    }
+    .eco-v3-step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 700;
+      color: #fff; line-height: 1.18;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .eco-v3-step-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, #f5c842 0%, #e8701a 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .eco-v3-step-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+    .eco-v3-step-action {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--orange);
+      transition: gap 0.3s, color 0.3s;
+    }
+    .eco-v3-step-action svg { transition: transform 0.3s; }
+    .eco-v3-step-card:hover .eco-v3-step-action {
+      color: #f5c842; gap: 14px;
+    }
+    .eco-v3-step-card:hover .eco-v3-step-action svg { transform: translateX(3px); }
+
+    /* Right-aligned text for left-side cards */
+    .eco-v3-step:not(.right) .eco-v3-step-card {
+      text-align: right;
+    }
+    .eco-v3-step:not(.right) .eco-v3-step-action {
+      flex-direction: row-reverse;
+    }
+    .eco-v3-step:not(.right) .eco-v3-step-action svg {
+      transform: rotate(180deg);
+    }
+    .eco-v3-step:not(.right) .eco-v3-step-card:hover .eco-v3-step-action svg {
+      transform: rotate(180deg) translateX(3px);
+    }
+
+    @media (max-width: 768px) {
+      .eco-v3-wrap { padding: 0 20px; }
+      .eco-v3-timeline::before { left: 30px; }
+      .eco-v3-step { grid-template-columns: 60px 1fr; gap: 16px; margin-bottom: 32px; }
+      .eco-v3-marker { grid-column: 1; width: 60px; height: 60px; }
+      .eco-v3-marker-num { font-size: 22px; }
+      .eco-v3-marker-ring { box-shadow: 0 0 0 6px #f6f3ee, 0 6px 18px rgba(200,66,10,0.18); }
+      .eco-v3-step-card,
+      .eco-v3-step.right .eco-v3-step-card { grid-column: 2; text-align: left; }
+      .eco-v3-step-card::after,
+      .eco-v3-step.right .eco-v3-step-card::after { left: -16px; right: auto; width: 16px; }
+      .eco-v3-step:not(.right) .eco-v3-step-action { flex-direction: row; }
+      .eco-v3-step:not(.right) .eco-v3-step-action svg { transform: none; }
+      .eco-v3-step:not(.right) .eco-v3-step-card:hover .eco-v3-step-action svg { transform: translateX(3px); }
     }
 
     /* ══════════════════════════════════════════════
@@ -4164,51 +4560,36 @@
   </section>
   </div>
 
-  <!-- ══ HERO V2 — Deep Navy, clean typographic, no dashboard image ══ -->
-  <section class="hero-v2" id="hero">
-    <div class="hv2-line-top"></div>
-    <div class="hv2-grid-bg"></div>
-    <div class="hv2-glow-l"></div>
-    <div class="hv2-glow-r"></div>
-    <div class="hv2-rules"></div>
+  <!-- ══ HERO V3 — Atmospheric · Cinematic · Moooi-inspired ══ -->
+  <section class="hero-v3" id="hero">
+    <div class="hv3-bg"></div>
+    <div class="hv3-glow"></div>
+    <div class="hv3-vignette"></div>
+    <div class="hv3-fade-btm"></div>
 
-    <div class="hv2-inner">
+    <div class="hv3-inner">
 
-      <div class="hv2-badge">
-        <span class="hv2-badge-dot"></span>
+      <p class="hv3-eyebrow">
+        <span class="hv3-eyebrow-dot"></span>
         Live Trading Room Open Now
-      </div>
+      </p>
 
-      <h1 class="hv2-h1">Trade Options With <em>Institutional Edge.</em></h1>
+      <h1 class="hv3-h1">Simple Strategies.<br><em>Expert Guidance.</em></h1>
 
-      <p class="hv2-sub">Real-time live streams, proven strategies, and the tools to execute confidently — without predicting market direction.</p>
+      <p class="hv3-sub">Learn to trade options the right way — without predicting market direction.</p>
 
-      <div class="hv2-ctas">
-        <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">
-          Get Free Access
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="/performance" class="btn-ghost">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          View Track Record
+      <div class="hv3-cta-row">
+        <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="hv3-link-cta">
+          Get Free Access to Our Strategy Courses
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
 
-      <div class="hv2-trust">
-        <div class="hv2-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          No credit card required
-        </div>
-        <div class="hv2-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Verified performance since 2017
-        </div>
-        <div class="hv2-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Cancel anytime
-        </div>
+      <div class="hv3-trust">
+        <span class="hv3-trust-item">No credit card required</span>
+        <span class="hv3-trust-item">Verified since 2017</span>
+        <span class="hv3-trust-item">Cancel anytime</span>
       </div>
-
 
     </div>
   </section>
@@ -4341,85 +4722,87 @@
     </div>
   </section>
 
-  <!-- ══ ECOSYSTEM V2 — The Four Pillars (dark) ══ -->
-  <section class="eco-v2" id="membership-plans">
-    <div class="eco-v2-wrap">
+  <!-- ══ ECOSYSTEM V3 — Featured Hero Card + 3 Compact Supporting Cards ══ -->
+  <section class="eco-v3" id="membership-plans">
+    <div class="eco-v3-wrap">
 
-      <!-- Header -->
-      <div class="eco-v2-hdr">
-        <div class="eco-v2-hdr-left">
-          <div class="eco-v2-eyebrow">The Ecosystem · Where to Start</div>
-          <h2 class="eco-v2-title">Your entry point<br>into <em>everything.</em></h2>
-          <p class="eco-v2-sub">Four ways in. Whether you want free access, live alerts, community, or a personal walkthrough — start here.</p>
-        </div>
-        <a href="pricing.html" class="eco-v2-hdr-cta">
-          Compare all plans
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+      <!-- Centered Header -->
+      <div class="eco-v3-hdr">
+        <div class="eco-v3-eyebrow">The Ecosystem · Where to Start</div>
+        <h2 class="eco-v3-hdr-title">Your entry point into <em>everything.</em></h2>
+        <p class="eco-v3-hdr-sub">Four ways in. Whether you want free access, live alerts, community, or a personal walkthrough — start here.</p>
       </div>
 
-      <!-- Grid: 2 tall cards top row, 1 wide card bottom row -->
-      <div class="eco-v2-grid">
+      <!-- Vertical Timeline / Journey -->
+      <div class="eco-v3-timeline">
 
-        <!-- Card 01 -->
-        <a href="free-membership.html" class="eco-v2-card">
-          <span class="eco-v2-num">01</span>
-          <span class="eco-v2-card-tag">Free Membership</span>
-          <h3>Start with the <em>free</em> courses.</h3>
-          <p>Five strategy courses plus bonus resources — the same foundation every paying member started with. No credit card required.</p>
-          <div class="eco-v2-card-link">
-            Get Instant Access
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <!-- Step 01 — card LEFT of spine -->
+        <div class="eco-v3-step">
+          <a href="free-membership.html" class="eco-v3-step-card">
+            <span class="eco-v3-step-tag">Free Membership</span>
+            <h3 class="eco-v3-step-title">Start with the <em>free</em> courses.</h3>
+            <p class="eco-v3-step-desc">Five strategy courses plus bonus resources — the same foundation every paying member started with. No credit card required.</p>
+            <span class="eco-v3-step-action">
+              Get Instant Access
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+          <div class="eco-v3-marker">
+            <div class="eco-v3-marker-ring"></div>
+            <span class="eco-v3-marker-num">01</span>
           </div>
-        </a>
+        </div>
 
-        <!-- Card 02 -->
-        <a href="pricing.html" class="eco-v2-card">
-          <span class="eco-v2-num">02</span>
-          <span class="eco-v2-card-tag">Premium Memberships</span>
-          <h3>Trade <em>alongside</em> our team.</h3>
-          <p>Live day-trading stream, real-time alerts, full strategy library, and the room where every trade we send gets posted — winners and losers.</p>
-          <div class="eco-v2-card-link">
-            Compare Plans
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <!-- Step 02 — card RIGHT of spine -->
+        <div class="eco-v3-step right">
+          <div class="eco-v3-marker">
+            <div class="eco-v3-marker-ring"></div>
+            <span class="eco-v3-marker-num">02</span>
           </div>
-        </a>
+          <a href="pricing.html" class="eco-v3-step-card">
+            <span class="eco-v3-step-tag">Premium Memberships</span>
+            <h3 class="eco-v3-step-title">Trade <em>alongside</em> our team.</h3>
+            <p class="eco-v3-step-desc">Live day-trading stream, real-time alerts, full strategy library, and the room where every trade gets posted — winners and losers.</p>
+            <span class="eco-v3-step-action">
+              Compare Plans
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
 
-        <!-- Card 03 — wide, spans full row -->
-        <a href="/community" class="eco-v2-card wide">
-          <div class="eco-v2-card-body">
-            <!-- Left: text -->
-            <div>
-              <span class="eco-v2-num">03</span>
-              <span class="eco-v2-card-tag">Community + Coaching</span>
-              <h3>A room full of traders who <em>think like you.</em></h3>
-              <p>Ask questions, share setups, and stay sharp between sessions. Or book a complimentary one-on-one call with a full-time trader on our team — no pitch, just answers.</p>
-              <div class="eco-v2-card-link">
-                Join the Community
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </div>
-            </div>
-            <!-- Right: feature pills -->
-            <div class="eco-v2-wide-pills">
-              <div class="eco-v2-pill">
-                <span class="eco-v2-pill-dot"></span>
-                Trade discussion &amp; Q&amp;A — active daily
-              </div>
-              <div class="eco-v2-pill">
-                <span class="eco-v2-pill-dot"></span>
-                Complimentary coaching calls available
-              </div>
-              <div class="eco-v2-pill">
-                <span class="eco-v2-pill-dot"></span>
-                Exclusive to Navigation Trading members
-              </div>
-              <div class="eco-v2-pill">
-                <span class="eco-v2-pill-dot"></span>
-                TradeHacker Mindset Podcast — 20+ years of wisdom
-              </div>
-            </div>
+        <!-- Step 03 — card LEFT -->
+        <div class="eco-v3-step">
+          <a href="/community" class="eco-v3-step-card">
+            <span class="eco-v3-step-tag">Join Our Community</span>
+            <h3 class="eco-v3-step-title">Traders who <em>think like you.</em></h3>
+            <p class="eco-v3-step-desc">Ask questions, share setups, and stay sharp between sessions. Interact with like-minded traders and get your trading questions answered.</p>
+            <span class="eco-v3-step-action">
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+          <div class="eco-v3-marker">
+            <div class="eco-v3-marker-ring"></div>
+            <span class="eco-v3-marker-num">03</span>
           </div>
-        </a>
+        </div>
+
+        <!-- Step 04 — card RIGHT -->
+        <div class="eco-v3-step right">
+          <div class="eco-v3-marker">
+            <div class="eco-v3-marker-ring"></div>
+            <span class="eco-v3-marker-num">04</span>
+          </div>
+          <a href="https://calendly.com/navigationtrading" class="eco-v3-step-card">
+            <span class="eco-v3-step-tag">Questions?</span>
+            <h3 class="eco-v3-step-title">Book a <em>complimentary</em> call.</h3>
+            <p class="eco-v3-step-desc">Schedule a one-on-one session with one of our full-time traders. No pitch, no pressure — just straight answers to your questions.</p>
+            <span class="eco-v3-step-action">
+              Schedule a Call
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        </div>
 
       </div>
     </div>
@@ -5152,23 +5535,6 @@
       document.addEventListener('keydown', function(e){
         if (e.key === 'Escape') homeDD.classList.remove('is-open');
       });
-    })();
-  </script>
-
-  <!-- Version switcher: ?v=1 shows V1 (hero + ecosystem), default/v=2 shows V2 -->
-  <script>
-    (function(){
-      var v = new URLSearchParams(window.location.search).get('v');
-      var v1Hero = document.getElementById('hero-v1');
-      var v2Hero = document.querySelector('.hero-v2');
-      var v1Eco  = document.getElementById('ecosystem-v1');
-      var v2Eco  = document.querySelector('.eco-v2');
-      if (v === '1') {
-        if (v1Hero) v1Hero.style.display = 'block';
-        if (v2Hero) v2Hero.style.display = 'none';
-        if (v1Eco)  v1Eco.style.display  = 'block';
-        if (v2Eco)  v2Eco.style.display  = 'none';
-      }
     })();
   </script>
 

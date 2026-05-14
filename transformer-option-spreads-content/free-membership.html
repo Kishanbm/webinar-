@@ -21,6 +21,7 @@
   --blue-mid:  #163565;
   --orange:    #c8420a;
   --orange-lit:#e04d10;
+  --orange-bright: #e04d10;
   --orange-glow: rgba(200,66,10,.32);
   --gold:      #d4a040;
   --cream:     #f0f6ff;
@@ -1556,6 +1557,254 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   .stat-item { border-right: none; }
   .btn-final { padding: 16px 32px; font-size: 15px; }
 }
+    /* ══ SECTION 13: FINAL CTA ── REDESIGNED LIVE TERMINAL ══ */
+    .pm-final-cta {
+      background-color: #fff;
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .dt-terminal-cta {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #0D2E4E; /* Using site brand dark blue */
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      box-shadow: 0 40px 100px rgba(13, 46, 78, 0.15), 0 0 0 1px rgba(255,255,255,0.04) inset;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dt-terminal-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .dt-term-left {
+      padding: 60px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .dt-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      background: rgba(0,0,0,0.25);
+      padding: 8px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
+      width: fit-content;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .dt-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse-live 2s infinite;
+    }
+
+    @keyframes pulse-live {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .dt-term-left h2 {
+      font-size: clamp(34px, 4vw, 50px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .dt-term-left h2 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .dt-term-left p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 30px;
+    }
+
+    .dt-volume-profile {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
+      opacity: 0.8;
+    }
+
+    .dt-vol-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.2s;
+    }
+
+    .dt-vol-bar:nth-child(1) { width: 35%; animation: vol-shift 3s infinite alternate; }
+    .dt-vol-bar:nth-child(2) { width: 65%; animation: vol-shift 4s infinite alternate-reverse; }
+    .dt-vol-bar:nth-child(3) { width: 45%; animation: vol-shift 2.5s infinite alternate; }
+    .dt-vol-bar:nth-child(4) { width: 85%; background: var(--orange); box-shadow: 0 0 12px rgba(200,66,10,0.5); animation: vol-shift 3.5s infinite alternate-reverse; }
+    .dt-vol-bar:nth-child(5) { width: 25%; animation: vol-shift 2s infinite alternate; }
+
+    @keyframes vol-shift {
+      0% { transform: scaleX(0.85); transform-origin: left; }
+      100% { transform: scaleX(1.15); transform-origin: left; }
+    }
+
+    .dt-term-right {
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dt-term-price-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .dt-term-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .dt-term-price .val {
+      font-size: 68px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .dt-term-price .cur {
+      font-size: 30px;
+      color: var(--orange);
+      font-weight: 800;
+      transform: translateY(-20px);
+    }
+
+    .dt-term-price .per {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 500;
+    }
+
+    .dt-term-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      color: #fff;
+      padding: 16px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 12px 30px rgba(200, 66, 10, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dt-term-action::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: skewX(-20deg);
+      transition: 0.6s;
+    }
+
+    .dt-term-action:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(200, 66, 10, 0.4);
+    }
+
+    .dt-term-action:hover::before {
+      left: 200%;
+    }
+
+    .dt-term-features {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .dt-term-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+    }
+
+    .dt-term-feature svg {
+      width: 18px; height: 18px;
+      color: #10b981; /* Green checkmarks */
+      stroke-width: 3;
+    }
+
+    @media (max-width: 960px) {
+      .dt-terminal-cta {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        text-align: center;
+      }
+      .dt-term-left { padding: 48px 30px; align-items: center; }
+      .dt-live-badge { margin: 0 auto 24px; }
+      .dt-term-left p { margin: 0 auto; }
+      .dt-term-right { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 40px 30px; align-items: center; }
+      .dt-volume-profile { display: none; }
+      .dt-term-price { justify-content: center; }
+      .pm-final-cta { padding: 50px 0; }
+    }
 </style>
 </head>
 
@@ -2226,30 +2475,63 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 <!-- ═══════════════════════════════
      SECTION 9 — FINAL CTA
 ═══════════════════════════════ -->
-<section class="final-cta">
-  <div class="container">
-    <div class="final-cta-split reveal">
-      
-      <div class="final-cta-left">
-        <span class="eyebrow">Ready to Start?</span>
-        <h2>Start Your Trading Education Today</h2>
-        <p>Join 3,400+ active members and get instant access to 5 foundational courses. No credit card required. Ever.</p>
+  <!-- ── 13. FINAL CTA ── REDESIGNED LIVE TERMINAL ── -->
+  <section class="pm-final-cta">
+    <div class="container">
+      <div class="dt-terminal-cta reveal">
+        
+        <!-- Left Side: Console & Info -->
+        <div class="dt-term-left">
+          <div class="dt-live-badge">
+            <span class="dt-live-dot"></span> Ready to Start?
+          </div>
+          <h2>Start Your Trading Education <em>Today</em></h2>
+          <p>Join 3,400+ active members and get instant access to 5 foundational courses. No credit card required. Ever.</p>
+          
+          <div class="dt-volume-profile">
+            <div class="dt-vol-bar"></div>
+            <div class="dt-vol-bar"></div>
+            <div class="dt-vol-bar"></div>
+            <div class="dt-vol-bar"></div>
+            <div class="dt-vol-bar"></div>
+          </div>
+        </div>
 
-        <a href="#hero-cta" class="btn-final">
-          Join Free Now
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        </a>
+        <!-- Right Side: Ticket & Action -->
+        <div class="dt-term-right">
+          <div class="dt-term-price-lbl">Membership Rate</div>
+          <div class="dt-term-price">
+            <span class="cur">$</span>
+            <span class="val">0</span>
+            <span class="per">/ mo</span>
+          </div>
 
-        <div class="final-note">Free forever. Instant access. No hidden fees.</div>
+          <a href="#hero-cta" class="dt-term-action">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Join Free Now
+          </a>
+
+          <div class="dt-term-features">
+            <div class="dt-term-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Free forever.
+            </div>
+            <div class="dt-term-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Instant access.
+            </div>
+            <div class="dt-term-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              No hidden fees.
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <div class="final-cta-right">
-        <img src="../premium_trader_cta_setup_1778598905044.png" alt="Institutional Trading Setup" class="final-cta-img">
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
