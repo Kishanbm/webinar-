@@ -242,6 +242,72 @@
       margin-bottom: 18px;
     }
 
+    .contact-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 18px 7px 12px;
+      background: rgba(16,185,129,0.12);
+      border: 1px solid rgba(16,185,129,0.35);
+      border-radius: 50px;
+      color: #34d399;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+    .contact-hero-badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16,185,129,0.28);
+      animation: contact-pulse 2s ease-in-out infinite;
+    }
+    @keyframes contact-pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(16,185,129,0.28); }
+      50%      { box-shadow: 0 0 0 8px rgba(16,185,129,0.08); }
+    }
+
+    /* Trust strip below hero */
+    .contact-trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 760px;
+      margin: 44px auto 0;
+      gap: 0;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-trust-item {
+      text-align: center;
+      padding: 0 18px;
+      position: relative;
+    }
+    .contact-trust-item:not(:last-child)::after {
+      content: ''; position: absolute;
+      right: 0; top: 15%; bottom: 15%; width: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .contact-trust-num {
+      font-size: clamp(22px, 2.4vw, 30px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+      background: linear-gradient(135deg, #fff 40%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .contact-trust-lbl {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
     .contact-hero h1 .gold {
       background: linear-gradient(135deg, #e8500d 0%, #c8420a 100%);
       -webkit-background-clip: text;
@@ -548,6 +614,185 @@
       box-shadow: 0 8px 20px rgba(200,66,10,0.32);
     }
 
+    /* Other ways to reach us — cards below contact info */
+    .other-ways {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(13,46,78,0.1);
+    }
+    .other-ways-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: rgba(13,46,78,0.5);
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .other-ways-stack { display: flex; flex-direction: column; gap: 10px; }
+    .other-way-card {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px;
+      background: #fff;
+      border: 1.5px solid rgba(13,46,78,0.1);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .other-way-card:hover {
+      border-color: rgba(200,66,10,0.45);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -8px rgba(13,46,78,0.15);
+    }
+    .other-way-icon {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(200,66,10,0.1) 0%, rgba(200,66,10,0.04) 100%);
+      border: 1px solid rgba(200,66,10,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+    .other-way-text { flex: 1; min-width: 0; }
+    .other-way-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--teal-900);
+      margin-bottom: 2px;
+    }
+    .other-way-text span {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+    .other-way-arrow {
+      color: rgba(13,46,78,0.3);
+      transition: transform 0.3s, color 0.3s;
+      flex-shrink: 0;
+    }
+    .other-way-card:hover .other-way-arrow {
+      color: var(--orange);
+      transform: translateX(4px);
+    }
+
+    /* ── FAQ SECTION ── */
+    .contact-faq {
+      padding: 30px 0 80px;
+      background: #fbfcfd;
+      position: relative;
+    }
+    .contact-faq .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .faq-header {
+      position: sticky;
+      top: 110px;
+    }
+    .faq-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(200,66,10,0.08);
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 18px;
+    }
+    .faq-header h2 {
+      font-size: clamp(30px, 3.6vw, 44px);
+      font-weight: 800;
+      color: var(--teal-900);
+      letter-spacing: -1.2px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .faq-header h2 .gold {
+      background: linear-gradient(135deg, #e8500d 0%, #c8420a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+    }
+    .faq-header p {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.65;
+      max-width: 420px;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+
+    @media (max-width: 992px) {
+      .faq-grid { grid-template-columns: 1fr; gap: 32px; }
+      .faq-header { position: static; }
+    }
+    .faq-item {
+      background: #fff;
+      border: 1.5px solid rgba(13,46,78,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .faq-item:hover { border-color: rgba(200,66,10,0.3); }
+    .faq-item.open {
+      border-color: rgba(200,66,10,0.4);
+      box-shadow: 0 14px 36px -10px rgba(13,46,78,0.12);
+    }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px;
+      padding: 22px 26px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--teal-900);
+      transition: color 0.25s;
+      user-select: none;
+    }
+    .faq-q:hover { color: var(--orange); }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(200,66,10,0.08);
+      border: 1px solid rgba(200,66,10,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange);
+      flex-shrink: 0;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--orange);
+      color: #fff;
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .faq-item.open .faq-a { max-height: 320px; }
+    .faq-a-inner {
+      padding: 0 26px 24px;
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .faq-a-inner a { color: var(--orange); text-decoration: none; font-weight: 600; }
+    .faq-a-inner a:hover { text-decoration: underline; }
+
     /* ── BOTTOM CTA STRIP ── */
     .contact-cta {
       padding: 0 0 90px;
@@ -762,8 +1007,13 @@
     <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
     <div class="hero-bg-overlay"></div>
     <div class="container">
+      <div class="contact-hero-badge">
+        <span class="contact-hero-badge-dot"></span>
+        Currently Online &middot; Avg Response 6 hours
+      </div>
       <h1>Let&rsquo;s talk <span class="gold">trading.</span></h1>
       <p>Have a question about our memberships, need technical support, or just want to say hello? We&rsquo;re here to help you on every step of your trading journey.</p>
+
     </div>
   </section>
 
@@ -772,8 +1022,6 @@
     <img class="hero-bg-img" src="WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg" alt="">
     <div class="hero-bg-overlay"></div>
     <div class="container">
-      <h2 class="form-section-title">Let&rsquo;s grow your <span class="gold">trading.</span></h2>
-
       <div class="contact-grid">
         <!-- LEFT: Form (inside card) -->
         <div class="form-card-wrap">
@@ -845,22 +1093,133 @@
             </div>
           </div>
 
-          <div class="contact-socials">
-            <a href="https://www.facebook.com/navigationtrading" target="_blank" aria-label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="https://x.com/navtrading1" target="_blank" aria-label="Twitter / X">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/navigationtrading" target="_blank" aria-label="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-            </a>
-            <a href="https://whop.com/navigationtrading/" target="_blank" aria-label="Discord">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 5.672a16.014 16.014 0 0 0-3.954-1.225 12.196 12.196 0 0 0-.504 1.034 14.929 14.929 0 0 0-4.49 0 12.196 12.196 0 0 0-.504-1.034 16.014 16.014 0 0 0-3.954 1.225C3.025 9.4 2.296 13.034 2.66 16.612a16.137 16.137 0 0 0 4.943 2.5 11.91 11.91 0 0 0 1.06-1.717 10.346 10.346 0 0 1-1.67-.797c.14-.103.277-.21.41-.319a11.488 11.488 0 0 0 9.88 0c.133.11.27.216.41.32a10.336 10.336 0 0 1-1.67.796c.302.61.658 1.187 1.06 1.717a16.137 16.137 0 0 0 4.943-2.5c.418-4.131-.706-7.731-2.706-10.94zM9.667 14.36c-.97 0-1.768-.892-1.768-1.987 0-1.094.78-1.987 1.768-1.987.99 0 1.787.892 1.768 1.987 0 1.094-.78 1.987-1.768 1.987zm6.547 0c-.97 0-1.768-.892-1.768-1.987 0-1.094.78-1.987 1.768-1.987.99 0 1.787.892 1.768 1.987 0 1.094-.778 1.987-1.768 1.987z"/></svg>
-            </a>
+          <!-- Other ways to reach us -->
+          <div class="other-ways">
+            <div class="other-ways-label">Other ways to connect</div>
+            <div class="other-ways-stack">
+              <a href="https://whop.com/navigationtrading/" target="_blank" class="other-way-card">
+                <div class="other-way-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.952 5.672a16.014 16.014 0 0 0-3.954-1.225 12.196 12.196 0 0 0-.504 1.034 14.929 14.929 0 0 0-4.49 0 12.196 12.196 0 0 0-.504-1.034 16.014 16.014 0 0 0-3.954 1.225C3.025 9.4 2.296 13.034 2.66 16.612a16.137 16.137 0 0 0 4.943 2.5 11.91 11.91 0 0 0 1.06-1.717 10.346 10.346 0 0 1-1.67-.797c.14-.103.277-.21.41-.319a11.488 11.488 0 0 0 9.88 0c.133.11.27.216.41.32a10.336 10.336 0 0 1-1.67.796c.302.61.658 1.187 1.06 1.717a16.137 16.137 0 0 0 4.943-2.5c.418-4.131-.706-7.731-2.706-10.94zM9.667 14.36c-.97 0-1.768-.892-1.768-1.987 0-1.094.78-1.987 1.768-1.987.99 0 1.787.892 1.768 1.987 0 1.094-.78 1.987-1.768 1.987zm6.547 0c-.97 0-1.768-.892-1.768-1.987 0-1.094.78-1.987 1.768-1.987.99 0 1.787.892 1.768 1.987 0 1.094-.778 1.987-1.768 1.987z"/></svg>
+                </div>
+                <div class="other-way-text">
+                  <strong>Join the Community</strong>
+                  <span>3,400+ active traders on Discord</span>
+                </div>
+                <svg class="other-way-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="https://calendly.com/navigationtrading" target="_blank" class="other-way-card">
+                <div class="other-way-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+                </div>
+                <div class="other-way-text">
+                  <strong>Schedule a Call</strong>
+                  <span>Book a complimentary coaching call</span>
+                </div>
+                <svg class="other-way-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="https://navigationtrading.com/blog/" target="_blank" class="other-way-card">
+                <div class="other-way-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <div class="other-way-text">
+                  <strong>Read the Blog</strong>
+                  <span>Strategy breakdowns &amp; market notes</span>
+                </div>
+                <svg class="other-way-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ SECTION ── -->
+  <section class="contact-faq" id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-header">
+          <span class="faq-eyebrow">Frequently Asked</span>
+          <h2>Quick answers, <span class="gold">straight from us.</span></h2>
+          <p>The questions members ask most. If your answer isn&rsquo;t here, use the form above and we&rsquo;ll get back to you within 24 hours.</p>
+        </div>
+
+        <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-q">
+            How quickly will I get a response after submitting the form?
+            <span class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Our team typically responds within 6 hours during business days, and always within 24 hours Monday through Friday. For urgent technical issues with an active membership, mention &ldquo;urgent&rdquo; in your subject line and we&rsquo;ll prioritize it.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            What&rsquo;s included in the Free Membership?
+            <span class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Five complete strategy courses, bonus resources, and access to our public trade-result archives going back to 2017. No credit card required &mdash; <a href="/free-membership">start here</a>.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Do you offer refunds on premium memberships?
+            <span class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Yes &mdash; every premium membership comes with a 7-day money-back guarantee. If it&rsquo;s not the right fit, email <a href="mailto:support@navigationtrading.com">support@navigationtrading.com</a> within 7 days of your purchase for a full refund, no questions asked.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Can I switch between membership plans later?
+            <span class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Absolutely. You can upgrade, downgrade, or cancel anytime from your Whop dashboard. Prorated credit applies on upgrades, and there are no cancellation fees on any plan.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Is the Live Trading Room beginner-friendly?
+            <span class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Yes. We narrate every trade in real time and explain the reasoning behind it. New members tell us this is the fastest way to learn &mdash; you see the setup, the entry, the management, and the exit, live. We recommend completing the five free strategy courses first.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Do you offer partnerships or affiliate programs?
+            <span class="faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">We work with a small number of carefully selected partners. If you run a trading-related newsletter, podcast, or community, use the form above with &ldquo;Partnership Inquiry&rdquo; selected and our partnerships lead will be in touch.</div>
+          </div>
+        </div>
+
+        </div><!-- /faq-list -->
+      </div><!-- /faq-grid -->
     </div>
   </section>
 
@@ -959,6 +1318,15 @@
       if (!selectWrapper.contains(e.target)) {
         selectWrapper.classList.remove('open');
       }
+    });
+
+    // FAQ accordion — one open at a time
+    document.querySelectorAll('.faq-item').forEach(function(item){
+      item.querySelector('.faq-q').addEventListener('click', function(){
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(x){ x.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
     });
   </script>
 </body>
