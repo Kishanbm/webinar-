@@ -326,25 +326,27 @@
       line-height: 1.65;
     }
 
-    /* ── FORM SECTION (light/white) ── */
+    /* ── FORM SECTION (solid clean cream + subtle texture) ── */
     .contact-form-section {
       padding: 90px 0 110px;
-      background: #fbfcfd;
+      background: #f6f3ee;
       position: relative;
       overflow: hidden;
     }
 
-    .contact-form-section::before {
+    .contact-form-section .hero-bg-img { display: none; }
+
+    /* Single warm accent blob top-right corner */
+    .contact-form-section::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 40% 30% at 18% 18%, rgba(200,66,10,0.05) 0%, transparent 60%),
-        radial-gradient(ellipse 35% 25% at 82% 82%, rgba(13,46,78,0.05) 0%, transparent 60%);
+      top: -150px; right: -150px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,66,10,0.08) 0%, transparent 65%);
       pointer-events: none;
     }
 
-    .contact-form-section .hero-bg-img,
     .contact-form-section .hero-bg-overlay { display: none; }
 
     .contact-form-section .container {
@@ -540,7 +542,7 @@
       box-shadow: 0 16px 36px rgba(200,66,10,0.45);
     }
 
-    /* ── INFO (right side) ── */
+    /* ── INFO (right side) — clean column ── */
     .contact-info-side {
       padding-left: 50px;
       padding-top: 10px;
