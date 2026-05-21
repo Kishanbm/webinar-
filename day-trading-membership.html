@@ -691,144 +691,152 @@
       z-index: 2;
     }
 
+    /* Vertical Timeline — single spine, items stacked top to bottom */
     .dt-tl-flow {
       position: relative;
-      margin-top: 60px;
-      height: 420px;
-      display: block;
-      /* Removed flex from main container to avoid item interference */
+      max-width: 900px;
+      margin: 60px auto 0;
+      padding-left: 100px;
     }
 
     .dt-tl-track {
       position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: rgba(255, 255, 255, .12);
-      transform: translateY(-50%);
-      z-index: 1;
+      left: 131px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      height: auto;
+      background: rgba(255, 255, 255, .08);
+      transform: none;
     }
 
     .dt-tl-progress {
       position: absolute;
-      top: 50%;
-      left: 0;
-      height: 4px;
-      background: #ff6600;
-      /* Solid orange */
-      box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
-      transition: width 1s ease;
-      width: 0%;
-      transform: translateY(-50%);
-      z-index: 2;
-      /* ABOVE the track */
+      left: 131px;
+      top: 0;
+      width: 2px;
+      height: 0;
+      background: linear-gradient(to bottom, var(--orange), rgba(200,66,10,.4));
+      z-index: 1;
+      transition: height 1.2s ease;
+      pointer-events: none;
+      transform: none;
+      box-shadow: none;
     }
 
     .dt-tl-steps {
-      display: flex;
-      justify-content: space-between;
+      display: block;
       width: 100%;
-      height: 100%;
+      height: auto;
       position: relative;
       z-index: 5;
     }
 
     .dt-tl-step {
-      flex: 1;
       position: relative;
-      height: 100%;
+      margin-bottom: 60px;
+      padding-left: 60px;
+      flex: none;
+      height: auto;
     }
+    .dt-tl-step:last-child { margin-bottom: 0; }
 
     .dt-tl-dot {
       position: absolute;
-      top: 50%;
-      left: 0;
-      width: 18px;
-      height: 18px;
+      top: 3px;
+      left: 26px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      background: #061527;
-      border: 4px solid rgba(255, 255, 255, .3);
-      z-index: 10;
-      transition: all .4s;
-      transform: translateY(-50%);
+      background: #06101e;
+      border: 3px solid var(--orange);
+      z-index: 2;
+      box-shadow: 0 0 10px rgba(200,66,10,.5);
+      transition: background .4s, box-shadow .4s, border-color .4s;
+      transform: none;
     }
 
     .dt-tl-step.active .dt-tl-dot {
-      background: #ff6600;
-      border-color: #ff6600;
-      box-shadow: 0 0 0 5px rgba(255, 102, 0, .2), 0 0 25px rgba(255, 102, 0, 0.6);
-      transform: translateY(-50%) scale(1.1);
+      background: var(--orange);
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px rgba(200,66,10,.2), 0 0 16px rgba(200,66,10,.6);
+      transform: none;
     }
 
     .dt-tl-step.past .dt-tl-dot {
-      background: #ff6600;
-      border-color: #ff6600;
-      opacity: 0.8;
+      background: rgba(200,66,10,.5);
+      border-color: rgba(200,66,10,.5);
+      opacity: 1;
     }
 
     .dt-tl-step-time {
       position: absolute;
-      display: inline-block;
+      left: -100px;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+      width: 80px;
+      text-align: right;
       font-family: 'DM Mono', monospace;
       font-size: 13px;
-      color: #ff6600;
-      font-weight: 700;
+      font-weight: 800;
+      color: var(--orange);
       letter-spacing: 0.5px;
-      background: rgba(255, 102, 0, 0.1);
-      padding: 5px 12px;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 102, 0, 0.2);
+      background: none;
+      padding: 0;
+      border: none;
+      border-radius: 0;
       white-space: nowrap;
       z-index: 5;
     }
 
     .dt-tl-content {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      padding-right: 15px;
+      position: static;
+      left: auto;
+      width: auto;
+      padding-right: 0;
       z-index: 5;
     }
 
-    .dt-tl-step:nth-child(odd) .dt-tl-step-time {
-      bottom: 50%;
-      margin-bottom: 22px;
-    }
-
-    .dt-tl-step:nth-child(odd) .dt-tl-content {
-      top: 50%;
-      margin-top: 22px;
-    }
-
-    .dt-tl-step:nth-child(even) .dt-tl-content {
-      bottom: 50%;
-      margin-bottom: 22px;
-    }
-
+    /* Reset odd/even positioning from horizontal layout */
+    .dt-tl-step:nth-child(odd) .dt-tl-step-time,
     .dt-tl-step:nth-child(even) .dt-tl-step-time {
-      top: 50%;
-      margin-top: 22px;
+      bottom: auto;
+      top: 0;
+      margin: 0;
+    }
+
+    .dt-tl-step:nth-child(odd) .dt-tl-content,
+    .dt-tl-step:nth-child(even) .dt-tl-content {
+      top: auto;
+      bottom: auto;
+      margin: 0;
     }
 
     .dt-tl-content h3 {
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 800;
-      color: #fff;
+      color: rgba(255,255,255,.7);
       margin-bottom: 8px;
       line-height: 1.3;
+      transition: color .3s;
     }
 
-    .dt-tl-step.active h3 {
-      color: #fff;
-    }
+    .dt-tl-step.active h3 { color: #fff; }
+    .dt-tl-step.past h3 { color: rgba(255,255,255,.35); }
 
     .dt-tl-content p {
-      font-size: 13.5px;
-      color: rgba(255, 255, 255, .5);
-      line-height: 1.6;
-      max-width: 180px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, .4);
+      line-height: 1.7;
+      max-width: none;
+      transition: color .3s;
     }
+
+    .dt-tl-step.active p { color: rgba(255,255,255,.65); }
+    .dt-tl-step.past p { color: rgba(255,255,255,.2); }
 
     /* ══ SECTION 4: LIVE EXPERIENCE — ULTRA-WIDE PREMIUM ══ */
     .dt-live {
@@ -2087,8 +2095,8 @@
     }
 
     .dt-bento-card {
-      background: #0D2E4E;
-      border: 1px solid rgba(255, 255, 255, .08);
+      background: var(--teal-light);
+      border: 1px solid rgba(13, 46, 78, .08);
       border-radius: 20px;
       padding: 0;
       display: flex;
@@ -2096,21 +2104,17 @@
       height: 100%;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(13, 46, 78, .18);
+      box-shadow: 0 8px 32px rgba(13, 46, 78, .05);
       transition: all 0.3s ease;
     }
 
     .dt-bento-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(160deg, rgba(255, 255, 255, .06) 0%, rgba(255, 255, 255, .01) 100%);
-      pointer-events: none;
+      display: none;
     }
 
     .dt-bento-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(13, 46, 78, .22), 0 0 0 1px rgba(200, 66, 10, .25);
+      box-shadow: 0 20px 48px rgba(13, 46, 78, .12), 0 0 0 1px rgba(200, 66, 10, .25);
     }
 
     .dt-bento-card-top {
@@ -2148,7 +2152,7 @@
 
     .dt-bento-card h3 {
       font-size: 19px;
-      color: #fff;
+      color: var(--teal-900);
       margin-bottom: 0;
       font-weight: 800;
       letter-spacing: -0.01em;
@@ -2156,21 +2160,24 @@
 
     .dt-bento-card p {
       font-size: 14px;
-      color: rgba(255, 255, 255, .55);
+      color: rgba(13, 46, 78, .75);
       line-height: 1.7;
       margin-bottom: 0;
       text-align: justify;
     }
 
     .dt-bento-visual {
-      display: none;
+      width: 100%;
+      height: 180px;
+      position: relative;
+      overflow: hidden;
     }
 
     .dt-bento-visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.85;
+      opacity: 0.95;
       transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.4s;
     }
 
@@ -2183,7 +2190,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(7, 24, 44, 1));
+      background: linear-gradient(to bottom, transparent 60%, var(--teal-light));
       pointer-events: none;
     }
     .dt-ticker-wrap {
@@ -3752,33 +3759,24 @@
         gap: 40px;
       }
 
-      .dt-tl-steps {
-        flex-direction: column;
-        gap: 40px;
+      .dt-tl-flow {
+        padding-left: 40px;
       }
-
-      .dt-tl-track,
-      .dt-tl-progress {
-        display: none;
-      }
-
-      .dt-tl-step {
-        padding-top: 0;
-        padding-left: 48px;
-      }
-
-      .dt-tl-dot {
-        top: 38px;
-        left: 0;
-      }
-
+      .dt-tl-track { left: 45px; }
+      .dt-tl-progress { left: 45px; }
+      .dt-tl-step { padding-left: 40px; margin-bottom: 40px; }
+      .dt-tl-dot { left: -1px; }
       .dt-tl-step-time {
         position: static;
-        margin-bottom: 12px;
+        align-items: flex-start;
+        width: auto;
+        text-align: left;
+        margin-bottom: 8px;
       }
-
-      .dt-tl-step p {
-        max-width: none;
+      .dt-tl-step:nth-child(odd) .dt-tl-step-time,
+      .dt-tl-step:nth-child(even) .dt-tl-step-time {
+        position: static;
+        margin-bottom: 8px;
       }
 
       .dt-feature-row {
@@ -4579,6 +4577,7 @@
         <!-- Card 1 -->
         <div class="dt-bento-card">
           <div class="dt-bento-visual">
+            <img src="dt_custom_indicators.png" alt="Custom Chart Indicators Mockup">
           </div>
           <div class="dt-bento-card-top">
             <div class="dt-bento-card-header">
@@ -4595,64 +4594,12 @@
               learning. NTT signals, entry triggers, momentum filters — install them on your charting platform and see
               the same setups the team sees every day.</p>
           </div>
-
-          <div class="dt-ticker-wrap">
-            <div class="dt-ticker">
-              <div class="dt-ticker-track">
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> NTT Signals</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Entry Triggers</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Momentum Filters</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> 0 DTE Timing</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> NTT Signals</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Entry Triggers</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Momentum Filters</span>
-              </div>
-            </div>
-            <div class="dt-ticker">
-              <div class="dt-ticker-track reverse">
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Trade Tested</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Systematic</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Price Action</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Live Signals</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Trade Tested</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Systematic</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Price Action</span>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- Card 2 -->
         <div class="dt-bento-card">
           <div class="dt-bento-visual">
+            <img src="dt_0dte_toolkit.png" alt="0 DTE Strategy Toolkit Mockup">
           </div>
           <div class="dt-bento-card-top">
             <div class="dt-bento-card-header">
@@ -4668,58 +4615,12 @@
               rules, and risk management parameters — all built into the indicator suite so you're not calculating on
               the fly when speed matters.</p>
           </div>
-
-          <div class="dt-ticker-wrap">
-            <div class="dt-ticker">
-              <div class="dt-ticker-track">
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Strike Selection</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Entry Timing</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Risk Parameters</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Theta Capture</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Strike Selection</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Entry Timing</span>
-              </div>
-            </div>
-            <div class="dt-ticker">
-              <div class="dt-ticker-track reverse">
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Fast Execution</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Rules Based</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Probabilities</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Data Driven</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Fast Execution</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Rules Based</span>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- Card 3 -->
         <div class="dt-bento-card">
           <div class="dt-bento-visual">
+            <img src="dt_trade_alerts.png" alt="Trade Alert System Mockup">
           </div>
           <div class="dt-bento-card-top">
             <div class="dt-bento-card-header">
@@ -4733,53 +4634,6 @@
             <p>Real-time alerts delivered when day trading setups appear. Each alert tells you the strategy being used,
               the entry, the stop, and the management rules. You evaluate and decide — the alert gives you everything
               you need.</p>
-          </div>
-
-          <div class="dt-ticker-wrap">
-            <div class="dt-ticker">
-              <div class="dt-ticker-track">
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Instant Alerts</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Multi Strategy</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Entry + Exit</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Stop Targets</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Instant Alerts</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Multi Strategy</span>
-              </div>
-            </div>
-            <div class="dt-ticker">
-              <div class="dt-ticker-track reverse">
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Mobile Push</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> High Context</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Risk Guided</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Discord Sync</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> Mobile Push</span>
-                <span class="dt-bento-pill"><svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg> High Context</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -5746,65 +5600,56 @@
       window.scrollTo({ top, behavior: 'smooth' });
     }
 
-    /* Timeline logic */
+    /* Timeline logic — vertical, height-based progress */
     function updateTimeline() {
-      const steps = document.querySelectorAll('.dt-tl-step');
+      const items = Array.from(document.querySelectorAll('.dt-tl-step'));
       const progress = document.getElementById('tlProgress');
-      if (!steps.length || !progress) return;
+      if (!items.length || !progress) return;
 
       try {
         const now = new Date();
         const etStr = now.toLocaleTimeString("en-US", {
           timeZone: "America/New_York",
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false
+          hour: '2-digit', minute: '2-digit', hour12: false
         });
-
         const match = etStr.match(/(\d+):(\d+)/);
         if (!match) return;
-        let hrs = parseInt(match[1]);
-        let mns = parseInt(match[2]);
-        let mins = hrs * 60 + mns;
+        const mins = parseInt(match[1]) * 60 + parseInt(match[2]);
 
-        let lastPastIdx = -1, activeIdx = -1;
-        steps.forEach((step, i) => {
+        items.forEach(step => {
           const s = parseInt(step.dataset.start || 0);
           const e = parseInt(step.dataset.end || 0);
           step.classList.remove('active', 'past');
-
-          if (mins > e) {
-            step.classList.add('past');
-            lastPastIdx = i;
-          } else if (mins >= s) {
-            step.classList.add('active');
-            activeIdx = i;
-          }
+          if (mins > e) step.classList.add('past');
+          else if (mins >= s) step.classList.add('active');
         });
 
-        const total = steps.length;
-        if (activeIdx >= 0) {
-          const step = steps[activeIdx];
-          const s = parseInt(step.dataset.start);
-          const e = parseInt(step.dataset.end);
-          const stepProgress = (mins - s) / (e - s);
-          const basePct = (activeIdx / (total - 1)) * 100;
-          const nextPct = ((activeIdx + 1) / (total - 1)) * 100;
-          progress.style.width = (basePct + (stepProgress * (nextPct - basePct))) + '%';
-        } else if (lastPastIdx >= 0) {
-          if (lastPastIdx === total - 1) {
-            progress.style.width = '100%';
-          } else {
-            const lastStepEnd = parseInt(steps[lastPastIdx].dataset.end);
-            const nextStepStart = parseInt(steps[lastPastIdx + 1].dataset.start);
-            const gapProgress = Math.min(1, Math.max(0, (mins - lastStepEnd) / (nextStepStart - lastStepEnd)));
-            const basePct = (lastPastIdx / (total - 1)) * 100;
-            const nextPct = ((lastPastIdx + 1) / (total - 1)) * 100;
-            progress.style.width = (basePct + (gapProgress * (nextPct - basePct))) + '%';
+        let maxY = 0;
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i];
+          const dot = item.querySelector('.dt-tl-dot');
+          const s = parseInt(item.dataset.start);
+          const e = parseInt(item.dataset.end);
+
+          if (item.classList.contains('past')) {
+            maxY = item.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+          } else if (item.classList.contains('active')) {
+            const startY = item.offsetTop + dot.offsetTop + dot.offsetHeight / 2;
+            let endY = startY;
+            const next = items[i + 1];
+            if (next) {
+              const nDot = next.querySelector('.dt-tl-dot');
+              endY = next.offsetTop + nDot.offsetTop + nDot.offsetHeight / 2;
+            } else {
+              endY = item.offsetTop + item.offsetHeight;
+            }
+            const p = Math.max(0, Math.min(1, (mins - s) / (e - s)));
+            maxY = startY + (endY - startY) * p;
+            break;
           }
-        } else {
-          progress.style.width = '0%';
         }
+        progress.style.height = (maxY > 0 ? maxY : 0) + 'px';
+        progress.style.width = '2px';
       } catch (e) { console.error(e); }
     }
     updateTimeline();

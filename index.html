@@ -553,10 +553,11 @@
     .stats-bar {
       background: #020b18;
       border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 45px 0;
+      padding: 22px 0;
       position: relative;
       z-index: 20;
       box-shadow: 0 -20px 40px rgba(0,0,0,0.4);
+      margin-top: -40px;
     }
 
     .stats-grid {
@@ -587,11 +588,11 @@
 
     .stat-num {
       font-family: 'DM Sans', sans-serif;
-      font-size: clamp(32px, 3.5vw, 44px);
+      font-size: clamp(24px, 2.6vw, 32px);
       font-weight: 800;
       color: #fff;
       line-height: 1;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       text-shadow: 0 0 20px rgba(200,66,10,0.3);
       background: linear-gradient(135deg, #fff 40%, var(--orange) 100%);
       -webkit-background-clip: text;
@@ -3441,12 +3442,47 @@
     }
     .hv2-inner {
       position: relative; z-index: 5;
-      text-align: center;
-      max-width: 860px; width: 100%;
+      max-width: 1280px; width: 100%;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 60px;
+      align-items: start;
     }
-    .hv2-inner > * {
+    .hv2-left { text-align: left; min-width: 0; }
+    .hv2-right {
+      min-width: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0;
+    }
+    .hv2-podcast-wrap {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.07);
+      background: rgba(10, 24, 44, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .hv2-podcast-wrap iframe {
+      display: block;
+      width: 100% !important;
+      height: 450px;
+      border: 0;
+      border-radius: 10px;
+    }
+    .hv2-left > * {
       opacity: 0;
       animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .hv2-right {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+      animation-delay: 0.7s;
     }
     .hv2-badge   { animation-delay: 0.05s; }
     .hv2-h1      { animation-delay: 0.18s; }
@@ -3482,15 +3518,15 @@
     }
     .hv2-sub {
       font-size: 18px; color: rgba(255,255,255,0.52);
-      line-height: 1.65; max-width: 620px;
-      margin: 0 auto 38px;
+      line-height: 1.65; max-width: 560px;
+      margin: 0 0 38px;
     }
     .hv2-ctas {
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: flex-start;
       gap: 14px; flex-wrap: wrap; margin-bottom: 32px;
     }
     .hv2-trust {
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: flex-start;
       gap: 28px; flex-wrap: wrap; margin-bottom: 0;
     }
     .hv2-trust-item {
@@ -3523,12 +3559,20 @@
       font-size: 10.5px; font-weight: 700; letter-spacing: 2px;
       text-transform: uppercase; color: rgba(255,255,255,0.32);
     }
+    @media (max-width: 1024px) {
+      .hv2-inner { grid-template-columns: 1fr; gap: 48px; max-width: 720px; }
+      .hv2-left { text-align: center; }
+      .hv2-sub { margin-left: auto; margin-right: auto; }
+      .hv2-ctas, .hv2-trust { justify-content: center; }
+      .hv2-podcast-wrap { max-width: 560px; margin: 0 auto; }
+    }
     @media (max-width: 768px) {
       .hero-v2 { padding: 100px 24px 60px; min-height: auto; }
       .hv2-strip { flex-direction: column; gap: 28px; padding-top: 32px; }
       .hv2-strip-stat { padding: 0; }
       .hv2-strip-stat::after { display: none; }
       .hv2-trust { gap: 16px; }
+      .hv2-podcast-wrap iframe { height: 380px; }
     }
 
     /* ════════════════════════════════════════
@@ -3728,19 +3772,17 @@
        ECOSYSTEM V1 — EDITORIAL PATHWAYS (commented)
        ══════════════════════════════════════════════ */
     .pathways-section {
-      padding: 64px 0 80px;
-      background:
-        radial-gradient(ellipse at 15% 0%, rgba(200,66,10,0.045) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 100%, rgba(13,46,78,0.05) 0%, transparent 55%),
-        linear-gradient(180deg, #faf8f3 0%, #f3efe6 100%);
+      padding: 80px 0 90px;
+      background: #fbfaf6;
       position: relative;
       overflow: hidden;
     }
     .pathways-section::before {
       content: '';
       position: absolute; left: 0; right: 0; top: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(13,46,78,0.12) 30%, rgba(13,46,78,0.12) 70%, transparent);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange) 35%, #e04d10 50%, var(--orange) 65%, transparent);
+      opacity: 0.55;
     }
     .pathways-section::after {
       content: '';
@@ -3750,6 +3792,14 @@
       mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
       -webkit-mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
       pointer-events: none;
+    }
+    /* Mirror bottom accent strip */
+    .pathways-section .pw-container::after {
+      content: '';
+      position: absolute; left: 0; right: 0; bottom: -90px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange) 35%, #e04d10 50%, var(--orange) 65%, transparent);
+      opacity: 0.4;
     }
 
     .pw-container {
@@ -3767,23 +3817,7 @@
       border-bottom: 1px solid rgba(13,46,78,0.12);
       position: relative;
     }
-    /* Large ghost text behind header for visual weight */
-    .pw-header::before {
-      content: 'BEGIN';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -56%);
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: clamp(80px, 10vw, 140px);
-      letter-spacing: -6px;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(13,46,78,0.06);
-      white-space: nowrap;
-      pointer-events: none;
-      z-index: 0;
-      user-select: none;
-    }
+    .pw-header::before { display: none; }
     .pw-header > * { position: relative; z-index: 1; }
     .pw-eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
@@ -3818,10 +3852,11 @@
     }
     .pw-title em::after {
       content: '';
-      position: absolute; left: 0; right: 0; bottom: 4%;
-      height: 8px;
-      background: rgba(200,66,10,0.15);
+      position: absolute; left: 0; right: 0; bottom: 6%;
+      height: 10px;
+      background: linear-gradient(90deg, rgba(200,66,10,0.18), rgba(232,80,13,0.28), rgba(200,66,10,0.18));
       z-index: -1;
+      border-radius: 2px;
     }
     .pw-sub {
       font-size: 15px;
@@ -3836,17 +3871,22 @@
       display: inline-flex;
       align-items: center;
       gap: 0;
-      background: rgba(13,46,78,0.04);
-      border: 1px solid rgba(13,46,78,0.1);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(13,46,78,0.12);
       border-radius: 100px;
       overflow: hidden;
+      box-shadow: 0 14px 36px -16px rgba(13,46,78,0.18), inset 0 1px 0 rgba(255,255,255,0.7);
     }
     .pw-stat {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 10px 24px;
+      padding: 12px 26px;
+      transition: background 0.3s ease;
     }
+    .pw-stat:hover { background: rgba(200,66,10,0.05); }
     .pw-stat + .pw-stat {
       border-left: 1px solid rgba(13,46,78,0.1);
     }
@@ -3887,39 +3927,11 @@
       border-bottom: 1px solid rgba(13,46,78,0.12);
       text-decoration: none;
       color: inherit;
-      overflow: hidden;
-      isolation: isolate;
-      transition: padding 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: left center;
     }
-    /* Dark slide-in fill */
-    .pw-row::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(110deg, #07203a 0%, #0D2E4E 55%, #163b67 100%);
-      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-      transition: clip-path 0.75s cubic-bezier(0.77, 0, 0.18, 1);
-      z-index: -2;
-    }
-    /* Orange leading-edge accent that sweeps with the reveal */
-    .pw-row::after {
-      content: '';
-      position: absolute; top: 0; bottom: 0;
-      right: 100%; width: 90px;
-      background: linear-gradient(110deg, transparent 0%, var(--orange) 45%, rgba(255,144,96,0.4) 75%, transparent 100%);
-      opacity: 0;
-      transition: right 0.75s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.25s 0.05s;
-      z-index: -1;
-      filter: blur(1px);
-    }
-    .pw-row:hover { padding: 36px 32px; }
-    .pw-row:hover::before {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    .pw-row:hover::after {
-      right: -90px;
-      opacity: 0.9;
-    }
+    /* Gentle zoom on hover */
+    .pw-row:hover { transform: scale(1.015); }
     .pw-row:first-child { border-top: 1px solid rgba(13,46,78,0.12); }
 
     /* Number column */
@@ -3935,9 +3947,8 @@
       font-style: italic;
       line-height: 0.85;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(13,46,78,0.38);
+      -webkit-text-stroke: 1px rgba(200,66,10,0.85);
       letter-spacing: -3px;
-      transition: color 0.45s ease, -webkit-text-stroke-color 0.45s ease, transform 0.55s cubic-bezier(0.65,0,0.35,1);
     }
     .pw-num-dot {
       width: 8px; height: 8px;
@@ -3946,22 +3957,14 @@
       transform: translateY(-6px);
       transition: transform 0.5s cubic-bezier(0.65,0,0.35,1), box-shadow 0.4s;
     }
-    .pw-row:hover .pw-num {
-      color: var(--orange);
-      -webkit-text-stroke: 1px transparent;
-      transform: translateX(-4px);
-    }
     .pw-row:hover .pw-num-dot {
-      transform: translateY(-6px) scale(1.6);
-      box-shadow: 0 0 0 6px rgba(200,66,10,0.18), 0 0 24px rgba(200,66,10,0.6);
+      transform: translateY(-6px) scale(1.5);
     }
 
     /* Content */
     .pw-content {
       position: relative;
-      transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
     }
-    .pw-row:hover .pw-content { transform: translateX(10px); }
     .pw-tag {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: 'DM Mono', monospace;
@@ -3976,7 +3979,6 @@
     .pw-tag::before {
       content: ''; width: 18px; height: 1px; background: currentColor;
     }
-    .pw-row:hover .pw-tag { color: #ff9a6b; }
     .pw-content h3 {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(28px, 2.7vw, 38px);
@@ -3991,8 +3993,6 @@
       font-style: italic;
       color: var(--orange);
     }
-    .pw-row:hover .pw-content h3 { color: #fff; }
-    .pw-row:hover .pw-content h3 em { color: #ffae7a; }
     .pw-content p {
       font-size: 15px;
       color: #5b6776;
@@ -4000,7 +4000,6 @@
       max-width: 560px;
       transition: color 0.4s ease;
     }
-    .pw-row:hover .pw-content p { color: rgba(255,255,255,0.72); }
 
     /* Arrow CTA */
     .pw-arrow {
@@ -4016,7 +4015,6 @@
       white-space: nowrap;
       transition: color 0.4s ease;
     }
-    .pw-row:hover .pw-arrow { color: #fff; }
     .pw-arrow-track {
       position: relative;
       display: inline-block;
@@ -4079,7 +4077,6 @@
       .pathways-section { padding: 70px 0 80px; }
       .pw-container { padding: 0 24px; }
       .pw-row { grid-template-columns: 90px 1fr; gap: 18px; padding: 28px 14px; }
-      .pw-row:hover { padding: 32px 14px; }
       .pw-num { font-size: 60px; }
       .pw-num-dot { display: none; }
       .pw-arrow { display: none; }
@@ -4174,41 +4171,57 @@
 
     <div class="hv2-inner">
 
-      <div class="hv2-badge">
-        <span class="hv2-badge-dot"></span>
-        Live Trading Room Open Now
+      <!-- LEFT: text content -->
+      <div class="hv2-left">
+        <div class="hv2-badge">
+          <span class="hv2-badge-dot"></span>
+          Live Trading Room Open Now
+        </div>
+
+        <h1 class="hv2-h1">Trade Options With <em>Institutional Edge.</em></h1>
+
+        <p class="hv2-sub">Real-time live streams, proven strategies, and the tools to execute confidently — without predicting market direction.</p>
+
+        <div class="hv2-ctas">
+          <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">
+            Get Free Access
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/performance" class="btn-ghost">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            View Track Record
+          </a>
+        </div>
+
+        <div class="hv2-trust">
+          <div class="hv2-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            No credit card required
+          </div>
+          <div class="hv2-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Verified performance since 2017
+          </div>
+          <div class="hv2-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Cancel anytime
+          </div>
+        </div>
       </div>
 
-      <h1 class="hv2-h1">Trade Options With <em>Institutional Edge.</em></h1>
-
-      <p class="hv2-sub">Real-time live streams, proven strategies, and the tools to execute confidently — without predicting market direction.</p>
-
-      <div class="hv2-ctas">
-        <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="btn-main">
-          Get Free Access
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="/performance" class="btn-ghost">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          View Track Record
-        </a>
-      </div>
-
-      <div class="hv2-trust">
-        <div class="hv2-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          No credit card required
-        </div>
-        <div class="hv2-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Verified performance since 2017
-        </div>
-        <div class="hv2-trust-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Cancel anytime
+      <!-- RIGHT: TradeHacker Mindset podcast embed -->
+      <div class="hv2-right">
+        <div class="hv2-podcast-wrap">
+          <iframe
+            src="https://embed.podcasts.apple.com/us/podcast/the-tradehacker-mindset/id1558719467?itsct=podcast_box_player&itscg=30200&ls=1&theme=dark"
+            height="450"
+            frameborder="0"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+            allow="autoplay *; encrypted-media *;"
+            loading="lazy"
+            title="The TradeHacker Mindset Podcast"></iframe>
         </div>
       </div>
-
 
     </div>
   </section>
@@ -4342,7 +4355,7 @@
   </section>
 
   <!-- ══ ECOSYSTEM V2 — The Four Pillars (dark) ══ -->
-  <section class="eco-v2" id="membership-plans">
+  <section class="eco-v2" id="membership-plans-v2" style="display:none">
     <div class="eco-v2-wrap">
 
       <!-- Header -->
@@ -4425,9 +4438,9 @@
     </div>
   </section>
 
-  <!-- ECOSYSTEM V1 (editorial pathways / cream) — hidden, swap display to show -->
-  <div id="ecosystem-v1" style="display:none">
-  <section class="pathways-section" id="membership-plans-v1">
+  <!-- ECOSYSTEM V1 (editorial pathways / cream) — now the live ecosystem -->
+  <div id="ecosystem-v1">
+  <section class="pathways-section" id="membership-plans">
     <div class="pw-container">
 
       <!-- HEADER — centered -->
