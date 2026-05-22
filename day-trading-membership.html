@@ -2080,10 +2080,260 @@
        ══════════════════════════════════════════════════════════════════ */
 
 
-    /* ══ SECTION 6: TOOLS — KINETIC GLASS ══ */
+    /* ══ SECTION 5: CURRICULUM — ACCORDION (solid premium) ══ */
+    .dt-curr {
+      background: #0f2f54;
+      padding: 90px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dt-curr::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 18% 12%, rgba(200,66,10,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 82% 88%, rgba(26,74,122,0.18) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .dt-curr .pm-container { position: relative; z-index: 2; max-width: 1100px; }
+
+    /* CLUSTER PANEL — solid darker than section bg */
+    .dt-curr-cluster {
+      margin-bottom: 18px;
+      background: #07223f;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+      position: relative;
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.35);
+    }
+    .dt-curr-cluster:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px -12px rgba(0,0,0,0.5);
+    }
+    .dt-curr-cluster.open {
+      border-color: rgba(200,66,10,0.4);
+      box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,66,10,0.18);
+      transform: translateY(0);
+    }
+    /* Left orange accent bar reveals when open */
+    .dt-curr-cluster::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--orange) 0%, #e04d10 100%);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .dt-curr-cluster.open::before { transform: scaleY(1); }
+    .dt-curr-cluster:last-of-type { margin-bottom: 0; }
+
+    /* CLUSTER HEADER — premium editorial */
+    .dt-curr-cluster-head {
+      display: grid;
+      grid-template-columns: 100px 1fr auto auto;
+      align-items: center;
+      gap: 26px;
+      padding: 26px 32px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.25s;
+    }
+    .dt-curr-cluster-head:hover { background: rgba(255,255,255,0.015); }
+
+    .dt-curr-num-big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 0.85;
+      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      letter-spacing: -2px;
+      text-align: center;
+    }
+
+    .dt-curr-head-text { min-width: 0; }
+    .dt-curr-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .dt-curr-cluster-head h3 {
+      font-size: clamp(22px, 2.4vw, 28px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin: 0 0 4px;
+      line-height: 1.15;
+    }
+    .dt-curr-tagline {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .dt-curr-count {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
+      padding: 7px 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    /* Chevron */
+    .dt-curr-chevron {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+      flex-shrink: 0;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .dt-curr-cluster.open .dt-curr-chevron {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: rotate(180deg);
+      box-shadow: 0 4px 16px rgba(200,66,10,0.4);
+    }
+
+    /* Body — smooth grid-template-rows */
+    .dt-curr-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.55s cubic-bezier(0.4,0,0.2,1);
+    }
+    .dt-curr-cluster.open .dt-curr-body { grid-template-rows: 1fr; }
+    .dt-curr-body-inner {
+      overflow: hidden;
+      padding: 0 32px;
+      transition: padding 0.4s ease;
+    }
+    .dt-curr-cluster.open .dt-curr-body-inner {
+      padding: 0 32px 28px;
+    }
+    .dt-curr-list {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 4px;
+    }
+
+    /* STRATEGY ROW — editorial list, not a card grid */
+    .dt-curr-row {
+      display: grid;
+      grid-template-columns: 56px 1fr 140px;
+      gap: 22px;
+      padding: 22px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      align-items: flex-start;
+      transition: background 0.25s;
+      border-radius: 8px;
+    }
+    .dt-curr-row:last-child { border-bottom: none; }
+    .dt-curr-row:hover { background: rgba(255,255,255,0.04); }
+
+    .dt-curr-row-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--orange);
+      letter-spacing: 1.5px;
+      padding-top: 4px;
+      background: rgba(200,66,10,0.12);
+      border: 1px solid rgba(200,66,10,0.25);
+      border-radius: 6px;
+      text-align: center;
+      padding: 6px 0;
+      height: fit-content;
+      width: 44px;
+    }
+
+    .dt-curr-row-body { min-width: 0; }
+    .dt-curr-row-body h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 8px;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+    }
+    .dt-curr-row-body p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .dt-curr-row-time {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 1.5px;
+      padding: 7px 14px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.15);
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-align: center;
+      margin-top: 4px;
+      justify-self: end;
+      font-weight: 600;
+    }
+
+    .dt-curr-cta-wrap {
+      text-align: center;
+      margin-top: 38px;
+    }
+
+    @media (max-width: 900px) {
+      .dt-curr-cluster-head {
+        grid-template-columns: 70px 1fr auto;
+        gap: 18px;
+        padding: 22px 22px;
+      }
+      .dt-curr-num-big { font-size: 50px; }
+      .dt-curr-count { display: none; }
+      .dt-curr-row {
+        grid-template-columns: 40px 1fr;
+        gap: 14px;
+        padding: 18px 0;
+      }
+      .dt-curr-row-time {
+        grid-column: 2;
+        justify-self: start;
+        margin-top: 8px;
+      }
+      .dt-curr-body-inner,
+      .dt-curr-cluster.open .dt-curr-body-inner { padding-left: 22px; padding-right: 22px; }
+      .dt-curr-cluster.open .dt-curr-body-inner { padding-bottom: 22px; }
+    }
+    @media (max-width: 768px) { .dt-curr { padding: 60px 0; } }
+
+    /* ══ SECTION 6: TOOLS — PREMIUM LIGHT ══ */
     .dt-tools {
-      padding: 60px 0;
-      background: #fff;
+      padding: 80px 0;
+      background: linear-gradient(180deg, #ffffff 0%, #f6f9fc 100%);
       position: relative;
     }
 
@@ -2091,12 +2341,13 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-      margin-top: 60px;
+      margin-top: 50px;
     }
 
     .dt-bento-card {
-      background: var(--teal-light);
-      border: 1px solid rgba(13, 46, 78, .08);
+      background: #ffffff;
+      border: 1px solid rgba(12, 46, 78, 0.06);
+      border-top: 4px solid transparent;
       border-radius: 20px;
       padding: 0;
       display: flex;
@@ -2104,8 +2355,8 @@
       height: 100%;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(13, 46, 78, .05);
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01), 0 12px 36px rgba(12, 46, 78, 0.03);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease;
     }
 
     .dt-bento-card::before {
@@ -2113,12 +2364,14 @@
     }
 
     .dt-bento-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(13, 46, 78, .12), 0 0 0 1px rgba(200, 66, 10, .25);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(12, 46, 78, 0.08), 0 8px 16px rgba(12, 46, 78, 0.02);
+      border-color: rgba(241, 88, 34, 0.25);
+      border-top-color: #f15822;
     }
 
     .dt-bento-card-top {
-      padding: 36px 32px 28px 32px;
+      padding: 32px 30px;
       flex: 1;
       position: relative;
     }
@@ -2131,11 +2384,11 @@
     }
 
     .dt-bento-icon {
-      width: 42px;
-      height: 42px;
-      background: rgba(200, 66, 10, .15);
-      border: 1px solid rgba(200, 66, 10, .3);
-      border-radius: 10px;
+      width: 46px;
+      height: 46px;
+      background: rgba(241, 88, 34, 0.06);
+      border: 1px solid rgba(241, 88, 34, 0.15);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2143,34 +2396,35 @@
     }
 
     .dt-bento-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--orange);
+      width: 22px;
+      height: 22px;
+      stroke: #f15822;
       fill: none;
       stroke-width: 2.5;
     }
 
     .dt-bento-card h3 {
-      font-size: 19px;
-      color: var(--teal-900);
+      font-size: 20px;
+      color: #0c2e4e;
       margin-bottom: 0;
-      font-weight: 800;
-      letter-spacing: -0.01em;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .dt-bento-card p {
-      font-size: 14px;
-      color: rgba(13, 46, 78, .75);
-      line-height: 1.7;
+      font-size: 14.5px;
+      color: rgba(12, 46, 78, 0.7);
+      line-height: 1.65;
       margin-bottom: 0;
-      text-align: justify;
+      text-align: left;
     }
 
     .dt-bento-visual {
       width: 100%;
-      height: 180px;
+      height: 200px;
       position: relative;
       overflow: hidden;
+      border-bottom: 1px solid rgba(12, 46, 78, 0.08);
     }
 
     .dt-bento-visual img {
@@ -2187,11 +2441,7 @@
     }
 
     .dt-bento-visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, var(--teal-light));
-      pointer-events: none;
+      display: none;
     }
     .dt-ticker-wrap {
       background: rgba(255, 255, 255, .04);
@@ -3103,7 +3353,7 @@
 
     .dt-quote-cards {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
 
@@ -3751,6 +4001,10 @@
         grid-template-columns: 260px 1fr;
         gap: 40px;
       }
+
+      .dt-quote-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 960px) {
@@ -3817,10 +4071,6 @@
 
       .dt-instr-right {
         max-width: 380px;
-      }
-
-      .dt-quote-cards {
-        grid-template-columns: 1fr;
       }
 
       .dt-reviews-top {
@@ -3921,6 +4171,10 @@
 
       .dt-quote-card {
         padding: 28px;
+      }
+
+      .dt-quote-cards {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -4351,8 +4605,9 @@
 
   <!-- ══════════════════════════════════════════════════════════════════════
        V2 — STRATEGY ORBIT (scroll-pinned, 3 cluster cards → reveal panels)
+       — HIDDEN. Replaced by simple clean curriculum section below.
        ══════════════════════════════════════════════════════════════════════ -->
-  <section class="dt-orb-v2" id="strategies">
+  <section class="dt-orb-v2" id="strategies-orbit-old" style="display:none">
     <div class="dt-orb-track" id="dtOrbTrack">
       <div class="dt-orb-pin">
 
@@ -4559,6 +4814,167 @@
           </a>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 5. CURRICULUM — Clean simple cluster grid ── -->
+  <section class="dt-curr" id="strategies">
+    <div class="pm-container">
+      <div class="pm-section-head light reveal" style="margin-bottom:50px;">
+        <span class="pm-eyebrow">Institutional Curriculum</span>
+        <h2>10 Complete Strategy Courses. <em style="color:var(--orange)">Master the Market.</em></h2>
+        <p>The live streams show you how it's done. The courses teach you why. Each is a full structured course with video lessons, trade examples, and clear rules.</p>
+      </div>
+
+      <!-- Cluster 01 -->
+      <div class="dt-curr-cluster reveal open">
+        <div class="dt-curr-cluster-head">
+          <span class="dt-curr-num-big">01</span>
+          <div class="dt-curr-head-text">
+            <span class="dt-curr-tag">Cluster 01</span>
+            <h3>Core Day Trading</h3>
+            <p class="dt-curr-tagline">The foundation strategies — high-probability setups across the full trading day.</p>
+          </div>
+          <span class="dt-curr-count">5 courses</span>
+          <span class="dt-curr-chevron">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </div>
+        <div class="dt-curr-body">
+          <div class="dt-curr-body-inner">
+            <div class="dt-curr-list">
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">01</span>
+                <div class="dt-curr-row-body">
+                  <h4>Mighty Ninety and Runner Strategies</h4>
+                  <p>The foundation of NavigationTrading's day trading approach. Identify high-probability setups in the first 90 minutes of the trading day and catch runners that extend well beyond the open.</p>
+                </div>
+                <span class="dt-curr-row-time">09:30 – 11:00 ET</span>
+              </div>
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">02</span>
+                <div class="dt-curr-row-body">
+                  <h4>NTT Day Trading</h4>
+                  <p>NavigationTrading's proprietary day trading system. A step-by-step method for reading intraday price action, identifying entries with defined risk, and following clear exit rules.</p>
+                </div>
+                <span class="dt-curr-row-time">All Session</span>
+              </div>
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">03</span>
+                <div class="dt-curr-row-body">
+                  <h4>MOC Course (Market on Close)</h4>
+                  <p>Built specifically for the final hour of trading, using end-of-day momentum and institutional closing flows. Perfect for traders with a day job available in the afternoon.</p>
+                </div>
+                <span class="dt-curr-row-time">15:00 – 16:00 ET</span>
+              </div>
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">04</span>
+                <div class="dt-curr-row-body">
+                  <h4>Price Action Futures Trading</h4>
+                  <p>Expand beyond options into futures with a pure price action approach. Read the tape, identify key levels, and execute clean entries without relying on lagging indicators.</p>
+                </div>
+                <span class="dt-curr-row-time">All Session</span>
+              </div>
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">05</span>
+                <div class="dt-curr-row-body">
+                  <h4>Power Hour Strategy Course</h4>
+                  <p>The last hour of the trading day is where institutional money moves. Read that flow, identify high-probability setups, and position yourself for end-of-day moves most retail traders miss.</p>
+                </div>
+                <span class="dt-curr-row-time">15:00 – 16:00 ET</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cluster 02 -->
+      <div class="dt-curr-cluster reveal">
+        <div class="dt-curr-cluster-head">
+          <span class="dt-curr-num-big">02</span>
+          <div class="dt-curr-head-text">
+            <span class="dt-curr-tag">Cluster 02</span>
+            <h3>0 DTE Mastery</h3>
+            <p class="dt-curr-tagline">Same-day expiration strategies with defined risk and precise entry timing.</p>
+          </div>
+          <span class="dt-curr-count">3 courses</span>
+          <span class="dt-curr-chevron">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </div>
+        <div class="dt-curr-body">
+          <div class="dt-curr-body-inner">
+            <div class="dt-curr-list">
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">06</span>
+                <div class="dt-curr-row-body">
+                  <h4>0 DTE Iron Condors — Early Day Entry</h4>
+                  <p>Sell premium on options that expire today. Covers the specific timing, strike selection, and risk management rules that make 0 DTE iron condors a consistent strategy rather than a coin flip.</p>
+                </div>
+                <span class="dt-curr-row-time">09:30 – 12:00 ET</span>
+              </div>
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">07</span>
+                <div class="dt-curr-row-body">
+                  <h4>0 DTE Entries Using NTT Indicator</h4>
+                  <p>Combine same-day expiration trades with NavigationTrading's proprietary NTT indicator for precision entry timing. Objective signals take the guesswork and emotion out of when to enter.</p>
+                </div>
+                <span class="dt-curr-row-time">Intraday</span>
+              </div>
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">08</span>
+                <div class="dt-curr-row-body">
+                  <h4>Reverse Iron Condors</h4>
+                  <p>When the market moves big, reverse iron condors profit. Recognize high-volatility conditions and deploy a strategy that benefits from large moves rather than range-bound markets.</p>
+                </div>
+                <span class="dt-curr-row-time">High-Vol Days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cluster 03 -->
+      <div class="dt-curr-cluster reveal">
+        <div class="dt-curr-cluster-head">
+          <span class="dt-curr-num-big">03</span>
+          <div class="dt-curr-head-text">
+            <span class="dt-curr-tag">Cluster 03</span>
+            <h3>Specialized Edge</h3>
+            <p class="dt-curr-tagline">Focused mini-courses for specific market conditions and late-day setups.</p>
+          </div>
+          <span class="dt-curr-count">2 courses</span>
+          <span class="dt-curr-chevron">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </div>
+        <div class="dt-curr-body">
+          <div class="dt-curr-body-inner">
+            <div class="dt-curr-list">
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">09</span>
+                <div class="dt-curr-row-body">
+                  <h4>ELMO Mini Course</h4>
+                  <p>A focused mini course on ELMO — a quick-deploy strategy for specific intraday setups. Short, actionable, and designed to add another tool to your daily trading toolkit.</p>
+                </div>
+                <span class="dt-curr-row-time">Intraday</span>
+              </div>
+              <div class="dt-curr-row">
+                <span class="dt-curr-row-num">10</span>
+                <div class="dt-curr-row-body">
+                  <h4>Power Hour Deep Dive</h4>
+                  <p>Deep dive into late-day trading setups and how to capitalize on the increased volume and volatility that shows up consistently in the final 60 minutes of the trading session.</p>
+                </div>
+                <span class="dt-curr-row-time">15:00 – 16:00 ET</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dt-curr-cta-wrap reveal">
+        <a href="https://whop.com/navigationtrading/" class="btn-pm">Unlock the Full Strategy Vault →</a>
       </div>
     </div>
   </section>
@@ -4972,6 +5388,60 @@
             <div class="dt-quote-avatar">R</div>
             <div class="dt-quote-info">
               <span class="dt-quote-name">Robert W.</span>
+              <span class="dt-quote-role">Day Trading Member</span>
+            </div>
+          </div>
+        </div>
+        <div class="dt-quote-card">
+          <div class="dt-quote-stars">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <p class="dt-quote-text">"The community, the education, and the constant innovation are just a few of the things that set NavigationTrading apart. Steve and the team don't rest on past accomplishments or old material; they try to stay ahead of and shift with the markets. I also believe that Steve and the team care about their members and want them to succeed."</p>
+          <div class="dt-quote-author">
+            <div class="dt-quote-avatar">J</div>
+            <div class="dt-quote-info">
+              <span class="dt-quote-name">Joey R.</span>
+              <span class="dt-quote-role">Day Trading Member</span>
+            </div>
+          </div>
+        </div>
+        <div class="dt-quote-card">
+          <div class="dt-quote-stars">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          </div>
+          <p class="dt-quote-text">"Great source for options trading education, strategies, and experiencing live trading sessions multiple times per week. Every year new effective strategies are introduced. The NT team shares actual trades and results with the community. Highly recommend."</p>
+          <div class="dt-quote-author">
+            <div class="dt-quote-avatar">T</div>
+            <div class="dt-quote-info">
+              <span class="dt-quote-name">Tony D.</span>
               <span class="dt-quote-role">Day Trading Member</span>
             </div>
           </div>
@@ -5654,6 +6124,17 @@
     }
     updateTimeline();
     setInterval(updateTimeline, 60000);
+
+    /* Curriculum accordion — one open at a time, click to toggle */
+    document.querySelectorAll('.dt-curr-cluster').forEach(function(cluster){
+      var head = cluster.querySelector('.dt-curr-cluster-head');
+      if (!head) return;
+      head.addEventListener('click', function(){
+        var isOpen = cluster.classList.contains('open');
+        document.querySelectorAll('.dt-curr-cluster.open').forEach(function(c){ c.classList.remove('open'); });
+        if (!isOpen) cluster.classList.add('open');
+      });
+    });
 
     /* FAQ accordion */
     function toggleFaq(el) {

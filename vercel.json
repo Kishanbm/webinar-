@@ -47,6 +47,22 @@
     {
       "source": "/contact",
       "destination": "/contact"
+    },
+    {
+      "source": "/day-trading-replay",
+      "destination": "/day-trading-replay"
+    },
+    {
+      "source": "/day-trading-replay-v2",
+      "destination": "/day-trading-replay-v2"
+    },
+    {
+      "source": "/day-trading-replay-noshow",
+      "destination": "/day-trading-replay-noshow"
+    },
+    {
+      "source": "/day-trading-offer",
+      "destination": "/day-trading-offer"
     }
   ]
 }

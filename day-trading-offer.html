@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start': new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PM36KHB');</script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7EFVS3VNV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-W7EFVS3VNV');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Exclusive Offer Expires Soon — NavigationTrading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal-900: #0D2E4E;
+      --orange: #c8420a;
+      --orange-bright: #e04d10;
+      --orange-glow: rgba(200, 66, 10, 0.35);
+      --gold: #d4a040;
+      --cream: #f0f6ff;
+      --warm-white: #f5f9ff;
+      --text-dark: #111;
+      --text-mid: #4a4a4a;
+      --text-dim: #64748b;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #111; }
+    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 4px; }
+    #progress-bar {
+      position: fixed; top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+      z-index: 1000; width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* ── URGENCY TICKER ── */
+    .ticker {
+      background: linear-gradient(90deg, #b13206 0%, #d54616 50%, #b13206 100%);
+      color: #fff;
+      padding: 12px 24px;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .ticker::before {
+      content: '';
+      position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+      animation: tickerShine 4s linear infinite;
+    }
+    @keyframes tickerShine { to { left: 100%; } }
+
+    /* ── NAVBAR (matches day-trading.html) ── */
+    .navbar {
+      position: relative;
+      z-index: 900;
+      padding: 18px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--teal-900);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px; font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.5px;
+      border: none; border-radius: 6px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex; align-items: center; gap: 8px;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .nav-cta::after { content: '→'; font-size: 14px; }
+    .nav-cta:hover {
+      background: var(--orange-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--orange-glow);
+    }
+
+    /* ── LIGHT MAIN SECTION ── */
+    .main-light {
+      background: var(--warm-white);
+      padding: 70px 24px 80px;
+      position: relative;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+
+    /* ════════════════════════════════════════
+       VOUCHER CARD — dark navy + orange, ticket-style
+       ════════════════════════════════════════ */
+    .terminal-cta {
+      background: linear-gradient(135deg, #0d2e4e 0%, #07223f 50%, #0c2745 100%);
+      border-radius: 22px;
+      border: 1.5px solid rgba(200,66,10,0.32);
+      display: grid;
+      grid-template-columns: 1.05fr 420px;
+      box-shadow: 0 40px 90px -20px rgba(13,46,78,0.35), 0 0 0 1px rgba(200,66,10,0.08) inset;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 28px;
+    }
+    /* Top orange accent strip */
+    .terminal-cta::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--orange) 25%, var(--orange-bright) 50%, var(--orange) 75%, transparent);
+    }
+
+    /* LEFT — countdown with chart-line grid bg */
+    .tcta-left {
+      padding: 52px 50px;
+      position: relative;
+      z-index: 2;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .tcta-left::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .tcta-left > * { position: relative; z-index: 1; }
+
+    /* Orange "active" pill */
+    .greet {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(200,66,10,0.12);
+      border: 1px solid rgba(200,66,10,0.4);
+      padding: 7px 14px;
+      border-radius: 50px;
+      width: fit-content;
+      margin-bottom: 22px;
+    }
+    .greet-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 3px rgba(200,66,10,0.28);
+      animation: greetPulse 2s ease-in-out infinite;
+    }
+    @keyframes greetPulse {
+      0%,100% { box-shadow: 0 0 0 3px rgba(200,66,10,0.28); }
+      50%     { box-shadow: 0 0 0 8px rgba(200,66,10,0.08); }
+    }
+    .tcta-headline {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.8px;
+      margin-bottom: 26px;
+    }
+    .tcta-headline em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      background: linear-gradient(135deg, var(--orange) 0%, #ff9a5a 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Unified countdown wrapper — one container around all 3 cells */
+    .countdown-wrap {
+      background: #061427;
+      border: 1px solid rgba(200,66,10,0.22);
+      border-radius: 16px;
+      padding: 20px 22px;
+      max-width: 460px;
+      position: relative;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 8px 24px -8px rgba(0,0,0,0.3);
+    }
+    .countdown-head {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .countdown-head .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 8px #ef4444;
+      animation: greetPulse 1.6s ease-in-out infinite;
+    }
+    .timer {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+    /* Cells inside the unified wrapper */
+    .t-cell {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(200,66,10,0.25);
+      border-radius: 10px;
+      padding: 12px 6px 9px;
+      text-align: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      perspective: 400px;
+    }
+    .t-num { transform-origin: center; }
+    .t-num.tick { animation: flip 0.5s ease; }
+    @keyframes flip {
+      0%   { transform: rotateX(0); }
+      50%  { transform: rotateX(-90deg); opacity: 0.5; }
+      100% { transform: rotateX(0); }
+    }
+    .t-num {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 1px;
+      background: linear-gradient(180deg, #fff 0%, var(--orange) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .t-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .t-sep {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--orange);
+      align-self: start;
+      margin-top: 10px;
+      animation: blink 1s ease-in-out infinite;
+    }
+    @keyframes blink { 50% { opacity: 0.3; } }
+    .terminal-cta.expired .timer { opacity: 0.4; }
+
+    /* RIGHT — promo + claim (ticket stub feel) */
+    .tcta-right {
+      background: rgba(0,0,0,0.22);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-left: 2px dashed rgba(200,66,10,0.45);
+      padding: 52px 40px;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      position: relative; z-index: 2;
+    }
+    /* "Ticket notches" — semi-circles cut into the dashed divider */
+    .tcta-right::before,
+    .tcta-right::after {
+      content: '';
+      position: absolute;
+      left: -10px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--warm-white);
+      border: 1.5px solid rgba(200,66,10,0.32);
+      z-index: 3;
+    }
+    .tcta-right::before { top: -10px; }
+    .tcta-right::after  { bottom: -10px; }
+
+    .promo-card {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(200,66,10,0.3);
+      border-radius: 14px;
+      padding: 22px 22px 24px;
+      margin-bottom: 22px;
+      text-align: center;
+      position: relative;
+    }
+    .promo-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .promo-code {
+      font-family: 'DM Mono', monospace;
+      font-size: 42px; font-weight: 700;
+      letter-spacing: 6px;
+      background: linear-gradient(135deg, var(--orange) 0%, #ff9a5a 50%, var(--orange) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      border: 1.5px dashed rgba(200,66,10,0.6);
+      border-radius: 10px;
+      padding: 10px 20px;
+      display: inline-block;
+      line-height: 1.05;
+      margin-bottom: 14px;
+      background-color: rgba(200,66,10,0.08);
+    }
+    .promo-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      display: block;
+    }
+    .promo-tag strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0;
+      background: linear-gradient(135deg, var(--orange) 0%, #ff9a5a 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      vertical-align: middle;
+    }
+    .main-cta {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
+      color: #fff;
+      padding: 20px;
+      font-size: 15px; font-weight: 800;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(200,66,10,0.3);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .main-cta::before {
+      content: '';
+      position: absolute; top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: skewX(-20deg);
+      transition: 0.6s;
+    }
+    .main-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(200,66,10,0.45);
+    }
+    .main-cta:hover::before { left: 200%; }
+
+    .trust {
+      margin-top: 24px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .trust span {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+    .trust svg {
+      width: 18px; height: 18px;
+      color: #10b981;
+      stroke-width: 3;
+      flex-shrink: 0;
+    }
+
+    /* ── WHY-NOW (dark navy + orange, matches terminal-cta) ── */
+    .why-now {
+      background: linear-gradient(135deg, #0d2e4e 0%, #07223f 50%, #0c2745 100%);
+      border: 1.5px solid rgba(200,66,10,0.32);
+      border-radius: 22px;
+      padding: 34px 38px;
+      box-shadow: 0 30px 70px -20px rgba(13,46,78,0.3), 0 0 0 1px rgba(200,66,10,0.06) inset;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-now::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+      pointer-events: none;
+    }
+    .why-now > * { position: relative; z-index: 1; }
+    .why-now h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(200,66,10,0.25);
+    }
+    .why-now ul {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .why-now li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.55;
+    }
+    .why-now li svg {
+      width: 18px; height: 18px;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 3px;
+      stroke-width: 3;
+    }
+    .why-now li strong { color: #fff; font-weight: 700; }
+
+    /* ── FOOTER (matches day-trading.html) ── */
+    footer {
+      background: var(--teal-900);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 50px 60px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    footer > .footer-top, footer > .footer-bottom { position: relative; z-index: 1; }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      gap: 40px; flex-wrap: wrap;
+    }
+    .footer-brand img {
+      height: 40px; width: auto;
+      transform: scale(5); transform-origin: left center;
+      vertical-align: middle;
+    }
+    .footer-tagline {
+      color: rgba(255,255,255,0.35);
+      font-size: 13px;
+      margin-top: 100px;
+    }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { color: rgba(255,255,255,0.2); font-size: 12px; }
+    .social-icon {
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .social-icon:hover { background: rgba(200,66,10,0.3); }
+    .footer-link {
+      color: rgba(255,255,255,0.45);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .navbar { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .ticker { font-size: 10px; letter-spacing: 1.2px; padding: 10px 16px; }
+      .footer-top { flex-direction: column; gap: 20px; padding-bottom: 24px; }
+      footer { padding: 40px 24px 28px; }
+      .terminal-cta { grid-template-columns: 1fr; }
+      .tcta-left { padding: 38px 28px 28px; }
+      .tcta-right { padding: 32px 28px 38px; border-left: none; border-top: 1px solid rgba(255,255,255,0.08); }
+      .why-now { padding: 26px 24px; }
+      .main-light { padding: 50px 20px 60px; }
+    }
+    @media (max-width: 480px) {
+      .nav-cta { font-size: 11px; padding: 7px 12px; gap: 5px; }
+      .nav-cta::after { display: none; }
+      .main-cta { padding: 16px 18px; font-size: 13px; }
+      .promo-code { font-size: 34px; letter-spacing: 4px; }
+      .timer { gap: 4px; }
+    }
+  </style>
+</head>
+
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM36KHB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div id="progress-bar"></div>
+
+  <!-- TOP URGENCY TICKER -->
+  <div class="ticker">⚡ Limited Time · Your 30% Discount Code Expires Soon · Don't Miss It ⚡</div>
+
+  <!-- ── NAVBAR (same as day-trading.html) ── -->
+  <nav class="navbar" id="navbar">
+    <a href="/day-trading" class="nav-logo"><img src="logo.png" alt="NavigationTrading"
+        style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;"></a>
+    <ul class="nav-links">
+      <li><a href="#offer">Offer</a></li>
+      <li><a href="#why">Why Now</a></li>
+    </ul>
+    <a href="https://whop.com/joined/navigationtrading/products/ntday/?utm_source=offer_countdown&utm_medium=web&utm_campaign=noshow_offer_nav&promo=DAY" class="nav-cta">Claim 30% Off</a>
+  </nav>
+
+  <!-- ── MAIN (LIGHT) ── -->
+  <main class="main-light">
+    <div class="wrap">
+
+      <!-- UNIFIED DARK SPLIT CARD: countdown (left) + promo/claim (right) -->
+      <div class="terminal-cta" id="terminal-cta">
+
+        <!-- LEFT: Countdown -->
+        <div class="tcta-left">
+          <div class="greet">
+            <span class="greet-dot"></span>
+            <span id="greet-text">Your Offer Is Active</span>
+          </div>
+          <h2 class="tcta-headline">30% off, locked in for <em>the next 15 minutes.</em></h2>
+          <div class="countdown-wrap">
+            <div class="countdown-head">
+              <span class="dot"></span>
+              Offer Expires In
+            </div>
+            <div class="timer" id="timer">
+              <div class="t-cell">
+                <div class="t-num" id="t-hours">00</div>
+                <div class="t-lbl">Hours</div>
+              </div>
+              <div class="t-sep">:</div>
+              <div class="t-cell">
+                <div class="t-num" id="t-mins">15</div>
+                <div class="t-lbl">Minutes</div>
+              </div>
+              <div class="t-sep">:</div>
+              <div class="t-cell">
+                <div class="t-num" id="t-secs">00</div>
+                <div class="t-lbl">Seconds</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Promo code + claim -->
+        <div class="tcta-right">
+          <div class="promo-card">
+            <div class="promo-lbl">Promo Code</div>
+            <div class="promo-code">DAY</div>
+            <div class="promo-tag"><strong>30% off</strong> any membership</div>
+          </div>
+
+          <a href="https://whop.com/joined/navigationtrading/products/ntday/?utm_source=offer_countdown&utm_medium=web&utm_campaign=noshow_offer&promo=DAY" class="main-cta" id="claim-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Claim My 30% Off Now
+          </a>
+
+          <div class="trust">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              7-day money-back guarantee
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Cancel anytime · Instant access
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- WHY NOW -->
+      <div class="why-now" id="why">
+        <h4>Why Join Today</h4>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Daily live trading streams — morning open + Power Hour, narrated as it happens.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            All 10 strategy courses including Mighty Ninety, 0 DTE Iron Condors, MOC, and Power Hour.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Real-time trade alerts with entry, stop, target, and reasoning for every setup.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            3,400+ active traders in the Discord community to ask questions any time.
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>The 30% off code expires when the timer hits zero.</strong>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER (same as day-trading.html) ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"></div>
+        <div class="footer-tagline">Directional Day Trading Education</div>
+      </div>
+      <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact</div>
+          <a href="mailto:support@navigationtrading.com" style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
+        </div>
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Follow</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="https://x.com/navtrading1?s=21" target="_blank" class="social-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://www.instagram.com/navigationtrading" target="_blank" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.6)" stroke="none"/></svg></a>
+            <a href="https://www.youtube.com/@navigationtrading" target="_blank" class="social-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a1828"/></svg></a>
+            <a href="https://www.linkedin.com/company/navigationtrading" target="_blank" class="social-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Legal</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk Disclosure</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Privacy Policy</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" style="line-height:1.75;font-size:11.5px;color:rgba(255,255,255,0.3)">
+        The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities involve risk and are not suitable for all investors. Consider all relevant risk factors, including their personal financial situation, before trading. Past results of any individual or trading system published by Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods, techniques, or indicators presented in these products and services will be profitable or that they will not result in losses – trading and/or investing in the stock and options market is risky due to the leverage involved and may not be suitable for all investors.<br>
+        Options are not suitable for all investors as the special risks inherent to options trading may expose investors to potentially rapid and substantial losses. Please read Characteristics and Risks of Standardized Options before investing in options.
+      </div>
+      <div class="footer-copy">&copy; Navigation Financial, LLC</div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Progress bar ── */
+    var bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', function () {
+      var pct = (window.scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+      bar.style.width = pct + '%';
+    });
+
+    /* Personalize greeting from ?name= */
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var rawName = params.get('name');
+      if (rawName) {
+        var firstName = decodeURIComponent(rawName).split(' ')[0];
+        var safe = firstName.replace(/[^\w\s'-]/g, '').slice(0, 24);
+        if (safe) {
+          var el = document.getElementById('greet-text');
+          if (el) el.textContent = 'Welcome, ' + safe + ' · Your Offer Is Active';
+        }
+      }
+    })();
+
+    /* ════════════════════════════════════════
+       15-MINUTE COUNTDOWN — persists across reloads
+       ════════════════════════════════════════ */
+    (function () {
+      var COUNTDOWN_MIN = 15;
+      var KEY = 'ntday_offer_expiry';
+
+      var hoursEl = document.getElementById('t-hours');
+      var minsEl  = document.getElementById('t-mins');
+      var secsEl  = document.getElementById('t-secs');
+      var card    = document.getElementById('terminal-cta');
+      var claimBtn = document.getElementById('claim-btn');
+
+      var expiry = parseInt(localStorage.getItem(KEY) || '0', 10);
+      var now = Date.now();
+      if (!expiry || expiry < now) {
+        expiry = now + COUNTDOWN_MIN * 60 * 1000;
+        localStorage.setItem(KEY, expiry);
+      }
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+      function setDigit(el, val) {
+        if (el.textContent === val) return;
+        el.textContent = val;
+        el.classList.remove('tick');
+        // restart animation
+        void el.offsetWidth;
+        el.classList.add('tick');
+      }
+      function tick() {
+        var diff = Math.max(0, expiry - Date.now());
+        if (diff <= 0) {
+          card.classList.add('expired');
+          if (claimBtn) {
+            claimBtn.style.opacity = '0.55';
+            claimBtn.style.pointerEvents = 'none';
+          }
+          return false;
+        }
+        var totalSec = Math.floor(diff / 1000);
+        var h = Math.floor(totalSec / 3600);
+        var m = Math.floor((totalSec % 3600) / 60);
+        var s = totalSec % 60;
+        setDigit(hoursEl, pad(h));
+        setDigit(minsEl,  pad(m));
+        setDigit(secsEl,  pad(s));
+        return true;
+      }
+      tick();
+      var interval = setInterval(function () {
+        if (!tick()) clearInterval(interval);
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PM36KHB');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7EFVS3VNV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-W7EFVS3VNV');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Replay — NavigationTrading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --teal-900: #0D2E4E;
+      --orange: #c8420a;
+      --orange-bright: #e04d10;
+      --orange-glow: rgba(200, 66, 10, 0.35);
+      --gold: #d4a040;
+      --cream: #f0f6ff;
+      --warm-white: #f5f9ff;
+      --text-dark: #111;
+      --text-mid: #4a4a4a;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #111
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--orange);
+      border-radius: 4px
+    }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+      z-index: 1000;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      padding: 18px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
+    }
+
+    .navbar.scrolled {
+      background: rgba(13, 46, 78, 0.97);
+      backdrop-filter: blur(20px);
+      padding: 12px 60px;
+      box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 5px;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--orange)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .nav-cta::after {
+      content: '→';
+      font-size: 14px;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--orange-glow)
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--teal-900);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 48px 60px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 5px;
+    }
+
+    .footer-orange {
+      color: var(--orange)
+    }
+
+    .footer-tagline {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 13px;
+      margin-top: 100px
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange);
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding-top: 24px;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 11.5px;
+      line-height: 1.75;
+    }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .social-icon:hover {
+      background: rgba(200, 66, 10, 0.3);
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--orange);
+    }
+
+    /* TOP STRIP — dark navy with photo bg */
+    .reg-top {
+      position: relative;
+      background: #0D2E4E;
+      padding: 110px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .reg-top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') right 92% / cover no-repeat;
+      opacity: 0.55;
+      z-index: 0;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1) 80px, black 250px);
+      mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1) 80px, black 250px);
+    }
+
+    .reg-top::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(13, 46, 78, 0.5) 100%);
+      z-index: 0;
+    }
+
+    .reg-top-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .reg-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      padding: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+
+    .reg-badge svg {
+      display: none;
+    }
+
+    /* MID CTA SECTION */
+    .mid-cta-section {
+      background: var(--teal-900);
+      padding: 56px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mid-cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.09;
+      pointer-events: none;
+    }
+
+    .mid-cta-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(ellipse at center, rgba(200, 66, 10, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .mid-cta-section > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mid-cta-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 700;
+      color: var(--warm-white);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .mid-cta-sub {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .mid-cta-note {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .mid-cta-note svg { flex-shrink: 0 }
+
+    .btn-main {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      color: #fff;
+      border: none;
+      padding: 18px 52px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    }
+
+    .btn-main::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+      transform: translateX(-150%);
+      transition: transform 0.5s;
+    }
+
+    .btn-main:hover::after { transform: translateX(150%) }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+    @media(max-width:900px) {
+      .navbar {
+        padding: 14px 20px;
+      }
+
+      .navbar.scrolled {
+        padding: 10px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-logo {
+        font-size: 16px;
+        letter-spacing: 3px;
+      }
+
+      .reg-top {
+        padding: 140px 20px 48px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 24px;
+      }
+
+      .footer-links {
+        gap: 16px;
+      }
+
+      footer {
+        padding: 40px 24px 28px;
+      }
+    }
+
+    @media(max-width:480px) {
+      .reg-top {
+        padding: 120px 16px 40px;
+      }
+
+      .nav-cta {
+        font-size: 11px;
+        padding: 7px 12px;
+        gap: 5px;
+      }
+
+      .nav-cta::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM36KHB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div id="progress-bar"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="/day-trading" class="nav-logo"><img src="logo.png" alt="NavigationTrading"
+        style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;"></a>
+    <ul class="nav-links" style="display:none;">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">Author</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <!-- REGISTRATION — top strip -->
+  <div class="reg-top">
+    <div class="reg-top-inner">
+      <div class="reg-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+        Day Trading Options for Income<br>Webclass Replay
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO SECTION -->
+  <div style="max-width:900px;margin:48px auto;padding:0 24px;">
+    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1175321973?h=c11748d62b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Day Trading Class 3-19-26"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  </div>
+
+  <!-- MID CTA SECTION -->
+  <section class="mid-cta-section">
+    <div class="container">
+      <h2 class="mid-cta-heading" style="font-size:clamp(22px,2.5vw,34px);margin-bottom:32px;">Use code "DAY" for 30% off any membership!</h2>
+      <div>
+        <button class="btn-main" style="text-transform:none;letter-spacing:0;" onclick="window.location.href='https://whop.com/joined/navigationtrading/products/ntday/?utm_source=activcampaign&utm_medium=email&utm_campaign=b2_no_purchase&utm_id=webclass-3-19-paid'">Join Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONE PAGERS SECTION -->
+  <div style="background:#fff;padding:48px 24px 60px;text-align:center;">
+    <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:48px;">
+      <img src="image1.png" alt="Trend Line Break Strategy"
+        style="width:100%;max-width:420px;border:1px solid #ddd;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+      <img src="image2.png" alt="Reversal Trading Strategy"
+        style="width:100%;max-width:420px;border:1px solid #ddd;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+    </div>
+
+    <a href="https://whop.com/navigationtrading/ntfree/" target="_blank"
+      style="display:inline-block;background:#e04d10;color:#fff;font-family:'DM Sans',sans-serif;font-size:clamp(14px,3vw,18px);font-weight:700;padding:14px clamp(20px,5vw,48px);border-radius:50px;text-decoration:none;max-width:90%;box-sizing:border-box;">Access Free One Pagers Here!</a>
+
+    <p style="font-family:'DM Sans',sans-serif;font-size:16px;color:#4a4a4a;margin-top:16px;">
+      Unlock your free one-pagers by registering for the FREE Membership.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"
+            style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;">
+        </div>
+        <div class="footer-tagline">Directional Day Trading Education</div>
+      </div>
+      <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+        <div>
+          <div
+            style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">
+            Contact</div>
+          <a href="mailto:support@navigationtrading.com"
+            style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
+        </div>
+        <div>
+          <div
+            style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">
+            Follow</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <a href="https://www.facebook.com/navigationtrading" target="_blank" class="social-icon"><svg width="14"
+                height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg></a>
+            <a href="https://x.com/navtrading1?s=21" target="_blank" class="social-icon"><svg width="13" height="13"
+                viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg></a>
+            <a href="https://www.instagram.com/navigationtrading" target="_blank" class="social-icon"><svg width="14"
+                height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,0.6)" stroke="none" />
+              </svg></a>
+            <a href="https://www.youtube.com/@navigationtrading" target="_blank" class="social-icon"><svg width="15"
+                height="15" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a1828" />
+              </svg></a>
+            <a href="https://www.linkedin.com/company/navigationtrading" target="_blank" class="social-icon"><svg
+                width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                <circle cx="4" cy="4" r="2" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <div
+            style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">
+            Legal</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Risk
+              Disclosure</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Privacy
+              Policy</a>
+            <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" style="line-height:1.75;font-size:11.5px;color:rgba(255,255,255,0.3)">
+        The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities
+        involve risk and are not suitable for all investors. Consider all relevant risk factors, including their
+        personal financial situation, before trading. Past results of any individual or trading system published by
+        Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods,
+        techniques, or indicators presented in these products and services will be profitable or that they will not
+        result in losses – trading and/or investing in the stock and options market is risky due to the leverage
+        involved and may not be suitable for all investors.<br>
+        Options are not suitable for all investors as the special risks inherent to options trading may expose investors
+        to potentially rapid and substantial losses. Please read Characteristics and Risks of Standardized Options
+        before investing in options.
+      </div>
+      <div class="footer-copy">&copy; Navigation Financial, LLC</div>
+    </div>
+  </footer>
+
+  <script>
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+      bar.style.width = pct + '%';
+    });
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+</body>
+
+</html>

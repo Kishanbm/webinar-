@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start': new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-PM36KHB');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7EFVS3VNV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-W7EFVS3VNV');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Replay V2 — Day Trading Options for Income · NavigationTrading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal-900: #0D2E4E;
+      --navy-deep: #07223f;
+      --navy-mid: #0f2f54;
+      --orange: #c8420a;
+      --orange-bright: #e04d10;
+      --orange-glow: rgba(200, 66, 10, 0.35);
+      --gold: #d4a040;
+      --cream: #f6f3ee;
+      --warm-white: #fbfaf6;
+      --text-dark: #111;
+      --text-mid: #4a4a4a;
+      --text-dim: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a1828; }
+    ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 4px; }
+
+    #progress-bar {
+      position: fixed; top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+      z-index: 1000; width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed; top: 3px; left: 0; right: 0;
+      z-index: 900;
+      padding: 18px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
+    }
+    .navbar.scrolled {
+      background: rgba(13, 46, 78, 0.97);
+      backdrop-filter: blur(20px);
+      padding: 12px 60px;
+      box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
+    }
+    .nav-logo img {
+      height: 40px; width: auto;
+      transform: scale(5); transform-origin: left center;
+      vertical-align: middle;
+    }
+    .nav-cta {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.5px;
+      border: none; border-radius: 8px;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--orange-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--orange-glow);
+    }
+
+    /* ══════════════════════════════════════
+       1. HERO — premium replay context
+       ══════════════════════════════════════ */
+    .replay-hero {
+      position: relative;
+      background: #061427;
+      padding: 130px 24px 70px;
+      overflow: hidden;
+    }
+    .replay-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
+      opacity: 0.18;
+      mix-blend-mode: luminosity;
+      pointer-events: none;
+    }
+    .replay-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(6,20,39,0.55) 0%, rgba(6,20,39,0.1) 45%, rgba(6,20,39,0.85) 100%);
+      pointer-events: none;
+    }
+    .replay-hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 56px;
+      align-items: stretch;
+    }
+    .replay-hero-left { text-align: left; min-width: 0; padding-top: 8px; }
+    .replay-hero-right {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Live "now watching" badge */
+    .replay-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 16px 7px 12px;
+      background: rgba(16,185,129,0.12);
+      border: 1px solid rgba(16,185,129,0.4);
+      border-radius: 50px;
+      color: #34d399;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .replay-badge-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16,185,129,0.28);
+      animation: livePulse 2s ease-in-out infinite;
+    }
+    @keyframes livePulse {
+      0%,100% { box-shadow: 0 0 0 3px rgba(16,185,129,0.28); }
+      50%     { box-shadow: 0 0 0 8px rgba(16,185,129,0.08); }
+    }
+
+    .replay-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 18px;
+      display: inline-flex; align-items: center; gap: 12px;
+    }
+    .replay-eyebrow::before {
+      content: ''; width: 30px; height: 1px;
+      background: rgba(200,66,10,0.5);
+    }
+
+    .replay-h1 {
+      font-size: clamp(34px, 4.2vw, 54px);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+      margin-bottom: 18px;
+    }
+    .replay-h1 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--orange) 0%, #d4a040 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .replay-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0;
+    }
+
+    /* Video player — fills the right column height */
+    .replay-video-wrap {
+      width: 100%;
+      flex: 1;
+      min-height: 380px;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08);
+      background: #000;
+    }
+    .replay-video {
+      position: absolute; inset: 0;
+    }
+    .replay-video iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* "What you'll see" highlight pills */
+    .replay-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+      margin: 28px 0 0;
+    }
+    .replay-highlight {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50px;
+      color: rgba(255,255,255,0.78);
+      font-size: 12.5px; font-weight: 600;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+    .replay-highlight-icon {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(200,66,10,0.15);
+      border: 1px solid rgba(200,66,10,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+    .replay-highlight-icon svg { width: 11px; height: 11px; }
+
+    /* ══════════════════════════════════════
+       2. EXCLUSIVE OFFER STRIP
+       ══════════════════════════════════════ */
+    .offer-strip {
+      position: relative;
+      background: linear-gradient(135deg, var(--orange) 0%, #d54616 50%, var(--orange-bright) 100%);
+      padding: 50px 24px;
+      overflow: hidden;
+    }
+    .offer-strip::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 18px);
+      pointer-events: none;
+    }
+    .offer-inner {
+      position: relative; z-index: 2;
+      max-width: 1080px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+    .offer-code-block {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 6px;
+    }
+    .offer-code-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+    }
+    .offer-code {
+      font-family: 'DM Mono', monospace;
+      font-size: 38px; font-weight: 700;
+      letter-spacing: 4px;
+      color: #fff;
+      padding: 4px 22px;
+      background: rgba(255,255,255,0.14);
+      border: 1.5px dashed rgba(255,255,255,0.55);
+      border-radius: 10px;
+      line-height: 1.1;
+    }
+    .offer-text { color: #fff; }
+    .offer-text h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+    .offer-text h2 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: #ffd9bd;
+    }
+    .offer-text p {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.85);
+    }
+    .offer-cta {
+      background: #fff;
+      color: var(--orange);
+      padding: 16px 32px;
+      font-size: 14px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      border: none; border-radius: 10px;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      white-space: nowrap;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .offer-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(0,0,0,0.32);
+    }
+
+    /* ══════════════════════════════════════
+       3. MEMBERSHIP BENEFITS
+       ══════════════════════════════════════ */
+    .benefits {
+      background: var(--warm-white);
+      padding: 90px 24px;
+      position: relative;
+    }
+    .benefits::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(13,46,78,0.12) 30%, rgba(13,46,78,0.12) 70%, transparent);
+    }
+    .benefits-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px;
+    }
+    .benefits-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 18px;
+    }
+    .benefits-eyebrow::before, .benefits-eyebrow::after {
+      content: ''; width: 28px; height: 1px;
+      background: rgba(200,66,10,0.45);
+    }
+    .benefits-head h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--teal-900);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .benefits-head h2 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--orange);
+    }
+    .benefits-head p {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .benefit-card {
+      background: #fff;
+      border: 1px solid rgba(13,46,78,0.08);
+      border-radius: 16px;
+      padding: 28px 24px 26px;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), #e04d10);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200,66,10,0.3);
+      box-shadow: 0 18px 40px -12px rgba(13,46,78,0.18);
+    }
+    .benefit-card:hover::before { transform: scaleX(1); }
+    .benefit-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(200,66,10,0.12) 0%, rgba(200,66,10,0.05) 100%);
+      border: 1px solid rgba(200,66,10,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange);
+      margin-bottom: 18px;
+    }
+    .benefit-card h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--teal-900);
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .benefit-card p {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+
+    /* ══════════════════════════════════════
+       4. FREE BONUSES — One Pagers (refined)
+       ══════════════════════════════════════ */
+    .bonuses {
+      background: linear-gradient(180deg, var(--cream) 0%, #efeae0 100%);
+      padding: 90px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bonuses::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 18% 12%, rgba(200,66,10,0.05) 0%, transparent 55%),
+        radial-gradient(ellipse at 82% 88%, rgba(13,46,78,0.04) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .bonuses .container { position: relative; z-index: 2; }
+    .bonuses-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 50px;
+    }
+    .bonuses-eyebrow {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(200,66,10,0.08);
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(200,66,10,0.2);
+    }
+    .bonuses-head h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--teal-900);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .bonuses-head h2 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--orange);
+    }
+    .bonuses-head p {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    .bonuses-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto 40px;
+    }
+    .bonus-card {
+      background: #fff;
+      border: 1px solid rgba(13,46,78,0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px -16px rgba(13,46,78,0.15);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s;
+    }
+    .bonus-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 32px 60px -16px rgba(13,46,78,0.22);
+    }
+    .bonus-card-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #f4f4f4;
+    }
+    /* CSS-built one-pager mockup */
+    .bonus-mockup {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: linear-gradient(180deg, #fafafa 0%, #f0f0ef 100%);
+      overflow: hidden;
+      border-bottom: 1px solid rgba(13,46,78,0.08);
+    }
+    .bonus-mockup-paper {
+      position: absolute;
+      inset: 14% 12%;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 12px 30px -8px rgba(13,46,78,0.18), 0 0 0 1px rgba(13,46,78,0.06);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .bonus-mockup-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--orange);
+    }
+    .bonus-mockup-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; font-weight: 800;
+      color: var(--teal-900);
+      letter-spacing: 0.3px;
+    }
+    .bonus-mockup-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 7px; font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--orange);
+      background: rgba(200,66,10,0.1);
+      padding: 3px 6px;
+      border-radius: 3px;
+    }
+    .bonus-mockup-lines { display: flex; flex-direction: column; gap: 5px; padding-top: 4px; }
+    .bonus-mockup-line {
+      height: 5px;
+      background: linear-gradient(90deg, rgba(13,46,78,0.16), rgba(13,46,78,0.06));
+      border-radius: 2px;
+    }
+    .bonus-mockup-line.w90 { width: 90%; }
+    .bonus-mockup-line.w70 { width: 70%; }
+    .bonus-mockup-line.w55 { width: 55%; }
+    .bonus-mockup-chart {
+      margin-top: auto;
+      height: 30%;
+      background:
+        linear-gradient(90deg, rgba(200,66,10,0.04) 0%, transparent 100%),
+        repeating-linear-gradient(90deg, rgba(13,46,78,0.04) 0 1px, transparent 1px 18%),
+        repeating-linear-gradient(0deg, rgba(13,46,78,0.04) 0 1px, transparent 1px 33%);
+      border: 1px solid rgba(13,46,78,0.08);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bonus-mockup-chart::before {
+      content: '';
+      position: absolute;
+      left: 6%; right: 6%; bottom: 30%;
+      height: 1.5px;
+      background: var(--orange);
+      transform: rotate(-12deg);
+      transform-origin: left center;
+      box-shadow: 0 0 6px rgba(200,66,10,0.5);
+    }
+    .bonus-mockup-chart::after {
+      content: '';
+      position: absolute;
+      left: 30%; bottom: 38%;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 8px rgba(200,66,10,0.6);
+    }
+    .bonus-card-body {
+      padding: 22px 26px 26px;
+      background: linear-gradient(180deg, #0c1f38 0%, #07223f 100%);
+      color: #fff;
+      border-top: 3px solid var(--orange);
+    }
+    .bonus-card-tag {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .bonus-card-body h4 {
+      font-size: 19px; font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.4px;
+      margin-bottom: 6px;
+    }
+    .bonus-card-body p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.55;
+    }
+
+    .bonuses-cta-wrap {
+      text-align: center;
+    }
+    .bonuses-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
+      color: #fff;
+      padding: 16px 36px;
+      font-size: 14px; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(200,66,10,0.35);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .bonuses-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(200,66,10,0.45);
+    }
+    .bonuses-cta-note {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 14px;
+    }
+
+    /* ══════════════════════════════════════
+       5. TESTIMONIALS
+       ══════════════════════════════════════ */
+    .testimonials {
+      background: var(--navy-deep);
+      padding: 90px 24px;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+    .testimonials::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(200,66,10,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(26,74,122,0.18) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .testimonials .container { position: relative; z-index: 2; }
+    .test-head { text-align: center; margin-bottom: 50px; }
+    .test-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 18px;
+    }
+    .test-eyebrow::before, .test-eyebrow::after {
+      content: ''; width: 28px; height: 1px;
+      background: rgba(200,66,10,0.5);
+    }
+    .test-head h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+    .test-head h2 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      background: linear-gradient(135deg, var(--orange) 0%, #d4a040 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .test-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 30px 28px;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .test-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(200,66,10,0.3);
+      transform: translateY(-3px);
+    }
+    .test-stars {
+      display: flex; gap: 3px;
+      color: #f5c842;
+      margin-bottom: 18px;
+    }
+    .test-stars svg { width: 15px; height: 15px; fill: currentColor; }
+    .test-card p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.65;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+    .test-author { display: flex; align-items: center; gap: 12px; }
+    .test-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange) 0%, #d4a040 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 15px;
+      flex-shrink: 0;
+    }
+    .test-author-info strong {
+      display: block;
+      font-size: 14px; font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .test-author-info span {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--orange);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════
+       6. FAQ
+       ══════════════════════════════════════ */
+    .faq {
+      background: var(--warm-white);
+      padding: 90px 24px;
+    }
+    .faq .container { max-width: 1180px; }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .faq-head {
+      position: sticky;
+      top: 110px;
+      text-align: left;
+      margin-bottom: 0;
+    }
+    @media (max-width: 992px) {
+      .faq-grid { grid-template-columns: 1fr; gap: 32px; }
+      .faq-head { position: static; text-align: center; }
+    }
+    .faq-eyebrow {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--orange);
+      background: rgba(200,66,10,0.08);
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 18px;
+    }
+    .faq-head h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--teal-900);
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .faq-head h2 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--orange);
+    }
+    .faq-head p {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.65;
+      max-width: 420px;
+      margin: 0;
+    }
+    .faq-list {
+      display: flex; flex-direction: column; gap: 12px;
+      max-width: 860px; margin: 0 auto;
+    }
+    .faq-item {
+      background: #fff;
+      border: 1.5px solid rgba(13,46,78,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item:hover { border-color: rgba(200,66,10,0.3); }
+    .faq-item.open {
+      border-color: rgba(200,66,10,0.4);
+      box-shadow: 0 14px 36px -10px rgba(13,46,78,0.12);
+    }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 22px 26px;
+      cursor: pointer; user-select: none;
+      font-size: 16px; font-weight: 700;
+      color: var(--teal-900);
+      transition: color 0.25s;
+    }
+    .faq-q:hover { color: var(--orange); }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(200,66,10,0.08);
+      border: 1px solid rgba(200,66,10,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange);
+      flex-shrink: 0;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--orange);
+      color: #fff;
+    }
+    .faq-a {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .faq-item.open .faq-a { grid-template-rows: 1fr; }
+    .faq-a-inner {
+      overflow: hidden;
+      padding: 0 26px;
+      transition: padding 0.4s ease;
+    }
+    .faq-item.open .faq-a-inner { padding: 0 26px 24px; }
+    .faq-a-inner-text {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .faq-a-inner-text a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .faq-a-inner-text a:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════
+       7. FINAL CTA — Terminal split (ported from membership)
+       ══════════════════════════════════════ */
+    .pm-final-cta {
+      background-color: #fff;
+      padding: 100px 24px;
+      position: relative;
+    }
+    .dt-terminal-cta {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--teal-900);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      box-shadow: 0 40px 100px rgba(13,46,78,0.15), 0 0 0 1px rgba(255,255,255,0.04) inset;
+      overflow: hidden;
+      position: relative;
+    }
+    .dt-terminal-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+    .dt-term-left {
+      padding: 60px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .dt-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      background: rgba(0,0,0,0.25);
+      padding: 8px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
+      width: fit-content;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .dt-live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse-live 2s infinite;
+    }
+    @keyframes pulse-live {
+      0%   { opacity: 1; transform: scale(1); }
+      50%  { opacity: 0.4; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .dt-term-left h2 {
+      font-size: clamp(34px, 4vw, 50px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .dt-term-left h2 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+    .dt-term-left p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 30px;
+    }
+    .dt-volume-profile {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
+      opacity: 0.8;
+    }
+    .dt-vol-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.2s;
+    }
+    .dt-vol-bar:nth-child(1) { width: 35%; animation: vol-shift 3s infinite alternate; }
+    .dt-vol-bar:nth-child(2) { width: 65%; animation: vol-shift 4s infinite alternate-reverse; }
+    .dt-vol-bar:nth-child(3) { width: 45%; animation: vol-shift 2.5s infinite alternate; }
+    .dt-vol-bar:nth-child(4) { width: 85%; background: var(--orange); box-shadow: 0 0 12px rgba(200,66,10,0.5); animation: vol-shift 3.5s infinite alternate-reverse; }
+    .dt-vol-bar:nth-child(5) { width: 25%; animation: vol-shift 2s infinite alternate; }
+    @keyframes vol-shift {
+      0%   { transform: scaleX(0.85); transform-origin: left; }
+      100% { transform: scaleX(1.15); transform-origin: left; }
+    }
+    .dt-term-right {
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-left: 1px solid rgba(255,255,255,0.08);
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .dt-term-price-lbl {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .dt-term-price {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .dt-term-price .val {
+      font-family: 'DM Mono', monospace;
+      font-size: 68px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+    .dt-term-price .per {
+      font-size: 16px;
+      color: var(--orange);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .dt-term-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-bright));
+      color: #fff;
+      padding: 22px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 12px 30px rgba(200,66,10,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .dt-term-action::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: skewX(-20deg);
+      transition: 0.6s;
+    }
+    .dt-term-action:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(200,66,10,0.4);
+    }
+    .dt-term-action:hover::before { left: 200%; }
+    .dt-term-features {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .dt-term-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+    .dt-term-feature svg {
+      width: 18px; height: 18px;
+      color: #10b981;
+      stroke-width: 3;
+    }
+    @media (max-width: 960px) {
+      .dt-terminal-cta {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        text-align: center;
+      }
+      .dt-term-left { padding: 48px 30px; align-items: center; }
+      .dt-live-badge { margin: 0 auto 24px; }
+      .dt-term-left p { margin: 0 auto; }
+      .dt-term-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding: 40px 30px; align-items: center; }
+      .dt-volume-profile { display: none; }
+      .dt-term-price { justify-content: center; }
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════ */
+    footer {
+      background: var(--teal-900);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 60px 60px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') center/cover no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .footer-top {
+      position: relative; z-index: 2;
+      display: flex; justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      gap: 40px; flex-wrap: wrap;
+    }
+    .footer-brand img {
+      height: 40px; width: auto;
+      transform: scale(5); transform-origin: left center;
+      filter: brightness(0) invert(1);
+      margin-bottom: 20px;
+    }
+    .footer-tagline {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      margin-top: 100px;
+    }
+    .footer-col-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .footer-col a:hover { color: var(--orange); }
+    .footer-socials {
+      display: flex; gap: 10px;
+    }
+    .footer-socials a {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6);
+      transition: all 0.25s;
+      margin: 0;
+    }
+    .footer-socials a:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+    .footer-bottom {
+      position: relative; z-index: 2;
+      padding-top: 24px;
+    }
+    .footer-disclaimer {
+      color: rgba(255,255,255,0.3);
+      font-size: 11.5px;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .footer-copy {
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+       ══════════════════════════════════════ */
+    @media (max-width: 992px) {
+      .replay-hero-inner { grid-template-columns: 1fr; gap: 36px; max-width: 720px; text-align: center; }
+      .replay-hero-left { text-align: center; }
+      .replay-sub { margin: 0 auto; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+      .test-grid { grid-template-columns: 1fr; max-width: 600px; }
+      .offer-inner { grid-template-columns: 1fr; text-align: center; gap: 22px; }
+      .replay-highlights { grid-template-columns: 1fr; gap: 10px; }
+    }
+    @media (max-width: 768px) {
+      .navbar { padding: 14px 20px; }
+      .navbar.scrolled { padding: 10px 20px; }
+      .container { padding: 0 24px; }
+      .replay-hero { padding: 110px 20px 50px; }
+      .replay-video-wrap { border-radius: 12px; }
+      .bonuses-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; gap: 28px; padding-bottom: 28px; }
+      footer { padding: 40px 24px 28px; }
+      .offer-code { font-size: 28px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PM36KHB" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div id="progress-bar"></div>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" id="navbar">
+    <a href="/day-trading" class="nav-logo"><img src="logo.png" alt="NavigationTrading"></a>
+    <a href="https://whop.com/joined/navigationtrading/products/ntday/?utm_source=replay&utm_medium=web&utm_campaign=replay_v2" class="nav-cta">Join Now</a>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       1. HERO — Replay with video
+       ══════════════════════════════════════ -->
+  <section class="replay-hero">
+    <div class="replay-hero-inner">
+
+      <!-- LEFT: text content + highlights -->
+      <div class="replay-hero-left">
+        <div class="replay-badge">
+          <span class="replay-badge-dot"></span>
+          Replay Now Playing
+        </div>
+        <h1 class="replay-h1">Welcome back. Let's get you <em>trading.</em></h1>
+        <p class="replay-sub">You're watching the full Webclass Replay. Below the video you'll find your exclusive member offer, free one-pager downloads, and answers to the most common questions.</p>
+
+        <div class="replay-highlights">
+          <div class="replay-highlight">
+            <div class="replay-highlight-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            Trend Line Break Setups
+          </div>
+          <div class="replay-highlight">
+            <div class="replay-highlight-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 18 23 18 23 12"/></svg>
+            </div>
+            Reversal Trade Triggers
+          </div>
+          <div class="replay-highlight">
+            <div class="replay-highlight-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            Defined Risk Management
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: video -->
+      <div class="replay-hero-right">
+        <div class="replay-video-wrap">
+          <div class="replay-video">
+            <iframe src="https://player.vimeo.com/video/1175321973?h=c11748d62b&badge=0&autopause=0&player_id=0&app_id=58479"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Day Trading Class 3-19-26"></iframe>
+          </div>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       2. EXCLUSIVE OFFER STRIP
+       ══════════════════════════════════════ -->
+  <section class="offer-strip">
+    <div class="offer-inner">
+      <div class="offer-code-block">
+        <span class="offer-code-label">Promo Code</span>
+        <span class="offer-code">DAY</span>
+      </div>
+      <div class="offer-text">
+        <h2>Get <em>30% off</em> any membership.</h2>
+        <p>Apply code <strong>DAY</strong> at checkout. Valid for new members during this replay only.</p>
+      </div>
+      <a href="https://whop.com/joined/navigationtrading/products/ntday/?utm_source=replay&utm_medium=web&utm_campaign=replay_v2_offer" class="offer-cta">
+        Claim Discount
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       3. MEMBERSHIP BENEFITS
+       ══════════════════════════════════════ -->
+  <section class="benefits">
+    <div class="container">
+      <div class="benefits-head">
+        <div class="benefits-eyebrow">What You Get Inside</div>
+        <h2>Trade alongside our team, <em>every market day.</em></h2>
+        <p>Everything the strategies in the replay reference — plus the live room, alerts, and the full course library.</p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Daily Live Trading Stream</h3>
+          <p>Morning open + Power Hour, narrated as it happens. See every entry, exit, and reason live.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h3>10 Strategy Courses</h3>
+          <p>Mighty Ninety, MOC, Iron Condors, Power Hour — every strategy fully taught with video lessons.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Real-Time Trade Alerts</h3>
+          <p>Every setup the team takes is alerted with entry, stop, target, and reasoning — all in real time.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Active Discord Community</h3>
+          <p>3,400+ traders. Ask anything, share setups, stay sharp between sessions — daily activity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       4. FREE BONUSES — One Pagers
+       ══════════════════════════════════════ -->
+  <section class="bonuses">
+    <div class="container">
+      <div class="bonuses-head">
+        <div class="bonuses-eyebrow">Free Bonus · Yours to Keep</div>
+        <h2>Two strategy one-pagers, <em>downloadable today.</em></h2>
+        <p>The exact frameworks from the replay — printable, searchable, and built for your trading desk.</p>
+      </div>
+
+      <div class="bonuses-grid">
+        <div class="bonus-card">
+          <img src="image1.png" alt="Trend Line Break Strategy" class="bonus-card-img">
+          <div class="bonus-card-body">
+            <span class="bonus-card-tag">Bonus 01</span>
+            <h4>Trend Line Break Strategy</h4>
+            <p>The setup, the trigger, the stop. One-page reference for catching continuation breaks cleanly.</p>
+          </div>
+        </div>
+        <div class="bonus-card">
+          <img src="image2.png" alt="Reversal Trading Strategy" class="bonus-card-img">
+          <div class="bonus-card-body">
+            <span class="bonus-card-tag">Bonus 02</span>
+            <h4>Reversal Trading Strategy</h4>
+            <p>How to spot a real reversal vs. a fakeout. Entry rules, invalidation, and target framework.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bonuses-cta-wrap">
+        <a href="https://whop.com/navigationtrading/ntfree/" target="_blank" class="bonuses-cta">
+          Access Free One-Pagers
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p class="bonuses-cta-note">Unlock by registering for the FREE Membership. No card required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       5. TESTIMONIALS
+       ══════════════════════════════════════ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="test-head">
+        <div class="test-eyebrow">What Members Say</div>
+        <h2>Real traders, <em>real results.</em></h2>
+      </div>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"Just joined a couple of weeks ago and love it. Winner on my first trade. This trading method is in line with my philosophy on making money in the market with smaller controlled positions."</p>
+          <div class="test-author">
+            <div class="test-avatar">M</div>
+            <div class="test-author-info">
+              <strong>Michael R.</strong>
+              <span>Verified Member</span>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"After years of trading, I feel that I am not on the bullish side or bearish side of the market, but finally on the profitable side. The strategies taught here are the best. Thank you."</p>
+          <div class="test-author">
+            <div class="test-avatar">S</div>
+            <div class="test-author-info">
+              <strong>Suresh N.</strong>
+              <span>Pro Member</span>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"The live trade calls changed everything for me. Seeing the reasoning behind every entry — that's the part you can't get from a recorded course. Worth every penny."</p>
+          <div class="test-author">
+            <div class="test-avatar">J</div>
+            <div class="test-author-info">
+              <strong>James K.</strong>
+              <span>Day Trading Member</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       6. FAQ
+       ══════════════════════════════════════ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-head">
+          <div class="faq-eyebrow">Frequently Asked</div>
+          <h2>Common questions, <em>quick answers.</em></h2>
+          <p>Everything you need to know before claiming your discount.</p>
+        </div>
+
+        <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">
+            How long is the DAY discount code valid?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-inner-text">The 30% off code is valid for new members for a limited time after the webclass replay. We recommend claiming it now while it's active.</div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            What's the difference between Day Trading and Pro Membership?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-inner-text">Day Trading focuses on the daily live stream, day trading courses, and chart indicators. Pro adds 17 advanced strategy courses, real-time trade alerts, and additional indicators. <a href="/pricing">Compare all plans →</a></div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Do you offer refunds if it's not the right fit?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-inner-text">Yes — every premium membership comes with a 7-day money-back guarantee. If it's not the right fit, email <a href="mailto:support@navigationtrading.com">support@navigationtrading.com</a> within 7 days for a full refund, no questions asked.</div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Can I cancel anytime?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-inner-text">Absolutely. You can cancel from your Whop dashboard at any time. No cancellation fees, no questions.</div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            What if I'm a complete beginner?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-inner-text">Start with the free membership — five core strategy courses give you the foundation. Then upgrade to Day Trading whenever you're ready to trade alongside the team live.</div></div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            How do I download the free one-pagers?
+            <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner"><div class="faq-a-inner-text">Click the "Access Free One-Pagers" button above. You'll register for the FREE Membership (no card needed) and the one-pagers will be in your member dashboard.</div></div></div>
+        </div>
+        </div><!-- /faq-list -->
+      </div><!-- /faq-grid -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       7. FINAL CTA — Terminal split
+       ══════════════════════════════════════ -->
+  <section class="pm-final-cta">
+    <div class="container">
+      <div class="dt-terminal-cta">
+
+        <!-- Left Side: Console & Info -->
+        <div class="dt-term-left">
+          <div class="dt-live-badge">
+            <span class="dt-live-dot"></span> Last Step
+          </div>
+          <h2>Trade alongside us, <em>starting tomorrow.</em></h2>
+          <p>Use code DAY at checkout for 30% off any membership. No card required for the free plan.</p>
+
+          <div class="dt-volume-profile">
+            <div class="dt-vol-bar"></div>
+            <div class="dt-vol-bar"></div>
+            <div class="dt-vol-bar"></div>
+            <div class="dt-vol-bar"></div>
+            <div class="dt-vol-bar"></div>
+          </div>
+        </div>
+
+        <!-- Right Side: Promo Code & Action -->
+        <div class="dt-term-right">
+          <div class="dt-term-price-lbl">Promo Code</div>
+          <div class="dt-term-price">
+            <span class="val">DAY</span>
+            <span class="per">30% OFF</span>
+          </div>
+
+          <a href="https://whop.com/joined/navigationtrading/products/ntday/?utm_source=replay&utm_medium=web&utm_campaign=replay_v2_final" class="dt-term-action">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Claim My 30% Off
+          </a>
+
+          <div class="dt-term-features">
+            <div class="dt-term-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              7-day money-back guarantee
+            </div>
+            <div class="dt-term-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Cancel anytime
+            </div>
+            <div class="dt-term-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              3,400+ active members
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"></div>
+        <div class="footer-tagline">Directional Day Trading Education</div>
+      </div>
+      <div style="display:flex; gap:60px; flex-wrap:wrap; align-items:flex-start;">
+        <div class="footer-col">
+          <div class="footer-col-label">Contact</div>
+          <a href="mailto:support@navigationtrading.com">support@navigationtrading.com</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-label">Follow</div>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/navigationtrading" target="_blank" aria-label="Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/navtrading1?s=21" target="_blank" aria-label="X">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/navigationtrading" target="_blank" aria-label="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@navigationtrading" target="_blank" aria-label="YouTube">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0D2E4E"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-label">Legal</div>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Risk Disclosure</a>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Privacy Policy</a>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities involve risk and are not suitable for all investors. Consider all relevant risk factors, including their personal financial situation, before trading. Past results of any individual or trading system published by Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods, techniques, or indicators presented in these products and services will be profitable or that they will not result in losses. Options are not suitable for all investors as the special risks inherent to options trading may expose investors to potentially rapid and substantial losses. Please read Characteristics and Risks of Standardized Options before investing in options.</p>
+      <p class="footer-copy">&copy; Navigation Financial, LLC</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Progress bar + navbar scroll state */
+    const bar = document.getElementById('progress-bar');
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+      bar.style.width = pct + '%';
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* FAQ accordion — one open at a time */
+    document.querySelectorAll('.faq-item').forEach(function(item){
+      item.querySelector('.faq-q').addEventListener('click', function(){
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(x){ x.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+
+</html>
