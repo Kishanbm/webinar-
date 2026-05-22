@@ -26,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing Plans — Navigation Trading</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Cormorant+Garamond:wght@700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   <style>
     *,
     *::before,
@@ -990,6 +990,92 @@
       .dt-volume-profile { display: none; }
       .dt-term-price { justify-content: center; }
       .pm-final-cta { padding: 50px 0; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TYPE SYSTEM — single source of truth (shared across pages)
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      --ff-sans: 'DM Sans', sans-serif;
+      --ff-serif: 'Cormorant Garamond', serif;
+      --ff-mono: 'DM Mono', monospace;
+
+      --fs-display: clamp(36px, 4.5vw, 60px);
+      --fs-h1:      clamp(30px, 3.6vw, 48px);
+      --fs-h2:      clamp(26px, 2.6vw, 36px);
+      --fs-h3:      clamp(20px, 1.8vw, 26px);
+      --fs-h4:      17px;
+      --fs-lead:    18px;
+      --fs-body:    16px;
+      --fs-small:   14px;
+      --fs-eyebrow: 12px;
+      --fs-btn:     15px;
+
+      --lh-tight: 1.1;
+      --lh-snug:  1.25;
+      --lh-body:  1.65;
+    }
+
+    body { font-family: var(--ff-sans); font-size: var(--fs-body); line-height: var(--lh-body); }
+
+    /* Hero H1 */
+    section.pricing-hero h1,
+    section.hero h1 {
+      font-size: var(--fs-display) !important;
+      line-height: var(--lh-tight) !important;
+      font-weight: 800 !important;
+      letter-spacing: -1.5px !important;
+    }
+
+    /* Every section H2 */
+    section h2,
+    section h2[style] {
+      font-size: var(--fs-h2) !important;
+      line-height: var(--lh-snug) !important;
+      font-weight: 800 !important;
+      letter-spacing: -1px !important;
+    }
+
+    /* Every section H3 (plan names etc) */
+    section h3,
+    section h3[style] {
+      font-size: var(--fs-h3) !important;
+      line-height: 1.3 !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.3px !important;
+    }
+
+    /* Every section H4 */
+    section h4,
+    section h4[style] {
+      font-size: var(--fs-h4) !important;
+      line-height: 1.35 !important;
+      font-weight: 700 !important;
+    }
+
+    /* Lead / intro paragraphs */
+    .pricing-hero p,
+    section header p,
+    section .section-header p {
+      font-size: var(--fs-lead) !important;
+      line-height: 1.6 !important;
+    }
+
+    /* Body paragraphs inside cards */
+    section .card p,
+    section [class*="-card"] p,
+    section [class*="-content"] p {
+      font-size: var(--fs-body) !important;
+      line-height: var(--lh-body) !important;
+    }
+
+    /* Eyebrows / pill tags */
+    [class*="eyebrow"],
+    [class$="-eyebrow"] {
+      font-size: var(--fs-eyebrow) !important;
+      letter-spacing: 2px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase;
     }
   </style>
 </head>
