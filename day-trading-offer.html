@@ -421,6 +421,106 @@
       flex-shrink: 0;
     }
 
+    /* ── BONUS ONE-PAGERS — full-width section ── */
+    .bonus-section-full {
+      background: linear-gradient(135deg, #0d2e4e 0%, #07223f 50%, #0c2745 100%);
+      padding: 60px 24px;
+      margin: 40px -24px;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(200,66,10,0.18);
+      border-bottom: 1px solid rgba(200,66,10,0.18);
+    }
+    .bonus-section-full::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+      pointer-events: none;
+    }
+    .bonus-section-full > * { position: relative; z-index: 1; }
+    .bonus-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      position: relative;
+      overflow: visible;
+    }
+    .bonus-section > * { position: relative; z-index: 1; }
+    .bonus-section h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .bonus-section .bonus-lead {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.55;
+      margin: 0 auto 26px;
+      max-width: 720px;
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(200,66,10,0.18);
+    }
+    .bonus-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-bottom: 26px;
+    }
+    .bonus-card-img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .bonus-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all .25s ease;
+    }
+    .bonus-cta:hover { background: #ff7a3d; transform: translateY(-1px); }
+    .bonus-cta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .bonus-cta-note {
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.55);
+      margin: 0;
+    }
+    @media (max-width: 720px) {
+      .bonus-cards { grid-template-columns: 1fr; }
+      .bonus-section { padding: 26px 22px 30px; }
+    }
+
     /* ── WHY-NOW (dark navy + orange, matches terminal-cta) ── */
     .why-now {
       background: linear-gradient(135deg, #0d2e4e 0%, #07223f 50%, #0c2745 100%);
@@ -634,6 +734,29 @@
         </div>
 
       </div>
+
+    </div> <!-- /.wrap -->
+
+    <!-- BONUS ONE-PAGERS — full-width section -->
+    <section class="bonus-section-full">
+      <div class="bonus-section">
+        <h4>Free Bonus · Strategy One-Pagers</h4>
+        <p class="bonus-lead">Two printable cheat-sheets you get the moment you join — quick-reference setups you can keep open while you trade.</p>
+        <div class="bonus-cards">
+          <img src="image1.png" alt="Trend Line Break Strategy" class="bonus-card-img">
+          <img src="image2.png" alt="Reversal Trading Strategy" class="bonus-card-img">
+        </div>
+        <div class="bonus-cta-row">
+          <a href="https://whop.com/navigationtrading/ntfree/" target="_blank" class="bonus-cta">
+            Access Free One Pagers Here!
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <p class="bonus-cta-note">Unlock your free one-pagers by registering for the FREE Membership.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
 
       <!-- WHY NOW -->
       <div class="why-now" id="why">
