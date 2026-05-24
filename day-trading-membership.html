@@ -2097,188 +2097,209 @@
     }
     .dt-curr .pm-container { position: relative; z-index: 2; max-width: 1100px; }
 
-    /* CLUSTER PANEL — solid darker than section bg */
+    /* CLUSTER TIMELINE PANEL */
     .dt-curr-cluster {
-      margin-bottom: 18px;
-      background: #07223f;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      overflow: hidden;
-      transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+      margin-bottom: 60px;
       position: relative;
-      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.35);
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+      transition: none;
+      box-shadow: none;
+      padding-left: 90px;
     }
-    .dt-curr-cluster:hover {
-      border-color: rgba(255,255,255,0.15);
-      transform: translateY(-2px);
-      box-shadow: 0 18px 40px -12px rgba(0,0,0,0.5);
-    }
-    .dt-curr-cluster.open {
-      border-color: rgba(200,66,10,0.4);
-      box-shadow: 0 24px 60px -20px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,66,10,0.18);
-      transform: translateY(0);
-    }
-    /* Left orange accent bar reveals when open */
+    
+    /* Left vertical timeline line */
     .dt-curr-cluster::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; bottom: 0;
-      width: 4px;
-      background: linear-gradient(180deg, var(--orange) 0%, #e04d10 100%);
-      transform: scaleY(0);
-      transform-origin: top;
-      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+      top: 65px; /* start below the cluster circle */
+      bottom: -60px; /* connect to next cluster */
+      left: 31px; /* Center alignment based on 90px padding and -80px left on circle */
+      width: 2px;
+      background: rgba(255,255,255,0.1);
+      transform: none;
+      transition: background 0.4s ease;
     }
-    .dt-curr-cluster.open::before { transform: scaleY(1); }
-    .dt-curr-cluster:last-of-type { margin-bottom: 0; }
+    
+    .dt-curr-cluster.open::before {
+      background: var(--orange);
+      box-shadow: none;
+    }
+    
+    .dt-curr-cluster:last-of-type::before {
+      bottom: 0;
+    }
 
-    /* CLUSTER HEADER — premium editorial */
+    /* CLUSTER HEADER */
     .dt-curr-cluster-head {
-      display: grid;
-      grid-template-columns: 100px 1fr auto auto;
+      display: flex;
       align-items: center;
       gap: 26px;
-      padding: 26px 32px;
+      padding: 20px 30px;
       cursor: pointer;
       user-select: none;
-      transition: background 0.25s;
+      transition: all 0.3s ease;
+      position: relative;
+      margin-bottom: 20px;
+      background: #0b1a2e;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
     }
-    .dt-curr-cluster-head:hover { background: rgba(255,255,255,0.015); }
+    .dt-curr-cluster-head:hover { 
+      background: #0f243d; 
+      transform: translateX(4px);
+      border-color: rgba(255,255,255,0.1);
+    }
+    
+    .dt-curr-cluster.open .dt-curr-cluster-head {
+      margin-bottom: 30px;
+      background: #0b1a2e;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-right: 3px solid var(--orange);
+      border-radius: 12px;
+      box-shadow: none;
+    }
 
+    /* The cluster number circle on the timeline */
     .dt-curr-num-big {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 64px;
+      position: absolute;
+      left: -80px; /* 90px padding - 80px left = 10px. Circle width 42px -> center is 10+21=31px */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0f172a;
+      border: 2px solid var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 16px;
       font-weight: 700;
-      font-style: italic;
-      line-height: 0.85;
-      background: linear-gradient(135deg, var(--orange) 0%, #e04d10 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      letter-spacing: -2px;
-      text-align: center;
+      font-style: normal;
+      color: var(--orange);
+      z-index: 2;
+      box-shadow: 0 0 15px rgba(200,66,10,0.3);
+      -webkit-text-fill-color: initial;
+      background-clip: padding-box;
+      letter-spacing: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .dt-curr-cluster.open .dt-curr-num-big {
+      background: #0f172a;
+      box-shadow: 0 0 20px rgba(200,66,10,0.6);
     }
 
-    .dt-curr-head-text { min-width: 0; }
+    .dt-curr-head-text { min-width: 0; flex: 1; }
+    
     .dt-curr-tag {
-      display: inline-block;
-      font-family: 'DM Mono', monospace;
-      font-size: 9.5px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--orange);
-      font-weight: 600;
-      margin-bottom: 6px;
+      display: none;
     }
     .dt-curr-cluster-head h3 {
-      font-size: clamp(22px, 2.4vw, 28px);
+      font-size: clamp(22px, 2.2vw, 28px);
       font-weight: 800;
-      color: #fff;
+      color: var(--orange);
       letter-spacing: -0.5px;
-      margin: 0 0 4px;
+      margin: 0 0 6px;
       line-height: 1.15;
     }
     .dt-curr-tagline {
-      font-size: 13.5px;
-      color: rgba(255,255,255,0.6);
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
       line-height: 1.5;
       margin: 0;
+      max-width: 600px;
     }
-    .dt-curr-count {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
-      font-weight: 600;
-      padding: 7px 14px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 50px;
-      white-space: nowrap;
-    }
+    
+    .dt-curr-count { display: none; }
+    .dt-curr-chevron { display: none; }
 
-    /* Chevron */
-    .dt-curr-chevron {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.14);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.75);
-      flex-shrink: 0;
-      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-    }
-    .dt-curr-cluster.open .dt-curr-chevron {
-      background: var(--orange);
-      border-color: var(--orange);
-      color: #fff;
-      transform: rotate(180deg);
-      box-shadow: 0 4px 16px rgba(200,66,10,0.4);
-    }
-
-    /* Body — smooth grid-template-rows */
+    /* Body */
     .dt-curr-body {
       display: grid;
       grid-template-rows: 0fr;
       transition: grid-template-rows 0.55s cubic-bezier(0.4,0,0.2,1);
     }
-    .dt-curr-cluster.open .dt-curr-body { grid-template-rows: 1fr; }
+    
+    .dt-curr-cluster.open .dt-curr-body { 
+      grid-template-rows: 1fr; 
+    }
+    
     .dt-curr-body-inner {
       overflow: hidden;
-      padding: 0 32px;
-      transition: padding 0.4s ease;
+      padding: 0;
     }
-    .dt-curr-cluster.open .dt-curr-body-inner {
-      padding: 0 32px 28px;
-    }
+    
     .dt-curr-list {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 4px;
+      border-top: none;
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    /* STRATEGY ROW — editorial list, not a card grid */
+    /* STRATEGY ROW */
     .dt-curr-row {
       display: grid;
       grid-template-columns: 56px 1fr 140px;
       gap: 22px;
-      padding: 22px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      align-items: flex-start;
-      transition: background 0.25s;
-      border-radius: 8px;
+      padding: 24px;
+      background: #0b1a2e;
+      border: 1px solid rgba(255,255,255,0.05);
+      align-items: center;
+      transition: transform 0.3s, background 0.3s;
+      border-radius: 12px;
+      position: relative;
     }
-    .dt-curr-row:last-child { border-bottom: none; }
-    .dt-curr-row:hover { background: rgba(255,255,255,0.04); }
+    .dt-curr-row:hover { 
+      background: #0f243d; 
+      transform: translateX(5px);
+      border-color: rgba(255,255,255,0.1);
+    }
+    
+    /* Connect card to timeline */
+    .dt-curr-row::before {
+      content: '';
+      position: absolute;
+      left: -30px;
+      top: 50%;
+      width: 30px;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
 
     .dt-curr-row-num {
       font-family: 'DM Mono', monospace;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       color: var(--orange);
-      letter-spacing: 1.5px;
-      padding-top: 4px;
-      background: rgba(200,66,10,0.12);
-      border: 1px solid rgba(200,66,10,0.25);
-      border-radius: 6px;
-      text-align: center;
-      padding: 6px 0;
-      height: fit-content;
-      width: 44px;
+      letter-spacing: 1px;
+      background: #071526;
+      border: 1px solid rgba(200,66,10,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      padding: 0;
     }
 
     .dt-curr-row-body { min-width: 0; }
     .dt-curr-row-body h4 {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 700;
       color: #fff;
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       line-height: 1.3;
       letter-spacing: -0.2px;
     }
     .dt-curr-row-body p {
-      font-size: 14px;
+      font-size: 14.5px;
       color: rgba(255,255,255,0.58);
       line-height: 1.6;
       margin: 0;
@@ -2286,47 +2307,62 @@
 
     .dt-curr-row-time {
       font-family: 'DM Mono', monospace;
-      font-size: 10px;
+      font-size: 11px;
       color: rgba(255,255,255,0.75);
-      letter-spacing: 1.5px;
-      padding: 7px 14px;
+      letter-spacing: 1px;
+      padding: 8px 16px;
       background: rgba(255,255,255,0.08);
       border-radius: 50px;
       border: 1px solid rgba(255,255,255,0.15);
       text-transform: uppercase;
       white-space: nowrap;
       text-align: center;
-      margin-top: 4px;
       justify-self: end;
       font-weight: 600;
     }
 
     .dt-curr-cta-wrap {
       text-align: center;
-      margin-top: 38px;
+      margin-top: 50px;
     }
 
     @media (max-width: 900px) {
-      .dt-curr-cluster-head {
-        grid-template-columns: 70px 1fr auto;
-        gap: 18px;
-        padding: 22px 22px;
+      .dt-curr-cluster {
+        padding-left: 40px;
       }
-      .dt-curr-num-big { font-size: 50px; }
-      .dt-curr-count { display: none; }
+      .dt-curr-cluster::before {
+        left: 11px; /* Center alignment */
+        top: 50px; /* Adjust line start below circle on mobile */
+      }
+      .dt-curr-num-big {
+        left: -45px;
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+      }
+      .dt-curr-cluster-head {
+        gap: 18px;
+        padding: 20px 24px;
+      }
+      .dt-curr-row::before {
+        left: -10px;
+        width: 10px;
+      }
       .dt-curr-row {
         grid-template-columns: 40px 1fr;
-        gap: 14px;
-        padding: 18px 0;
+        gap: 16px;
+        padding: 20px;
       }
       .dt-curr-row-time {
-        grid-column: 2;
+        grid-column: 1 / -1;
         justify-self: start;
-        margin-top: 8px;
+        margin-top: 10px;
       }
-      .dt-curr-body-inner,
-      .dt-curr-cluster.open .dt-curr-body-inner { padding-left: 22px; padding-right: 22px; }
-      .dt-curr-cluster.open .dt-curr-body-inner { padding-bottom: 22px; }
+      .dt-curr-row-num {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+      }
     }
     @media (max-width: 768px) { .dt-curr { padding: 60px 0; } }
 
@@ -2517,21 +2553,21 @@
       }
     }
 
-    /* ══ SECTION 7: WHO FOR — KINETIC GLASS DUO ══ */
     /* ══ SECTION 7: WHO IS IT FOR ══ */
     .dt-who {
       padding: 90px 0;
-      background: #0D2E4E;
+      background: #07152b;
       position: relative;
       overflow: hidden;
     }
 
-    .dt-who::after {
+    .dt-who::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(255, 255, 255, .016) 1px, transparent 1px);
-      background-size: 28px 28px;
+      background:
+        radial-gradient(ellipse at 10% 30%, rgba(26,74,180,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 70%, rgba(200,66,10,0.07) 0%, transparent 55%);
       pointer-events: none;
       z-index: 0;
     }
@@ -2544,173 +2580,201 @@
     .dt-who-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-top: 50px;
+      gap: 24px;
+      margin-top: 52px;
       max-width: 1180px;
       margin-left: auto;
       margin-right: auto;
     }
 
+    /* ── Cards ── */
     .dt-who-card {
-      background: #071626;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: 32px;
+      background: #0a1a30;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      padding: 30px 28px 24px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
     }
 
+    /* ── Card header ── */
     .dt-who-card-head {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
+      padding-bottom: 18px;
+      margin-bottom: 4px;
+      position: relative;
     }
 
+    /* Short underline accent below header */
+    .dt-who-card-head::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .for-card .dt-who-card-head::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #2d7dd2;
+      z-index: 1;
+    }
+
+    .not-card .dt-who-card-head::before {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--orange);
+      z-index: 1;
+    }
+
+    /* Header circle icon */
     .dt-who-status-icon {
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      font-weight: 900;
+      flex-shrink: 0;
     }
 
     .for-card .dt-who-status-icon {
-      background: rgba(16, 185, 129, 0.15);
-      color: #10b981;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: rgba(26, 100, 210, 0.12);
+      color: #4da3f5;
+      border: 1.5px solid rgba(45, 125, 210, 0.55);
+      box-shadow: 0 0 18px rgba(45,125,210,0.3), inset 0 0 12px rgba(45,125,210,0.08);
     }
 
     .not-card .dt-who-status-icon {
-      background: rgba(239, 68, 68, 0.15);
-      color: #ef4444;
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      background: rgba(200, 66, 10, 0.12);
+      color: var(--orange);
+      border: 1.5px solid rgba(200,66,10,0.55);
+      box-shadow: 0 0 18px rgba(200,66,10,0.3), inset 0 0 12px rgba(200,66,10,0.08);
+    }
+
+    .dt-who-status-icon svg {
+      width: 24px;
+      height: 24px;
     }
 
     .dt-who-card-head h3 {
-      font-size: 22px;
+      font-size: clamp(18px, 1.7vw, 22px);
       font-weight: 800;
       color: #fff;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
     }
 
-    /* Inner soft panel */
-    .dt-who-inner {
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 20px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
+    /* ── Rows ── */
     .dt-who-row {
-      display: flex;
-      gap: 20px;
-      padding: 20px 20px;
-      border-radius: 16px;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      background: transparent;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .dt-who-row:last-child {
       border-bottom: none;
+      padding-bottom: 4px;
     }
 
-    .dt-who-row:hover {
-      background: rgba(255, 255, 255, 0.04);
-      transform: translateX(8px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    .dt-who-row:first-child {
+      padding-top: 20px;
     }
 
-    .dt-who-row:hover .dt-who-title {
-      color: #fff;
-    }
-
-    .dt-who-row:hover .dt-who-desc {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .dt-who-row:hover .dt-who-num {
-      color: rgba(255, 255, 255, 0.15);
-    }
-
-    .dt-who-num {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 36px;
-      font-weight: 800;
-      line-height: 1;
-      color: rgba(255, 255, 255, 0.06);
-      transition: all 0.3s;
+    /* Row icon box */
+    .dt-who-row-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
-      width: 50px;
-      text-align: center;
     }
 
-    .for-card .dt-who-row:hover .dt-who-num {
-      color: rgba(16, 185, 129, 0.2);
+    .for-card .dt-who-row-icon {
+      background: rgba(18, 80, 180, 0.14);
+      color: #4da3f5;
+      border: 1px solid rgba(45,125,210,0.45);
+      box-shadow: 0 0 12px rgba(45,125,210,0.2);
     }
 
-    .not-card .dt-who-row:hover .dt-who-num {
-      color: rgba(239, 68, 68, 0.2);
+    .not-card .dt-who-row-icon {
+      background: rgba(200, 66, 10, 0.1);
+      color: var(--orange);
+      border: 1px solid rgba(200,66,10,0.4);
+      box-shadow: 0 0 12px rgba(200,66,10,0.18);
     }
 
+    .dt-who-row-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Row number */
+    .dt-who-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: 0;
+      line-height: 1;
+      text-align: left;
+    }
+
+    /* Row content */
     .dt-who-content {
-      flex: 1;
+      min-width: 0;
     }
 
     .dt-who-title {
-      font-size: 16px;
-      font-weight: 800;
+      font-size: 15px;
+      font-weight: 700;
       color: #ffffff;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       line-height: 1.3;
-      transition: color 0.3s;
     }
 
     .dt-who-desc {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 400;
-      color: rgba(255, 255, 255, 0.45);
-      line-height: 1.6;
-      transition: color 0.3s;
+      color: rgba(255,255,255,0.48);
+      line-height: 1.65;
+      margin: 0;
     }
 
     @media (max-width: 992px) {
       .dt-who-grid {
         grid-template-columns: 1fr;
-        padding: 0 24px;
+        padding: 0 4px;
       }
     }
 
-    @media (max-width: 860px) {
-      .dt-who-body {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-      }
-
-      .dt-who-divider {
-        display: none;
-      }
-
+    @media (max-width: 768px) {
+      .dt-who { padding: 60px 0; }
+      .dt-who-card { padding: 22px 18px 18px; }
       .dt-who-row {
-        grid-template-columns: 56px 1fr;
-        padding: 18px 0;
+        grid-template-columns: 40px 1fr;
+        gap: 10px;
       }
-
-      .dt-who-num {
-        font-size: 44px;
-      }
-
-      .dt-who-col-head {
-        padding: 0 0 16px;
-      }
+      .dt-who-row-icon { width: 40px; height: 40px; }
     }
 
     /* ══ SECTION 8: COMPARISON — WHITE PLAN CARDS ══ */
@@ -3114,32 +3178,53 @@
 
     /* ══ SECTION 10: INSTRUCTOR ══ */
     .dt-instructor {
-      padding: 100px 0;
+      padding: 60px 0;
       background: #fff;
+      position: relative;
     }
 
     .dt-instr-grid {
       display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 60px;
-      align-items: start;
+      grid-template-columns: 400px 1fr;
+      gap: 56px;
+      align-items: stretch;
     }
 
+    /* Left Speaker Card (containing photo + nameplate) */
     .dt-instr-right {
-      border-radius: 24px;
+      background: #ffffff;
+      border: 1px solid rgba(13, 46, 78, 0.08);
+      border-radius: 28px;
       overflow: hidden;
+      box-shadow: 0 20px 50px rgba(13, 46, 78, 0.05);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dt-instr-right:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 70px rgba(13, 46, 78, 0.1);
+      border-color: rgba(45, 125, 210, 0.15);
     }
 
     .dt-instr-photo {
       position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
     }
 
     .dt-instr-photo img {
       width: 100%;
+      height: 100%;
       display: block;
-      aspect-ratio: 3/4;
       object-fit: cover;
       object-position: top;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .dt-instr-right:hover .dt-instr-photo img {
+      transform: scale(1.04);
     }
 
     .dt-instr-bar {
@@ -3147,19 +3232,20 @@
     }
 
     .dt-instr-nameplate {
-      padding: 26px 28px;
-      background: #eef5fc;
-      border: 1.5px solid #c8ddf0;
-      border-top: none;
-      border-radius: 0 0 24px 24px;
-      box-shadow: 0 6px 20px rgba(13, 46, 78, .09);
+      padding: 28px 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fafd 100%);
+      border-top: 1px solid rgba(13, 46, 78, 0.05);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .dt-instr-name {
       color: var(--teal-900);
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 800;
-      margin-bottom: 3px;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
     }
 
     .dt-instr-role {
@@ -3168,64 +3254,102 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
     .dt-instr-mini-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
+      margin-top: auto;
     }
 
     .dt-i-mini {
-      padding: 14px 12px;
-      border-radius: 12px;
+      padding: 14px 10px;
+      border-radius: 14px;
       text-align: center;
-      background: #d8eaf8;
-      border: 1px solid #c4dcf2;
+      background: #ffffff;
+      border: 1px solid rgba(13, 46, 78, 0.08);
+      box-shadow: 0 4px 10px rgba(13, 46, 78, 0.02);
+      transition: all 0.3s ease;
+    }
+
+    .dt-i-mini:hover {
+      transform: translateY(-2px);
+      border-color: rgba(45, 125, 210, 0.3);
+      box-shadow: 0 8px 20px rgba(45, 125, 210, 0.08);
     }
 
     .dt-i-mini-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--orange);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--teal-900);
       display: block;
       line-height: 1;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    .dt-i-mini:hover .dt-i-mini-num {
+      color: var(--orange);
     }
 
     .dt-i-mini-lbl {
       font-size: 10px;
-      color: #5a7a99;
+      color: #64748b;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       font-weight: 600;
     }
 
+    /* Right Bio Card (containing quote, bio, credentials) */
     .dt-instr-left {
-      background: #f7f8fa;
-      border: 1px solid rgba(0, 0, 0, .07);
-      border-radius: 24px;
+      background: #ffffff;
+      border: 1px solid rgba(13, 46, 78, 0.07);
+      border-radius: 28px;
       padding: 48px;
+      box-shadow: 0 20px 50px rgba(13, 46, 78, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dt-instr-left:hover {
+      border-color: rgba(13, 46, 78, 0.12);
+      box-shadow: 0 25px 60px rgba(13, 46, 78, 0.07);
     }
 
     .dt-instr-quote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(19px, 1.9vw, 24px);
+      font-size: clamp(20px, 2vw, 26px);
       font-style: italic;
       color: var(--teal-900);
-      line-height: 1.55;
-      margin-bottom: 28px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      line-height: 1.5;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(13, 46, 78, 0.08);
+      position: relative;
+    }
+
+    .dt-instr-quote::before {
+      content: '“';
+      position: absolute;
+      top: -30px;
+      left: -15px;
+      font-size: 100px;
+      color: rgba(200, 66, 10, 0.07);
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1;
+      pointer-events: none;
     }
 
     .dt-instr-bio-body p {
-      font-size: 15px;
-      line-height: 1.85;
-      color: #555;
-      margin-bottom: 18px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #475569;
+      margin-bottom: 20px;
     }
 
     .dt-instr-bio-body p:last-child {
@@ -3238,207 +3362,202 @@
     }
 
     .dt-instr-creds-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
       margin-top: 36px;
       padding-top: 36px;
-      border-top: 1px solid rgba(0, 0, 0, .08);
+      border-top: 1px solid rgba(13, 46, 78, 0.08);
       list-style: none;
     }
 
     .dt-instr-cred-row {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 16px;
+      background: #f8fafc;
+      border: 1px solid rgba(13, 46, 78, 0.04);
+      padding: 18px 20px;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .dt-instr-cred-row:hover {
+      background: #f1f5f9;
+      border-color: rgba(13, 46, 78, 0.08);
+      transform: translateY(-2px);
     }
 
     .dt-instr-cred-badge {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       flex-shrink: 0;
-      background: rgba(200, 66, 10, .1);
-      border: 1px solid rgba(200, 66, 10, .25);
+      background: rgba(200, 66, 10, 0.08);
+      border: 1px solid rgba(200, 66, 10, 0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--orange);
       font-weight: 900;
-      margin-top: 1px;
+      margin-top: 2px;
+      box-shadow: inset 0 2px 4px rgba(200, 66, 10, 0.03);
     }
 
     .dt-instr-cred-content h4 {
-      font-size: 14.5px;
+      font-size: 15px;
       color: var(--teal-900);
-      font-weight: 700;
-      margin-bottom: 2px;
+      font-weight: 800;
+      margin-bottom: 4px;
     }
 
     .dt-instr-cred-content p {
       font-size: 13px;
-      color: #777;
+      color: #64748b;
       margin: 0;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 992px) {
       .dt-instr-grid {
         grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .dt-instr-right {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .dt-instr-creds-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
     }
 
-    /* ══ SECTION 11: REVIEWS — BLUE QUOTE-FORWARD ══ */
-    .dt-reviews {
-      padding: 60px 0;
-      background: #0D2E4E;
+    @media (max-width: 576px) {
+      .dt-instr-left {
+        padding: 30px 24px;
+      }
+      .dt-instr-cred-row {
+        padding: 16px;
+      }
+    }
+
+    /* ══ SECTION 11: TESTIMONIALS (PORTED FROM REPLAY V2) ══ */
+    .testimonials {
+      background: #07223f; /* Deep navy from replay v2 */
+      padding: 90px 24px;
       position: relative;
       overflow: hidden;
+      color: #fff;
     }
-
-    .dt-reviews::before {
+    .testimonials::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM.jpeg') center/cover no-repeat;
-      opacity: 0.35;
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(200,66,10,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(26,74,122,0.18) 0%, transparent 55%);
       pointer-events: none;
     }
-
-    .dt-reviews::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(13, 46, 78, 0.82) 0%, rgba(13, 46, 78, 0.65) 50%, rgba(13, 46, 78, 0.80) 100%);
-      pointer-events: none;
-    }
-
-    .dt-reviews .pm-container {
+    .testimonials .pm-container {
+      max-width: 1240px; /* Wider container for testimonials! */
+      margin: 0 auto;
+      padding: 0 40px;
       position: relative;
       z-index: 2;
     }
-
-    .dt-rating-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 24px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 50px;
-      color: #fff;
-      font-weight: 700;
-      font-size: 14px;
-      margin-top: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .dt-rating-tag-stars {
+    .test-head { text-align: center; margin-bottom: 50px; }
+    .test-eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 4px; text-transform: uppercase;
       color: var(--orange);
-      letter-spacing: 2px;
-      font-size: 13px;
-      line-height: 1;
+      margin-bottom: 18px;
     }
-
-    .dt-rating-tag-count {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.85);
-      font-weight: 500;
-      border-left: 1px solid rgba(255, 255, 255, 0.25);
-      padding-left: 12px;
+    .test-eyebrow::before, .test-eyebrow::after {
+      content: ''; width: 28px; height: 1px;
+      background: rgba(200,66,10,0.5);
     }
-
-    .dt-quote-cards {
+    .test-head h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+    }
+    .test-head h2 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .test-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      width: 100%;
+      margin: 0 auto;
     }
-
-    .dt-quote-card {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 30px;
+    .test-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 26px 24px;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
       display: flex;
       flex-direction: column;
-      transition: all 0.3s ease;
     }
-
-    .dt-quote-card:hover {
-      background: rgba(0, 0, 0, 0.6);
-      border-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-5px);
+    .test-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(200,66,10,0.3);
+      transform: translateY(-3px);
     }
-
-    .dt-quote-stars {
-      display: flex;
-      gap: 3px;
-      color: var(--orange);
-      margin-bottom: 20px;
+    .test-stars {
+      display: flex; gap: 3px;
+      color: var(--orange-bright);
+      margin-bottom: 12px;
     }
-
-    .dt-quote-stars svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-    }
-
-    .dt-quote-text {
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 24px;
+    .test-stars svg { width: 15px; height: 15px; fill: currentColor; }
+    .test-card p {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      font-style: italic;
       flex-grow: 1;
-      font-style: normal;
-      font-family: inherit;
     }
-
-    .dt-quote-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .dt-quote-avatar {
-      width: 40px;
-      height: 40px;
+    .test-author { display: flex; align-items: center; gap: 12px; }
+    .test-avatar {
+      width: 40px; height: 40px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #fff;
-      font-size: 16px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-bright) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 15px;
       flex-shrink: 0;
     }
-
-    .dt-quote-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .dt-quote-name {
-      font-size: 14px;
-      font-weight: 700;
+    .test-author-info strong {
+      display: block;
+      font-size: 14px; font-weight: 700;
       color: #fff;
-      margin: 0 0 2px 0;
-      display: block;
+      margin-bottom: 2px;
+    }
+    .test-author-info span {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--orange);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
-    .dt-quote-role {
-      font-size: 11px;
-      color: var(--orange);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      display: block;
+    @media (max-width: 992px) {
+      .test-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
     }
+
 
     /* ══ SECTION 12: FAQ ══ */
     .pm-faq {
@@ -4002,9 +4121,7 @@
         gap: 40px;
       }
 
-      .dt-quote-cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
+
     }
 
     @media (max-width: 960px) {
@@ -4073,14 +4190,7 @@
         max-width: 380px;
       }
 
-      .dt-reviews-top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
 
-      .dt-rating-inline {
-        text-align: left;
-      }
 
       .dt-live-layout {
         grid-template-columns: 1fr;
@@ -4169,12 +4279,8 @@
         padding: 28px 24px;
       }
 
-      .dt-quote-card {
+      .test-card {
         padding: 28px;
-      }
-
-      .dt-quote-cards {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -5155,6 +5261,7 @@
       <div class="pm-section-head light reveal">
         <span class="pm-eyebrow">Is Day Trading Membership Right for You?</span>
         <h2>This Isn't for Everyone. <em style="color:var(--orange)">Here's How to Know.</em></h2>
+        <p style="color:rgba(255,255,255,0.6); margin-top:14px; font-size:16px; line-height:1.6;">Day Trading Membership is built for traders who are ready to learn,<br>take action, and grow with a proven process.</p>
       </div>
     </div>
 
@@ -5163,41 +5270,45 @@
       <!-- FOR CARD -->
       <div class="dt-who-card for-card reveal">
         <div class="dt-who-card-head">
-          <div class="dt-who-status-icon">✓</div>
-          <h3>Day Trading Is for You If:</h3>
+          <div class="dt-who-status-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Day Trading Is <span style="color:#4da3f5">for You</span> If:</h3>
         </div>
-        <div class="dt-who-inner">
-          <div class="dt-who-row">
-            <div class="dt-who-num">01</div>
-            <div class="dt-who-content">
-              <div class="dt-who-title">You want live, real-time experience</div>
-              <p class="dt-who-desc">Pre-recorded content only gets you so far. You want to see a professional make
-                decisions as the market moves.</p>
-            </div>
+        <div class="dt-who-row">
+          <div class="dt-who-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2a10 10 0 0 1 0 20"/><path d="M12 2a10 10 0 0 0 0 20"/><path d="M2 12h20"/></svg>
           </div>
-          <div class="dt-who-row">
-            <div class="dt-who-num">02</div>
-            <div class="dt-who-content">
-              <div class="dt-who-title">You have 1–2 hours during market hours</div>
-              <p class="dt-who-desc">The morning session and Power Hour are the two key windows. You don't need every
-                minute — just consistency.</p>
-            </div>
+          <div class="dt-who-content">
+            <div class="dt-who-title">You want live, real-time experience</div>
+            <p class="dt-who-desc">Pre-recorded content only gets you so far. You want to see a professional make decisions as the market moves.</p>
           </div>
-          <div class="dt-who-row">
-            <div class="dt-who-num">03</div>
-            <div class="dt-who-content">
-              <div class="dt-who-title">You understand options basics</div>
-              <p class="dt-who-desc">You know what calls, puts, and basic strategies are. Past the beginner "what is an
-                option?" stage.</p>
-            </div>
+        </div>
+        <div class="dt-who-row">
+          <div class="dt-who-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="dt-who-row">
-            <div class="dt-who-num">04</div>
-            <div class="dt-who-content">
-              <div class="dt-who-title">You're ready for a daily practice</div>
-              <p class="dt-who-desc">Day trading is a skill built through daily repetition. This is for those willing to
-                show up and do the work.</p>
-            </div>
+          <div class="dt-who-content">
+            <div class="dt-who-title">You have 1–2 hours during market hours</div>
+            <p class="dt-who-desc">The morning session and Power Hour are the two key windows. You don't need every minute — just consistency.</p>
+          </div>
+        </div>
+        <div class="dt-who-row">
+          <div class="dt-who-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="dt-who-content">
+            <div class="dt-who-title">You understand options basics</div>
+            <p class="dt-who-desc">You know what calls, puts, and basic strategies are. Past the beginner "what is an option?" stage.</p>
+          </div>
+        </div>
+        <div class="dt-who-row">
+          <div class="dt-who-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <div class="dt-who-content">
+            <div class="dt-who-title">You're ready for a daily practice</div>
+            <p class="dt-who-desc">Day trading is a skill built through daily repetition. This is for those willing to show up and do the work.</p>
           </div>
         </div>
       </div>
@@ -5205,41 +5316,45 @@
       <!-- NOT FOR CARD -->
       <div class="dt-who-card not-card reveal">
         <div class="dt-who-card-head">
-          <div class="dt-who-status-icon">×</div>
-          <h3>Day Trading Is NOT for You If:</h3>
+          <div class="dt-who-status-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <h3>Day Trading Is <em style="color:var(--orange); font-style:normal;">NOT</em> for You If:</h3>
         </div>
-        <div class="dt-who-inner">
-          <div class="dt-who-row">
-            <div class="dt-who-num">01</div>
-            <div class="dt-who-content">
-              <div class="dt-who-title">You're a complete beginner</div>
-              <p class="dt-who-desc">Start with the Free Membership. The beginner courses build the foundation you need
-                before going live.</p>
-            </div>
+        <div class="dt-who-row">
+          <div class="dt-who-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-          <div class="dt-who-row">
-            <div class="dt-who-num">02</div>
-            <div class="dt-who-content">
-              <div class="dt-who-title">You want someone to trade for you</div>
-              <p class="dt-who-desc">We share live trades, but you are responsible for your own decisions. This is
-                education, not a bot.</p>
-            </div>
+          <div class="dt-who-content">
+            <div class="dt-who-title">You're a complete beginner</div>
+            <p class="dt-who-desc">Start with the Free Membership. The beginner courses build the foundation you need before going live.</p>
           </div>
-          <div class="dt-who-row">
-            <div class="dt-who-num">03</div>
-            <div class="dt-who-content">
-              <div class="dt-who-title">You want income spreads & portfolio strategies</div>
-              <p class="dt-who-desc">Day Trading focuses on 0 DTE and intraday. For butterflies and calendars, join the
-                Pro Membership.</p>
-            </div>
+        </div>
+        <div class="dt-who-row">
+          <div class="dt-who-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
-          <div class="dt-who-row">
-            <div class="dt-who-num">04</div>
-            <div class="dt-who-content">
-              <div class="dt-who-title">You're looking for "get rich quick"</div>
-              <p class="dt-who-desc">Trading takes discipline and risk management. If you're looking for a magic button,
-                this isn't it.</p>
-            </div>
+          <div class="dt-who-content">
+            <div class="dt-who-title">You want someone to trade for you</div>
+            <p class="dt-who-desc">We share live trades, but you are responsible for your own decisions. This is education, not a bot.</p>
+          </div>
+        </div>
+        <div class="dt-who-row">
+          <div class="dt-who-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="dt-who-content">
+            <div class="dt-who-title">You want income spreads &amp; portfolio strategies</div>
+            <p class="dt-who-desc">Day Trading focuses on 0 DTE and intraday. For butterflies and calendars, join the Pro Membership.</p>
+          </div>
+        </div>
+        <div class="dt-who-row">
+          <div class="dt-who-row-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="dt-who-content">
+            <div class="dt-who-title">You're looking for "get rich quick"</div>
+            <p class="dt-who-desc">Trading takes discipline and risk management. If you want shortcuts, this isn't the place.</p>
           </div>
         </div>
       </div>
@@ -5356,7 +5471,7 @@
             <img src="auther.jpeg" alt="Steve — NavigationTrading">
           </div>
           <div class="dt-instr-nameplate">
-            <div class="dt-instr-name">Steve</div>
+            <div class="dt-instr-name">NavigationTrading</div>
             <div class="dt-instr-role">Founder & Head Trader</div>
             <div class="dt-instr-mini-stats">
               <div class="dt-i-mini"><span class="dt-i-mini-num">10</span><span class="dt-i-mini-lbl">Courses</span>
@@ -5408,130 +5523,61 @@
   </section>
 
   <!-- ── 11. REVIEWS ── -->
-  <section class="dt-reviews">
+  <section class="testimonials">
     <div class="pm-container">
-      <div class="pm-section-head reveal light" style="margin-bottom: 56px;">
-        <span class="pm-eyebrow">What Members Say</span>
-        <h2>4.8 Out of 5 Stars — <em>From Real Traders</em></h2>
-        <div class="dt-rating-tag">
-          <span class="dt-rating-tag-val">4.8</span>
-          <span class="dt-rating-tag-stars">★★★★★</span>
-          <span class="dt-rating-tag-count">25 verified ratings</span>
-        </div>
+      <div class="test-head reveal">
+        <div class="test-eyebrow">What Members Say</div>
+        <h2>Real traders, <em>real results.</em></h2>
       </div>
-      <div class="dt-quote-cards reveal">
-        <div class="dt-quote-card">
-          <div class="dt-quote-stars">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
+      <div class="test-grid reveal">
+        <div class="test-card">
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p class="dt-quote-text">"I can't recommend Navigation Trading highly enough. I've been using their services
-            for about two years and have learned an incredible amount along the way. They offer a wide range of option
-            trading strategies, and even after all this time, I'm still learning new things. Steve's explanations are
-            clear and his approach is based on real probabilities, not guesswork. The live trading room is where the
-            real value is."</p>
-          <div class="dt-quote-author">
-            <div class="dt-quote-avatar">A</div>
-            <div class="dt-quote-info">
-              <span class="dt-quote-name">Annette M.</span>
-              <span class="dt-quote-role">Day Trading Member</span>
+          <p>"I can't recommend Navigation Trading highly enough. I've been using their services for two years and have learned an incredible amount. Steve's explanations are clear and his approach is based on real probabilities. The live trading room is where the real value is."</p>
+          <div class="test-author">
+            <div class="test-avatar">A</div>
+            <div class="test-author-info">
+              <strong>Annette M.</strong>
+              <span>Day Trading Member</span>
             </div>
           </div>
         </div>
-        <div class="dt-quote-card">
-          <div class="dt-quote-stars">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24" style="opacity:0.3;">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
+        <div class="test-card">
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24" style="opacity:0.3;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p class="dt-quote-text">"I've been using Navigation Trading for over a year, and I couldn't be happier with
-            the results. Their approach to options trading is refreshingly straightforward and methodical. Unlike other
-            programs that rely on hype and emotion, Navigation Trading bases its strategies on statistics and
-            probabilities. The live streams keep me honest and focused on following the process."</p>
-          <div class="dt-quote-author">
-            <div class="dt-quote-avatar">R</div>
-            <div class="dt-quote-info">
-              <span class="dt-quote-name">Robert W.</span>
-              <span class="dt-quote-role">Day Trading Member</span>
+          <p>"I've been using Navigation Trading for over a year and couldn't be happier. Their approach is refreshingly straightforward and methodical, based on statistics and probabilities. The live streams keep me focused on the process."</p>
+          <div class="test-author">
+            <div class="test-avatar">R</div>
+            <div class="test-author-info">
+              <strong>Robert W.</strong>
+              <span>Day Trading Member</span>
             </div>
           </div>
         </div>
-        <div class="dt-quote-card">
-          <div class="dt-quote-stars">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
+        <div class="test-card">
+          <div class="test-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p class="dt-quote-text">"The community, the education, and the constant innovation are just a few of the things that set NavigationTrading apart. Steve and the team don't rest on past accomplishments or old material; they try to stay ahead of and shift with the markets. I also believe that Steve and the team care about their members and want them to succeed."</p>
-          <div class="dt-quote-author">
-            <div class="dt-quote-avatar">J</div>
-            <div class="dt-quote-info">
-              <span class="dt-quote-name">Joey R.</span>
-              <span class="dt-quote-role">Day Trading Member</span>
-            </div>
-          </div>
-        </div>
-        <div class="dt-quote-card">
-          <div class="dt-quote-stars">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </div>
-          <p class="dt-quote-text">"Great source for options trading education, strategies, and experiencing live trading sessions multiple times per week. Every year new effective strategies are introduced. The NT team shares actual trades and results with the community. Highly recommend."</p>
-          <div class="dt-quote-author">
-            <div class="dt-quote-avatar">T</div>
-            <div class="dt-quote-info">
-              <span class="dt-quote-name">Tony D.</span>
-              <span class="dt-quote-role">Day Trading Member</span>
+          <p>"The community, education, and constant innovation set NavigationTrading apart. Steve and the team don't rest on past accomplishments; they stay ahead of the markets and care about their members' success."</p>
+          <div class="test-author">
+            <div class="test-avatar">J</div>
+            <div class="test-author-info">
+              <strong>Joey R.</strong>
+              <span>Day Trading Member</span>
             </div>
           </div>
         </div>
