@@ -880,6 +880,17 @@
       z-index: 1
     }
 
+    /* 2-column layout: header left, cards right */
+    .burned-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .burned-head-col {
+      position: sticky;
+      top: 110px;
+    }
     .burned-header-label {
       color: var(--orange);
       letter-spacing: 0.12em;
@@ -888,13 +899,12 @@
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 10px;
-      margin-bottom: 10px
+      margin-bottom: 14px
     }
 
-    .burned-header-label::before,
-    .burned-header-label::after {
+    .burned-header-label::before {
       content: '';
       flex: 0 0 32px;
       height: 1px;
@@ -908,22 +918,35 @@
       color: #1a1a1a;
       font-style: normal;
       line-height: 1.15;
-      margin-bottom: 28px;
+      margin-bottom: 18px;
+      text-align: left;
     }
 
     .burned-headline em {
       font-style: normal;
       color: var(--orange);
     }
+    .burned-head-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: #5b6776;
+      line-height: 1.6;
+      max-width: 360px;
+    }
 
     .burned-list-wrap {
-      max-width: 780px;
-      margin: 0 auto;
+      max-width: 100%;
+      margin: 0;
       display: flex;
       flex-direction: column;
       gap: 10px;
       position: relative;
       z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+      .burned-layout { grid-template-columns: 1fr; gap: 28px; }
+      .burned-head-col { position: static; }
     }
 
     .burned-list-item {
@@ -2391,14 +2414,30 @@
     }
 
     .faq-inner {
-      max-width: 700px;
-      margin: 0 auto
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .faq-head-col {
+      position: sticky;
+      top: 110px;
     }
 
     .faq-list {
-      margin-top: 24px;
+      margin-top: 0;
       display: flex;
       flex-direction: column
+    }
+
+    @media (max-width: 900px) {
+      .faq-inner { grid-template-columns: 1fr; gap: 24px; }
+      .faq-head-col { position: static; }
+      .faq-head-col .sec-label { justify-content: center !important; }
+      .faq-head-col .sec-title { text-align: center !important; }
+      .faq-head-col .body-para { text-align: center !important; max-width: 520px !important; margin: 10px auto 0 !important; }
     }
 
     .faq-item {
@@ -3263,9 +3302,13 @@
 
   <!-- ── IS THIS YOU / BURNED BEFORE ── -->
   <section class="burned-section section">
-    <div class="container" style="text-align:center">
+    <div class="container">
+      <div class="burned-layout">
+      <div class="burned-head-col">
       <div class="burned-header-label">Is This You?</div>
       <h2 class="burned-headline reveal">If you have been burned before…</h2>
+      <p class="burned-head-sub">Most traders carry the same scars. If any of these feel familiar, this class was built for you.</p>
+      </div>
       <div class="burned-list-wrap reveal">
 
         <div class="burned-list-item">
@@ -3341,6 +3384,7 @@
           <p class="burned-list-text">Thinking 8 hours a day is required when 30 focused minutes is often enough.</p>
         </div>
 
+      </div>
       </div>
     </div>
   </section>
@@ -3963,14 +4007,16 @@
   <section id="faq" class="faq-section section">
     <div class="container">
       <div class="faq-inner">
-        <div class="sec-label">FAQ Question</div>
-        <h2 class="sec-title reveal" style="text-align:center;color:#000000">Frequently Asked Questions</h2>
-        <p class="body-para reveal" style="text-align:center;max-width:520px;margin:10px auto 0;font-size:14px">
-          Everything you need to know before reserving your free spot in the live class.</p>
+        <div class="faq-head-col">
+          <div class="sec-label" style="justify-content:flex-start">FAQ Question</div>
+          <h2 class="sec-title reveal" style="text-align:left;color:#000000">Frequently Asked Questions</h2>
+          <p class="body-para reveal" style="text-align:left;max-width:340px;margin:14px 0 0;font-size:15px">
+            Everything you need to know before reserving your free spot in the live class.</p>
+        </div>
 
         <div class="faq-list">
 
-          <div class="faq-item">
+          <div class="faq-item open">
             <button class="faq-q">
               Will I learn how to pick winning stocks?
               <span class="faq-chevron"><svg viewBox="0 0 24 24">
@@ -4044,11 +4090,6 @@
       </div>
     </div>
   </section>
-
-    </div>
-  </div>
-</section>
--->
 
   <!-- ── FOOTER ── -->
   <footer>
@@ -4149,13 +4190,21 @@
     function pad(n) { return String(n).padStart(2, '0') }
     const targets = { d: 'cd-d', h: 'cd-h', m: 'cd-m', s: 'cd-s' };
     const prev = { d: '', h: '', m: '', s: '' };
-    // Set target to 20 days + 4 hours + 5 minutes from now so it's always counting live
-    // const end = Date.now() + (20 * 24 * 3600 + 4 * 3600 + 5 * 60) * 1000;
-    // Set target to May 16, 2026 3:30 PM CT
-    const end = new Date('2026-05-16T15:30:00-05:00').getTime();
+    // Evergreen rolling countdown: always counts toward a future point.
+    // Persists per visitor; when it hits zero it rolls forward another cycle.
+    const CD_DURATION = 6 * 24 * 3600 * 1000; // 6 days
+    let end = parseInt(localStorage.getItem('dtt6_cd_end') || '0', 10);
+    if (!end || end < Date.now()) {
+      end = Date.now() + CD_DURATION;
+      localStorage.setItem('dtt6_cd_end', end);
+    }
 
     function tick() {
       const now = Date.now();
+      if (end - now <= 0) {
+        end = now + CD_DURATION;
+        localStorage.setItem('dtt6_cd_end', end);
+      }
       const diff = Math.max(0, end - now);
       const d = Math.floor(diff / 86400000);
       const h = Math.floor((diff % 86400000) / 3600000);
