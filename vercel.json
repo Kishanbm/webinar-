@@ -63,6 +63,10 @@
     {
       "source": "/day-trading-offer",
       "destination": "/day-trading-offer"
+    },
+    {
+      "source": "/dtt-6/16",
+      "destination": "/may-16.html/dtt-6"
     }
   ]
 }
