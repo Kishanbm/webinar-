@@ -174,9 +174,12 @@
   <!-- LOGIN -->
   <div id="login-section">
     <h1>Replay Admin</h1>
-    <p class="sub">Enter the admin password to set the replay video URL.</p>
+    <p class="sub">Enter the admin password and your GitHub token to set the replay video URL.</p>
     <label>Password</label>
-    <input type="password" id="password-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <input type="password" id="password-input" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <label>GitHub Token <span style="color:rgba(255,255,255,0.35);font-weight:400;">(for Method 1 — GitHub deploy)</span></label>
+    <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx" onkeydown="if(event.key==='Enter')doLogin()">
+    <p class="hint" style="margin-top:-14px;margin-bottom:20px;">Only needed for Method 1. Leave blank if using Google Sheet only.</p>
     <button class="btn" onclick="doLogin()">Continue →</button>
     <div class="status" id="login-status"></div>
   </div>
@@ -225,10 +228,9 @@
   </div>
 </div>
 
-<script src="/admin-token.js"></script>
 <script>
   const ADMIN_PASSWORD = 'ntreplay2026';
-  const GITHUB_TOKEN   = window.__NT_GH_TOKEN__ || '';
+  let   GITHUB_TOKEN   = '';
   const GITHUB_OWNER   = 'Kishanbm';
   const GITHUB_REPO    = 'webinar-';
   const CONFIG_PATH    = 'replay-config.json';
@@ -236,8 +238,10 @@
 
   function doLogin() {
     const val = document.getElementById('password-input').value;
+    const tok = document.getElementById('token-input').value.trim();
     const st  = document.getElementById('login-status');
     if (val === ADMIN_PASSWORD) {
+      GITHUB_TOKEN = tok;
       document.getElementById('login-section').style.display = 'none';
       document.getElementById('admin-section').style.display = 'block';
       loadCurrentConfig();
