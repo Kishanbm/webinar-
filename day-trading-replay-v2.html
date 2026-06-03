@@ -1257,13 +1257,14 @@
         <script>
         (function(){
           var SHEET_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNCq_1GGFDQDM1ZHFY5ZOiT0byuu3DqTGcxHP3_NJlAZU9XoLMYrEsmgdaWQxUEyPZTmDgU79nLJN-/pub?gid=0&single=true&output=csv';
+          var FALLBACK  = '1175321973';
           function vimeoIdFrom(url) {
             if (!url) return null;
             var m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
             return m ? m[1] : (url.match(/^\d+$/) ? url : null);
           }
           function embedVideo(url) {
-            var id = vimeoIdFrom(url);
+            var id = vimeoIdFrom(url) || FALLBACK;
             if (!id) return;
             document.getElementById('replay-loading-v2').style.display = 'none';
             var iframe = document.createElement('iframe');
@@ -1288,7 +1289,8 @@
             .catch(function(){
               fetch(SHEET_CSV + '&cb=' + Date.now())
                 .then(function(r){ return r.text(); })
-                .then(function(t){ embedVideo(t.trim()); });
+                .then(function(t){ embedVideo(t.trim() || FALLBACK); })
+                .catch(function(){ embedVideo(FALLBACK); });
             });
         })();
         </script>
