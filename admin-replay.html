@@ -3,229 +3,311 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set Replay Video — Navigation Trading</title>
+  <title>Set Replay Video — Navigation Trading Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0a1322;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+
+    :root {
+      --navy: #0D2E4E;
+      --orange: #c8420a;
+      --orange-bright: #e04d10;
+      --orange-glow: rgba(200,66,10,0.3);
+      --cream: #fbfaf6;
+      --text-dark: #111;
+      --text-mid: #4a5568;
+      --border: rgba(0,0,0,0.08);
     }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-dark); min-height: 100vh; }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      padding: 16px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(13,46,78,0.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+    }
+    .nav-logo img { height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle; }
+    .nav-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      padding: 120px 24px 80px;
+      min-height: calc(100vh - 200px);
+    }
+    .wrap { max-width: 640px; margin: 0 auto; }
+
+    /* Page header */
+    .page-header { margin-bottom: 40px; }
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .page-eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--orange); }
+    .page-header h1 { font-size: 32px; font-weight: 800; color: var(--navy); letter-spacing: -1px; margin-bottom: 8px; }
+    .page-header p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+    /* Card */
     .card {
-      background: #0e1828;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 48px 40px;
-      width: 100%;
-      max-width: 560px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
     }
-    .logo { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
-    .logo img { height: 48px; width: auto; }
-    .logo span { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
-    h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
-    .sub { color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 36px; line-height: 1.5; }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #ff6b2c;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(255,107,44,0.2);
+    .card-title {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--navy); opacity: 0.5;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
     }
 
-    label { display: block; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px; font-weight: 500; }
+    /* Form elements */
+    label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--navy); margin-bottom: 7px;
+    }
+    label span { color: var(--text-mid); font-weight: 400; }
     input[type="text"], input[type="password"] {
-      width: 100%;
-      padding: 14px 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      color: #fff;
-      font-size: 15px;
-      outline: none;
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid #e2e8f0; border-radius: 10px;
+      font-size: 14.5px; font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark); outline: none;
       transition: border-color .2s;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      background: #fafbfc;
     }
-    input:focus { border-color: rgba(255,107,44,0.5); }
-    input::placeholder { color: rgba(255,255,255,0.25); }
-
-    .hint {
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.35);
-      margin-top: -14px;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
+    input:focus { border-color: var(--orange); background: #fff; }
+    input::placeholder { color: #a0aec0; }
+    .hint { font-size: 12px; color: var(--text-mid); margin-top: -10px; margin-bottom: 16px; line-height: 1.5; }
 
     .btn {
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, #c8420a, #ff6b2c);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all .2s;
-      margin-top: 8px;
+      width: 100%; padding: 14px;
+      background: var(--orange);
+      color: #fff; border: none; border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-    .divider {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      margin: 32px 0;
+    .btn:hover { background: var(--orange-bright); transform: translateY(-1px); box-shadow: 0 6px 20px var(--orange-glow); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+    .btn-ghost {
+      background: transparent; color: var(--navy);
+      border: 1.5px solid #e2e8f0;
     }
+    .btn-ghost:hover { background: #f7fafc; border-color: var(--navy); box-shadow: none; }
 
-    .status {
-      margin-top: 20px;
-      padding: 14px 18px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      display: none;
+    /* Status */
+    .status { margin-top: 14px; padding: 12px 16px; border-radius: 8px; font-size: 13.5px; font-weight: 600; display: none; }
+    .status.success { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+    .status.error   { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+    .status.loading { background: #f0f9ff; border: 1px solid #bae6fd; color: #0369a1; }
+
+    /* Current video display */
+    .current-box {
+      background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px;
+      padding: 14px 16px; margin-bottom: 24px;
+      font-size: 13.5px; color: var(--text-mid);
+      word-break: break-all; line-height: 1.5;
     }
-    .status.success { background: rgba(22,163,74,0.15); border: 1px solid rgba(22,163,74,0.4); color: #4ade80; }
-    .status.error   { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); color: #f87171; }
-    .status.loading { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+    .current-box.has-video { border-color: #86efac; background: #f0fdf4; color: #166534; font-weight: 600; }
 
-    #login-section { }
-    #admin-section { display: none; }
-
-    .current-video {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 10px;
-      padding: 14px 16px;
-      margin-bottom: 24px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.5);
-      word-break: break-all;
-    }
-    .current-video span { color: #4ade80; font-weight: 600; }
-    .current-video.empty span { color: rgba(255,255,255,0.3); }
-
-    .method-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
+    /* Method tabs */
+    .tabs { display: flex; gap: 8px; margin-bottom: 24px; }
     .tab {
-      flex: 1;
-      padding: 10px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      color: rgba(255,255,255,0.5);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-      transition: all .2s;
+      flex: 1; padding: 11px 14px;
+      background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px;
+      font-size: 13px; font-weight: 600; color: var(--text-mid);
+      cursor: pointer; text-align: center; transition: all .2s;
     }
     .tab.active {
-      background: rgba(255,107,44,0.12);
-      border-color: rgba(255,107,44,0.4);
-      color: #ff6b2c;
+      background: rgba(200,66,10,0.06);
+      border-color: rgba(200,66,10,0.4);
+      color: var(--orange);
     }
-
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
     .sheet-note {
-      background: rgba(34,197,94,0.08);
-      border: 1px solid rgba(34,197,94,0.2);
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 20px;
-      line-height: 1.6;
+      background: #f0fdf4; border: 1px solid #86efac;
+      border-radius: 8px; padding: 12px 14px;
+      font-size: 13.5px; color: #166534; margin-bottom: 18px; line-height: 1.6;
     }
-    .sheet-note strong { color: #4ade80; }
+    .sheet-note strong { font-weight: 700; }
+
+    .open-sheet-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 13px;
+      background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 10px;
+      color: #166534; font-weight: 700; font-size: 14px;
+      text-decoration: none; margin-bottom: 14px;
+      transition: all .2s;
+    }
+    .open-sheet-btn:hover { background: #dcfce7; border-color: #4ade80; }
+
+    /* Divider */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 60px 24px;
+    }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .footer-brand img { height: 40px; width: auto; transform: scale(5); transform-origin: left center; }
+    .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 6px; letter-spacing: 1px; }
+    .footer-col { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col-label { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+    .footer-col a { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color .2s; }
+    .footer-col a:hover { color: var(--orange); }
+    .footer-bottom { padding-top: 20px; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); text-align: center; }
+
+    #login-section { }
+    #admin-section { display: none; }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 14px 20px; }
+      .main { padding: 100px 16px 60px; }
+      .card { padding: 24px 20px; }
+      footer { padding: 32px 20px 20px; }
+      .tabs { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
 
-<div class="card">
-  <div class="logo">
-    <img src="logo.png" alt="Navigation Trading">
-    <span>ADMIN</span>
-  </div>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="/home" class="nav-logo"><img src="logo.png" alt="NavigationTrading"></a>
+    <span class="nav-badge">Admin Panel</span>
+  </nav>
 
-  <!-- LOGIN -->
-  <div id="login-section">
-    <h1>Replay Admin</h1>
-    <p class="sub">Enter the admin password to continue.</p>
-    <label>Password</label>
-    <input type="password" id="password-input" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="btn" onclick="doLogin()">Continue →</button>
-    <div class="status" id="login-status"></div>
-  </div>
+  <main class="main">
+    <div class="wrap">
 
-  <!-- ADMIN PANEL -->
-  <div id="admin-section">
-    <h1>Set Replay Video</h1>
-    <p class="sub">Paste the Vimeo URL after the webinar ends. Both methods work — use whichever is faster.</p>
-
-    <div class="section-label">Current video</div>
-    <div class="current-video" id="current-display">
-      <span id="current-url">Checking...</span>
-    </div>
-
-    <div class="method-tabs">
-      <div class="tab active" onclick="switchTab('github')">⚡ Method 1 — GitHub (60s deploy)</div>
-      <div class="tab" onclick="switchTab('sheet')">📋 Method 2 — Google Sheet (instant)</div>
-    </div>
-
-    <!-- METHOD 1: GitHub -->
-    <div class="tab-content active" id="tab-github">
-      <label>GitHub Token</label>
-      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx">
-      <p class="hint">Your GitHub Personal Access Token (repo scope). Not stored anywhere.</p>
-      <label>Vimeo Video URL</label>
-      <input type="text" id="vimeo-url-github" placeholder="https://vimeo.com/123456789">
-      <p class="hint">Full Vimeo URL — embed is generated automatically.</p>
-      <button class="btn" onclick="saveViaGitHub()">💾 Save &amp; Deploy via GitHub</button>
-      <div class="status" id="github-status"></div>
-    </div>
-
-    <!-- METHOD 2: Google Sheet -->
-    <div class="tab-content" id="tab-sheet">
-      <div class="sheet-note">
-        <strong>Instant — no deploy needed.</strong><br>
-        Open the Google Sheet, paste the Vimeo URL in cell <strong>A1</strong>, and the replay page will show it within seconds.
+      <div class="page-header">
+        <div class="page-eyebrow">Replay Management</div>
+        <h1>Set Replay Video</h1>
+        <p>After the webinar ends, paste the Vimeo URL below to make it live on both replay pages. Two methods available — use either one.</p>
       </div>
-      <label>Vimeo Video URL (paste here AND in the sheet)</label>
-      <input type="text" id="vimeo-url-sheet" placeholder="https://vimeo.com/123456789">
-      <p class="hint">Copy this URL and also paste it into cell A1 of the Google Sheet.</p>
-      <a href="https://docs.google.com/spreadsheets/d/1fTv4KP0IQtbssIjpxm17ecH20w-ymRrF7_IRexJU5d0/edit" target="_blank" style="display:block;text-align:center;padding:14px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:10px;color:#4ade80;font-weight:700;text-decoration:none;margin-bottom:16px;font-size:14px;">
-        📋 Open Google Sheet →
-      </a>
-      <button class="btn" onclick="testSheetFetch()" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);">🔍 Test — Check What Sheet Contains</button>
-      <div class="status" id="sheet-status"></div>
-    </div>
 
-  </div>
-</div>
+      <!-- LOGIN -->
+      <div id="login-section">
+        <div class="card">
+          <div class="card-title">Authentication</div>
+          <label>Admin Password</label>
+          <input type="password" id="password-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
+          <button class="btn" onclick="doLogin()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Continue
+          </button>
+          <div class="status" id="login-status"></div>
+        </div>
+      </div>
+
+      <!-- ADMIN PANEL -->
+      <div id="admin-section">
+
+        <!-- Current video status -->
+        <div class="card">
+          <div class="card-title">Current Video Status</div>
+          <div class="current-box" id="current-display">
+            <span id="current-url">Checking...</span>
+          </div>
+        </div>
+
+        <!-- Method selector -->
+        <div class="card">
+          <div class="card-title">Set New Video</div>
+
+          <div class="tabs">
+            <div class="tab active" onclick="switchTab(this,'github')">⚡ Method 1 — GitHub Deploy</div>
+            <div class="tab" onclick="switchTab(this,'sheet')">📋 Method 2 — Google Sheet</div>
+          </div>
+
+          <!-- METHOD 1: GitHub -->
+          <div class="tab-content active" id="tab-github">
+            <label>GitHub Token <span>(repo scope — not stored)</span></label>
+            <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx">
+            <label>Vimeo Video URL</label>
+            <input type="text" id="vimeo-url-github" placeholder="https://vimeo.com/123456789">
+            <p class="hint">Full Vimeo URL — embed code is generated automatically. Vercel will redeploy in ~60 seconds.</p>
+            <button class="btn" onclick="saveViaGitHub()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+              Save &amp; Deploy via GitHub
+            </button>
+            <div class="status" id="github-status"></div>
+          </div>
+
+          <!-- METHOD 2: Google Sheet -->
+          <div class="tab-content" id="tab-sheet">
+            <div class="sheet-note">
+              <strong>Instant — no deploy needed.</strong><br>
+              Open the Google Sheet, paste the Vimeo URL in cell <strong>A1</strong>. The replay pages pick it up immediately on next load.
+            </div>
+            <a href="https://docs.google.com/spreadsheets/d/1fTv4KP0IQtbssIjpxm17ecH20w-ymRrF7_IRexJU5d0/edit" target="_blank" class="open-sheet-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Open Google Sheet
+            </a>
+            <button class="btn btn-ghost" onclick="testSheetFetch()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Test — Check What Sheet Contains
+            </button>
+            <div class="status" id="sheet-status"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"></div>
+        <div class="footer-tagline">Directional Day Trading Education</div>
+      </div>
+      <div style="display:flex;gap:48px;flex-wrap:wrap;">
+        <div class="footer-col">
+          <div class="footer-col-label">Contact</div>
+          <a href="mailto:support@navigationtrading.com">support@navigationtrading.com</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-label">Legal</div>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Risk Disclosure</a>
+          <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; Navigation Financial, LLC</p>
+    </div>
+  </footer>
 
 <script>
   const ADMIN_PASSWORD = 'ntreplay2026';
@@ -247,45 +329,42 @@
     }
   }
 
-  function switchTab(tab) {
+  function switchTab(el, tab) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
     document.getElementById('tab-' + tab).classList.add('active');
-    event.currentTarget.classList.add('active');
   }
 
   async function loadCurrentConfig() {
-    const el = document.getElementById('current-url');
+    const el  = document.getElementById('current-url');
     const box = document.getElementById('current-display');
     try {
-      const res = await fetch('/replay-config.json?t=' + Date.now());
+      const res  = await fetch('/replay-config.json?t=' + Date.now());
       const data = await res.json();
       if (data.vimeo_url) {
-        el.textContent = data.vimeo_url;
-        box.classList.remove('empty');
+        el.textContent = '✅ ' + data.vimeo_url;
+        box.classList.add('has-video');
       } else {
-        el.textContent = 'No video set yet — checking Google Sheet...';
-        box.classList.add('empty');
+        el.textContent = 'No video in config — checking Google Sheet...';
         checkSheet(el, box);
       }
     } catch(e) {
       el.textContent = 'Could not load config.';
-      box.classList.add('empty');
     }
   }
 
   async function checkSheet(el, box) {
     try {
-      const res = await fetch(SHEET_CSV_URL);
+      const res  = await fetch(SHEET_CSV_URL + '&t=' + Date.now(), { cache: 'no-store' });
       const text = (await res.text()).trim();
-      if (text && text !== 'test' && text.includes('vimeo')) {
-        el.textContent = '(Sheet) ' + text;
-        box.classList.remove('empty');
+      if (text && text.includes('vimeo')) {
+        el.textContent = '✅ (Sheet) ' + text;
+        box.classList.add('has-video');
       } else {
-        el.textContent = text ? '(Sheet has: ' + text + ')' : 'Nothing set in sheet either.';
-        box.classList.add('empty');
+        el.textContent = text ? 'Sheet has: "' + text + '" (not a Vimeo URL)' : 'Nothing set yet.';
       }
-    } catch(e) { /* silent */ }
+    } catch(e) { el.textContent = 'Could not reach sheet.'; }
   }
 
   async function saveViaGitHub() {
@@ -296,39 +375,28 @@
     if (!url) { showStatus(st, 'error', 'Please enter a Vimeo URL.'); return; }
     GITHUB_TOKEN = tok;
 
-    showStatus(st, 'loading', '⏳ Updating config and pushing to GitHub...');
+    showStatus(st, 'loading', '⏳ Pushing to GitHub — Vercel will deploy in ~60 seconds...');
     document.querySelector('#tab-github .btn').disabled = true;
 
     try {
-      // Get current SHA of the file
-      const shaRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONFIG_PATH}`, {
+      const shaRes  = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONFIG_PATH}`, {
         headers: { 'Authorization': 'token ' + GITHUB_TOKEN, 'Accept': 'application/vnd.github.v3+json' }
       });
       const shaData = await shaRes.json();
-      const sha = shaData.sha;
-
-      // New content
+      const sha     = shaData.sha;
       const content = btoa(JSON.stringify({ vimeo_url: url }, null, 2));
 
-      // Push update
       const pushRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONFIG_PATH}`, {
         method: 'PUT',
-        headers: {
-          'Authorization': 'token ' + GITHUB_TOKEN,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: 'Set replay video URL',
-          content: content,
-          sha: sha
-        })
+        headers: { 'Authorization': 'token ' + GITHUB_TOKEN, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'Set replay video URL', content, sha })
       });
 
       if (pushRes.ok) {
-        showStatus(st, 'success', '✅ Saved! Vercel is deploying — the replay page will show the video in ~60 seconds.');
-        document.getElementById('current-url').textContent = url;
-        document.getElementById('current-display').classList.remove('empty');
+        showStatus(st, 'success', '✅ Saved! Replay pages will show the new video in ~60 seconds after Vercel deploys.');
+        const el = document.getElementById('current-url');
+        el.textContent = '✅ ' + url;
+        document.getElementById('current-display').classList.add('has-video');
       } else {
         const err = await pushRes.json();
         showStatus(st, 'error', 'GitHub error: ' + (err.message || pushRes.status));
@@ -336,7 +404,6 @@
     } catch(e) {
       showStatus(st, 'error', 'Network error: ' + e.message);
     }
-
     document.querySelector('#tab-github .btn').disabled = false;
   }
 
@@ -349,7 +416,7 @@
       const text = (await res.text()).trim();
       showStatus(st, 'success', '✅ Sheet contains: "' + text + '"');
     } catch(e) {
-      showStatus(st, 'error', '❌ Could not reach sheet: ' + e.message + '. Make sure the sheet is published (File → Share → Publish to web).');
+      showStatus(st, 'error', '❌ Could not reach sheet: ' + e.message);
     }
   }
 
