@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set Replay Video — Navigation Trading</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a1322;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: #0e1828;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 560px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    }
+    .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
+    .logo img { height: 36px; }
+    .logo span { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+    h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+    .sub { color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 36px; line-height: 1.5; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff6b2c;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,107,44,0.2);
+    }
+
+    label { display: block; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px; font-weight: 500; }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: border-color .2s;
+      margin-bottom: 20px;
+    }
+    input:focus { border-color: rgba(255,107,44,0.5); }
+    input::placeholder { color: rgba(255,255,255,0.25); }
+
+    .hint {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.35);
+      margin-top: -14px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #c8420a, #ff6b2c);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      margin-top: 8px;
+    }
+    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 32px 0;
+    }
+
+    .status {
+      margin-top: 20px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      display: none;
+    }
+    .status.success { background: rgba(22,163,74,0.15); border: 1px solid rgba(22,163,74,0.4); color: #4ade80; }
+    .status.error   { background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); color: #f87171; }
+    .status.loading { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+
+    #login-section { }
+    #admin-section { display: none; }
+
+    .current-video {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      word-break: break-all;
+    }
+    .current-video span { color: #4ade80; font-weight: 600; }
+    .current-video.empty span { color: rgba(255,255,255,0.3); }
+
+    .method-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tab {
+      flex: 1;
+      padding: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all .2s;
+    }
+    .tab.active {
+      background: rgba(255,107,44,0.12);
+      border-color: rgba(255,107,44,0.4);
+      color: #ff6b2c;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .sheet-note {
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .sheet-note strong { color: #4ade80; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">
+    <img src="logo.png" alt="Navigation Trading">
+    <span>ADMIN</span>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="login-section">
+    <h1>Replay Admin</h1>
+    <p class="sub">Enter the admin password to set the replay video URL.</p>
+    <label>Password</label>
+    <input type="password" id="password-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn" onclick="doLogin()">Continue →</button>
+    <div class="status" id="login-status"></div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="admin-section">
+    <h1>Set Replay Video</h1>
+    <p class="sub">Paste the Vimeo URL after the webinar ends. Both methods work — use whichever is faster.</p>
+
+    <div class="section-label">Current video</div>
+    <div class="current-video" id="current-display">
+      <span id="current-url">Checking...</span>
+    </div>
+
+    <div class="method-tabs">
+      <div class="tab active" onclick="switchTab('github')">⚡ Method 1 — GitHub (60s deploy)</div>
+      <div class="tab" onclick="switchTab('sheet')">📋 Method 2 — Google Sheet (instant)</div>
+    </div>
+
+    <!-- METHOD 1: GitHub -->
+    <div class="tab-content active" id="tab-github">
+      <div class="section-label">Vimeo URL</div>
+      <label>Vimeo Video URL</label>
+      <input type="text" id="vimeo-url-github" placeholder="https://vimeo.com/123456789">
+      <p class="hint">Full Vimeo URL, e.g. https://vimeo.com/123456789 — the embed code is generated automatically.</p>
+      <button class="btn" onclick="saveViaGitHub()">💾 Save &amp; Deploy via GitHub</button>
+      <div class="status" id="github-status"></div>
+    </div>
+
+    <!-- METHOD 2: Google Sheet -->
+    <div class="tab-content" id="tab-sheet">
+      <div class="sheet-note">
+        <strong>Instant — no deploy needed.</strong><br>
+        Open the Google Sheet, paste the Vimeo URL in cell <strong>A1</strong>, and the replay page will show it within seconds.
+      </div>
+      <label>Vimeo Video URL (paste here AND in the sheet)</label>
+      <input type="text" id="vimeo-url-sheet" placeholder="https://vimeo.com/123456789">
+      <p class="hint">Copy this URL and also paste it into cell A1 of the Google Sheet.</p>
+      <a href="https://docs.google.com/spreadsheets/d/1fTv4KP0lQtbssljpxm17ecH20w-ymRrF7_lRexJU5d0/edit" target="_blank" style="display:block;text-align:center;padding:14px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:10px;color:#4ade80;font-weight:700;text-decoration:none;margin-bottom:16px;font-size:14px;">
+        📋 Open Google Sheet →
+      </a>
+      <button class="btn" onclick="testSheetFetch()" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);">🔍 Test — Check What Sheet Contains</button>
+      <div class="status" id="sheet-status"></div>
+    </div>
+
+  </div>
+</div>
+
+<script src="/admin-token.js"></script>
+<script>
+  const ADMIN_PASSWORD = 'ntreplay2026';
+  const GITHUB_TOKEN   = window.__NT_GH_TOKEN__ || '';
+  const GITHUB_OWNER   = 'Kishanbm';
+  const GITHUB_REPO    = 'webinar-';
+  const CONFIG_PATH    = 'replay-config.json';
+  const SHEET_CSV_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNCq_1GGFDQDM1ZHFY5ZOiT0byuu3DqTGcxHP3_NJlAZU9XoLMYrEsmgdaWQxUEyPZTmDgU79nLJN-/pub?gid=0&single=true&output=csv';
+
+  function doLogin() {
+    const val = document.getElementById('password-input').value;
+    const st  = document.getElementById('login-status');
+    if (val === ADMIN_PASSWORD) {
+      document.getElementById('login-section').style.display = 'none';
+      document.getElementById('admin-section').style.display = 'block';
+      loadCurrentConfig();
+    } else {
+      showStatus(st, 'error', 'Incorrect password.');
+    }
+  }
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  async function loadCurrentConfig() {
+    const el = document.getElementById('current-url');
+    const box = document.getElementById('current-display');
+    try {
+      const res = await fetch('/replay-config.json?t=' + Date.now());
+      const data = await res.json();
+      if (data.vimeo_url) {
+        el.textContent = data.vimeo_url;
+        box.classList.remove('empty');
+      } else {
+        el.textContent = 'No video set yet — checking Google Sheet...';
+        box.classList.add('empty');
+        checkSheet(el, box);
+      }
+    } catch(e) {
+      el.textContent = 'Could not load config.';
+      box.classList.add('empty');
+    }
+  }
+
+  async function checkSheet(el, box) {
+    try {
+      const res = await fetch(SHEET_CSV_URL);
+      const text = (await res.text()).trim();
+      if (text && text !== 'test' && text.includes('vimeo')) {
+        el.textContent = '(Sheet) ' + text;
+        box.classList.remove('empty');
+      } else {
+        el.textContent = text ? '(Sheet has: ' + text + ')' : 'Nothing set in sheet either.';
+        box.classList.add('empty');
+      }
+    } catch(e) { /* silent */ }
+  }
+
+  async function saveViaGitHub() {
+    const url = document.getElementById('vimeo-url-github').value.trim();
+    const st  = document.getElementById('github-status');
+    if (!url) { showStatus(st, 'error', 'Please enter a Vimeo URL.'); return; }
+
+    showStatus(st, 'loading', '⏳ Updating config and pushing to GitHub...');
+    document.querySelector('#tab-github .btn').disabled = true;
+
+    try {
+      // Get current SHA of the file
+      const shaRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONFIG_PATH}`, {
+        headers: { 'Authorization': 'token ' + GITHUB_TOKEN, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      const shaData = await shaRes.json();
+      const sha = shaData.sha;
+
+      // New content
+      const content = btoa(JSON.stringify({ vimeo_url: url }, null, 2));
+
+      // Push update
+      const pushRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONFIG_PATH}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'token ' + GITHUB_TOKEN,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Set replay video URL',
+          content: content,
+          sha: sha
+        })
+      });
+
+      if (pushRes.ok) {
+        showStatus(st, 'success', '✅ Saved! Vercel is deploying — the replay page will show the video in ~60 seconds.');
+        document.getElementById('current-url').textContent = url;
+        document.getElementById('current-display').classList.remove('empty');
+      } else {
+        const err = await pushRes.json();
+        showStatus(st, 'error', 'GitHub error: ' + (err.message || pushRes.status));
+      }
+    } catch(e) {
+      showStatus(st, 'error', 'Network error: ' + e.message);
+    }
+
+    document.querySelector('#tab-github .btn').disabled = false;
+  }
+
+  async function testSheetFetch() {
+    const st = document.getElementById('sheet-status');
+    showStatus(st, 'loading', '⏳ Fetching from Google Sheet...');
+    try {
+      const res  = await fetch(SHEET_CSV_URL + '&cb=' + Date.now());
+      const text = (await res.text()).trim();
+      showStatus(st, 'success', '✅ Sheet contains: "' + text + '"');
+    } catch(e) {
+      showStatus(st, 'error', 'Could not reach sheet: ' + e.message);
+    }
+  }
+
+  function showStatus(el, type, msg) {
+    el.className = 'status ' + type;
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

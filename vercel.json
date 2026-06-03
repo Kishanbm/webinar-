@@ -71,6 +71,10 @@
     {
       "source": "/thank-you-dtt-6-16",
       "destination": "/may-16.html/thank-you-dtt-6-16"
+    },
+    {
+      "source": "/admin-replay",
+      "destination": "/admin-replay"
     }
   ]
 }
