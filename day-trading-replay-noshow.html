@@ -581,16 +581,51 @@
 
       <!-- AUTOPLAY VIDEO -->
       <div class="video-wrap" id="video">
-        <div class="video-inner">
-          <iframe id="replay-video"
-                  src="https://player.vimeo.com/video/1175321973?h=c11748d62b&badge=0&autopause=0&autoplay=1&muted=1&player_id=replay-video&app_id=58479"
-                  frameborder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  title="Day Trading Class Replay"></iframe>
+        <div class="video-inner" id="noshow-video-container">
+          <div id="noshow-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0a1322;color:rgba(255,255,255,0.5);font-size:15px;font-family:'DM Sans',sans-serif;">
+            Loading replay video...
+          </div>
         </div>
       </div>
-      <script src="https://player.vimeo.com/api/player.js"></script>
+      <script>
+      (function(){
+        var SHEET_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNCq_1GGFDQDM1ZHFY5ZOiT0byuu3DqTGcxHP3_NJlAZU9XoLMYrEsmgdaWQxUEyPZTmDgU79nLJN-/pub?gid=0&single=true&output=csv';
+        function vimeoIdFrom(url) {
+          if (!url) return null;
+          var m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+          return m ? m[1] : (url.match(/^\d+$/) ? url : null);
+        }
+        function embedVideo(url) {
+          var id = vimeoIdFrom(url);
+          if (!id) return;
+          document.getElementById('noshow-loading').style.display = 'none';
+          var iframe = document.createElement('iframe');
+          iframe.id = 'replay-video';
+          iframe.src = 'https://player.vimeo.com/video/' + id + '?badge=0&autopause=0&autoplay=1&muted=1&player_id=replay-video&app_id=58479';
+          iframe.frameBorder = '0';
+          iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media';
+          iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+          iframe.title = 'Day Trading Class Replay';
+          document.getElementById('noshow-video-container').appendChild(iframe);
+          var s = document.createElement('script');
+          s.src = 'https://player.vimeo.com/api/player.js';
+          document.body.appendChild(s);
+        }
+        fetch('/replay-config.json?t=' + Date.now())
+          .then(function(r){ return r.json(); })
+          .then(function(d){
+            if (d.vimeo_url) { embedVideo(d.vimeo_url); return; }
+            return fetch(SHEET_CSV + '&cb=' + Date.now())
+              .then(function(r){ return r.text(); })
+              .then(function(t){ embedVideo(t.trim()); });
+          })
+          .catch(function(){
+            fetch(SHEET_CSV + '&cb=' + Date.now())
+              .then(function(r){ return r.text(); })
+              .then(function(t){ embedVideo(t.trim()); });
+          });
+      })();
+      </script>
 
       <!-- CTA BAR -->
       <div class="cta-bar" id="offer">
