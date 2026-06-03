@@ -233,7 +233,7 @@
   const GITHUB_OWNER   = 'Kishanbm';
   const GITHUB_REPO    = 'webinar-';
   const CONFIG_PATH    = 'replay-config.json';
-  const SHEET_CSV_URL  = 'https://docs.google.com/spreadsheets/d/1fTv4KP0IQtbssIjpxm17ecH20w-ymRrF7_IRexJU5d0/export?format=csv&gid=0';
+  const SHEET_CSV_URL  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNCq_1GGFDQDM1ZHFY5ZOiT0byuu3DqTGcxHP3_NJlAZU9XoLMYrEsmgdaWQxUEyPZTmDgU79nLJN-/pub?gid=0&single=true&output=csv';
 
   function doLogin() {
     const val = document.getElementById('password-input').value;
@@ -344,11 +344,12 @@
     const st = document.getElementById('sheet-status');
     showStatus(st, 'loading', '⏳ Fetching from Google Sheet...');
     try {
-      const res  = await fetch(SHEET_CSV_URL + '&cb=' + Date.now());
+      const res  = await fetch(SHEET_CSV_URL + '&t=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       const text = (await res.text()).trim();
       showStatus(st, 'success', '✅ Sheet contains: "' + text + '"');
     } catch(e) {
-      showStatus(st, 'error', 'Could not reach sheet: ' + e.message);
+      showStatus(st, 'error', '❌ Could not reach sheet: ' + e.message + '. Make sure the sheet is published (File → Share → Publish to web).');
     }
   }
 
