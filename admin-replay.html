@@ -25,8 +25,8 @@
       max-width: 560px;
       box-shadow: 0 24px 60px rgba(0,0,0,0.4);
     }
-    .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
-    .logo img { height: 36px; }
+    .logo { display: flex; align-items: center; gap: 14px; margin-bottom: 36px; }
+    .logo img { height: 48px; width: auto; }
     .logo span { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
     h1 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
     .sub { color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 36px; line-height: 1.5; }
@@ -174,12 +174,9 @@
   <!-- LOGIN -->
   <div id="login-section">
     <h1>Replay Admin</h1>
-    <p class="sub">Enter the admin password and your GitHub token to set the replay video URL.</p>
+    <p class="sub">Enter the admin password to continue.</p>
     <label>Password</label>
     <input type="password" id="password-input" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()">
-    <label>GitHub Token <span style="color:rgba(255,255,255,0.35);font-weight:400;">(for Method 1 — GitHub deploy)</span></label>
-    <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx" onkeydown="if(event.key==='Enter')doLogin()">
-    <p class="hint" style="margin-top:-14px;margin-bottom:20px;">Only needed for Method 1. Leave blank if using Google Sheet only.</p>
     <button class="btn" onclick="doLogin()">Continue →</button>
     <div class="status" id="login-status"></div>
   </div>
@@ -201,10 +198,12 @@
 
     <!-- METHOD 1: GitHub -->
     <div class="tab-content active" id="tab-github">
-      <div class="section-label">Vimeo URL</div>
+      <label>GitHub Token</label>
+      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx">
+      <p class="hint">Your GitHub Personal Access Token (repo scope). Not stored anywhere.</p>
       <label>Vimeo Video URL</label>
       <input type="text" id="vimeo-url-github" placeholder="https://vimeo.com/123456789">
-      <p class="hint">Full Vimeo URL, e.g. https://vimeo.com/123456789 — the embed code is generated automatically.</p>
+      <p class="hint">Full Vimeo URL — embed is generated automatically.</p>
       <button class="btn" onclick="saveViaGitHub()">💾 Save &amp; Deploy via GitHub</button>
       <div class="status" id="github-status"></div>
     </div>
@@ -238,10 +237,8 @@
 
   function doLogin() {
     const val = document.getElementById('password-input').value;
-    const tok = document.getElementById('token-input').value.trim();
     const st  = document.getElementById('login-status');
     if (val === ADMIN_PASSWORD) {
-      GITHUB_TOKEN = tok;
       document.getElementById('login-section').style.display = 'none';
       document.getElementById('admin-section').style.display = 'block';
       loadCurrentConfig();
@@ -293,8 +290,11 @@
 
   async function saveViaGitHub() {
     const url = document.getElementById('vimeo-url-github').value.trim();
+    const tok = document.getElementById('token-input').value.trim();
     const st  = document.getElementById('github-status');
+    if (!tok) { showStatus(st, 'error', 'Please enter your GitHub token.'); return; }
     if (!url) { showStatus(st, 'error', 'Please enter a Vimeo URL.'); return; }
+    GITHUB_TOKEN = tok;
 
     showStatus(st, 'loading', '⏳ Updating config and pushing to GitHub...');
     document.querySelector('#tab-github .btn').disabled = true;
