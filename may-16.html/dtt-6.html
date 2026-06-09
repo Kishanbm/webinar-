@@ -3165,6 +3165,10 @@
           <input type="hidden" name="act" value="sub" />
           <input type="hidden" name="v" value="2" />
           <input type="hidden" name="or" value="49ce1ea3-b70f-40fc-93cf-8ee204b6a7a4" />
+          <input type="hidden" name="field[5]" id="utm_source" value="" />
+          <input type="hidden" name="field[6]" id="utm_medium" value="" />
+          <input type="hidden" name="field[7]" id="utm_campaign" value="" />
+          <input type="hidden" name="field[8]" id="utm_content" value="" />
           <div class="_form-content">
             <div class="_form_element _x07089279 _full_width">
               <label for="fullname" class="_form-label">Full Name<span class="field-required">*</span></label>
@@ -4311,6 +4315,17 @@
 
     var submitted = false;
 
+    // Capture UTM parameters from URL, save to sessionStorage, and populate hidden form fields
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function(key) {
+        var val = params.get(key);
+        if (val) sessionStorage.setItem(key, val);
+        var el = document.getElementById(key);
+        if (el) el.value = sessionStorage.getItem(key) || '';
+      });
+    })();
+
     // Override ActiveCampaign thank-you to redirect to our custom page
     function scrollToForm() {
       const formWrap = document.getElementById('booking-form');
@@ -4328,7 +4343,9 @@
         gtag('event', 'generate_lead', {
           utm_source: sessionStorage.getItem('utm_source') || '(direct)',
           utm_medium: sessionStorage.getItem('utm_medium') || '(none)',
-          utm_campaign: sessionStorage.getItem('utm_campaign') || '(none)'
+          utm_campaign: sessionStorage.getItem('utm_campaign') || '(none)',
+          utm_content: sessionStorage.getItem('utm_content') || '(none)',
+          utm_term: sessionStorage.getItem('utm_term') || '(none)'
         });
       }
       // Allow AC to finish its internal tracking, then redirect
