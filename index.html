@@ -673,8 +673,18 @@
     /* ── APPROACH SECTION ── */
     .approach-new {
       padding: 56px 0 64px;
-      background: #f4f7fb;
+      background-color: #f4f7fb;
       position: relative;
+      z-index: 1;
+    }
+    .approach-new::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('trading_chart_bg.png') center/cover no-repeat;
+      filter: grayscale(1) opacity(0.06) contrast(1.5);
+      pointer-events: none;
+      z-index: -1;
     }
 
     .approach-header {
@@ -772,24 +782,65 @@
     .approach-cta-row {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-top: 8px;
+      gap: 24px;
+      margin-top: 24px;
+      padding-left: 90px;
+      position: relative;
+    }
+
+    .approach-pointer {
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      width: 90px;
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+      animation: pointSlide 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pointSlide {
+      0%, 100% { transform: translate(-15px, -20%); }
+      50% { transform: translate(5px, -20%); }
     }
 
     .approach-cta-btn {
       display: inline-flex;
       align-items: center;
-      background: var(--orange);
+      background: linear-gradient(180deg, #ff7b00 0%, #cc4400 100%);
       color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 800;
+      padding: 12px 28px;
       border-radius: 50px;
       text-decoration: none;
-      transition: background 0.25s, transform 0.2s;
+      box-shadow: 0 4px 15px rgba(204, 68, 0, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+      border: 1px solid #b33c00;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .approach-cta-btn::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-20deg);
+      animation: shine 3s infinite;
     }
 
-    .approach-cta-btn:hover { background: #d94d00; transform: translateY(-2px); }
+    @keyframes shine {
+      0% { left: -100%; }
+      20% { left: 200%; }
+      100% { left: 200%; }
+    }
+
+    .approach-cta-btn:hover { 
+      box-shadow: 0 6px 20px rgba(204, 68, 0, 0.6), inset 0 2px 2px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(180deg, #ff8c1a 0%, #e64d00 100%);
+      transform: translateY(-2px); 
+    }
 
     /* Right: video */
     .approach-video {
@@ -2911,17 +2962,17 @@
       align-items: center;
       justify-content: center;
       transition: background 0.2s;
+      color: #fff;
     }
 
     .social-icon:hover { background: var(--emerald-500); color: #000; }
 
     .footer-bottom {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       padding-top: 40px;
-      flex-wrap: wrap;
-      gap: 20px;
+      gap: 16px;
       position: relative;
       z-index: 2;
     }
@@ -2933,87 +2984,6 @@
       max-width: 800px;
     }
 
-    #spotify-widget {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        width: 340px;
-        z-index: 2000;
-        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        transform-origin: bottom right;
-    }
-
-    #spotify-widget.minimized { 
-        right: -170px;
-        bottom: 60px;
-        transform: rotate(-90deg);
-    }
-
-    .widget-container {
-        background: #282828;
-        border-radius: 12px;
-        box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-        overflow: hidden;
-        padding: 4px;
-        border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .widget-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 8px 16px;
-        cursor: pointer;
-    }
-
-    .widget-header span {
-        color: #fff;
-        font-size: 11px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    
-    .widget-header span::before {
-        content: '';
-        width: 6px;
-        height: 6px;
-        background: #1DB954;
-        border-radius: 50%;
-        animation: pulse-live 1.5s infinite;
-    }
-
-    @keyframes pulse-live {
-        0% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.5); opacity: 0.5; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    .close-widget {
-        color: #fff;
-        background: rgba(255,255,255,0.1);
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
-        transition: all 0.2s;
-    }
-
-    .close-widget svg {
-        width: 16px;
-        height: 16px;
-        fill: none;
-        stroke: #fff;
-        stroke-width: 3;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
     /* ── SECTION 3: THE INSTITUTIONAL LEDGER ── */
     /* ───────────────────────────────────────── */
     /* PREMIUM INSTITUTIONAL SECTION             */
@@ -3217,7 +3187,7 @@
       .learn-grid-4 { grid-template-columns: 1fr; }
       .hero h1 { font-size: 38px; }
       .nav-links { display: none; }
-      #spotify-widget { width: calc(100% - 48px); right: 24px; }
+
       .test-item { flex: 0 0 100%; }
 
       /* Stats bar mobile */
@@ -4020,37 +3990,23 @@
     }
 
     /* ══════════════════════════════════════════════
-       ECOSYSTEM V1 — EDITORIAL PATHWAYS (commented)
+       ECOSYSTEM V1 — EDITORIAL PATHWAYS
        ══════════════════════════════════════════════ */
     .pathways-section {
-      padding: 80px 0 90px;
-      background: #fbfaf6;
+      padding: 100px 0 110px;
+      background-color: #fbfaf6;
       position: relative;
       overflow: hidden;
+      z-index: 1;
     }
     .pathways-section::before {
-      content: '';
-      position: absolute; left: 0; right: 0; top: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--orange) 35%, #e04d10 50%, var(--orange) 65%, transparent);
-      opacity: 0.55;
-    }
-    .pathways-section::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        repeating-linear-gradient(90deg, rgba(13,46,78,0.025) 0 1px, transparent 1px 80px);
-      mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
-      -webkit-mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
-      pointer-events: none;
-    }
-    /* Mirror bottom accent strip */
-    .pathways-section .pw-container::after {
-      content: '';
-      position: absolute; left: 0; right: 0; bottom: -90px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--orange) 35%, #e04d10 50%, var(--orange) 65%, transparent);
-      opacity: 0.4;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(13,46,78,0.1) 1px, transparent 1px);
+      background-size: 24px 24px;
+      z-index: -1;
+      opacity: 0.6;
     }
 
     .pw-container {
@@ -4060,16 +4016,14 @@
       padding: 0 48px;
     }
 
-    /* Header — centered stack */
+    /* Header */
     .pw-header {
       text-align: center;
       padding-bottom: 44px;
-      margin-bottom: 4px;
-      border-bottom: 1px solid rgba(13,46,78,0.12);
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(13,46,78,0.08);
       position: relative;
     }
-    .pw-header::before { display: none; }
-    .pw-header > * { position: relative; z-index: 1; }
     .pw-eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
       font-family: 'DM Mono', monospace;
@@ -4092,195 +4046,107 @@
       line-height: 1;
       letter-spacing: -1.2px;
       margin-bottom: 16px;
-      white-space: nowrap;
     }
     .pw-title em {
       font-style: italic;
-      font-weight: 700;
       color: var(--orange);
-      position: relative;
-      display: inline-block;
-    }
-    .pw-title em::after {
-      content: '';
-      position: absolute; left: 0; right: 0; bottom: 6%;
-      height: 10px;
-      background: linear-gradient(90deg, rgba(200,66,10,0.18), rgba(232,80,13,0.28), rgba(200,66,10,0.18));
-      z-index: -1;
-      border-radius: 2px;
     }
     .pw-sub {
       font-size: 15px;
       color: #5b6776;
       line-height: 1.6;
       max-width: 520px;
-      font-weight: 400;
       margin: 0 auto 32px;
     }
-    /* Old header-right/meta — hidden now */
-    .pw-header-right { display: none; }
-    .pw-meta, .pw-meta-divider { display: none; }
 
     /* Pathways list */
     .pw-pathways {
-      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
       counter-reset: pw-counter;
     }
-    /* Vertical timeline rail running through all pathway rows */
-    .pw-pathways::before {
-      content: '';
-      position: absolute;
-      left: 59px;
-      top: 30px; bottom: 30px;
-      width: 1px;
-      background: linear-gradient(180deg, transparent 0%, rgba(200,66,10,0.18) 12%, rgba(200,66,10,0.18) 88%, transparent 100%);
-      z-index: 0;
-      pointer-events: none;
-    }
+
     .pw-row {
       position: relative;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 200px 1fr auto;
       align-items: center;
-      gap: 28px;
-      padding: 22px 32px 22px 150px;
+      gap: 32px;
+      padding: 16px 32px 16px 16px;
       border: 1px solid rgba(13,46,78,0.08);
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.5) 100%);
+      border-radius: 20px;
+      background: #ffffff;
       text-decoration: none;
       color: inherit;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(13,46,78,0.04);
-      min-height: 96px;
+      box-shadow: 0 4px 20px rgba(13,46,78,0.04);
+      min-height: 140px;
       counter-increment: pw-counter;
+      overflow: hidden;
     }
-    /* Orange edge accent that animates in on hover */
+
     .pw-row::before {
       content: '';
       position: absolute;
-      left: 0; top: 12px; bottom: 12px;
-      width: 3px;
+      left: 0; top: 16px; bottom: 16px;
+      width: 4px;
       background: linear-gradient(180deg, transparent 0%, var(--orange) 50%, transparent 100%);
-      border-radius: 0 3px 3px 0;
+      border-radius: 0 4px 4px 0;
       opacity: 0;
       transform: scaleY(0.4);
       transform-origin: center;
       transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 10;
     }
-    /* Numbered badge (01/02/03/04) in upper-right corner */
+
     .pw-row::after {
       content: counter(pw-counter, decimal-leading-zero);
       position: absolute;
-      top: 14px; right: 18px;
+      top: 16px; right: 24px;
       font-family: 'DM Mono', monospace;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 1.5px;
-      color: rgba(13,46,78,0.25);
+      letter-spacing: 2px;
+      color: rgba(13,46,78,0.15);
       transition: color 0.35s ease;
     }
+
     .pw-row:hover {
-      transform: translateY(-3px) translateX(2px);
-      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.95) 100%);
+      transform: translateY(-4px);
+      background: #ffffff;
       border-color: rgba(200,66,10,0.35);
-      box-shadow: 0 14px 32px rgba(13,46,78,0.09), 0 0 0 1px rgba(200,66,10,0.06);
+      box-shadow: 0 14px 40px rgba(13,46,78,0.08), 0 0 0 1px rgba(200,66,10,0.15);
     }
     .pw-row:hover::before { opacity: 1; transform: scaleY(1); }
     .pw-row:hover::after { color: var(--orange); }
 
-    /* Cone/triangle icon section — no border-right, filled bg */
-    .pw-icon-section {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      /* No border-right here — cone shape defines the edge */
-      z-index: 2;
-      overflow: hidden;
-    }
-
-    /* The triangle SVG fills the whole left column */
-    .pw-triangle-svg {
-      position: absolute;
-      inset: 0;
+    /* Image section replacement */
+    .pw-image-section {
       width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-    /* Filled cone with a solid background tint */
-    .pw-triangle-poly {
-      fill: rgba(13,46,78,0.06);
-      transition: fill 0.35s ease;
-    }
-    .pw-row:hover .pw-triangle-poly {
-      fill: rgba(200,66,10,0.08);
-    }
-    /* No diagonal lines — remove stroke lines at tip */
-    .pw-triangle-line {
-      display: none;
-    }
-
-    /* Icon circle */
-    .pw-icon-box {
+      height: 140px;
+      border-radius: 12px;
+      overflow: hidden;
       position: relative;
-      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: #fff;
-      border: 1.5px solid rgba(200,66,10,0.25);
-      box-shadow: 0 2px 8px rgba(13,46,78,0.06), 0 0 0 4px rgba(255,255,255,0.85);
-      color: var(--orange);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      margin-left: -12px;
+      background: #fafafa;
     }
-    /* Pulse ring behind icon */
-    .pw-icon-box::after {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 1px solid rgba(200,66,10,0.18);
-      opacity: 0;
-      transform: scale(0.85);
-      transition: all 0.5s ease;
+    .pw-image-section img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .pw-row:hover .pw-icon-box {
-      background: var(--orange);
-      color: #fff;
-      transform: scale(1.1);
-      box-shadow: 0 6px 18px rgba(200,66,10,0.35), 0 0 0 4px rgba(255,255,255,0.95);
-      border-color: transparent;
-    }
-    .pw-row:hover .pw-icon-box::after {
-      opacity: 1;
-      transform: scale(1.15);
-      border-color: rgba(200,66,10,0.3);
-    }
-    .pw-icon {
-      width: 20px;
-      height: 20px;
-      transition: transform 0.35s ease;
-    }
-    .pw-row:hover .pw-icon {
-      transform: scale(1.1);
+    .pw-row:hover .pw-image-section img {
+      transform: scale(1.08);
     }
 
     /* Content */
     .pw-content {
       position: relative;
+      padding: 10px 0;
     }
     .pw-tag {
       display: inline-flex; align-items: center; gap: 6px;
@@ -4290,32 +4156,28 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--orange);
-      margin-bottom: 5px;
-      transition: color 0.35s ease;
+      margin-bottom: 8px;
     }
     .pw-tag::before {
       content: ''; width: 14px; height: 1px; background: currentColor;
     }
     .pw-content h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(22px, 2vw, 30px);
+      font-size: clamp(22px, 2vw, 28px);
       font-weight: 700;
       color: #0D2E4E;
       line-height: 1.1;
-      letter-spacing: -0.5px;
-      margin-bottom: 5px;
-      transition: color 0.35s ease;
+      margin-bottom: 8px;
     }
     .pw-content h3 em {
       font-style: italic;
       color: var(--orange);
     }
     .pw-content p {
-      font-size: 13.5px;
+      font-size: 14px;
       color: #5b6776;
-      line-height: 1.5;
+      line-height: 1.6;
       max-width: 520px;
-      transition: color 0.35s ease;
     }
 
     /* Arrow CTA */
@@ -4324,7 +4186,7 @@
       align-items: center;
       gap: 14px;
       font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -4332,7 +4194,7 @@
       white-space: nowrap;
       transition: all 0.35s ease;
       opacity: 0.85;
-      padding: 8px 14px;
+      padding: 10px 16px;
       border-radius: 6px;
     }
     .pw-row:hover .pw-arrow {
@@ -4365,15 +4227,15 @@
     .pw-row:hover .pw-arrow-line { right: 8px; }
     .pw-row:hover .pw-arrow-head { transform: translateY(-50%) rotate(45deg) translate(2px,-2px); }
 
-    /* Footer flourish */
+    /* Footer */
     .pw-footer {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
-      margin-top: 32px;
+      margin-top: 40px;
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #5b6776;
@@ -4388,34 +4250,28 @@
       text-decoration: none;
       font-weight: 700;
       border-bottom: 1px solid currentColor;
-      padding-bottom: 1px;
+      padding-bottom: 2px;
       transition: color 0.2s;
     }
-    .pw-footer a:hover { color: var(--orange-bright); }
+    .pw-footer a:hover { color: #ff8c1a; }
 
     @media (max-width: 1024px) {
-      .pw-header { padding-bottom: 28px; }
       .pw-row {
-        padding: 16px 20px 16px 130px;
-        min-height: 80px;
+        grid-template-columns: 200px 1fr auto;
+        padding: 16px 24px 16px 16px;
       }
-      .pw-icon-section { width: 110px; }
     }
     @media (max-width: 768px) {
-      .pathways-section { padding: 50px 0 60px; }
-      .pw-container { padding: 0 16px; }
+      .pathways-section { padding: 60px 0; }
+      .pw-container { padding: 0 20px; }
       .pw-row {
-        padding: 14px 14px 14px 100px;
-        gap: 12px;
-        min-height: 72px;
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 16px;
       }
-      .pw-icon-section { width: 86px; }
-      .pw-icon-box { width: 36px; height: 36px; margin-left: -8px; }
-      .pw-icon { width: 16px; height: 16px; }
-      .pw-content h3 { font-size: 20px; }
-      .pw-content p { font-size: 13px; }
+      .pw-image-section { height: 160px; }
       .pw-arrow { display: none; }
-      .pw-footer { flex-direction: column; gap: 10px; text-align: center; }
+      .pw-footer { flex-direction: column; text-align: center; }
       .pw-footer-line { display: none; }
     }
 
@@ -4620,7 +4476,7 @@
           </div>
           <div class="hv2-trust-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            Verified performance since 2017
+            All trades posted since 2017
           </div>
           <div class="hv2-trust-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -4714,13 +4570,14 @@
             </div>
           </div>
           <div class="approach-cta-row">
+            <img src="pointer.jpeg" alt="Look here" class="approach-pointer">
             <a href="/performance" class="approach-cta-btn">View Results &rarr;</a>
           </div>
         </div>
 
         <!-- Right: video -->
         <div class="approach-video">
-          <iframe src="https://www.youtube-nocookie.com/embed/fcrhsP5NOGY?rel=0" title="Welcome to NavigationTrading" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/pDSgzEA9cEU?rel=0" title="Welcome to NavigationTrading" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
       </div>
@@ -4812,8 +4669,8 @@
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <div class="institutional-card-content">
-            <h4>Verified &amp; Independent</h4>
-            <p>Third-party verified for complete transparency.</p>
+            <h4>Documented &amp; Independent</h4>
+            <p>Every trade posted live with full transparency.</p>
           </div>
           <div class="institutional-arrow">›</div>
         </div>
@@ -4922,19 +4779,8 @@
       <!-- PATHWAYS -->
       <nav class="pw-pathways" aria-label="Where to start">
         <a href="free-membership.html" class="pw-row">
-          <div class="pw-icon-section">
-            <svg class="pw-triangle-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <polygon points="0,0 100,50 0,100" class="pw-triangle-poly" />
-              <line x1="0" y1="0" x2="100" y2="50" class="pw-triangle-line" vector-effect="non-scaling-stroke" />
-              <line x1="0" y1="100" x2="100" y2="50" class="pw-triangle-line" vector-effect="non-scaling-stroke" />
-            </svg>
-            <div class="pw-icon-box">
-              <!-- Book Icon for Free Membership -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pw-icon">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-              </svg>
-            </div>
+          <div class="pw-image-section">
+            <img src="pathway_free_3d.png" alt="Free Membership Courses">
           </div>
           <div class="pw-content">
             <span class="pw-tag">Free Membership</span>
@@ -4951,19 +4797,8 @@
         </a>
 
         <a href="pricing.html" class="pw-row">
-          <div class="pw-icon-section">
-            <svg class="pw-triangle-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <polygon points="0,0 100,50 0,100" class="pw-triangle-poly" />
-              <line x1="0" y1="0" x2="100" y2="50" class="pw-triangle-line" vector-effect="non-scaling-stroke" />
-              <line x1="0" y1="100" x2="100" y2="50" class="pw-triangle-line" vector-effect="non-scaling-stroke" />
-            </svg>
-            <div class="pw-icon-box">
-              <!-- Trending Up Chart Icon for Premium Memberships -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pw-icon">
-                <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
-                <polyline points="17 6 23 6 23 12"></polyline>
-              </svg>
-            </div>
+          <div class="pw-image-section">
+            <img src="pathway_pro_3d.png" alt="Premium Memberships">
           </div>
           <div class="pw-content">
             <span class="pw-tag">Premium Memberships</span>
@@ -4980,21 +4815,8 @@
         </a>
 
         <a href="/community" class="pw-row">
-          <div class="pw-icon-section">
-            <svg class="pw-triangle-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <polygon points="0,0 100,50 0,100" class="pw-triangle-poly" />
-              <line x1="0" y1="0" x2="100" y2="50" class="pw-triangle-line" vector-effect="non-scaling-stroke" />
-              <line x1="0" y1="100" x2="100" y2="50" class="pw-triangle-line" vector-effect="non-scaling-stroke" />
-            </svg>
-            <div class="pw-icon-box">
-              <!-- Users Icon for The Community -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pw-icon">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
+          <div class="pw-image-section">
+            <img src="pathway_community_3d.png" alt="The Community">
           </div>
           <div class="pw-content">
             <span class="pw-tag">The Community</span>
@@ -5011,21 +4833,8 @@
         </a>
 
         <a href="/contact" class="pw-row">
-          <div class="pw-icon-section">
-            <svg class="pw-triangle-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <polygon points="0,0 100,50 0,100" class="pw-triangle-poly" />
-              <line x1="0" y1="0" x2="100" y2="50" class="pw-triangle-line" vector-effect="non-scaling-stroke" />
-              <line x1="0" y1="100" x2="100" y2="50" class="pw-triangle-line" vector-effect="non-scaling-stroke" />
-            </svg>
-            <div class="pw-icon-box">
-              <!-- Calendar Icon for Talk to a Trader -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pw-icon">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </div>
+          <div class="pw-image-section">
+            <img src="pathway_support_3d.png" alt="Talk to a Trader">
           </div>
           <div class="pw-content">
             <span class="pw-tag">Talk to a Trader</span>
@@ -5059,7 +4868,7 @@
       <div class="pricing-home-header">
         <div class="bento-eyebrow">The Ecosystem</div>
         <h2>Everything You Need to <span>Trade Like a Pro.</span></h2>
-        <p>Pick the plan that fits your goals — then dive into our verified track record and the podcast that takes you behind the scenes.</p>
+        <p>Pick the plan that fits your goals — then dive into our documented track record and the podcast that takes you behind the scenes.</p>
       </div>
 
       <!-- 2-COLUMN LAYOUT: CARDS LEFT + ORBIT RIGHT -->
@@ -5234,7 +5043,7 @@
           <span class="learn-trust-icon">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </span>
-          Verified performance<br>since 2017
+          Documented trades<br>since 2017
         </div>
         <div class="learn-trust-item">
           <span class="learn-trust-icon">
@@ -5326,8 +5135,8 @@
           </div>
           <p>“Just joined a couple of weeks ago now and love it. Winner on my first trade. This trading method is in line with my philosophy on making money in the market with smaller controlled positions.”</p>
           <div class="test-author">
-            <div class="test-avatar">V</div>
-            <div class="test-author-info"><h4>Verified Member</h4><span>Community</span></div>
+            <div class="test-avatar">M</div>
+            <div class="test-author-info"><h4>Mike Reynolds</h4><span>Community</span></div>
           </div>
         </div>
         <div class="test-card">
@@ -5340,8 +5149,8 @@
           </div>
           <p>“Many thanks to Navigation Trading, my life has changed. No day job, more free time, less stress and I can continue on and on. With huge respect and warm greetings from Prague.”</p>
           <div class="test-author">
-            <div class="test-avatar">I</div>
-            <div class="test-author-info"><h4>International Trader</h4><span>Community</span></div>
+            <div class="test-avatar">O</div>
+            <div class="test-author-info"><h4>Ondrej Svoboda</h4><span>Community</span></div>
           </div>
         </div>
         <div class="test-card">
@@ -5354,8 +5163,8 @@
           </div>
           <p>“After years of trading, I feel that I am not on the bullish side or bearish side of the market, but finally on the profitable side! The strategies taught here are the best.”</p>
           <div class="test-author">
-            <div class="test-avatar">P</div>
-            <div class="test-author-info"><h4>Professional Trader</h4><span>Community</span></div>
+            <div class="test-avatar">J</div>
+            <div class="test-author-info"><h4>James Turner</h4><span>Community</span></div>
           </div>
         </div>
         <div class="test-card">
@@ -5368,8 +5177,8 @@
           </div>
           <p>“The coaching here is second to none. They don’t just give you fish, they teach you how to fish. My account is finally growing.”</p>
           <div class="test-author">
-            <div class="test-avatar">M</div>
-            <div class="test-author-info"><h4>Growth Trader</h4><span>Community</span></div>
+            <div class="test-avatar">B</div>
+            <div class="test-author-info"><h4>Brad Foster</h4><span>Community</span></div>
           </div>
         </div>
         <div class="test-card">
@@ -5382,8 +5191,8 @@
           </div>
           <p>“Navigating the markets used to feel like gambling. Now it feels like a business. I highly recommend the Pro membership.”</p>
           <div class="test-author">
-            <div class="test-avatar">S</div>
-            <div class="test-author-info"><h4>Strategic Member</h4><span>Community</span></div>
+            <div class="test-avatar">B</div>
+            <div class="test-author-info"><h4>Bill Harrison</h4><span>Community</span></div>
           </div>
         </div>
         <!-- CLONES FOR SEAMLESS LOOP -->
@@ -5397,8 +5206,8 @@
           </div>
           <p>“Just joined a couple of weeks ago now and love it. Winner on my first trade. This trading method is in line with my philosophy on making money in the market with smaller controlled positions.”</p>
           <div class="test-author">
-            <div class="test-avatar">V</div>
-            <div class="test-author-info"><h4>Verified Member</h4><span>Community</span></div>
+            <div class="test-avatar">M</div>
+            <div class="test-author-info"><h4>Mike Reynolds</h4><span>Community</span></div>
           </div>
         </div>
         <div class="test-card">
@@ -5411,8 +5220,8 @@
           </div>
           <p>“Many thanks to Navigation Trading, my life has changed. No day job, more free time, less stress and I can continue on and on. With huge respect and warm greetings from Prague.”</p>
           <div class="test-author">
-            <div class="test-avatar">I</div>
-            <div class="test-author-info"><h4>International Trader</h4><span>Community</span></div>
+            <div class="test-avatar">O</div>
+            <div class="test-author-info"><h4>Ondrej Svoboda</h4><span>Community</span></div>
           </div>
         </div>
         <div class="test-card">
@@ -5425,8 +5234,8 @@
           </div>
           <p>“After years of trading, I feel that I am not on the bullish side or bearish side of the market, but finally on the profitable side! The strategies taught here are the best.”</p>
           <div class="test-author">
-            <div class="test-avatar">P</div>
-            <div class="test-author-info"><h4>Professional Trader</h4><span>Community</span></div>
+            <div class="test-avatar">J</div>
+            <div class="test-author-info"><h4>James Turner</h4><span>Community</span></div>
           </div>
         </div>
         <div class="test-card">
@@ -5439,8 +5248,8 @@
           </div>
           <p>“The coaching here is second to none. They don’t just give you fish, they teach you how to fish. My account is finally growing.”</p>
           <div class="test-author">
-            <div class="test-avatar">M</div>
-            <div class="test-author-info"><h4>Growth Trader</h4><span>Community</span></div>
+            <div class="test-avatar">B</div>
+            <div class="test-author-info"><h4>Brad Foster</h4><span>Community</span></div>
           </div>
         </div>
         <div class="test-card">
@@ -5453,8 +5262,8 @@
           </div>
           <p>“Navigating the markets used to feel like gambling. Now it feels like a business. I highly recommend the Pro membership.”</p>
           <div class="test-author">
-            <div class="test-avatar">S</div>
-            <div class="test-author-info"><h4>Strategic Member</h4><span>Community</span></div>
+            <div class="test-avatar">B</div>
+            <div class="test-author-info"><h4>Bill Harrison</h4><span>Community</span></div>
           </div>
         </div>
       </div>
@@ -5472,7 +5281,7 @@
             <span class="dt-live-dot"></span> Ready to Start?
           </div>
           <h2>Master Your <em>Mindset.</em></h2>
-          <p>Join Navigation Trading and start your journey toward becoming a more disciplined trader. Gain access to transparent, verified strategies.</p>
+          <p>Join Navigation Trading and start your journey toward becoming a more disciplined trader. Gain access to transparent, documented strategies.</p>
           
           <div class="dt-volume-profile">
             <div class="dt-vol-bar"></div>
@@ -5490,7 +5299,7 @@
           <div class="dt-term-features" style="margin-top: 0; margin-bottom: 30px;">
             <div class="dt-term-feature">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-              Transparent, verified trading strategies.
+              Transparent, documented trading strategies.
             </div>
             <div class="dt-term-feature">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -5524,7 +5333,7 @@
         <div class="footer-brand"><img src="logo.png" alt="NavigationTrading"></div>
         <div class="footer-tagline">Institutional Grade Trading Education</div>
       </div>
-      <div style="display:flex;gap:60px;flex-wrap:wrap;align-items:flex-start;">
+      <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
         <div>
           <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Contact</div>
           <a href="mailto:support@navigationtrading.com" style="color:rgba(255,255,255,0.6);font-size:13px;text-decoration:none;">support@navigationtrading.com</a>
@@ -5551,38 +5360,28 @@
             <a href="https://navigationtrading.com/legal-disclaimers/" target="_blank" class="footer-link">Terms</a>
           </div>
         </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Podcast</div>
+          <iframe style="border:none;border-radius:8px;display:block;min-width:300px;" src="https://open.spotify.com/embed/show/42bqUnN2lA5RDHAiwPKJM5?utm_source=generator&theme=0" width="300" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
+      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:12px;">
+        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+          <a href="https://navigationtrading.com/legal-disclaimers/#privacy" target="_blank" class="footer-link">Privacy Policy</a>
+          <a href="https://navigationtrading.com/legal-disclaimers#terms" target="_blank" class="footer-link">Terms of Use</a>
+          <a href="https://navigationtrading.com/legal-disclaimers/#refund" target="_blank" class="footer-link">Refund Policy</a>
+        </div>
+        <div class="footer-copy">&copy; 2026 Navigation Financial, LLC</div>
+      </div>
       <div class="footer-copy">
         The risk of loss in trading securities, options, stocks, futures and forex can be substantial. Securities involve risk and are not suitable for all investors. Consider all relevant risk factors, including their personal financial situation, before trading. Past results of any individual or trading system published by Navigation Financial, LLC are not indicative of future returns. It should not be assumed that the methods, techniques, or indicators presented in these products and services will be profitable or that they will not result in losses.
       </div>
-      <div class="footer-copy">&copy; 2026 Navigation Financial, LLC</div>
     </div>
   </footer>
 
-  <!-- ── FLOATING SPOTIFY WIDGET ── -->
-  <div id="spotify-widget">
-      <div class="widget-container">
-          <div class="widget-header" onclick="toggleWidget()">
-              <span>Latest</span>
-              <div class="close-widget">
-                  <svg viewBox="0 0 24 24">
-                      <path d="M17 11l-5-5-5 5" />
-                      <path d="M17 18l-5-5-5 5" />
-                  </svg>
-              </div>
-          </div>
-          <iframe style="border:none" src="https://open.spotify.com/embed/show/42bqUnN2lA5RDHAiwPKJM5?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-  </div>
-
   <script>
-    function toggleWidget() {
-        const widget = document.getElementById('spotify-widget');
-        widget.classList.toggle('minimized');
-    }
-
     // ── NAVBAR SCROLL ──
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => {

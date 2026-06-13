@@ -392,7 +392,7 @@
       z-index: 5;
       max-width: 920px;
       margin: 0 auto;
-      padding: 160px 24px 90px;
+      padding: 160px 24px 140px;
     }
 
     .hero-eyebrow {
@@ -2115,7 +2115,7 @@
       content: '';
       position: absolute;
       top: 65px; /* start below the cluster circle */
-      bottom: -60px; /* connect to next cluster */
+      bottom: -100px; /* connect to next cluster's circle */
       left: 31px; /* Center alignment based on 90px padding and -80px left on circle */
       width: 2px;
       background: rgba(255,255,255,0.1);
@@ -2128,7 +2128,11 @@
       box-shadow: none;
     }
     
-    .dt-curr-cluster:last-of-type::before {
+    .dt-curr-cluster ~ .dt-curr-cluster::before {
+      display: none;
+    }
+    .dt-curr-cluster ~ .dt-curr-cluster.open::before {
+      display: block;
       bottom: 0;
     }
 
@@ -2372,10 +2376,14 @@
       background: linear-gradient(180deg, #ffffff 0%, #f6f9fc 100%);
       position: relative;
     }
+    .dt-tools .pm-container {
+      max-width: 1400px;
+      padding: 0 24px;
+    }
 
     .dt-bento {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
       margin-top: 50px;
     }
@@ -2387,7 +2395,7 @@
       border-radius: 20px;
       padding: 0;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       height: 100%;
       position: relative;
       overflow: hidden;
@@ -2456,8 +2464,10 @@
     }
 
     .dt-bento-visual {
-      width: 100%;
-      height: 200px;
+      width: 40%;
+      flex-shrink: 0;
+      height: auto;
+      min-height: 200px;
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid rgba(12, 46, 78, 0.08);
@@ -4406,7 +4416,7 @@
     <div style="display:flex; gap:16px; align-items:center;">
       <a href="https://whop.com/orders/products/"
         style="color:#fff; text-decoration:none; font-size:14px; font-weight:600;">Login</a>
-      <a href="https://whop.com/navigationtrading/" class="nav-cta">Join Now</a>
+      <a href="https://whop.com/navigationtrading/ntday/" class="nav-cta">Join Now</a>
     </div>
   </nav>
 
@@ -4424,36 +4434,10 @@
       <p>Join a daily live trading room where real trades are called out in real time — not after the fact. Get 10
         proven day trading strategy courses, professional chart indicators, and 0 DTE strategies for $129/month. This is
         where learning turns into doing.</p>
-      <a href="https://whop.com/navigationtrading/" class="btn-primary">Join the Live Trading Room — $129/month →</a>
+      <a href="https://whop.com/navigationtrading/ntday/" class="btn-primary">Join the Live Trading Room — $129/month →</a>
     </div>
   </section>
 
-  <!-- ── STATS BAR ── -->
-  <div class="stats-bar">
-    <div class="pm-container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-num"><span class="counter" data-target="64">0</span></div>
-          <div class="stat-label">Active Members</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num"><span class="counter" data-target="4.8">0.0</span> <span
-              class="stars-small">★★★★★</span></div>
-          <div class="stat-label">Rating</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num"><span class="counter" data-target="25">0</span></div>
-          <div class="stat-label">Reviews</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num"
-            style="font-size: 16px; background: none; -webkit-text-fill-color: rgba(255,255,255,0.9); letter-spacing: 2px;">
-            BY</div>
-          <div class="stat-label">NavigationTrading</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ── 2. PROMISE ── -->
   <section class="dt-promise">
@@ -4503,10 +4487,10 @@
           </div>
           <div class="dt-tl-step" data-start="555" data-end="569">
             <div class="dt-tl-dot"></div>
-            <span class="dt-tl-step-time">9:15 AM</span>
+            <span class="dt-tl-step-time">Market Open (9:30 AM)</span>
             <div class="dt-tl-content">
               <h3>Live Stream Begins</h3>
-              <p>Steve breaks down the market open game plan — setups forming, key levels, opportunities ahead.</p>
+              <p>NavigationTrading breaks down the market open game plan — setups forming, key levels, opportunities ahead.</p>
             </div>
           </div>
           <div class="dt-tl-step" data-start="570" data-end="599">
@@ -4527,18 +4511,17 @@
                 unfolds.</p>
             </div>
           </div>
-          <div class="dt-tl-step" data-start="900" data-end="959">
+          <div class="dt-tl-step" data-start="945" data-end="974">
             <div class="dt-tl-dot"></div>
-            <span class="dt-tl-step-time">3:00 PM</span>
+            <span class="dt-tl-step-time">3:45 PM</span>
             <div class="dt-tl-content">
               <h3>Power Hour Stream</h3>
-              <p>The second session. Late-day setups, MOC strategies, and the end-of-day momentum plays most traders
-                miss.</p>
+              <p>The second session. Late-day setups and the end-of-day momentum plays most traders miss.</p>
             </div>
           </div>
-          <div class="dt-tl-step" data-start="960" data-end="1320">
+          <div class="dt-tl-step" data-start="975" data-end="1320">
             <div class="dt-tl-dot"></div>
-            <span class="dt-tl-step-time">4:00 PM</span>
+            <span class="dt-tl-step-time">4:15 PM</span>
             <div class="dt-tl-content">
               <h3>Recaps &amp; Discussion</h3>
               <p>Trade recaps, community chat. What worked, what didn't, what's setting up for tomorrow.</p>
@@ -4547,7 +4530,7 @@
         </div>
       </div>
       <div style="text-align:center; margin-top:60px;" class="reveal">
-        <a href="https://whop.com/navigationtrading/" class="btn-pm">Experience a Full Trading Day — Join Now →</a>
+        <a href="https://whop.com/navigationtrading/ntday/" class="btn-pm">Experience a Full Trading Day — Join Now →</a>
       </div>
     </div>
   </section>
@@ -4673,7 +4656,7 @@
     <div class="pm-container">
       <div class="pm-section-head light reveal">
         <span class="pm-eyebrow">Institutional Curriculum</span>
-        <h2>10 Complete Strategy Courses. <em style="color:var(--orange)">Master the Market.</em></h2>
+        <h2>4+ Strategy Courses. <em style="color:var(--orange)">Master the Market.</em></h2>
         <p>The live streams show you how it's done. The courses teach you why. Each is a full structured course with
           video lessons, trade examples, and clear rules.</p>
       </div>
@@ -4717,7 +4700,7 @@
           <p class="dt-trm-body" data-bind="desc">Learn to identify high-probability setups in the first 90 minutes
             of the trading day — the most active window — and how to catch runners that extend well beyond the open.</p>
 
-          <a class="dt-trm-cta" href="https://whop.com/navigationtrading/" id="dtTrmCta">
+          <a class="dt-trm-cta" href="https://whop.com/navigationtrading/ntday/" id="dtTrmCta">
             <span data-bind="cta">Enroll in MNTY</span>
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -4739,10 +4722,6 @@
             <button class="dt-trm-row" type="button" data-id="02">
               <span class="num">02</span><span class="sym">NTT</span>
               <span class="name">NTT Day Trading</span><span class="dot"></span>
-            </button>
-            <button class="dt-trm-row" type="button" data-id="03">
-              <span class="num">03</span><span class="sym">MOC</span>
-              <span class="name">Market on Close</span><span class="dot"></span>
             </button>
             <button class="dt-trm-row" type="button" data-id="04">
               <span class="num">04</span><span class="sym">PXFT</span>
@@ -4792,7 +4771,7 @@
       </div>
 
       <div style="text-align:center; margin-top:54px;" class="reveal">
-        <a href="https://whop.com/navigationtrading/" class="btn-pm">Unlock the Full Strategy Vault →</a>
+        <a href="https://whop.com/navigationtrading/ntday/" class="btn-pm">Unlock the Full Strategy Vault →</a>
       </div>
     </div>
   </section>
@@ -4825,7 +4804,7 @@
         <!-- Section eyebrow + title (compact, lives in pin) -->
         <div class="dt-orb-title">
           <span class="pm-eyebrow">Institutional Curriculum</span>
-          <h2>10 Complete Strategy Courses. <em style="color:var(--orange)">Master the Market.</em></h2>
+          <h2>4+ Strategy Courses. <em style="color:var(--orange)">Master the Market.</em></h2>
         </div>
 
         <!-- Stage -->
@@ -4903,14 +4882,6 @@
                     <h4 class="dt-orb-scard-title">NTT Day Trading</h4>
                     <p class="dt-orb-scard-desc">NavigationTrading's proprietary day trading system. A step-by-step method for reading intraday price action, identifying entries with defined risk, and following clear exit rules. This isn't discretionary trading — it's systematic.</p>
                     <div class="dt-orb-scard-info">All Session</div>
-                  </div>
-                </div>
-                <div class="dt-orb-scard">
-                  <span class="dt-orb-scard-num">03</span>
-                  <div class="dt-orb-scard-body">
-                    <h4 class="dt-orb-scard-title">MOC Course (Market on Close)</h4>
-                    <p class="dt-orb-scard-desc">The MOC strategy is built specifically for the final hour of trading, using end-of-day momentum and institutional closing flows. Perfect for traders with a day job available in the afternoon.</p>
-                    <div class="dt-orb-scard-info">15:00 – 16:00 ET</div>
                   </div>
                 </div>
                 <div class="dt-orb-scard">
@@ -5003,7 +4974,7 @@
             <span class="dt-orb-foot-icon">↓</span>
             <span>Scroll to navigate</span>
           </div>
-          <a href="https://whop.com/navigationtrading/" class="dt-orb-foot-cta">
+          <a href="https://whop.com/navigationtrading/ntday/" class="dt-orb-foot-cta">
             <span>Unlock the full Strategy Vault</span>
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -5018,7 +4989,7 @@
     <div class="pm-container">
       <div class="pm-section-head light reveal" style="margin-bottom:50px;">
         <span class="pm-eyebrow">Institutional Curriculum</span>
-        <h2>10 Complete Strategy Courses. <em style="color:var(--orange)">Master the Market.</em></h2>
+        <h2>4+ Strategy Courses. <em style="color:var(--orange)">Master the Market.</em></h2>
         <p>The live streams show you how it's done. The courses teach you why. Each is a full structured course with video lessons, trade examples, and clear rules.</p>
       </div>
 
@@ -5028,10 +4999,10 @@
           <span class="dt-curr-num-big">01</span>
           <div class="dt-curr-head-text">
             <span class="dt-curr-tag">Cluster 01</span>
-            <h3>Core Day Trading</h3>
+            <h3>Directional Courses</h3>
             <p class="dt-curr-tagline">The foundation strategies — high-probability setups across the full trading day.</p>
           </div>
-          <span class="dt-curr-count">5 courses</span>
+          <span class="dt-curr-count">3 courses</span>
           <span class="dt-curr-chevron">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </span>
@@ -5055,6 +5026,7 @@
                 </div>
                 <span class="dt-curr-row-time">All Session</span>
               </div>
+              <!--
               <div class="dt-curr-row">
                 <span class="dt-curr-row-num">03</span>
                 <div class="dt-curr-row-body">
@@ -5071,6 +5043,7 @@
                 </div>
                 <span class="dt-curr-row-time">All Session</span>
               </div>
+              -->
               <div class="dt-curr-row">
                 <span class="dt-curr-row-num">05</span>
                 <div class="dt-curr-row-body">
@@ -5090,7 +5063,7 @@
           <span class="dt-curr-num-big">02</span>
           <div class="dt-curr-head-text">
             <span class="dt-curr-tag">Cluster 02</span>
-            <h3>0 DTE Mastery</h3>
+            <h3>0DTE / Delta Neutral Courses</h3>
             <p class="dt-curr-tagline">Same-day expiration strategies with defined risk and precise entry timing.</p>
           </div>
           <span class="dt-curr-count">3 courses</span>
@@ -5130,7 +5103,7 @@
         </div>
       </div>
 
-      <!-- Cluster 03 -->
+      <!-- Cluster 03 — commented out, may restore later
       <div class="dt-curr-cluster reveal">
         <div class="dt-curr-cluster-head">
           <span class="dt-curr-num-big">03</span>
@@ -5167,9 +5140,10 @@
           </div>
         </div>
       </div>
+      -->
 
       <div class="dt-curr-cta-wrap reveal">
-        <a href="https://whop.com/navigationtrading/" class="btn-pm">Unlock the Full Strategy Vault →</a>
+        <a href="https://whop.com/navigationtrading/ntday/" class="btn-pm">Unlock the Full Strategy Vault →</a>
       </div>
     </div>
   </section>
@@ -5222,35 +5196,16 @@
               </div>
               <h3>0 DTE Strategy Toolkit</h3>
             </div>
-            <p>Specific tools and templates for executing 0 DTE strategies. Strike selection frameworks, entry timing
+            <p>Specific tools and templates for executing 0 DTE strategies — including how to execute using bots. Strike selection frameworks, entry timing
               rules, and risk management parameters — all built into the indicator suite so you're not calculating on
               the fly when speed matters.</p>
           </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="dt-bento-card">
-          <div class="dt-bento-visual">
-            <img src="dt_trade_alerts.png" alt="Trade Alert System Mockup">
-          </div>
-          <div class="dt-bento-card-top">
-            <div class="dt-bento-card-header">
-              <div class="dt-bento-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                </svg>
-              </div>
-              <h3>Trade Alert System</h3>
-            </div>
-            <p>Real-time alerts delivered when day trading setups appear. Each alert tells you the strategy being used,
-              the entry, the stop, and the management rules. You evaluate and decide — the alert gives you everything
-              you need.</p>
-          </div>
-        </div>
       </div>
 
       <div style="text-align:center; margin-top:60px;" class="reveal">
-        <a href="https://whop.com/navigationtrading/" class="btn-pm">Get the Tools + Education — $129/month →</a>
+        <a href="https://whop.com/navigationtrading/ntday/" class="btn-pm">Get the Tools + Education — $129/month →</a>
       </div>
     </div>
   </section>
@@ -5335,7 +5290,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
           <div class="dt-who-content">
-            <div class="dt-who-title">You want someone to trade for you</div>
+            <div class="dt-who-title">This is education, not a copy trade service</div>
             <p class="dt-who-desc">We share live trades, but you are responsible for your own decisions. This is education, not a bot.</p>
           </div>
         </div>
@@ -5344,7 +5299,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           </div>
           <div class="dt-who-content">
-            <div class="dt-who-title">You want income spreads &amp; portfolio strategies</div>
+            <div class="dt-who-title">For trades lasting longer than intraday, join the <a href="https://whop.com/navigationtrading/ntpro/" style="color:var(--orange); text-decoration:underline;">Pro Membership</a></div>
             <p class="dt-who-desc">Day Trading focuses on 0 DTE and intraday. For butterflies and calendars, join the Pro Membership.</p>
           </div>
         </div>
@@ -5441,7 +5396,7 @@
                 courses + execution toolkit</span>
             </li>
           </ul>
-          <a href="https://whop.com/navigationtrading/" class="dt-plan-cta">Join Day Trading — $129/month →</a>
+          <a href="https://whop.com/navigationtrading/ntday/" class="dt-plan-cta">Join Day Trading — $129/month →</a>
         </div>
       </div>
       <div class="dt-comp-note reveal">
@@ -5450,7 +5405,7 @@
             between knowing options and trading options.</strong></p>
       </div>
       <div class="dt-comp-cta reveal">
-        <a href="https://whop.com/navigationtrading/" class="btn-pm">Make the Jump — Join Day Trading →</a>
+        <a href="https://whop.com/navigationtrading/ntday/" class="btn-pm">Make the Jump — Join Day Trading →</a>
       </div>
     </div>
   </section>
@@ -5461,20 +5416,20 @@
     <div class="pm-container">
       <div class="pm-section-head reveal">
         <span class="pm-eyebrow">Who's in the Trading Room</span>
-        <h2>You're Trading Alongside <em>Steve — Not a Recording of Him</em></h2>
+        <h2>You're Trading Alongside <em>NavigationTrading — Not a Recording of Him</em></h2>
       </div>
       <div class="dt-instr-grid reveal">
 
         <!-- Left: Speaker Card -->
         <div class="dt-instr-right">
           <div class="dt-instr-photo">
-            <img src="auther.jpeg" alt="Steve — NavigationTrading">
+            <img src="auther.jpeg" alt="NavigationTrading — NavigationTrading">
           </div>
           <div class="dt-instr-nameplate">
             <div class="dt-instr-name">NavigationTrading</div>
             <div class="dt-instr-role">Founder & Head Trader</div>
             <div class="dt-instr-mini-stats">
-              <div class="dt-i-mini"><span class="dt-i-mini-num">10</span><span class="dt-i-mini-lbl">Courses</span>
+              <div class="dt-i-mini"><span class="dt-i-mini-num">4+</span><span class="dt-i-mini-lbl">Courses</span>
               </div>
               <div class="dt-i-mini"><span class="dt-i-mini-num">4.8★</span><span class="dt-i-mini-lbl">Star
                   Rating</span></div>
@@ -5491,12 +5446,12 @@
           <div class="dt-instr-quote">"I sit in the same live trading room as my members. I call trades as they happen,
             explain my reasoning in real time, and take the wins and losses in front of everyone."</div>
           <div class="dt-instr-bio-body">
-            <p>NavigationTrading was built by Steve, an active day trader who shows up every market morning and does
+            <p>NavigationTrading was built by NavigationTrading, an active day trader who shows up every market morning and does
               exactly what he teaches — live, on stream, with real money. <strong>That's not a small thing.</strong>
               Most trading educators sell courses and disappear.</p>
             <p>His approach is built on statistics, probabilities, and repeatable rules. No "secret indicators." No
               hype. No screenshots of winning trades with the losers conveniently deleted. Every strategy in this
-              membership is one Steve actively trades — and you can watch him do it, every single day.</p>
+              membership is one NavigationTrading actively trades — and you can watch him do it, every single day.</p>
           </div>
 
           <ul class="dt-instr-creds-list">
@@ -5538,7 +5493,7 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p>"I can't recommend Navigation Trading highly enough. I've been using their services for two years and have learned an incredible amount. Steve's explanations are clear and his approach is based on real probabilities. The live trading room is where the real value is."</p>
+          <p>"I can't recommend Navigation Trading highly enough. I've been using their services for two years and have learned an incredible amount. NavigationTrading's explanations are clear and his approach is based on real probabilities. The live trading room is where the real value is."</p>
           <div class="test-author">
             <div class="test-avatar">A</div>
             <div class="test-author-info">
@@ -5572,7 +5527,7 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p>"The community, education, and constant innovation set NavigationTrading apart. Steve and the team don't rest on past accomplishments; they stay ahead of the markets and care about their members' success."</p>
+          <p>"The community, education, and constant innovation set NavigationTrading apart. NavigationTrading and the team don't rest on past accomplishments; they stay ahead of the markets and care about their members' success."</p>
           <div class="test-author">
             <div class="test-avatar">J</div>
             <div class="test-author-info">
@@ -5649,9 +5604,7 @@
               <div class="pm-faq-icon">+</div>
             </div>
             <div class="pm-faq-ans">
-              <div class="pm-faq-ans-inner">The morning session starts around 9:15 AM Eastern, before market open at
-                9:30 AM. The Power Hour session begins around 3:00 PM Eastern for the final hour of trading. Both run
-                every market day, Monday through Friday (excluding market holidays).</div>
+              <div class="pm-faq-ans-inner">The morning session starts right at the market open (9:30 AM Eastern). Power Hour starts at 3:45 PM Eastern. Both run every market day, Monday through Friday (excluding market holidays).</div>
             </div>
           </div>
           <div class="pm-faq-item">
@@ -5670,10 +5623,7 @@
               <div class="pm-faq-icon">+</div>
             </div>
             <div class="pm-faq-ans">
-              <div class="pm-faq-ans-inner">No. Many of the day trading strategies — especially the 0 DTE setups — can
-                be executed with accounts of $2,000–$5,000, depending on your broker. The courses cover how to match
-                strategies and position sizes to your specific account. You don't need a big account to start. You need
-                the right strategies for the account you have.</div>
+              <div class="pm-faq-ans-inner">Many of the day trading strategies can be executed with position sizes under $1000. We have members with accounts under $25,000 and we have members with 7 figure accounts.</div>
             </div>
           </div>
           <div class="pm-faq-item">
@@ -5682,11 +5632,7 @@
               <div class="pm-faq-icon">+</div>
             </div>
             <div class="pm-faq-ans">
-              <div class="pm-faq-ans-inner">Day Trading ($129/month) focuses on day trading and 0 DTE strategies — 10
-                courses, daily live streams, and day trading alerts and indicators. Pro ($179/month) includes everything
-                in Day Trading plus 7 additional advanced strategy courses (income spreads, trend trading, portfolio
-                strategies), trade alerts for every strategy, and the full suite of custom chart indicators and watch
-                lists. If you want to go beyond day trading, Pro gives you the complete system.</div>
+              <div class="pm-faq-ans-inner">Day Trading ($129/month) focuses on day trading and 0 DTE strategies — 4+ courses, daily live streams, and day trading alerts and indicators. <a href="https://whop.com/navigationtrading/ntpro/" style="color:var(--orange); text-decoration:underline;">Pro ($179/month)</a> includes everything in Day Trading plus additional advanced strategy courses (income spreads, trend trading, portfolio strategies), trade alerts for every strategy, and the full suite of custom chart indicators and watch lists. If you want to go beyond day trading, Pro gives you the complete system.</div>
             </div>
           </div>
           <div class="pm-faq-item">
@@ -5695,9 +5641,7 @@
               <div class="pm-faq-icon">+</div>
             </div>
             <div class="pm-faq-ans">
-              <div class="pm-faq-ans-inner">Yes. The live trading room has real-time chat where you can ask questions
-                during the stream. The TradeHacker Discord is active throughout the day with members and the team
-                available to help. You're never trading alone.</div>
+              <div class="pm-faq-ans-inner">Yes. The live trading room has real-time chat where you can ask questions during the stream. The TradeHacker Discord is active throughout the day with members and the team available to help. You're never trading alone. You can also sign up for an onboarding call at <a href="https://calendly.com/navigationtrading" target="_blank" style="color:var(--orange); text-decoration:underline;">calendly.com/navigationtrading</a>.</div>
             </div>
           </div>
         </div>
@@ -5736,7 +5680,7 @@
             <span class="per">/ mo</span>
           </div>
 
-          <a href="https://whop.com/navigationtrading/" class="dt-term-action">
+          <a href="https://whop.com/navigationtrading/ntday/" class="dt-term-action">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
@@ -5835,7 +5779,7 @@
     </div>
     <div class="sticky-cta-right">
       <div class="sticky-price">$129<small>/mo</small></div>
-      <a href="https://whop.com/navigationtrading/" class="sticky-cta-btn">Join Day Trading →</a>
+      <a href="https://whop.com/navigationtrading/ntday/" class="sticky-cta-btn">Join Day Trading →</a>
     </div>
   </div>
 
@@ -5872,9 +5816,6 @@
         { id: '02', sym: 'NTT', cat: 'Core Day Trading', tag: 'PROPRIETARY', depth: 5, time: 'All Session', tone: 'up',
           title: 'NTT Day Trading',
           desc: "NavigationTrading's proprietary day trading system. A step-by-step method for reading intraday price action, identifying entries with defined risk, and following clear exit rules." },
-        { id: '03', sym: 'MOC', cat: 'Core Day Trading', tag: 'END-OF-DAY', depth: 4, time: '15:00 – 16:00 ET', tone: 'up',
-          title: 'MOC Course (Market on Close)',
-          desc: "Built specifically for the final hour of trading, using end-of-day momentum and institutional closing flows. Perfect for traders with a day job available in the afternoon." },
         { id: '04', sym: 'PXFT', cat: 'Core Day Trading', tag: 'FUTURES', depth: 4, time: 'All Session', tone: 'up',
           title: 'Price Action Futures Trading',
           desc: "Expand beyond options into futures with a pure price action approach. Learn to read the tape, identify key levels, and execute clean entries without lagging indicators." },

@@ -336,9 +336,9 @@ body {
 }
 .timeline-item { position: relative; margin-bottom: 60px; padding-left: 60px; }
 .timeline-time {
-  position: absolute; left: -100px; top: 0;
+  position: absolute; left: -120px; top: 0;
   font-size: 14px; font-weight: 800; color: var(--gold);
-  width: 80px; text-align: right;
+  width: 110px; text-align: right;
   display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
 }
 .timeline-dot {
@@ -1075,6 +1075,7 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
   background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
   overflow: hidden; position: relative; transition: box-shadow 0.3s, transform 0.3s;
   border-radius: 20px;
+  display: flex; flex-direction: column;
 }
 .review-card:hover { box-shadow: 0 14px 44px rgba(0, 0, 0, 0.13); transform: translateY(-5px); }
 
@@ -1100,7 +1101,7 @@ tr:last-child td.pro-col { border-radius: 0 0 4px 4px; }
 .review-stars-row { padding: 14px 24px 0; display: flex; gap: 2px; }
 .review-stars-row span { color: var(--gold); font-size: 14px; }
 
-.review-before { padding: 14px 24px 18px; border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
+.review-before { padding: 14px 24px 18px; border-bottom: 1px solid rgba(0, 0, 0, 0.06); flex: 1; }
 .review-after { padding: 14px 24px 22px; background: var(--navy-deep); }
 .rv-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 7px; }
 .review-before .rv-label { color: #888; }
@@ -1612,7 +1613,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
   </ul>
   <div style="display:flex; gap:16px; align-items:center;">
       <a href="https://whop.com/orders/products/" style="color:#fff; text-decoration:none; font-size:14px; font-weight:600;" class="nav-login">Login</a>
-      <a href="https://whop.com/navigationtrading/" class="nav-cta">Join Now</a>
+      <a href="https://whop.com/navigationtrading/ntpro/" class="nav-cta">Join Now</a>
   </div>
   <div class="nav-toggle" id="navToggle">
     <span></span>
@@ -1637,7 +1638,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
         <span>Nothing Held Back.</span>
       </h1>
       <p class="hero-sub">
-        Get instant access to 17+ proven options strategies, daily live trading streams, real-time trade alerts for every strategy we teach, and custom chart indicators built by our team, all in one Pro membership. This is everything NavigationTrading has built, in one place.
+        Get instant access to 17+ proven options strategies, daily live trading streams, real-time trade alerts for every strategy we teach, and a custom software called "Flux" for making precise trading decisions, all in one Pro membership. This is everything NavigationTrading has built, in one place.
       </p>
       <div class="hero-cta-box">
         <a href="#" class="btn-hero">
@@ -1688,11 +1689,11 @@ footer > .footer-bottom { position: relative; z-index: 1; }
         <p>Check your custom watchlists and chart indicators. Review overnight market action. See what setups are forming before the bell rings. You start the day prepared, not scrambling.</p>
       </div>
 
-      <div class="timeline-item" data-start="555" data-end="569">
-        <div class="timeline-time">9:15 AM</div>
+      <div class="timeline-item" data-start="570" data-end="584">
+        <div class="timeline-time">Market Open (9:30 AM)</div>
         <div class="timeline-dot"></div>
         <h3>Morning Live Stream Begins</h3>
-        <p>Join the live trading room. Steve and the team break down the market open, walk through their game plan for the day, and start identifying real-time setups across day trades, 0 DTE plays, and spread entries.</p>
+        <p>Join the live trading room. NavigationTrading and the team break down the market open, walk through their game plan for the day, and start identifying real-time setups across day trades, 0 DTE plays, and spread entries.</p>
       </div>
 
       <div class="timeline-item" data-start="570" data-end="599">
@@ -1709,22 +1710,15 @@ footer > .footer-bottom { position: relative; z-index: 1; }
         <p>Real-time alerts for every strategy: day trades, 0 DTE iron condors, spread entries, trend trades. Each alert includes the setup, entry, and management plan. You decide which ones match your account and risk tolerance.</p>
       </div>
 
-      <div class="timeline-item" data-start="720" data-end="899">
-        <div class="timeline-time">12:00 PM</div>
-        <div class="timeline-dot"></div>
-        <h3>Midday Review</h3>
-        <p>Check in on open positions. Review morning trades. Adjust or close positions based on how the market has moved. The community is active in Discord, discussing what's working and what's not.</p>
-      </div>
-
-      <div class="timeline-item" data-start="900" data-end="959">
-        <div class="timeline-time">3:00 PM</div>
+      <div class="timeline-item" data-start="945" data-end="974">
+        <div class="timeline-time">3:45 PM</div>
         <div class="timeline-dot"></div>
         <h3>Power Hour Live Stream</h3>
-        <p>The second live session of the day. Late-day setups, MOC (Market on Close) plays, and end-of-day position management. Some of the best opportunities show up in the last hour. Pro members are there for them.</p>
+        <p>The second live session of the day. Late-day setups and end-of-day position management. Some of the best opportunities show up in the last hour. Pro members are there for them.</p>
       </div>
 
-      <div class="timeline-item" data-start="960" data-end="1320">
-        <div class="timeline-time">4:00 PM</div>
+      <div class="timeline-item" data-start="975" data-end="1320">
+        <div class="timeline-time">4:15 PM</div>
         <div class="timeline-dot"></div>
         <h3>After Hours: Recaps & Community</h3>
         <p>Trade recaps posted. Discord lights up with discussion: what worked, what didn't, what's setting up for tomorrow. This is where the learning compounds.</p>
@@ -1797,15 +1791,15 @@ footer > .footer-bottom { position: relative; z-index: 1; }
         </div>
         <div class="lib-nav-item" onmouseover="switchLibTab('dte', this)">
           <h3>0 DTE Strategies</h3>
-          <div class="lib-nav-count">3 Courses</div>
+          <div class="lib-nav-count">4 Courses</div>
         </div>
         <div class="lib-nav-item" onmouseover="switchLibTab('income', this)">
           <h3>Income &amp; Spread Strategies</h3>
-          <div class="lib-nav-count">6 Courses</div>
+          <div class="lib-nav-count">7 Courses</div>
         </div>
         <div class="lib-nav-item" onmouseover="switchLibTab('trend', this)">
           <h3>Trend &amp; Portfolio Strategies</h3>
-          <div class="lib-nav-count">3 Courses</div>
+          <div class="lib-nav-count">2 Courses</div>
         </div>
       </div>
 
@@ -1834,7 +1828,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
             <li class="lib-course-item">
               <span class="lib-course-num">03</span>
 
-              <span class="lib-course-name">MOC Course (Market on Close)</span>
+              <span class="lib-course-name">Magic Mahomes</span>
               <span class="lib-course-tag">End of Day</span>
             </li>
             <li class="lib-course-item">
@@ -1862,7 +1856,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
             <li class="lib-course-item">
               <span class="lib-course-num">01</span>
 
-              <span class="lib-course-name">0 DTE Iron Condors, Early Entry</span>
+              <span class="lib-course-name">British Iron Condors</span>
               <span class="lib-course-tag">Income Strategy</span>
             </li>
             <li class="lib-course-item">
@@ -1876,6 +1870,12 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 
               <span class="lib-course-name">Reverse Iron Condors</span>
               <span class="lib-course-tag">Volatility Strategy</span>
+            </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">04</span>
+
+              <span class="lib-course-name">ELMO Mini Course</span>
+              <span class="lib-course-tag">Mini Course</span>
             </li>
           </ul>
         </div>
@@ -1923,6 +1923,12 @@ footer > .footer-bottom { position: relative; z-index: 1; }
               <span class="lib-course-name">Multiple Option Selling Strategies</span>
               <span class="lib-course-tag">Premium Selling</span>
             </li>
+            <li class="lib-course-item">
+              <span class="lib-course-num">07</span>
+
+              <span class="lib-course-name">DCTM</span>
+              <span class="lib-course-tag">Income Strategy</span>
+            </li>
           </ul>
         </div>
 
@@ -1944,12 +1950,6 @@ footer > .footer-bottom { position: relative; z-index: 1; }
 
               <span class="lib-course-name">Portfolio Margin Strategies</span>
               <span class="lib-course-tag">Capital Efficiency</span>
-            </li>
-            <li class="lib-course-item">
-              <span class="lib-course-num">03</span>
-
-              <span class="lib-course-name">ELMO Mini Course</span>
-              <span class="lib-course-tag">Mini Course</span>
             </li>
           </ul>
         </div>
@@ -2137,18 +2137,18 @@ footer > .footer-bottom { position: relative; z-index: 1; }
           </tr>
           <tr>
             <td><span class="feat-name">Day Trading Courses</span><span class="feat-sub">Full day-trading strategy curriculum</span></td>
-            <td style="font-weight:700; color:var(--navy);">10 Courses</td>
-            <td class="pro-col" style="font-weight:700; color:var(--navy);">10 Courses</td>
+            <td style="font-weight:700; color:var(--navy);">4+ Courses</td>
+            <td class="pro-col" style="font-weight:700; color:var(--navy);">4+ Courses</td>
           </tr>
           <tr>
             <td><span class="feat-name">Income & Spread Courses</span><span class="feat-sub">Iron condors, credit spreads, butterflies</span></td>
             <td class="dash">—</td>
-            <td class="pro-col check-pro">✓ 6 Courses</td>
+            <td class="pro-col check-pro">✓ 7 Courses</td>
           </tr>
           <tr>
             <td><span class="feat-name">Trend & Portfolio Courses</span><span class="feat-sub">Longer-term trend and portfolio strategies</span></td>
             <td class="dash">—</td>
-            <td class="pro-col check-pro">✓ 3 Courses</td>
+            <td class="pro-col check-pro">✓ 2 Courses</td>
           </tr>
           <tr>
             <td><span class="feat-name">Real-Time Alerts</span><span class="feat-sub">Entry, exit, and risk plan for every call</span></td>
@@ -2161,8 +2161,13 @@ footer > .footer-bottom { position: relative; z-index: 1; }
             <td class="pro-col check-pro">✓</td>
           </tr>
           <tr>
+            <td><span class="feat-name">Flux Software</span><span class="feat-sub">Custom software for precise trading decisions</span></td>
+            <td class="dash">—</td>
+            <td class="pro-col check-pro">✓</td>
+          </tr>
+          <tr>
             <td><span class="feat-name">Total Strategy Courses</span><span class="feat-sub">All strategies across all market conditions</span></td>
-            <td style="font-size:20px; font-weight:800; color:#bbb;">10</td>
+            <td style="font-size:20px; font-weight:800; color:#bbb;">4+</td>
             <td class="pro-col" style="font-size:22px; font-weight:900; color:var(--gold);">17+</td>
           </tr>
         </tbody>
@@ -2258,7 +2263,6 @@ footer > .footer-bottom { position: relative; z-index: 1; }
     <div class="section-head light reveal" style="margin-bottom: 80px;">
       <span class="eyebrow">Who's Behind the Strategies</span>
       <h2>Built by Traders. Taught by Traders.</h2>
-      <p>Every strategy in the Pro library is traded live on stream, by the same person who built it.</p>
     </div>
 
     <div class="instructor-layout-pro">
@@ -2266,11 +2270,11 @@ footer > .footer-bottom { position: relative; z-index: 1; }
       <!-- Left: Speaker Card -->
       <div class="instructor-img-card reveal">
         <div class="instructor-img-wrap-pro">
-          <img src="auther.jpeg" alt="Steve, Founder NavigationTrading">
+          <img src="auther.jpeg" alt="NavigationTrading, Founder NavigationTrading">
           <div class="instructor-gold-bar"></div>
         </div>
         <div class="instructor-card-footer">
-          <div class="instructor-card-name">Steve</div>
+          <div class="instructor-card-name">NavigationTrading</div>
           <div class="instructor-card-role">Founder & Head Trader, NavigationTrading</div>
           <div class="instructor-stats-row">
             <div class="i-stat">
@@ -2286,7 +2290,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
               <span class="i-stat-label">Community Members</span>
             </div>
             <div class="i-stat">
-              <span class="i-stat-num">10+</span>
+              <span class="i-stat-num">25+</span>
               <span class="i-stat-label">Years Live Trading</span>
             </div>
           </div>
@@ -2297,8 +2301,8 @@ footer > .footer-bottom { position: relative; z-index: 1; }
       <div class="instructor-bio-card-pro reveal">
         <p class="instructor-bio-lead">"We don't teach what we don't trade. Every strategy in the Pro library is proven live, with real capital and real execution."</p>
         <div class="instructor-bio-body">
-          <p>NavigationTrading was founded by Steve, an active options trader who got tired of the hype-driven "gurus" selling dreams and delivering nothing.</p>
-          <p>His approach is different: every strategy in the Pro library is built on statistics, probabilities, and repeatable rules. Not gut feelings, not "trust me" calls, not hindsight screenshots. Steve and the NavigationTrading team trade these strategies with their own capital, live on stream, every single day.</p>
+          <p>NavigationTrading was founded by NavigationTrading, an active options trader who got tired of the hype-driven "gurus" selling dreams and delivering nothing.</p>
+          <p>His approach is different: every strategy in the Pro library is built on statistics, probabilities, and repeatable rules. Not gut feelings, not "trust me" calls, not hindsight screenshots. NavigationTrading and the NavigationTrading team trade these strategies with their own capital, live on stream, every single day.</p>
           <p>When you join the live trading room, you're watching the same person who built these courses execute the same strategies he teaches. There's no disconnect between the education and the execution. What you learn is what you'll see traded live on your screen.</p>
           <p>That consistency between what's taught, what's traded, and what's shared is why NavigationTrading has a 4.8 rating and members who stay with us for years.</p>
         </div>
@@ -2487,7 +2491,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
           </div>
           <div class="review-after">
             <div class="rv-label">Verdict</div>
-            <p>"Steve's explanations are clear, simple, and delivered in plain English, making even complex concepts easy to grasp. If you're serious about mastering options trading and becoming a skilled, independent trader, look no further!"</p>
+            <p>"NavigationTrading's explanations are clear, simple, and delivered in plain English, making even complex concepts easy to grasp. If you're serious about mastering options trading and becoming a skilled, independent trader, look no further!"</p>
           </div>
         </div>
 
@@ -2508,7 +2512,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
           <div class="review-stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div>
           <div class="review-before">
             <div class="rv-label">Review</div>
-            <p>"I've been using Navigation Trading over a year, and it's the best investment I've made in my trading education. The strategies are based on real math, not hype. Steve shows up every day in the live room and trades exactly what he teaches."</p>
+            <p>"I've been using Navigation Trading over a year, and it's the best investment I've made in my trading education. The strategies are based on real math, not hype. NavigationTrading shows up every day in the live room and trades exactly what he teaches."</p>
           </div>
           <div class="review-after">
             <div class="rv-label">Verdict</div>
@@ -2537,7 +2541,7 @@ footer > .footer-bottom { position: relative; z-index: 1; }
           </div>
           <div class="review-after">
             <div class="rv-label">Verdict</div>
-            <p>"The structured strategy library and live streams bridged that gap completely. Watching Steve execute the same strategies he teaches, live, was exactly what I needed to click everything into place."</p>
+            <p>"The structured strategy library and live streams bridged that gap completely. Watching NavigationTrading execute the same strategies he teaches, live, was exactly what I needed to click everything into place."</p>
           </div>
         </div>
 
