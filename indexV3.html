@@ -1071,62 +1071,40 @@
 
     /* ── PREMIUM WHAT YOU'LL LEARN (XENTRO STYLE) ── */
     .learn-section-premium {
-      padding: 70px 0; /* Reduced padding */
-      background: #0D2E4E; /* Matched to hero */
+      padding: 100px 0 120px;
+      background: #0D2E4E;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
-
     .learn-section-premium::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') top center / cover no-repeat;
-      opacity: 0.8; /* Increased opacity */
-      z-index: 1;
+      background: 
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        radial-gradient(circle at 20% 30%, rgba(20, 80, 150, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(13, 70, 140, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(200, 66, 10, 0.12) 0%, transparent 60%),
+        linear-gradient(180deg, #091a2e 0%, #0d2e4e 100%);
+      background-size: 80px 80px, 80px 80px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
       pointer-events: none;
+      -webkit-mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 95%);
+      mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 95%);
     }
-
-    .learn-section-premium::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(13,32,64,.96) 0%, rgba(13,32,64,.82) 55%, rgba(13,32,64,.92) 100%);
-      z-index: 2;
-      pointer-events: none;
-    }
-
     .learn-section-premium .container {
       position: relative;
       z-index: 10;
     }
 
-    /* ── WHERE TO START — REFINED INSTITUTIONAL ── */
-    .learn-section-premium {
-      padding: 60px 0;
-      background: #020b18;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Vibrant Ambient Glows */
-    .learn-section-premium::before {
-      content: '';
-      position: absolute;
-      bottom: -10%; left: 50%; width: 80%; height: 40%;
-      background: radial-gradient(ellipse at center, rgba(200, 66, 10, 0.15) 0%, transparent 70%);
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
-
+    /* Header */
     .learn-header-centered {
       text-align: center;
       max-width: 900px;
-      margin: 0 auto 80px auto;
+      margin: 0 auto 56px auto;
       position: relative;
       z-index: 20;
     }
-
     .learn-header-centered .bento-eyebrow {
       display: inline-flex;
       padding: 8px 24px;
@@ -1140,7 +1118,6 @@
       text-transform: uppercase;
       margin-bottom: 32px;
     }
-
     .learn-header-centered h2 {
       font-size: clamp(44px, 6vw, 76px);
       color: #fff;
@@ -1149,14 +1126,12 @@
       line-height: 1.05;
       margin-bottom: 24px;
     }
-
     .learn-header-centered h2 span {
       background: linear-gradient(135deg, #fff 20%, var(--orange) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .learn-header-centered p {
       font-size: 20px;
       color: rgba(255,255,255,0.5);
@@ -1165,87 +1140,82 @@
       margin: 0 auto;
     }
 
+    /* Card grid — Sticky stacking */
     .learn-premium-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(2, 300px);
-      gap: 24px;
-      max-width: 1300px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      max-width: 1100px;
       margin: 0 auto;
       position: relative;
       z-index: 10;
     }
 
     .learn-premium-card {
-      background: rgba(10, 10, 15, 0.15);
+      background: rgba(6, 28, 51, 0.98);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 28px;
-      padding: 40px;
-      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      padding: 32px 40px;
+      position: sticky;
+      top: 140px;
+      height: 380px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 40px;
+      align-items: center;
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: none;
     }
-
     .learn-premium-card:hover {
-      transform: translateY(-8px);
-      background: rgba(15, 15, 22, 0.25);
+      transform: translateY(-4px);
+      background: rgba(9, 39, 71, 0.98);
       border-color: rgba(200, 66, 10, 0.5);
-      box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,66,10,0.12);
+      box-shadow: none;
     }
 
-    /* Visual Background Assets */
-    .lpc-visual-bg {
-      position: absolute;
-      top: 0; right: 0;
-      width: 100%; height: 100%;
-      opacity: 0.9;
-      transition: all 0.8s ease;
-      mask-image: radial-gradient(circle at 75% 50%, black 25%, transparent 75%);
-      -webkit-mask-image: radial-gradient(circle at 75% 50%, black 25%, transparent 75%);
-    }
-    .lpc-visual-bg img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .learn-premium-card:hover .lpc-visual-bg {
-      opacity: 1;
-      transform: scale(1.04);
-    }
-
+    /* Content (left side of each card) */
     .lpc-content {
       position: relative;
-      z-index: 2;
-      max-width: 65%;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 100%;
     }
-
+    .lpc-num {
+      color: #ff6b2c;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+      text-shadow: 0 0 14px rgba(255,107,44,0.65), 0 0 4px rgba(255,107,44,0.5);
+    }
     .lpc-content h3 {
       font-size: 28px;
       color: #ffffff;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 0;
       letter-spacing: -1px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      text-shadow: none;
     }
-
     .lpc-content p {
       font-size: 15px;
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.7);
       line-height: 1.6;
-      margin-bottom: 24px;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+      margin-bottom: 4px;
+      text-shadow: none;
+      max-width: 480px;
     }
-
     .lpc-btn {
       width: fit-content;
       padding: 10px 22px;
       background: rgba(0,0,0,0.25);
       border: 1px solid rgba(200,66,10,0.5);
       border-radius: 50px;
-      color: #e8551a;
+      color: #ff6b2c;
       text-decoration: none;
       font-weight: 700;
       font-size: 13px;
@@ -1257,30 +1227,80 @@
     }
     .lpc-btn:hover {
       background: rgba(200,66,10,0.2);
-      border-color: #e8551a;
-      color: #ff7043;
+      border-color: #ff6b2c;
+      color: #ff8d4d;
       transform: translateX(5px);
     }
 
-    .card-large { grid-column: span 6; }
-    .card-wide  { grid-column: span 8; }
-    .card-small { grid-column: span 4; }
-
-    @media (max-width: 1024px) {
-      .learn-premium-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .card-large, .card-wide, .card-small { grid-column: span 12; }
-      .lpc-visual-bg { width: 100%; opacity: 0.15; }
-      .lpc-content { max-width: 100%; }
+    /* Visual (right side of each card) */
+    .lpc-visual {
+      position: relative;
+      width: 100%;
+      align-self: stretch;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+      margin: -32px -40px -32px 0;
+      overflow: hidden;
+      border-radius: 0 6px 6px 0;
+    }
+    .lpc-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 12%, black 60%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 12%, black 60%);
+    }
+    .learn-premium-card:hover .lpc-visual img {
+      transform: scale(1.04);
     }
 
-    @media (max-width: 1100px) {
-      .learn-premium-grid { grid-template-columns: repeat(2, 1fr); }
-      .learn-header-split { grid-template-columns: 1fr; gap: 30px; }
+    .lpc-free-badge {
+      position: absolute;
+      top: 10px; right: 10px;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1f8b4c, #16a34a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 10.5px;
+      font-weight: 800;
+      line-height: 1.2;
+      text-align: center;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(22,163,74,0.35);
     }
 
+    @media (max-width: 991px) {
+      .learn-premium-grid { gap: 24px; }
+      .learn-premium-card { 
+        position: relative; 
+        top: auto; 
+        height: auto; 
+        grid-template-columns: 1.1fr 1fr; 
+        padding: 24px 30px; 
+        gap: 24px; 
+        box-shadow: none;
+      }
+    }
     @media (max-width: 600px) {
-      .learn-premium-grid { grid-template-columns: 1fr; }
-    } .learn-action-btn:hover { background: var(--orange-bright); }
+      .learn-premium-card { grid-template-columns: 1fr; padding: 28px; min-height: auto; height: auto; }
+      .lpc-visual { 
+        min-height: 180px; 
+        margin: 10px -28px -28px -28px;
+        align-self: stretch;
+        border-radius: 0 0 6px 6px;
+      }
+      .lpc-visual img {
+        mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 12%, black 60%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 12%, black 60%);
+      }
+    }
 
     /* ── THE TRADEHACKER MINDSET SECTION ── */
     .tradehacker-section {
@@ -2886,17 +2906,20 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('WhatsApp Image 2026-03-10 at 5.35.08 PM (1).jpeg') top center / cover no-repeat;
-      opacity: 0.8;
-      z-index: 0;
+      background: 
+        radial-gradient(circle at 15% 70%, rgba(20, 80, 150, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(13, 70, 140, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 60% 60%, rgba(0, 188, 255, 0.08) 0%, transparent 45%),
+        linear-gradient(180deg, #091a2e 0%, #0D2E4E 100%);
       pointer-events: none;
+      z-index: 0;
     }
 
     .proof-ledger-section::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(13,32,64,.96) 0%, rgba(13,32,64,.82) 55%, rgba(13,32,64,.92) 100%);
+      background: none;
       z-index: 0;
       pointer-events: none;
     }
@@ -2922,10 +2945,10 @@
       align-items: center;
       gap: 8px;
       padding: 6px 16px;
-      background: rgba(200,66,10,0.15);
-      border: 1px solid rgba(200,66,10,0.3);
+      background: rgba(0, 188, 255, 0.15);
+      border: 1px solid rgba(0, 188, 255, 0.3);
       border-radius: 50px;
-      color: var(--orange);
+      color: #00bcff;
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
@@ -2944,7 +2967,7 @@
 
     .ledger-title em {
       font-style: normal;
-      color: var(--orange);
+      color: #00bcff;
     }
 
     .ledger-desc {
@@ -2990,7 +3013,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: var(--orange);
+      background: #00bcff;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -3014,9 +3037,9 @@
     }
 
     .ledger-fact-item:hover .lf-icon {
-      background: rgba(200,66,10,0.1);
-      border-color: rgba(200,66,10,0.3);
-      color: var(--orange);
+      background: rgba(0, 188, 255, 0.1);
+      border-color: rgba(0, 188, 255, 0.3);
+      color: #00bcff;
       transform: scale(1.05);
     }
 
@@ -3039,6 +3062,15 @@
       color: rgba(255,255,255,0.55);
       line-height: 1.5;
       margin: 0;
+    }
+
+    .proof-ledger-section .btn-main {
+      background: linear-gradient(135deg, #0077ff 0%, #00bcff 100%);
+      box-shadow: 0 8px 28px rgba(0, 188, 255, 0.35);
+    }
+
+    .proof-ledger-section .btn-main:hover {
+      box-shadow: 0 16px 38px rgba(0, 188, 255, 0.45);
     }
 
     @media (max-width: 992px) {
@@ -4124,28 +4156,21 @@
        ECOSYSTEM V1 — EDITORIAL PATHWAYS (commented)
        ══════════════════════════════════════════════ */
     .pathways-section {
-      padding: 64px 0 80px;
-      background:
-        radial-gradient(ellipse at 15% 0%, rgba(200,66,10,0.045) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 100%, rgba(13,46,78,0.05) 0%, transparent 55%),
-        linear-gradient(180deg, #faf8f3 0%, #f3efe6 100%);
+      padding: 110px 0 120px;
+      background-color: #fbfaf6;
+      background-image: radial-gradient(rgba(13, 46, 78, 0.035) 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
       position: relative;
       overflow: hidden;
-    }
-    .pathways-section::before {
-      content: '';
-      position: absolute; left: 0; right: 0; top: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(13,46,78,0.12) 30%, rgba(13,46,78,0.12) 70%, transparent);
+      z-index: 1;
     }
     .pathways-section::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        repeating-linear-gradient(90deg, rgba(13,46,78,0.025) 0 1px, transparent 1px 80px);
-      mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
-      -webkit-mask-image: linear-gradient(180deg, transparent, black 30%, black 70%, transparent);
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(200, 66, 10, 0.03) 0%, transparent 60%);
       pointer-events: none;
+      z-index: -1;
     }
 
     .pw-container {
@@ -4155,37 +4180,19 @@
       padding: 0 48px;
     }
 
-    /* Header — centered stack */
+    /* Header */
     .pw-header {
       text-align: center;
-      padding-bottom: 44px;
-      margin-bottom: 4px;
-      border-bottom: 1px solid rgba(13,46,78,0.12);
+      padding-bottom: 48px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid rgba(13,46,78,0.08);
       position: relative;
     }
-    /* Large ghost text behind header for visual weight */
-    .pw-header::before {
-      content: 'BEGIN';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -56%);
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 700;
-      font-size: clamp(80px, 10vw, 140px);
-      letter-spacing: -6px;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(13,46,78,0.06);
-      white-space: nowrap;
-      pointer-events: none;
-      z-index: 0;
-      user-select: none;
-    }
-    .pw-header > * { position: relative; z-index: 1; }
     .pw-eyebrow {
       display: inline-flex; align-items: center; gap: 12px;
       font-family: 'DM Mono', monospace;
       font-size: 11px;
-      font-weight: 500;
+      font-weight: 700;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--orange);
@@ -4197,265 +4204,224 @@
     }
     .pw-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 3.2vw, 48px);
+      font-size: clamp(32px, 3.8vw, 54px);
       font-weight: 700;
       color: #0D2E4E;
-      line-height: 1;
-      letter-spacing: -1.2px;
-      margin-bottom: 16px;
-      white-space: nowrap;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
     }
     .pw-title em {
       font-style: italic;
-      font-weight: 700;
       color: var(--orange);
-      position: relative;
-      display: inline-block;
-    }
-    .pw-title em::after {
-      content: '';
-      position: absolute; left: 0; right: 0; bottom: 4%;
-      height: 8px;
-      background: rgba(200,66,10,0.15);
-      z-index: -1;
     }
     .pw-sub {
-      font-size: 15px;
+      font-size: 16px;
       color: #5b6776;
       line-height: 1.6;
-      max-width: 520px;
-      font-weight: 400;
-      margin: 0 auto 32px;
+      max-width: 580px;
+      margin: 0 auto;
     }
-    /* Stats row centered below subtext */
-    .pw-stats-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 0;
-      background: rgba(13,46,78,0.04);
-      border: 1px solid rgba(13,46,78,0.1);
-      border-radius: 100px;
-      overflow: hidden;
-    }
-    .pw-stat {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 24px;
-    }
-    .pw-stat + .pw-stat {
-      border-left: 1px solid rgba(13,46,78,0.1);
-    }
-    .pw-stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 700;
-      font-style: italic;
-      color: #0D2E4E;
-      letter-spacing: -0.5px;
-      line-height: 1;
-    }
-    .pw-stat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(13,46,78,0.5);
-      line-height: 1.5;
-      text-align: left;
-    }
-    /* Old header-right/meta — hidden now */
-    .pw-header-right { display: none; }
-    .pw-meta, .pw-meta-divider { display: none; }
 
-    /* Pathways list */
+    /* Pathways Grid */
     .pw-pathways {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      counter-reset: pw-counter;
     }
+
     .pw-row {
       position: relative;
       display: grid;
-      grid-template-columns: 200px 1fr auto;
-      align-items: center;
-      gap: 48px;
-      padding: 30px 32px;
-      border-bottom: 1px solid rgba(13,46,78,0.12);
+      grid-template-columns: 120px 1fr;
+      grid-template-rows: 1fr auto;
+      gap: 20px 28px;
+      padding: 32px 32px 32px 28px;
+      border: 1px solid rgba(13,46,78,0.06);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       text-decoration: none;
       color: inherit;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 30px rgba(13,46,78,0.02);
+      counter-increment: pw-counter;
       overflow: hidden;
-      isolation: isolate;
-      transition: padding 0.55s cubic-bezier(0.65, 0, 0.35, 1);
     }
-    /* Dark slide-in fill */
+
     .pw-row::before {
       content: '';
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(110deg, #07203a 0%, #0D2E4E 55%, #163b67 100%);
-      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-      transition: clip-path 0.75s cubic-bezier(0.77, 0, 0.18, 1);
-      z-index: -2;
-    }
-    /* Orange leading-edge accent that sweeps with the reveal */
-    .pw-row::after {
-      content: '';
-      position: absolute; top: 0; bottom: 0;
-      right: 100%; width: 90px;
-      background: linear-gradient(110deg, transparent 0%, var(--orange) 45%, rgba(255,144,96,0.4) 75%, transparent 100%);
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
       opacity: 0;
-      transition: right 0.75s cubic-bezier(0.77, 0, 0.18, 1), opacity 0.25s 0.05s;
-      z-index: -1;
-      filter: blur(1px);
+      transform: scaleY(0.3);
+      transform-origin: center;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10;
+      background: linear-gradient(180deg, #c8420a 0%, #e04d10 100%);
     }
-    .pw-row:hover { padding: 36px 32px; }
-    .pw-row:hover::before {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    .pw-row:hover::after {
-      right: -90px;
-      opacity: 0.9;
-    }
-    .pw-row:first-child { border-top: 1px solid rgba(13,46,78,0.12); }
 
-    /* Number column */
-    .pw-num-wrap {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-    }
-    .pw-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(72px, 7vw, 108px);
+    .pw-row::after {
+      content: counter(pw-counter, decimal-leading-zero);
+      position: absolute;
+      top: 24px; right: 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
       font-weight: 700;
-      font-style: italic;
-      line-height: 0.85;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(13,46,78,0.38);
-      letter-spacing: -3px;
-      transition: color 0.45s ease, -webkit-text-stroke-color 0.45s ease, transform 0.55s cubic-bezier(0.65,0,0.35,1);
+      letter-spacing: 2px;
+      color: rgba(13,46,78,0.12);
+      transition: all 0.35s ease;
     }
-    .pw-num-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--orange);
+
+    .pw-row:hover {
       transform: translateY(-6px);
-      transition: transform 0.5s cubic-bezier(0.65,0,0.35,1), box-shadow 0.4s;
+      background: #ffffff;
+      border-color: rgba(200, 66, 10, 0.25);
+      box-shadow: 
+        0 20px 40px rgba(13, 46, 78, 0.06), 
+        0 1px 3px rgba(200, 66, 10, 0.1),
+        inset 0 0 20px rgba(200, 66, 10, 0.02);
     }
-    .pw-row:hover .pw-num {
-      color: var(--orange);
-      -webkit-text-stroke: 1px transparent;
-      transform: translateX(-4px);
+    .pw-row:hover::before { opacity: 1; transform: scaleY(1); }
+    .pw-row:hover::after { transform: translateY(-2px); color: #c8420a; }
+
+    /* Image section */
+    .pw-image-section {
+      grid-column: 1;
+      grid-row: 1;
+      width: 100%;
+      height: 120px;
+      border-radius: 16px;
+      overflow: visible;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, rgba(200, 66, 10, 0.05) 0%, transparent 70%);
+      align-self: start;
+      transition: all 0.4s ease;
     }
-    .pw-row:hover .pw-num-dot {
-      transform: translateY(-6px) scale(1.6);
-      box-shadow: 0 0 0 6px rgba(200,66,10,0.18), 0 0 24px rgba(200,66,10,0.6);
+    .pw-image-section img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+      filter: drop-shadow(0 8px 16px rgba(13, 46, 78, 0.06));
+      mix-blend-mode: multiply;
+    }
+    .pw-row:hover .pw-image-section img {
+      transform: translateY(-8px) scale(1.08) rotate(2deg);
+      filter: drop-shadow(0 20px 28px rgba(13, 46, 78, 0.12));
     }
 
     /* Content */
     .pw-content {
+      grid-column: 2;
+      grid-row: 1;
       position: relative;
-      transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
     }
-    .pw-row:hover .pw-content { transform: translateX(10px); }
     .pw-tag {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; align-items: center; gap: 6px;
       font-family: 'DM Mono', monospace;
-      font-size: 10.5px;
-      font-weight: 500;
-      letter-spacing: 2.4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 12px;
-      transition: color 0.4s ease;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+      color: #c8420a;
     }
     .pw-tag::before {
-      content: ''; width: 18px; height: 1px; background: currentColor;
+      content: ''; width: 14px; height: 1px; background: currentColor;
     }
-    .pw-row:hover .pw-tag { color: #ff9a6b; }
     .pw-content h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 2.7vw, 38px);
+      font-size: clamp(22px, 2vw, 26px);
       font-weight: 700;
       color: #0D2E4E;
-      line-height: 1.1;
-      letter-spacing: -1px;
+      line-height: 1.2;
       margin-bottom: 10px;
-      transition: color 0.4s ease;
+      letter-spacing: -0.5px;
     }
     .pw-content h3 em {
       font-style: italic;
       color: var(--orange);
     }
-    .pw-row:hover .pw-content h3 { color: #fff; }
-    .pw-row:hover .pw-content h3 em { color: #ffae7a; }
+
     .pw-content p {
-      font-size: 15px;
+      font-size: 14.5px;
       color: #5b6776;
       line-height: 1.6;
-      max-width: 560px;
-      transition: color 0.4s ease;
     }
-    .pw-row:hover .pw-content p { color: rgba(255,255,255,0.72); }
 
     /* Arrow CTA */
     .pw-arrow {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: start;
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 12px;
       font-family: 'DM Mono', monospace;
-      font-size: 11.5px;
-      font-weight: 600;
-      letter-spacing: 2.2px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: #0D2E4E;
       white-space: nowrap;
-      transition: color 0.4s ease;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+      color: #c8420a;
     }
-    .pw-row:hover .pw-arrow { color: #fff; }
+    .pw-row:hover .pw-arrow {
+      color: #e04d10;
+    }
     .pw-arrow-track {
       position: relative;
       display: inline-block;
-      width: 48px; height: 12px;
+      width: 32px; height: 10px;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .pw-arrow-line {
       position: absolute;
-      top: 50%; left: 0; right: 8px;
-      height: 1px;
+      top: 50%; left: 0; right: 6px;
+      height: 1.5px;
       background: currentColor;
       transform: translateY(-50%);
-      transition: right 0.55s cubic-bezier(0.65,0,0.35,1);
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .pw-arrow-head {
       position: absolute;
       top: 50%; right: 0;
-      width: 8px; height: 8px;
-      border-top: 1px solid currentColor;
-      border-right: 1px solid currentColor;
+      width: 6px; height: 6px;
+      border-top: 1.5px solid currentColor;
+      border-right: 1.5px solid currentColor;
       transform: translateY(-50%) rotate(45deg);
-      transition: transform 0.55s cubic-bezier(0.65,0,0.35,1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .pw-row:hover .pw-arrow-track { width: 78px; }
-    .pw-row:hover .pw-arrow-line { right: 8px; }
-    .pw-row:hover .pw-arrow-head { transform: translateY(-50%) rotate(45deg) translate(2px, -2px); }
+    .pw-row:hover .pw-arrow-track { width: 52px; }
+    .pw-row:hover .pw-arrow-line { right: 6px; }
+    .pw-row:hover .pw-arrow-head { transform: translateY(-50%) rotate(45deg) translate(1px,-1px); }
 
-    /* Footer flourish */
+    /* Footer */
     .pw-footer {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 22px;
-      margin-top: 40px;
+      gap: 20px;
+      margin-top: 56px;
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 2.5px;
+      font-size: 12px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: #5b6776;
     }
     .pw-footer-line {
-      flex: 0 0 80px;
+      flex: 0 0 60px;
       height: 1px;
-      background: rgba(13,46,78,0.18);
+      background: rgba(13,46,78,0.15);
     }
     .pw-footer a {
       color: var(--orange);
@@ -4468,20 +4434,42 @@
     .pw-footer a:hover { color: var(--orange-bright); }
 
     @media (max-width: 1024px) {
-      .pw-header { padding-bottom: 48px; }
-      .pw-row { grid-template-columns: 140px 1fr auto; gap: 32px; }
+      .pw-container { padding: 0 32px; }
+      .pw-pathways { gap: 24px; }
+      .pw-row { padding: 28px 24px; }
     }
     @media (max-width: 768px) {
       .pathways-section { padding: 70px 0 80px; }
       .pw-container { padding: 0 24px; }
-      .pw-row { grid-template-columns: 90px 1fr; gap: 18px; padding: 28px 14px; }
-      .pw-row:hover { padding: 32px 14px; }
-      .pw-num { font-size: 60px; }
-      .pw-num-dot { display: none; }
-      .pw-arrow { display: none; }
-      .pw-stats-row { flex-direction: column; border-radius: 16px; }
-      .pw-stat + .pw-stat { border-left: none; border-top: 1px solid rgba(13,46,78,0.1); }
-      .pw-footer { flex-direction: column; gap: 12px; text-align: center; }
+      .pw-pathways { grid-template-columns: 1fr; gap: 20px; }
+      .pw-row {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 16px;
+        padding: 32px 24px 24px;
+        text-align: center;
+      }
+      .pw-row::before {
+        left: 0; right: 0; top: 0; bottom: auto;
+        width: auto; height: 4px;
+        transform: scaleX(0.3);
+        transform-origin: center;
+      }
+      .pw-row:hover::before { transform: scaleX(1); }
+      .pw-image-section {
+        grid-column: 1; grid-row: 1;
+        justify-self: center;
+        height: 100px;
+      }
+      .pw-content {
+        grid-column: 1; grid-row: 2;
+      }
+      .pw-arrow {
+        grid-column: 1; grid-row: 3;
+        justify-self: center;
+        margin-top: 0;
+      }
+      .pw-footer { flex-direction: column; text-align: center; gap: 12px; }
       .pw-footer-line { display: none; }
     }
 
@@ -4711,6 +4699,8 @@
       .hero-tag { display: none; }
       .hv2-trust { gap: 16px; }
     }
+
+    
   </style>
 </head>
 
@@ -5087,9 +5077,8 @@
       <!-- PATHWAYS -->
       <nav class="pw-pathways" aria-label="Where to start">
         <a href="free-membership.html" class="pw-row">
-          <div class="pw-num-wrap">
-            <span class="pw-num">01</span>
-            <span class="pw-num-dot"></span>
+          <div class="pw-image-section">
+            <img src="pathway_free_3d.png" alt="Free Membership Courses">
           </div>
           <div class="pw-content">
             <span class="pw-tag">Free Membership</span>
@@ -5106,9 +5095,8 @@
         </a>
 
         <a href="pricing.html" class="pw-row">
-          <div class="pw-num-wrap">
-            <span class="pw-num">02</span>
-            <span class="pw-num-dot"></span>
+          <div class="pw-image-section">
+            <img src="pathway_pro_3d.png" alt="Premium Memberships">
           </div>
           <div class="pw-content">
             <span class="pw-tag">Premium Memberships</span>
@@ -5125,9 +5113,8 @@
         </a>
 
         <a href="/community" class="pw-row">
-          <div class="pw-num-wrap">
-            <span class="pw-num">03</span>
-            <span class="pw-num-dot"></span>
+          <div class="pw-image-section">
+            <img src="pathway_community_3d.png" alt="The Community">
           </div>
           <div class="pw-content">
             <span class="pw-tag">The Community</span>
@@ -5144,9 +5131,8 @@
         </a>
 
         <a href="/contact" class="pw-row">
-          <div class="pw-num-wrap">
-            <span class="pw-num">04</span>
-            <span class="pw-num-dot"></span>
+          <div class="pw-image-section">
+            <img src="pathway_support_3d.png" alt="Talk to a Trader">
           </div>
           <div class="pw-content">
             <span class="pw-tag">Talk to a Trader</span>
@@ -5286,58 +5272,55 @@
 
       <div class="learn-premium-grid">
         <!-- Card 1: Free Membership -->
-        <div class="learn-premium-card card-large">
-          <div class="lpc-visual-bg">
-            <img src="images/learning-path/education_natural.png" alt="Free Education">
-          </div>
+        <div class="learn-premium-card">
           <div class="lpc-content">
+            <div class="lpc-num">01</div>
             <h3>Free Membership</h3>
             <p>Master the foundations with 5 core strategy courses and institutional resources — 100% free.</p>
-            <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">
-              Get Instant Access &rarr;
-            </a>
+            <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">Get Instant Access &rarr;</a>
+          </div>
+          <div class="lpc-visual">
+            <img src="images/learning-path/education_natural.png" alt="Free Education">
+            <div class="lpc-free-badge">100%<br>FREE</div>
           </div>
         </div>
 
         <!-- Card 2: Pro Membership -->
-        <div class="learn-premium-card card-large">
-          <div class="lpc-visual-bg">
-            <img src="images/learning-path/pro_natural.png" alt="Pro Trading">
-          </div>
+        <div class="learn-premium-card">
           <div class="lpc-content">
+            <div class="lpc-num">02</div>
             <h3 style="white-space: nowrap;">Premium Memberships</h3>
             <p>Access the live trading stream, real-time alerts, and advanced institutional strategies.</p>
-            <a href="pricing.html" class="lpc-btn">
-              Explore Plans &rarr;
-            </a>
+            <a href="pricing.html" class="lpc-btn">Explore Plans &rarr;</a>
+          </div>
+          <div class="lpc-visual">
+            <img src="images/learning-path/pro_natural.png" alt="Pro Trading">
           </div>
         </div>
 
         <!-- Card 3: Community -->
-        <div class="learn-premium-card card-wide">
-          <div class="lpc-visual-bg">
-            <img src="images/learning-path/community_natural.png" alt="Community">
-          </div>
+        <div class="learn-premium-card">
           <div class="lpc-content">
+            <div class="lpc-num">03</div>
             <h3>Join Our Global Community</h3>
             <p>Interact with thousands of like-minded traders and get your questions answered in real-time by full-time traders.</p>
-            <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">
-              Join the Room &rarr;
-            </a>
+            <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">Join the Room &rarr;</a>
+          </div>
+          <div class="lpc-visual">
+            <img src="images/learning-path/community_natural.png" alt="Community">
           </div>
         </div>
 
         <!-- Card 4: Support -->
-        <div class="learn-premium-card card-small">
-          <div class="lpc-visual-bg">
-            <img src="images/learning-path/support_natural.png" alt="Support">
-          </div>
+        <div class="learn-premium-card">
           <div class="lpc-content">
+            <div class="lpc-num">04</div>
             <h3>Support?</h3>
             <p>Schedule a coaching call with our team.</p>
-            <a href="https://calendly.com/navigationtrading" class="lpc-btn">
-              Book Call &rarr;
-            </a>
+            <a href="https://calendly.com/navigationtrading" class="lpc-btn">Book Call &rarr;</a>
+          </div>
+          <div class="lpc-visual">
+            <img src="images/learning-path/support_natural.png" alt="Support">
           </div>
         </div>
       </div>
@@ -5551,6 +5534,8 @@
       </div>
     </div>
   </section>
+
+  
 
   <!-- ── 13. FINAL CTA ── REDESIGNED LIVE TERMINAL ── -->
   <section class="pm-final-cta">
@@ -5787,6 +5772,8 @@
       });
     })();
   </script>
+
+  
 
 </body>
 
