@@ -1139,16 +1139,19 @@
       position: absolute;
       inset: 0;
       background: 
-        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
-        radial-gradient(circle at 20% 30%, rgba(20, 80, 150, 0.25) 0%, transparent 50%),
-        radial-gradient(circle at 85% 75%, rgba(13, 70, 140, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(200, 66, 10, 0.12) 0%, transparent 60%),
-        linear-gradient(180deg, #091a2e 0%, #0d2e4e 100%);
-      background-size: 80px 80px, 80px 80px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+        /* Concentric lines and radial fade with increased visibility */
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.03) 0%, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.03) 0%, transparent 60%),
+        /* Abstract geometric diagonal lines with 200px spacing at high opacity (0.02) */
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1.5px, transparent 1.5px, transparent 200px),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1.5px, transparent 1.5px, transparent 200px),
+        /* Distinct cyan and orange ambient glows */
+        radial-gradient(circle at 80% 20%, rgba(0, 188, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(200, 66, 10, 0.12) 0%, transparent 50%),
+        /* Solid dark blue base */
+        #0D2E4E;
       pointer-events: none;
-      -webkit-mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 95%);
-      mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 95%);
+      z-index: 1;
     }
     .learn-section-premium .container { position: relative; z-index: 10; }
 
@@ -3067,12 +3070,12 @@
       font-weight: 800;
       margin-bottom: 22px;
     }
-    .institutional-left h2 span { color: #00bcff; }
+    .institutional-left h2 span { color: var(--orange); }
     .institutional-line {
       width: 40px;
       height: 3px;
       border-radius: 999px;
-      background: #00bcff;
+      background: var(--orange);
       margin-bottom: 24px;
     }
     .institutional-left p {
@@ -3088,19 +3091,20 @@
       gap: 12px;
       padding: 14px 28px;
       border-radius: 8px;
-      background: #0077ff;
-      border: 1px solid #3b82f6;
+      background: var(--orange);
+      border: 1px solid var(--orange);
       color: #fff;
       font-weight: 700;
       font-size: 15px;
       text-decoration: none;
-      box-shadow: 0 0 25px rgba(0,119,255,.3);
+      box-shadow: 0 0 25px rgba(200,66,10,.3);
       transition: all .3s ease;
     }
     .institutional-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 35px rgba(0,119,255,.5);
-      background: #00bcff;
+      box-shadow: 0 0 35px rgba(200,66,10,.5);
+      background: var(--orange-bright);
+      border-color: var(--orange-bright);
     }
     .institutional-right {
       display: flex;
@@ -3114,19 +3118,19 @@
       gap: 20px;
       padding: 20px 24px;
       border-radius: 12px;
-      background: linear-gradient(#050c17, #050c17) padding-box,
-                  linear-gradient(135deg, rgba(0,188,255,0.8) 0%, rgba(0,119,255,0.1) 100%) border-box;
+      background: linear-gradient(rgba(8, 24, 43, 0.65), rgba(8, 24, 43, 0.65)) padding-box,
+                  linear-gradient(135deg, rgba(0,188,255,0.6) 0%, rgba(0,188,255,0.6) 100%) border-box; /* Uniform cyan color across the entire border without fading */
       border: 1.5px solid transparent;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,188,255,0.05);
+      box-shadow: none; /* Removed the default shadow */
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       transition: all .3s ease;
     }
     .institutional-card:hover {
       transform: translateY(-4px);
-      background: linear-gradient(#07101d, #07101d) padding-box,
-                  linear-gradient(135deg, rgba(0,188,255,1) 0%, rgba(0,119,255,0.3) 100%) border-box;
-      box-shadow: 0 12px 40px rgba(0,188,255,0.15), inset 0 0 30px rgba(0,188,255,0.1);
+      background: linear-gradient(rgba(8, 24, 43, 0.85), rgba(8, 24, 43, 0.85)) padding-box,
+                  linear-gradient(135deg, rgba(0,188,255,1) 0%, rgba(0,188,255,1) 100%) border-box; /* Uniform glowing hover cyan border */
+      box-shadow: none; /* Keep shadow completely removed on hover as requested, preserving only the zoom/movement effect */
     }
     .institutional-icon {
       width: 48px;
@@ -3459,18 +3463,15 @@
       transform: translateY(-4px);
       box-shadow: 0 16px 40px rgba(200, 66, 10, 0.4);
     }
-
     .dt-term-action:hover::before {
       left: 200%;
     }
-
     .dt-term-features {
       margin-top: 32px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
-
     .dt-term-feature {
       display: flex;
       align-items: center;
@@ -3479,7 +3480,6 @@
       color: rgba(255, 255, 255, 0.7);
       font-weight: 500;
     }
-
     .dt-term-feature svg {
       width: 18px; height: 18px;
       color: #10b981; /* Green checkmarks */
@@ -3502,12 +3502,10 @@
     }
 
     /* ════════════════════════════════════════
-       HERO V2 — Mountain Layout
+       HERO V2 — Premium Layout
        ════════════════════════════════════════ */
     .hero-v2 {
-      background:
-        radial-gradient(circle at top right, rgba(200,66,10,.12), transparent 28%),
-        linear-gradient(135deg, #020817 0%, #071426 40%, #0D2E4E 100%);
+      background: #0D2E4E;
       position: relative;
       overflow: hidden;
       min-height: 92vh;
@@ -3517,48 +3515,48 @@
       justify-content: center;
       padding: 0 0 0 0;
     }
+    .hero-v2::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        /* Premium multi-layered glow vectors */
+        radial-gradient(circle at 10% 25%, rgba(0, 188, 255, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(200, 66, 10, 0.16) 0%, transparent 40%),
+        radial-gradient(circle at 50% 60%, rgba(20, 80, 150, 0.35) 0%, transparent 60%),
+        /* Dynamic premium accent light waves (replaces boxy grid/whatsapp patterns) */
+        radial-gradient(ellipse at 100% 0%, rgba(255, 107, 44, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 0% 100%, rgba(0, 188, 255, 0.1) 0%, transparent 55%),
+        linear-gradient(180deg, #091a2e 0%, #0D2E4E 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
     .hv2-line-top {
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, transparent, var(--orange) 30%, #d4a040 50%, var(--orange) 70%, transparent);
       z-index: 10;
     }
-    /* Subtle grid overlay */
+    /* Grid background disabled to prevent boxy overlay look */
     .hv2-grid-bg {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size: 90px 90px;
-      opacity: .25;
-      pointer-events: none; z-index: 1;
+      display: none;
     }
-    /* Ambient glows */
+    /* Ambient glows using Section 3 glow styles */
     .hv2-glow-l {
       position: absolute;
-      width: 900px; height: 900px;
-      right: -250px; top: -250px;
-      background: radial-gradient(circle, rgba(200,66,10,.14), transparent 70%);
-      pointer-events: none; z-index: 1;
+      width: 1000px;
+      height: 1000px;
+      left: -300px;
+      top: 0px;
+      background: radial-gradient(circle, rgba(0, 188, 255, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 2;
     }
     .hv2-glow-r {
-      position: absolute; bottom: 5%; left: -8%;
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(26,74,122,0.22) 0%, transparent 65%);
-      pointer-events: none; z-index: 1;
+      display: none;
     }
     /* Horizontal rule accents */
     .hv2-rules {
-      position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden;
-    }
-    .hv2-rules::before {
-      content: ''; position: absolute;
-      top: 38%; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(200,66,10,0.1) 40%, rgba(200,66,10,0.1) 60%, transparent);
-    }
-    .hv2-rules::after {
-      content: ''; position: absolute;
-      top: 66%; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0.04) 60%, transparent);
+      display: none;
     }
     /* Main inner: two-column */
     .hv2-inner {
@@ -3636,41 +3634,43 @@
     .hv2-trust-item svg { color: var(--orange); flex-shrink: 0; }
 
     /* ─────────────────────────────────── */
-    /* MOUNTAIN VISUAL (right side)        */
+    /* PREMIUM SAAS PLATFORM VISUAL (right side) */
     /* ─────────────────────────────────── */
     .hero-mountain {
       position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
+      right: -10%; /* Pushed further to the right edge */
+      top: 50%;
+      transform: translateY(-50%);
       width: 55%;
       z-index: 4;
       pointer-events: none;
       display: flex;
-      align-items: stretch;
+      align-items: center;
+      justify-content: flex-start;
     }
     .hero-mountain img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 65% center;
+      max-width: 780px;
+      height: auto;
+      border-radius: 16px;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
       display: block;
-      transform: scale(1);
-      transform-origin: right center;
-      /* Left-to-right depth fade: strong transparent zone covering ~40% then fading in */
+      transform: scale(0.95);
+      /* Balanced gradient mask mapping — fades left to blend, keeps right solid */
       -webkit-mask-image: linear-gradient(to right,
         transparent 0%,
-        transparent 18%,
-        rgba(0,0,0,0.25) 28%,
-        rgba(0,0,0,0.7) 38%,
-        rgba(0,0,0,1) 52%);
+        transparent 4%,
+        rgba(0,0,0,0.5) 20%,
+        rgba(0,0,0,1) 45%,
+        rgba(0,0,0,1) 100%);
       mask-image: linear-gradient(to right,
         transparent 0%,
-        transparent 18%,
-        rgba(0,0,0,0.25) 28%,
-        rgba(0,0,0,0.7) 38%,
-        rgba(0,0,0,1) 52%);
-      filter: brightness(0.88) contrast(1.05);
+        transparent 4%,
+        rgba(0,0,0,0.5) 20%,
+        rgba(0,0,0,1) 45%,
+        rgba(0,0,0,1) 100%);
+      filter: brightness(0.95) contrast(1.02);
     }
     /* Floating labels — smaller, compact */
     .hero-tag {
@@ -4538,20 +4538,7 @@
 
     <!-- Mountain visual — right side -->
     <div class="hero-mountain">
-      <img src="mountain_hero.png" alt="Mountain Path to Trading Mastery">
-
-      <div class="hero-tag orange tag-1">
-        CONSISTENCY
-      </div>
-      <div class="hero-tag tag-2">
-        DISCIPLINE
-      </div>
-      <div class="hero-tag tag-3">
-        STRATEGY
-      </div>
-      <div class="hero-tag tag-4">
-        TRANSPARENCY
-      </div>
+      <img src="trading_platform_mockup_1781437247418.png" alt="Navigation Trading Platform Dashboard">
     </div>
 
   </section>
@@ -4657,8 +4644,6 @@
           Every Trade. Every Month.<br>
           <span>On the Record.</span>
         </h2>
-
-        <div class="institutional-line"></div>
 
         <p>
           We don't make promises. We show proof. Real trades.
@@ -5321,6 +5306,74 @@
 
   
 
+  <!-- ── FAQ ── -->
+  <section id="faq" class="faq-section section">
+    <div class="container">
+      <div class="faq-inner">
+        <div class="faq-head-col">
+          <div class="sec-label" style="justify-content:flex-start">FAQ Question</div>
+          <h2 class="sec-title reveal" style="text-align:left;color:#000000">Frequently Asked Questions</h2>
+          <p class="body-para reveal" style="text-align:left;max-width:340px;margin:14px 0 0;font-size:15px">
+            Everything you need to know before getting started.</p>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item open">
+            <button class="faq-q">
+              Will I learn how to pick winning stocks?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">This class focuses on directional bias and defined-risk options setups — not stock-picking. You'll learn how to read market flow and trade high-probability setups using calls and puts on major tickers like SPY, QQQ, TSLA, and NVDA.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">
+              What is a trading class, and who is it for?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">This is a live, interactive webinar designed for retail traders — beginners through intermediate — who want a clear, repeatable framework for day trading. No experience with complex strategies is needed. If you can buy a call or put, you're ready.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">
+              What will I learn in a trading class?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">You'll learn how to establish directional bias before the market opens, identify high-probability entry setups, manage risk with defined max-loss positions, and build a repeatable daily routine that doesn't require staring at screens all day.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">
+              Is this class really free?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">Yes — 100% free to attend live. There's no catch, no upsell required to access the core content. Live attendees do receive an exclusive discount on our advanced program, but there's no obligation.</div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">
+              What if I can't attend live?
+              <span class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner">A replay will be available for registered attendees. However, live attendees get the most value — including real-time Q&A with the instructor and an exclusive live-only discount on the full program.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── 13. FINAL CTA ── REDESIGNED LIVE TERMINAL ── -->
   <section class="pm-final-cta">
     <div class="container">
@@ -5512,6 +5565,144 @@
     .eip-dismiss { font-size:12px; color:#a0aec0; cursor:pointer; margin:16px 0 0; text-align:center; text-decoration:underline; }
     .eip-dismiss:hover { color:#718096; }
     @media(max-width:640px) { .eip-card{grid-template-columns:1fr} .eip-left,.eip-right{padding:32px 28px} .eip-logo{transform:scale(4)} .eip-logo-row{margin-bottom:40px} }
+
+    /* ── FAQ shared label/title styles ── */
+    .faq-section .sec-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .faq-section .sec-label::before,
+    .faq-section .sec-label::after {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background: var(--orange);
+    }
+    .faq-section .sec-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--teal-900);
+    }
+    .faq-section .body-para {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    /* ── FAQ ── */
+    .faq-section {
+      background: #ffffff;
+      padding: 48px 0 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .faq-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .faq-section>.container {
+      position: relative;
+      z-index: 1
+    }
+    .faq-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .faq-head-col {
+      position: sticky;
+      top: 110px;
+    }
+    .faq-list {
+      margin-top: 0;
+      display: flex;
+      flex-direction: column
+    }
+    @media (max-width: 900px) {
+      .faq-inner { grid-template-columns: 1fr; gap: 24px; }
+      .faq-head-col { position: static; }
+      .faq-head-col .sec-label { justify-content: center !important; }
+      .faq-head-col .sec-title { text-align: center !important; }
+      .faq-head-col .body-para { text-align: center !important; max-width: 520px !important; margin: 10px auto 0 !important; }
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    }
+    .faq-item:first-child {
+      border-top: 1px solid rgba(0, 0, 0, 0.1)
+    }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-align: left;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--orange) }
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid rgba(0, 0, 0, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background 0.2s, border-color 0.2s;
+    }
+    .faq-chevron svg {
+      width: 10px;
+      height: 10px;
+      stroke: var(--text-dark);
+      fill: none;
+      stroke-width: 2.5;
+      transition: stroke 0.2s
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      background: var(--orange);
+      border-color: var(--orange)
+    }
+    .faq-item.open .faq-chevron svg { stroke: #fff }
+    .faq-item.open .faq-q { color: var(--orange) }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a { max-height: 300px }
+    .faq-a-inner {
+      font-size: 17px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      padding-bottom: 20px;
+    }
   </style>
   <script>
     (function() {
@@ -5564,7 +5755,18 @@
     })();
   </script>
 
-  
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+
 
 </body>
 
