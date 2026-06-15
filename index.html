@@ -1129,7 +1129,7 @@
        LEARNING PATH — Cinematic dark, 4-card grid (V3)
        ══════════════════════════════════════════════════════ */
     .learn-section-premium {
-      padding: 100px 0 120px;
+      padding: 60px 0 80px;
       background: #0D2E4E;
       position: relative;
       overflow: visible;
@@ -1159,7 +1159,7 @@
     .learn-header-centered {
       text-align: center;
       max-width: 800px;
-      margin: 0 auto 56px;
+      margin: 0 auto 40px;
       position: relative;
       z-index: 20;
     }
@@ -1172,7 +1172,7 @@
       font-weight: 700;
       letter-spacing: 5px;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       background: none;
       border: none;
       padding: 0;
@@ -1185,21 +1185,21 @@
       background: linear-gradient(90deg, transparent, var(--orange) 50%, transparent);
     }
     .learn-header-centered h2 {
-      font-size: clamp(40px, 5vw, 64px);
+      font-size: clamp(36px, 4.5vw, 56px);
       color: #fff;
       font-weight: 800;
       letter-spacing: -2px;
-      line-height: 1.05;
-      margin-bottom: 18px;
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
     .learn-header-centered h2 span {
       color: #ff6b2c;
       background: none;
       -webkit-text-fill-color: #ff6b2c;
-      text-shadow: 0 0 32px rgba(255,107,44,0.5), 0 0 12px rgba(255,107,44,0.4);
+      text-shadow: none;
     }
     .learn-header-centered p {
-      font-size: 17px;
+      font-size: 16px;
       color: rgba(255,255,255,0.55);
       line-height: 1.6;
       max-width: 540px;
@@ -1210,28 +1210,30 @@
     .learn-premium-grid {
       display: flex;
       flex-direction: column;
-      gap: 48px;
-      max-width: 1100px;
+      gap: 40px;
+      max-width: 1240px;
       margin: 0 auto;
       position: relative;
       z-index: 10;
     }
 
     .learn-premium-card {
-      background: #061c33;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 6px;
-      padding: 32px 40px;
+      background: linear-gradient(135deg, rgba(14, 38, 65, 0.8) 0%, rgba(8, 24, 42, 0.9) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 40px 48px;
       position: sticky;
       top: 140px;
-      height: 380px;
+      height: 400px;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 48px;
       align-items: center;
       transition: all .4s cubic-bezier(0.16,1,0.3,1);
-      box-shadow: none;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
     /* Right-edge orange line */
     .learn-premium-card::before {
@@ -1248,14 +1250,15 @@
       content: '';
       position: absolute;
       inset: 0;
-      border-radius: 6px;
+      border-radius: 8px;
       pointer-events: none;
       background: linear-gradient(90deg, transparent 55%, rgba(200,66,10,0.08) 100%);
     }
     .learn-premium-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(200,66,10,0.35);
-      box-shadow: none;
+      border-color: rgba(255,107,44,0.4);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255,107,44,0.08);
+      background: linear-gradient(135deg, rgba(14, 38, 65, 0.8) 0%, rgba(8, 24, 42, 0.9) 100%);
     }
 
     /* Content (left side of each card) */
@@ -1264,38 +1267,77 @@
       z-index: 5;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .lpc-header-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      z-index: 5;
+    }
+    .lpc-icon-box {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 107, 44, 0.25);
+      background: rgba(255, 107, 44, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      color: #ff6b2c;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    .learn-premium-card:hover .lpc-icon-box {
+      border-color: rgba(255, 107, 44, 0.6);
+      background: rgba(255, 107, 44, 0.15);
+      box-shadow: 0 0 15px rgba(255, 107, 44, 0.2);
+      transform: scale(1.05);
+    }
+    .lpc-icon-box svg {
+      width: 20px;
+      height: 20px;
+    }
+    .lpc-title-area {
+      display: flex;
+      flex-direction: column;
     }
     .lpc-num {
-      color: #ff6b2c;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 0;
-      text-shadow: 0 0 14px rgba(255,107,44,0.65), 0 0 4px rgba(255,107,44,0.5);
+      position: absolute;
+      top: 10px;
+      left: 24px;
+      font-size: 140px;
+      font-weight: 800;
+      color: rgba(255, 107, 44, 0.12);
+      line-height: 0.8;
+      pointer-events: none;
+      z-index: 1;
+      font-family: 'DM Sans', sans-serif;
+      user-select: none;
+      letter-spacing: -3px;
     }
     .lpc-content h3 {
-      font-size: 28px !important;
+      font-size: 26px !important;
       color: #fff;
       font-weight: 700 !important;
       margin: 0;
       letter-spacing: -0.5px !important;
       line-height: 1.2 !important;
-      text-shadow: none;
     }
     .lpc-content p {
-      font-size: 14.5px !important;
-      color: rgba(255,255,255,0.55) !important;
+      font-size: 15px !important;
+      color: rgba(255,255,255,0.6) !important;
       line-height: 1.6 !important;
       margin: 0;
-      text-shadow: none;
       max-width: 480px;
     }
     .lpc-btn {
       align-self: flex-start;
       width: fit-content;
-      margin-top: 4px;
-      padding: 10px 22px;
+      margin-top: 8px;
+      padding: 10px 24px;
       background: transparent;
       border: 1px solid rgba(255,107,44,0.55);
       border-radius: 50px;
@@ -1305,13 +1347,13 @@
       font-size: 13px;
       letter-spacing: 0.3px;
       transition: all .3s;
-      text-shadow: 0 0 10px rgba(255,107,44,0.6);
+      text-shadow: 0 0 10px rgba(255,107,44,0.4);
     }
     .lpc-btn:hover {
       background: rgba(200,66,10,0.12);
       border-color: var(--orange);
       color: #ff8d4d;
-      transform: translateX(3px);
+      transform: translateX(4px);
     }
 
     /* Visual (right side of each card) */
@@ -1320,35 +1362,46 @@
       width: 100%;
       align-self: stretch;
       display: flex;
-      align-items: stretch;
-      justify-content: stretch;
-      margin: -32px -40px -32px 0;
+      align-items: center;
+      justify-content: center;
+      margin: -40px -48px -40px 0;
       overflow: hidden;
-      border-radius: 0 6px 6px 0;
+      border-radius: 0 8px 8px 0;
+      padding: 24px;
     }
-    .lpc-visual svg {
-      width: 100%;
-      height: 100%;
-      max-height: 180px;
-      display: block;
+    .lpc-visual-glow-green {
+      background: radial-gradient(circle at center, rgba(31, 139, 76, 0.2) 0%, rgba(5, 18, 33, 0) 70%);
     }
+    .lpc-visual-glow-blue {
+      background: radial-gradient(circle at center, rgba(0, 188, 255, 0.2) 0%, rgba(5, 18, 33, 0) 70%);
+    }
+    .lpc-visual-glow-indigo {
+      background: radial-gradient(circle at center, rgba(99, 102, 241, 0.2) 0%, rgba(5, 18, 33, 0) 70%);
+    }
+    .lpc-visual-glow-orange {
+      background: radial-gradient(circle at center, rgba(200, 66, 10, 0.2) 0%, rgba(5, 18, 33, 0) 70%);
+    }
+
     .lpc-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
       display: block;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 12%, black 60%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.15) 12%, black 60%);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .learn-premium-card:hover .lpc-visual img {
-      transform: scale(1.04);
+      transform: scale(1.03) translateY(-2px);
+      border-color: rgba(255, 107, 44, 0.25);
+      box-shadow: 0 20px 45px rgba(255, 107, 44, 0.1), 0 15px 35px rgba(0, 0, 0, 0.5);
     }
 
     /* Card 1: 100% FREE badge */
     .lpc-free-badge {
       position: absolute;
-      top: 10px; right: 10px;
+      top: 15px; right: 15px;
       width: 58px; height: 58px;
       border-radius: 50%;
       background: linear-gradient(135deg, #1f8b4c, #16a34a);
@@ -3460,18 +3513,13 @@
     }
 
     .dt-term-action:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(200, 66, 10, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(200, 66, 10, 0.35);
     }
     .dt-term-action:hover::before {
-      left: 200%;
+      left: 100%;
     }
-    .dt-term-features {
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+
     .dt-term-feature {
       display: flex;
       align-items: center;
@@ -3479,11 +3527,14 @@
       font-size: 14px;
       color: rgba(255, 255, 255, 0.7);
       font-weight: 500;
+      margin-bottom: 12px;
+      text-align: left;
     }
     .dt-term-feature svg {
       width: 18px; height: 18px;
       color: #10b981; /* Green checkmarks */
       stroke-width: 3;
+      flex-shrink: 0;
     }
 
     @media (max-width: 960px) {
@@ -3513,34 +3564,40 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0 0 0 0;
+      padding: 0;
     }
     .hero-v2::before {
       content: '';
       position: absolute;
       inset: 0;
       background: 
-        /* Premium multi-layered glow vectors */
-        radial-gradient(circle at 10% 25%, rgba(0, 188, 255, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 85% 15%, rgba(200, 66, 10, 0.16) 0%, transparent 40%),
-        radial-gradient(circle at 50% 60%, rgba(20, 80, 150, 0.35) 0%, transparent 60%),
-        /* Dynamic premium accent light waves (replaces boxy grid/whatsapp patterns) */
-        radial-gradient(ellipse at 100% 0%, rgba(255, 107, 44, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse at 0% 100%, rgba(0, 188, 255, 0.1) 0%, transparent 55%),
+        /* Soft, premium radial glows matching Section 3 */
+        radial-gradient(circle at 15% 70%, rgba(20, 80, 150, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(13, 70, 140, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 60% 60%, rgba(0, 188, 255, 0.08) 0%, transparent 45%),
         linear-gradient(180deg, #091a2e 0%, #0D2E4E 100%);
       pointer-events: none;
       z-index: 1;
+    }
+    /* Premium background design image using the candles background */
+    .hero-v2::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('trading_chart_bg.png') center center / cover no-repeat;
+      opacity: 0.11; /* Visible candles layout background design */
+      mix-blend-mode: overlay; /* Blends nicely with navy gradients */
+      pointer-events: none;
+      z-index: 2;
     }
     .hv2-line-top {
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, transparent, var(--orange) 30%, #d4a040 50%, var(--orange) 70%, transparent);
       z-index: 10;
     }
-    /* Grid background disabled to prevent boxy overlay look */
     .hv2-grid-bg {
       display: none;
     }
-    /* Ambient glows using Section 3 glow styles */
     .hv2-glow-l {
       position: absolute;
       width: 1000px;
@@ -3549,12 +3606,11 @@
       top: 0px;
       background: radial-gradient(circle, rgba(0, 188, 255, 0.12) 0%, transparent 60%);
       pointer-events: none;
-      z-index: 2;
+      z-index: 3;
     }
     .hv2-glow-r {
       display: none;
     }
-    /* Horizontal rule accents */
     .hv2-rules {
       display: none;
     }
@@ -3638,39 +3694,33 @@
     /* ─────────────────────────────────── */
     .hero-mountain {
       position: absolute;
-      right: -10%; /* Pushed further to the right edge */
-      top: 50%;
-      transform: translateY(-50%);
-      width: 55%;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 52%;
       z-index: 4;
       pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
+      overflow: hidden;
     }
     .hero-mountain img {
       width: 100%;
-      max-width: 780px;
-      height: auto;
-      border-radius: 16px;
-      border: 1.5px solid rgba(255,255,255,0.1);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      height: 100%;
+      object-fit: contain;
+      object-position: right center;
       display: block;
-      transform: scale(0.95);
-      /* Balanced gradient mask mapping — fades left to blend, keeps right solid */
+      transform: scale(0.92);
+      transform-origin: right center;
       -webkit-mask-image: linear-gradient(to right,
         transparent 0%,
-        transparent 4%,
-        rgba(0,0,0,0.5) 20%,
-        rgba(0,0,0,1) 45%,
-        rgba(0,0,0,1) 100%);
+        rgba(0,0,0,0.2) 12%,
+        rgba(0,0,0,0.7) 28%,
+        rgba(0,0,0,1) 45%);
       mask-image: linear-gradient(to right,
         transparent 0%,
-        transparent 4%,
-        rgba(0,0,0,0.5) 20%,
-        rgba(0,0,0,1) 45%,
-        rgba(0,0,0,1) 100%);
-      filter: brightness(0.95) contrast(1.02);
+        rgba(0,0,0,0.2) 12%,
+        rgba(0,0,0,0.7) 28%,
+        rgba(0,0,0,1) 45%);
+      filter: brightness(0.9) contrast(1.05) saturate(0.95);
     }
     /* Floating labels — smaller, compact */
     .hero-tag {
@@ -4005,36 +4055,48 @@
        ECOSYSTEM V1 — EDITORIAL PATHWAYS
        ══════════════════════════════════════════════ */
     .pathways-section {
-      padding: 110px 0 120px;
-      background-color: #fbfaf6;
-      background-image: radial-gradient(rgba(13, 46, 78, 0.035) 1.5px, transparent 1.5px);
-      background-size: 32px 32px;
+      padding: 45px 0 50px;
+      background: linear-gradient(180deg, #fdfdfb 0%, #f5f3ec 100%);
       position: relative;
       overflow: hidden;
       z-index: 1;
     }
+    .pathways-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(13, 46, 78, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13, 46, 78, 0.012) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -1;
+    }
     .pathways-section::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 80% 20%, rgba(200, 66, 10, 0.03) 0%, transparent 60%);
+      top: -20%;
+      left: 20%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(200, 66, 10, 0.02) 0%, transparent 70%);
       pointer-events: none;
       z-index: -1;
     }
 
     .pw-container {
       position: relative; z-index: 2;
-      max-width: 1240px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 0 48px;
+      padding: 0 32px;
     }
 
     /* Header */
     .pw-header {
       text-align: center;
-      padding-bottom: 48px;
-      margin-bottom: 48px;
-      border-bottom: 1px solid rgba(13,46,78,0.08);
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+      border-bottom: 1px solid rgba(13,46,78,0.05);
       position: relative;
     }
     .pw-eyebrow {
@@ -4075,184 +4137,185 @@
     /* Pathways Grid */
     .pw-pathways {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      counter-reset: pw-counter;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+      margin-top: 70px;
     }
 
-    .pw-row {
+    .pw-pathways::before {
+      content: '';
+      position: absolute;
+      top: -36px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: #0D2E4E;
+      z-index: 1;
+    }
+
+    .pw-card {
       position: relative;
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      grid-template-rows: 1fr auto;
-      gap: 20px 28px;
-      padding: 32px 32px 32px 28px;
-      border: 1px solid rgba(13,46,78,0.06);
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: #ffffff;
+      border: 1px solid rgba(13, 46, 78, 0.08);
+      border-radius: 20px;
+      padding: 24px 20px;
       text-decoration: none;
       color: inherit;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 8px 30px rgba(13,46,78,0.02);
-      counter-increment: pw-counter;
-      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(13, 46, 78, 0.02);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
 
-    .pw-row::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 4px;
-      opacity: 0;
-      transform: scaleY(0.3);
-      transform-origin: center;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 10;
-      background: linear-gradient(180deg, #c8420a 0%, #e04d10 100%);
-    }
-
-    .pw-row::after {
-      content: counter(pw-counter, decimal-leading-zero);
-      position: absolute;
-      top: 24px; right: 28px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: rgba(13,46,78,0.12);
-      transition: all 0.35s ease;
-    }
-
-    .pw-row:hover {
+    .pw-card:hover {
       transform: translateY(-6px);
-      background: #ffffff;
-      border-color: rgba(200, 66, 10, 0.25);
+      border-color: var(--orange);
       box-shadow: 
-        0 20px 40px rgba(13, 46, 78, 0.06), 
-        0 1px 3px rgba(200, 66, 10, 0.1),
-        inset 0 0 20px rgba(200, 66, 10, 0.02);
+        0 20px 40px rgba(13, 46, 78, 0.08),
+        0 1px 3px rgba(200, 66, 10, 0.15);
     }
-    .pw-row:hover::before { opacity: 1; transform: scaleY(1); }
-    .pw-row:hover::after { transform: translateY(-2px); color: #c8420a; }
 
-    /* Image section */
-    .pw-image-section {
-      grid-column: 1;
-      grid-row: 1;
-      width: 100%;
-      height: 120px;
-      border-radius: 16px;
-      overflow: visible;
-      position: relative;
+    .pw-card-node {
+      position: absolute;
+      top: -52px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #0D2E4E;
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at center, rgba(200, 66, 10, 0.05) 0%, transparent 70%);
-      align-self: start;
-      transition: all 0.4s ease;
-    }
-    .pw-image-section img {
-      max-width: 95%;
-      max-height: 95%;
-      object-fit: contain;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
-      filter: drop-shadow(0 8px 16px rgba(13, 46, 78, 0.06));
-      mix-blend-mode: multiply;
-    }
-    .pw-row:hover .pw-image-section img {
-      transform: translateY(-8px) scale(1.08) rotate(2deg);
-      filter: drop-shadow(0 20px 28px rgba(13, 46, 78, 0.12));
+      font-family: var(--ff-mono);
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 10;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 4px #fbfaf6;
     }
 
-    /* Content */
-    .pw-content {
-      grid-column: 2;
-      grid-row: 1;
-      position: relative;
+    .pw-card:hover .pw-card-node {
+      background: var(--orange);
+      transform: translateX(-50%) scale(1.1);
+      box-shadow: 0 0 0 6px #fbfaf6, 0 4px 12px rgba(200, 66, 10, 0.2);
     }
-    .pw-tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-family: 'DM Mono', monospace;
+
+    .pw-card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .pw-card-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-family: var(--ff-mono);
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 2px;
+      color: var(--orange);
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-bottom: 10px;
-      transition: color 0.3s;
-      color: #c8420a;
     }
-    .pw-tag::before {
-      content: ''; width: 14px; height: 1px; background: currentColor;
+    .pw-card-tag::before {
+      content: '';
+      width: 14px;
+      height: 1px;
+      background: currentColor;
     }
-    .pw-content h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(22px, 2vw, 26px);
+
+    .pw-card-header h3 {
+      font-family: var(--ff-serif);
+      font-size: clamp(21px, 2vw, 25px);
       font-weight: 700;
       color: #0D2E4E;
-      line-height: 1.2;
-      margin-bottom: 10px;
-      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin: 0;
+      text-align: center;
     }
-    .pw-content h3 em {
+    .pw-card-header h3 em {
       font-style: italic;
       color: var(--orange);
     }
 
-    .pw-content p {
-      font-size: 14.5px;
-      color: #5b6776;
-      line-height: 1.6;
+    .pw-card-body {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 100%;
     }
 
-    /* Arrow CTA */
-    .pw-arrow {
-      grid-column: 2;
-      grid-row: 2;
-      justify-self: start;
+    .pw-card-text {
+      flex: 1;
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'DM Mono', monospace;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .pw-card-text p {
+      font-size: 13.5px;
+      color: #5b6776;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .pw-card-link {
+      font-family: var(--ff-mono);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      color: var(--orange);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       text-transform: uppercase;
-      white-space: nowrap;
-      transition: all 0.3s ease;
-      margin-top: 8px;
-      color: #c8420a;
+      letter-spacing: 0.5px;
+      transition: gap 0.3s ease;
+      margin-top: 6px;
     }
-    .pw-row:hover .pw-arrow {
-      color: #e04d10;
+
+    .pw-card:hover .pw-card-link {
+      gap: 10px;
+      color: var(--orange-bright);
     }
-    .pw-arrow-track {
-      position: relative;
-      display: inline-block;
-      width: 32px; height: 10px;
-      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .pw-card-image {
+      flex: 0 0 84px;
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(13, 46, 78, 0.03);
+      border-radius: 14px;
+      border: 1px solid rgba(13, 46, 78, 0.05);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .pw-arrow-line {
-      position: absolute;
-      top: 50%; left: 0; right: 6px;
-      height: 1.5px;
-      background: currentColor;
-      transform: translateY(-50%);
-      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    .pw-card:hover .pw-card-image {
+      background: rgba(200, 66, 10, 0.04);
+      border-color: rgba(200, 66, 10, 0.15);
     }
-    .pw-arrow-head {
-      position: absolute;
-      top: 50%; right: 0;
-      width: 6px; height: 6px;
-      border-top: 1.5px solid currentColor;
-      border-right: 1.5px solid currentColor;
-      transform: translateY(-50%) rotate(45deg);
+
+    .pw-card-image svg {
+      width: 54px;
+      height: 54px;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .pw-row:hover .pw-arrow-track { width: 52px; }
-    .pw-row:hover .pw-arrow-line { right: 6px; }
-    .pw-row:hover .pw-arrow-head { transform: translateY(-50%) rotate(45deg) translate(1px,-1px); }
+
+    .pw-card:hover .pw-card-image svg {
+      transform: translateY(-2px) scale(1.05);
+    }
 
     /* Footer */
     .pw-footer {
@@ -4282,44 +4345,61 @@
     }
     .pw-footer a:hover { color: var(--orange-bright); }
 
-    @media (max-width: 1024px) {
-      .pw-container { padding: 0 32px; }
-      .pw-pathways { gap: 24px; }
-      .pw-row { padding: 28px 24px; }
+    @media (max-width: 1200px) {
+      .pw-pathways {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+      }
+      .pw-pathways::before {
+        display: none;
+      }
+      .pw-card-node {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin-bottom: 16px;
+        box-shadow: none;
+      }
+      .pw-card:hover .pw-card-node {
+        transform: scale(1.1);
+        box-shadow: 0 4px 10px rgba(200, 66, 10, 0.15);
+      }
     }
+
     @media (max-width: 768px) {
-      .pathways-section { padding: 70px 0 80px; }
-      .pw-container { padding: 0 24px; }
-      .pw-pathways { grid-template-columns: 1fr; gap: 20px; }
-      .pw-row {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 16px;
-        padding: 32px 24px 24px;
+      .pw-card-body {
+        flex-direction: column-reverse;
         text-align: center;
       }
-      .pw-row::before {
-        left: 0; right: 0; top: 0; bottom: auto;
-        width: auto; height: 4px;
-        transform: scaleX(0.3);
-        transform-origin: center;
+      .pw-card-text {
+        text-align: center;
+        align-items: center;
       }
-      .pw-row:hover::before { transform: scaleX(1); }
-      .pw-image-section {
-        grid-column: 1; grid-row: 1;
-        justify-self: center;
-        height: 100px;
+      .pw-card-image {
+        flex: 0 0 110px;
+        height: 110px;
+        width: 100%;
       }
-      .pw-content {
-        grid-column: 1; grid-row: 2;
+    }
+
+    @media (max-width: 640px) {
+      .pw-pathways {
+        grid-template-columns: 1fr;
+        gap: 24px;
       }
-      .pw-arrow {
-        grid-column: 1; grid-row: 3;
-        justify-self: center;
-        margin-top: 0;
+      .pathways-section {
+        padding: 80px 0 80px;
       }
-      .pw-footer { flex-direction: column; text-align: center; gap: 12px; }
-      .pw-footer-line { display: none; }
+      .pw-footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+      }
+      .pw-footer-line {
+        display: none;
+      }
     }
 
     /* ═══════════════════════════════════════════════════════════
@@ -4409,7 +4489,321 @@
       font-weight: 700 !important;
     }
 
+    /* ── PREMIUM BLOGS SECTION (TRADIENT INSPIRED) ── */
+    .blogs-section-premium {
+      padding: 90px 0 75px;
+      background: #0D2E4E;
+      position: relative;
+      overflow: hidden;
+    }
+    .blogs-section-premium::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.03) 0%, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.03) 0%, transparent 60%),
+        #0D2E4E;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .blogs-section-premium::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/trading_chart_bg.png') center center / cover no-repeat;
+      opacity: 0.08; /* Visible candles layout background design */
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 2;
+    }
     
+    /* Angled top divider to blend FAQ section into Blogs */
+    .blogs-top-divider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+      z-index: 5;
+    }
+    .blogs-top-divider svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 60px;
+    }
+    .blogs-top-divider .shape-fill {
+      fill: #FFFFFF;
+    }
+
+    /* Glow Blobs and Grid Animations */
+    @keyframes blogsGlow1 {
+      0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.15) translate(4%, 3%);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.8;
+      }
+    }
+    @keyframes blogsGlow2 {
+      0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.2) translate(-3%, -2%);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.7;
+      }
+    }
+    
+    .blogs-glow-1 {
+      position: absolute;
+      top: -10%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 188, 255, 0.15) 0%, rgba(13, 46, 78, 0) 70%);
+      pointer-events: none;
+      z-index: 2;
+      animation: blogsGlow1 14s infinite ease-in-out;
+    }
+    .blogs-glow-2 {
+      position: absolute;
+      bottom: -10%;
+      right: -5%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(200, 66, 10, 0.1) 0%, rgba(13, 46, 78, 0) 70%);
+      pointer-events: none;
+      z-index: 2;
+      animation: blogsGlow2 18s infinite ease-in-out;
+    }
+    .blogs-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 45px 45px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .blogs-diagonal-lines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 90px,
+        rgba(255, 255, 255, 0.008) 90px,
+        rgba(255, 255, 255, 0.008) 92px
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .blogs-section-premium .container {
+      position: relative;
+      z-index: 10;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .blogs-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 56px;
+      position: relative;
+      z-index: 5;
+    }
+    .blogs-header .sec-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      color: #ff6b2c;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .blogs-header .sec-label::before,
+    .blogs-header .sec-label::after {
+      content: '';
+      width: 28px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--orange) 50%, transparent);
+    }
+    .blogs-header h2 {
+      font-size: var(--fs-h2) !important;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: -1.5px !important;
+      line-height: var(--lh-snug) !important;
+      margin: 0 0 18px 0;
+    }
+    .blogs-header h2 span {
+      color: #ff6b2c;
+    }
+    .blogs-header p {
+      font-size: var(--fs-lead) !important;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6 !important;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+      z-index: 5;
+    }
+    
+    .blog-card {
+      background: linear-gradient(135deg, rgba(8, 22, 38, 0.95) 0%, rgba(4, 12, 22, 0.98) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 107, 44, 0.35);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 107, 44, 0.08);
+    }
+    
+    .blog-image-wrap {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .blog-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .blog-card:hover .blog-image-wrap img {
+      transform: scale(1.05);
+    }
+    
+    .blog-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 12px;
+    }
+    
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .blog-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: #ff6b2c;
+      background: rgba(255, 107, 44, 0.08);
+      border: 1px solid rgba(255, 107, 44, 0.15);
+      border-radius: 4px;
+      padding: 4px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .blog-date {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: 500;
+    }
+    
+    .blog-content h3 {
+      font-size: 19px !important;
+      color: #fff;
+      font-weight: 700 !important;
+      margin: 0;
+      line-height: 1.35 !important;
+      transition: color 0.3s ease;
+    }
+    
+    .blog-card:hover h3 {
+      color: #ff8d4d;
+    }
+    
+    .blog-content p {
+      font-size: 14px !important;
+      color: rgba(255, 255, 255, 0.55) !important;
+      line-height: 1.55 !important;
+      margin: 0;
+    }
+    
+    .blog-link {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #ff6b2c;
+      font-weight: 700;
+      font-size: 13px;
+      transition: gap 0.3s ease, color 0.3s ease;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .blog-card:hover .blog-link {
+      gap: 10px;
+      color: #ff8d4d;
+    }
+    
+    .blog-link svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s ease;
+    }
+    
+    @media (max-width: 980px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+    @media (max-width: 640px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .blogs-section-premium {
+        padding: 75px 0 50px;
+      }
+    }
   </style>
 </head>
 
@@ -4538,7 +4932,7 @@
 
     <!-- Mountain visual — right side -->
     <div class="hero-mountain">
-      <img src="trading_platform_mockup_1781437247418.png" alt="Navigation Trading Platform Dashboard">
+      <img src="mountain_hero_v3.png" alt="Trading Dashboard">
     </div>
 
   </section>
@@ -4812,75 +5206,127 @@
 
       <!-- PATHWAYS -->
       <nav class="pw-pathways" aria-label="Where to start">
-        <a href="free-membership.html" class="pw-row">
-          <div class="pw-image-section">
-            <img src="pathway_free_3d.png" alt="Free Membership Courses">
-          </div>
-          <div class="pw-content">
-            <span class="pw-tag">Free Membership</span>
+        <!-- Card 1 -->
+        <a href="free-membership.html" class="pw-card">
+          <div class="pw-card-node">01</div>
+          <div class="pw-card-header">
+            <span class="pw-card-tag">Start Here</span>
             <h3>Start with the <em>free</em> courses.</h3>
-            <p>Five strategy courses plus bonus resources — the same foundation every paying member began with. No card required.</p>
           </div>
-          <div class="pw-arrow">
-            <span>Get Instant Access</span>
-            <span class="pw-arrow-track">
-              <span class="pw-arrow-line"></span>
-              <span class="pw-arrow-head"></span>
-            </span>
+          <div class="pw-card-body">
+            <div class="pw-card-text">
+              <p>Free strategy courses plus the joint database every profitable trader needs.</p>
+              <div class="pw-card-link">
+                Get Instant Access
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+            <div class="pw-card-image">
+              <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="12" width="52" height="34" rx="4" stroke="#0D2E4E" stroke-width="2.5" fill="none"/>
+                <path d="M6 34H58" stroke="#0D2E4E" stroke-width="1.5" stroke-dasharray="2 2"/>
+                <path d="M24 46L20 54H44L40 46" stroke="#0D2E4E" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M28 54H36" stroke="#0D2E4E" stroke-width="2.5"/>
+                <path d="M12 30L22 22L34 28L52 14" stroke="#ff6b2c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="22" cy="22" r="3" fill="#ff6b2c"/>
+                <circle cx="34" cy="28" r="3" fill="#ff6b2c"/>
+                <circle cx="52" cy="14" r="3" fill="#ff6b2c"/>
+              </svg>
+            </div>
           </div>
         </a>
 
-        <a href="pricing.html" class="pw-row">
-          <div class="pw-image-section">
-            <img src="pathway_pro_3d.png" alt="Premium Memberships">
-          </div>
-          <div class="pw-content">
-            <span class="pw-tag">Premium Memberships</span>
+        <!-- Card 2 -->
+        <a href="pricing.html" class="pw-card">
+          <div class="pw-card-node">02</div>
+          <div class="pw-card-header">
+            <span class="pw-card-tag">Join Our Community</span>
             <h3>Trade <em>alongside</em> our team.</h3>
-            <p>Live day-trading stream, real-time alerts, full strategy library, and the room where every trade gets posted.</p>
           </div>
-          <div class="pw-arrow">
-            <span>Compare Plans</span>
-            <span class="pw-arrow-track">
-              <span class="pw-arrow-line"></span>
-              <span class="pw-arrow-head"></span>
-            </span>
+          <div class="pw-card-body">
+            <div class="pw-card-text">
+              <p>Live trade alerts, market analysis, and active discussion with our community.</p>
+              <div class="pw-card-link">
+                Compare Plans
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+            <div class="pw-card-image">
+              <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="8" stroke="#0D2E4E" stroke-width="2.5" fill="none"/>
+                <circle cx="16" cy="16" r="5" stroke="#ff6b2c" stroke-width="2.5" fill="none"/>
+                <circle cx="48" cy="16" r="5" stroke="#0D2E4E" stroke-width="2" fill="none"/>
+                <circle cx="16" cy="48" r="5" stroke="#0D2E4E" stroke-width="2" fill="none"/>
+                <circle cx="48" cy="48" r="5" stroke="#ff6b2c" stroke-width="2.5" fill="none"/>
+                <line x1="22" y1="22" x2="27" y2="27" stroke="#0D2E4E" stroke-width="1.5" stroke-dasharray="2 2"/>
+                <line x1="42" y1="22" x2="37" y2="27" stroke="#0D2E4E" stroke-width="1.5" stroke-dasharray="2 2"/>
+                <line x1="22" y1="42" x2="27" y2="37" stroke="#0D2E4E" stroke-width="1.5" stroke-dasharray="2 2"/>
+                <line x1="42" y1="42" x2="37" y2="37" stroke="#0D2E4E" stroke-width="1.5" stroke-dasharray="2 2"/>
+              </svg>
+            </div>
           </div>
         </a>
 
-        <a href="/community" class="pw-row">
-          <div class="pw-image-section">
-            <img src="pathway_community_3d.png" alt="The Community">
-          </div>
-          <div class="pw-content">
-            <span class="pw-tag">The Community</span>
+        <!-- Card 3 -->
+        <a href="pricing.html" class="pw-card">
+          <div class="pw-card-node">03</div>
+          <div class="pw-card-header">
+            <span class="pw-card-tag">Premium Memberships</span>
             <h3>Sit at the <em>same table.</em></h3>
-            <p>A room full of traders who think the same way. Ask anything, read everything, stay sharp between sessions.</p>
           </div>
-          <div class="pw-arrow">
-            <span>Join the Community</span>
-            <span class="pw-arrow-track">
-              <span class="pw-arrow-line"></span>
-              <span class="pw-arrow-head"></span>
-            </span>
+          <div class="pw-card-body">
+            <div class="pw-card-text">
+              <p>Access our full suite of tools, research, and monthly performance breakdowns.</p>
+              <div class="pw-card-link">
+                View Memberships
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+            <div class="pw-card-image">
+              <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="8" y1="16" x2="56" y2="16" stroke="rgba(13, 46, 78, 0.1)" stroke-width="1.5"/>
+                <line x1="8" y1="32" x2="56" y2="32" stroke="rgba(13, 46, 78, 0.1)" stroke-width="1.5"/>
+                <line x1="8" y1="48" x2="56" y2="48" stroke="rgba(13, 46, 78, 0.1)" stroke-width="1.5"/>
+                <line x1="18" y1="12" x2="18" y2="44" stroke="#0D2E4E" stroke-width="1.5"/>
+                <rect x="14" y="20" width="8" height="16" rx="1" fill="#0D2E4E"/>
+                <line x1="32" y1="20" x2="32" y2="52" stroke="#ff6b2c" stroke-width="1.5"/>
+                <rect x="28" y="26" width="8" height="18" rx="1" fill="#ff6b2c"/>
+                <line x1="46" y1="8" x2="46" y2="40" stroke="#0D2E4E" stroke-width="1.5"/>
+                <rect x="42" y="14" width="8" height="18" rx="1" fill="#0D2E4E"/>
+              </svg>
+            </div>
           </div>
         </a>
 
-        <a href="/contact" class="pw-row">
-          <div class="pw-image-section">
-            <img src="pathway_support_3d.png" alt="Talk to a Trader">
-          </div>
-          <div class="pw-content">
-            <span class="pw-tag">Talk to a Trader</span>
+        <!-- Card 4 -->
+        <a href="/contact" class="pw-card">
+          <div class="pw-card-node">04</div>
+          <div class="pw-card-header">
+            <span class="pw-card-tag">Work With Us</span>
             <h3>Book a <em>complimentary</em> call.</h3>
-            <p>Not sure what fits? Schedule a no-pitch conversation with one of our full-time traders. Bring your questions.</p>
           </div>
-          <div class="pw-arrow">
-            <span>Schedule a Call</span>
-            <span class="pw-arrow-track">
-              <span class="pw-arrow-line"></span>
-              <span class="pw-arrow-head"></span>
-            </span>
+          <div class="pw-card-body">
+            <div class="pw-card-text">
+              <p>Tell us your goals and we'll recommend the best path for your success.</p>
+              <div class="pw-card-link">
+                Schedule a Call
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+            <div class="pw-card-image">
+              <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="14" width="44" height="40" rx="6" stroke="#0D2E4E" stroke-width="2.5" fill="none"/>
+                <path d="M10 26H54" stroke="#0D2E4E" stroke-width="2"/>
+                <line x1="20" y1="10" x2="20" y2="16" stroke="#0D2E4E" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="44" y1="10" x2="44" y2="16" stroke="#0D2E4E" stroke-width="2.5" stroke-linecap="round"/>
+                <rect x="18" y="32" width="6" height="6" rx="1" fill="#0D2E4E" opacity="0.3"/>
+                <rect x="29" y="32" width="6" height="6" rx="1" fill="#0D2E4E" opacity="0.3"/>
+                <rect x="40" y="32" width="6" height="6" rx="1" fill="#ff6b2c"/>
+                <rect x="18" y="42" width="6" height="6" rx="1" fill="#0D2E4E" opacity="0.3"/>
+                <rect x="29" y="42" width="6" height="6" rx="1" fill="#0D2E4E" opacity="0.3"/>
+                <rect x="40" y="42" width="6" height="6" rx="1" fill="#0D2E4E" opacity="0.3"/>
+              </svg>
+            </div>
           </div>
         </a>
       </nav>
@@ -5012,13 +5458,20 @@
 
         <!-- Card 1: Free Memberships — laptop image -->
         <div class="learn-premium-card">
+          <div class="lpc-num">01</div>
           <div class="lpc-content">
-            <div class="lpc-num">01</div>
-            <h3>Free Memberships</h3>
+            <div class="lpc-header-row">
+              <div class="lpc-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              </div>
+              <div class="lpc-title-area">
+                <h3>Free Memberships</h3>
+              </div>
+            </div>
             <p>Master the foundation with 5 core strategy courses and institutional resources — 100% free.</p>
             <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">Get Instant Access &rarr;</a>
           </div>
-          <div class="lpc-visual lpc-visual-laptop">
+          <div class="lpc-visual lpc-visual-laptop lpc-visual-glow-green">
             <img src="images/learning-path/education_natural.png" alt="Free Memberships">
             <div class="lpc-free-badge">100%<br>FREE</div>
           </div>
@@ -5026,39 +5479,60 @@
 
         <!-- Card 2: Premium Memberships — live widget image -->
         <div class="learn-premium-card">
+          <div class="lpc-num">02</div>
           <div class="lpc-content">
-            <div class="lpc-num">02</div>
-            <h3>Premium Memberships</h3>
+            <div class="lpc-header-row">
+              <div class="lpc-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </div>
+              <div class="lpc-title-area">
+                <h3>Premium Memberships</h3>
+              </div>
+            </div>
             <p>Access the live trading stream, real-time alerts, and advanced institutional strategies.</p>
             <a href="pricing.html" class="lpc-btn">Explore Plans &rarr;</a>
           </div>
-          <div class="lpc-visual lpc-visual-widget">
+          <div class="lpc-visual lpc-visual-widget lpc-visual-glow-blue">
             <img src="images/learning-path/pro_natural.png" alt="Premium Memberships">
           </div>
         </div>
 
         <!-- Card 3: Community — dot world map image -->
         <div class="learn-premium-card">
+          <div class="lpc-num">03</div>
           <div class="lpc-content">
-            <div class="lpc-num">03</div>
-            <h3>Join Our Global Community</h3>
+            <div class="lpc-header-row">
+              <div class="lpc-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <div class="lpc-title-area">
+                <h3>Join Our Global Community</h3>
+              </div>
+            </div>
             <p>Interact with thousands of like-minded traders and get your questions answered in real-time.</p>
             <a href="https://whop.com/navigationtrading/?pass=prod_e5WDpPBDes6p7" class="lpc-btn">Join the Room &rarr;</a>
           </div>
-          <div class="lpc-visual lpc-visual-map">
+          <div class="lpc-visual lpc-visual-map lpc-visual-glow-indigo">
             <img src="images/learning-path/community_natural.png" alt="Join Our Global Community">
           </div>
         </div>
 
         <!-- Card 4: Support — mic + headphones image -->
         <div class="learn-premium-card">
+          <div class="lpc-num">04</div>
           <div class="lpc-content">
-            <div class="lpc-num">04</div>
-            <h3>Support?</h3>
+            <div class="lpc-header-row">
+              <div class="lpc-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <div class="lpc-title-area">
+                <h3>Support?</h3>
+              </div>
+            </div>
             <p>Schedule a coaching call with our team.</p>
             <a href="https://calendly.com/navigationtrading" class="lpc-btn">Book Call &rarr;</a>
           </div>
-          <div class="lpc-visual lpc-visual-mic">
+          <div class="lpc-visual lpc-visual-mic lpc-visual-glow-orange">
             <img src="images/learning-path/support_natural.png" alt="Support">
           </div>
         </div>
@@ -5370,6 +5844,85 @@
           </div>
 
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PREMIUM BLOGS SECTION ── -->
+  <section class="blogs-section-premium" id="blog-section">
+    <div class="blogs-top-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M1200 120L0 16.48V0h1200v120z" class="shape-fill"></path>
+      </svg>
+    </div>
+    <div class="blogs-glow-1"></div>
+    <div class="blogs-glow-2"></div>
+    <div class="blogs-grid-overlay"></div>
+    <div class="blogs-diagonal-lines"></div>
+    <div class="container">
+      <div class="blogs-header">
+        <div class="sec-label">Insights &amp; Resources</div>
+        <h2>Latest from the <span>Blog</span></h2>
+        <p>Options education, market strategies, and the math behind consistent trading.</p>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Blog Card 1 -->
+        <a href="https://navigationtrading.com/covered-calls/" target="_blank" class="blog-card">
+          <div class="blog-image-wrap">
+            <img src="images/blog_covered_calls.png" alt="How to Trade Covered Calls for Monthly Income">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-tag">Options Strategy</span>
+              <span class="blog-date">June 10, 2026 &middot; 6 min</span>
+            </div>
+            <h3>How to Trade Covered Calls for Monthly Income</h3>
+            <p>Learn the step-by-step setup, optimal implied volatility conditions, delta targets, and profit management rules for trading covered calls.</p>
+            <div class="blog-link">
+              Read Article
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Blog Card 2 -->
+        <a href="https://navigationtrading.com/iron-condors/" target="_blank" class="blog-card">
+          <div class="blog-image-wrap">
+            <img src="images/blog_iron_condor.png" alt="Managing the Iron Condor for 40% Max Profit">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-tag">Advanced Strategy</span>
+              <span class="blog-date">May 28, 2026 &middot; 8 min</span>
+            </div>
+            <h3>Managing the Iron Condor for 40% Max Profit</h3>
+            <p>Discover why the 40% profit target is the statistical sweet spot for Iron Condors, and how to adjust your wings when the market challenges your levels.</p>
+            <div class="blog-link">
+              Read Article
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Blog Card 3 -->
+        <a href="https://navigationtrading.com/podcast/" target="_blank" class="blog-card">
+          <div class="blog-image-wrap">
+            <img src="images/blog_mindset.png" alt="The TradeHacker Mindset: The Psychology of Consistency">
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-tag">Trading Mindset</span>
+              <span class="blog-date">May 14, 2026 &middot; 5 min</span>
+            </div>
+            <h3>The TradeHacker Mindset: Psychology of Consistency</h3>
+            <p>Why do most options traders fail? Explore the psychology of drawdowns, revenge trading, and why smaller, high-probability trades win in the long run.</p>
+            <div class="blog-link">
+              Read Article
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </section>
