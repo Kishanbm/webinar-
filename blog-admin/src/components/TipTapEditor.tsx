@@ -4,7 +4,7 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import { Mark, mergeAttributes, Extension } from '@tiptap/core';
-import { Plugin, PluginKey } from '@tiptap/pm/state';
+import { Plugin, PluginKey, NodeSelection } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import { Bold, Italic, Heading2, List, ListOrdered, ImageIcon, LinkIcon, Code, Edit2, Trash2, Check, X } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
@@ -241,6 +241,13 @@ export default function TipTapEditor({ content, onChange }: TipTapEditorProps) {
     }
 
     const textToInsert = linkText || targetUrl;
+
+    // Check if the current selection is a NodeSelection (e.g. an image is selected).
+    // If so, move the cursor to after the node so we don't overwrite it.
+    const { selection } = editor.state;
+    if (selection instanceof NodeSelection) {
+      editor.commands.setTextSelection(selection.to);
+    }
 
     if (styleAsButton) {
       editor
