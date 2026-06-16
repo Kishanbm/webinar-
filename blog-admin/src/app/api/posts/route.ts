@@ -78,7 +78,9 @@ export async function POST(request: Request) {
         seoTitle: body.seoTitle,
         seoDescription: body.seoDescription,
         status: body.status || 'DRAFT',
-        authorId: body.authorId,
+        author: {
+          connect: { id: body.authorId }
+        },
         category: categoryData,
         tags: tagsData,
         publishedAt: body.publishedAt ? new Date(body.publishedAt) : null,
