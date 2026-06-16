@@ -44,9 +44,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <div className="blog-page-container">
       <div style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '24px' }}>
-        <Link href="/blogs" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 600, fontSize: '14px' }}>
+        <a href="/blogs" style={{ color: 'var(--orange)', textDecoration: 'none', fontWeight: 600, fontSize: '14px' }}>
           &larr; Back to all posts
-        </Link>
+        </a>
       </div>
       
       <article className="blog-content">
@@ -78,12 +78,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           )}
         </header>
-
-        {post.coverImage && (
-          <div style={{ marginBottom: '40px' }}>
-            <img src={post.coverImage} alt={post.title} style={{ width: '100%', borderRadius: '12px', objectFit: 'cover' }} />
-          </div>
-        )}
 
         {/* Render TipTap Raw HTML securely */}
         <div 
