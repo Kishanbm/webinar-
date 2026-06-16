@@ -23,3 +23,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, error: 'Failed to create author' }, { status: 500 });
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    if (!id) {
+      return NextResponse.json({ success: false, error: 'Author ID is required' }, { status: 400 });
+    }
+    await prisma.user.delete({
+      where: { id }
+    });
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Failed to delete author:', error);
+    return NextResponse.json({ success: false, error: 'Failed to delete author' }, { status: 500 });
+  }
+}
+
