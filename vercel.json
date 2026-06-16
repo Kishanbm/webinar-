@@ -78,11 +78,11 @@
     },
     {
       "source": "/blogs",
-      "destination": "https://YOUR_NEXTJS_APP_URL.vercel.app/blogs"
+      "destination": "https://webinar-neon-one.vercel.app/blogs"
     },
     {
       "source": "/blogs/:path*",
-      "destination": "https://YOUR_NEXTJS_APP_URL.vercel.app/blogs/:path*"
+      "destination": "https://webinar-neon-one.vercel.app/blogs/:path*"
     }
   ]
 }
