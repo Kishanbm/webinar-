@@ -321,3 +321,25 @@ footer {
   gap: 10px;
 }
 
+/* Premium Blog Button Link Style */
+.blog-button {
+  display: inline-block;
+  background-color: var(--orange);
+  color: white !important;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  margin: 16px 0;
+  text-align: center;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(200, 66, 10, 0.2);
+}
+
+.blog-button:hover {
+  background-color: var(--orange-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(200, 66, 10, 0.35);
+}
+
+

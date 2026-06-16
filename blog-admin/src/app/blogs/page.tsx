@@ -39,7 +39,7 @@ export default async function BlogsPage() {
             }
 
             return (
-              <Link href={`/blogs/${post.slug}`} key={post.id} className="blog-card">
+              <a href={`/blogs/${post.slug}`} key={post.id} className="blog-card">
                 {displayImage && (
                   <img src={displayImage} alt={post.title} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
                 )}
@@ -60,7 +60,7 @@ export default async function BlogsPage() {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
             );
           })
         )}

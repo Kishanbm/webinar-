@@ -30,7 +30,7 @@ export default function PublicLayout({
             </div>
           </li>
           <li><a href="https://webclass.navigationtrading.com/podcast">Podcast</a></li>
-          <li><Link href="/blogs" className="active">Blog</Link></li>
+          <li><a href="/blogs" className="active">Blog</a></li>
           <li><a href="https://webclass.navigationtrading.com/contact">Contact Us</a></li>
         </ul>
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
