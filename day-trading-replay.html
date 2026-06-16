@@ -512,17 +512,22 @@
   (function(){
     const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTNCq_1GGFDQDM1ZHFY5ZOiT0byuu3DqTGcxHP3_NJlAZU9XoLMYrEsmgdaWQxUEyPZTmDgU79nLJN-/pub?gid=0&single=true&output=csv';
     const FALLBACK  = '1175321973';
-    function vimeoIdFrom(url) {
+    function vimeoPartsFrom(url) {
       if (!url) return null;
-      var m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
-      return m ? m[1] : (url.match(/^\d+$/) ? url : null);
+      var m = url.match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([a-f0-9]+))?/);
+      if (m) return { id: m[1], h: m[2] || null };
+      if (url.match(/^\d+$/)) return { id: url, h: null };
+      return null;
     }
     function embedVideo(url) {
-      var id = vimeoIdFrom(url) || FALLBACK;
+      var parts = vimeoPartsFrom(url) || { id: FALLBACK, h: null };
+      var id = parts.id;
       if (!id) return;
       document.getElementById('replay-loading').style.display = 'none';
       var iframe = document.createElement('iframe');
-      iframe.src = 'https://player.vimeo.com/video/' + id + '?badge=0&autopause=0&player_id=0&app_id=58479';
+      var src = 'https://player.vimeo.com/video/' + id + '?badge=0&autopause=0&player_id=0&app_id=58479';
+      if (parts.h) src += '&h=' + parts.h;
+      iframe.src = src;
       iframe.frameBorder = '0';
       iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media';
       iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
