@@ -230,8 +230,8 @@ export default function TipTapEditor({ content, onChange }: TipTapEditorProps) {
   }, [editor]);
 
   // Insert Custom Link or Button Link from the top toolbar
-  const handleInsertToolbarLink = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleInsertToolbarLink = (e?: React.FormEvent | React.KeyboardEvent | React.MouseEvent) => {
+    if (e) e.preventDefault();
     if (!editor || !linkUrl) return;
 
     let targetUrl = linkUrl;
@@ -453,7 +453,7 @@ export default function TipTapEditor({ content, onChange }: TipTapEditorProps) {
             Insert Link or Button
           </h4>
           
-          <form onSubmit={handleInsertToolbarLink} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 120px 80px', gap: '12px', alignItems: 'end' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 120px 80px', gap: '12px', alignItems: 'end' }}>
             <div className="form-group" style={{ marginBottom: 0 }}>
               <label className="form-label" style={{ fontSize: '12px' }}>Link Text (optional)</label>
               <input
@@ -463,6 +463,12 @@ export default function TipTapEditor({ content, onChange }: TipTapEditorProps) {
                 placeholder="e.g. Join Now"
                 className="form-input"
                 style={{ padding: '6px 12px', minHeight: '34px' }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleInsertToolbarLink(e);
+                  }
+                }}
               />
             </div>
 
@@ -477,6 +483,12 @@ export default function TipTapEditor({ content, onChange }: TipTapEditorProps) {
                 style={{ padding: '6px 12px', minHeight: '34px' }}
                 required
                 autoFocus
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleInsertToolbarLink(e);
+                  }
+                }}
               />
             </div>
 
@@ -495,14 +507,15 @@ export default function TipTapEditor({ content, onChange }: TipTapEditorProps) {
 
             <div style={{ display: 'flex', gap: '8px' }}>
               <button 
-                type="submit"
+                type="button"
+                onClick={() => handleInsertToolbarLink()}
                 className="btn-primary" 
                 style={{ padding: '6px 16px', fontSize: '13px', minHeight: '34px', width: '100%', justifyContent: 'center' }}
               >
                 Insert
               </button>
             </div>
-          </form>
+          </div>
         </div>
       )}
       
