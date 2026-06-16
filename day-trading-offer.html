@@ -683,7 +683,7 @@
             <span class="greet-dot"></span>
             <span id="greet-text">Your Offer Is Active</span>
           </div>
-          <h2 class="tcta-headline">30% off, locked in for <em>the next 15 minutes.</em></h2>
+          <h2 class="tcta-headline">30% off, locked in for <em>the next 48 hours.</em></h2>
           <div class="countdown-wrap">
             <div class="countdown-head">
               <span class="dot"></span>
@@ -852,24 +852,17 @@
     })();
 
     /* ════════════════════════════════════════
-       15-MINUTE COUNTDOWN — persists across reloads
+       48-HOUR FIXED DEADLINE COUNTDOWN
+       Deadline: 19 Jun 2026, 3:30 AM IST = 18 Jun 2026, 22:00:00 UTC
        ════════════════════════════════════════ */
     (function () {
-      var COUNTDOWN_MIN = 15;
-      var KEY = 'ntday_offer_expiry';
-
       var hoursEl = document.getElementById('t-hours');
       var minsEl  = document.getElementById('t-mins');
       var secsEl  = document.getElementById('t-secs');
       var card    = document.getElementById('terminal-cta');
       var claimBtn = document.getElementById('claim-btn');
 
-      var expiry = parseInt(localStorage.getItem(KEY) || '0', 10);
-      var now = Date.now();
-      if (!expiry || expiry < now) {
-        expiry = now + COUNTDOWN_MIN * 60 * 1000;
-        localStorage.setItem(KEY, expiry);
-      }
+      var expiry = new Date('2026-06-18T22:00:00Z').getTime();
 
       function pad(n) { return n < 10 ? '0' + n : '' + n; }
       function setDigit(el, val) {
