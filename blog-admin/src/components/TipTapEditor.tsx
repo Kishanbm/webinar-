@@ -145,7 +145,11 @@ export default function TipTapEditor({ content, onChange }: TipTapEditorProps) {
             type="button" 
             onClick={() => {
               if (linkUrl) {
-                editor.chain().focus().setLink({ href: linkUrl }).run();
+                let formattedUrl = linkUrl.trim();
+                if (!/^https?:\/\//i.test(formattedUrl) && !/^mailto:/i.test(formattedUrl) && !/^tel:/i.test(formattedUrl) && !formattedUrl.startsWith('/')) {
+                  formattedUrl = 'https://' + formattedUrl;
+                }
+                editor.chain().focus().setLink({ href: formattedUrl }).run();
               } else {
                 editor.chain().focus().unsetLink().run();
               }
