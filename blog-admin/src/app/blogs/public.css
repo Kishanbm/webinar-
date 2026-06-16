@@ -16,8 +16,8 @@
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: #0D2E4E; /* Wait, the original body has this, but maybe we want white for the blog content area? Let's use #f8f9fa or white for the main blog area */
-  color: var(--text-main);
+  background: #ffffff;
+  color: #1e293b;
   overflow-x: hidden;
   line-height: 1.6;
   font-size: 16px;
@@ -192,7 +192,7 @@ footer {
 
 /* Blog Specific Styles */
 .blog-page-container {
-  background: #0a192f;
+  background: #f8fafc;
   min-height: 100vh;
   padding-top: 140px; /* Space for navbar */
   padding-bottom: 80px;
@@ -201,18 +201,18 @@ footer {
 .blog-content {
   max-width: 850px;
   margin: 0 auto;
-  background: #0f223d;
+  background: #ffffff;
   padding: 48px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  color: #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  color: #334155;
 }
 
 .blog-title {
   font-size: 44px;
   font-weight: 800;
-  color: #ffffff;
+  color: #0d2e4e;
   line-height: 1.25;
   margin-bottom: 16px;
 }
@@ -228,7 +228,7 @@ footer {
 
 .blog-body {
   font-size: 18px;
-  color: #cbd5e1;
+  color: #334155;
   line-height: 1.8;
 }
 
@@ -242,7 +242,7 @@ footer {
 
 .blog-body h2 {
   font-size: 28px;
-  color: #ffffff;
+  color: #0d2e4e;
   margin-top: 40px;
   margin-bottom: 16px;
 }
@@ -261,11 +261,11 @@ footer {
 }
 
 .blog-card {
-  background: #0b1a30;
+  background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border-color 0.3s;
   text-decoration: none;
   color: inherit;
@@ -289,7 +289,7 @@ footer {
 .blog-card-title {
   font-size: 22px;
   font-weight: 700;
-  color: #ffffff;
+  color: #0d2e4e;
   margin-bottom: 16px;
   line-height: 1.35;
   transition: color 0.2s;
@@ -320,16 +320,4 @@ footer {
 .blog-card:hover .read-more {
   gap: 10px;
 }
-
-.blog-body a {
-  color: var(--orange-bright);
-  text-decoration: underline;
-  font-weight: 600;
-  transition: color 0.15s ease;
-}
-
-.blog-body a:hover {
-  color: #ff8e5c;
-}
-
 
