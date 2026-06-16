@@ -708,40 +708,6 @@
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    /* ── Exit-intent popup ── */
-    (function () {
-      var popup = document.getElementById('exit-popup');
-      var overlay = document.getElementById('eip-overlay');
-      var closeBtn = document.getElementById('eip-close');
-      var dismiss = document.getElementById('eip-dismiss');
-      if (!popup) return;
-      var shown = false;
-      var dismissed = sessionStorage.getItem('eip_noshow_dismissed') === '1';
-
-      function show() {
-        if (shown || dismissed) return;
-        shown = true;
-        popup.classList.add('eip-open');
-        document.body.style.overflow = 'hidden';
-      }
-      function hide() {
-        popup.classList.remove('eip-open');
-        document.body.style.overflow = '';
-        sessionStorage.setItem('eip_noshow_dismissed', '1');
-      }
-
-      document.documentElement.addEventListener('mouseleave', function (e) {
-        if (e.clientY <= 0) show();
-      });
-
-      closeBtn.addEventListener('click', hide);
-      dismiss.addEventListener('click', hide);
-      overlay.addEventListener('click', hide);
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && popup.classList.contains('eip-open')) hide();
-      });
-    })();
-
   </script>
 
   <!-- ── EXIT-INTENT POPUP ── -->
@@ -806,5 +772,40 @@
     .eip-dismiss:hover { color:#fff; }
     @media(max-width:640px) { .eip-card{grid-template-columns:1fr} .eip-left,.eip-right-cta{padding:32px 28px} .eip-logo{transform:scale(4)} .eip-logo-row{margin-bottom:40px} }
   </style>
+  <script>
+    /* ── Exit-intent popup ── */
+    (function () {
+      var popup = document.getElementById('exit-popup');
+      var overlay = document.getElementById('eip-overlay');
+      var closeBtn = document.getElementById('eip-close');
+      var dismiss = document.getElementById('eip-dismiss');
+      if (!popup) return;
+      var shown = false;
+      var dismissed = sessionStorage.getItem('eip_noshow_dismissed') === '1';
+
+      function show() {
+        if (shown || dismissed) return;
+        shown = true;
+        popup.classList.add('eip-open');
+        document.body.style.overflow = 'hidden';
+      }
+      function hide() {
+        popup.classList.remove('eip-open');
+        document.body.style.overflow = '';
+        sessionStorage.setItem('eip_noshow_dismissed', '1');
+      }
+
+      document.documentElement.addEventListener('mouseleave', function (e) {
+        if (e.clientY <= 0) show();
+      });
+
+      closeBtn.addEventListener('click', hide);
+      dismiss.addEventListener('click', hide);
+      overlay.addEventListener('click', hide);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && popup.classList.contains('eip-open')) hide();
+      });
+    })();
+  </script>
 </body>
 </html>
