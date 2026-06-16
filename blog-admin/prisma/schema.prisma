@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  avatarUrl String?
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  slug      String   @unique
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  slug      String   @unique
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Post {
+  id               String     @id @default(uuid())
+  title            String
+  slug             String     @unique
+  content          String     // Rich text / Raw HTML
+  excerpt          String?
+  coverImage       String?
+  seoTitle         String?
+  seoDescription   String?
+  status           PostStatus @default(DRAFT)
+  
+  authorId         String
+  author           User       @relation(fields: [authorId], references: [id])
+  
+  categoryId       String?
+  category         Category?  @relation(fields: [categoryId], references: [id])
+  
+  tags             Tag[]
+  
+  publishedAt      DateTime?  // For scheduling
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  @@index([slug])
+  @@index([status])
+}

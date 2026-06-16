@@ -75,6 +75,50 @@
     {
       "source": "/admin-replay",
       "destination": "/admin-replay"
+    },
+    {
+      "source": "/blogs",
+      "destination": "https://webinar-neon-one.vercel.app/blogs"
+    },
+    {
+      "source": "/blogs/:path*",
+      "destination": "https://webinar-neon-one.vercel.app/blogs/:path*"
+    },
+    {
+      "source": "/_next/:path*",
+      "destination": "https://webinar-neon-one.vercel.app/_next/:path*"
+    },
+    {
+      "source": "/api/posts",
+      "destination": "https://webinar-neon-one.vercel.app/api/posts"
+    },
+    {
+      "source": "/api/posts/:path*",
+      "destination": "https://webinar-neon-one.vercel.app/api/posts/:path*"
+    },
+    {
+      "source": "/api/authors",
+      "destination": "https://webinar-neon-one.vercel.app/api/authors"
+    },
+    {
+      "source": "/api/authors/:path*",
+      "destination": "https://webinar-neon-one.vercel.app/api/authors/:path*"
+    },
+    {
+      "source": "/admin-blog",
+      "destination": "https://webinar-neon-one.vercel.app/"
+    },
+    {
+      "source": "/posts",
+      "destination": "https://webinar-neon-one.vercel.app/posts"
+    },
+    {
+      "source": "/posts/:path*",
+      "destination": "https://webinar-neon-one.vercel.app/posts/:path*"
+    },
+    {
+      "source": "/settings",
+      "destination": "https://webinar-neon-one.vercel.app/settings"
     }
   ]
 }
