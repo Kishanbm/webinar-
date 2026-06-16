@@ -86,13 +86,13 @@ export default function EditPost({ params }: EditPostProps) {
 
     try {
       const { error: uploadError } = await supabase.storage
-        .from('blog-images')
+        .from('images')
         .upload(filePath, file);
 
       if (uploadError) throw uploadError;
 
       const { data } = supabase.storage
-        .from('blog-images')
+        .from('images')
         .getPublicUrl(filePath);
 
       setFormData(prev => ({ ...prev, coverImage: data.publicUrl }));

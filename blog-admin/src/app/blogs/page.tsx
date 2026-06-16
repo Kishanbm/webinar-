@@ -28,30 +28,41 @@ export default async function BlogsPage() {
             <p>No posts published yet. Check back soon!</p>
           </div>
         ) : (
-          posts.map(post => (
-            <Link href={`/blogs/${post.slug}`} key={post.id} className="blog-card">
-              {post.coverImage && (
-                <img src={post.coverImage} alt={post.title} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
-              )}
-              <div className="blog-card-content">
-                <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--emerald-600)', marginBottom: '8px', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                  {post.category ? post.category.name : 'ARTICLE'}
-                </div>
-                <h2 className="blog-card-title">{post.title}</h2>
-                <div className="blog-card-excerpt">
-                  {post.excerpt || post.seoDescription || 'Read the full article to learn more...'}
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px' }}>
-                  <div style={{ fontSize: '13px', color: 'var(--text-dim)' }}>
-                    {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+          posts.map(post => {
+            // Automatically extract the first image from post content if coverImage is not explicitly set
+            let displayImage = post.coverImage;
+            if (!displayImage && post.content) {
+              const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
+              if (imgMatch) {
+                displayImage = imgMatch[1];
+              }
+            }
+
+            return (
+              <Link href={`/blogs/${post.slug}`} key={post.id} className="blog-card">
+                {displayImage && (
+                  <img src={displayImage} alt={post.title} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+                )}
+                <div className="blog-card-content">
+                  <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--emerald-600)', marginBottom: '8px', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                    {post.category ? post.category.name : 'ARTICLE'}
                   </div>
-                  <div className="read-more">
-                    Read Post &rarr;
+                  <h2 className="blog-card-title">{post.title}</h2>
+                  <div className="blog-card-excerpt">
+                    {post.excerpt || post.seoDescription || 'Read the full article to learn more...'}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px' }}>
+                    <div style={{ fontSize: '13px', color: 'var(--text-dim)' }}>
+                      {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                    </div>
+                    <div className="read-more">
+                      Read Post &rarr;
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))
+              </Link>
+            );
+          })
         )}
       </div>
     </div>
