@@ -558,9 +558,9 @@
         style="height: 40px; width: auto; transform: scale(5); transform-origin: left center; vertical-align: middle;"></a>
     <ul class="nav-links">
       <li><a href="#video">Replay</a></li>
-      <li><a href="#offer">Offer</a></li>
+      <li><a href="day-trading-offer.html">Offer</a></li>
     </ul>
-    <a href="https://whop.com/joined/navigationtrading/products/ntday/?utm_source=replay_noshow&utm_medium=web&utm_campaign=noshow_nav" class="nav-cta">Claim Offer</a>
+    <a href="day-trading-offer.html" class="nav-cta">Claim Offer</a>
   </nav>
 
   <!-- ── HERO STRIP (dark, replay context) ── -->
@@ -629,18 +629,10 @@
       })();
       </script>
 
-      <!-- CTA BAR -->
-      <div class="cta-bar" id="offer">
-        <div class="cta-code">
-          <span class="cta-code-lbl">Promo Code</span>
-          <span class="cta-code-val">DAY</span>
-        </div>
-        <div class="cta-text">
-          <h2>Get <em>30% off</em> any membership.</h2>
-          <p>Apply code <strong>DAY</strong> at checkout. Limited time for replay viewers.</p>
-        </div>
-        <a href="https://whop.com/joined/navigationtrading/products/ntday/?utm_source=replay_noshow&utm_medium=web&utm_campaign=noshow_cta" class="cta-btn">
-          Claim Offer
+      <!-- CTA BUTTON -->
+      <div style="text-align:center; margin-top: 40px;">
+        <a href="day-trading-offer.html" class="cta-btn">
+          Claim Your Offer
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
@@ -689,56 +681,6 @@
     </div>
   </footer>
 
-  <!-- ════════════════════════════════════════
-       EXIT-INTENT POPUP (split-screen, matches index.html pattern)
-       ════════════════════════════════════════ -->
-  <div id="exit-popup" aria-modal="true" role="dialog">
-    <div class="eip-overlay" id="eip-overlay"></div>
-    <div class="eip-wrap">
-      <div class="eip-card">
-        <button class="eip-close" id="eip-close" aria-label="Close">&#x2715;</button>
-
-        <!-- LEFT (dark, branded) -->
-        <div class="eip-left">
-          <div class="eip-logo-row"><img src="logo.png" alt="NavigationTrading" class="eip-logo"></div>
-          <div class="eip-badge">Exclusive Replay Offer</div>
-          <h2 class="eip-headline">Don't lose this <em>30% discount</em> on your way out.</h2>
-          <p class="eip-tagline">You watched the replay. The DAY promo code is yours — drop your details and we'll lock it in.</p>
-          <ul class="eip-bullets">
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-              30% off any membership (one-time use)
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-              Replay link + free strategy one-pagers
-            </li>
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-              7-day money-back guarantee
-            </li>
-          </ul>
-          <div class="eip-date">⚡ Reserved for the next 15 minutes</div>
-        </div>
-
-        <!-- RIGHT (white, form) -->
-        <div class="eip-right">
-          <p class="eip-form-title">Your offer is still open.</p>
-          <p class="eip-form-sub">Send it to your inbox — takes 10 seconds.</p>
-          <form id="eip-form" novalidate>
-            <div class="eip-field">
-              <input type="text" name="fullname" placeholder="Your Full Name *" required class="eip-input">
-            </div>
-            <div class="eip-field">
-              <input type="email" name="email" placeholder="Your Email Address *" required class="eip-input">
-            </div>
-            <button type="submit" class="eip-submit">Lock In My 30% Off →</button>
-          </form>
-          <p class="eip-dismiss" id="eip-dismiss">No thanks, I'll skip the discount</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script>
     /* ── Progress bar + navbar scroll ── */
@@ -750,90 +692,6 @@
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    /* ════════════════════════════════════════
-       EXIT-INTENT POPUP
-       Primary trigger:  video reaches 10 seconds of playback
-       Fallback trigger: 20s after page load, ONLY IF the video
-                         never started playing (e.g. autoplay blocked).
-       Once dismissed/submitted, won't re-show in session.
-       ════════════════════════════════════════ */
-    (function () {
-      var popup = document.getElementById('exit-popup');
-      var closeBtn = document.getElementById('eip-close');
-      var dismiss = document.getElementById('eip-dismiss');
-      var overlay = document.getElementById('eip-overlay');
-      var form = document.getElementById('eip-form');
-      if (!popup) return;
-
-      var shown = false;
-      var videoStarted = false;
-      var dismissed = sessionStorage.getItem('eip_noshow_dismissed') === '1';
-
-      function show() {
-        if (shown || dismissed) return;
-        shown = true;
-        popup.classList.add('eip-open');
-        document.body.style.overflow = 'hidden';
-      }
-      function hide() {
-        popup.classList.remove('eip-open');
-        document.body.style.overflow = '';
-        sessionStorage.setItem('eip_noshow_dismissed', '1');
-      }
-
-      // Primary: hook into Vimeo player and fire at 10 seconds of playback
-      function initVimeo() {
-        var iframe = document.getElementById('replay-video');
-        if (!iframe || typeof Vimeo === 'undefined') return;
-        try {
-          var player = new Vimeo.Player(iframe);
-          player.on('play', function () { videoStarted = true; });
-          player.on('playing', function () { videoStarted = true; });
-          player.on('timeupdate', function (data) {
-            if (data && data.seconds >= 10) { show(); }
-          });
-        } catch (err) {
-          console.warn('Vimeo player init failed:', err);
-        }
-      }
-      // Vimeo's player.js may load after this script — wait for it
-      if (typeof Vimeo !== 'undefined') {
-        initVimeo();
-      } else {
-        var waitVimeo = setInterval(function () {
-          if (typeof Vimeo !== 'undefined') {
-            clearInterval(waitVimeo);
-            initVimeo();
-          }
-        }, 200);
-        // Stop polling after 8s no matter what
-        setTimeout(function () { clearInterval(waitVimeo); }, 8000);
-      }
-
-      // Fallback: 20s after page load, only if the video never started
-      setTimeout(function () {
-        if (!videoStarted) show();
-      }, 20000);
-
-      // Close handlers
-      closeBtn.addEventListener('click', hide);
-      dismiss.addEventListener('click', hide);
-      overlay.addEventListener('click', hide);
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && popup.classList.contains('eip-open')) hide();
-      });
-
-      // Form submit → redirect to offer countdown page
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var data = new FormData(form);
-        var name  = encodeURIComponent(data.get('fullname') || '');
-        var email = encodeURIComponent(data.get('email') || '');
-        sessionStorage.setItem('eip_noshow_dismissed', '1');
-        // TODO: hook into ActiveCampaign / Whop lead capture endpoint here.
-        window.location.href = 'day-trading-offer.html?name=' + name + '&email=' + email;
-      });
-    })();
   </script>
 </body>
 </html>
