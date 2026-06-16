@@ -300,3 +300,21 @@ tr:hover {
   background: var(--primary-color);
   color: white;
 }
+
+.ProseMirror img {
+  max-width: 100%;
+  max-height: 450px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 16px auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: outline 0.15s ease-in-out;
+}
+
+.ProseMirror img:hover {
+  outline: 3px solid var(--accent-color);
+}
+
