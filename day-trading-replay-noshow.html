@@ -730,7 +730,7 @@
         sessionStorage.setItem('eip_noshow_dismissed', '1');
       }
 
-      document.addEventListener('mouseleave', function (e) {
+      document.documentElement.addEventListener('mouseleave', function (e) {
         if (e.clientY <= 0) show();
       });
 
