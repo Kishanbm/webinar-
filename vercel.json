@@ -75,6 +75,14 @@
     {
       "source": "/admin-replay",
       "destination": "/admin-replay"
+    },
+    {
+      "source": "/blogs",
+      "destination": "https://YOUR_NEXTJS_APP_URL.vercel.app/blogs"
+    },
+    {
+      "source": "/blogs/:path*",
+      "destination": "https://YOUR_NEXTJS_APP_URL.vercel.app/blogs/:path*"
     }
   ]
 }
