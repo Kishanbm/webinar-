@@ -85,7 +85,7 @@ export default function NewPost() {
       
       const data = await res.json();
       if (data.success) {
-        router.push('/');
+        window.location.href = '/admin-blog';
       } else {
         alert(data.error || 'Failed to create post');
       }

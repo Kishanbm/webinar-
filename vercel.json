@@ -95,6 +95,18 @@
     {
       "source": "/api/authors/:path*",
       "destination": "https://webinar-neon-one.vercel.app/api/authors/:path*"
+    },
+    {
+      "source": "/admin-blog",
+      "destination": "https://webinar-neon-one.vercel.app/"
+    },
+    {
+      "source": "/posts/:path*",
+      "destination": "https://webinar-neon-one.vercel.app/posts/:path*"
+    },
+    {
+      "source": "/settings",
+      "destination": "https://webinar-neon-one.vercel.app/settings"
     }
   ]
 }

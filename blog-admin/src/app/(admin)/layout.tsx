@@ -13,8 +13,8 @@ export default function RootLayout({
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    if (path === '/' && pathname === '/') return true;
-    if (path !== '/' && pathname.startsWith(path)) return true;
+    if (path === '/admin-blog' && pathname === '/') return true;
+    if (path !== '/admin-blog' && pathname.startsWith(path)) return true;
     return false;
   };
 
@@ -30,7 +30,7 @@ export default function RootLayout({
             
             <ul className="nav-menu">
               <li>
-                <Link href="/" className={`nav-item ${isActive('/') ? 'active' : ''}`}>
+                <Link href="/admin-blog" className={`nav-item ${isActive('/admin-blog') ? 'active' : ''}`}>
                   <LayoutDashboard size={20} />
                   Dashboard
                 </Link>
